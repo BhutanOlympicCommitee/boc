@@ -1,0 +1,22 @@
+<div class="container">
+    <!-- left, vertical navbar & content -->
+    <div class="row">
+        <!-- left, vertical navbar -->
+        <div class="col-md-3 bootstrap-admin-col-left">
+            <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
+                <li class="active">
+                    <a href="about.html"><i class="glyphicon glyphicon-chevron-right"></i> About</a>
+                </li>
+                <li>
+                    <a href="dashboard.html"><i class="glyphicon glyphicon-chevron-right"></i> Dashboard</a>
+                </li>
+                <li class="disabled">
+                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Calendar</a><!-- calendar.html -->
+                </li>
+                <li>
+                    <a href="#"><span class="badge pull-right">4,231</span> Logs</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
