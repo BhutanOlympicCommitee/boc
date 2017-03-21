@@ -26,8 +26,20 @@
                         <li><a href='{{route('skra.index')}}'><i class='pull-left glyphicon glyphicon-circle-arrow-right glyphicon-align-right'></i>&nbsp;&nbsp;&nbsp;<span>SKRAs</span></a></li>
                         <li><a href="{{route('skra_activities.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>SKRA activities</span></a></li>
                         <li><a href="{{route('sport_org_activity')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Soprt Organization Activities</span></a></li>
+
+                        <li><a href="{{route('achievement_update')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Update Achievements</span></a></li>
                     </ul>
-                </li>      
+                </li>
+                <li><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Athlete Information</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
+                    <ul class="nav nav-list tree bullets">
+                        <li><a href="{{route('athlete.create')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Athlete Info</span></a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Training Information</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
+                    <ul class="nav nav-list tree bullets">
+                        <li><a href="{{route('training.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Training Info</span></a></li>
+                    </ul>
+                </li>       
             </ul>
         </li>
     </ul>

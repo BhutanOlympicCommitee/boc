@@ -102,5 +102,19 @@ Route::get('sport_organization_activities',[
 	'uses' => 'Sport_Organization_Controller@view_activities',
 	'as' => 'sport_org_activity'
 	]);
+
+//Routes for the Review Activities
+
+//Route for Update Achievements 
+Route::get('review_activities_achievemenents_update',[
+		'uses'=>'ReviewPlanController@getAchievement_update',
+		'as'=>'achievement_update'
+	]);
+//routes for althlete information
+Route::get('athlete_bio',['as'=>'athlete.create','uses'=>'AthleteInformationController@create']);
+
 //routes for training information
 Route::get('training',['as'=>'training.index','uses'=>'TrainingInformationController@index']);
+Route::get('training/create',['as'=>'training.create','uses'=>'TrainingInformationController@create']);
+Route::get('training/attendance',['as'=>'training.attendance','uses'=>'TrainingInformationController@trainingAttendanceIndex']);
+Route::post('training/store',['as'=>'training.store','uses'=>'TrainingInformationController@store']);
