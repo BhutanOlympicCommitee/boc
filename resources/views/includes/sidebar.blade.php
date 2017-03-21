@@ -25,6 +25,7 @@
                     <ul class="nav nav-list tree bullets">
                         <li><a href='{{route('skra.index')}}'><i class='pull-left glyphicon glyphicon-circle-arrow-right glyphicon-align-right'></i>&nbsp;&nbsp;&nbsp;<span>SKRAs</span></a></li>
                         <li><a href="{{route('skra_activities.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>SKRA activities</span></a></li>
+                        <li><a href="{{route('sport_org_activity')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Soprt Organization Activities</span></a></li>
                     </ul>
                 </li>      
             </ul>

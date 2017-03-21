@@ -138,4 +138,9 @@ class Sport_Organization_Controller extends Controller
        // $sport->delete();
         return redirect()->route('sport_organization.index');
     }
+
+    // Sport Organization Activities
+    public function view_activities(){
+        return view('annual_activity_plan.sport_activity_plan.index');
+    }
 }
