@@ -104,7 +104,7 @@ Route::get('sport_organization_activities',[
 	]);
 
 //Routes for the Review Activities
-
+Route::resource('review_plan','ReviewPlanController');
 //Route for Update Achievements 
 Route::get('review_activities_achievemenents_update',[
 		'uses'=>'ReviewPlanController@getAchievement_update',

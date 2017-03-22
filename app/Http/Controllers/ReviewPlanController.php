@@ -16,9 +16,9 @@ class ReviewPlanController extends Controller
         $review_plan= Tbl_sport_org_activities::all();
        return view('review_plan.index',compact('review_plan'));
     }
-    public function edit()
+    public function create()
     {
-        return view('review_plan.edit');
+        return view('review_plan.create');
     }
     public function getAchievement_update(){
         return view('annual_activity_plan.review_plan.update_achievement');

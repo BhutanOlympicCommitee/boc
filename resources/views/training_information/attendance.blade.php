@@ -24,7 +24,7 @@
             <div class="bootstrap-admin-panel-content">
              <ul class='nav nav-pills nav-justified'>
               <li id='trainingInfo'><a href="#" data-toggle="tab">Training Information</a></li>
-              <li id='newSchedule'><a href="#" data-toggle="tab"> Create New Training Schedule</a></li>
+              <li id='newSchedule'><a href="#" data-toggle="tab"> Training Schedule</a></li>
               <li id='attendance' class='active'><a href="#" data-toggle="tab">Training Attendance</a></li>
             </ul>
               <div style='margin-top: 20px'></div>

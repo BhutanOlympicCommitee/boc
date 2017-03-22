@@ -18,14 +18,14 @@
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <div class="text-muted bootstrap-admin-box-title clearfix">Create New Training Schedule
+              <div class="text-muted bootstrap-admin-box-title clearfix">Training Schedule
               <a href="{{route('training.index')}}" class='btn btn-default pull-right'>Back</a>
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
               <ul class='nav nav-pills nav-justified'>
                 <li id='trainingInfo'><a href="#" data-toggle="tab">Training Information</a></li>
-                <li id='newSchedule' class='active'><a href="#" data-toggle="tab"> Create New Training Schedule</a></li>
+                <li id='newSchedule' class='active'><a href="#" data-toggle="tab"> Training Schedule</a></li>
                 <li id='attendance'><a href="#" data-toggle="tab">Training Attendance</a></li>
               </ul>
               <div style='margin-top: 20px'></div>
