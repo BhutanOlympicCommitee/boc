@@ -18,15 +18,15 @@
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <div class="text-muted bootstrap-admin-box-title clearfix">Edit Management Committee members
+              <div class="text-muted bootstrap-admin-box-title clearfix">Edit Secretariate Information
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
               <ul class='nav nav-pills nav-justified'>
                 <li id='org_info'><a href="#Org-info" data-toggle="tab">Organization Information</a></li>
                 <li id='contact_info'><a href="#Contact-info" data-toggle="tab">Contact Person Information</a></li>
-                <li class='active'><a href="#Management-info" data-toggle="tab">Management Committee Information</a></li>
-                <li><a href="#Advisory-info" data-toggle="tab">Advisory Board Information</a></li>
+                <li class='active'><a href="#Management-info" data-toggle="tab">Secretariate Information</a></li>
+                <li><a href="#Advisory-info" data-toggle="tab">Executive Board Information</a></li>
               </ul>
               <form action="{{route('management_committee.update',$management_info->mg_member_id)}}" method="post" id='form3'>
                 <div class='form-group'>
