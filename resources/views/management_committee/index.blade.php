@@ -18,15 +18,15 @@
                 <div class="col-md-10 col-md-offset-1">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="text-muted bootstrap-admin-box-title">Management Committee member
+                            <div class="text-muted bootstrap-admin-box-title">Secretariate Information
                         	</div>
                         </div>
                         <div class="bootstrap-admin-panel-content">
                         	<ul class='nav nav-pills nav-justified'>
 						      <li id='org_info'><a href="#Org-info" data-toggle="tab">Organization Information</a></li>
 						      <li id='contact_info'><a href="#Contact-info" data-toggle="tab">Contact Person Information</a></li>
-						      <li class='active'><a href="#Management-info" data-toggle="tab">Management Committee Information</a></li>
-						      <li id='advisory_info'><a href="#Advisory-info" data-toggle="tab">Advisory Board Information</a></li>
+						      <li class='active'><a href="#Management-info" data-toggle="tab">Secretariate Information</a></li>
+						      <li id='advisory_info'><a href="#Advisory-info" data-toggle="tab">Executive Board Information</a></li>
 				    		</ul>
 				    		@if($errors->any())
 								<div class="alert alert-danger">
@@ -132,7 +132,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Management Committe member details</h4>
+        <h4 class="modal-title" id="myModalLabel">Add Secretariate details</h4>
       </div>
       <div class="modal-body">
          <form action='{{route('management_committee.store')}}' method='post'>
@@ -190,7 +190,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Edit Management Committee members</h4>
+        <h4 class="modal-title">Edit Secretariate Details</h4>
       </div>
       <div class="modal-body">
         <form action="{{route('update_management')}}" method="post" id='form3'>
