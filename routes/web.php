@@ -40,9 +40,9 @@ Route::get('role',[
 Route::post('role.add',['uses'=>'RoleController@postRole','as'=>'add_role'
   ]);
 //update the role information
-Route::post('update_user',['uses'=>'RoleController@updateRole','as'=>'update_role']);
+Route::post('role.update',['uses'=>'RoleController@updateRole','as'=>'update_role']);
 //Delete the role information
-Route::get('delete_user/{id}',['uses'=>'RoleController@deleteRole','as'=>'delete_role']);
+Route::get('role.delete/{id}',['uses'=>'RoleController@deleteRole','as'=>'delete_role']);
 
 //routes for master country
 Route::get('country',['as'=>'country_master.index','uses'=>'MasterCountryController@index']);
