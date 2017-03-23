@@ -30,6 +30,20 @@ Route::post('update_user',['uses'=>'UserController@updateUser','as'=>'update_use
 //Delete the user information
 Route::get('delete_user/{id}',['uses'=>'UserController@deleteUser','as'=>'delete_user']);
 
+
+//Route for the roles
+Route::get('role',[
+	'uses'=>'RoleController@index',
+	'as'=>'view_role'
+	]);
+//insert the role information
+Route::post('role.add',['uses'=>'RoleController@postRole','as'=>'add_role'
+  ]);
+//update the role information
+Route::post('update_user',['uses'=>'RoleController@updateRole','as'=>'update_role']);
+//Delete the role information
+Route::get('delete_user/{id}',['uses'=>'RoleController@deleteRole','as'=>'delete_role']);
+
 //routes for master country
 Route::get('country',['as'=>'country_master.index','uses'=>'MasterCountryController@index']);
 Route::post('country/store',['as'=>'country_master.store','uses'=>'MasterCountryController@store']);
