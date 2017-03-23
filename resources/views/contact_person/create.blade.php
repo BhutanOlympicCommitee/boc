@@ -50,6 +50,12 @@
                                 <input type="text" name="contact_name" class="form-control" placeholder="Enter contact Person name">
                             </div>
                      </div>
+                      <div class='form-group'>
+                        <label for='contact_designation' class='col-xs-2'>Designation</label>
+                            <div class='col-xs-10 input-group'>
+                                <input type="text" name="contact_designation" class="form-control" placeholder="Enter contact Person Designation">
+                            </div>
+                     </div>
                     <div class='form-group'>
                         <label for='contact_phone' class='col-xs-2'>Phone</label>
                             <div class='col-xs-10 input-group'>

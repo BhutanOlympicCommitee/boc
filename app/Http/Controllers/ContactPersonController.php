@@ -46,6 +46,7 @@ class ContactPersonController extends Controller
         $contact = new Tbl_sport_org_contact_person;
         $contact->sport_org_id=Session::get('key');
         $contact->contact_person_name=$request->contact_name;
+        $contact->contact_person_designation=$request->contact_designation;
         $contact->contact_person_phone=$request->contact_phone;
         $contact->contact_person_fax=$request->contact_fax;
         $contact->contact_person_email=$request->contact_email;
@@ -93,6 +94,7 @@ class ContactPersonController extends Controller
         
         $contact = Tbl_sport_org_contact_person::findOrFail($id);
         $contact->contact_person_name=$request->contact_name;
+        $contact->contact_person_designation=$request->contact_designation;
         $contact->contact_person_phone=$request->contact_phone;
         $contact->contact_person_fax=$request->contact_fax;
         $contact->contact_person_email=$request->contact_email;
