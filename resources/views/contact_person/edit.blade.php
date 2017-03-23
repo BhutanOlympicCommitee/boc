@@ -39,6 +39,12 @@
                             <input type="text" name="contact_name" class="form-control" placeholder="Enter organization name here" value="{{$contact->contact_person_name}}">
                           </div>
                       </div>
+                        <div class='form-group'>
+                        <label for='org_designation' class='col-xs-2'>Designation</label>
+                          <div class='col-xs-10 input-group'>
+                            <input type="text" name="contact_name" class="form-control" placeholder="Enter organization name here" value="{{$contact->contact_person_designation}}">
+                          </div>
+                      </div>
                       <div class='form-group'>
                           <label for='org_phone' class='col-xs-2'>Phone</label>
                           <div class='input-group col-xs-10'>

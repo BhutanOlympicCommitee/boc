@@ -96,9 +96,10 @@ class DzongkhagController extends Controller
      */
     public function destroy($id)
     {
-        $dzongkhag = MstDzongkhang::findOrFail($id);
+        $dzongkhag = MstDzongkhag::findOrFail($id);
         $dzongkhag->status=1;
         $dzongkhag->save();
+        Session::flash('success', 'Dzongkhag has been deleted successfully');
         return redirect()->route('dzongkhag_master.index');
     }
 }

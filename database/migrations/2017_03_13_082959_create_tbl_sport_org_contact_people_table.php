@@ -17,6 +17,7 @@ class CreateTblSportOrgContactPeopleTable extends Migration
             $table->increments('sport_org_contact_person_id');
             $table->integer('sport_org_id');
             $table->string('contact_person_name',500);
+            $table->string('contact_person_designation',500);
             $table->integer('contact_person_phone');
             $table->integer('contact_person_fax');
             $table->string('contact_person_email',100);

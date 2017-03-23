@@ -129,13 +129,13 @@ class Sport_Organization_Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
-        // delete data
         $sport = Sport_Organization::findOrFail($id);
         $sport->status=1;
         $sport->save();
-       // $sport->delete();
+        Session::flash('success', 'Sport Organization has been deleted successfully');
         return redirect()->route('sport_organization.index');
     }
 
