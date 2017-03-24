@@ -22,7 +22,22 @@
                         </div>
                         <div class="bootstrap-admin-panel-content">
                             <div class="row">
-                                
+                                <table class="table table-bordered table-responsive table-striped">
+                                  <thead>
+                                    <th>Sl.No</th>
+                                    <th>Name</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Venue</th>
+                                  </thead>
+                                  <tbody>
+                                    <td>1</td>
+                                    <td>Karma</td>
+                                    <td>{{date('Y-m-d')}}</td>
+                                    <td>{{date("h:i:sa")}}</td>
+                                    <td>Paro</td>
+                                  </tbody>
+                                </table>
                               </div><!-- /.row -->
                         </div>
                     </div>
