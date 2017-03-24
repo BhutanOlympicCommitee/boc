@@ -86,17 +86,6 @@
     </div>
   </div>
 </div>
-{{-- <script type="text/javascript">
-$("#type").change(function() {
-  if ($(this).data('options') == undefined) {
-    /*Taking an array of all options-2 and kind of embedding it on the type*/
-    $(this).data('options', $('#skra option').clone());
-  }
-  var id = $(this).val();
-  var options = $(this).data('options').filter('[value=' + id + ']');
-  $('#skra').html(options);
-});
-</script> --}}
 <script type="text/javascript">
   $('#type').change(function()
   {
