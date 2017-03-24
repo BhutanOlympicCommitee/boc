@@ -18,7 +18,7 @@
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <div class="text-muted bootstrap-admin-box-title">SKRA Activities Information
+              <div class="text-muted bootstrap-admin-box-title">AKRA Activities Information
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
@@ -55,9 +55,9 @@
                     <thead>
                         <tr>
                             <th>Sl. No:</th>
-                            <th>SKRA</th>
-                            <th>SKRA Activities/NSF Outputs</th>
-                            <th>SKRA Activities/NSF Output Description</th>
+                            <th>AKRA</th>
+                            <th>AKRA Activities/NSF Outputs</th>
+                            <th>AKRA Activities/NSF Output Description</th>
                             <th>Action</th>
                         </tr>   
                     </thead>
