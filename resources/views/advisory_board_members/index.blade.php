@@ -134,37 +134,37 @@
           <div class='form-group'>
               <label for='ad_name' class='col-xs-3'>Name</label>
                   <div class='col-xs-9 input-group'>
-                      <input type="text" name="ad_name" class="form-control" placeholder="Enter advisory board members name">
+                      <input type="text" name="ad_name" class="form-control" placeholder="Enter Executive board members name">
                   </div>
           </div>
           <div class='form-group'>
               <label for='ad_designation' class='col-xs-3'>Designation</label>
                   <div class='col-xs-9 input-group'>
-                      <input type="text" name="ad_designation" class="form-control" placeholder="Enter advisory board members designation">
+                      <input type="text" name="ad_designation" class="form-control" placeholder="Enter Executive board members designation">
                   </div>
           </div>
           <div class='form-group'>
               <label for='ad_phone' class='col-xs-3'>Phone</label>
                   <div class='col-xs-9 input-group'>
-                      <input type="text" name="ad_phone" class="form-control" placeholder="Enter advisory board members phone number">
+                      <input type="text" name="ad_phone" class="form-control" placeholder="Enter Executive board members phone number">
                   </div>
           </div>
           <div class='form-group'>
               <label for='ad_email' class='col-xs-3'>Email</label>
                   <div class='col-xs-9 input-group'>
-                      <input type="email" name="ad_email" class="form-control" placeholder="Enter advisory board members email">
+                      <input type="email" name="ad_email" class="form-control" placeholder="Enter Executive board members email">
                   </div>
           </div>
           <div class='form-group'>
               <label for='ad_mobile' class='col-xs-3'>Mobile</label>
                   <div class='col-xs-9 input-group'>
-                      <input type="text" name="ad_mobile" class="form-control" placeholder="Enter advisory board members mobile number">
+                      <input type="text" name="ad_mobile" class="form-control" placeholder="Enter Executive board members mobile number">
                   </div>
           </div>
           <div class='form-group'>
               <label for='ad_appointment' class='col-xs-3'>Appointment date</label>
                   <div class='col-xs-9 input-group'>
-                      <input type="date" name="ad_appointment" class="form-control" placeholder="enter advisory board members appointment date">
+                      <input type="date" name="ad_appointment" class="form-control" placeholder="enter Executive board members appointment date">
                   </div>
           </div>
        <div class="modal-footer">
