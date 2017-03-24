@@ -117,6 +117,7 @@ Route::post('skra_activity/store',['as'=>'skra_activities.store','uses'=>'SKRA_a
 Route::delete('skra_activity/destroy/{id}',['as'=>'skra_activities.destroy','uses'=>'SKRA_activities_Controller@destroy']);
 Route::get('skra_activity/view', 'SKRA_activities_Controller@view')->name('view_skra_activities');
 Route::get('skra_activity/{id}/edit',['as'=>'skra_activities.edit','uses'=>'SKRA_activities_Controller@edit']);
+Route::patch('skra_activity/update/{id}',['as'=>'skra_activities.update','uses'=>'SKRA_activities_Controller@update']);
 
 //Routes for Sport Organization Activities
 Route::get('sport_organization_activities',[

@@ -86,7 +86,7 @@
                 <input type="hidden" name="hidden_view" id="hidden_view" value="{{route('view_skra_activities')}}">
                 <div class='form-group clearfix'>
                   <div class="input-group pull-right" style='margin-top:10px'>
-                    <a href="{{route('skra_activities.create')}}" class="btn btn-success glyphicon glyphicon-plus">Add</a>   
+                    <a href="{{route('skra_activities.create')}}" class="btn btn-success glyphicon glyphicon-plus">Add</a> 
                   </div>
                 </div>  
               @endif
@@ -101,6 +101,24 @@
 $(function(){
     $('#table1').DataTable();
 });
+$('#type').change(function()
+  {
+
+    var sport_id=$(this).val();
+    var view_url = $("#hidden_view").val();
+      $.ajax({
+        url: view_url,
+        type:"GET", 
+        data: {"id":sport_id}, 
+        success: function(result){
+          $('#skra').empty();
+          $.each(result,function(key,val)
+          {
+            $('#skra').append('<option value="'+val.skra_id+'">'+val.SKRA_name+'</option>');
+          });
+        }
+      });
+  });
 </script>
 @endsection
 @section('footer')

@@ -94,7 +94,13 @@ class SKRA_activities_Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $skra_activity = Tbl_SKRA_activities::findOrFail($id);
+        $skra_activity->sport_org_id=$request->type;
+        $skra_activity->skra_id=$request->skra;
+        $skra_activity->SKRA_activity=$request->skra_activity_name;
+        $skra_activity->SKRA_description=$request->description;
+        $skra_activity->save();
+        return redirect()->route('skra_activities.index')->with('alert-success','Data Has been Updated!');   
     }
 
     /**

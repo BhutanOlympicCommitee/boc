@@ -30,9 +30,12 @@
                 </div>
               @endif
 
-              <form action="{{--route('skra_activities.store')--}}" method="post">
-                <div class='form-group'>
-                    {{csrf_field()}}
+              <form action="{{route('skra_activities.update',$skras_edit->skra_activity_id)}}" method="post">
+
+               <div class='form-group'>
+                          <input name="_method" type="hidden" value="PATCH">
+                            {{csrf_field()}}
+                      </div>
                 </div>
                 <div class='form-group'>
                   <label for='type' class='col-xs-3'>Type</label>
@@ -43,8 +46,9 @@
                             $sports=App\Sport_Organization::all();
                             foreach($sports as $sport):
                           ?>
-
-                          <option value="{{$sport->sport_org_id}}">{{$sport->sport_org_name}}</option>
+                          <option value="{{$sport->sport_org_id}}" <?php if($sport->sport_org_id==$skras_edit->sport_org_id){?>
+                          selected
+                          <?php } ?> >{{$sport->sport_org_name}}</option> 
                           <?php 
                             endforeach
                           ?>
@@ -56,13 +60,16 @@
                   <label for='skra' class='col-xs-3'>AKRA</label>
                     <div class='col-xs-9 input-group'>
                        <select class='form-control' name='skra' id='skra'>
-                         <option value="" disabled selected>Select AKRA</option>
-                          <?php 
-                            $skras=App\Tbl_SKRA::all();
-                            foreach($skras as $skra):
-                          ?>
 
-                          <option value="{{$skra->sport_org_id}}">{{$skra->SKRA_name}}</option>
+                        <?php 
+                            $skrs=App\Tbl_SKRA::all();
+                            foreach($skrs as $skr):
+                        ?>
+                         <option value="{{$skr->skra_id}}" <?php if($skr->skra_id==$skras_edit->skra_id){?>
+                          selected
+                          <?php } ?> >
+                          {{$skr->SKRA_name}}
+                          </option>
                           <?php 
                             endforeach
                           ?>
@@ -78,7 +85,7 @@
               <div class='form-group'>
                     <label for='description' class='col-xs-3'>Description</label>
                       <div class='input-group col-xs-9'>
-                          <textarea type='text' name="description" class="form-control" rows=5 placeholder="enter description here">{{$skras_edit->description}}</textarea>
+                          <textarea type='text' name="description" class="form-control" rows=5 placeholder="enter description here">{{$skras_edit->SKRA_description}}</textarea>
                       </div>
                 </div>
                 <div class="form-group">
@@ -97,15 +104,23 @@
   </div>
 </div>
 <script type="text/javascript">
-$("#type").change(function() {
-  if ($(this).data('options') == undefined) {
-    /*Taking an array of all options-2 and kind of embedding it on the type*/
-    $(this).data('options', $('#skra option').clone());
-  }
-  var id = $(this).val();
-  var options = $(this).data('options').filter('[value=' + id + ']');
-  $('#skra').html(options);
-});
+$('#type').change(function()
+  {
+    var sport_id=$(this).val();
+    var view_url = $("#hidden_view").val();
+      $.ajax({
+        url: view_url,
+        type:"GET", 
+        data: {"id":sport_id}, 
+        success: function(result){
+          $('#skra').empty();
+          $.each(result,function(key,val)
+          {
+            $('#skra').append('<option value="'+val.skra_id+'">'+val.SKRA_name+'</option>');
+          });
+        }
+      });
+  });
 </script>
 @endsection
 @section('footer')
