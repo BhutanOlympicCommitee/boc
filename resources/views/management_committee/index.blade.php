@@ -140,37 +140,37 @@
            <div class='form-group'>
               <label for='mg_name' class='col-xs-3'>Name</label>
                   <div class='col-xs-9 input-group'>
-                      <input type="text" name="mg_name" class="form-control" placeholder="Enter management member name" required>
+                      <input type="text" name="mg_name" class="form-control" placeholder="Enter Secretariate  name" required>
                 </div>
            </div>
            <div class='form-group'>
               <label for='mg_designation' class='col-xs-3'>Designation</label>
                   <div class='col-xs-9 input-group'>
-                      <input type="text" name="mg_designation" class="form-control" placeholder="Enter management member designation" required>
+                      <input type="text" name="mg_designation" class="form-control" placeholder="Enter Secretariate  designation" required>
                 </div>
            </div>
            <div class='form-group'>
               <label for='mg_phone' class='col-xs-3'>Phone</label>
                   <div class='col-xs-9 input-group'>
-                      <input type="text" name="mg_phone" class="form-control" placeholder="Enter management member phone number">
+                      <input type="text" name="mg_phone" class="form-control" placeholder="Enter Secretariate  phone number">
                 </div>
            </div>
            <div class='form-group'>
             <label for='mg_email' class='col-xs-3'>Email</label>
                 <div class='col-xs-9 input-group'>
-                    <input type="email" name="mg_email" class="form-control" placeholder="Enter management member email">
+                    <input type="email" name="mg_email" class="form-control" placeholder="Enter Secretariate  email">
               </div>
          </div>
          <div class='form-group'>
             <label for='mg_mobile' class='col-xs-3'>Mobile</label>
                 <div class='col-xs-9 input-group'>
-                    <input type="text" name="mg_mobile" class="form-control" placeholder="Enter management member mobile number" required>
+                    <input type="text" name="mg_mobile" class="form-control" placeholder="Enter Secretariate  mobile number" required>
               </div>
         </div>
          <div class='form-group'>
             <label for='mg_appointment' class='col-xs-3'>Appointment date</label>
                 <div class='col-xs-9 input-group'>
-                    <input type="date" name="mg_appointment" class="form-control" placeholder="enter management member appointment date" required>
+                    <input type="date" name="mg_appointment" class="form-control" placeholder="enter Secretariate appointment date" required>
               </div>
         </div>
         <div class="modal-footer">
