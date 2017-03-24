@@ -36,7 +36,7 @@
                           <input name="_method" type="hidden" value="PATCH">
                             {{csrf_field()}}
                       </div>
-                </div>
+              
                 <div class='form-group'>
                   <label for='type' class='col-xs-3'>Type</label>
                     <div class='col-xs-9 input-group'>
