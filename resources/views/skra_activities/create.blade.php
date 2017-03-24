@@ -55,16 +55,7 @@
                   <label for='skra' class='col-xs-3'>SKRA</label>
                     <div class='col-xs-9 input-group'>
                        <select class='form-control' name='skra' id='skra'>
-                         <option value="" disabled selected>Select SKRA</option>
-                          <?php 
-                            $skras=App\Tbl_SKRA::all();
-                            foreach($skras as $skra):
-                          ?>
-
-                          <option value="{{$skra->sport_org_id}}">{{$skra->SKRA_name}}</option>
-                          <?php 
-                            endforeach
-                          ?>
+                         <option value=""></option>
                       </select>
                     </div>
                 </div>
@@ -95,7 +86,7 @@
     </div>
   </div>
 </div>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
 $("#type").change(function() {
   if ($(this).data('options') == undefined) {
     /*Taking an array of all options-2 and kind of embedding it on the type*/
@@ -105,6 +96,25 @@ $("#type").change(function() {
   var options = $(this).data('options').filter('[value=' + id + ']');
   $('#skra').html(options);
 });
+</script> --}}
+<script type="text/javascript">
+  $('#type').change(function()
+  {
+    var sport_id=$(this).val();
+    var view_url = $("#hidden_view").val();
+      $.ajax({
+        url: view_url,
+        type:"GET", 
+        data: {"id":sport_id}, 
+        success: function(result){
+          $('#skra').empty();
+          $.each(result,function(key,val)
+          {
+            $('#skra').append('<option value="'+val.skra_id+'">'+val.SKRA_name+'</option>');
+          });
+        }
+      });
+  });
 </script>
 @endsection
 @section('footer')

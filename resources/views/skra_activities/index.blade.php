@@ -67,7 +67,7 @@
                         @if($sport->sport_org_id==$skra_activity->sport_org_id)
                         <tr>
                             <td>{{$id++}}</td>
-                            <td>{{$sport->skra->SKRA_name}}</td>
+                            <td>{{$skra_activity->skra->SKRA_name}}</td>
                             <td>{{$skra_activity->SKRA_activity}}</td>
                             <td>{{$skra_activity->SKRA_description}}</td>
                             <td>
