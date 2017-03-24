@@ -34,7 +34,7 @@
                    <th>Sl. No:</th>
                    <th>Country Name</th>
                    <th>Country Code</th>
-                   <th>Action</th>
+                   <th style='width:20%'>Action</th>
                 </tr>   
                </thead>
                <tbody>

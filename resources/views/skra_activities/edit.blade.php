@@ -18,7 +18,7 @@
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <div class="text-muted bootstrap-admin-box-title">Edit SKRA activities
+              <div class="text-muted bootstrap-admin-box-title">Edit AKRA activities
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
@@ -57,13 +57,13 @@
                     </div>
                 </div>
                 <div class='form-group'>
-                  <label for='skra' class='col-xs-3'>SKRA</label>
+                  <label for='skra' class='col-xs-3'>AKRA</label>
                     <div class='col-xs-9 input-group'>
                        <select class='form-control' name='skra' id='skra'>
+
                         <?php 
                             $skrs=App\Tbl_SKRA::all();
                             foreach($skrs as $skr):
-                          ?>
                          <option value="{{$skr->skra_id}}" <?php if($skr->skra_id==$skras_edit->skra_id){?>
                           selected
                           <?php } ?> >
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div class='form-group'>
-                    <label for='skra_activity_name' class='col-xs-3'>SKRA Activity/NSF Output</label>
+                    <label for='skra_activity_name' class='col-xs-3'>AKRA Activity/NSF Output</label>
                       <div class='col-xs-9 input-group'>
                           <input type="text" name="skra_activity_name" class="form-control" placeholder="Enter SKRA activity name here" value='{{$skras_edit->SKRA_activity}}'>
                       </div>

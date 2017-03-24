@@ -42,7 +42,7 @@
                                 <tbody>
                                 <?php $id=1?>
                                 @foreach($sport_org as $sport)
-                                @if($sport->status==0)
+                                @if($sport->Status==0)
                                 <tr>
                                     <td>{{$id++}}</td>
                                     <td>{{$sport->sport_org_name}}</td>
