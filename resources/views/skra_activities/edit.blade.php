@@ -64,6 +64,7 @@
                         <?php 
                             $skrs=App\Tbl_SKRA::all();
                             foreach($skrs as $skr):
+                        ?>
                          <option value="{{$skr->skra_id}}" <?php if($skr->skra_id==$skras_edit->skra_id){?>
                           selected
                           <?php } ?> >
