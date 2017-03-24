@@ -41,6 +41,7 @@
         								<tbody>
         								<?php $id=1 ?>
         								@foreach($dzongkhag as $dzongkhags)
+                        @if($dzongkhags->status==0)
         								<tr>
         									<td>{{$id++}}</td>
         									<td>{{$dzongkhags->displayCountry->country_name}}</td>
@@ -56,6 +57,7 @@
         							            </form>
         									</td>
         								</tr>
+                        @endif
         								@endforeach
         								</tbody>
         					 		</table>
