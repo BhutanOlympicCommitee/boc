@@ -42,7 +42,7 @@
                         <div class='form-group'>
                         <label for='org_designation' class='col-xs-2'>Designation</label>
                           <div class='col-xs-10 input-group'>
-                            <input type="text" name="contact_name" class="form-control" placeholder="Enter organization name here" value="{{$contact->contact_person_designation}}">
+                            <input type="text" name="contact_designation" class="form-control" placeholder="Enter organization name here" value="{{$contact->contact_person_designation}}">
                           </div>
                       </div>
                       <div class='form-group'>
