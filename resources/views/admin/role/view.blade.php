@@ -31,7 +31,7 @@
                    <th>Sl.No</th>
                    <th>Role Name</th>
                    <th>Description</th>
-                   <th>Options</th>
+                   <th style='width:25%'>Action</th>
                  </tr>
                </thead>
                <tbody>

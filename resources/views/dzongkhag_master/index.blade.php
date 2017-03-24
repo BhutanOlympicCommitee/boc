@@ -35,12 +35,13 @@
         										<th>Country Name</th>
         										<th>Dzongkhg/State Name</th>
         										<th>Dzongkhag/State Code</th>
-        										<th>Action</th>
+        										<th style='width:20%'>Action</th>
         									</tr>	
         								</thead>
         								<tbody>
         								<?php $id=1 ?>
         								@foreach($dzongkhag as $dzongkhags)
+                        @if($dzongkhags->status==0)
         								<tr>
         									<td>{{$id++}}</td>
         									<td>{{$dzongkhags->displayCountry->country_name}}</td>
@@ -56,6 +57,7 @@
         							            </form>
         									</td>
         								</tr>
+                        @endif
         								@endforeach
         								</tbody>
         					 		</table>
