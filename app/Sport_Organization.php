@@ -15,8 +15,5 @@ class Sport_Organization extends Model
     {
     	return $this->hasOne('App\Tbl_sport_org_contact_person','sport_org_id','sport_org_id');
     }
-    public function skra()
-    {
-        return $this->hasOne('App\Tbl_SKRA','sport_org_id','sport_org_id');
-    }
+    
 }
