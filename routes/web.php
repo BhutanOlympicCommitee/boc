@@ -17,7 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('admin_dashboard');
+
+//Route for Custome Login
+Route::post('/login',[
+	'uses'=>'LoginController@login',
+	'as'=>'login_custome'
+	]);
 
 //Route for user managements
 //view the user details
