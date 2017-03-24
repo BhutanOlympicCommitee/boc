@@ -35,5 +35,8 @@ class HomeController extends Controller
         $users = User::all();
         return view('admin.dashboard',['countries'=>$countries,'dzongkhags'=>$dzongkhag,'users'=>$users]);
     }
+    public function boc(){
+        return view('home');
+    }
 
 }
