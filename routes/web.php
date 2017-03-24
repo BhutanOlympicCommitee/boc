@@ -17,7 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('admin_dashboard');
+Route::get('/admin.dashboard', 'HomeController@admin')->name('admin_dashboard');
+Route::get('/home', 'HomeController@index')->name('home');
 
 //Route for Custome Login
 Route::post('/login',[

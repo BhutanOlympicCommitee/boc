@@ -26,9 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+        return view('home');
+    }
+    public function admin()
+    {
         $countries = Mst_country::all();
         $dzongkhag = MstDzongkhag::all();
         $users = User::all();
-        return view('home',['countries'=>$countries,'dzongkhags'=>$dzongkhag,'users'=>$users]);
+        return view('admin.dashboard',['countries'=>$countries,'dzongkhags'=>$dzongkhag,'users'=>$users]);
     }
+
 }

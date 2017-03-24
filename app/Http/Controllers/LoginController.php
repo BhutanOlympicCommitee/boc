@@ -18,7 +18,7 @@ class LoginController extends Controller
     	    if($user->is_admin()){
     	    	return redirect()->route('admin_dashboard');
     	    }else{
-    	    	return "Site under Construction";
+    	    	return  redirect()->route('home');
     	    }
     	}
     	return redirect()->back();
