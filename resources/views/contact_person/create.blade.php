@@ -18,15 +18,15 @@
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <div class="text-muted bootstrap-admin-box-title clearfix">Create Contact Person Info
+              <div class="text-muted bootstrap-admin-box-title clearfix">Create Contact Person Information
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
                 <ul class='nav nav-pills nav-justified'>
                   <li id='org_info'><a href="#Org-info" data-toggle="tab">Organization Information</a></li>
                   <li class='active'><a href="#Contact-info" data-toggle="tab">Contact Person Information</a></li>
-                  <li id='management_info'><a href="#Management-info" data-toggle="tab">Management Committee Information</a></li>
-                  <li><a href="#Advisory-info" data-toggle="tab">Advisory Board Information</a></li>
+                  <li id='management_info'><a href="#Management-info" data-toggle="tab">Secretariate Information</a></li>
+                  <li><a href="#Advisory-info" data-toggle="tab">Executive Board Information</a></li>
                 </ul>
                 @if($errors->any())
                     <div class="alert alert-danger">
@@ -48,6 +48,12 @@
                         <label for='contact_name' class='col-xs-2'>Contact Person</label>
                             <div class='col-xs-10 input-group'>
                                 <input type="text" name="contact_name" class="form-control" placeholder="Enter contact Person name">
+                            </div>
+                     </div>
+                      <div class='form-group'>
+                        <label for='contact_designation' class='col-xs-2'>Designation</label>
+                            <div class='col-xs-10 input-group'>
+                                <input type="text" name="contact_designation" class="form-control" placeholder="Enter contact Person Designation">
                             </div>
                      </div>
                     <div class='form-group'>

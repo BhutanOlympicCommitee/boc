@@ -105,6 +105,7 @@
             </div>
             <div class="form-group">
                 <label for="user_role" class="col-md-4 control-label">User Role</label>
+
                 <div class="col-md-6">
                   <select  name="user_role" class="col-md-6 form-control" required>
                     <option value="0">Select the User Role</option>
@@ -112,8 +113,7 @@
                     $roles = App\Role::all();
                     foreach($roles as $role):
                         ?>
-                    <option value="{{$role->id}}">{{$role->role_name}}
-                    </option>
+                    <option value="{{$role->id}}">{{$role->role_name}}</option>
                 <?php endforeach;?>
             </select>
         </div>
@@ -184,7 +184,7 @@
                         $roles = App\Role::all();
                         foreach($roles as $role):
                             ?>
-                         <option value="{{$role->id}}"<?php if($role->id==$role->id){ ?> selected <?php } ?>>{{$role->role_name}}</option>
+                        <option value="{{$role->id}}">{{$role->role_name}}</option>
                     <?php endforeach;?>
                 </select>
             </div>

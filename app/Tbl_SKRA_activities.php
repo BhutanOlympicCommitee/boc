@@ -7,4 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Tbl_SKRA_activities extends Model
 {
     protected $primaryKey='skra_activity_id';
+    public function skra()
+    {
+        return $this->belongsTo('App\Tbl_SKRA','skra_id','skra_id');
+    }
 }

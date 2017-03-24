@@ -18,15 +18,15 @@
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <div class="text-muted bootstrap-admin-box-title clearfix">Edit management committee member
+              <div class="text-muted bootstrap-admin-box-title clearfix">Edit Contact Person Information
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
                     <ul class='nav nav-pills nav-justified'>
                       <li id='org_info'><a href="#Org-info" data-toggle="tab">Organization Information</a></li>
                       <li class='active'><a href="#Contact-info" data-toggle="tab">Contact Person Information</a></li>
-                      <li id='management_info'><a href="#Management-info" data-toggle="tab">Management Committee Information</a></li>
-                      <li><a href="#Advisory-info" data-toggle="tab">Advisory Board Information</a></li>
+                      <li id='management_info'><a href="#Management-info" data-toggle="tab">Secretariate Information</a></li>
+                      <li><a href="#Advisory-info" data-toggle="tab">Executive Board Information</a></li>
                     </ul>
                     <form action="{{route('contact_person.update',$contact->sport_org_contact_person_id)}}" method="post">
                       <div class='form-group'>
@@ -37,6 +37,12 @@
                         <label for='org_name' class='col-xs-2'>Contact Person</label>
                           <div class='col-xs-10 input-group'>
                             <input type="text" name="contact_name" class="form-control" placeholder="Enter organization name here" value="{{$contact->contact_person_name}}">
+                          </div>
+                      </div>
+                        <div class='form-group'>
+                        <label for='org_designation' class='col-xs-2'>Designation</label>
+                          <div class='col-xs-10 input-group'>
+                            <input type="text" name="contact_name" class="form-control" placeholder="Enter organization name here" value="{{$contact->contact_person_designation}}">
                           </div>
                       </div>
                       <div class='form-group'>

@@ -97,6 +97,7 @@ class MasterCountryController extends Controller
         $country = Mst_country::findOrFail($id);
         $country->status=1;
         $country->save();
+        Session::flash('success', 'Country has been deleted successfully');
         return redirect()->route('country_master.index');
     }
 }

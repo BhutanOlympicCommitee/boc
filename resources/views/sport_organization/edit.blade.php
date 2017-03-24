@@ -25,8 +25,8 @@
               <ul class='nav nav-pills nav-justified' id='tabs'>
                   <li class='active' id='org'><a href="#Org-info" data-toggle="tab">Organization Information</a></li>
                   <li class='contact'><a href="#Contact-info" data-toggle="tab">Contact Person Information</a></li>
-                  <li id='management'><a href="#Management-info" data-toggle="tab">Management Committee Information</a></li>
-                  <li id='advisory'><a href="#Advisory-info" data-toggle="tab">Advisory Board Information</a></li>
+                  <li id='management'><a href="#Management-info" data-toggle="tab">Secretariate Information</a></li>
+                  <li id='advisory'><a href="#Advisory-info" data-toggle="tab">Executive Board Information</a></li>
               </ul>
               <div class='tab-content'>
                 <div class='tab-pane fade in active' id='Org-info'>    

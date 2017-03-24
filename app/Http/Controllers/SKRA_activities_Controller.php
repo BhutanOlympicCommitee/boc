@@ -47,14 +47,6 @@ class SKRA_activities_Controller extends Controller
         ]);
         $skra_activity = new Tbl_SKRA_activities;
         $skra_activity->sport_org_id=$request->type;
-        // $skras=Tbl_SKRA::all();
-        // foreach($skras as $skra)
-        // {
-        //     if($skra->sport_org_id==$request->skra)
-        //     {
-        //          $skra_activity->skra_id=$skra->skra_id;
-        //     } 
-        // }
         $skra_activity->skra_id=$request->skra;
         $skra_activity->SKRA_activity=$request->skra_activity_name;
         $skra_activity->SKRA_description=$request->description;
@@ -75,8 +67,9 @@ class SKRA_activities_Controller extends Controller
     {
         if($request->ajax()){
             $id = $request->id;
-            //$info = Tbl_SKRA::find($id);
-            return response()->json($id);
+            $info = Tbl_SKRA::where('sport_org_id', $id)->get();
+            //var_dump($info);
+            return response()->json($info);
         }
     }
 

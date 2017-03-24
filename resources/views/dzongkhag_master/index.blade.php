@@ -47,7 +47,7 @@
         									<td>{{$dzongkhags->dzongkhag_name}}</td>
         									<td>{{$dzongkhags->dzongkhag_code}}</td>
         									<td>
-        										<form class="form-group" action="{{route('dzongkhag_master.destroy',$dzongkhags->dzongkhag_id)}}" method='post'>
+        										<form id='remove' class="form-group" action="{{route('dzongkhag_master.destroy',$dzongkhags->dzongkhag_id)}}" method='post'>
         							              <input type="hidden" name="_method" value="delete">
         							              <input type="hidden" name="_token" value="{{ csrf_token() }}">
         							              <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='fun_edit({{$dzongkhags->dzongkhag_id}})'>Edit</a>
