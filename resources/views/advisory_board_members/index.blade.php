@@ -176,8 +176,6 @@
     </div>
   </div>
 </div>
-<!-- Ends addCountry modal-->
-<!-- starts editCOuntry modal -->
 <div class="modal fade" id="editModal" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
