@@ -102,7 +102,7 @@ class ContactPersonController extends Controller
         $contact->save();
         if($request->update1=='form1')
         {
-             return redirect()->route('contact_person.index')->with('alert-success','Data Has been Updated!');   
+             return redirect()->route('sport_organization.index')->with('alert-success','Data Has been Updated!');   
         }
        else
         {
