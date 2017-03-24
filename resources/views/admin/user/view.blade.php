@@ -32,7 +32,7 @@
                                      <th>Name</th>
                                      <th>Email Address</th>
                                      <th>User Role</th>
-                                     <th>Options</th>
+                                     <th style='width:25%'>Action</th>
                                  </tr>
                              </thead>
                              <tbody>

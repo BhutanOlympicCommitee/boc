@@ -35,7 +35,7 @@
         										<th>Country Name</th>
         										<th>Dzongkhg/State Name</th>
         										<th>Dzongkhag/State Code</th>
-        										<th>Action</th>
+        										<th style='width:20%'>Action</th>
         									</tr>	
         								</thead>
         								<tbody>

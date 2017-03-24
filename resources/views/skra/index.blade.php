@@ -18,7 +18,7 @@
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <div class="text-muted bootstrap-admin-box-title">SKRA Information
+              <div class="text-muted bootstrap-admin-box-title">AKRA Information
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
@@ -54,9 +54,9 @@
                     <thead>
                         <tr>
                             <th>Sl. No:</th>
-                            <th>SKRA Name</th>
-                            <th>SKRA Description</th>
-                            <th>Action</th>
+                            <th>AKRA Name</th>
+                            <th>AKRA Description</th>
+                            <th style='width:20%'>Action</th>
                         </tr>   
                     </thead>
                     <tbody>
@@ -101,7 +101,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add SKRAs</h4>
+        <h4 class="modal-title" id="myModalLabel">Add AKRAs</h4>
       </div>
       <div class="modal-body">
         <form action="{{route('skra.store')}}" method="post">
@@ -122,15 +122,15 @@
               </div>
           </div>
            <div class='form-group'>
-              <label for='skra_name' class='col-xs-3'>SKRA Name</label>
+              <label for='skra_name' class='col-xs-3'>AKRA Name</label>
                 <div class='col-xs-9 input-group'>
-                    <input type="text" name="skra_name" class="form-control" placeholder="Enter SKRA name here">
+                    <input type="text" name="skra_name" class="form-control" placeholder="Enter AKRA name here">
                 </div>
           </div>
           <div class='form-group'>
-            <label for='skra_description' class='col-xs-3'>SKRA Description</label>
+            <label for='skra_description' class='col-xs-3'>AKRA Description</label>
               <div class='input-group col-xs-9'>
-                  <textarea type='text' name="skra_description" class="form-control" rows=5 placeholder="enter skra description here"></textarea>
+                  <textarea type='text' name="skra_description" class="form-control" rows=5 placeholder="enter akra description here"></textarea>
               </div>
         </div>
       <div class="modal-footer">
@@ -150,7 +150,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Edit SKRA</h4>
+        <h4 class="modal-title">Edit AKRA</h4>
       </div>
       <div class="modal-body">
          <form action="{{route('update_skra')}}" method="post">
@@ -173,13 +173,13 @@
               <div class='clearfix'></div>
         </div>
          <div class='form-group'>
-          <label for='skra_name' class='col-xs-3'>SKRA Name</label>
+          <label for='skra_name' class='col-xs-3'>AKRA Name</label>
             <div class='col-xs-9 input-group'>
               <input type="text" name="skra_name" class="form-control" placeholder="Enter SKRA name here" id='skra_name'>
             </div>
       </div>
       <div class='form-group'>
-          <label for='skra_description' class='col-xs-3'>SKRA Description</label>
+          <label for='skra_description' class='col-xs-3'>AKRA Description</label>
             <div class='input-group col-xs-9'>
               <textarea type='text' name="skra_description" class="form-control" rows=5 placeholder="enter SKRA description here" id='skra_description'></textarea>
             </div>
