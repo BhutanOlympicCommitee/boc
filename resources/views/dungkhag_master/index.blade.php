@@ -152,7 +152,7 @@
             </div>
       </div>
       <div class='form-group'>
-        <label for='dungkhag_code' class='col-xs-3'>Dzongkhag Code</label>
+        <label for='dungkhag_code' class='col-xs-3'>Dungkhag Code</label>
         <div class='input-group col-xs-9'>
             <input type="text" name="dungkhag_code" id='dungkhag_code' class="form-control" placeholder="enter dungkhag code here">
         </div>
