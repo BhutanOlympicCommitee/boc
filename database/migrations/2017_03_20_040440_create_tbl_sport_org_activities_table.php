@@ -19,6 +19,7 @@ class CreateTblSportOrgActivitiesTable extends Migration
             $table->integer('sport_org_id');
             $table->integer('skra_id');
             $table->integer('skra_activity_id');
+            $table->string('collaborating_agency',500);
             $table->string('activity_name',500);
             $table->string('activity_baseline',2000);
             $table->string('activity_target',2000);
