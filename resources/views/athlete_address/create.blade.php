@@ -46,7 +46,7 @@
                 <div class='form-group'>
             <label for='type1' class='col-xs-2'>Dzongkhag</label>
               <div class='col-xs-10 input-group'>
-                <select class='form-control' name='type1' required>
+                <select class='form-control' name='type1' id='type1' required>
                   <option></option>
                   <?php 
                     $dzongkhag=App\MstDzongkhag::all();
@@ -62,17 +62,9 @@
                 <div class='form-group'>
                   <label for='dungkhag' class='col-xs-2'>Dungkhag</label>
                     <div class='col-xs-10 input-group'>
-                      <select class='form-control' name='dungkhag' required>
-                        <option></option>
-                  <?php 
-                    $dungkhag=App\Dungkhag::all();
-                    foreach($dungkhag as $dungkhags):
-                  ?>
-                  <option value="{{$dungkhags->dungkhag_id}}">{{$dungkhags->dungkhag_name}}</option>
-                  <?php 
-                    endforeach
-                  ?>
-                </select>
+                       <select class='form-control' name='dungkhag' id='dungkhag'>
+                         <option value=""></option>
+                      </select>
                     </div>
                 </div>
                 <div class='form-group'>
@@ -91,7 +83,7 @@
                <div class='form-group'>
             <label for='type' class='col-xs-2'>Dzongkhag</label>
               <div class='col-xs-10 input-group'>
-                <select class='form-control' name='type' required>
+                <select class='form-control' name='type' id='type'required>
                   <option></option>
                   <?php 
                     $dzongkhag=App\MstDzongkhag::all();
@@ -104,21 +96,13 @@
                 </select>
               </div>
           </div>
-                <div class='form-group'>
-                <div class='form-group'>
+                
+                 <div class='form-group'>
                   <label for='Cdungkhag' class='col-xs-2'>Dungkhag</label>
                     <div class='col-xs-10 input-group'>
-                       <select class='form-control' name='Cdungkhag' required>
-                        <option></option>
-                  <?php 
-                    $dungkhag=App\Dungkhag::all();
-                    foreach($dungkhag as $dungkhags):
-                  ?>
-                  <option value="{{$dungkhags->dungkhag_id}}">{{$dungkhags->dungkhag_name}}</option>
-                  <?php 
-                    endforeach
-                  ?>
-                </select>
+                       <select class='form-control' name='Cdungkhag' id='Cdungkhag'>
+                         <option value=""></option>
+                      </select>
                     </div>
                 </div>
                  <div class='form-group'>
@@ -146,10 +130,11 @@
                 <div class="form-group">
                   <div class="col-xs-10 col-xs-offset-2 input-group">
                       <input type="submit" class="btn btn-default col-xs-2 col-xs-offset-7" value="Save">
-                      <a href="{{--route('sport_organization.index')--}}" class='btn btn-default col-xs-2 col-xs-offset-1'>Cancel</a>
+                      <a href="{{route('athlete_address.create')}}" class='btn btn-default col-xs-2 col-xs-offset-1'>Cancel</a>
                   </div>
                 </div> 
               </form>
+              <input type="hidden" name="hidden_view" id='hidden_view' value='{{route('view_dungkhag')}}'>
             </div>
           </div>
         </div>
@@ -169,6 +154,41 @@
     $('#qualification').click(function(){
        window.location="{{url(route('athlete_qualification.create'))}}";   
      });
+  });
+
+  $('#type1').change(function()
+  {
+    var dzong_id=$(this).val();
+    var view_url = $("#hidden_view").val();
+      $.ajax({
+        url: view_url,
+        type:"GET", 
+        data: {"id":dzong_id}, 
+        success: function(result){
+          $('#dungkhag').empty();
+          $.each(result,function(key,val)
+          {
+            $('#dungkhag').append('<option value="'+val.dungkhag_id+'">'+val.dungkhag_name+'</option>');
+          });
+        }
+      });
+  });
+  $('#type').change(function()
+  {
+    var dzongkhag_id=$(this).val();
+    var view_url = $("#hidden_view").val();
+      $.ajax({
+        url: view_url,
+        type:"GET", 
+        data: {"id":dzongkhag_id}, 
+        success: function(result){
+          $('#Cdungkhag').empty();
+          $.each(result,function(key,val)
+          {
+            $('#Cdungkhag').append('<option value="'+val.dungkhag_id+'">'+val.dungkhag_name+'</option>');
+          });
+        }
+      });
   });
 </script>
 @endsection

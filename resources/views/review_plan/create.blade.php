@@ -163,7 +163,7 @@
                           <input type="text" value="Department of Youth and Sports">
                         </div>
                       </div> -->
-                       <table class="table table-responsive">
+                       <table>
                     <thead>
                         <td>Proposed</td>
                         <td></td>
@@ -172,7 +172,7 @@
                             <th>Year</th>
                             <td><select class="form-control"><option>2017</option></select></td>
                             <td><select class="form-control"><option>2017</option></select></td>   
-                        </tr>   
+                        </tr> 
                          <tr>
                            <tr>
                             <th>SKRA</th>

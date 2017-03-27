@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\ Dungkhag;
+use App\Dungkhag;
 use Auth;
 use Session;
 
@@ -59,7 +59,7 @@ class DungkhagController extends Controller
     {
         if($request->ajax()){
             $id = $request->id;
-            $info =  Dungkhag::find($id);
+            $info = Dungkhag::find($id);
             return response()->json($info);
         }
     }

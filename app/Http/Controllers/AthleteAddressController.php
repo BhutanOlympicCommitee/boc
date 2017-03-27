@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Athlete_address;
+use APP\Dungkhag;
 use Auth;
 use Session;
 
@@ -34,11 +35,11 @@ class AthleteAddressController extends Controller
     {
         $athlete= new Athlete_address;
         $athlete->dzongkhag_id=$request->type1;
-        $athlete->Paddress_dungkhag=$request->dungkhag;
+        $athlete->dungkhag_id=$request->dungkhag;
         $athlete->Paddress_gewog=$request->gewog;
         $athlete->Paddress_village=$request->village;
-        $athlete->Caddress_dzongkhag=$request->Cdzongkhag;
         $athlete->dzongkhag_id=$request->type;
+        $athlete->dungkhag_id=$request->Cdungkhag;
         $athlete->Caddress_email=$request->email;
         $athlete->Caddress_phone=$request->phone;
         $athlete->Caddress_mobile=$request->mobile;
@@ -54,9 +55,14 @@ class AthleteAddressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view(Request $request)
     {
-        //
+        if($request->ajax()){
+            $id = $request->id;
+            $info = Dungkhag::where('dzongkhag_id', $id)->get();
+            //var_dump($info);
+            return response()->json($info);
+        }
     }
 
     /**
