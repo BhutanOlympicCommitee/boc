@@ -147,6 +147,7 @@ Route::post('athlete_info',['as'=>'athlete_info.store','uses'=>'AthleteInformati
 Route::resource('athlete_address','AthleteAddressController');
 Route::get('athlete_address',['as'=>'athlete_address.create','uses'=>'AthleteAddressController@create']);
 Route::post('athlete_address',['as'=>'athlete_address.store','uses'=>'AthleteAddressController@store']);
+Route::get('athlete_address/view', 'AthleteAddressController@view')->name('view_dungkhag');
 
 //route for athlete address
 Route::get('athlete',['as'=>'athlete_qualification.index','uses'=>'AthleteQualificationController@index']);

@@ -129,7 +129,7 @@
         <h4 class="modal-title">Edit Dungkhag details</h4>
       </div>
       <div class="modal-body">
-        <form action="{{route('update_dzongkhag')}}" method="post">
+        <form action="{{route('update_dungkhag')}}" method="post">
           {{csrf_field()}}
         <div class='form-group'>
           <label for='type' class='col-xs-3'>Dzongkhag</label>
