@@ -15,6 +15,7 @@ class LoginController extends Controller
     		'password' => $request->password
     		])){
     		$user = User::where('email',$request->email)->first();
+            session(['user_id' => $user->id]);
     	    if($user->is_admin()){
     	    	return redirect()->route('admin_dashboard');
     	    }else{

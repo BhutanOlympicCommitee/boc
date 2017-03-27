@@ -128,8 +128,21 @@ Route::patch('skra_activity/update/{id}',['as'=>'skra_activities.update','uses'=
 
 //Routes for Sport Organization Activities
 Route::get('sport_organization_activities',[
-	'uses' => 'Sport_Organization_Controller@view_activities',
+	'uses' => 'Sport_Organization_Controller@viewActivities',
 	'as' => 'sport_org_activity'
+	]);
+Route::post('sport_organization_activities',[
+	'uses' => 'Sport_Organization_Controller@addActivities',
+	'as' => 'add_sport_org_activity'
+	]);
+Route::post('sport_organization_activities/edit',[
+	'uses' => 'Sport_Organization_Controller@updateActivities',
+	'as' => 'update_sport_activities'
+	]);
+
+Route::get('sport_organization_activities/{id}',[
+	'uses' => 'Sport_Organization_Controller@deleteActivities',
+	'as' => 'delete_sport_org_activity'
 	]);
 
 //Routes for the Review Activities

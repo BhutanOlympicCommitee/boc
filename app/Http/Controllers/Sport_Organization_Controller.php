@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Sport_Organization;
+use App\Tbl_sport_org_activities;
+use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\ContactPersonController;
 use Session;
 use Auth;
@@ -140,7 +142,72 @@ class Sport_Organization_Controller extends Controller
     }
 
     // Sport Organization Activities
-    public function view_activities(){
+    public function viewActivities(){
         return view('annual_activity_plan.sport_activity_plan.index');
+    }
+
+    public function addActivities(Request $request){
+        $sport_org_activity = new Tbl_sport_org_activities;
+        $sport_org_activity->year_id = Input::get('year');
+        $sport_org_activity->skra_id = Input::get('skra');
+
+        //default sport org id inserted have to modify
+        $sport_org_activity->sport_org_id = 1;
+
+        //default value of submit status
+        $sport_org_activity->submit_status = 1;
+
+        $sport_org_activity->skra_activity_id = Input::get('skra_activity');
+        $sport_org_activity->activity_name = Input::get('activity');
+        $sport_org_activity->activity_baseline = Input::get('baseline');
+        $sport_org_activity->activity_target = Input::get('target');
+        $sport_org_activity->activity_venue = Input::get('venue');
+        $sport_org_activity->activity_timeline = Input::get('timeline');
+        $sport_org_activity->proposed_capital_budget = Input::get('proposed_capital_budget');
+        $sport_org_activity->proposed_recurring_budget = Input::get('proposed_recurring_budget');
+        $sport_org_activity->collaborating_agency = Input::get('collaborating_agency');
+        $sport_org_activity->created_by = session('user_id');
+        $sport_org_activity->save();
+        return redirect()->route('sport_org_activity');
+    }
+
+    public function updateActivities(Request $request){
+        $id = Input::get('activity_id');
+        $year_id = Input::get('year');
+        $skra_id = Input::get('skra');
+
+        $skra_activity_id = Input::get('skra_activity');
+        $activity_name = Input::get('activity');
+        $activity_baseline = Input::get('baseline');
+        $activity_target = Input::get('target');
+        $activity_venue = Input::get('venue');
+        $activity_timeline = Input::get('timeline');
+        $proposed_capital_budget = Input::get('proposed_capital_budget');
+        $proposed_recurring_budget = Input::get('proposed_recurring_budget');
+        $collaborating_agency = Input::get('collaborating_agency');
+        $created_by = session('user_id');
+
+        $sport_org_activity = new Tbl_sport_org_activities;
+        $sport_org_activity::where('activity_id',$id)
+            ->update([
+                'year_id' => $year_id,
+                'skra_id'=> $skra_id,
+                'skra_activity_id' =>$skra_activity_id,
+                'activity_name' =>$activity_name,
+                'activity_baseline' =>$activity_baseline,
+                'activity_target' =>$activity_target,
+                'activity_venue' =>$activity_venue,
+                'activity_timeline' =>$activity_timeline,
+                'proposed_capital_budget' =>$proposed_capital_budget,
+                'proposed_recurring_budget' =>$proposed_recurring_budget,
+                'collaborating_agency' =>$collaborating_agency,
+                'created_by'=>$created_by
+                ]);
+        return redirect()->route('sport_org_activity');
+    }
+    public function deleteActivities($id){
+        $sport_activity = new Tbl_sport_org_activities;
+        $sport_activity::where('activity_id', $id)->delete();
+        return redirect()->route('sport_org_activity');
     }
 }

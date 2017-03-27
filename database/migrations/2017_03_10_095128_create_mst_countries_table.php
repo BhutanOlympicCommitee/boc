@@ -17,7 +17,7 @@ class CreateMstCountriesTable extends Migration
             $table->increments('country_id');
             $table->string('country_name',250);
             $table->string('country_code',50);
-            $table->integer('status');
+            $table->integer('status')->default(0);
             $table->timestamps();
             $table->integer('created_by');
         });
