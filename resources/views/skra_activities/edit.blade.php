@@ -18,7 +18,7 @@
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <div class="text-muted bootstrap-admin-box-title">Edit AKRA activities
+              <div class="text-muted bootstrap-admin-box-title">Update AKRA activities
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
@@ -29,14 +29,9 @@
                   @endforeach
                 </div>
               @endif
-
               <form action="{{route('skra_activities.update',$skras_edit->skra_activity_id)}}" method="post">
-
-               <div class='form-group'>
-                          <input name="_method" type="hidden" value="PATCH">
-                            {{csrf_field()}}
-                      </div>
-              
+              <input name="_method" type="hidden" value="PATCH">
+              {{csrf_field()}}
                 <div class='form-group'>
                   <label for='type' class='col-xs-3'>Type</label>
                     <div class='col-xs-9 input-group'>
@@ -60,16 +55,13 @@
                   <label for='skra' class='col-xs-3'>AKRA</label>
                     <div class='col-xs-9 input-group'>
                        <select class='form-control' name='skra' id='skra'>
-
-                        <?php 
-                            $skrs=App\Tbl_SKRA::all();
-                            foreach($skrs as $skr):
-                        ?>
-                         <option value="{{$skr->skra_id}}" <?php if($skr->skra_id==$skras_edit->skra_id){?>
+                         <?php 
+                            $skras=App\Tbl_SKRA::all();
+                            foreach($skras as $skra):
+                          ?>
+                         <option value="{{$skra->skra_id}}" <?php if($skra->skra_id==$skras_edit->skra_id){?>
                           selected
-                          <?php } ?> >
-                          {{$skr->SKRA_name}}
-                          </option>
+                          <?php } ?>>{{$skra->SKRA_name}}</option>
                           <?php 
                             endforeach
                           ?>
@@ -79,7 +71,7 @@
                 <div class='form-group'>
                     <label for='skra_activity_name' class='col-xs-3'>AKRA Activity/NSF Output</label>
                       <div class='col-xs-9 input-group'>
-                          <input type="text" name="skra_activity_name" class="form-control" placeholder="Enter SKRA activity name here" value='{{$skras_edit->SKRA_activity}}'>
+                          <input type="text" name="skra_activity_name" class="form-control" placeholder="Enter AKRA activity name here" id='skra_ativity' value='{{$skras_edit->SKRA_activity}}'>
                       </div>
               </div>
               <div class='form-group'>
@@ -103,8 +95,9 @@
     </div>
   </div>
 </div>
+
 <script type="text/javascript">
-$('#type').change(function()
+  $('#type').change(function()
   {
     var sport_id=$(this).val();
     var view_url = $("#hidden_view").val();
