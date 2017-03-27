@@ -65,6 +65,13 @@ Route::delete('dzongkhag/destroy/{id}',['as'=>'dzongkhag_master.destroy','uses'=
 Route::get('dzongkhag/view', 'DzongkhagController@view')->name('view_dzongkhag');
 Route::post('dzongkhag/update', 'DzongkhagController@update')->name('update_dzongkhag');
 
+//routes for dungkhag
+Route::get('dungkhag',['as'=>'dungkhag_master.index','uses'=>'DungkhagController@index']);
+Route::post('dungkhag/store',['as'=>'dungkhag_master.store','uses'=>'DungkhagController@store']);
+Route::delete('dungkhag/destroy/{id}',['as'=>'dungkhag_master.destroy','uses'=>'DungkhagController@destroy']);
+Route::get('dungkhag/view', 'DungkhagController@view')->name('view_dungkhag');
+Route::post('dungkhag/update', 'DungkhagController@update')->name('update_dungkhag');
+
 //routes for sport organization
 Route::get('sport',['as'=>'sport_organization.index','uses'=>'Sport_Organization_Controller@index']);
 Route::get('sport/create',['as'=>'sport_organization.create','uses'=>'Sport_Organization_Controller@create']);
@@ -146,8 +153,26 @@ Route::get('review_activities_achievemenents_update',[
 		'as'=>'achievement_update'
 	]);
 //routes for althlete information
-Route::get('athlete_bio',['as'=>'athlete.create','uses'=>'AthleteInformationController@create']);
+Route::get('athlete_info',['as'=>'athlete_info.create','uses'=>'AthleteInformationController@create']);
+Route::post('athlete_info',['as'=>'athlete_info.store','uses'=>'AthleteInformationController@store']);
 
+//route for athlete address
+Route::resource('athlete_address','AthleteAddressController');
+Route::get('athlete_address',['as'=>'athlete_address.create','uses'=>'AthleteAddressController@create']);
+Route::post('athlete_address',['as'=>'athlete_address.store','uses'=>'AthleteAddressController@store']);
+Route::get('athlete_address/view', 'AthleteAddressController@view')->name('view_dungkhag');
+
+//route for athlete address
+Route::get('athlete',['as'=>'athlete_qualification.index','uses'=>'AthleteQualificationController@index']);
+Route::get('athlete_qualification',['as'=>'athlete_qualification.create','uses'=>'AthleteQualificationController@create']);
+Route::post('athlete_qualification',['as'=>'athlete_qualification.store','uses'=>'AthleteQualificationController@store']);
+Route::delete('athlete_qualification/destroy/{id}',['as'=>'athlete_qualification.destroy','uses'=>'AthleteQualificationController@destroy']);
+Route::get('athlete_qualification/view', 'AthleteQualificationController@view')->name('view_athlete_qualification');
+Route::get('athlete_qualification/{id}/edit',['as'=>'athlete_qualification.edit','uses'=>'AthleteQualificationController@edit']);
+Route::post('athlete_qualification/update/{id}',['as'=>'athlete_qualification.update','uses'=>'AthleteQualificationController@update']);
+Route::delete('athlete_qualification/destroy/{id}',['as'=>'athlete_qualification.destroy','uses'=>'AthleteQualificationController@destroy']);
+
+//Routes for Sport Organization Activities
 //routes for training information
 Route::get('training',['as'=>'training.index','uses'=>'TrainingInformationController@index']);
 Route::get('training/create',['as'=>'training.create','uses'=>'TrainingInformationController@create']);

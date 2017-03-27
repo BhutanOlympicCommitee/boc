@@ -3,18 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Athlete_bioinformation;
+use App\Athlete_address;
+use APP\Dungkhag;
 use Auth;
 use Session;
 
-class AthleteInformationController extends Controller
+class AthleteAddressController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+      public function index()
     {
         //
     }
@@ -26,7 +22,7 @@ class AthleteInformationController extends Controller
      */
     public function create()
     {
-        return view('athlete_info.create');
+        return view('athlete_address.create');
     }
 
     /**
@@ -37,36 +33,36 @@ class AthleteInformationController extends Controller
      */
     public function store(Request $request)
     {
-        $athlete= new Athlete_bioinformation;
-        $athlete->athlete_title=$request->title;
-        $athlete->athlete_fname=$request->fname;
-        $athlete->athlete_lname=$request->lname;
-        $athlete->athlete_occupation=$request->occupation;
-        $athlete->athlete_dob=$request->dob;
-        $athlete->athlete_pob=$request->pob;
-        $athlete->athlete_gender=$request->gender;
-        $athlete->athlete_height=$request->height;
-        $athlete->athlete_weight=$request->weight;
-        $athlete->athlete_fathername=$request->fathername;
-        $athlete->athlete_passportNo=$request->passportNo;
-        $athlete->athlete_cid=$request->cid;
-        $athlete->athlete_associatedSport=$request->associatedSport;
-        $athlete->athlete_photo=$request->photo;
+        $athlete= new Athlete_address;
+        $athlete->dzongkhag_id=$request->type1;
+        $athlete->dungkhag_id=$request->dungkhag;
+        $athlete->Paddress_gewog=$request->gewog;
+        $athlete->Paddress_village=$request->village;
+        $athlete->dzongkhag_id=$request->type;
+        $athlete->dungkhag_id=$request->Cdungkhag;
+        $athlete->Caddress_email=$request->email;
+        $athlete->Caddress_phone=$request->phone;
+        $athlete->Caddress_mobile=$request->mobile;
+        $athlete->Caddress_contactAddress=$request->caddress;
         $athlete->created_by=Auth::user()->id;
         $athlete->save();
         Session::flash('success', 'AthleteInfos has been created successfully');
-       return redirect()->route('athlete_address.create');
+       return redirect()->route('athlete_qualification.create');
     }
-
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view(Request $request)
     {
-        //
+        if($request->ajax()){
+            $id = $request->id;
+            $info = Dungkhag::where('dzongkhag_id', $id)->get();
+            //var_dump($info);
+            return response()->json($info);
+        }
     }
 
     /**

@@ -18,7 +18,7 @@
                 <div class="col-md-10 col-md-offset-1">
                 	<div class="panel panel-default">
                         <div class="panel-heading">
-	                        <div class="text-muted bootstrap-admin-box-title clearfix">Dzongkhag Information
+	                        <div class="text-muted bootstrap-admin-box-title clearfix">Dungkhug Information
 	                         <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal">Add</a> 
 	                        </div>
 	                    </div>
@@ -32,26 +32,26 @@
         				 				<thead>
         									<tr>
         										<th>Sl. No:</th>
-        										<th>Country Name</th>
-        										<th>Dzongkhg/State Name</th>
-        										<th>Dzongkhag/State Code</th>
+        										<th>Dzongkhag Name</th>
+        										<th>Dungkhag Name</th>
+        										<th>Dungkhag Code</th>
         										<th style='width:20%'>Action</th>
         									</tr>	
         								</thead>
         								<tbody>
         								<?php $id=1 ?>
-        								@foreach($dzongkhag as $dzongkhags)
-                        @if($dzongkhags->status==0)
+        								@foreach($dungkhag as $dungkhags)
+                        @if($dungkhags->status==0)
         								<tr>
         									<td>{{$id++}}</td>
-        									<td>{{$dzongkhags->displayCountry->country_name}}</td>
-        									<td>{{$dzongkhags->dzongkhag_name}}</td>
-        									<td>{{$dzongkhags->dzongkhag_code}}</td>
+        									<td>{{$dungkhags->displayDzongkhag->dzongkhag_name}}</td>
+        									<td>{{$dungkhags->dungkhag_name}}</td>
+        									<td>{{$dungkhags->dungkhag_code}}</td>
         									<td>
-        										<form id='remove' class="form-group" action="{{route('dzongkhag_master.destroy',$dzongkhags->dzongkhag_id)}}" method='post'>
+        										<form id='remove' class="form-group" action="{{route('dungkhag_master.destroy',$dungkhags->dungkhag_id)}}" method='post'>
         							              <input type="hidden" name="_method" value="delete">
         							              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        							              <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='fun_edit({{$dzongkhags->dzongkhag_id}})'>Edit</a>
+        							              <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='fun_edit({{$dungkhags->dungkhag_id}})'>Edit</a>
         							              <button type="submit" class="btn btn-warning glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Remove
         							              </button>
         							            </form>
@@ -61,7 +61,7 @@
         								@endforeach
         								</tbody>
         					 		</table>
-                      <input type="hidden" name="hidden_view" id="hidden_view" value="{{route('view_dzongkhag')}}">
+                      <input type="hidden" name="hidden_view" id="hidden_view" value="{{route('view_dungkhag')}}">
                      </div>
                     </div>
                 </div>
@@ -75,20 +75,21 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Dzongkhag</h4>
+        <h4 class="modal-title" id="myModalLabel">Add Dungkhag</h4>
       </div>
       <div class="modal-body">
-       <form action="{{route('dzongkhag_master.store')}}" method="post">
+       <form action="{{route('dungkhag_master.store')}}" method="post">
           {{csrf_field()}}
           <div class='form-group'>
-            <label for='type' class='col-xs-3'>Country:</label>
+            <label for='type' class='col-xs-3'>Dzongkhag:</label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='type'>
+                  <option></option>
                   <?php 
-                    $country=App\Mst_country::all();
-                    foreach($country as $countries):
+                    $dzongkhag=App\MstDzongkhag::all();
+                    foreach($dzongkhag as $dzongkhags):
                   ?>
-                  <option value="{{$countries->country_id}}">{{$countries->country_name}}</option>
+                  <option value="{{$dzongkhags->dzongkhag_id}}">{{$dzongkhags->dzongkhag_name}}</option>
                   <?php 
                     endforeach
                   ?>
@@ -96,15 +97,15 @@
               </div>
           </div>
           <div class='form-group'>
-            <label for='dzongkhag_name' class='col-xs-3'>Dzongkhag/state:</label>
+            <label for='dungkhag_name' class='col-xs-3'>Dungkhag:</label>
               <div class='col-xs-9 input-group'>
-                <input type="text" name="dzongkhag_name" class="form-control" placeholder="Enter dzongkhag/state name here" required>
+                <input type="text" name="dungkhag_name" class="form-control" placeholder="Enter dungkhag name here" required>
               </div>
           </div>
           <div class='form-group'>
-            <label for='dzongkhag_code' class='col-xs-3'>Dzongkhag/State Code:</label>
-              <div class='input-group col-xs-9'>
-                <input type="text" name="dzongkhag_code"  class="form-control" placeholder="Enter dzongkhag code here" required>
+            <label for='dungkhag_code' class='col-xs-3'>Dungkhag Code:</label>
+              <div class='col-xs-9 input-group'>
+                <input type="text" name="dungkhag_code"  class="form-control" placeholder="Enter dungkhag code here" required>
               </div>
           </div>
       
@@ -125,35 +126,35 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Edit Dzongkhag details</h4>
+        <h4 class="modal-title">Edit Dungkhag details</h4>
       </div>
       <div class="modal-body">
-        <form action="{{route('update_dzongkhag')}}" method="post">
+        <form action="{{route('update_dungkhag')}}" method="post">
           {{csrf_field()}}
         <div class='form-group'>
-          <label for='type' class='col-xs-3'>Country</label>
+          <label for='type' class='col-xs-3'>Dzongkhag</label>
             <div class='col-xs-9 input-group'>
               <select class='form-control' name='type' id='type'>
                   <?php 
-                      $dzongkhags=App\Mst_country::all();
-                      foreach($dzongkhags as $dzong):
+                      $dungkhags=App\MstDzongkhag::all();
+                      foreach($dungkhags as $dung):
               ?>
-                <option value="{{$dzong->country_id}}">{{$dzong->country_name}}</option>
+                <option value="{{$dung->dzongkhag_id}}">{{$dung->dzongkhag_name}}</option>
                <?php endforeach ?>
               </select>
             </div>
       </div>
          
        <div class='form-group'>
-          <label for='dzongkhag_name' class='col-xs-3'>Dzongkhag/State</label>
+          <label for='dungkhag_name' class='col-xs-3'>Dungkhag</label>
             <div class='col-xs-9 input-group'>
-              <input type="text" name="dzongkhag_name" class="form-control" id='dzongkhag_name' placeholder="Enter dzongkhag/state name here">
+              <input type="text" name="dungkhag_name" class="form-control" id='dungkhag_name' placeholder="Enter dungkhag name here">
             </div>
       </div>
       <div class='form-group'>
-        <label for='dzongkhag_code' class='col-xs-3'>Dzongkhag/State Code</label>
+        <label for='dungkhag_code' class='col-xs-3'>Dzongkhag Code</label>
         <div class='input-group col-xs-9'>
-            <input type="text" name="dzongkhag_code" id='dzongkhag_code' class="form-control" placeholder="enter dzongkhag/state code here">
+            <input type="text" name="dungkhag_code" id='dungkhag_code' class="form-control" placeholder="enter dungkhag code here">
         </div>
     </div>
     <input type="hidden" id="edit_id" name="edit_id">
@@ -179,10 +180,10 @@
         data: {"id":id}, 
         success: function(result){
           //console.log(result);
-          $("#edit_id").val(result.dzongkhag_id);
-          $("#type").val(result.country_id);
-          $("#dzongkhag_name").val(result.dzongkhag_name);
-          $("#dzongkhag_code").val(result.dzongkhag_code);
+          $("#edit_id").val(result.dungkhag_id);
+          $("#type").val(result.dzongkhag_id);
+          $("#dungkhag_name").val(result.dungkhag_name);
+          $("#dungkhag_code").val(result.dungkhag_code);
         }
       });
     }
