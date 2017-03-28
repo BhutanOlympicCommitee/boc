@@ -97,6 +97,7 @@
                   <button class='btn btn-default pull-right' type='submit' name='submit' value='view'>Search</button>
                 </span>
               </div>
+
               </form>
               @if(isset($_GET['submit']))
                 <script type="text/javascript">
@@ -142,7 +143,7 @@
                           <td>{{$review->proposed_capital_budget}}</td>
                           <td>{{$review->collaborating_agency}}</td>
                           <td>
-                            <a href="{{route('review_plan.create')}}" class="btn btn-primary">Review</a>
+                            <a href="{{route('review_plan.create',$review->activity_id)}}" class="btn btn-primary">Review</a>
                           </td>
                       </tr>
                     @endif
@@ -158,13 +159,6 @@
     </div>
   </div>
 <script type="text/javascript">
-// $(function(){
-//     $('#table1').DataTable(
-//       {
-//         info:false,
-//         searching:false,
-//       });
-// });
 </script>
 @endsection
 @section('footer')

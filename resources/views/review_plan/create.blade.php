@@ -22,131 +22,140 @@
               </div>
              </div>
             <div class="bootstrap-admin-panel-content">
-              <form>
-                <table class="table table-responsive">
-                  <tr>
-                    <td>Proposed</td>
-                    <td></td>
-                    <td>Approved</td>
-                  </tr>
-                  <tr>
-                    <th>Year</th>
-                    <td>
-                      <select class="form-control">
-                        <option>2017</option>
-                      </select>
-                    </td>
-                    <td>
-                      <select class="form-control">
-                        <option>2017</option>
-                      </select>
-                    </td>       
-                  </tr>   
-                  <tr>
-                    <th>SKRA</th>
-                    <td>
-                      <select class="form-control">
-                        <option>Promotion of Indegenous Games and Sport</option>
-                      </select>
-                    </td>
-                    <td>
-                      <select class="form-control">
-                        <option>Promotion of Indegenous Games and Sport</option>
-                      </select>
-                    </td>   
-                  </tr>   
-                  <tr>
-                    <th>SKRA Activities/NSF Outputs</th>
-                    <td>
-                     <select class="form-control">
-                      <option>Technical Support to School Sports program</option>
-                     </select>
-                    </td>
-                    <td>
-                      <select class="form-control">
-                        <option>Technical Support to School Sports program</option>
-                      </select>
-                    </td>   
-                  </tr>   
-                  <tr>
-                    <th>Activity</th>
-                    <td>
-                      <input type="text" value="Train students in Archery" class="form-control">
-                    </td>
-                    <td>
-                      <input type="text" value="Train students in Archery" class="form-control">
-                    </td>
-                  </tr>
-                   <th>Baseline</th>
-                   <td>
-                    <input type="text" value="50 students traning in fiscal year 2017" class="form-control">
-                    </td>
-                    <td>
-                      <input type="text" value="50 students traning in fiscal year 2017" class="form-control">
-                    </td>
-                  </tr> 
-                  <tr>
-                    <th>Target</th>
-                    <td>
-                      <input type="text" value="Train 150 students in this fiscal" class="form-control">
-                    </td>
-                    <td>
-                      <input type="text" value="Train 150 students in this fiscal" class="form-control">
-                    </td>
-                  </tr>
-                  <tr> 
-                    <th>Vanue</th>
-                    <td>
-                      <input type="text" value="Monger" class="form-control">
-                    </td>
-                    <td>
-                      <input type="text" value="Monger" class="form-control">
-                    </td>
-                  </tr> 
-                  <tr>
-                    <th>Time Line</th>
-                    <td>
-                      <input type="text" value="April to December" class="form-control">
-                    </td>
-                    <td>
-                      <input type="text" value="April to December" class="form-control">
-                    </td>
-                  </tr> 
-                  <tr>
-                    <th>Proposed Capital Budget(Million)</th>
-                    <td>
-                      <input type="text" value="10" class="form-control">
-                    </td>
-                    <td>
-                      <input type="text" value="10" class="form-control">
-                    </td>
-                  </tr> 
-                  <tr>
-                    <th>Proposed Recurring Budegt(Million)</th>
-                    <td>
-                      <input type="text" value="2" class="form-control">
-                    </td>
-                    <td>
-                      <input type="text" value="2" class="form-control">
-                    </td>
-                  </tr>
-                  <tr>  
-                    <th>Collaborating Agencies</th>
-                    <td>
-                      <input type="text" value="Department of Youth and Sports" class="form-control">
-                    </td>
-                    <td>
-                      <input type="text" value="Department of Youth and Sports" class="form-control">
-                    </td>
-                  </tr>    
-                </table>
-                <div class='form-group'>
-                  <div class="col-xs-10 col-xs-offset-2 input-group">
-                    <button type='submit' class='btn btn-default col-xs-2' name='update1' value='form1'>Update</button>
-                    <a href="{{route('review_plan.index')}}" class='btn btn-default col-xs-2 col-xs-offset-1'> Cancel</a>
-                  </div>
-                </div>
-              </form>
+            <form action='{{route('approved_activities',$review_plan->activity_id)}}' method='post'>
+            {{csrf_field()}}
+            <div class='row clearfix'>
+              <div class='col-xs-4'>Proposed</div>
+              <div class='col-xs-4'></div>
+              <div class='col-xs-4'>Approved</div>
+            </div>
+            <br>
+            <div class='row clearfix'>
+              <div class='col-xs-4'>Year</div>
+              <div class='col-xs-4'>
+                <select class="form-control" name='year'>
+                  <option value='{{$review_plan->year_id}}'>{{$review_plan->year_id}}</option>
+                </select>
+              </div>
+              <div class='col-xs-4'>
+                <select class="form-control" name='approved_year'>
+                  <option value='{{$review_plan->year_id}}'>{{$review_plan->year_id}}</option>
+                </select>
+              </div>
+            </div>
+            <br>
+            <div class='row clearfix'>
+              <div class='col-xs-4'>SKRA</div>
+              <div class='col-xs-4'>
+                <select class="form-control" name='skra'>
+                  <option value='{{$review_plan->skra_id}}'>{{$review_plan->skra->SKRA_name}}</option>
+                </select>
+              </div>
+              <div class='col-xs-4'>
+                <select class="form-control" name='approved_skra'>
+                  <option value='{{$review_plan->skra_id}}'>{{$review_plan->skra->SKRA_name}}</option>
+                </select>
+              </div>
+            </div>
+             <br>
+            <div class='row clearfix'>
+              <div class='col-xs-4'>SKRA activities/NSF outputs</div>
+              <div class='col-xs-4'>
+                <select class="form-control">
+                  <option value='{{$review_plan->skra_id}}'>{{$review_plan->skraActivity->SKRA_activity}}</option>
+                </select>
+              </div>
+              <div class='col-xs-4'>
+                <select class="form-control" name='approved_skra'>
+                  <option value='{{$review_plan->skra_id}}'>{{$review_plan->skraActivity->SKRA_activity}}</option>
+                </select>
+              </div>
+            </div>
+             <br>
+            <div class='row clearfix'>
+              <div class='col-xs-4'>Activity</div>
+              <div class='col-xs-4'>
+               <input type="text" name="activity" class='form-control' value='{{$review_plan->activity_name}}'>
+              </div>
+              <div class='col-xs-4'>
+               <input type="text" name="approved_activity" class='form-control' value='{{$review_plan->activity_name}}'>
+              </div>
+            </div>
+             <br>
+            <div class='row clearfix'>
+              <div class='col-xs-4'>Baseline</div>
+              <div class='col-xs-4'>
+               <input type="text" name="baseline" class='form-control' value='{{$review_plan->activity_baseline}}'>
+              </div>
+              <div class='col-xs-4'>
+               <input type="text" name="approved_baseline" class='form-control' value='{{$review_plan->activity_baseline}}'>
+              </div>
+            </div>
+             <br>
+             <div class='row clearfix'>
+              <div class='col-xs-4'>Target</div>
+              <div class='col-xs-4'>
+               <input type="text" name="target" class='form-control' value='{{$review_plan->activity_target}}'>
+              </div>
+              <div class='col-xs-4'>
+               <input type="text" name="approved_target" class='form-control' value='{{$review_plan->activity_target}}' >
+              </div>
+            </div>
+             <br>
+             <div class='row clearfix'>
+              <div class='col-xs-4'>Venue</div>
+              <div class='col-xs-4'>
+               <input type="text" name="venue" class='form-control' value='{{$review_plan->activity_venue}}'>
+              </div>
+              <div class='col-xs-4'>
+               <input type="text" name="approved_venue" class='form-control' value='{{$review_plan->activity_venue}}'>
+              </div>
+            </div>
+             <br>
+             <div class='row clearfix'>
+              <div class='col-xs-4'>Time Line</div>
+              <div class='col-xs-4'>
+               <input type="text" name="timeline" class='form-control' value='{{$review_plan->activity_timeline}}'>
+              </div>
+              <div class='col-xs-4'>
+               <input type="text" name="approved_timeline" class='form-control' value='{{$review_plan->activity_timeline}}'>
+              </div>
+            </div>
+             <br>
+             <div class='row clearfix'>
+              <div class='col-xs-4'>Proposed Capital Budget(million)</div>
+              <div class='col-xs-4'>
+               <input type="text" name="capital_budget" class='form-control' value='{{$review_plan->proposed_capital_budget}}'>
+              </div>
+              <div class='col-xs-4'>
+               <input type="text" name="approved_capital_budget" class='form-control' value='{{$review_plan->proposed_capital_budget}}'> 
+              </div>
+            </div>
+             <br>
+             <div class='row clearfix'>
+              <div class='col-xs-4'>Proposed Recurring Budget(million)</div>
+              <div class='col-xs-4'>
+               <input type="text" name="recurring_budget" class='form-control' value='{{$review_plan->proposed_recurring_budget}}'>
+              </div>
+              <div class='col-xs-4'>
+               <input type="text" name="approved_recurring_budget" class='form-control' value='{{$review_plan->proposed_recurring_budget}}'>
+              </div>
+            </div>
+             <br>
+            <div class='row clearfix'>
+              <div class='col-xs-4'>Collaborating Agencies</div>
+              <div class='col-xs-4'>
+               <input type="text" name="collaborating_agency" class='form-control' value='{{$review_plan->collaborating_agency}}'>
+              </div>
+              <div class='col-xs-4'>
+               <input type="text" name="approved_collaborating_agency" class='form-control' value='{{$review_plan->collaborating_agency}}' >
+              </div>
+            </div>
+            <br>         
+              <button type='submit' class='btn btn-info col-xs-offset-10' name='update1' value='form1'>Update</button>
+              <a href="{{route('review_plan.index')}}" class='btn btn-warning pull-right'> Cancel</a>
+            </form>
+            </div>
             </div>
           </div>
         </div>

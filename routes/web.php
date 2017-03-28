@@ -147,11 +147,17 @@ Route::get('sport_organization_activities/{id}',[
 
 //Routes for the Review Activities
 Route::resource('review_plan','ReviewPlanController');
+Route::get('review_plan/{id}/create',['as'=>'review_plan.create','uses'=>'ReviewPlanController@create']);
+Route::post('review_plan/{id}/approved_activity',['as'=>'approved_activities','uses'=>'ReviewPlanController@approved_activities']);
+
+
 //Route for Update Achievements 
 Route::get('review_activities_achievemenents_update',[
 		'uses'=>'ReviewPlanController@getAchievement_update',
 		'as'=>'achievement_update'
 	]);
+
+
 //routes for althlete information
 Route::get('athlete_info',['as'=>'athlete_info.create','uses'=>'AthleteInformationController@create']);
 Route::post('athlete_info',['as'=>'athlete_info.store','uses'=>'AthleteInformationController@store']);
