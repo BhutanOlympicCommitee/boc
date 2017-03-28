@@ -134,7 +134,7 @@
                   </div>
                 </div> 
               </form>
-              <input type="hidden" name="hidden_view" id='hidden_view' value='{{route('view_dungkhag')}}'>
+              <input type="hidden" name="hidden_view" id='hidden_view' value='{{route('view_athlete_address')}}'>
             </div>
           </div>
         </div>
@@ -182,11 +182,12 @@
         type:"GET", 
         data: {"id":dzongkhag_id}, 
         success: function(result){
-          $('#Cdungkhag').empty();
-          $.each(result,function(key,val)
-          {
-            $('#Cdungkhag').append('<option value="'+val.dungkhag_id+'">'+val.dungkhag_name+'</option>');
-          });
+          console.log(result);
+          // $('#Cdungkhag').empty();
+          // $.each(result,function(key,val)
+          // {
+          //   $('#Cdungkhag').append('<option value="'+val.dungkhag_id+'">'+val.dungkhag_name+'</option>');
+          // });
         }
       });
   });

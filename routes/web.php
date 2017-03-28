@@ -69,7 +69,7 @@ Route::post('dzongkhag/update', 'DzongkhagController@update')->name('update_dzon
 Route::get('dungkhag',['as'=>'dungkhag_master.index','uses'=>'DungkhagController@index']);
 Route::post('dungkhag/store',['as'=>'dungkhag_master.store','uses'=>'DungkhagController@store']);
 Route::delete('dungkhag/destroy/{id}',['as'=>'dungkhag_master.destroy','uses'=>'DungkhagController@destroy']);
-Route::get('dungkhag/view', 'DungkhagController@view')->name('view_dungkhag');
+Route::get('dungkhag/view', 'DungkhagController@show')->name('view_dungkhag');
 Route::post('dungkhag/update', 'DungkhagController@update')->name('update_dungkhag');
 
 //routes for sport organization
@@ -166,7 +166,7 @@ Route::post('athlete_info',['as'=>'athlete_info.store','uses'=>'AthleteInformati
 Route::resource('athlete_address','AthleteAddressController');
 Route::get('athlete_address',['as'=>'athlete_address.create','uses'=>'AthleteAddressController@create']);
 Route::post('athlete_address',['as'=>'athlete_address.store','uses'=>'AthleteAddressController@store']);
-Route::get('athlete_address/view', 'AthleteAddressController@view')->name('view_dungkhag');
+Route::get('athlete_address/view', 'AthleteAddressController@view')->name('view_athlete_address');
 
 //route for athlete address
 Route::get('athlete',['as'=>'athlete_qualification.index','uses'=>'AthleteQualificationController@index']);
