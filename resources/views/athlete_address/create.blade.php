@@ -132,9 +132,10 @@
                       <input type="submit" class="btn btn-default col-xs-2 col-xs-offset-7" value="Save">
                       <a href="{{route('athlete_address.create')}}" class='btn btn-default col-xs-2 col-xs-offset-1'>Cancel</a>
                   </div>
-                </div> 
+                </div>
+                <input type="hidden" name="hidden_view" id='hidden_view' value='{{route('view_athlete_address')}}'> 
               </form>
-              <input type="hidden" name="hidden_view" id='hidden_view' value='{{route('view_athlete_address')}}'>
+              
             </div>
           </div>
         </div>
@@ -160,18 +161,19 @@
   {
     var dzong_id=$(this).val();
     var view_url = $("#hidden_view").val();
-      $.ajax({
-        url: view_url,
-        type:"GET", 
-        data: {"id":dzong_id}, 
-        success: function(result){
-          $('#dungkhag').empty();
-          $.each(result,function(key,val)
-          {
-            $('#dungkhag').append('<option value="'+val.dungkhag_id+'">'+val.dungkhag_name+'</option>');
-          });
-        }
+    $.ajax({
+      url: view_url,
+      type:"GET", 
+      data: {"id":dzong_id}, 
+      success: function(result){
+      //console.log(result);
+      $('#dungkhag').empty();
+       $.each(result,function(key,val)
+      {
+        $('#dungkhag').append('<option value="'+val.dungkhag_id+'">'+val.dungkhag_name+'</option>');
       });
+      }
+    });
   });
   $('#type').change(function()
   {
@@ -182,12 +184,12 @@
         type:"GET", 
         data: {"id":dzongkhag_id}, 
         success: function(result){
-          console.log(result);
-          // $('#Cdungkhag').empty();
-          // $.each(result,function(key,val)
-          // {
-          //   $('#Cdungkhag').append('<option value="'+val.dungkhag_id+'">'+val.dungkhag_name+'</option>');
-          // });
+          //console.log(result);
+          $('#Cdungkhag').empty();
+          $.each(result,function(key,val)
+          {
+            $('#Cdungkhag').append('<option value="'+val.dungkhag_id+'">'+val.dungkhag_name+'</option>');
+          });
         }
       });
   });

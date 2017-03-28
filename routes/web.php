@@ -163,8 +163,9 @@ Route::get('athlete_info',['as'=>'athlete_info.create','uses'=>'AthleteInformati
 Route::post('athlete_info',['as'=>'athlete_info.store','uses'=>'AthleteInformationController@store']);
 
 //route for athlete address
-Route::resource('athlete_address','AthleteAddressController');
-Route::get('athlete_address',['as'=>'athlete_address.create','uses'=>'AthleteAddressController@create']);
+//Route::resource('athlete_address','AthleteAddressController');
+Route::get('athlete_address','AthleteAddressController@create')->name('athlete_address.create');
+// Route::get('athlete_address',['as'=>'athlete_address.create','uses'=>'AthleteAddressController@create']);
 Route::post('athlete_address',['as'=>'athlete_address.store','uses'=>'AthleteAddressController@store']);
 Route::get('athlete_address/view', 'AthleteAddressController@view')->name('view_athlete_address');
 

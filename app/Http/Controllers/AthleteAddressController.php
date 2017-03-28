@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Athlete_address;
-use APP\Dungkhag;
+use App\Dungkhag;
 use Auth;
 use Session;
 
@@ -60,7 +60,6 @@ class AthleteAddressController extends Controller
         if($request->ajax()){
             $id = $request->id;
             $info = Dungkhag::where('dzongkhag_id', $id)->get();
-            //var_dump($info);
             return response()->json($info);
         }
     }
