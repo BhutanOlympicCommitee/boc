@@ -147,7 +147,7 @@ Route::get('sport_organization_activities/{id}',[
 
 //Routes for the Review Activities
 Route::resource('review_plan','ReviewPlanController');
-Route::get('review_plan/{id}/create',['as'=>'review_plan.create','uses'=>'ReviewPlanController@create']);
+Route::get('review_plan/{id}/review',['as'=>'review_plan.review','uses'=>'ReviewPlanController@review']);
 Route::post('review_plan/{id}/approved_activity',['as'=>'approved_activities','uses'=>'ReviewPlanController@approved_activities']);
 
 

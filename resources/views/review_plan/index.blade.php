@@ -52,8 +52,7 @@
                     <?php 
                     for($i = 1950 ; $i <= date('Y'); $i++)
                     {
-                      $y = $i + 1;
-                      echo "<option value=$i >$i-$y</option>";
+                      echo "<option value=$i >$i</option>";
                     }
                     ?>
                     </select>
@@ -143,7 +142,7 @@
                           <td>{{$review->proposed_capital_budget}}</td>
                           <td>{{$review->collaborating_agency}}</td>
                           <td>
-                            <a href="{{route('review_plan.create',$review->activity_id)}}" class="btn btn-primary">Review</a>
+                            <a href="{{route('review_plan.review',$review->activity_id)}}" class="btn btn-primary">Review</a>
                           </td>
                       </tr>
                     @endif
