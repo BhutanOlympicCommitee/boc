@@ -22,8 +22,8 @@ class CreateAthleteBioinformationsTable extends Migration
             $table->date('athlete_dob');
             $table->string('athlete_pob',200);
             $table->string('athlete_gender');
-            $table->decimal('athlete_height',5,3);
-            $table->decimal('athlete_weight',5,3);
+            $table->decimal('athlete_height',10,3);
+            $table->decimal('athlete_weight',10,3);
             $table->string('athlete_fathername',400);
             $table->string('athlete_passportNo',300);
             $table->integer('athlete_cid');

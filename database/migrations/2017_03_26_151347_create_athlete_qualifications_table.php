@@ -15,6 +15,8 @@ class CreateAthleteQualificationsTable extends Migration
     {
         Schema::create('athlete_qualifications', function (Blueprint $table) {
             $table->increments('qualification_id');
+            $table->integer('athlete_id');
+            $table->integer('address_id');
             $table->string('qualification_level',200);
             $table->string('qualification_description',1500);
             $table->date('qualification_year');
