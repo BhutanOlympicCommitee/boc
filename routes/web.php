@@ -195,3 +195,6 @@ Route::get('training',['as'=>'training.index','uses'=>'TrainingInformationContro
 Route::get('training/create',['as'=>'training.create','uses'=>'TrainingInformationController@create']);
 Route::get('training/attendance',['as'=>'training.attendance','uses'=>'TrainingInformationController@trainingAttendanceIndex']);
 Route::post('training/store',['as'=>'training.store','uses'=>'TrainingInformationController@store']);
+Route::get('training/view', 'TrainingInformationController@view')->name('show_athlete_info');
+Route::get('training/view1', 'TrainingInformationController@show')->name('show_athlete_address');
+Route::get('training/view2', 'TrainingInformationController@showAssociatedSport')->name('show_associated_sport');

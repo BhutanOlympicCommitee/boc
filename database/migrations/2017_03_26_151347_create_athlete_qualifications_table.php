@@ -19,8 +19,8 @@ class CreateAthleteQualificationsTable extends Migration
             $table->integer('address_id');
             $table->string('qualification_level',200);
             $table->string('qualification_description',1500);
-            $table->date('qualification_year');
-            $table->string('country',250);
+            $table->integer('qualification_year');
+            $table->integer('country_id');
             $table->string('qualification_institute',500);
             $table->integer('created_by');
             $table->timestamps();
