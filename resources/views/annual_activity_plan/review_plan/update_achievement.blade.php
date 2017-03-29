@@ -131,14 +131,13 @@
                 </option>
                 <?php 
                 for($i = 1950 ; $i <= date('Y'); $i++){
-                  $y = $i + 1;
-                  echo "<option value='<?php echo $i; ?>'>$i-$y</option>";
+                  echo "<option value= $i>$i</option>";
                 }
                 ?>
               </select> 
             </div>    
             <div class="form-group">
-              <label for="year">SKRA</label> 
+              <label for="year">AKRA</label> 
               <select name="year" class="form-control">
                 <option value="0">
                   Select the SKRA
@@ -152,10 +151,10 @@
               </select> 
             </div>
             <div class="form-group">
-              <label for="year">SKRA Activities</label> 
+              <label for="year">AKRA Activities</label> 
               <select name="year" class="form-control">
                 <option value="0">
-                  Select the SKRA Activities
+                  Select the AKRA Activities
                 </option>
                 <?php 
                 $skra_activities = App\Tbl_SKRA_activities::all();

@@ -28,7 +28,7 @@
               <li id='attendance'><a href="#" data-toggle="tab">Training Attendance</a></li>
             </ul>
               <div style='margin-top: 20px'></div>
-              <form action="{{route('sport_organization.store')}}" method="post">
+              <form action="{{--route('sport_organization.store')--}}" method="post">
                 {{csrf_field()}}
                   <div class='form-group'>
                     <label for='ath_id' class='col-xs-2'>AthleteID </label>
@@ -70,22 +70,25 @@
                 </thead>
                 <tbody>
                  <?php $id=1?>
+                 @foreach($athlete_info as $athlete)
                   <tr>
                     <td>{{$id++}}</td>
-                    <td>Football</td>
-                    <td>123</td>
-                    <td>Pema</td>
-                    <td>10601002699</td>
-                    <td>12/3/1995</td>
+                    <td>{{$athlete->displayAsport->sport_name}}</td>
+                    <td>{{$athlete->athlete_id}}</td>
+                    <td>{{$athlete->athlete_fname.' '.$athlete->athlete_lname}}</td>
+                    <td>{{$athlete->athlete_cid}}</td>
+                    <td>{{$athlete->athlete_dob}}</td>
                     <td>
                         <form class="form-group" action="" method='post'>
                             <input type="hidden" name="_method" value="delete">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <a href="{{--route('training.show')--}}" data-toggle='modal' data-target='#viewDetails' class="btn btn-info" id='details'>Details</a>
+                            <a href="{{--route('training.show')--}}" data-toggle='modal' data-target='#viewDetails' class="btn btn-info" onclick='view_details({{$athlete->athlete_id}})'>Details</a>
                             <a href="{{--route('training.showschedule')--}}" class="btn btn-primary" data-toggle='modal' data-target='#viewTrainingSchedule'>Training Schedule</a>
                         </form>
+                        <input type="hidden" name="hidden_id" id='hidden_id' value='{{$athlete->athlete_id}}'>
                     </td>
                   </tr>
+                  @endforeach
               </tbody>
               </table>
             </div>
@@ -95,6 +98,10 @@
     </div>
   </div>
 </div>
+<input type="hidden" name="view_details" id='view_details' value='{{route('show_athlete_info')}}'>
+<input type="hidden" name="view_address" id='view_address' value='{{route('show_athlete_address')}}'>
+<input type="hidden" name="view_associated_sport" id='view_associated_sport' value='{{route('show_associated_sport')}}'>
+
 <!-- view details modal begins-->
 <div class="modal fade" id="viewDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
@@ -105,28 +112,46 @@
       </div>
       <div class="modal-body">
 
-                <div class='col-md-6'>
-                <strong>Title:</strong><br>
-                <strong>First Name:</strong><br>
-                <strong>Last Name:</strong><br>
-                <strong>Occupation:</strong><br>
-                <strong>Date of Birth:</strong><br>
-                <strong>Place of Birth:</strong><br>
-                <strong>Gender:</strong><br>
-                <strong>Height:</strong><br>
-                <strong>Weight:</strong><br>
-                <strong>Father's Name:</strong><br>
-                <strong>Phone No.:</strong><br>
-                <strong>Mobile No:</strong><br>
-                <strong>Email:</strong><br>
-                <strong>Passport No.:</strong><br>
-                <strong>CID:</strong><br>
-                <strong>Associated Sport:</strong>
-              </div>
-              <div class='col-md-6'>
-                <strong>Photo:</strong>
-              </div>
-              <div class='clearfix'></div>
+        <div class='col-md-6'>
+        <label>Title:</label>
+        <input type="text" name="title" id='title' style='border-style:none'>
+        <br>
+        <label>First Name:</label>
+         <input type="text" name="fname" id='fname' style='border-style:none'><br>
+        <label>Last Name:</label>
+        <input type="text" name="lname" id='lname' style='border-style:none'><br>
+        <label>Occupation:</label>
+        <input type="text" name="occupation" id='occupation' style='border-style:none'><br>
+        <label>Date of Birth:</label>
+        <input type="text" name="birth_date" id='birth_date' style='border-style:none'><br>
+        <label>Place of Birth:</label>
+        <input type="text" name="birth_place" id='birth_place' style='border-style:none'><br>
+        <label>Gender:</label>
+        <input type="text" name="gender" id='gender' style='border-style:none'><br>
+        <label>Height:</label>
+        <input type="text" name="height" id='height' style='border-style:none'><br>
+        <label>Weight:</label>
+        <input type="text" name="weight" id='weight' style='border-style:none'><br>
+        <label>Father's Name:</label>
+        <input type="text" name="father_name" id='father_name' style='border-style:none'><br>
+        <label>Phone No.:</label>
+        <input type="text" name="phone_no" id='phone_no' style='border-style:none'><br>
+        <label>Mobile No:</label>
+        <input type="text" name="mobile_no" id='mobile_no' style='border-style:none'><br>
+        <label>Email:</label>
+        <input type="text" name="email" id='email' style='border-style:none'><br>
+        <label>Passport No.:</label>
+        <input type="text" name="passport" id='passport' style='border-style:none'><br>
+        <label>CID:</label>
+        <input type="text" name="cid" id='cid' style='border-style:none'><br>
+        <label>Associated Sport:</label>
+        <input type="text" name="associated_sport" id='associated_sport' style='border-style:none'>
+      </div>
+      <div class='col-md-6'>
+        <label>Photo:</label>
+        <input type="text" name="photo" id='photo'>
+      </div>
+      <div class='clearfix'></div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
@@ -195,6 +220,56 @@
       window.location="{{url(route('training.attendance'))}}";
     });
   });
+  function view_details(id)
+  {
+    var view_url=$('#view_details').val();
+    var view_address=$('#view_address').val();
+    var view_sport=$('#view_associated_sport').val();
+    $.ajax({
+        url: view_url,
+        type:"GET", 
+        data: {"id":id}, 
+        success: function(result){
+          console.log(result);
+          $("#title").val(result.athlete_title);
+          $("#fname").val(result.athlete_fname);
+          $("#lname").val(result.athlete_lname);
+          $("#occupation").val(result.athlete_occupation);
+          $("#birth_date").val(result.athlete_dob);
+          $("#birth_place").val(result.athlete_pob);
+          $("#gender").val(result.athlete_gender);
+          $("#height").val(result.athlete_height);
+          $("#weight").val(result.athlete_weight);
+          $("#father_name").val(result.athlete_fathername);
+          $("#passport").val(result.athlete_passportNo);
+          $("#cid").val(result.athlete_cid);
+          $('#photo').val(result.athlete_photo);
+          var sport_id=result.athlete_associatedSport;
+           $.ajax({
+            url: view_sport,
+            type:"GET", 
+            data: {"id":sport_id}, 
+            success: function(result){
+              //console.log(result);
+              $("#associated_sport").val(result.sport_name);
+            }
+          });
+         
+        }
+      });
+
+     $.ajax({
+        url: view_address,
+        type:"GET", 
+        data: {"id":id}, 
+        success: function(result){
+          //console.log(result);
+          $("#phone_no").val(result.Caddress_phone);
+          $("#mobile_no").val(result.Caddress_mobile);
+          $("#email").val(result.Caddress_email);
+        }
+      });
+  }
 </script>
 @endsection
 @section('footer')
