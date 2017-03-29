@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\ Tbl_sport_org_activities;
 use App\Tbl_sport_org_activities_approved;
 use Auth;
+use Session;
 /**
      * Store a newly created resource in storage.
      *
@@ -15,18 +16,20 @@ class ReviewPlanController extends Controller
 {
     public function index()
     {
-        $review_plan= Tbl_sport_org_activities::all();
+       $review_plan= Tbl_sport_org_activities::all();
        return view('review_plan.index',compact('review_plan'));
     }
 
-    public function create($id)
+    public function review($id)
     {
         $review_plan=Tbl_sport_org_activities::find($id);
-        return view('review_plan.create',compact('review_plan'));
+        return view('review_plan.review',compact('review_plan'));
     }
 
     public function getAchievement_update(){
-        return view('annual_activity_plan.review_plan.update_achievement');
+        $approved_activity=Tbl_sport_org_activities_approved::all();
+        $proposed_activity=Tbl_sport_org_activities::all();
+        return view('annual_activity_plan.review_plan.update_achievement',['approved_activity'=>$approved_activity]);
     }
     
     public function approved_activities(Request $request,$id)

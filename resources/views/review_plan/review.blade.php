@@ -34,18 +34,30 @@
               <div class='col-xs-4'>Year</div>
               <div class='col-xs-4'>
                 <select class="form-control" name='year'>
-                  <option value='{{$review_plan->year_id}}'>{{$review_plan->year_id}}</option>
+                  @for($i = 1950 ; $i <= date('Y'); $i++)
+                    <option value={{$i}} <?php 
+                      if($i == $review_plan->year_id){?>
+                        selected
+                      <?php }?> >{{$i}}  
+                    </option>
+                  @endfor
                 </select>
               </div>
               <div class='col-xs-4'>
                 <select class="form-control" name='approved_year'>
-                  <option value='{{$review_plan->year_id}}'>{{$review_plan->year_id}}</option>
+                   @for($i = 1950 ; $i <= date('Y'); $i++)
+                    <option value={{$i}} <?php 
+                      if($i == $review_plan->year_id){?>
+                        selected
+                      <?php }?> >{{$i}}  
+                    </option>
+                  @endfor
                 </select>
               </div>
             </div>
             <br>
             <div class='row clearfix'>
-              <div class='col-xs-4'>SKRA</div>
+              <div class='col-xs-4'>AKRA</div>
               <div class='col-xs-4'>
                 <select class="form-control" name='skra'>
                   <option value='{{$review_plan->skra_id}}'>{{$review_plan->skra->SKRA_name}}</option>
@@ -59,7 +71,7 @@
             </div>
              <br>
             <div class='row clearfix'>
-              <div class='col-xs-4'>SKRA activities/NSF outputs</div>
+              <div class='col-xs-4'>AKRA activities/NSF outputs</div>
               <div class='col-xs-4'>
                 <select class="form-control">
                   <option value='{{$review_plan->skra_id}}'>{{$review_plan->skraActivity->SKRA_activity}}</option>
