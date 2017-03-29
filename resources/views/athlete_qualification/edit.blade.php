@@ -23,8 +23,8 @@
             </div>
             <div class="bootstrap-admin-panel-content">
             <ul class='nav nav-pills nav-justified'>
-              <li id='bio'><a href="#athlete_info" data-toggle="tab">Bio Information</a></li>
-              <li id='address'><a href="#athlete_address" data-toggle="tab"> Address Information</a></li>
+              <li id="bio"><a href="#athlete_info" data-toggle="tab">Bio Information</a></li>
+              <li id="address"><a href="#athlete_address" data-toggle="tab"> Address Information</a></li>
               <li class="active" id='qualification'><a href="#" data-toggle="tab">Qualification and Training Information</a></li>
             </ul>
             <div style='margin-top:20px'></div>
@@ -117,6 +117,7 @@
     </div>
   </div>
 </div>
+ 
 @endsection
 @section('footer')
 <div class="container">
