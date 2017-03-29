@@ -15,6 +15,7 @@ class CreateAthleteAddressesTable extends Migration
     {
         Schema::create('athlete_addresses', function (Blueprint $table) {
             $table->increments('address_id');
+            $table->integer('athlete_id');
             $table->string('Paddress_dzongkhag',200);
             $table->string('Paddress_dungkhag',200);
             $table->string('Paddress_gewog',200);
