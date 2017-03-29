@@ -34,12 +34,13 @@ class AthleteAddressController extends Controller
     public function store(Request $request)
     {
         $athlete= new Athlete_address;
+        $athlete->athlete_id=Session::get('key');
         $athlete->dzongkhag_id=$request->type1;
         $athlete->dungkhag_id=$request->dungkhag;
         $athlete->Paddress_gewog=$request->gewog;
         $athlete->Paddress_village=$request->village;
-        $athlete->dzongkhag_id=$request->type;
-        $athlete->dungkhag_id=$request->Cdungkhag;
+        $athlete->Cdzongkhag_id=$request->type;
+        $athlete->Cdungkhag_id=$request->Cdungkhag;
         $athlete->Caddress_email=$request->email;
         $athlete->Caddress_phone=$request->phone;
         $athlete->Caddress_mobile=$request->mobile;
@@ -47,7 +48,7 @@ class AthleteAddressController extends Controller
         $athlete->created_by=Auth::user()->id;
         $athlete->save();
         Session::flash('success', 'AthleteInfos has been created successfully');
-       return redirect()->route('athlete_qualification.create');
+        return redirect()->route('athlete_qualification.create');
     }
     /**
      * Display the specified resource.
@@ -72,9 +73,13 @@ class AthleteAddressController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+        $athletes= new Athlete_address;
+         $athletes = Athlete_address::findOrFail($id);
+        Session::put('key2',$athletes->address_id);
 
+        // return to the edit views
+        return view('athlete_address.edit',compact('athletes'));
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -84,7 +89,26 @@ class AthleteAddressController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $athletes = Athlete_address::findOrFail($id);
+        $athletes->dzongkhag_id=$request->type1;
+        $athletes->dungkhag_id=$request->dungkhag;
+        $athletes->Paddress_gewog=$request->gewog;
+        $athletes->Paddress_village=$request->village;
+        $athletes->dzongkhag_id=$request->type;
+        $athletes->dungkhag_id=$request->Cdungkhag;
+        $athletes->Caddress_email=$request->email;
+        $athletes->Caddress_phone=$request->phone;
+        $athletes->Caddress_mobile=$request->mobile;
+        $athletes->Caddress_contactAddress=$request->caddress;
+        $athletes->save();
+        if($request->update1=='form1')
+        {
+           return redirect()->route('athlete_qualification.index')->with('alert-success','Data Has been Updated!');    
+        }
+       else
+        {
+            return redirect()->route('athlete_qualification.edit')->with('alert-success','Data Has been not Updated!');  
+        }    
     }
 
     /**

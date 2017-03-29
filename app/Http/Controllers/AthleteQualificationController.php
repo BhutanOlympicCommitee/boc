@@ -34,6 +34,8 @@ class AthleteQualificationController extends Controller
     public function store(Request $request)
     {
         $athlete= new Athlete_qualification;
+        $athlete->athlete_id=Session::get('key');
+        $athlete->address_id=Session::get('key');
         $athlete->qualification_level=$request->level;
         $athlete->qualification_description=$request->description;
         $athlete->qualification_year=$request->year;

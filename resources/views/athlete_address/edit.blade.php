@@ -18,13 +18,13 @@
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <div class="text-muted bootstrap-admin-box-title clearfix">Add athlete Address Information
+              <div class="text-muted bootstrap-admin-box-title clearfix">Edit athlete Qualification and Training Information
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
             <ul class='nav nav-pills nav-justified'>
-              <li id='training'><a href="#address_bio" data-toggle="tab">Bio Information</a></li>
-              <li class="active" id='address'><a href="#Address_info" data-toggle="tab"> Address Information</a></li>
+              <li id='bio'><a href="#athlete_info" data-toggle="tab">Bio Information</a></li>
+              <li class="active" id='address'><a href="#athlete_address" data-toggle="tab"> Address Information</a></li>
               <li id='qualification'><a href="#" data-toggle="tab">Qualification and Training Information</a></li>
             </ul>
             <div style='margin-top:20px'></div>
@@ -40,7 +40,7 @@
                       {{ Session::get('success') }}
                     </div>
                 @endif
-              <form action="{{route('athlete_address.store')}}" method="post">
+               <form action="{{route('athlete_address.update',$athletes->address_id)}}" method="post">
                 {{csrf_field()}}
                 <div>Permanent Address</div>
                 <div class='form-group'>
@@ -70,13 +70,13 @@
                 <div class='form-group'>
                   <label for='gewog' class='col-xs-2'>Gewog</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="gewog" class="form-control" placeholder="Enter Gewog here" required>
+                      <input type="text" name="gewog" class="form-control" placeholder="Enter Gewog here" value="{{$athletes->Paddress_gewog}}" required>
                     </div>
                 </div>
                 <div class='form-group'>
                   <label for='village' class='col-xs-2'>Village</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="village" class="form-control" placeholder="Enter Village Name here" required>
+                      <input type="text" name="village" class="form-control" placeholder="Enter Village Name here" value="{{$athletes->Paddress_village}}" required>
                     </div>
                 </div>
                 <div>Current Address</div>
@@ -108,23 +108,23 @@
                  <div class='form-group'>
                   <label for='email' class='col-xs-2'>Email</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="email" class="form-control" placeholder="Enter email address here">
+                      <input type="text" name="email" class="form-control" placeholder="Enter email address here" value="{{$athletes->Caddress_email}}">
                     </div>
                 </div>
                 <div class='form-group'>
                   <label for='phone' class='col-xs-2'>Phone</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number here">
+                      <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number here" value="{{$athletes->Caddress_phone}}">
                     </div>
                 </div><div class='form-group'>
                   <label for='mobile' class='col-xs-2'>Mobile</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="mobile" class="form-control" placeholder="Enter Mobile Number here" required>
+                      <input type="text" name="mobile" class="form-control" placeholder="Enter Mobile Number here" value="{{$athletes->Caddress_mobile}}" required>
                     </div>
                 </div><div class='form-group'>
                   <label for='caddress' class='col-xs-2'>Contact Address</label>
                     <div class='col-xs-10 input-group'>
-                      <textarea type='text' name="caddress" class="form-control" rows=4 placeholder="Enter Contact Address here"></textarea>             
+                      <textarea type='text' name="caddress" class="form-control" rows=4 placeholder="Enter Contact Address here">{{$athletes->Caddress_caddress}}</textarea>             
                     </div>
                     </div>
                 <div class="form-group">
@@ -143,7 +143,6 @@
     </div>
   </div>
 </div>
-<?php echo Session::get('key');?>
 <script type="text/javascript">
   $(function()
   {
