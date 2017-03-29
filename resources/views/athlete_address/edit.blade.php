@@ -70,7 +70,9 @@
                 <div class='form-group'>
                   <label for='gewog' class='col-xs-2'>Gewog</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="gewog" class="form-control" placeholder="Enter Gewog here" value="{{$athletes->Paddress_gewog}}" required>
+                       <select class='form-control' name='gewog' id='gewog'>
+                         <option value=""></option>
+                      </select>
                     </div>
                 </div>
                 <div class='form-group'>

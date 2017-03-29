@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\MstDzongkhag;
 use App\Mst_country;
+use App\Gewog;
 
 class HomeController extends Controller
 {
@@ -33,7 +34,8 @@ class HomeController extends Controller
         $countries = Mst_country::all();
         $dzongkhag = MstDzongkhag::all();
         $users = User::all();
-        return view('admin.dashboard',['countries'=>$countries,'dzongkhags'=>$dzongkhag,'users'=>$users]);
+        $gewogs = Gewog::all();
+        return view('admin.dashboard',['countries'=>$countries,'dzongkhags'=>$dzongkhag,'users'=>$users,'gewogs'=>$gewogs]);
     }
     public function boc(){
         return view('home');
