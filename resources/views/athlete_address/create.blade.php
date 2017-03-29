@@ -147,7 +147,6 @@
     </div>
   </div>
 </div>
-<?php echo Session::get('key');?>
 <script type="text/javascript">
   $(function()
   {
@@ -190,7 +189,6 @@
       type:"GET", 
       data: {"id":gewg_id}, 
       success: function(result){
-      //console.log(result);
       $('#gewog').empty();
        $.each(result,function(key,val)
       {
@@ -208,7 +206,6 @@
         type:"GET", 
         data: {"id":dzongkhag_id}, 
         success: function(result){
-          //console.log(result);
           $('#Cdungkhag').empty();
           $.each(result,function(key,val)
           {

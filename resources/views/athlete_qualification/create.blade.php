@@ -114,7 +114,7 @@
     </div>
   </div>
 </div>
-<?php echo Session::get('key');?>
+
 <script type="text/javascript">
   $(function()
   {
