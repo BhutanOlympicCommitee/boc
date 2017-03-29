@@ -35,12 +35,12 @@ class AthleteAddressController extends Controller
     {
         $athlete= new Athlete_address;
         $athlete->athlete_id=Session::get('key');
-        $athlete->dzongkhag_id=$request->type1;
-        $athlete->dungkhag_id=$request->dungkhag;
+        $athlete->Paddress_dzongkhag=$request->type1;
+        $athlete->Paddress_dungkhag=$request->dungkhag;
         $athlete->Paddress_gewog=$request->gewog;
         $athlete->Paddress_village=$request->village;
-        $athlete->Cdzongkhag_id=$request->type;
-        $athlete->Cdungkhag_id=$request->Cdungkhag;
+        $athlete->Caddress_dzongkhag=$request->type;
+        $athlete->Caddress_dungkhag=$request->Cdungkhag;
         $athlete->Caddress_email=$request->email;
         $athlete->Caddress_phone=$request->phone;
         $athlete->Caddress_mobile=$request->mobile;
