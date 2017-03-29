@@ -74,7 +74,7 @@
                                 <form class="form-group" action="{{route('skra_activities.destroy',$skra_activity->skra_activity_id)}}" method='post'>
                                   <input type="hidden" name="_method" value="delete">
                                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                  <a href="{{route('skra_activities.edit',$skra_activity->skra_activity_id)}}" class="btn btn-primary">Edit</a>
+                                  <a href="{{route('skra_activities.edit',$skra_activity->skra_activity_id)}}" class="btn btn-info">Edit</a>
                                   <input type="submit" class="btn btn-warning" onclick="return confirm('Are you sure to delete this data');" name='name' value='Remove'>
                                 </form>
                             </td>
@@ -97,6 +97,7 @@
     </div>
   </div>
 </div>
+
 <script type="text/javascript">
 $(function(){
     $('#table1').DataTable();

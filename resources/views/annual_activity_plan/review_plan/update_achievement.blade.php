@@ -32,7 +32,7 @@
                     <?php 
                     for($i = 1950 ; $i <= date('Y'); $i++){
                       $y = $i + 1;
-                      echo "<option value='<?php echo $i; ?>'>$i-$y</option>";
+                      echo "<option value=$i ?>'>$i-$y</option>";
                     }
                     ?>
                   </select> 
@@ -84,20 +84,24 @@
               $i = 1;
 
               ?>
-              <td>{{$i}}</td>
-              <td>hg</td>
-              <td>hgf</td>
-              <td>fgh</td>
-              <td>fgh</td>
-              <td>fh</td>
-              <td>fh</td>
-              <td>fh</td>
-              <td>
-                <button type="button" class="edit_user btn btn-info" data-toggle="modal" data-target="#sport_activity">
-                  <span class="glyphicon glyphicon-erase"></span>
-                  Edit
-                </button>
-              </td>
+              @foreach($approved_activity as $approved)
+              <tr>
+                <td>{{$i++}}</td>
+                <td>{{$approved->approved_activity_name}}</td>
+                <td>{{$approved->approved_activity_timeline}}</td>
+                <td>{{$approved->approved_activity_venue}}</td>
+                <td>{{$approved->proposedActivity->proposed_capital_budget}}</td>
+                <td>{{$approved->proposedActivity->proposed_recurring_budget}}</td>
+                <td>{{$approved->approved_capital_budget}}</td>
+                <td>{{$approved->approved_recurring_budget}}</td>
+                <td>
+                  <button type="button" class="edit_user btn btn-info" data-toggle="modal" data-target="#sport_activity">
+                    <span class="glyphicon glyphicon-erase"></span>
+                    Edit
+                  </button>
+                </td>
+              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>

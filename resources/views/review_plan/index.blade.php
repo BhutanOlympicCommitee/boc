@@ -24,30 +24,12 @@
             <div class="bootstrap-admin-panel-content">
               <form action="{{action('ReviewPlanController@index')}}" method='get' id='view'>
                 {{csrf_field()}}
-                  <label for='type' class='col-xs-2'>Year:</label>
-                    <div class='col-xs-10 input-group'>
-                      <select class='form-control' name='type' id='type'>
-                        <option>2017</option>
-                      </select>
-                     
-                    </div>
-                     <label for='type' class='col-xs-2'>SKRA:</label>
-                    <div class='col-xs-10 input-group'>
-                      <select class='form-control' name='type' id='type'>
-                        <option>Promotion of Games</option>
-                      </select>
-                    
-                    </div>
-                     <label for='type' class='col-xs-2'>SKRA Activity:</label>
-                    <div class='col-xs-10 input-group'>
-                      <select class='form-control' name='type' id='type'>
-                        <option>Promotion of games</option>
-                      </select>
-                    </div>
-                     <div class='form-group'>
-                  <label for='type' class='col-xs-2'>Sport Organization:</label>
-                    <div class='col-xs-10 input-group'>
-                      <select class='form-control' name='type' id='type'>
+                <div class='form-group'>
+                  <label for='sport_org' class='col-xs-3
+                  '>Sport Organization:</label>
+                    <div class='col-xs-9 input-group'>
+                      <select class='form-control' name='sport_org' id='sport_org'>
+                        <option value="" disabled selected>Select sport organization</option>
                         <?php 
                           $sports=App\Sport_Organization::all();
                           foreach($sports as $sport):
@@ -56,15 +38,65 @@
                         <?php 
                           endforeach
                         ?>
-
                       </select>
-                      <div>
-                       <span class='input-group-btn'>
-                        <button class='btn btn-default' type='submit' name='submit' value='view'>Search</button>
-                     </span>
-                   </div>
-            </div>
+                  </div>
               </div>
+                <div class='form-group'>
+                 <label for='year' class='col-xs-3
+                 '>Year:</label>
+                  <div class='col-xs-9 input-group'>
+                    <select class='form-control' name='year' id='year'>
+                       <option value="0">
+                      Select the Year
+                    </option>
+                    <?php 
+                    for($i = 1950 ; $i <= date('Y'); $i++)
+                    {
+                      echo "<option value=$i >$i</option>";
+                    }
+                    ?>
+                    </select>
+                  </div>
+                </div>
+                <div class='form-group'>
+                  <label for='skra' class='col-xs-3'>AKRA:</label>
+                    <div class='col-xs-9 input-group'>
+                      <select class='form-control' name='skra' id='skra'>
+                        <option value="" disabled selected>Select sport organization</option>
+                        <?php 
+                          $skras=App\Tbl_SKRA::all();
+                          foreach($skras as $skra):
+                        ?>
+                        <option value="{{$skra->skra_id}}">{{$skra->SKRA_name}}</option>
+                        <?php 
+                          endforeach
+                        ?>
+                      </select>
+                    </div>
+                </div>
+                <div class='form-group'>
+                  <label for='skra_activity' class='col-xs-3
+                  '>AKRA Activity:</label>
+                    <div class='col-xs-9 input-group'>
+                      <select class='form-control' name='skra_activity' id='skra_activity'>
+                        <option value="" disabled selected>Select AKRA activity</option>
+                        <?php 
+                          $skra_activities=App\Tbl_SKRA_activities::all();
+                          foreach($skra_activities as $skra_activity):
+                        ?>
+                        <option value="{{$skra_activity->skra_activity_id}}">{{$skra_activity->SKRA_activity}}</option>
+                        <?php 
+                          endforeach
+                        ?>
+                      </select>
+                    </div>
+                </div>
+              <div class='form-group'>
+                <span class='input-group-btn'>
+                  <button class='btn btn-default pull-right' type='submit' name='submit' value='view'>Search</button>
+                </span>
+              </div>
+
               </form>
               @if(isset($_GET['submit']))
                 <script type="text/javascript">
@@ -73,7 +105,12 @@
                     $('#view').hide();
                   });
                 </script>
-                <?php $sport->sport_org_id=$_GET['type'];?>
+                <?php 
+                    $sport_id=$_GET['sport_org'];
+                    $akra_id=$_GET['skra'];
+                    $year=$_GET['year'];  
+                    $akra_activity=$_GET['skra_activity'];
+                ?>
                 <table class="table table-bordered table-striped table-responsive" id="table1">
                     <thead>
                         <tr>
@@ -90,25 +127,26 @@
                         </tr>   
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                           <td>Train students in Archery</td>
-                            <td>50 students traning in fiscal</td>
-                            <td>Train 150 students in fiscal</td>
-                            <td>Monger</td>
-                            <td>April to December</td>
-                            <td>10</td>
-                            <td>20</td>
-                            <td>Department of Youth and Sports</td>
-                            <td>
-                                <form class="form-group" method='post'>
-            
-                                  <a href="{{route('review_plan.create')}}" class="btn btn-primary">Review</a>
-                                  
-                                </form>
-                            </td>
-                        </tr>
-                       
+                    <?php $id=1;
+                    ?>
+                    @foreach($review_plan as $review)
+                    @if($sport_id==$review->sport_org_id && $year==$review->year_id && $akra_id==$review->skra_id && $akra_activity==$review->skra_activity_id)
+                      <tr>
+                         <td>{{$id++}}</td>
+                         <td>{{$review->activity_name}}</td>
+                          <td>{{$review->activity_baseline}}</td>
+                          <td>{{$review->activity_target}}</td>
+                          <td>{{$review->activity_venue}}</td>
+                          <td>{{$review->activity_timeline}}</td>
+                          <td>{{$review->proposed_recurring_budget}}</td>
+                          <td>{{$review->proposed_capital_budget}}</td>
+                          <td>{{$review->collaborating_agency}}</td>
+                          <td>
+                            <a href="{{route('review_plan.review',$review->activity_id)}}" class="btn btn-primary">Review</a>
+                          </td>
+                      </tr>
+                    @endif
+                    @endforeach
                     </tbody>
                 </table>
                 </div>  
@@ -120,9 +158,6 @@
     </div>
   </div>
 <script type="text/javascript">
-$(function(){
-    $('#table1').DataTable();
-});
 </script>
 @endsection
 @section('footer')

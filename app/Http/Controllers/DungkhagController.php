@@ -55,7 +55,7 @@ class DungkhagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function view(Request $request)
+    public function show(Request $request)
     {
         if($request->ajax()){
             $id = $request->id;

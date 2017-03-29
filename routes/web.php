@@ -69,7 +69,7 @@ Route::post('dzongkhag/update', 'DzongkhagController@update')->name('update_dzon
 Route::get('dungkhag',['as'=>'dungkhag_master.index','uses'=>'DungkhagController@index']);
 Route::post('dungkhag/store',['as'=>'dungkhag_master.store','uses'=>'DungkhagController@store']);
 Route::delete('dungkhag/destroy/{id}',['as'=>'dungkhag_master.destroy','uses'=>'DungkhagController@destroy']);
-Route::get('dungkhag/view', 'DungkhagController@view')->name('view_dungkhag');
+Route::get('dungkhag/view', 'DungkhagController@show')->name('view_dungkhag');
 Route::post('dungkhag/update', 'DungkhagController@update')->name('update_dungkhag');
 
 //routes for sport organization
@@ -147,20 +147,27 @@ Route::get('sport_organization_activities/{id}',[
 
 //Routes for the Review Activities
 Route::resource('review_plan','ReviewPlanController');
+Route::get('review_plan/{id}/review',['as'=>'review_plan.review','uses'=>'ReviewPlanController@review']);
+Route::post('review_plan/{id}/approved_activity',['as'=>'approved_activities','uses'=>'ReviewPlanController@approved_activities']);
+
+
 //Route for Update Achievements 
 Route::get('review_activities_achievemenents_update',[
 		'uses'=>'ReviewPlanController@getAchievement_update',
 		'as'=>'achievement_update'
 	]);
+
+
 //routes for althlete information
 Route::get('athlete_info',['as'=>'athlete_info.create','uses'=>'AthleteInformationController@create']);
 Route::post('athlete_info',['as'=>'athlete_info.store','uses'=>'AthleteInformationController@store']);
 
 //route for athlete address
-Route::resource('athlete_address','AthleteAddressController');
-Route::get('athlete_address',['as'=>'athlete_address.create','uses'=>'AthleteAddressController@create']);
+//Route::resource('athlete_address','AthleteAddressController');
+Route::get('athlete_address','AthleteAddressController@create')->name('athlete_address.create');
+// Route::get('athlete_address',['as'=>'athlete_address.create','uses'=>'AthleteAddressController@create']);
 Route::post('athlete_address',['as'=>'athlete_address.store','uses'=>'AthleteAddressController@store']);
-Route::get('athlete_address/view', 'AthleteAddressController@view')->name('view_dungkhag');
+Route::get('athlete_address/view', 'AthleteAddressController@view')->name('view_athlete_address');
 
 //route for athlete address
 Route::get('athlete',['as'=>'athlete_qualification.index','uses'=>'AthleteQualificationController@index']);
