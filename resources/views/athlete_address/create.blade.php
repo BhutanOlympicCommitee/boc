@@ -67,10 +67,12 @@
                       </select>
                     </div>
                 </div>
-                <div class='form-group'>
+                 <div class='form-group'>
                   <label for='gewog' class='col-xs-2'>Gewog</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="gewog" class="form-control" placeholder="Enter Gewog here" required>
+                       <select class='form-control' name='gewog' id='gewog'>
+                         <option value=""></option>
+                      </select>
                     </div>
                 </div>
                 <div class='form-group'>
@@ -134,6 +136,8 @@
                   </div>
                 </div>
                 <input type="hidden" name="hidden_view" id='hidden_view' value='{{route('view_athlete_address')}}'> 
+                <input type="hidden" name="hidden_view1" id='hidden_view1' value='{{route('view1_athlete_address')}}'> 
+             
               </form>
               
             </div>
@@ -172,6 +176,25 @@
        $.each(result,function(key,val)
       {
         $('#dungkhag').append('<option value="'+val.dungkhag_id+'">'+val.dungkhag_name+'</option>');
+      });
+      }
+    });
+  });
+
+   $('#type1').change(function()
+  {
+    var gewg_id=$(this).val();
+    var view1_url = $("#hidden_view1").val();
+    $.ajax({
+      url: view1_url,
+      type:"GET", 
+      data: {"id":gewg_id}, 
+      success: function(result){
+      //console.log(result);
+      $('#gewog').empty();
+       $.each(result,function(key,val)
+      {
+        $('#gewog').append('<option value="'+val.gewog_id+'">'+val.gewog_name+'</option>');
       });
       }
     });

@@ -18,7 +18,7 @@
                 <div class="col-md-10 col-md-offset-1">
                 	<div class="panel panel-default">
                         <div class="panel-heading">
-	                        <div class="text-muted bootstrap-admin-box-title clearfix">Dungkhug Information
+	                        <div class="text-muted bootstrap-admin-box-title clearfix">Gewog Information
 	                         <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal">Add</a> 
 	                        </div>
 	                    </div>
@@ -33,26 +33,24 @@
         									<tr>
         										<th>Sl. No:</th>
         										<th>Dzongkhag Name</th>
-        										<th>Dungkhag Name</th>
-        										<th>Dungkhag Code</th>
+        										<th>Gewog Name</th>
         										<th style='width:20%'>Action</th>
         									</tr>	
         								</thead>
         								<tbody>
         								<?php $id=1 ?>
-        								@foreach($dungkhag as $dungkhags)
-                        @if($dungkhags->status==0)
+        								@foreach($gewog as $gewogs)
+                        @if($gewogs->status==0)
         								<tr>
         									<td>{{$id++}}</td>
-        									<td>{{$dungkhags->displayDzongkhag->dzongkhag_name}}</td>
-        									<td>{{$dungkhags->dungkhag_name}}</td>
-        									<td>{{$dungkhags->dungkhag_code}}</td>
+        									<td>{{$gewogs->displayDzongkhag->dzongkhag_name}}</td>
+        									<td>{{$gewogs->gewog_name}}</td>
         									<td>
-        										<form id='remove' class="form-group" action="{{route('dungkhag_master.destroy',$dungkhags->dungkhag_id)}}" method='post'>
+        										<form id='remove' class="form-group" action="{{route('gewog_master.destroy',$gewogs->gewog_id)}}" method='post'>
         							              <input type="hidden" name="_method" value="delete">
         							              <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-        							              <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='fun_edit({{$dungkhags->dungkhag_id}})'>Edit</a>
+        							              <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='fun_edit({{$gewogs->gewog_id}})'>Edit</a>
         							              
                                     <button type="submit" class="btn btn-warning glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Remove
         							              </button>
@@ -63,7 +61,7 @@
         								@endforeach
         								</tbody>
         					 		</table>
-                      <input type="hidden" name="hidden_show" id="hidden_show" value="{{route('view_dungkhag')}}">
+                      <input type="hidden" name="hidden_show" id="hidden_show" value="{{route('view_gewog')}}">
                      </div>
                     </div>
                 </div>
@@ -77,10 +75,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Dungkhag</h4>
+        <h4 class="modal-title" id="myModalLabel">Add Gewog</h4>
       </div>
       <div class="modal-body">
-       <form action="{{route('dungkhag_master.store')}}" method="post">
+       <form action="{{route('gewog_master.store')}}" method="post">
           {{csrf_field()}}
           <div class='form-group'>
             <label for='type' class='col-xs-3'>Dzongkhag:</label>
@@ -99,15 +97,9 @@
               </div>
           </div>
           <div class='form-group'>
-            <label for='dungkhag_name' class='col-xs-3'>Dungkhag:</label>
+            <label for='gewog_name' class='col-xs-3'>Gewog:</label>
               <div class='col-xs-9 input-group'>
-                <input type="text" name="dungkhag_name" class="form-control" placeholder="Enter dungkhag name here" required>
-              </div>
-          </div>
-          <div class='form-group'>
-            <label for='dungkhag_code' class='col-xs-3'>Dungkhag Code:</label>
-              <div class='col-xs-9 input-group'>
-                <input type="text" name="dungkhag_code"  class="form-control" placeholder="Enter dungkhag code here" required>
+                <input type="text" name="gewog_name" class="form-control" placeholder="Enter dungkhag name here" required>
               </div>
           </div>
       
@@ -127,10 +119,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Update Dungkhag</h4>
+        <h4 class="modal-title" id="myModalLabel">Update Gewog</h4>
       </div>
       <div class="modal-body">
-        <form action="{{route('update_dungkhag')}}" method="post">
+        <form action="{{route('update_gewog')}}" method="post">
           {{csrf_field()}}
           <div class='form-group'>
             <label for='type' class='col-xs-3'>Dzongkhag:</label>
@@ -149,15 +141,9 @@
               </div>
           </div>
           <div class='form-group'>
-            <label for='dungkhag_name' class='col-xs-3'>Dungkhag:</label>
+            <label for='gewog_name' class='col-xs-3'>Gewog:</label>
               <div class='col-xs-9 input-group'>
-                <input type="text" name="dungkhag_name" class="form-control" placeholder="Enter dungkhag name here" id='dungkhag' required >
-              </div>
-          </div>
-          <div class='form-group'>
-            <label for='dungkhag_code' class='col-xs-3'>Dungkhag Code:</label>
-              <div class='col-xs-9 input-group'>
-                <input type="text" name="dungkhag_code"  class="form-control" placeholder="Enter dungkhag code here" id='dungkhag_code' required>
+                <input type="text" name="gewog_name" class="form-control" placeholder="Enter dungkhag name here" id='gewog' required >
               </div>
           </div>
       <div class="modal-footer">
@@ -185,10 +171,9 @@
       data: {"id":id}, 
       success: function(result){
         //console.log(result);
-        $("#edit_id").val(result.dungkhag_id);
+        $("#edit_id").val(result.gewog_id);
         $("#type").val(result.dzongkhag_id);
-        $("#dungkhag").val(result.dungkhag_name);
-        $("#dungkhag_code").val(result.dungkhag_code);
+        $("#gewog").val(result.gewog_name);
       }
     });
   }
