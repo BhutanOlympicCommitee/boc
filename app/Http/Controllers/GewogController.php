@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Dungkhag;
+use App\Gewog;
 use Auth;
 use Session;
 
-class DungkhagController extends Controller
+class GewogController extends Controller
 {
       public function index()
     {
-        $dungkhag= Dungkhag::all();
-       return view('dungkhag_master.index',compact('dungkhag'));
+        $gewog= Gewog::all();
+       return view('gewog_master.index',compact('gewog'));
     }
 
     /**
@@ -22,7 +22,7 @@ class DungkhagController extends Controller
      */
     public function create()
     {
-       return view('dungkhag_master.create');
+       return view('gewog_master.create');
     }
 
     /**
@@ -36,17 +36,15 @@ class DungkhagController extends Controller
         // validation
         $this->validate($request,[
         'type'=> 'required',
-        'dungkhag_name'=> 'required',
-        'dungkhag_code' => 'required',
+        'gewog_name'=> 'required',
         ]);
-        $dungkhag = new  Dungkhag;
-        $dungkhag->dzongkhag_id=$request->type;
-        $dungkhag->dungkhag_name=$request->dungkhag_name;
-        $dungkhag->dungkhag_code=$request->dungkhag_code;
-        $dungkhag->created_by=Auth::user()->id;
-        $dungkhag->save();
-        Session::flash('success', 'Dungkhag has been created successfully');
-        return redirect()->route('dungkhag_master.index');
+        $gewog = new  Gewog;
+        $gewog->dzongkhag_id=$request->type;
+        $gewog->gewog_name=$request->gewog_name;
+        $gewog->created_by=Auth::user()->id;
+        $gewog->save();
+        Session::flash('success', 'Gewog has been created successfully');
+        return redirect()->route('gewog_master.index');
     }
 
     /**
@@ -59,7 +57,7 @@ class DungkhagController extends Controller
     {
         if($request->ajax()){
             $id = $request->id;
-            $info = Dungkhag::find($id);
+            $info = Gewog::find($id);
             return response()->json($info);
         }
     }
@@ -74,13 +72,12 @@ class DungkhagController extends Controller
    public function update(Request $request)
     {
         $id=$request->edit_id;
-        $dungkhag= Dungkhag::find($id);
-        $dungkhag->dzongkhag_id=$request->type;
-        $dungkhag->dungkhag_name= $request->dungkhag_name;
-        $dungkhag->dungkhag_code= $request->dungkhag_code;
-        $dungkhag->save();
-        Session::flash('success', 'Dungkhag has been updated successfully');
-        return redirect()->route('dungkhag_master.index');
+        $gewog= Gewog::find($id);
+        $gewog->dzongkhag_id=$request->type;
+        $gewog->gewog_name= $request->gewog_name;
+        $gewog->save();
+        Session::flash('success', 'Gewog has been updated successfully');
+        return redirect()->route('gewog_master.index');
     }
 
     /**
@@ -91,10 +88,10 @@ class DungkhagController extends Controller
      */
     public function destroy($id)
     {
-        $dungkhag =  Dungkhag::findOrFail($id);
-        $dungkhag->status=1;
-        $dungkhag->save();
-        Session::flash('success', 'Dungkhag has been deleted successfully');
-        return redirect()->route('dungkhag_master.index');
+        $gewog =  Gewog::findOrFail($id);
+        $gewog->status=1;
+        $gewog->save();
+        Session::flash('success', 'Gewog has been deleted successfully');
+        return redirect()->route('gewog_master.index');
     }
 }

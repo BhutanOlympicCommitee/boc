@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Athlete_address;
 use App\Dungkhag;
+use App\Gewog;
 use Auth;
 use Session;
 
@@ -61,6 +62,14 @@ class AthleteAddressController extends Controller
         if($request->ajax()){
             $id = $request->id;
             $info = Dungkhag::where('dzongkhag_id', $id)->get();
+            return response()->json($info);
+        }
+    }
+    public function view1(Request $request)
+    {
+        if($request->ajax()){
+            $id = $request->id;
+            $info = Gewog::where('dzongkhag_id', $id)->get();
             return response()->json($info);
         }
     }

@@ -72,6 +72,13 @@ Route::delete('dungkhag/destroy/{id}',['as'=>'dungkhag_master.destroy','uses'=>'
 Route::get('dungkhag/view', 'DungkhagController@show')->name('view_dungkhag');
 Route::post('dungkhag/update', 'DungkhagController@update')->name('update_dungkhag');
 
+//routes for gewog
+Route::get('gewog',['as'=>'gewog_master.index','uses'=>'GewogController@index']);
+Route::post('gewog/store',['as'=>'gewog_master.store','uses'=>'GewogController@store']);
+Route::delete('gewog/destroy/{id}',['as'=>'gewog_master.destroy','uses'=>'GewogController@destroy']);
+Route::get('gewog/view', 'GewogController@show')->name('view_gewog');
+Route::post('gewog/update', 'GewogController@update')->name('update_gewog');
+
 //routes for sport organization
 Route::get('sport',['as'=>'sport_organization.index','uses'=>'Sport_Organization_Controller@index']);
 Route::get('sport/create',['as'=>'sport_organization.create','uses'=>'Sport_Organization_Controller@create']);
@@ -169,6 +176,7 @@ Route::get('athlete_address','AthleteAddressController@create')->name('athlete_a
 // Route::get('athlete_address',['as'=>'athlete_address.create','uses'=>'AthleteAddressController@create']);
 Route::post('athlete_address',['as'=>'athlete_address.store','uses'=>'AthleteAddressController@store']);
 Route::get('athlete_address/view', 'AthleteAddressController@view')->name('view_athlete_address');
+Route::get('athlete_address/view1', 'AthleteAddressController@view1')->name('view1_athlete_address');
 Route::get('athlete_address/{id}/edit',['as'=>'athlete_address.edit','uses'=>'AthleteAddressController@edit']);
 
 //route for athlete address
