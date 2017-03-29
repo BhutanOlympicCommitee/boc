@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Athlete_bioinformation extends Model
 {
+ 	public $primaryKey = 'athlete_id';
+ 	
      public function displayathlete()
     {
     	return $this->belongsTo('App\Athlete_occupation','occupation_id','occupation_name');

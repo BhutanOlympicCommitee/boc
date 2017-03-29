@@ -161,6 +161,7 @@ Route::get('review_activities_achievemenents_update',[
 //routes for althlete information
 Route::get('athlete_info',['as'=>'athlete_info.create','uses'=>'AthleteInformationController@create']);
 Route::post('athlete_info',['as'=>'athlete_info.store','uses'=>'AthleteInformationController@store']);
+Route::get('athlete_info/{id}/edit',['as'=>'athlete_info.edit','uses'=>'AthleteInformationController@edit']);
 
 //route for athlete address
 //Route::resource('athlete_address','AthleteAddressController');
@@ -168,6 +169,7 @@ Route::get('athlete_address','AthleteAddressController@create')->name('athlete_a
 // Route::get('athlete_address',['as'=>'athlete_address.create','uses'=>'AthleteAddressController@create']);
 Route::post('athlete_address',['as'=>'athlete_address.store','uses'=>'AthleteAddressController@store']);
 Route::get('athlete_address/view', 'AthleteAddressController@view')->name('view_athlete_address');
+Route::get('athlete_address/{id}/edit',['as'=>'athlete_address.edit','uses'=>'AthleteAddressController@edit']);
 
 //route for athlete address
 Route::get('athlete',['as'=>'athlete_qualification.index','uses'=>'AthleteQualificationController@index']);
