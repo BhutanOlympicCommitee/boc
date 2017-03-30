@@ -17,7 +17,7 @@ class SKRAController extends Controller
     public function index()
     {
        $skra=Tbl_SKRA::all();
-       return view('skra.index',compact('skra'));
+       return view('boc_user.annual_activities_plan.skra.index',compact('skra'));
     }
 
     /**
@@ -27,7 +27,7 @@ class SKRAController extends Controller
      */
     public function create()
     {
-        return view('skra.create');
+        return view('boc_user.annual_activities_plan.skra.create');
     }
 
     /**

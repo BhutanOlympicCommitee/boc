@@ -16,7 +16,7 @@ class ContactPersonController extends Controller
      */
     public function index()
     {
-        return view('contact_person.index');
+        return view('boc_user.sport_organization_profile.contact_person.index');
     }
 
     /**
@@ -26,7 +26,7 @@ class ContactPersonController extends Controller
      */
     public function create()
     {
-        return view('contact_person.create');
+        return view('boc_user.sport_organization_profile.contact_person.create');
     }
 
     /**
@@ -79,7 +79,7 @@ class ContactPersonController extends Controller
         $contact = Tbl_sport_org_contact_person::findOrFail($id);
         Session::put('key2',$contact->sport_org_contact_person_id);
         // return to the edit views
-        return view('contact_person.edit',compact('contact'));
+        return view('boc_user.sport_organization_profile.contact_person.edit',compact('contact'));
     }
 
     /**

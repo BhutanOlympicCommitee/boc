@@ -20,7 +20,7 @@ class Sport_Organization_Controller extends Controller
     public function index()
     {
         $sport_org=Sport_Organization::all();
-        return view('sport_organization.index',compact('sport_org'));
+        return view('boc_user.sport_organization_profile.sport_organization.index',compact('sport_org'));
     }
 
     /**
@@ -30,7 +30,7 @@ class Sport_Organization_Controller extends Controller
      */
     public function create()
     {
-        return view('sport_organization.create');
+        return view('boc_user.sport_organization_profile.sport_organization.create');
     }
 
     /**
@@ -91,7 +91,7 @@ class Sport_Organization_Controller extends Controller
         Session::put('key1',$sport->sport_org_id);
 
         // return to the edit views
-        return view('sport_organization.edit',compact('sport'));
+        return view('boc_user.sport_organization_profile.sport_organization.edit',compact('sport'));
     }
 
     /**
@@ -143,7 +143,7 @@ class Sport_Organization_Controller extends Controller
 
     // Sport Organization Activities
     public function viewActivities(){
-        return view('annual_activity_plan.sport_activity_plan.index');
+        return view('sport_organization_user.sport_activity_plan.index');
     }
 
     public function addActivities(Request $request){
