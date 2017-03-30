@@ -29,7 +29,7 @@ class ReviewPlanController extends Controller
     public function getAchievement_update(){
         $approved_activity=Tbl_sport_org_activities_approved::all();
         $proposed_activity=Tbl_sport_org_activities::all();
-        return view('annual_activity_plan.review_plan.update_achievement',['approved_activity'=>$approved_activity]);
+        return view('sport_organization_user.update_achievement.update_achievement',['approved_activity'=>$approved_activity]);
     }
     
     public function approved_activities(Request $request,$id)
