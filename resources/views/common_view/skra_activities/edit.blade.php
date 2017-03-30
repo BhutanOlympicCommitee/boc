@@ -100,7 +100,7 @@
   $('#type').change(function()
   {
     var sport_id=$(this).val();
-    var view_url = $("#hidden_view").val();
+    var view_url=$("#hidden_view").val();
       $.ajax({
         url: view_url,
         type:"GET", 
@@ -114,6 +114,9 @@
         }
       });
   });
+
+  $("select[name!=type] option:not(:selected)").attr('disabled', true);
+  
 </script>
 @endsection
 @section('footer')
