@@ -17,7 +17,7 @@ class AdvisoryBoardController extends Controller
     public function index()
     {
         $advisory=Tbl_sport_org_advisory::all();
-        return view('advisory_board_members.index',compact('advisory'));
+        return view('boc_user.sport_organization_profile.advisory_board_members.index',compact('advisory'));
     }
 
     /**
@@ -27,7 +27,7 @@ class AdvisoryBoardController extends Controller
      */
     public function create()
     {
-        return view('advisory_board_members.create');
+        return view('boc_user.sport_organization_profile.advisory_board_members.create');
     }
 
     /**

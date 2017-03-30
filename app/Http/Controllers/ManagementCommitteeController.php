@@ -17,7 +17,7 @@ class ManagementCommitteeController extends Controller
     public function index()
     {
         $management=Tbl_sport_org_management::all();
-        return view('management_committee.index',compact('management'));
+        return view('boc_user.sport_organization_profile.management_committee.index',compact('management'));
     }
 
     /**
@@ -27,7 +27,7 @@ class ManagementCommitteeController extends Controller
      */
     public function create()
     {
-        return view('management_committee.create');
+        return view('boc_user.sport_organization_profile.management_committee.create');
     }
 
     /**

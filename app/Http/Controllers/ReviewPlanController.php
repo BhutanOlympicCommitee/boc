@@ -17,13 +17,13 @@ class ReviewPlanController extends Controller
     public function index()
     {
        $review_plan= Tbl_sport_org_activities::all();
-       return view('review_plan.index',compact('review_plan'));
+       return view('boc_user.annual_activities_plan.review_plan.index',compact('review_plan'));
     }
 
     public function review($id)
     {
         $review_plan=Tbl_sport_org_activities::find($id);
-        return view('review_plan.review',compact('review_plan'));
+        return view('boc_user.annual_activities_plan.review_plan.review',compact('review_plan'));
     }
 
     public function getAchievement_update(){
