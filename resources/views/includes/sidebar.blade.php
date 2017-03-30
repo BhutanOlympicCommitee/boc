@@ -32,6 +32,9 @@
                     <ul class="nav nav-list tree bullets">
                         <li><a href="{{route('sport_organization.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Sport Organization Profile</span></a></li>
                     </ul>
+                    <ul class="nav nav-list tree bullets">
+                        <li><a href="{{route('associated_sport_types.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Types of Sport in BOC</span></a></li>
+                    </ul>
                 </li>
                 <li><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Annual Activities Plan</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
                     <ul class="nav nav-list tree bullets">

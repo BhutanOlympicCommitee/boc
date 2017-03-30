@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Gewog;
-use Auth;
+use App\Associated_Sport;
 use Session;
+use Auth;
 
-class GewogController extends Controller
+class AssociatedSportController extends Controller
 {
-    public function index()
+     public function index()
     {
-        $gewog= Gewog::all();
-       return view('admin.gewog_master.index',compact('gewog'));
+        $asport= Associated_Sport::all();
+       return view('sport_organization_user.associated_sport_types.index',compact('asport'));
     }
 
     /**
@@ -22,7 +22,7 @@ class GewogController extends Controller
      */
     public function create()
     {
-       return view('admin.gewog_master.create');
+       return view('sport_organization_user.associated_sport_types.create');
     }
 
     /**
@@ -35,16 +35,14 @@ class GewogController extends Controller
     {
         // validation
         $this->validate($request,[
-        'type'=> 'required',
-        'gewog_name'=> 'required',
+        'sport_name'=> 'required',
         ]);
-        $gewog = new  Gewog;
-        $gewog->dzongkhag_id=$request->type;
-        $gewog->gewog_name=$request->gewog_name;
-        $gewog->created_by=Auth::user()->id;
-        $gewog->save();
-        Session::flash('success', 'Gewog has been created successfully');
-        return redirect()->route('gewog_master.index');
+        $asport = new  Associated_Sport;
+        $asport->sport_name=$request->sport_name;
+        $asport->created_by=Auth::user()->id;
+        $asport->save();
+        Session::flash('success', 'Sport has been created successfully');
+        return redirect()->route('associated_sport_types.index');
     }
 
     /**
@@ -57,7 +55,7 @@ class GewogController extends Controller
     {
         if($request->ajax()){
             $id = $request->id;
-            $info = Gewog::find($id);
+            $info = Associated_Sport::where('sport_id',$id)->first();
             return response()->json($info);
         }
     }
@@ -69,15 +67,14 @@ class GewogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   public function update(Request $request)
+    public function update(Request $request)
     {
         $id=$request->edit_id;
-        $gewog= Gewog::find($id);
-        $gewog->dzongkhag_id=$request->type;
-        $gewog->gewog_name= $request->gewog_name;
-        $gewog->save();
+        $asport= Associated_Sport::find($id);
+        $asport->sport_name= $request->sport_name;
+        $asport->save();
         Session::flash('success', 'Gewog has been updated successfully');
-        return redirect()->route('gewog_master.index');
+        return redirect()->route('associated_sport_types.index');
     }
 
     /**
@@ -88,10 +85,9 @@ class GewogController extends Controller
      */
     public function destroy($id)
     {
-        $gewog =  Gewog::findOrFail($id);
-        $gewog->status=1;
-        $gewog->save();
+        $asport =  Associated_Sport::findOrFail($id);
+        $asport->delete();
         Session::flash('success', 'Gewog has been deleted successfully');
-        return redirect()->route('gewog_master.index');
+        return redirect()->route('associated_sport_types.index');
     }
 }

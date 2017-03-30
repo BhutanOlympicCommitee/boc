@@ -87,6 +87,15 @@ Route::delete('sport/destroy/{id}',['as'=>'sport_organization.destroy','uses'=>'
 Route::get('sport/{id}/edit',['as'=>'sport_organization.edit','uses'=>'Sport_Organization_Controller@edit']);
 Route::patch('sport/update/{id}',['as'=>'sport_organization.update','uses'=>'Sport_Organization_Controller@update']);
 
+//route for sports
+//routes for gewog
+Route::get('asport',['as'=>'associated_sport_types.index','uses'=>'AssociatedSportController@index']);
+Route::post('asport/store',['as'=>'associated_sport_types.store','uses'=>'AssociatedSportController@store']);
+Route::delete('asport/destroy/{id}',['as'=>'associated_sport_types.destroy','uses'=>'AssociatedSportController@destroy']);
+Route::get('asport/view', 'AssociatedSportController@show')->name('view_asport');
+Route::post('asport/update', 'AssociatedSportController@update')->name('update_asport');
+
+
 //Routes for contact person for sport organization
 Route::get('contact',['as'=>'contact_person.index','uses'=>'ContactPersonController@index']);
 Route::get('contact/{id}/edit',['as'=>'contact_person.edit','uses'=>'ContactPersonController@edit']);

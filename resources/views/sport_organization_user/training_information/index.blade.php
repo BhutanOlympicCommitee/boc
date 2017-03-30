@@ -112,7 +112,7 @@
       </div>
       <div class="modal-body">
 
-        <div class='col-md-6'>
+        <div class='col-md-8'>
         <label>Title:</label>
         <input type="text" name="title" id='title' style='border-style:none'>
         <br>
@@ -147,7 +147,7 @@
         <label>Associated Sport:</label>
         <input type="text" name="associated_sport" id='associated_sport' style='border-style:none'>
       </div>
-      <div class='col-md-6' id='photo'>
+      <div class='col-md-4' id='photo'>
       </div>
       <div class='clearfix'></div>
 
