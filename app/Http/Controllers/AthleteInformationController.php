@@ -79,12 +79,7 @@ class AthleteInformationController extends Controller
      */
    public function edit($id)
     {
-        $athletes= new Athlete_bioinformation;
-         $athletes = Athlete_bioinformation::findOrFail($id);
-        Session::put('key3',$athletes->qualification_id);
-
-        // return to the edit views
-        return view('athlete_info.edit',compact('athletes'));
+       
     }
     /**
      * Update the specified resource in storage.
@@ -95,30 +90,7 @@ class AthleteInformationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $athletes = Athlete_bioinformation::findOrFail($id);
-        $athletes->athlete_title=$request->title;
-        $athletes->athlete_fname=$request->fname;
-        $athletes->athlete_lname=$request->lname;
-        $athletes->athlete_occupation=$request->occupation;
-        $athletes->athlete_dob=$request->dob;
-        $athletes->athlete_pob=$request->pob;
-        $athletes->athlete_gender=$request->gender;
-        $athletes->athlete_height=$request->height;
-        $athletes->athlete_weight=$request->weight;
-        $athletes->athlete_fathername=$request->fathername;
-        $athletes->athlete_passportNo=$request->passportNo;
-        $athletes->athlete_cid=$request->cid;
-        $athletes->athlete_associatedSport=$request->associatedSport;
-        $athletes->athlete_photo=$request->photo;
-        $athletes->save();
-        if($request->update1=='form1')
-        {
-           return redirect()->route('athlete_qualification.index')->with('alert-success','Data Has been Updated!');    
-        }
-       else
-        {
-            return redirect()->route('athlete_qualification.edit')->with('alert-success','Data Has been not Updated!');  
-        }    
+      
     }
 
 

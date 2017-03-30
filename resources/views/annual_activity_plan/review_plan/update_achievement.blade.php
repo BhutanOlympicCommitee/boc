@@ -51,7 +51,7 @@
                   <?php endforeach;?>
                 </select> 
               </div>
-              <div class="form-group">
+              <div class="form-group col-md-12">
                 <label for="year">SKRA Activities</label> 
                 <select name="year" class="form-control">
                   <option value="0">

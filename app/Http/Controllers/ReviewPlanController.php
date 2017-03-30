@@ -43,6 +43,7 @@ class ReviewPlanController extends Controller
         $approved_activities->approved_activity_timeline=$request->approved_timeline; 
         $approved_activities->approved_capital_budget=$request->approved_capital_budget;
         $approved_activities->approved_recurring_budget=$request->approved_recurring_budget;
+        $approved_activities->remarks=$request->approved_remarks;
         $approved_activities->updated_by=Auth::user()->id;
         $approved_activities->save();
         return redirect()->route('review_plan.index');

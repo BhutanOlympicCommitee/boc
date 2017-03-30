@@ -51,7 +51,7 @@
                   <?php endforeach;?>
                 </select> 
               </div>
-              <div class="form-group">
+              <div class="form-group col-md-12">
                 <label for="skra_activity">SKRA Activities</label> 
                 <select name="skra_activity" class="form-control">
                   <option value="0">
@@ -72,12 +72,13 @@
               <th>Sl.No</th>
               <th>Activities</th>
               <th>Baseline</th>
-              <th>Target</th>
-              <th>Venue</th>
+              <th width="28px">Target</th>
+              <th width="20px">Venue</th>
               <th>Timeline</th>
-              <th>Recurring Budget(Million)</th>
-              <th>Capital Budget(Million)</th>
+              <th>Recurring Budget(MM)</th>
+              <th>Capital Budget(MM)</th>
               <th>Collaborating Agencies</th>
+              <th>Remarks</th>
               <th>Action</th>
             </thead>
             <tbody>
@@ -96,6 +97,7 @@
               <td>{{$spt_acti->proposed_recurring_budget}}</td>
               <td>{{$spt_acti->proposed_capital_budget}}</td>
               <td>{{$spt_acti->collaborating_agency}}</td>
+              <td>{{$spt_acti->remarks}}</td>
               <td>
                 <button type="button" class=" edit_activity btn btn-info" data-toggle="modal" data-target="#edit_sport_activity">
                   <span class="glyphicon glyphicon-erase"></span>
@@ -111,10 +113,11 @@
                   <div class="hidden proposed_capital_budget">{{$spt_acti->proposed_capital_budget}}</div>
                   <div class="hidden proposed_recurring_budget">{{$spt_acti->proposed_recurring_budget}}</div>
                   <div class="hidden collaborating_agency">{{$spt_acti->collaborating_agency}}</div>
+                  <div class="hidden remarks">{{$spt_acti->remarks}}</div>
                   <div class="hidden activity_id">{{$spt_acti->activity_id}}</div>
                 </button>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{{route('delete_sport_org_activity',['id'=>$spt_acti->activity_id])}}" onclick='return confirm("Are you sure?")' class="btn btn-warning"><span class=" glyphicon glyphicon-remove"></span>Delete</a>
+                <a href="{{route('delete_sport_org_activity',['id'=>$spt_acti->activity_id])}}" onclick='return confirm("Are you sure?")' class="btn btn-warning">Delete</a>
               </td>
             </tr>
               <?php 
@@ -226,6 +229,10 @@
               <label for="collaborating_agency">Collaborating Agencies</label> 
               <input type="text" name="collaborating_agency" class="form-control">
             </div>
+            <div class="form-group">
+              <label for="remarks">Remarks</label> 
+              <input type="text" name="remarks" class="form-control">
+            </div>
           </div>
      </div>
     <br>
@@ -326,6 +333,10 @@
               <label for="collaborating_agency">Collaborating Agencies</label> 
               <input type="text" name="collaborating_agency" class="form-control">
             </div>
+             <div class="form-group">
+              <label for="remarks">Remarks</label> 
+              <input type="text" name="remarks" class="form-control">
+            </div>
           </div>
           <input type="hidden" name="activity_id">
      </div>
@@ -354,6 +365,7 @@
           proposed_capital_budget = $(this).find(".proposed_capital_budget").html();
           proposed_recurring_budget = $(this).find(".proposed_recurring_budget").html();
           collaborating_agency = $(this).find(".collaborating_agency").html();
+          remarks = $(this).find(".remarks").html();
           activity_id = $(this).find('.activity_id').html();
 
           //alert(activity_id);
@@ -370,6 +382,7 @@
           $('#edit_sport_activity input[name=proposed_capital_budget]').val(proposed_capital_budget);
           $('#edit_sport_activity input[name=proposed_recurring_budget]').val(proposed_recurring_budget);
           $('#edit_sport_activity input[name=collaborating_agency]').val(collaborating_agency);
+          $('#edit_sport_activity input[name=remarks]').val(remarks);
           $('#edit_sport_activity input[name=activity_id]').val(activity_id);
       });
     });

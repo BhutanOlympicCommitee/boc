@@ -120,9 +120,10 @@
                             <th>Target</th>
                             <th>Venue</th>
                             <th>Timeline</th>
-                            <th>Recurring Budget</th>
-                            <th>Capital Budget</th>
+                            <th>Recurring Budget(MM)</th>
+                            <th>Capital Budget(MM)</th>
                             <th>Collaborating Budget</th>
+                            <th>Remarks</th>
                             <th>Action</th>
                         </tr>   
                     </thead>
@@ -141,6 +142,7 @@
                           <td>{{$review->proposed_recurring_budget}}</td>
                           <td>{{$review->proposed_capital_budget}}</td>
                           <td>{{$review->collaborating_agency}}</td>
+                          <td>{{$review->remarks}}</td>
                           <td>
                             <a href="{{route('review_plan.review',$review->activity_id)}}" class="btn btn-primary">Review</a>
                           </td>

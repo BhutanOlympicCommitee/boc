@@ -166,6 +166,7 @@ class Sport_Organization_Controller extends Controller
         $sport_org_activity->proposed_capital_budget = Input::get('proposed_capital_budget');
         $sport_org_activity->proposed_recurring_budget = Input::get('proposed_recurring_budget');
         $sport_org_activity->collaborating_agency = Input::get('collaborating_agency');
+        $sport_org_activity->remarks = Input::get('remarks');
         $sport_org_activity->created_by = session('user_id');
         $sport_org_activity->save();
         return redirect()->route('sport_org_activity');
@@ -185,6 +186,7 @@ class Sport_Organization_Controller extends Controller
         $proposed_capital_budget = Input::get('proposed_capital_budget');
         $proposed_recurring_budget = Input::get('proposed_recurring_budget');
         $collaborating_agency = Input::get('collaborating_agency');
+        $remarks = Input::get('remarks');
         $created_by = session('user_id');
 
         $sport_org_activity = new Tbl_sport_org_activities;
@@ -201,6 +203,7 @@ class Sport_Organization_Controller extends Controller
                 'proposed_capital_budget' =>$proposed_capital_budget,
                 'proposed_recurring_budget' =>$proposed_recurring_budget,
                 'collaborating_agency' =>$collaborating_agency,
+                'remarks' =>$remarks,
                 'created_by'=>$created_by
                 ]);
         return redirect()->route('sport_org_activity');

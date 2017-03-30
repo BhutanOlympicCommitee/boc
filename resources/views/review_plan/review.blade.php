@@ -163,6 +163,16 @@
                <input type="text" name="approved_collaborating_agency" class='form-control' value='{{$review_plan->collaborating_agency}}' >
               </div>
             </div>
+            <br>
+            <div class='row clearfix'>
+              <div class='col-xs-4'>Remarks</div>
+              <div class='col-xs-4'>
+               <input type="text" name="remarks" class='form-control' value='{{$review_plan->remarks}}'>
+              </div>
+              <div class='col-xs-4'>
+               <input type="text" name="approved_remarks" class='form-control' value='{{$review_plan->remarks}}' >
+              </div>
+            </div>
             <br>         
               <button type='submit' class='btn btn-info col-xs-offset-10' name='update1' value='form1'>Update</button>
               <a href="{{route('review_plan.index')}}" class='btn btn-warning pull-right'> Cancel</a>
