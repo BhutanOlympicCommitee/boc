@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Athlete_bioinformation;
 use Auth;
 use Session;
+use Illuminate\Support\Facades\Input;
 
 class AthleteInformationController extends Controller
 {
@@ -51,12 +52,15 @@ class AthleteInformationController extends Controller
         $athlete->athlete_passportNo=$request->passportNo;
         $athlete->athlete_cid=$request->cid;
         $athlete->athlete_associatedSport=$request->associatedSport;
-        $athlete->athlete_photo=$request->photo;
+        if($request->hasFile('photo')){
+            $file = $request->file('photo');
+            $file->move(public_path().'/images/',$file->getClientOriginalName());
+            $athlete->athlete_photo = $file->getClientOriginalName();
+        }
         $athlete->created_by=Auth::user()->id;
         $athlete->save();
         Session::flash('success', 'AthleteInfos has been created successfully');
         Session::put('key',$athlete->athlete_id);
-        echo $athlete->athlete_id;
         return redirect()->route('athlete_address.create');
     }
 

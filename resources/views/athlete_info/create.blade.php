@@ -40,7 +40,7 @@
                       {{ Session::get('success') }}
                     </div>
                 @endif
-              <form action="{{route('athlete_info.store')}}" method="post">
+              <form action="{{route('athlete_info.store')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class='form-group'>
                   <label for='title' class='col-xs-2'>Title</label>
