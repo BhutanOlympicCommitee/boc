@@ -46,17 +46,7 @@ class AthleteQualificationController extends Controller
         Session::flash('success', 'Athlete qualification has been created successfully');
        return redirect()->route('athlete_qualification.index');
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
+    
     /**
      * Show the form for editing the specified resource.
      *

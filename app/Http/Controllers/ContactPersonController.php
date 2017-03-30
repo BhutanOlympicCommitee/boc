@@ -56,18 +56,6 @@ class ContactPersonController extends Controller
         Session::flash('success', 'Contact person for sport organization has been created successfully');
         return redirect()->route('management_committee.index');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -108,16 +96,5 @@ class ContactPersonController extends Controller
         {
             return redirect()->route('management_committee.index')->with('alert-success','Data Has been Updated!');  
         }  
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

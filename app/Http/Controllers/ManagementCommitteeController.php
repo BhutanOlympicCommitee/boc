@@ -76,20 +76,6 @@ class ManagementCommitteeController extends Controller
             return response()->json($info);
         }
     }
-
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function edit($id)
-    // {
-    //      $management_info = Tbl_sport_org_management::findOrFail($id);
-    //     // return to the edit views
-    //     return view('management_committee.edit',compact('management_info'));
-    // }
-
     /**
      * Update the specified resource in storage.
      *
@@ -107,8 +93,7 @@ class ManagementCommitteeController extends Controller
         $management_info->mg_member_email=$request->mg_email;
         $management_info->mg_member_mobile=$request->mg_mobile;
         $management_info->appointment_date=$request->appointment;
-        $management_info->save();
-        //return redirect()->route('advisory_board_members.edit',Session::get('key1'))->with('alert-success','Data Has been Updated!');  
+        $management_info->save(); 
         return redirect()->route('management_committee.index')->with('alert-success','Data Has been Updated!');  
     }
 

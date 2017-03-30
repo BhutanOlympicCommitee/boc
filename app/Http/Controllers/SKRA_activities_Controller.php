@@ -103,15 +103,4 @@ class SKRA_activities_Controller extends Controller
         //$skra_activity->save();
         return redirect()->route('skra_activities.index')->with('alert-success','Data Has been Updated!');   
     }
-   
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

@@ -67,19 +67,6 @@ class SKRAController extends Controller
             return response()->json($info);
         }
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    // public function edit($id)
-    // {
-    //     $skra = Tbl_SKRA::findOrFail($id);
-    //     return view('skra.edit',compact('skra'));
-    // }
-
     /**
      * Update the specified resource in storage.
      *
@@ -110,7 +97,6 @@ class SKRAController extends Controller
          $skra = Tbl_SKRA::findOrFail($id);
          $skra->status=1;
          $skra->save();
-         //$skra->delete();
          return redirect()->route('skra.index')->with('success','Data Has been Udeleted');       
     }
 }

@@ -67,18 +67,6 @@ class Sport_Organization_Controller extends Controller
         Session::put('key',$sport->sport_org_id);
         return redirect()->route('contact_person.create');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      *

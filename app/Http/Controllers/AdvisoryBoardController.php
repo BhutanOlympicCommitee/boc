@@ -77,20 +77,6 @@ class AdvisoryBoardController extends Controller
         }
     }
 
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function edit($id)
-    // {
-    //     $advisory = Tbl_sport_org_advisory::findOrFail($id);
-    //     // return to the edit views
-    //     return view('advisory_board_members.edit',compact('advisory'));
-    // }
-    
-
     /**
      * Update the specified resource in storage.
      *
@@ -108,8 +94,7 @@ class AdvisoryBoardController extends Controller
         $advisory_info->mg_member_email=$request->ad_email;
         $advisory_info->mg_member_mobile=$request->ad_mobile;
         $advisory_info->appointment_date=$request->ad_appointment;
-        $advisory_info->save();
-        // return redirect()->route('advisory_board_members.edit',Session::get('key1'))->with('alert-success','Data Has been Updated!');   
+        $advisory_info->save(); 
         return redirect()->route('advisory_board_members.index')->with('alert-success','Data Has been Updated!');   
     }
 
@@ -124,7 +109,6 @@ class AdvisoryBoardController extends Controller
         $advisory = Tbl_sport_org_advisory::findOrFail($id);
         $advisory->status=1;
         $advisory->save();
-        //$advisory->delete();
         return redirect()->route('advisory_board_members.index');
     }
 }
