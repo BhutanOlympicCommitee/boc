@@ -96,9 +96,6 @@ Route::post('contact/store',['as'=>'contact_person.store','uses'=>'ContactPerson
 
 //Routes for management committee for sport organization
 Route::get('management',['as'=>'management_committee.index','uses'=>'ManagementCommitteeController@index']);
-// Route::get('management/{id}/edit',['as'=>'management_committee.edit','uses'=>'ManagementCommitteeController@edit']);
-// Route::patch('management/update/{id}',['as'=>'management_committee.update','uses'=>'ManagementCommitteeController@update']);
-// Route::get('management/create',['as'=>'management_committee.create','uses'=>'ManagementCommitteeController@create']);
 Route::post('management/store',['as'=>'management_committee.store','uses'=>'ManagementCommitteeController@store']);
 Route::delete('management/destroy/{id}',['as'=>'management_committee.destroy','uses'=>'ManagementCommitteeController@destroy']);
 Route::get('management/view', 'ManagementCommitteeController@view')->name('view_management');
@@ -106,20 +103,14 @@ Route::post('management/update', 'ManagementCommitteeController@update')->name('
 
 //Routes for advisory board members for sport organization
 Route::get('advisory',['as'=>'advisory_board_members.index','uses'=>'AdvisoryBoardController@index']);
-//Route::get('advisory/create',['as'=>'advisory_board_members.create','uses'=>'AdvisoryBoardController@create']);
 Route::post('advisory/store',['as'=>'advisory_board_members.store','uses'=>'AdvisoryBoardController@store']);
-//Route::get('advisory/{id}/edit',['as'=>'advisory_board_members.edit','uses'=>'AdvisoryBoardController@edit']);
-//Route::patch('advisory/update/{id}',['as'=>'advisory_board_members.update','uses'=>'AdvisoryBoardController@update']);
 Route::delete('advisory/destroy/{id}',['as'=>'advisory_board_members.destroy','uses'=>'AdvisoryBoardController@destroy']);
 Route::get('advisory/view', 'AdvisoryBoardController@view')->name('view_advisory');
 Route::post('advisory/update', 'AdvisoryBoardController@update')->name('update_advisory');
 
 //routes for skra
 Route::get('skra',['as'=>'skra.index','uses'=>'SKRAController@index']);
-// Route::get('skra/create',['as'=>'skra.create','uses'=>'SKRAController@create']);
 Route::post('skra/store',['as'=>'skra.store','uses'=>'SKRAController@store']);
-// Route::get('skra/{id}/edit',['as'=>'skra.edit','uses'=>'SKRAController@edit']);
-// Route::patch('skra/update/{id}',['as'=>'skra.update','uses'=>'SKRAController@update']);
 Route::get('skra/view', 'SKRAController@view')->name('view_skra');
 Route::post('skra/update', 'SKRAController@update')->name('update_skra');
 Route::delete('skra/destroy/{id}',['as'=>'skra.destroy','uses'=>'SKRAController@destroy']);
@@ -171,9 +162,7 @@ Route::post('athlete_info',['as'=>'athlete_info.store','uses'=>'AthleteInformati
 Route::get('athlete_info/{id}/edit',['as'=>'athlete_info.edit','uses'=>'AthleteInformationController@edit']);
 
 //route for athlete address
-//Route::resource('athlete_address','AthleteAddressController');
 Route::get('athlete_address','AthleteAddressController@create')->name('athlete_address.create');
-// Route::get('athlete_address',['as'=>'athlete_address.create','uses'=>'AthleteAddressController@create']);
 Route::post('athlete_address',['as'=>'athlete_address.store','uses'=>'AthleteAddressController@store']);
 Route::get('athlete_address/view', 'AthleteAddressController@view')->name('view_athlete_address');
 Route::get('athlete_address/view1', 'AthleteAddressController@view1')->name('view1_athlete_address');

@@ -63,7 +63,6 @@
                       <form class="form-group" action="{{route('advisory_board_members.destroy',$advisories->ad_member_id)}}" method='post'>
                         <input type="hidden" name="_method" value="delete">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        {{-- <a href="{{route('advisory_board_members.edit',$advisories->ad_member_id)}}" class="btn btn-primary glyphicon glyphicon-edit">Edit</a> --}}
 
                         <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='fun_edit({{$advisories->ad_member_id}})'>Edit</a>
                         <button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Remove
@@ -78,7 +77,6 @@
               <input type="hidden" name="hidden_view" id="hidden_view" value="{{url('advisory/view')}}">
               <div class='form-group'>
                 <div class="col-xs-11 col-xs-offset-7 input-group" style='margin-top:20px'>
-                  {{-- <a href="{{route('advisory_board_members.create')}}" class="btn btn-default col-xs-2 glyphicon glyphicon-plus">Add</a> --}}
                   <a class='btn btn-success glyphicon glyphicon-plus col-xs-offset-1' data-toggle='modal' data-target="#addModal">Add</a> 
                   <a href="{{route('sport_organization.index')}}" class='btn btn-default col-xs-offset-2 glyphicon glyphicon-remove'>Cancel</a>
                 </div>
