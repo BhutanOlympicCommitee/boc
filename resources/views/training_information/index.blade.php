@@ -147,9 +147,10 @@
         <label>Associated Sport:</label>
         <input type="text" name="associated_sport" id='associated_sport' style='border-style:none'>
       </div>
-      <div class='col-md-6'>
+      <div class='col-md-6' id='photo'>
         <label>Photo:</label>
-        <input type="text" name="photo" id='photo'>
+        {{-- <input type="text" name="photo" id='photo'> --}}
+        <!--img id='photo' src="#{{--asset('images/'.'IMG_9560.JPG')--}}" height="200px" width="auto"-->
       </div>
       <div class='clearfix'></div>
 
@@ -225,6 +226,7 @@
     var view_url=$('#view_details').val();
     var view_address=$('#view_address').val();
     var view_sport=$('#view_associated_sport').val();
+    var image_path='{{URL::asset('/images/')}}';
     $.ajax({
         url: view_url,
         type:"GET", 
@@ -243,7 +245,7 @@
           $("#father_name").val(result.athlete_fathername);
           $("#passport").val(result.athlete_passportNo);
           $("#cid").val(result.athlete_cid);
-          $('#photo').val(result.athlete_photo);
+          $('#photo').html('<img style="border:3px solid gray; border-radius: 7px; margin-left: 20px;" height="200px" width="200px" src='+image_path+'/'+result.athlete_photo+'>');
           var sport_id=result.athlete_associatedSport;
            $.ajax({
             url: view_sport,
