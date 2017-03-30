@@ -18,7 +18,7 @@ class SKRA_activities_Controller extends Controller
     public function index()
     {
         $skra_activities=Tbl_SKRA_activities::all();
-        return view('skra_activities.index',compact('skra_activities'));
+        return view('common_view.skra_activities.index',compact('skra_activities'));
     }
 
     /**
@@ -28,7 +28,7 @@ class SKRA_activities_Controller extends Controller
      */
     public function create()
     {
-        return view('skra_activities.create');
+        return view('common_view.skra_activities.create');
     }
 
     /**
@@ -82,7 +82,7 @@ class SKRA_activities_Controller extends Controller
     public function edit($id)
     {
         $skras_edit=Tbl_SKRA_activities::findOrFail($id);
-        return view('skra_activities.edit',compact('skras_edit'));
+        return view('common_view.skra_activities.edit',compact('skras_edit'));
     }
 
     /**

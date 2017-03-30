@@ -148,9 +148,6 @@
         <input type="text" name="associated_sport" id='associated_sport' style='border-style:none'>
       </div>
       <div class='col-md-6' id='photo'>
-        <label>Photo:</label>
-        {{-- <input type="text" name="photo" id='photo'> --}}
-        <!--img id='photo' src="#{{--asset('images/'.'IMG_9560.JPG')--}}" height="200px" width="auto"-->
       </div>
       <div class='clearfix'></div>
 

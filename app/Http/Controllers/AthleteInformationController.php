@@ -27,7 +27,7 @@ class AthleteInformationController extends Controller
      */
     public function create()
     {
-        return view('athlete_info.create');
+        return view('sport_organization_user.athlete_information.athlete_info.create');
     }
 
     /**

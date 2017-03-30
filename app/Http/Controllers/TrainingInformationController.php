@@ -16,7 +16,7 @@ class TrainingInformationController extends Controller
     public function index()
     {
         $athlete_info=Athlete_bioinformation::all();
-        return view('training_information.index',compact('athlete_info'));
+        return view('sport_organization_user.training_information.index',compact('athlete_info'));
     }
 
     /**
@@ -26,12 +26,12 @@ class TrainingInformationController extends Controller
      */
     public function create()
     {
-        return view('training_information.create');
+        return view('sport_organization_user.training_information.create');
     }
     
     public function trainingAttendanceIndex()
     {
-        return view('training_information.attendance');
+        return view('sport_organization_user.training_information.attendance');
     }
 
     /**
@@ -42,7 +42,7 @@ class TrainingInformationController extends Controller
      */
     public function store(Request $request)
     {
-        return view('training_information.create');
+        return view('sport_organization_user.training_information.create');
     }
 
     public function view(Request $request)

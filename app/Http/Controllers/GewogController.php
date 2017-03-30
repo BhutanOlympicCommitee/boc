@@ -12,7 +12,7 @@ class GewogController extends Controller
       public function index()
     {
         $gewog= Gewog::all();
-       return view('gewog_master.index',compact('gewog'));
+       return view('admin.gewog_master.index',compact('gewog'));
     }
 
     /**
@@ -22,7 +22,7 @@ class GewogController extends Controller
      */
     public function create()
     {
-       return view('gewog_master.create');
+       return view('admin.gewog_master.create');
     }
 
     /**

@@ -23,7 +23,7 @@ class AthleteAddressController extends Controller
      */
     public function create()
     {
-        return view('athlete_address.create');
+        return view('sport_organization_user.athlete_information.athlete_address.create');
     }
 
     /**

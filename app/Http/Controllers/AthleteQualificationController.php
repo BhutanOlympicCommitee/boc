@@ -12,7 +12,7 @@ class AthleteQualificationController extends Controller
      public function index()
     {
         $athlete_qualification=Athlete_qualification::all();
-       return view('athlete_qualification.index',compact('athlete_qualification'));
+       return view('sport_organization_user.athlete_information.athlete_qualification.index',compact('athlete_qualification'));
     }
 
     /**
@@ -22,7 +22,7 @@ class AthleteQualificationController extends Controller
      */
     public function create()
     {
-        return view('athlete_qualification.create');
+        return view('sport_organization_user.athlete_information.athlete_qualification.create');
     }
 
     /**
@@ -70,7 +70,7 @@ class AthleteQualificationController extends Controller
         Session::put('key1',$athletes->qualification_id);
 
         // return to the edit views
-        return view('athlete_qualification.edit',compact('athletes'));
+        return view('sport_organization_user.athlete_information.athlete_qualification.edit',compact('athletes'));
     }
     /**
      * Update the specified resource in storage.

@@ -12,7 +12,7 @@ class DungkhagController extends Controller
       public function index()
     {
         $dungkhag= Dungkhag::all();
-       return view('dungkhag_master.index',compact('dungkhag'));
+       return view('admin.dungkhag_master.index',compact('dungkhag'));
     }
 
     /**
@@ -22,7 +22,7 @@ class DungkhagController extends Controller
      */
     public function create()
     {
-       return view('dungkhag_master.create');
+       return view('admin.dungkhag_master.create');
     }
 
     /**

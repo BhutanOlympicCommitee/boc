@@ -17,7 +17,7 @@ class DzongkhagController extends Controller
     public function index()
     {
         $dzongkhag=MstDzongkhag::all();
-       return view('dzongkhag_master.index',compact('dzongkhag'));
+       return view('admin.dzongkhag_master.index',compact('dzongkhag'));
     }
 
     /**
@@ -27,7 +27,7 @@ class DzongkhagController extends Controller
      */
     public function create()
     {
-       return view('dzongkhag_master.create');
+       return view('admin.dzongkhag_master.create');
     }
 
     /**

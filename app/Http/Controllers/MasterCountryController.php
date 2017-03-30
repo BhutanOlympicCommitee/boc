@@ -17,7 +17,7 @@ class MasterCountryController extends Controller
     public function index()
     {
         $country=Mst_country::all();
-        return view('country_master.index',compact('country'));
+        return view('admin.country_master.index',compact('country'));
     }
 
     /**
@@ -27,7 +27,7 @@ class MasterCountryController extends Controller
      */
     public function create()
     {
-        return view('country_master.create');
+        return view('admin.country_master.create');
     }
 
     /**
