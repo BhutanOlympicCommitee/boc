@@ -94,7 +94,6 @@
    {
     $('#associated_sport').show();
     $('#skra_activity').show();
-    $('#skra').hide();
     $('#sport_organization').hide();
     $('#review_plan').hide();
     $('#achievement').show();

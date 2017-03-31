@@ -4,7 +4,7 @@
                 <footer role="contentinfo">
                     <p style="text-align: center;">
                         Bhutan Football Federation:&copy; <?php echo date('Y');?>
-                        <a href="http://www.meritoo.pl" target="_blank">All Right Reserved!</a>
+                        All Right Reserved!
                     </p>
                 </footer>
             </div>
