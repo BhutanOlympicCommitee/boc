@@ -54,7 +54,7 @@
                 <div class='form-group'>
                   <label for='skra' class='col-xs-3'>AKRA</label>
                     <div class='col-xs-9 input-group'>
-                       <select class='form-control' name='skra' id='skra1'>
+                       <select class='form-control' name='skra' id='skra'>
                          <option value=""></option>
                       </select>
                     </div>
@@ -96,10 +96,10 @@
         type:"GET", 
         data: {"id":sport_id}, 
         success: function(result){
-          $('#skra1').empty();
+          $('#skra').empty();
           $.each(result,function(key,val)
           {
-             $('#skra1').append('<option value="'+val.skra_id+'">'+val.SKRA_name+'</option>');
+            $('#skra').append('<option value="'+val.skra_id+'">'+val.SKRA_name+'</option>');
           });
         }
       });
