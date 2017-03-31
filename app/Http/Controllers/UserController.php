@@ -32,7 +32,7 @@ class UserController extends Controller
     	$id = Input::get('user_id');
     	$name = Input::get('name');
     	$email = Input::get('email');
-    	$role_id = Input::get('user_role');
+    	$role_id = Input::get('user_role1');
     	$user = new User;
     	$user::where('id',$id)
     		->update([

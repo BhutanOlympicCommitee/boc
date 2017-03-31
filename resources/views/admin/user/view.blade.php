@@ -51,7 +51,7 @@
                                      ?>
                                  </td>
                                  <td>
-                                    <button type="button" class="edit_user btn btn-info" data-toggle="modal" data-target="#updateUserModal">
+                                    <button type="button" class="edit_user btn btn-info" data-toggle="modal" data-target="#updateUserModal" onclick='onClickValue({{$user->role_id}})'>
                                         <span class="glyphicon glyphicon-erase"></span>
                                         Update
                                         <div class="hidden user_id">{{$user->id}}</div>
@@ -68,15 +68,6 @@
                             endforeach;
                             ?>
                         </tbody>
-                        <!-- <tfooter>
-                         <tr>
-                             <th>Sl.No</th>
-                             <th>Name</th>
-                             <th>Email Address</th>
-                             <th>User Role</th>
-                             <th>Options</th>
-                         </tr>
-                         </tfooter> -->
                  </table>
              </div>
          </div>
@@ -141,15 +132,6 @@
             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
         </div>
     </div>
-
-                        <!-- <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div> -->
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -178,7 +160,7 @@
                 <div class="form-group">
                     <label for="user_role" class="col-md-4 control-label">User Role</label>
                     <div class="col-md-6">
-                      <select  name="user_role" class="col-md-6 form-control">
+                      <select  name="user_role1" class="col-md-6 form-control">
                         <option value="0">Select the User Role</option>
                         <?php
                         $roles = App\Role::all();
@@ -218,10 +200,15 @@
 
           $('#updateUserModal input[name=name]').val(name);
           $('#updateUserModal input[name=user_role]').val(user_role);
+
           $('#updateUserModal input[name=email]').val(email);
           $('#updateUserModal input[name=user_id]').val(user_id).prop('disabled',false);
       });
     });
+    function onClickValue(id)
+    {
+       $('select[name="user_role1"]').val(id);
+    }  
 </script>
 @endsection
 @section('footer')
