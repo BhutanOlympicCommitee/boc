@@ -54,7 +54,7 @@
                 <div class='form-group'>
                   <label for='skra' class='col-xs-3'>AKRA</label>
                     <div class='col-xs-9 input-group'>
-                       <select class='form-control' name='skra' id='skra'>
+                       <select class='form-control' name='skra' id='skra1'>
                          <?php 
                             $skras=App\Tbl_SKRA::all();
                             foreach($skras as $skra):
@@ -106,10 +106,11 @@
         type:"GET", 
         data: {"id":sport_id}, 
         success: function(result){
-          $('#skra').empty();
+          $('#skra1').empty();
           $.each(result,function(key,val)
           {
-            $('#skra').append('<option value="'+val.skra_id+'">'+val.SKRA_name+'</option>');
+            $('#skra1').append('<option value="'+val.skra_id+'">'+val.SKRA_name+'</option>');
+            console.log(val.SKRA_name);
           });
         }
       });
