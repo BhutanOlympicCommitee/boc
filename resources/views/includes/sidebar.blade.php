@@ -14,8 +14,11 @@
                     @endif
                 </li>
                 <li>
+                    <?php $user_id=session('user_id');  $user = App\User::find($user_id);
+                   ?>
                     <ul class="nav nav-list nav-menu-list-style">
-                     @if(session('user_id')==1)
+                    <input type='hidden' name='role_id' value='{{$user->role_id}}' id='role_id'>
+                     @if($user->role_id==1)
                         <li> <ul class="nav">
                                 <li><a href="{{route('view_user')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;User</a></li>
                                 <li><a href="{{route('view_role')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;Role</a></li>
@@ -26,37 +29,43 @@
                             </ul>
                         </li>
                     @endif
-                    @if(session('user_id')!=1)
-                <li><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Sport Organization Profile</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
+              @if($user->role_id!=1)
+                <li id="sport_organization"><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Sport Organization Profile</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
                     <ul class="nav nav-list tree bullets">
                         <li><a href="{{route('sport_organization.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Sport Organization Profile</span></a></li>
                     </ul>
-                    <ul class="nav nav-list tree bullets">
-                        <li><a href="{{route('associated_sport_types.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Types of Sport in BOC</span></a></li>
-                    </ul>
                 </li>
-                <li><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Annual Activities Plan</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
+                <li id="associated_sport"><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Associated Sport</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
                     <ul class="nav nav-list tree bullets">
-                        <li><a href='{{route('skra.index')}}'><i class='pull-left glyphicon glyphicon-circle-arrow-right glyphicon-align-right'></i>&nbsp;&nbsp;&nbsp;<span>AKRAs</span></a></li>
+                         <li><a href="{{route('associated_sport_types.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Types of Sport in BOC</span></a></li>
+                       </ul>
+                </li>
+                <li id="skra_activity"><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Annual Activities Plan</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
+                    <ul class="nav nav-list tree bullets">
+                        <li id="skra"><a href='{{route('skra.index')}}'><i class='pull-left glyphicon glyphicon-circle-arrow-right glyphicon-align-right'></i>&nbsp;&nbsp;&nbsp;<span>AKRAs</span></a></li>
                         <li><a href="{{route('skra_activities.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>AKRA activities</span></a></li>
-                        <li><a href="{{route('sport_org_activity')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Sport Organization Activities</span></a></li>
-                        <li><a href="{{route('review_plan.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Review Activities</span></a></li>
-                        <li><a href="{{route('achievement_update')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Update Achievements</span></a></li>
+                        <li id="review_plan"><a href="{{route('review_plan.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Review Activities</span></a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Athlete Information</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
+                <li id="achievement"><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Activity and Achievement</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
+                    <ul class="nav nav-list tree bullets">
+                <li><a href="{{route('sport_org_activity')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Sport Organization Activities</span></a></li>
+                 <li><a href="{{route('achievement_update')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Update Achievements</span></a></li>   
+                </ul>
+                </li>
+                <li id="athlete_info"><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Athlete Information</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
                     <ul class="nav nav-list tree bullets">
                         <li><a href="{{route('athlete_info.create')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Athlete Info</span></a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Training Information</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
+                <li id="training"><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Training Information</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
                     <ul class="nav nav-list tree bullets">
                         <li><a href="{{route('training.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Training Info</span></a></li>
                     </ul>
-                </li>       
-            </ul>
-            @endif
-        </li>
+                </li> 
+                @endif      
+               </ul>
+              </li>   
     </ul>
 </div>
 </div>
@@ -70,6 +79,26 @@
     $(function(){
         $('.tree-toggle').parent().children('ul.tree').toggle(200);
     });
-
-
+    $('#skra_activity').hide();
+   var user_id=$('#role_id').val();
+   if(user_id==2)
+   {
+     $('#sport_organization').show();
+     $('#skra_activity').show();
+     $('#achievement').hide();
+     $('#athlete_info').hide();
+     $('#training').hide();
+     $('#associated_sport').hide();
+   }
+   if (user_id==4)
+   {
+    $('#associated_sport').show();
+    $('#skra_activity').show();
+    $('#skra').hide();
+    $('#sport_organization').hide();
+    $('#review_plan').hide();
+    $('#achievement').show();
+    $('#athlete_info').show();
+    $('#training').show();
+   }
 </script>
