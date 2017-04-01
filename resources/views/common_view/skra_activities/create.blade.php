@@ -99,7 +99,7 @@
           $('#skra1').empty();
           $.each(result,function(key,val)
           {
-            $('#skra1').append('<option value="'+val.skra_id+'">'+val.SKRA_name+'</option>');
+             $('#skra1').append('<option value="'+val.skra_id+'">'+val.SKRA_name+'</option>');
           });
         }
       });
