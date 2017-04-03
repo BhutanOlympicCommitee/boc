@@ -23,7 +23,7 @@
             </div>
             <div class="bootstrap-admin-panel-content">
             <ul class='nav nav-pills nav-justified'>
-              <li id='training'><a href="#address_bio" data-toggle="tab">Bio Information</a></li>
+              <li id='info'><a href="#address_info" data-toggle="tab">Bio Information</a></li>
               <li class="active" id='address'><a href="#Address_info" data-toggle="tab"> Address Information</a></li>
               <li id='qualification'><a href="#" data-toggle="tab">Qualification and Training Information</a></li>
             </ul>
@@ -150,7 +150,7 @@
 <script type="text/javascript">
   $(function()
   {
-    $('#training').click(function(){
+    $('#info').click(function(){
        window.location="{{url(route('athlete_info.create'))}}";   
      });
   });
