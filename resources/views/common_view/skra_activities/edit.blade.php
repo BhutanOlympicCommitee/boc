@@ -83,7 +83,7 @@
                 <div class="form-group">
                     <div class="col-xs-10 col-xs-offset-2 input-group">
                       <input type="submit" class="btn btn-default col-xs-2 col-xs-offset-7" value="Update">
-                      <a href="{{route('skra_activities.index')}}" class='btn btn-default col-xs-2 col-xs-offset-1'>Cancel</a>
+                      <a href="{{route('skra_activities.index')}}" class='btn btn-warning col-xs-2 col-xs-offset-1'>Cancel</a>
                     </div>
                 </div>
                 </form>

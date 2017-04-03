@@ -32,7 +32,7 @@
                     <?php 
                     for($i = 1950 ; $i <= date('Y'); $i++){
                       $y = $i + 1;
-                      echo "<option value='<?php echo $i; ?>'>$i-$y</option>";
+                      echo "<option value=$i>$i-$y</option>";
                     }
                     ?>
                   </select> 
