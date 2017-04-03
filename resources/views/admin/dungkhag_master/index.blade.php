@@ -34,7 +34,6 @@
         										<th>Sl. No:</th>
         										<th>Dzongkhag Name</th>
         										<th>Dungkhag Name</th>
-        										<th>Dungkhag Code</th>
         										<th style='width:20%'>Action</th>
         									</tr>	
         								</thead>
@@ -46,7 +45,6 @@
         									<td>{{$id++}}</td>
         									<td>{{$dungkhags->displayDzongkhag->dzongkhag_name}}</td>
         									<td>{{$dungkhags->dungkhag_name}}</td>
-        									<td>{{$dungkhags->dungkhag_code}}</td>
         									<td>
         										<form id='remove' class="form-group" action="{{route('dungkhag_master.destroy',$dungkhags->dungkhag_id)}}" method='post'>
         							              <input type="hidden" name="_method" value="delete">
@@ -104,12 +102,6 @@
                 <input type="text" name="dungkhag_name" class="form-control" placeholder="Enter dungkhag name here" required>
               </div>
           </div>
-          <div class='form-group'>
-            <label for='dungkhag_code' class='col-xs-3'>Dungkhag Code:</label>
-              <div class='col-xs-9 input-group'>
-                <input type="text" name="dungkhag_code"  class="form-control" placeholder="Enter dungkhag code here" required>
-              </div>
-          </div>
       
        <div class="modal-footer">
           <button type="submit" class="btn btn-default glyphicon glyphicon-ok">Save</button>
@@ -152,12 +144,6 @@
             <label for='dungkhag_name' class='col-xs-3'>Dungkhag:</label>
               <div class='col-xs-9 input-group'>
                 <input type="text" name="dungkhag_name" class="form-control" placeholder="Enter dungkhag name here" id='dungkhag' required >
-              </div>
-          </div>
-          <div class='form-group'>
-            <label for='dungkhag_code' class='col-xs-3'>Dungkhag Code:</label>
-              <div class='col-xs-9 input-group'>
-                <input type="text" name="dungkhag_code"  class="form-control" placeholder="Enter dungkhag code here" id='dungkhag_code' required>
               </div>
           </div>
       <div class="modal-footer">

@@ -202,13 +202,12 @@ CREATE TABLE `dungkhags` (
   `dungkhag_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `dzongkhag_id` int(11) NOT NULL,
   `dungkhag_name` varchar(400) COLLATE utf8_unicode_ci NOT NULL,
-  `dungkhag_code` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
   `created_by` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`dungkhag_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,7 +216,22 @@ CREATE TABLE `dungkhags` (
 
 LOCK TABLES `dungkhags` WRITE;
 /*!40000 ALTER TABLE `dungkhags` DISABLE KEYS */;
-INSERT INTO `dungkhags` VALUES (1,2,'phuentsholing','ph12',1,0,'2017-03-27 00:48:27','2017-03-27 00:48:27');
+INSERT INTO `dungkhags` VALUES (1,2,'phuentsholing',1,0,'2017-03-27 00:48:27','2017-03-27 00:48:27');
+INSERT INTO `dungkhags` VALUES (2,3,'Dagapela',1,0,'2017-04-03 03:24:35','2017-04-03 03:24:35');
+INSERT INTO `dungkhags` VALUES (3,3,'Lhamoy Zingkha',1,0,'2017-04-03 03:25:10','2017-04-03 03:25:10');
+INSERT INTO `dungkhags` VALUES (4,9,'Nganglam',1,0,'2017-04-03 03:25:24','2017-04-03 03:25:24');
+INSERT INTO `dungkhags` VALUES (5,11,'Bhangtar',1,0,'2017-04-03 03:25:36','2017-04-03 03:25:36');
+INSERT INTO `dungkhags` VALUES (6,11,'Jomotsangkha',1,0,'2017-04-03 03:25:51','2017-04-03 03:25:51');
+INSERT INTO `dungkhags` VALUES (7,11,'Samdrup Choling',1,0,'2017-04-03 03:26:47','2017-04-03 03:26:47');
+INSERT INTO `dungkhags` VALUES (8,12,'Chengmari',1,0,'2017-04-03 03:27:02','2017-04-03 03:27:02');
+INSERT INTO `dungkhags` VALUES (9,12,'Dorokha',1,0,'2017-04-03 03:27:13','2017-04-03 03:27:13');
+INSERT INTO `dungkhags` VALUES (10,12,'Sipsu',1,0,'2017-04-03 03:27:24','2017-04-03 03:27:24');
+INSERT INTO `dungkhags` VALUES (11,13,'Gelephu',1,0,'2017-04-03 03:27:38','2017-04-03 03:27:38');
+INSERT INTO `dungkhags` VALUES (12,14,'Lingzhi',1,0,'2017-04-03 03:27:50','2017-04-03 03:27:50');
+INSERT INTO `dungkhags` VALUES (13,15,'Sakteng',1,0,'2017-04-03 03:28:03','2017-04-03 03:28:03');
+INSERT INTO `dungkhags` VALUES (14,15,'Thrimshing',1,0,'2017-04-03 03:28:16','2017-04-03 03:28:16');
+INSERT INTO `dungkhags` VALUES (15,15,'Wamrong',1,0,'2017-04-03 03:28:26','2017-04-03 03:28:26');
+INSERT INTO `dungkhags` VALUES (16,20,'Panbang',1,0,'2017-04-03 03:28:48','2017-04-03 03:28:48');
 /*!40000 ALTER TABLE `dungkhags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -856,4 +870,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-03 13:53:07
+-- Dump completed on 2017-04-03 15:31:49

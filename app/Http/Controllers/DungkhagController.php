@@ -37,12 +37,10 @@ class DungkhagController extends Controller
         $this->validate($request,[
         'type'=> 'required',
         'dungkhag_name'=> 'required',
-        'dungkhag_code' => 'required',
         ]);
         $dungkhag = new  Dungkhag;
         $dungkhag->dzongkhag_id=$request->type;
         $dungkhag->dungkhag_name=$request->dungkhag_name;
-        $dungkhag->dungkhag_code=$request->dungkhag_code;
         $dungkhag->created_by=Auth::user()->id;
         $dungkhag->save();
         Session::flash('success', 'Dungkhag has been created successfully');
@@ -77,7 +75,6 @@ class DungkhagController extends Controller
         $dungkhag= Dungkhag::find($id);
         $dungkhag->dzongkhag_id=$request->type;
         $dungkhag->dungkhag_name= $request->dungkhag_name;
-        $dungkhag->dungkhag_code= $request->dungkhag_code;
         $dungkhag->save();
         Session::flash('success', 'Dungkhag has been updated successfully');
         return redirect()->route('dungkhag_master.index');

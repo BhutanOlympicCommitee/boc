@@ -17,7 +17,6 @@ class CreateDungkhagsTable extends Migration
             $table->increments('dungkhag_id');
             $table->integer('dzongkhag_id');
             $table->string('dungkhag_name',400);
-            $table->string('dungkhag_code');
             $table->integer('created_by');
             $table->integer('status')->default(0);
             $table->timestamps();
