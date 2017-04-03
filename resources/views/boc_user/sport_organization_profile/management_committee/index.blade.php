@@ -63,7 +63,6 @@
 												<form class="form-group" action="{{route('management_committee.destroy',$manage->mg_member_id)}}" method='post'>
 							              			<input type="hidden" name="_method" value="delete">
 							              			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							              			{{-- <a href="{{route('management_committee.edit',$manage->mg_member_id)}}" class="btn btn-primary glyphicon glyphicon-edit">Edit</a> --}}
                                   <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='fun_edit({{$manage->mg_member_id}})'>Edit</a>
 							              			<button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Remove
 							              			</button>
