@@ -41,7 +41,7 @@ LOCK TABLES `associated__sports` WRITE;
 INSERT INTO `associated__sports` VALUES (1,'football',0,NULL,NULL);
 INSERT INTO `associated__sports` VALUES (2,'volleyball',3,'2017-03-30 22:59:46','2017-03-30 22:59:46');
 INSERT INTO `associated__sports` VALUES (3,'basketball',3,'2017-03-30 23:00:02','2017-03-30 23:00:02');
-INSERT INTO `associated__sports` VALUES (4,'tenis',3,'2017-03-30 23:00:11','2017-03-30 23:00:11');
+INSERT INTO `associated__sports` VALUES (4,'table tenis',3,'2017-03-30 23:00:11','2017-03-30 23:00:11');
 INSERT INTO `associated__sports` VALUES (5,'khuru',3,'2017-04-03 00:10:53','2017-04-03 00:10:53');
 INSERT INTO `associated__sports` VALUES (6,'archery',3,'2017-04-03 00:11:03','2017-04-03 00:11:03');
 /*!40000 ALTER TABLE `associated__sports` ENABLE KEYS */;
