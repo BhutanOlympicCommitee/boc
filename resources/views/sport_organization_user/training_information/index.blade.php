@@ -30,19 +30,24 @@
               <div style='margin-top: 20px'></div>
               <form action="{{--route('sport_organization.store')--}}" method="post">
                 {{csrf_field()}}
+                <div class='row'>
+                <div class='col-xs-6 clearfix'>
                   <div class='form-group'>
                     <label for='ath_id' class='col-xs-2'>AthleteID </label>
-                      <div class='col-xs-10 input-group'>
+                      <div class='col-xs-10 col-xs-offset-3 input-group'>
                         <input type="text" name="ath_id" class="form-control" placeholder="Enter athlate id here">
                       </div>
                   </div>
                   <div class='form-group'>
                     <label for='ath_name' class='col-xs-2'>Athlete Name </label>
-                      <div class='col-xs-10 input-group'>
+                      <div class='col-xs-10 col-xs-offset-3 input-group'>
                         <input type="text" name="ath_name" class="form-control" placeholder="Enter athlate name here">
                       </div>
                   </div>
-                  <div class='form-group'>
+                </div>
+                
+                <div class='col-xs-6 clearfix'>
+                   <div class='form-group'>
                     <label for='type' class='col-xs-2'>Sport</label>
                       <div class='col-xs-10 input-group'>
                         <select class='form-control' name='type'>
@@ -50,9 +55,19 @@
                         </select>
                       </div>
                   </div>
-                   <div class="form-group clearfix">
-                    <div class="col-xs-12 input-group ">
-                      <input type="submit" class="btn btn-default pull-right" value="Search">
+                  <div class='form-group'>
+                    <label for='coach' class='col-xs-2'>Coach</label>
+                      <div class='col-xs-10 input-group'>
+                        <select class='form-control' name='coach'>
+                          <option value="" disabled selected>Select coach</option>
+                        </select>
+                      </div>
+                  </div>
+                </div>
+                </div> 
+                <div class="form-group clearfix">
+                  <div class="col-xs-12 input-group ">
+                    <input type="submit" class="btn btn-default pull-right" value="Search">
                     </div>
                 </div>
               </form>
@@ -152,7 +167,7 @@
       <div class='clearfix'></div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
       </div>
       </div>
     </div>
@@ -178,6 +193,7 @@
                   <th>Session Name</th>
                   <th>Start Time</th>
                   <th>End Time</th>
+                  <th>Coach</th>
               </tr>   
           </thead>
           <tbody>
@@ -190,6 +206,7 @@
               <td>dfdfggf</td>
               <td>9</td>
               <td>5</td>
+              <td>Tshering</td>
             </tr>
           </tbody>
         </table>

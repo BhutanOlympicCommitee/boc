@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Athlete_bioinformation;
 use App\Athlete_address;
 use App\Associated_Sport;
+use App\TrainingSchedule;
+use App\AthleteTrainingSchedule;
+use Session;
 class TrainingInformationController extends Controller
 {
     /**
@@ -26,7 +29,8 @@ class TrainingInformationController extends Controller
      */
     public function create()
     {
-        return view('sport_organization_user.training_information.create');
+        $training_info=TrainingSchedule::all();
+        return view('sport_organization_user.training_information.create',compact('training_info'));
     }
     
     public function trainingAttendanceIndex()
@@ -42,7 +46,33 @@ class TrainingInformationController extends Controller
      */
     public function store(Request $request)
     {
-        return view('sport_organization_user.training_information.create');
+        $training_schedule=new TrainingSchedule;
+        $training_schedule->day_id=$request->day;
+        $training_schedule->date=$request->date;
+        $training_schedule->session_name=$request->session_name;
+        $training_schedule->session_type=$request->session_type;
+        $training_schedule->start_time=$request->start_time;
+        $training_schedule->end_time=$request->end_time;
+        $training_schedule->venue=$request->venue;
+        $training_schedule->coach_id=1;
+        $training_schedule->comments=$request->comments;
+        $data=$request->get('select');
+        $training_schedule->save();
+        Session::put('key',$training_schedule->training_id);
+        //return redirect()->route('training.create');
+        return $this->addAthleteTrainingInfo($data);
+    }
+    public function addAthleteTrainingInfo($data)
+    {
+        $athlete_id=$data;
+        $training_id=Session::get('key');
+        foreach ($athlete_id as $athlete){
+            $AthleteTrainingSchedule=new AthleteTrainingSchedule;
+            $AthleteTrainingSchedule->training_id = $training_id;
+            $AthleteTrainingSchedule->athlete_id = $athlete;
+            $AthleteTrainingSchedule->save();
+        }
+        return redirect()->route('training.create');
     }
 
     public function view(Request $request)
