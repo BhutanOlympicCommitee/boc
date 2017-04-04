@@ -45,7 +45,7 @@
                                 
                                 <tr>
                                     <td>{{$id++}}</td>
-                                    <td>{{$athlete->qualification_level}}</td>
+                                    <td>{{$athlete->displayLevel->qualification_level}}</td>
                                     <td>{{$athlete->qualification_description}}</td>
                                     <td>{{$athlete->qualification_year}}</td>
                                     <td>{{$athlete->displayCountry->country_name}}</td>

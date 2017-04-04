@@ -133,7 +133,7 @@
         <div class='form-group'>
           <label for='type' class='col-xs-3'>Country</label>
             <div class='col-xs-9 input-group'>
-              <select class='form-control' name='type' id='type'>
+              <select class='form-control' name='type' id='type2'>
                   <?php 
                       $dzongkhags=App\Mst_country::all();
                       foreach($dzongkhags as $dzong):
@@ -180,7 +180,7 @@
         success: function(result){
           //console.log(result);
           $("#edit_id").val(result.dzongkhag_id);
-          $("#type").val(result.country_id);
+          $("#type2").val(result.country_id);
           $("#dzongkhag_name").val(result.dzongkhag_name);
           $("#dzongkhag_code").val(result.dzongkhag_code);
         }

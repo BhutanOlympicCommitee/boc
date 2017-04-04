@@ -42,7 +42,7 @@
                 @endif
               <form action="{{route('athlete_info.store')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
-                <div class='form-group'>
+                 <div class='form-group'>
                   <label for='title' class='col-xs-2'>Title</label>
                     <div class='col-xs-10 input-group'>
                       <select class='form-control' name='title' required>
@@ -60,12 +60,18 @@
                     </div>
                 </div>
                 <div class='form-group'>
+                  <label for='mname' class='col-xs-2'>Middle Name</label>
+                    <div class='col-xs-10 input-group'>
+                      <input type="text" name="mname" class="form-control" placeholder="Enter Middle Name here" required>
+                    </div>
+                </div>
+                <div class='form-group'>
                   <label for='lname' class='col-xs-2'>Last Name</label>
                     <div class='col-xs-10 input-group'>
                       <input type="text" name="lname" class="form-control" placeholder="Enter Last Name here">
                     </div>
                 </div>
-                <div class='form-group'>
+                 <div class='form-group'>
                   <label for='occupation' class='col-xs-2'>Occupation</label>
                     <div class='col-xs-10 input-group'>
     
@@ -93,15 +99,21 @@
                     <div class='col-xs-10 input-group'>
                       <input type="text" name="pob" class="form-control" placeholder="Enter place of birth here" required>
                     </div>
-                </div>
+                  </div>
                 <div class='form-group'>
                   <label for='gender' class='col-xs-2'>Gender</label>
                     <div class='col-xs-10 input-group'>
                       <select class='form-control' name='gender' required>
-                        <option></option>
-                        <option>Female</option>
-                        <option>Male</option>
-                      </select>
+                    <option></option>
+                  <?php 
+                    $gender=App\EnumGender::all();
+                    foreach($gender as $genders):
+                  ?>
+                  <option value="{{$genders->id}}">{{$genders->gender}}</option>
+                  <?php 
+                    endforeach
+                  ?>
+                </select>
                     </div>
                 </div>
                  <div class='form-group'>

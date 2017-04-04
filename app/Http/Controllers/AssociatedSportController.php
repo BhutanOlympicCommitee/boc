@@ -38,7 +38,9 @@ class AssociatedSportController extends Controller
         'sport_name'=> 'required',
         ]);
         $asport = new  Associated_Sport;
+        $asport->sport_org_id=$request->type;
         $asport->sport_name=$request->sport_name;
+        $asport->sport_description=$request->sport_description;
         $asport->created_by=Auth::user()->id;
         $asport->save();
         Session::flash('success', 'Sport has been created successfully');
@@ -71,7 +73,9 @@ class AssociatedSportController extends Controller
     {
         $id=$request->edit_id;
         $asport= Associated_Sport::find($id);
+        $asport->sport_org_id=$request->type;
         $asport->sport_name= $request->sport_name;
+        $asport->sport_description=$request->sport_description;
         $asport->save();
         Session::flash('success', 'Gewog has been updated successfully');
         return redirect()->route('associated_sport_types.index');
@@ -86,7 +90,8 @@ class AssociatedSportController extends Controller
     public function destroy($id)
     {
         $asport =  Associated_Sport::findOrFail($id);
-        $asport->delete();
+        $asport->status=1;
+        $asport->save();
         Session::flash('success', 'Gewog has been deleted successfully');
         return redirect()->route('associated_sport_types.index');
     }

@@ -18,7 +18,7 @@
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <div class="text-muted bootstrap-admin-box-title clearfix">Add athlete Address Information
+              <div class="text-muted bootstrap-admin-box-title clearfix">Add athlete Address Information<div class="pull-right">Athlete_id:{{Session::get('key')}}</div>
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">

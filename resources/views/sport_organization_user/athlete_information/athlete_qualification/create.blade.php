@@ -18,7 +18,7 @@
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <div class="text-muted bootstrap-admin-box-title clearfix">Add athlete Qualification and Training Information
+              <div class="text-muted bootstrap-admin-box-title clearfix">Add athlete Qualification and Training Information<div class="pull-right">Athlete_id:{{Session::get('key')}}</div>
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
@@ -45,16 +45,17 @@
                 <div class='form-group'>
                   <label for='level' class='col-xs-3'>Level</label>
                     <div class='col-xs-9 input-group'>
-                      <select class='form-control' name='level' required>
-                        <option></option>
-                        <option>PhD</option>
-                        <option>Masters Degree</option>
-                        <option>Bachelors Degree</option>
-                        <option>Diploma</option>
-                        <option>Certificate</option>
-                        <option>High School</option>
-                        <option>Middle School</option>
-                      </select>
+                      <select class='form-control' name='type1' required>
+                      <option></option>
+                   <?php 
+                    $qualification=App\Enum_qualification_level::all();
+                    foreach($qualification as $qualifications):
+                  ?>
+                  <option value="{{$qualifications->qualification_level_id}}">{{$qualifications->qualification_level}}</option>
+                  <?php 
+                    endforeach
+                  ?>
+                </select>
                     </div>
                 </div>
                 <div class='form-group'>
