@@ -40,6 +40,11 @@
                          <li><a href="{{route('associated_sport_types.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Types of Sport in BOC</span></a></li>
                        </ul>
                 </li>
+                 <li id="coach_profile"><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Sport</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
+                    <ul class="nav nav-list tree bullets">
+                         <li><a href="{{route('coach_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Coach</span></a></li>
+                       </ul>
+                </li>
                 <li id="skra_activity"><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Annual Activities Plan</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
                     <ul class="nav nav-list tree bullets">
                         <li id="skra"><a href='{{route('skra.index')}}'><i class='pull-left glyphicon glyphicon-circle-arrow-right glyphicon-align-right'></i>&nbsp;&nbsp;&nbsp;<span>AKRAs</span></a></li>
@@ -94,6 +99,7 @@
    {
     $('#associated_sport').show();
     $('#skra_activity').show();
+    $('#coach_profile').show();
     $('#sport_organization').hide();
     $('#review_plan').hide();
     $('#achievement').show();

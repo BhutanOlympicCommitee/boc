@@ -81,8 +81,8 @@
        <form action="{{route('associated_sport_types.store')}}" method="post">
           {{csrf_field()}}
            
-          <div class='form-group'>
-            <label for='type' class='col-xs-3'>Organization:</label>
+          <div class='form-group clearfix'>
+            <label for='type' class='col-xs-3'>Sport Organization:</label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='type'>
                   <?php 
@@ -131,8 +131,8 @@
       <div class="modal-body">
         <form action="{{route('update_asport')}}" method="post">
           {{csrf_field()}}
-            <div class='form-group'>
-          <label for='type' class='col-xs-3'>Organization</label>
+            <div class='form-group clearfix'>
+          <label for='type' class='col-xs-3'>Sport Organization</label>
             <div class='col-xs-9 input-group'>
               <select class='form-control' name='type' id='type'>
                   <?php 
