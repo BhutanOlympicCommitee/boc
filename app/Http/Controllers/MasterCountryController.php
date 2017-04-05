@@ -45,6 +45,7 @@ class MasterCountryController extends Controller
         ]);
         $country = new Mst_country;
         $country->country_name=$request->country_name;
+        $country->country_nationality=$request->country_nationality;
         $country->country_code=$request->country_code;
         $country->created_by=Auth::user()->id;
         $country->save();
@@ -80,6 +81,7 @@ class MasterCountryController extends Controller
         $id = $request ->edit_id;
         $country = Mst_country::find($id);
         $country ->country_name = $request ->country_name;
+        $country ->country_nationality = $request ->country_nationality;
         $country ->country_code = $request ->country_code;
         $country -> save();
         Session::flash('success', 'Country has been updated successfully');

@@ -33,6 +33,7 @@
                 <tr>
                    <th>Sl. No:</th>
                    <th>Country Name</th>
+                   <th>Nationality</th>
                    <th>Country Code</th>
                    <th style='width:20%'>Action</th>
                 </tr>   
@@ -44,6 +45,7 @@
                 <tr>
                   <td>{{$id++}}</td>
                   <td>{{$countries->country_name}}</td>
+                  <td>{{$countries->country_nationality}}</td>
                   <td>{{$countries->country_code}}</td>
                   <td width='200px'>
                   <form id='remove' class="form-group" action="{{route('country_master.destroy',$countries->country_id)}}" method='post'>
@@ -81,14 +83,20 @@
                 <div class='form-group'>
                     {{csrf_field()}}
                 </div>
-                <div class='form-group'>
-                    <label for='country_name' class='col-xs-2'>Country</label>
+                <div class='form-group clearfix'>
+                    <label for='country_name' class='col-xs-2'>Country Name:</label>
                         <div class='col-xs-10 input-group'>
                             <input type="text" name="country_name" class="form-control" placeholder="Enter country name here" required>
                         </div>
                 </div>
-                <div class='form-group'>
-                    <label for='country_code' class='col-xs-2'>Country Code</label>
+                 <div class='form-group clearfix'>
+                    <label for='country_nationality' class='col-xs-2'>Nationality:</label>
+                        <div class='col-xs-10 input-group'>
+                            <input type="text" name="country_nationality" class="form-control" placeholder="Enter country name here" required>
+                        </div>
+                </div>
+                <div class='form-group clearfix'>
+                    <label for='country_code' class='col-xs-2'>Country Code:</label>
                         <div class='input-group col-xs-10'>
                             <input type="text" name="country_code" class="form-control" placeholder="Enter country code here" required>
                         </div>
@@ -118,6 +126,10 @@
                 <div class="form-group">
                   <label for="country_name">Country Name:</label>
                   <input type="text" class="form-control" id="country_name" name="country_name">
+                </div>
+                 <div class="form-group">
+                  <label for="country_nationality">Nationality:</label>
+                  <input type="text" class="form-control" id="country_nationality" name="country_nationality">
                 </div>
                 <div class="form-group">
                   <label for="country_code">Country Code:</label>
@@ -154,6 +166,7 @@
           //console.log(result);
           $("#edit_id").val(result.country_id);
           $("#country_name").val(result.country_name);
+          $("#country_nationality").val(result.country_nationality);
           $("#country_code").val(result.country_code);
         }
       });

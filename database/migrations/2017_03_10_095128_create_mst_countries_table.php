@@ -16,6 +16,7 @@ class CreateMstCountriesTable extends Migration
         Schema::create('mst_countries', function (Blueprint $table) {
             $table->increments('country_id');
             $table->string('country_name',250);
+            $table->string('country_nationality',200);
             $table->string('country_code',50);
             $table->integer('status')->default(0);
             $table->timestamps();

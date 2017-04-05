@@ -199,9 +199,9 @@ Route::get('training/view2', 'TrainingInformationController@showAssociatedSport'
 Route::post('training/update', 'TrainingInformationController@update')->name('update_training_schedule');
 Route::get('training/get_schedule_info', 'TrainingInformationController@getTrainingSchedule')->name('get_training_schedule');
 
-
+//Routes for coach
 Route::get('coach',['as'=>'coach_master.index','uses'=>'CoachController@index']);
 Route::post('coach/store',['as'=>'coach_master.store','uses'=>'CoachController@store']);
-//Route::delete('dzongkhag/destroy/{id}',['as'=>'dzongkhag_master.destroy','uses'=>'DzongkhagController@destroy']);
+Route::post('coach/storeSeperation',['as'=>'coach_master.storeSeperation','uses'=>'CoachController@storeSeperation']);
 Route::get('coach/view', 'CoachController@view')->name('view_coach');
 Route::post('coach/update', 'CoachController@update')->name('update_coach');

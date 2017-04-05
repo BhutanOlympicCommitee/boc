@@ -47,7 +47,7 @@ class CoachController extends Controller
         $coach->coach_mname=$request->coach_mname;
         $coach->coach_lname=$request->coach_lname;
         $coach->coach_dob=$request->coach_dob;
-        $coach->coach_nationality=$request->coach_nationality;
+        $coach->country_id=$request->type;
         $coach->coach_phone=$request->coach_phone;
         $coach->coach_mobile=$request->coach_mobile;
         $coach->coach_email=$request->coach_email;
@@ -63,6 +63,14 @@ class CoachController extends Controller
         return redirect()->route('coach_master.index');
     }
 
+    public function storeSeperation(Request $request)
+    {
+
+        $coach = new Tbl_Coach;
+        $coach->coach_id=$request->coach_id;
+        $coach->coach_title=$request->coach_title;
+
+    }
     /**
      * Display the specified resource.
      *
@@ -90,12 +98,24 @@ class CoachController extends Controller
         $id=$request->edit_id;
         $coach=Tbl_Coach::find($id);
         $coach->coach_id=$request->coach_id;
-        $coach->coach_name= $request->coach_name;
-        $coach->coach_appointmentDate= $request->coach_appointmentDate;
-        $coach->coach_passport= $request->coach_passport;
+        $coach->coach_title=$request->coach_title;
+        $coach->coach_fname=$request->coach_fname;
+        $coach->coach_mname=$request->coach_mname;
+        $coach->coach_lname=$request->coach_lname;
+        $coach->coach_dob=$request->coach_dob;
+        $coach->country_id=$request->type;
+        $coach->coach_phone=$request->coach_phone;
+        $coach->coach_mobile=$request->coach_mobile;
+        $coach->coach_email=$request->coach_email;
+        $coach->coach_passport=$request->coach_passport;
+        $coach->coach_appointmentDate=$request->coach_appointmentDate;
+        $coach->coach_expiryDate=$request->coach_expiryDate;
+        $coach->coach_contactAddress=$request->coach_contactAddress;
+        $coach->coach_type=$request->coach_type;
+        $coach->coach_type=$request->coach_type1;
         $coach->save();
         Session::flash('success', 'updated successfully');
-        return redirect()->route('sport_organization_user.coach_master.index');
+        return redirect()->route('coach_master.index');
     }
 
     /**
