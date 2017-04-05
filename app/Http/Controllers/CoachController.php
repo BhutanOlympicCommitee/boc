@@ -56,7 +56,6 @@ class CoachController extends Controller
         $coach->coach_expiryDate=$request->coach_expiryDate;
         $coach->coach_contactAddress=$request->coach_contactAddress;
         $coach->coach_type=$request->coach_type;
-        $coach->coach_type=$request->coach_type;
         $coach->created_by=Auth::user()->id;
         $coach->save();
         Session::flash('success', 'created successfully');

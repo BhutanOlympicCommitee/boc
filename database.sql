@@ -702,6 +702,7 @@ DROP TABLE IF EXISTS `mst_countries`;
 CREATE TABLE `mst_countries` (
   `country_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `country_name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `country_nationality` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `country_code` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `status` int(11) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -717,26 +718,26 @@ CREATE TABLE `mst_countries` (
 
 LOCK TABLES `mst_countries` WRITE;
 /*!40000 ALTER TABLE `mst_countries` DISABLE KEYS */;
-INSERT INTO `mst_countries` VALUES (1,'Afghanistan','AFG',0,'2017-03-24 23:05:21','2017-03-24 23:05:21',1);
-INSERT INTO `mst_countries` VALUES (2,'Albania','ALB',0,'2017-03-24 23:05:54','2017-03-24 23:05:54',1);
-INSERT INTO `mst_countries` VALUES (3,'Argentina','ARG',0,'2017-03-24 23:06:21','2017-03-24 23:06:21',1);
-INSERT INTO `mst_countries` VALUES (4,'Australia','AUS',0,'2017-03-24 23:06:54','2017-03-24 23:06:54',1);
-INSERT INTO `mst_countries` VALUES (5,'Austria','AUT',0,'2017-03-24 23:07:18','2017-03-24 23:07:18',1);
-INSERT INTO `mst_countries` VALUES (6,'Bangladesh','BGD',0,'2017-03-24 23:07:42','2017-03-24 23:07:42',1);
-INSERT INTO `mst_countries` VALUES (7,'Belgium','BEL',0,'2017-03-24 23:10:04','2017-03-24 23:10:04',1);
-INSERT INTO `mst_countries` VALUES (8,'Bhutan','BTN',0,'2017-03-24 23:10:56','2017-03-24 23:10:56',1);
-INSERT INTO `mst_countries` VALUES (9,'Brazil','BRA',0,'2017-03-24 23:11:10','2017-03-24 23:11:10',1);
-INSERT INTO `mst_countries` VALUES (10,'Cameroon','CMR',1,'2017-03-24 23:12:11','2017-03-30 02:32:15',1);
-INSERT INTO `mst_countries` VALUES (11,'Canada','CAN',0,'2017-03-24 23:12:33','2017-03-24 23:12:33',1);
-INSERT INTO `mst_countries` VALUES (12,'Chile','CHL',0,'2017-03-24 23:12:50','2017-03-24 23:12:50',1);
-INSERT INTO `mst_countries` VALUES (13,'China','CHN',0,'2017-03-24 23:13:04','2017-03-24 23:13:04',1);
-INSERT INTO `mst_countries` VALUES (14,'Colombia','COL',0,'2017-03-24 23:13:27','2017-03-24 23:13:27',1);
-INSERT INTO `mst_countries` VALUES (15,'France','FRA',0,'2017-03-24 23:13:52','2017-03-24 23:13:52',1);
-INSERT INTO `mst_countries` VALUES (16,'Germany','DEU',0,'2017-03-24 23:14:20','2017-03-24 23:14:20',1);
-INSERT INTO `mst_countries` VALUES (17,'India','IND',0,'2017-03-24 23:14:42','2017-03-24 23:14:42',1);
-INSERT INTO `mst_countries` VALUES (18,'Indonesia','IDN',0,'2017-03-24 23:15:06','2017-03-24 23:15:06',1);
-INSERT INTO `mst_countries` VALUES (19,'Italy','ITA',0,'2017-03-24 23:15:33','2017-03-24 23:15:33',1);
-INSERT INTO `mst_countries` VALUES (20,'Japan','JPN',0,'2017-03-24 23:15:48','2017-03-24 23:15:48',1);
+INSERT INTO `mst_countries` VALUES (1,'Afghanistan','','AFG',0,'2017-03-24 23:05:21','2017-03-24 23:05:21',1);
+INSERT INTO `mst_countries` VALUES (2,'Albania','','ALB',0,'2017-03-24 23:05:54','2017-03-24 23:05:54',1);
+INSERT INTO `mst_countries` VALUES (3,'Argentina','','ARG',0,'2017-03-24 23:06:21','2017-03-24 23:06:21',1);
+INSERT INTO `mst_countries` VALUES (4,'Australia','','AUS',0,'2017-03-24 23:06:54','2017-03-24 23:06:54',1);
+INSERT INTO `mst_countries` VALUES (5,'Austria','','AUT',0,'2017-03-24 23:07:18','2017-03-24 23:07:18',1);
+INSERT INTO `mst_countries` VALUES (6,'Bangladesh','','BGD',0,'2017-03-24 23:07:42','2017-03-24 23:07:42',1);
+INSERT INTO `mst_countries` VALUES (7,'Belgium','','BEL',0,'2017-03-24 23:10:04','2017-03-24 23:10:04',1);
+INSERT INTO `mst_countries` VALUES (8,'Bhutan','Bhutanese','BTN',0,'2017-03-24 23:10:56','2017-04-04 23:29:25',1);
+INSERT INTO `mst_countries` VALUES (9,'Brazil','','BRA',0,'2017-03-24 23:11:10','2017-03-24 23:11:10',1);
+INSERT INTO `mst_countries` VALUES (10,'Cameroon','','CMR',1,'2017-03-24 23:12:11','2017-03-30 02:32:15',1);
+INSERT INTO `mst_countries` VALUES (11,'Canada','Canadian','CAN',0,'2017-03-24 23:12:33','2017-04-04 23:29:52',1);
+INSERT INTO `mst_countries` VALUES (12,'Chile','','CHL',0,'2017-03-24 23:12:50','2017-03-24 23:12:50',1);
+INSERT INTO `mst_countries` VALUES (13,'China','','CHN',0,'2017-03-24 23:13:04','2017-03-24 23:13:04',1);
+INSERT INTO `mst_countries` VALUES (14,'Colombia','','COL',0,'2017-03-24 23:13:27','2017-03-24 23:13:27',1);
+INSERT INTO `mst_countries` VALUES (15,'France','','FRA',0,'2017-03-24 23:13:52','2017-03-24 23:13:52',1);
+INSERT INTO `mst_countries` VALUES (16,'Germany','','DEU',0,'2017-03-24 23:14:20','2017-03-24 23:14:20',1);
+INSERT INTO `mst_countries` VALUES (17,'India','Indian','IND',0,'2017-03-24 23:14:42','2017-04-04 23:29:41',1);
+INSERT INTO `mst_countries` VALUES (18,'Indonesia','','IDN',0,'2017-03-24 23:15:06','2017-03-24 23:15:06',1);
+INSERT INTO `mst_countries` VALUES (19,'Italy','','ITA',0,'2017-03-24 23:15:33','2017-03-24 23:15:33',1);
+INSERT INTO `mst_countries` VALUES (20,'Japan','','JPN',0,'2017-03-24 23:15:48','2017-03-24 23:15:48',1);
 /*!40000 ALTER TABLE `mst_countries` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -896,7 +897,7 @@ CREATE TABLE `tbl__coaches` (
   `coach_mname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `coach_lname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `coach_dob` date NOT NULL,
-  `coach_nationality` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `country_id` int(11) NOT NULL,
   `coach_phone` int(11) NOT NULL,
   `coach_mobile` int(11) NOT NULL,
   `coach_email` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
@@ -909,7 +910,7 @@ CREATE TABLE `tbl__coaches` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`coach_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -918,6 +919,8 @@ CREATE TABLE `tbl__coaches` (
 
 LOCK TABLES `tbl__coaches` WRITE;
 /*!40000 ALTER TABLE `tbl__coaches` DISABLE KEYS */;
+INSERT INTO `tbl__coaches` VALUES (1,'Ms.','Sonam','d','dema','2017-04-28',8,17572345,12343345,'pema@gmail.com','sddf456','2017-04-08','2017-04-07','wangdue','Volunteer',3,'2017-04-04 23:32:21','2017-04-04 23:32:21');
+INSERT INTO `tbl__coaches` VALUES (2,'Mr.','Pema','d','Dorji','2017-04-14',8,17572345,12343345,'pema@gmail.com','sdfg5678','2017-04-21','2017-04-14','thimphu','Paid',3,'2017-04-04 23:32:59','2017-04-04 23:32:59');
 /*!40000 ALTER TABLE `tbl__coaches` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1288,9 +1291,9 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','$2y$10$mk3JcPIXVK4hKILLytDVFepTOl2zqoU5H2mwx.infhaHw.msrWHpO',1,'x92irUKd9qkE9ZppFMTOhwVy2OgafaS0vXdsXhfaOcGSj4hcpiErLTGwbEoK','2017-03-24 23:02:03','2017-04-02 21:03:10');
+INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','$2y$10$mk3JcPIXVK4hKILLytDVFepTOl2zqoU5H2mwx.infhaHw.msrWHpO',1,'NgZEe35spCodggfOwDxOFXVe9wrKj2Un8ynb0tylZsT2NLphLhmmzV0q3AHY','2017-03-24 23:02:03','2017-04-04 23:29:56');
 INSERT INTO `users` VALUES (2,'kelzang','boc@gov.bt','$2y$10$AJCU3eg1CqZ6BYu1JFc7t.3RQfVEmyTmZGH1FTJJMUxPQs7k3RyCm',2,'7ek62MOs0VMmXBiGwBhGNhQfTpzOqWYa6Rs7NiSRpWg1XgMGQu4G17nEXHIt','2017-03-26 21:36:29','2017-03-31 02:38:17');
-INSERT INTO `users` VALUES (3,'sangay','sangay@gmail.com','$2y$10$rz0uTnhSRek806H0HZQe8u9PMkILlThwZCd7evyednneiMQryjHEW',4,'Y1QFLqMlKB75O4fpMdSCL3o6xAu2v88h9gSuyP5QsQZnGn0uW96muBt8VnE3','2017-03-27 22:43:38','2017-03-31 04:22:12');
+INSERT INTO `users` VALUES (3,'sangay','sangay@gmail.com','$2y$10$rz0uTnhSRek806H0HZQe8u9PMkILlThwZCd7evyednneiMQryjHEW',4,'XL4vE6JUmyq2sDb23Puj2o8iDAES8XWRnv19B1A9Y4C9FPsmtTZbH6GdGN2r','2017-03-27 22:43:38','2017-04-04 23:29:01');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1303,4 +1306,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-05 11:09:54
+-- Dump completed on 2017-04-05 11:34:27

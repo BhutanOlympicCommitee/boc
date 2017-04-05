@@ -176,7 +176,7 @@
             <label for='coach_type' class='col-xs-3'>Type:</label>
               <div class="col-xs-9 input-group">
                <input name="coach_type" type="radio" value="Paid" class="pull-left">Paid</br>
-               <input name="coach_type1" type="radio" value="Volunteer">Volunteer
+               <input name="coach_type" type="radio" value="Volunteer">Volunteer
             </div>
           </div>
        <div class="modal-footer">
