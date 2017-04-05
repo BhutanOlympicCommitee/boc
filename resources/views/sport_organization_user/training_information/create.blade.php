@@ -104,14 +104,16 @@
                       <form class="form-group" action="" method='post'>
                           <input type="hidden" name="_method" value="delete">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                          <a class="btn btn-info" data-toggle='modal' data-target='#editTrainingSchedule'>Edit</a>
-                           <a href="" class="btn btn-primary" data-toggle='modal' data-target='#viewParticipants'>View Participants</a>
+                          <a class="btn btn-info" data-toggle='modal' data-target='#editTrainingSchedule' onclick='editTrainingSchedule({{$training->training_id}},{{$training->day_id}},{{$training->session_type}})'>Edit</a>
+                           <a href="" class="btn btn-primary" data-toggle='modal' data-target='#viewParticipants'> Participants</a>
                         </form>
                     </td>
                   </tr>
                   @endforeach
               </tbody>
               </table>
+               <input type="hidden" name="hidden_edit" id="hidden_edit" value="{{route('get_training_schedule')}}">
+
               <div class='form-group clearfix'>
                 <div class=" col-xs-12 input-group" style='margin-top: 20px' >
                   <a href='' class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target='#addScheduleModal'>Create New Schedule</a>
@@ -293,9 +295,105 @@
 </div>  
 <!-- schedule modal ends here-->
 <!-- EditTrainingSchedule begins-->
-
+<div class="modal fade" id="editTrainingSchedule" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Training Schedule</h4>
+      </div>
+      <div class="modal-body">
+        <form action="{{route('update_training_schedule')}}" method="post">
+          {{csrf_field()}}
+          <div class='row'>
+            <div class='col-xs-6 clearfix'>
+              <div class='form-group'>
+                <label for='day' class='col-xs-2'>Day</label>
+                  <div class='col-xs-10 input-group'>
+                    <select class='form-control' name='day' >
+                      <option value="" disabled selected>Select Day</option>
+                      <?php $enum_day=App\EnumDaytable::all();
+                        foreach($enum_day as $day):
+                          ?>
+                        <option value={{$day->day_id}}>{{$day->day_name}}</option>
+                      <?php endforeach ?>
+                    </select>
+                  </div>
+              </div>
+              <div class='form-group clearfix'>
+                <label for='session_name' class='col-xs-3'>Session Name </label>
+                  <div class='col-xs-9 input-group'>
+                    <input type="text" name="session_name" class="form-control" placeholder="Enter session name here" id='session_name'>
+                  </div>
+              </div>
+              <div class='form-group clearfix'>
+              <label for='start_time' class='col-xs-2'>Start Time </label>
+                <div class='col-xs-10 input-group'>
+                  <input type="time" name="start_time" class="form-control" placeholder="Enter start time here"  id='start_time'>
+                </div>
+            </div>
+            <div class='form-group'>
+                <label for='venue' class='col-xs-2'>Venue</label>
+                  <div class='col-xs-10 input-group'>
+                    <input type="text" name="venue" class="form-control" placeholder="Enter venue here"  id='venue'>
+                  </div>
+              </div>
+              <div class='form-group'>
+                <label for='comments' class='col-xs-3'>Comments</label>
+                  <div class='col-xs-9 input-group'>
+                    <textarea name='comments' class='form-control' id='comments'></textarea>
+                  </div>
+              </div>
+            </div>
+            <div class='col-xs-6 clearfix'>
+              <div class='form-group'>
+                <label for='date' class='col-xs-2'>Date </label>
+                  <div class='col-xs-10 input-group'>
+                    <input type="date" name="date" class="form-control" placeholder="Enter date here"  id='date'>
+                  </div>
+              </div>
+              <div class='form-group clearfix'>
+                <label for='session_type' class='col-xs-3'>Session Type</label>
+                  <div class='col-xs-9 input-group'>
+                    <select class='form-control' name='session_type'>
+                      <option value="" disabled selected>Select session type</option>
+                        <?php $session_type=App\EnumSessionType::all();
+                        foreach($session_type as $session):
+                          ?>
+                        <option value={{$session->session_type_id}}>{{$session->session_type_name}}</option>
+                      <?php endforeach ?>
+                    </select>
+                  </div>
+              </div>
+               <div class='form-group clearfix'>
+                <label for='end_time' class='col-xs-2'>End Time</label>
+                  <div class='col-xs-10 input-group'>
+                    <input type="time" name="end_time" class="form-control" placeholder="Enter end time here" id='end_time'>
+                  </div>
+              </div>
+              <div class='form-group'>
+                <label for='coach' class='col-xs-2'>Coach</label>
+                  <div class='col-xs-10 input-group'>
+                    <select class='form-control' name='coach' id='coach'>
+                      <option value="" disabled selected>Select coach</option>
+                    </select>
+                  </div>
+              </div>
+            </div>
+          </div> 
+      <div class="modal-footer">
+        <button type='submit' class="btn btn-info col-xs-offset-8">Update</button>
+        <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+      </div>
+      <input type="hidden" id="edit_id" name="edit_id">
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- EditTrainingSchedule ends here -->
 <script type="text/javascript">
+  $('#table1').DataTable();
   $(function()
   {
     $('#trainingInfo').click(function()
@@ -307,6 +405,27 @@
       window.location="{{url(route('training.attendance'))}}";
     });
   });
-</script>
 
+  function editTrainingSchedule(id,day_id,session_type)
+  {
+    var edit_url = $("#hidden_edit").val();
+    $.ajax({
+        url: edit_url,
+        type:"GET", 
+        data: {"id":id}, 
+        success: function(result){
+          //console.log(result);
+          $("#edit_id").val(result.training_id);
+          $("#session_name").val(result.session_name);
+          $("#start_time").val(result.start_time);
+          $("#venue").val(result.venue);
+          $("#comments").val(result.comments);
+          $("#date").val(result.date);
+          $("#end_time").val(result.end_time);
+        }
+      });
+     $('select[name="day"]').val(day_id);
+     $('select[name="session_type"]').val(session_type);
+  }
+</script>
 @endsection

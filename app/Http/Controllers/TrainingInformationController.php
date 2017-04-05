@@ -100,4 +100,29 @@ class TrainingInformationController extends Controller
             return response()->json($info);
         }
     }
+
+    public function getTrainingSchedule(Request $request)
+    {
+        if($request->ajax()){
+            $id = $request->id;
+            $info = TrainingSchedule::find($id);
+            return response()->json($info);
+        }
+    }
+
+    public function update(Request $request)
+    {
+        $id = $request ->edit_id;
+        $training_schedule=TrainingSchedule::findOrFail($id);
+        $training_schedule->session_name=$request->session_name;
+        $training_schedule->venue=$request->venue;
+        $training_schedule->start_time=$request->start_time;
+        $training_schedule->comments=$request->comments;
+        $training_schedule->date=$request->date;
+        $training_schedule->end_time=$request->end_time;
+        $training_schedule->day_id=$request->day;
+        $training_schedule->session_type=$request->session_type;
+        $training_schedule->save(); 
+        return redirect()->route('training.create');  
+    }
 }
