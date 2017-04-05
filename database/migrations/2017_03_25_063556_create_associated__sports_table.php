@@ -15,7 +15,10 @@ class CreateAssociatedSportsTable extends Migration
     {
         Schema::create('associated__sports', function (Blueprint $table) {
             $table->increments('sport_id');
-            $table->string('sport_name',1000);
+            $table->integer('sport_org_id');
+            $table->string('sport_name',100);
+            $table->string('sport_description',1000);
+            $table->integer('status')->default(0);
             $table->integer('created_by');
             $table->timestamps();
         });

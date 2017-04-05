@@ -23,4 +23,8 @@ class Athlete_qualification extends Model
     {
     	return $this->hasOne('App\Athlete_bioinformation','athlete_id','athlete_id');
     }
+     public function displayLevel()
+    {
+        return $this->belongsTo('App\Enum_qualification_level','qualification_level_id','qualification_level_id');
+    }
 }

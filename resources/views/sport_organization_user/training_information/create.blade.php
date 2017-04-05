@@ -104,7 +104,7 @@
                       <form class="form-group" action="" method='post'>
                           <input type="hidden" name="_method" value="delete">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                          <a href="{{--route('training.show')--}}" class="btn btn-info">Edit</a>
+                          <a class="btn btn-info" data-toggle='modal' data-target='#editTrainingSchedule'>Edit</a>
                            <a href="" class="btn btn-primary" data-toggle='modal' data-target='#viewParticipants'>View Participants</a>
                         </form>
                     </td>
@@ -292,6 +292,9 @@
   </div>
 </div>  
 <!-- schedule modal ends here-->
+<!-- EditTrainingSchedule begins-->
+
+<!-- EditTrainingSchedule ends here -->
 <script type="text/javascript">
   $(function()
   {

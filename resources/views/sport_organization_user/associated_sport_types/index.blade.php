@@ -32,6 +32,7 @@
         				 				<thead>
         									<tr>
         										<th>Sl. No:</th>
+                            <th>Sport Organization</th>
         										<th>Name of Sport</th>
         										<th style='width:20%'>Action</th>
         									</tr>	
@@ -42,6 +43,7 @@
                         @if($sports->status==0)
         								<tr>
         									<td>{{$id++}}</td>
+                          <td>{{$sports->Sport->sport_org_name}}</td>
         									<td>{{$sports->sport_name}}</td>
         									<td>
         										<form id='remove' class="form-group" action="{{route('associated_sport_types.destroy',$sports->sport_id)}}" method='post'>
@@ -78,12 +80,35 @@
       <div class="modal-body">
        <form action="{{route('associated_sport_types.store')}}" method="post">
           {{csrf_field()}}
-          <div class='form-group'>
-            <label for='sport_name' class='col-xs-3'>Name of Sport:</label>
+           
+          <div class='form-group clearfix'>
+            <label for='type' class='col-xs-3'>Sport Organization:</label>
               <div class='col-xs-9 input-group'>
-                <input type="text" name="sport_name" class="form-control" placeholder="Enter Sports name here" required>
+                <select class='form-control' name='type'>
+                  <?php 
+                    $sport=App\Sport_Organization::all();
+                    foreach($sport as $sports):
+                  ?>
+                  <option value="{{$sports->sport_org_id}}">{{$sports->sport_org_name}}</option>
+                  <?php 
+                    endforeach
+                  ?>
+                </select>
               </div>
           </div>
+          <div class='form-group'>
+            <label for='sport_name' class='col-xs-3'>Sport Name:</label>
+              <div class='col-xs-9 input-group'>
+                <input type="text" name="sport_name" class="form-control" placeholder="Enter sport name here" required>
+              </div>
+          </div>
+          <div class='form-group'>
+            <label for='sport_description' class='col-xs-3'>Sport Description:</label>
+              <div class='input-group col-xs-9'>
+                <input type="text" name="sport_description"  class="form-control" placeholder="Enter description here" required>
+              </div>
+          </div>
+      
       
        <div class="modal-footer">
           <button type="submit" class="btn btn-default glyphicon glyphicon-ok">Save</button>
@@ -106,11 +131,29 @@
       <div class="modal-body">
         <form action="{{route('update_asport')}}" method="post">
           {{csrf_field()}}
+            <div class='form-group clearfix'>
+          <label for='type' class='col-xs-3'>Sport Organization</label>
+            <div class='col-xs-9 input-group'>
+              <select class='form-control' name='type' id='type'>
+                  <?php 
+                      $sports=App\Sport_Organization::all();
+                      foreach($sports as $sport):
+              ?>
+                <option value="{{$sport->sport_org_id}}">{{$sport->sport_org_name}}</option>
+               <?php endforeach ?>
+              </select>
+            </div>
+      </div>
           <div class='form-group'>
-          <div class='form-group'>
-            <label for='sport_name' class='col-xs-3'>Name of Sport:</label>
+            <label for='sport_name' class='col-xs-3'>Sport Name:</label>
               <div class='col-xs-9 input-group'>
                 <input type="text" name="sport_name" class="form-control" placeholder="name here" id='sport' required >
+              </div>
+          </div>
+           <div class='form-group'>
+            <label for='sport_description' class='col-xs-3'>Sport description:</label>
+              <div class='col-xs-9 input-group'>
+                <input type="text" name="sport_description" class="form-control" placeholder="name here" id='sport_des' required >
               </div>
           </div>
       <div class="modal-footer">
@@ -140,7 +183,9 @@
       success: function(result){
         // console.log(result);
         $("#edit_id").val(result.sport_id);
+        $("type").val(result.sport_org_name);
         $("#sport").val(result.sport_name);
+        $("#sport_des").val(result.sport_description);
       }
     });
   }

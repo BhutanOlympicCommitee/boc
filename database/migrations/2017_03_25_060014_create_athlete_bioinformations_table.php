@@ -17,6 +17,7 @@ class CreateAthleteBioinformationsTable extends Migration
             $table->increments('athlete_id');
             $table->string('athlete_title',100);
             $table->string('athlete_fname',500);
+            $table->string('athlete_mname',500);
             $table->string('athlete_lname',500);
             $table->string('athlete_occupation',500);
             $table->date('athlete_dob');

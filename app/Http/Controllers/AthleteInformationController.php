@@ -32,6 +32,7 @@ class AthleteInformationController extends Controller
         $athlete= new Athlete_bioinformation;
         $athlete->athlete_title=$request->title;
         $athlete->athlete_fname=$request->fname;
+        $athlete->athlete_mname=$request->mname;
         $athlete->athlete_lname=$request->lname;
         $athlete->athlete_occupation=$request->occupation;
         $athlete->athlete_dob=$request->dob;
