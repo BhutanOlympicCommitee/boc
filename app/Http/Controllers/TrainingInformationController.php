@@ -8,7 +8,9 @@ use App\Athlete_address;
 use App\Associated_Sport;
 use App\TrainingSchedule;
 use App\AthleteTrainingSchedule;
+use App\AtheleteTrainingAttendance;
 use Session;
+use Auth;
 class TrainingInformationController extends Controller
 {
     /**
@@ -21,7 +23,6 @@ class TrainingInformationController extends Controller
         $athlete_info=Athlete_bioinformation::all();
         return view('sport_organization_user.training_information.index',compact('athlete_info'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -35,7 +36,8 @@ class TrainingInformationController extends Controller
     
     public function trainingAttendanceIndex()
     {
-        return view('sport_organization_user.training_information.attendance');
+        $training_schedule=TrainingSchedule::all();
+        return view('sport_organization_user.training_information.attendance',compact('training_schedule'));
     }
 
     /**
@@ -54,8 +56,9 @@ class TrainingInformationController extends Controller
         $training_schedule->start_time=$request->start_time;
         $training_schedule->end_time=$request->end_time;
         $training_schedule->venue=$request->venue;
-        $training_schedule->coach_id=1;
+        $training_schedule->coach_id=$request->coach;
         $training_schedule->comments=$request->comments;
+        $training_schedule->created_by=Auth::user()->id;
         $data=$request->get('select');
         $training_schedule->save();
         Session::put('key',$training_schedule->training_id);
@@ -110,6 +113,14 @@ class TrainingInformationController extends Controller
         }
     }
 
+    public function showAthleteTrainingSchedule(Request $request)
+    {
+        if($request->ajax()){
+            $id = $request->id;
+            $info =AthleteTrainingSchedule::where('athlete_id',$id)->get();
+            return response()->json($info);
+        }
+    }
     public function update(Request $request)
     {
         $id = $request ->edit_id;
@@ -124,5 +135,24 @@ class TrainingInformationController extends Controller
         $training_schedule->session_type=$request->session_type;
         $training_schedule->save(); 
         return redirect()->route('training.create');  
+    }
+
+    public function saveAthleteAttendance(Request $request)
+    {
+        $training_id=$request->hidden_training_id;
+        $athlete_id=$request->get('select');
+        foreach ($athlete_id as $athlete){
+            $record_attendance=new AtheleteTrainingAttendance();
+            $record_attendance->athlete_id = $athlete;
+            $record_attendance->training_id = $training_id;
+            $record_attendance->save();
+        }
+        return redirect()->route('training.attendance');
+    }
+
+    public function viewAthleteTrainingSchedule($id)
+    {
+      $athletes=Athlete_bioinformation::where('athlete_id',$id)->get();
+      return view('sport_organization_user.training_information.view_training_schedule',compact('athletes'));
     }
 }

@@ -65,6 +65,11 @@
                       <div class='col-xs-10 input-group'>
                         <select class='form-control' name='coach'>
                           <option value="" disabled selected>Select coach</option>
+                          <?php $coach=App\Tbl_Coach::all();
+                            foreach($coach as $coach):
+                              ?>
+                            <option value={{$coach->coach_id}}>{{$coach->coach_fname.' '.$coach->coach_mname.' '.$coach->coach_lname}}</option>
+                          <?php endforeach ?>
                         </select>
                       </div>
                   </div>
@@ -99,12 +104,12 @@
                     <td>{{$training->session_name}}</td>
                     <td>{{$training->start_time}}</td>
                     <td>{{$training->end_time}}</td>
-                    <td>{{$training->coach_id}}</td>
+                    <td>{{$training->coach->coach_fname.' '.$training->coach->coach_mname.' '.$training->coach->coach_lname}}</td>
                     <td>
                       <form class="form-group" action="" method='post'>
                           <input type="hidden" name="_method" value="delete">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                          <a class="btn btn-info" data-toggle='modal' data-target='#editTrainingSchedule' onclick='editTrainingSchedule({{$training->training_id}},{{$training->day_id}},{{$training->session_type}})'>Edit</a>
+                          <a class="btn btn-info" data-toggle='modal' data-target='#editTrainingSchedule' onclick='editTrainingSchedule({{$training->training_id}},{{$training->day_id}},{{$training->session_type}},{{$training->coach_id}})'>Edit</a>
                            <a href="" class="btn btn-primary" data-toggle='modal' data-target='#viewParticipants'> Participants</a>
                         </form>
                     </td>
@@ -250,6 +255,11 @@
                   <div class='col-xs-10 input-group'>
                     <select class='form-control' name='coach'>
                       <option value="" disabled selected>Select coach</option>
+                      <?php $coach=App\Tbl_Coach::all();
+                            foreach($coach as $coach):
+                              ?>
+                            <option value={{$coach->coach_id}}>{{$coach->coach_fname.' '.$coach->coach_mname.' '.$coach->coach_lname}}</option>
+                          <?php endforeach ?>
                     </select>
                   </div>
               </div>
@@ -376,6 +386,11 @@
                   <div class='col-xs-10 input-group'>
                     <select class='form-control' name='coach' id='coach'>
                       <option value="" disabled selected>Select coach</option>
+                      <?php $coach=App\Tbl_Coach::all();
+                            foreach($coach as $coach):
+                              ?>
+                            <option value={{$coach->coach_id}}>{{$coach->coach_fname.' '.$coach->coach_mname.' '.$coach->coach_lname}}</option>
+                          <?php endforeach ?>
                     </select>
                   </div>
               </div>
@@ -406,7 +421,7 @@
     });
   });
 
-  function editTrainingSchedule(id,day_id,session_type)
+  function editTrainingSchedule(id,day_id,session_type,coach_id)
   {
     var edit_url = $("#hidden_edit").val();
     $.ajax({
@@ -426,6 +441,8 @@
       });
      $('select[name="day"]').val(day_id);
      $('select[name="session_type"]').val(session_type);
+     $('select[name="coach"]').val(coach_id);
+
   }
 </script>
 @endsection

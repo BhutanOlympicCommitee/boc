@@ -52,6 +52,11 @@
                       <div class='col-xs-10 input-group'>
                         <select class='form-control' name='type'>
                           <option value="" disabled selected>Select sport</option>
+                          <?php $associated_sport=App\Associated_Sport::all();
+                            foreach($associated_sport as $sport):
+                              ?>
+                            <option value={{$sport->sport_id}}>{{$sport->sport_name}}</option>
+                          <?php endforeach ?>
                         </select>
                       </div>
                   </div>
@@ -60,6 +65,11 @@
                       <div class='col-xs-10 input-group'>
                         <select class='form-control' name='coach'>
                           <option value="" disabled selected>Select coach</option>
+                          <?php $coach=App\Tbl_Coach::all();
+                            foreach($coach as $coach):
+                              ?>
+                            <option value={{$coach->coach_id}}>{{$coach->coach_fname.' '.$coach->coach_mname.' '.$coach->coach_lname}}</option>
+                          <?php endforeach ?>
                         </select>
                       </div>
                   </div>
@@ -94,13 +104,10 @@
                     <td>{{$athlete->athlete_cid}}</td>
                     <td>{{$athlete->athlete_dob}}</td>
                     <td>
-                        <form class="form-group" action="" method='post'>
-                            <input type="hidden" name="_method" value="delete">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <a href="{{--route('training.show')--}}" data-toggle='modal' data-target='#viewDetails' class="btn btn-info" onclick='view_details({{$athlete->athlete_id}})'>Details</a>
-                            <a href="{{--route('training.showschedule')--}}" class="btn btn-primary" data-toggle='modal' data-target='#viewTrainingSchedule'>Training Schedule</a>
-                        </form>
+                      <a data-toggle='modal' data-target='#viewDetails' class="btn btn-info" onclick='view_details({{$athlete->athlete_id}})'>Details</a>
+                        <a href='{{route('showAthleteSchedule',$athlete->athlete_id)}}' class="btn btn-primary">Training Schedule</button>
                         <input type="hidden" name="hidden_id" id='hidden_id' value='{{$athlete->athlete_id}}'>
+                      
                     </td>
                   </tr>
                   @endforeach
@@ -116,6 +123,8 @@
 <input type="hidden" name="view_details" id='view_details' value='{{route('show_athlete_info')}}'>
 <input type="hidden" name="view_address" id='view_address' value='{{route('show_athlete_address')}}'>
 <input type="hidden" name="view_associated_sport" id='view_associated_sport' value='{{route('show_associated_sport')}}'>
+<input type="hidden" name="view_athlete_training" id='view_athlete_training' value='{{route('view_athlete_training')}}'>
+<input type="hidden" name="view_training_schedule" id='view_training_schedule' value='{{route('view_training_schedule')}}'>
 
 <!-- view details modal begins-->
 <div class="modal fade" id="viewDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -160,7 +169,7 @@
         <label>CID:</label>
         <input type="text" name="cid" id='cid' style='border-style:none'><br>
         <label>Associated Sport:</label>
-        <input type="text" name="associated_sport" id='associated_sport' style='border-style:none'>
+        <input type="text" name="associated_sport" id='associated_sport1' style='border-style:none'>
       </div>
       <div class='col-md-4' id='photo'>
       </div>
@@ -174,50 +183,6 @@
   </div>
 </div>
 <!-- ends viewDetails modal-->
-<!-- viewTrainingSchedule modal begins-->
-<div class="modal fade" id="viewTrainingSchedule" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content"> 
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">View Training Schedule</h4>
-      </div>
-      <div class="modal-body">
-        <table class="table table-bordered table-striped table-responsive" id="table1">
-           <thead>
-              <tr>
-                  <th>Sl_no:</th>
-                  <th>Day</th>
-                  <th>Date</th>
-                  <th>Training Type</th>
-                  <th>Session Name</th>
-                  <th>Start Time</th>
-                  <th>End Time</th>
-                  <th>Coach</th>
-              </tr>   
-          </thead>
-          <tbody>
-           <?php $id=1?>
-            <tr>
-              <td>{{$id++}}</td>
-              <td>Tuesday</td>
-              <td>21/3/17</td>
-              <td>football training</td>
-              <td>dfdfggf</td>
-              <td>9</td>
-              <td>5</td>
-              <td>Tshering</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- ends viewTrainingSchedule modal-->
 <script type="text/javascript">
   $(function(){
     $('#table1').DataTable();
@@ -246,7 +211,6 @@
         type:"GET", 
         data: {"id":id}, 
         success: function(result){
-          console.log(result);
           $("#title").val(result.athlete_title);
           $("#fname").val(result.athlete_fname);
           $("#lname").val(result.athlete_lname);
@@ -266,8 +230,7 @@
             type:"GET", 
             data: {"id":sport_id}, 
             success: function(result){
-              //console.log(result);
-              $("#associated_sport").val(result.sport_name);
+              $("#associated_sport1").val(result.sport_name);
             }
           });
          
@@ -279,14 +242,44 @@
         type:"GET", 
         data: {"id":id}, 
         success: function(result){
-          //console.log(result);
           $("#phone_no").val(result.Caddress_phone);
           $("#mobile_no").val(result.Caddress_mobile);
           $("#email").val(result.Caddress_email);
         }
       });
   }
-</script>
+  function displayTrainingSchedule(id)
+  {
+    var athlete_id=id;
+    var table = $("#table tbody");
+    var i=0;
+    table.empty();
+    var url=$('#view_athlete_training').val();
+    $.ajax({
+      url:url,
+      type:'GET',
+      data:{"id":athlete_id},
+      success:function(result)
+      {
+        $.each(result,function(key,val)
+        {
+          //console.log(val.training_id);
+          var training_id=val.training_id;
+          var url1=$('#view_training_schedule').val();
+          $.ajax({
+            url:url1,
+            type:'GET',
+            data:{"id":training_id},
+            success:function(result)
+            {
+              table.append("<tr><td>"+i+"</td><td>"+result.day_id+"</td><td>"+result.date+"</td><td>"+result.session_type+"</td><td>"+result.session_name+"</td><td>"+result.start_time+"</td><td>"+result.end_time+"</td><td>"+result.coach_id+"</td></tr>");
+            }
+          });
+        });
+      }
+    });
+  }
+  </script>
 @endsection
 @section('footer')
 <div class="container">

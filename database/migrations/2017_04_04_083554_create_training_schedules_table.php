@@ -24,6 +24,7 @@ class CreateTrainingSchedulesTable extends Migration
             $table->string('venue');
             $table->integer('coach_id');
             $table->string('comments');
+            $table->string('created_by');
             $table->timestamps();
         });
     }

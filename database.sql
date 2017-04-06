@@ -24,12 +24,14 @@ DROP TABLE IF EXISTS `associated__sports`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `associated__sports` (
   `sport_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `sport_org_id` int(11) NOT NULL,
   `sport_name` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `sport_description` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `created_by` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`sport_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,13 +40,39 @@ CREATE TABLE `associated__sports` (
 
 LOCK TABLES `associated__sports` WRITE;
 /*!40000 ALTER TABLE `associated__sports` DISABLE KEYS */;
-INSERT INTO `associated__sports` VALUES (1,'football',0,NULL,NULL);
-INSERT INTO `associated__sports` VALUES (2,'volleyball',3,'2017-03-30 22:59:46','2017-03-30 22:59:46');
-INSERT INTO `associated__sports` VALUES (3,'basketball',3,'2017-03-30 23:00:02','2017-03-30 23:00:02');
-INSERT INTO `associated__sports` VALUES (4,'table tenis',3,'2017-03-30 23:00:11','2017-03-30 23:00:11');
-INSERT INTO `associated__sports` VALUES (5,'khuru',3,'2017-04-03 00:10:53','2017-04-03 00:10:53');
-INSERT INTO `associated__sports` VALUES (6,'archery',3,'2017-04-03 00:11:03','2017-04-03 00:11:03');
+INSERT INTO `associated__sports` VALUES (7,1,'football','play football',3,'2017-04-05 00:00:33','2017-04-05 00:00:33');
+INSERT INTO `associated__sports` VALUES (8,2,'Basketball','play basket',3,'2017-04-05 00:16:14','2017-04-05 00:16:14');
 /*!40000 ALTER TABLE `associated__sports` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `athelete_training_attendances`
+--
+
+DROP TABLE IF EXISTS `athelete_training_attendances`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `athelete_training_attendances` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `athlete_id` int(11) NOT NULL,
+  `training_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `athelete_training_attendances`
+--
+
+LOCK TABLES `athelete_training_attendances` WRITE;
+/*!40000 ALTER TABLE `athelete_training_attendances` DISABLE KEYS */;
+INSERT INTO `athelete_training_attendances` VALUES (1,9,15,'2017-04-05 21:58:02','2017-04-05 21:58:02');
+INSERT INTO `athelete_training_attendances` VALUES (2,9,16,'2017-04-05 21:58:35','2017-04-05 21:58:35');
+INSERT INTO `athelete_training_attendances` VALUES (3,10,16,'2017-04-05 21:58:35','2017-04-05 21:58:35');
+INSERT INTO `athelete_training_attendances` VALUES (4,10,17,'2017-04-05 22:01:32','2017-04-05 22:01:32');
+/*!40000 ALTER TABLE `athelete_training_attendances` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -71,7 +99,7 @@ CREATE TABLE `athlete_addresses` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`address_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -80,8 +108,8 @@ CREATE TABLE `athlete_addresses` (
 
 LOCK TABLES `athlete_addresses` WRITE;
 /*!40000 ALTER TABLE `athlete_addresses` DISABLE KEYS */;
-INSERT INTO `athlete_addresses` VALUES (1,2,'2','1','rinchending','rinchending','2','1','sdf@fgfg',123456,1234355,'fgjkfhkg',1,'2017-03-29 00:52:46','2017-03-29 00:52:46');
-INSERT INTO `athlete_addresses` VALUES (2,3,'2','1','gfhggj','ghjjgjh','2','1','gffg@fgfg',123456,234345,'ghghjjg',1,'2017-03-29 02:45:22','2017-03-29 02:45:22');
+INSERT INTO `athlete_addresses` VALUES (3,9,'2','1','6','samling','2','1','pema@gmail.com',123456,1233,'Wangdue',3,'2017-04-05 00:19:13','2017-04-05 00:19:13');
+INSERT INTO `athlete_addresses` VALUES (4,10,'3','2','17','dorokha','15','13','sangay@gmail.com',123456,1233,'thimphu',3,'2017-04-05 00:28:57','2017-04-05 00:28:57');
 /*!40000 ALTER TABLE `athlete_addresses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,6 +124,7 @@ CREATE TABLE `athlete_bioinformations` (
   `athlete_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `athlete_title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `athlete_fname` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `athlete_mname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `athlete_lname` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `athlete_occupation` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `athlete_dob` date NOT NULL,
@@ -112,7 +141,7 @@ CREATE TABLE `athlete_bioinformations` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`athlete_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,14 +150,8 @@ CREATE TABLE `athlete_bioinformations` (
 
 LOCK TABLES `athlete_bioinformations` WRITE;
 /*!40000 ALTER TABLE `athlete_bioinformations` DISABLE KEYS */;
-INSERT INTO `athlete_bioinformations` VALUES (1,'Ms.','pema','lhamo','','2017-03-31','thimphu','Female',1.000,45.000,'tshering','gh12332',12332434,'1','2HowBhutaneseITstudentsLearnProgramming.docx',1,'2017-03-28 21:48:18','2017-03-28 21:48:18');
-INSERT INTO `athlete_bioinformations` VALUES (2,'Mrs.','deki','wangmo','','2017-03-29','thimphu','Female',123.000,56.000,'dorji','fhgh',12332434,'1','2HowBhutaneseITstudentsLearnProgramming.docx',1,'2017-03-28 21:52:19','2017-03-28 21:52:19');
-INSERT INTO `athlete_bioinformations` VALUES (3,'Ms.','sangay','dema','','2017-03-16','punakha','Female',156.000,56.000,'dorji','we124454',123345,'1','profile.JPG',1,'2017-03-29 02:44:55','2017-03-29 02:44:55');
-INSERT INTO `athlete_bioinformations` VALUES (4,'Ms.','wangmo','lhamo','','2017-03-24','wangdue','Female',123.000,56.000,'dorji','gh12332',12332434,'1','IMG_9560.JPG',2,'2017-03-29 23:01:54','2017-03-29 23:01:54');
-INSERT INTO `athlete_bioinformations` VALUES (5,'Mrs.','dorji','phuentsho','','2017-03-23','bumthang','Male',167.000,67.000,'tshewang','werr34556',345467,'1','IMG_9560.JPG',2,'2017-03-29 23:02:56','2017-03-29 23:02:56');
-INSERT INTO `athlete_bioinformations` VALUES (6,'Ms.','dorji','phuentsho','','2017-03-23','bumthang','Male',167.000,67.000,'tshewang','werr34556',345467,'1','IMG_9560.JPG',2,'2017-03-29 23:08:49','2017-03-29 23:08:49');
-INSERT INTO `athlete_bioinformations` VALUES (7,'Mr.','phurpa','tshering','','2017-03-11','tashigang','Male',156.000,45.000,'fghgh','gfh5667',345567,'1','IMG_9575.JPG',2,'2017-03-30 00:56:20','2017-03-30 00:56:20');
-INSERT INTO `athlete_bioinformations` VALUES (8,'Ms.','deki','dema','','2017-03-04','punakha','Female',123.000,34.000,'tshering','we124454',12332434,'1','WIN_20170224_090704.JPG',2,'2017-03-30 01:01:47','2017-03-30 01:01:47');
+INSERT INTO `athlete_bioinformations` VALUES (9,'Ms.','pema','-','dema','1','2017-04-22','wangdue','2',153.000,56.000,'tshering','we124454',12332434,'7','IMG_9877.JPG',3,'2017-04-05 00:17:26','2017-04-05 00:17:26');
+INSERT INTO `athlete_bioinformations` VALUES (10,'Mr.','sangay','-','phuentsho','1','2017-04-29','thimphu','1',156.000,45.000,'dorji','gh12332',23456,'8','IMG_9571.JPG',3,'2017-04-05 00:28:21','2017-04-05 00:28:21');
 /*!40000 ALTER TABLE `athlete_bioinformations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +170,7 @@ CREATE TABLE `athlete_occupations` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`occupation_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,6 +179,7 @@ CREATE TABLE `athlete_occupations` (
 
 LOCK TABLES `athlete_occupations` WRITE;
 /*!40000 ALTER TABLE `athlete_occupations` DISABLE KEYS */;
+INSERT INTO `athlete_occupations` VALUES (1,'Student','learning',4,NULL,NULL);
 /*!40000 ALTER TABLE `athlete_occupations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,16 +194,16 @@ CREATE TABLE `athlete_qualifications` (
   `qualification_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `athlete_id` int(11) NOT NULL,
   `address_id` int(11) NOT NULL,
-  `qualification_level` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `qualification_level_id` int(11) NOT NULL,
   `qualification_description` varchar(1500) COLLATE utf8_unicode_ci NOT NULL,
-  `qualification_year` date NOT NULL,
+  `qualification_year` int(11) NOT NULL,
   `country_id` int(11) NOT NULL,
   `qualification_institute` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `created_by` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`qualification_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -188,6 +212,8 @@ CREATE TABLE `athlete_qualifications` (
 
 LOCK TABLES `athlete_qualifications` WRITE;
 /*!40000 ALTER TABLE `athlete_qualifications` DISABLE KEYS */;
+INSERT INTO `athlete_qualifications` VALUES (1,9,9,1,'master in information tehcnology',2015,17,'Rama University',3,'2017-04-05 00:27:05','2017-04-05 00:27:05');
+INSERT INTO `athlete_qualifications` VALUES (2,10,10,2,'Bachelor in Computer Science',2011,8,'College of Science and Technology',3,'2017-04-05 00:29:39','2017-04-05 00:29:39');
 /*!40000 ALTER TABLE `athlete_qualifications` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -205,7 +231,7 @@ CREATE TABLE `athlete_training_schedules` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -214,13 +240,10 @@ CREATE TABLE `athlete_training_schedules` (
 
 LOCK TABLES `athlete_training_schedules` WRITE;
 /*!40000 ALTER TABLE `athlete_training_schedules` DISABLE KEYS */;
-INSERT INTO `athlete_training_schedules` VALUES (1,12,1,'2017-04-04 04:44:32','2017-04-04 04:44:32');
-INSERT INTO `athlete_training_schedules` VALUES (2,12,2,'2017-04-04 04:44:32','2017-04-04 04:44:32');
-INSERT INTO `athlete_training_schedules` VALUES (3,12,3,'2017-04-04 04:44:32','2017-04-04 04:44:32');
-INSERT INTO `athlete_training_schedules` VALUES (4,12,4,'2017-04-04 04:44:32','2017-04-04 04:44:32');
-INSERT INTO `athlete_training_schedules` VALUES (5,13,3,'2017-04-04 05:17:04','2017-04-04 05:17:04');
-INSERT INTO `athlete_training_schedules` VALUES (6,13,5,'2017-04-04 05:17:04','2017-04-04 05:17:04');
-INSERT INTO `athlete_training_schedules` VALUES (7,13,7,'2017-04-04 05:17:04','2017-04-04 05:17:04');
+INSERT INTO `athlete_training_schedules` VALUES (12,15,9,'2017-04-05 00:57:14','2017-04-05 00:57:14');
+INSERT INTO `athlete_training_schedules` VALUES (13,15,10,'2017-04-05 00:57:14','2017-04-05 00:57:14');
+INSERT INTO `athlete_training_schedules` VALUES (14,16,10,'2017-04-05 00:59:05','2017-04-05 00:59:05');
+INSERT INTO `athlete_training_schedules` VALUES (15,17,10,'2017-04-05 22:00:17','2017-04-05 22:00:17');
 /*!40000 ALTER TABLE `athlete_training_schedules` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,7 +336,7 @@ CREATE TABLE `enum_genders` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -322,6 +345,8 @@ CREATE TABLE `enum_genders` (
 
 LOCK TABLES `enum_genders` WRITE;
 /*!40000 ALTER TABLE `enum_genders` DISABLE KEYS */;
+INSERT INTO `enum_genders` VALUES (1,'Male',NULL,NULL);
+INSERT INTO `enum_genders` VALUES (2,'Female',NULL,NULL);
 /*!40000 ALTER TABLE `enum_genders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -338,7 +363,7 @@ CREATE TABLE `enum_qualification_levels` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`qualification_level_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -347,6 +372,8 @@ CREATE TABLE `enum_qualification_levels` (
 
 LOCK TABLES `enum_qualification_levels` WRITE;
 /*!40000 ALTER TABLE `enum_qualification_levels` DISABLE KEYS */;
+INSERT INTO `enum_qualification_levels` VALUES (1,'Master',NULL,NULL);
+INSERT INTO `enum_qualification_levels` VALUES (2,'Degree',NULL,NULL);
 /*!40000 ALTER TABLE `enum_qualification_levels` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -648,7 +675,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -689,6 +716,7 @@ INSERT INTO `migrations` VALUES (116,'2017_04_04_103007_create_athlete_training_
 INSERT INTO `migrations` VALUES (117,'2017_04_04_035925_create_enum_genders_table',8);
 INSERT INTO `migrations` VALUES (118,'2017_04_04_061033_create_enum_qualification_levels_table',8);
 INSERT INTO `migrations` VALUES (119,'2017_04_04_080509_create_tbl__coaches_table',8);
+INSERT INTO `migrations` VALUES (120,'2017_04_06_035017_create_athelete_training_attendances_table',9);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1240,10 +1268,11 @@ CREATE TABLE `training_schedules` (
   `venue` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `coach_id` int(11) NOT NULL,
   `comments` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_by` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`training_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1252,15 +1281,9 @@ CREATE TABLE `training_schedules` (
 
 LOCK TABLES `training_schedules` WRITE;
 /*!40000 ALTER TABLE `training_schedules` DISABLE KEYS */;
-INSERT INTO `training_schedules` VALUES (1,7,'2017-04-07','Football match','2','05:00:00','23:00:00','changlingmithang',1,'practice for the best','2017-04-04 03:31:09','2017-04-04 22:58:42');
-INSERT INTO `training_schedules` VALUES (4,3,'2017-04-09','volleyball practice','3','06:05:00','19:06:00','changlingmithang',1,'Volleyball practice','2017-04-04 03:41:37','2017-04-04 03:41:37');
-INSERT INTO `training_schedules` VALUES (6,3,'2017-04-20','basketball practice','2','09:00:00','18:00:00','changjiji',1,'Basketball practice','2017-04-04 03:45:49','2017-04-04 03:45:49');
-INSERT INTO `training_schedules` VALUES (7,5,'2017-04-17','khuru match','2','08:00:00','18:00:00','changbangdu',1,'traditional match','2017-04-04 04:03:12','2017-04-04 04:03:12');
-INSERT INTO `training_schedules` VALUES (8,3,'2017-04-14','archery','2','03:00:00','13:00:00','changlingmithang',1,'archerymatch','2017-04-04 04:23:16','2017-04-04 04:23:16');
-INSERT INTO `training_schedules` VALUES (9,4,'2017-04-14','archery','2','07:59:00','17:59:00','changlingmithang',1,'archery match','2017-04-04 04:24:13','2017-04-04 04:24:13');
-INSERT INTO `training_schedules` VALUES (11,7,'2017-04-25','body building','2','07:00:00','17:00:00','Semtokha',1,'Body building','2017-04-04 04:33:35','2017-04-04 04:33:35');
-INSERT INTO `training_schedules` VALUES (12,5,'2017-04-22','badminton','3','05:59:00','13:01:00','Thimphu',1,'badminton match','2017-04-04 04:44:32','2017-04-04 04:44:32');
-INSERT INTO `training_schedules` VALUES (13,5,'2017-04-14','archery','2','13:01:00','01:01:00','changlingmithang',1,'fdghghhj','2017-04-04 05:17:03','2017-04-04 05:17:03');
+INSERT INTO `training_schedules` VALUES (15,3,'2017-04-05','Football match','3','09:00:00','18:00:00','changlingmithang',1,'Practice football',3,'2017-04-05 00:57:14','2017-04-05 00:57:14');
+INSERT INTO `training_schedules` VALUES (16,4,'2017-04-06','Basket match','2','05:00:00','17:00:00','changbangdu',2,'Basketball match',3,'2017-04-05 00:59:05','2017-04-05 00:59:05');
+INSERT INTO `training_schedules` VALUES (17,3,'2017-04-12','volleyball practice','3','07:00:00','17:00:00','changjiji',2,'practice volleyball mandatory',3,'2017-04-05 22:00:17','2017-04-05 22:00:17');
 /*!40000 ALTER TABLE `training_schedules` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1293,7 +1316,7 @@ LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','$2y$10$mk3JcPIXVK4hKILLytDVFepTOl2zqoU5H2mwx.infhaHw.msrWHpO',1,'NgZEe35spCodggfOwDxOFXVe9wrKj2Un8ynb0tylZsT2NLphLhmmzV0q3AHY','2017-03-24 23:02:03','2017-04-04 23:29:56');
 INSERT INTO `users` VALUES (2,'kelzang','boc@gov.bt','$2y$10$AJCU3eg1CqZ6BYu1JFc7t.3RQfVEmyTmZGH1FTJJMUxPQs7k3RyCm',2,'7ek62MOs0VMmXBiGwBhGNhQfTpzOqWYa6Rs7NiSRpWg1XgMGQu4G17nEXHIt','2017-03-26 21:36:29','2017-03-31 02:38:17');
-INSERT INTO `users` VALUES (3,'sangay','sangay@gmail.com','$2y$10$rz0uTnhSRek806H0HZQe8u9PMkILlThwZCd7evyednneiMQryjHEW',4,'XL4vE6JUmyq2sDb23Puj2o8iDAES8XWRnv19B1A9Y4C9FPsmtTZbH6GdGN2r','2017-03-27 22:43:38','2017-04-04 23:29:01');
+INSERT INTO `users` VALUES (3,'sangay','sangay@gmail.com','$2y$10$rz0uTnhSRek806H0HZQe8u9PMkILlThwZCd7evyednneiMQryjHEW',4,'nflQH3q51RBtHNkXVpugFf5Pzr4CedtbsUqC6QSmSbHq4MxjErBnZGPj1OQm','2017-03-27 22:43:38','2017-04-05 21:46:43');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1306,4 +1329,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-05 11:34:27
+-- Dump completed on 2017-04-06 17:05:52
