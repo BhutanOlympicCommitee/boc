@@ -202,6 +202,28 @@ Route::get('training/get_schedule_info', 'TrainingInformationController@getTrain
 //Routes for coach
 Route::get('coach',['as'=>'coach_master.index','uses'=>'CoachController@index']);
 Route::post('coach/store',['as'=>'coach_master.store','uses'=>'CoachController@store']);
-Route::post('coach/storeSeperation',['as'=>'coach_master.storeSeperation','uses'=>'CoachController@storeSeperation']);
+Route::post('coach/storeSeperation',['as'=>'coach_master.storeSeperation','uses'=>'CoachSeperationController@store']);
 Route::get('coach/view', 'CoachController@view')->name('view_coach');
 Route::post('coach/update', 'CoachController@update')->name('update_coach');
+
+//routes for Games
+Route::get('games',['as'=>'games_master.create','uses'=>'GamesController@create']);
+Route::post('games',['as'=>'games_master.store','uses'=>'GamesController@store']);
+// Route::get('athlet/{id}/edit',['as'=>'athlete_info.edit','uses'=>'AthleteInformationController@edit']);
+
+//routes for sport & coach
+Route::get('sportcoach',['as'=>'sport_coach_master.index','uses'=>'SportCoachController@index']);
+Route::post('sportcoach/store',['as'=>'sport_coach_master.store','uses'=>'SportCoachController@store']);
+Route::delete('sportcoach/destroy/{id}',['as'=>'sport_coach_master.destroy','uses'=>'SportCoachController@destroy']);
+Route::get('sportcoach/view', 'SportCoachController@view')->name('view_sportcoach');
+Route::post('sportcoach/update', 'SportCoachController@update')->name('update_sportcoach');
+
+//routes for team member
+Route::get('team',['as'=>'team_master.index','uses'=>'TeamMemberController@index']);
+Route::post('team/store',['as'=>'team_master.store','uses'=>'TeamMemberController@store']);
+Route::delete('team/destroy/{id}',['as'=>'team_master.destroy','uses'=>'TeamMemberController@destroy']);
+Route::get('team/view', 'TeamMemberController@view')->name('view_team');
+Route::post('team/update', 'TeamMemberController@update')->name('update_team');
+Route::get('team/view2', 'TeamMemberController@view')->name('show_athlete_info');
+Route::get('team/view3', 'TeamMemberController@show')->name('show_athlete_address');
+Route::get('team/view4', 'TeamMemberController@showAssociatedSport')->name('show_associated_sport');

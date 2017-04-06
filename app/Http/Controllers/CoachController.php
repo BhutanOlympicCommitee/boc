@@ -41,7 +41,6 @@ class CoachController extends Controller
         // validation
        
         $coach = new Tbl_Coach;
-        $coach->coach_id=$request->coach_id;
         $coach->coach_title=$request->coach_title;
         $coach->coach_fname=$request->coach_fname;
         $coach->coach_mname=$request->coach_mname;
@@ -59,44 +58,25 @@ class CoachController extends Controller
         $coach->created_by=Auth::user()->id;
         $coach->save();
         Session::flash('success', 'created successfully');
+        Session::put('key5',$coach->coach_id);
         return redirect()->route('coach_master.index');
     }
+    
 
-    public function storeSeperation(Request $request)
-    {
-
-        $coach = new Tbl_Coach;
-        $coach->coach_id=$request->coach_id;
-        $coach->coach_title=$request->coach_title;
-
-    }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function view(Request $request)
     {
         if($request->ajax()){
             $id = $request->id;
-            $info = Tbl_Coach::find($id);
+            $info = Tbl_Coach::where('coach_id',$id)->first();
             return response()->json($info);
         }
     }
    
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
    public function update(Request $request)
     {
         $id=$request->edit_id;
         $coach=Tbl_Coach::find($id);
-        $coach->coach_id=$request->coach_id;
         $coach->coach_title=$request->coach_title;
         $coach->coach_fname=$request->coach_fname;
         $coach->coach_mname=$request->coach_mname;
@@ -111,7 +91,6 @@ class CoachController extends Controller
         $coach->coach_expiryDate=$request->coach_expiryDate;
         $coach->coach_contactAddress=$request->coach_contactAddress;
         $coach->coach_type=$request->coach_type;
-        $coach->coach_type=$request->coach_type1;
         $coach->save();
         Session::flash('success', 'updated successfully');
         return redirect()->route('coach_master.index');

@@ -28,6 +28,43 @@
                             {{ Session::get('success') }}
                           </div>	
 						 	          @endif
+                        <div class='row'>
+                <div class='col-xs-6 clearfix'>
+                  <div class='form-group clearfix'>
+                    <label for='coach_appointmentDate' class='col-xs-2'>From Date:</label>
+                      <div class='col-xs-10 col-xs-offset-3 input-group'>
+                        <input type="date" name="coach_appointmentDate" class="form-control" placeholder="Enter athlate id here">
+                      </div>
+                  </div>
+                  <div class='form-group clearfix'>
+                    <label for='coach_name' class='col-xs-2'>Coach Name </label>
+                      <div class='col-xs-10 col-xs-offset-3 input-group'>
+                        <input type="text" name="coach_name" class="form-control" placeholder="Enter Coach name here">
+                      </div>
+                  </div>
+                </div>
+                
+                <div class='col-xs-6 clearfix'>
+                   <div class='form-group clearfix'>
+                    <label for='coach_expiryDate' class='col-xs-2'>To Date:</label>
+                      <div class='col-xs-10 input-group'>
+                        <input type="date" name="coach_expiryDate" class="form-control" placeholder="Enter coach name here">
+                      </div>
+                  </div>
+                  <div class='form-group clearfix'>
+                    <label for='coach_id' class='col-xs-2'>Coach ID</label>
+                      <div class='col-xs-10 input-group'>
+                        <input type="text" name="coach_id" class="form-control" placeholder="Enter coach id here">
+                
+                      </div>
+                  </div>
+                </div>
+              </div>
+                    <div class="form-group clearfix">
+                  <div class="col-xs-12 input-group ">
+                    <input type="submit" class="btn btn-default pull-right" value="Search">
+                    </div>
+                </div>
         				 			<table class="table table-bordered table-striped table-responsive" id="table">
         				 				<thead>
         									<tr>
@@ -293,9 +330,9 @@
           </div>
              <div class='form-group'>
             <label for='coach_type' class='col-xs-3'>Type:</label>
-              <div class="col-xs-9 input-group" id="coach_type">
-               <input name="coach_type" type="radio" value="Paid" class="pull-left">Paid</br>
-               <input name="coach_type" type="radio" value="Volunteer">Volunteer
+              <div class="col-xs-9 input-group">
+               <input name="coach_type" type="radio" value="Paid" id="coach_type" class="pull-left">Paid</br>
+               <input name="coach_type" type="radio" value="Volunteer" id="coach_type1" checked>Volunteer
             </div>
           </div>
       <div class="modal-footer">
@@ -316,21 +353,20 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Coach Seperation Information</h4>
-      </div>
+        <h4 class="modal-title" id="myModalLabel">Coach Seperation Information <div class="pull-right">Coach_id:</div></h4>      </div>
       <div class="modal-body">
           <form action="{{route('coach_master.storeSeperation')}}" method="post">
           {{csrf_field()}}  
           <div class='form-group clearfix'>
-            <label for='coach_seperation' class='col-xs-3'>Seperation Date:</label>
+            <label for='seperation_date' class='col-xs-3'>Seperation Date:</label>
               <div class='col-xs-9 input-group'>
-                <input type="date" name="coach_seperation" class="form-control" placeholder="" required>
+                <input type="date" name="seperation_date" class="form-control" placeholder="" required>
               </div>
           </div>
            <div class='form-group clearfix'>
-            <label for='coach_comment' class='col-xs-3'>Comments:</label>
+            <label for='seperation_comment' class='col-xs-3'>Comments:</label>
               <div class='col-xs-9 input-group'>
-                <textarea name="coach_comment" class="form-control" placeholder="Give comments here" required></textarea>
+                <textarea name="seperation_comment" class="form-control" placeholder="Give comments here" required></textarea>
               </div>
           </div>
            
@@ -358,12 +394,12 @@
       type:"GET", 
       data: {"id":id}, 
       success: function(result){
-        // console.log(result);
+        // console.log(result->coach_fname);
         $("#edit_id").val(result.coach_id);
         $("#type4").val(result.country_id);
         $('#coach_title').val(result.coach_title)
         $("#coach_fname").val(result.coach_fname);
-        $("#coach_mname").val(result.coach_fmname);
+        $("#coach_mname").val(result.coach_mname);
         $("#coach_lname").val(result.coach_lname);
         $("#coach_dob").val(result.coach_dob);
         $("#coach_nationality").val(result.coach_nationality);
@@ -371,11 +407,12 @@
         $("#coach_mobile").val(result.coach_mobile);
         $("#coach_email").val(result.coach_email);
         $("#coach_passport").val(result.coach_passport);
-        $("#coach_appointmentDate").val(result.coach_appointmentdate);
+        $("#coach_appointmentDate").val(result.coach_appointmentDate);
         $("#coach_expiryDate").val(result.coach_expiryDate);
         $("#coach_contactAddress").val(result.coach_email);
         $("#coach_type").val(result.coach_type);
-        $("#coach_type1").val(result.coach_type1);
+        $("#coach_type1").val(result.coach_type);
+       
       }
     });
   }
