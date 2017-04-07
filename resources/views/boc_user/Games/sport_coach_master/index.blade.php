@@ -18,8 +18,8 @@
                 <div class="col-md-10 col-md-offset-1">
                 	<div class="panel panel-default">
                         <div class="panel-heading">
-	                        <div class="text-muted bootstrap-admin-box-title clearfix">Sport Coach Information
-	                         <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal">Add</a> 
+	                        <div class="text-muted bootstrap-admin-box-title clearfix">Sport Coach Information<div class="pull-right">Games_ID:{{Session::get('key6')}}</div>
+	                        
 	                        </div>
 	                    </div>
                     	<div class="bootstrap-admin-panel-content">
@@ -67,7 +67,10 @@
         								@endforeach
         								</tbody>
         					 		</table>
+                      <div class='clearfix'>
+                       <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal">Add Sport & Coach</a> 
                       <input type="hidden" name="hidden_view" id="hidden_view" value="{{route('view_sportcoach')}}">
+                     </div>
                      </div>
                     </div>
                 </div>
