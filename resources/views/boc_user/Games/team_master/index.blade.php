@@ -87,17 +87,18 @@
               <tr>
                 <td>{{$id++}}</td>
                 <?php $coach=App\Tbl_sport_coach::where('gamesdetail_id',$team_member->gamesdetail_id)->get();
-                foreach ($coach as $coachs):?>
+                  foreach ($coach as $coachs):
+                ?>
                 <td>{{$coachs->displayFederation->sport_org_name}}</td>
-              <?php endforeach ?>
-                {{-- <td>{{$team_member->gamesdetail_id}}</td> --}}
+                <?php endforeach ?>
                 <td>{{$teams->displayAsport->sport_name}}</td>
                 <td>{{$teams->athlete_id}}</td>
                 <td>{{$teams->athlete_fname.' '.$teams->athlete_mname.' '.$teams->athlete_lname}}</td>
                 <td>
-                  <form id='remove' class="form-group" action="{{route('team_master.destroy',$teams->team_id)}}" method='post'>
+                  <form id='remove' class="form-group" action="{{route('team_master.destroy',$teams->athlete_id,$team_member->gamesdetail_id)}}" method='post'>
                           <input type="hidden" name="_method" value="delete">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          <input type="hidden" name="hidden_game_id" value={{$team_member->gamesdetail_id}}>
                           <button type="submit" class="btn btn-warning glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Remove
                           </button>
                         </form>

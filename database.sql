@@ -1132,7 +1132,7 @@ CREATE TABLE `tbl_game_details` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`gamesdetail_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1143,6 +1143,7 @@ LOCK TABLES `tbl_game_details` WRITE;
 /*!40000 ALTER TABLE `tbl_game_details` DISABLE KEYS */;
 INSERT INTO `tbl_game_details` VALUES (10,2014,2,'football match',8,'changbangdu','2017-04-14','2017-04-21','football friendly match',2,2,'2017-04-07 01:14:59','2017-04-07 01:14:59');
 INSERT INTO `tbl_game_details` VALUES (11,2013,2,'basketball',8,'changlingmithang','2017-04-15','2017-04-22','under 12 match',2,2,'2017-04-07 01:16:24','2017-04-07 01:16:24');
+INSERT INTO `tbl_game_details` VALUES (12,1967,2,'tenis',8,'changjiji','2017-04-04','2017-04-20','xgfgfjhj',2,2,'2017-04-07 01:44:14','2017-04-07 01:44:14');
 /*!40000 ALTER TABLE `tbl_game_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1166,7 +1167,7 @@ CREATE TABLE `tbl_sport_coaches` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`sc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1177,6 +1178,7 @@ LOCK TABLES `tbl_sport_coaches` WRITE;
 /*!40000 ALTER TABLE `tbl_sport_coaches` DISABLE KEYS */;
 INSERT INTO `tbl_sport_coaches` VALUES (6,10,1,7,1,'freindly match ',2,2,0,'2017-04-07 01:15:16','2017-04-07 01:15:16');
 INSERT INTO `tbl_sport_coaches` VALUES (7,11,2,8,3,'under 12 match',2,2,0,'2017-04-07 01:16:39','2017-04-07 01:16:39');
+INSERT INTO `tbl_sport_coaches` VALUES (8,12,2,8,4,'ertryew',2,2,0,'2017-04-07 01:44:32','2017-04-07 01:44:32');
 /*!40000 ALTER TABLE `tbl_sport_coaches` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1378,7 +1380,7 @@ CREATE TABLE `tbl_team_members` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`team_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1387,9 +1389,8 @@ CREATE TABLE `tbl_team_members` (
 
 LOCK TABLES `tbl_team_members` WRITE;
 /*!40000 ALTER TABLE `tbl_team_members` DISABLE KEYS */;
-INSERT INTO `tbl_team_members` VALUES (3,9,10,2,2,'2017-04-07 01:15:32','2017-04-07 01:15:32');
-INSERT INTO `tbl_team_members` VALUES (4,10,10,2,2,'2017-04-07 01:15:32','2017-04-07 01:15:32');
 INSERT INTO `tbl_team_members` VALUES (5,10,11,2,2,'2017-04-07 01:16:47','2017-04-07 01:16:47');
+INSERT INTO `tbl_team_members` VALUES (6,9,12,2,2,'2017-04-07 01:44:55','2017-04-07 01:44:55');
 /*!40000 ALTER TABLE `tbl_team_members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1496,4 +1497,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-07 13:19:57
+-- Dump completed on 2017-04-07 14:16:57

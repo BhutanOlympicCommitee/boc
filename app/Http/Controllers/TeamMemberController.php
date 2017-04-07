@@ -102,11 +102,17 @@ class TeamMemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $team = Tbl_team_member::findOrFail($id);
-        $team->status=1;
-        $team->save();
+        $team_member = Tbl_team_member::where('athlete_id',$id)->get();
+        $game_id=$request->hidden_game_id;
+        foreach($team_member as $team)
+        {
+            if($team->gamesdetail_id==$game_id)
+            {
+               $team->delete();
+            }
+        }
         Session::flash('success', 'Deleted successfully');
         return redirect()->route('team_master.index');
     }
