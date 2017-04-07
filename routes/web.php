@@ -229,8 +229,8 @@ Route::post('sportcoach/update', 'SportCoachController@update')->name('update_sp
 Route::get('team',['as'=>'team_master.index','uses'=>'TeamMemberController@index']);
 Route::post('team/store',['as'=>'team_master.store','uses'=>'TeamMemberController@store']);
 Route::delete('team/destroy/{id}',['as'=>'team_master.destroy','uses'=>'TeamMemberController@destroy']);
-Route::get('team/view', 'TeamMemberController@view')->name('view_team');
+//Route::get('team/view', 'TeamMemberController@view')->name('view_team');
 Route::post('team/update', 'TeamMemberController@update')->name('update_team');
-Route::get('team/view2', 'TeamMemberController@view')->name('show_athlete_info');
-Route::get('team/view3', 'TeamMemberController@show')->name('show_athlete_address');
-Route::get('team/view4', 'TeamMemberController@showAssociatedSport')->name('show_associated_sport');
+Route::get('team/view_athlete', 'TeamMemberController@view')->name('show_athlete_info1');
+Route::get('team/view_address', 'TeamMemberController@show')->name('show_athlete_address1');
+Route::get('team/view_sport', 'TeamMemberController@showAssociatedSport')->name('show_associated_sport1');

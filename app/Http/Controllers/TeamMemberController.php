@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use App\Tbl_team_member;
+use App\Athlete_bioinformation;
+use App\Associated_Sport;
+use App\Athlete_address;
 
 class TeamMemberController extends Controller
 {

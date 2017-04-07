@@ -263,7 +263,7 @@ CREATE TABLE `coach_seperations` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`seperation_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,6 +273,7 @@ CREATE TABLE `coach_seperations` (
 LOCK TABLES `coach_seperations` WRITE;
 /*!40000 ALTER TABLE `coach_seperations` DISABLE KEYS */;
 INSERT INTO `coach_seperations` VALUES (5,2,'2017-04-15','nmlkl',3,'2017-04-06 12:04:24','2017-04-06 12:04:24');
+INSERT INTO `coach_seperations` VALUES (6,1,'2017-04-21','completed contract',3,'2017-04-06 21:33:26','2017-04-06 21:33:26');
 /*!40000 ALTER TABLE `coach_seperations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1001,7 +1002,7 @@ CREATE TABLE `tbl__coaches` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`coach_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1010,9 +1011,10 @@ CREATE TABLE `tbl__coaches` (
 
 LOCK TABLES `tbl__coaches` WRITE;
 /*!40000 ALTER TABLE `tbl__coaches` DISABLE KEYS */;
-INSERT INTO `tbl__coaches` VALUES (1,'Ms.','Sonam','d','dema','2017-04-28',8,17572345,12343345,'pema@gmail.com','sddf456','2017-04-08','2017-04-07','wangdue','Volunteer',0,3,'2017-04-04 23:32:21','2017-04-04 23:32:21');
+INSERT INTO `tbl__coaches` VALUES (1,'Ms.','Sonam','d','dema','2017-04-28',8,17572345,12343345,'pema@gmail.com','sddf456','2017-04-08','2017-04-07','wangdue','Volunteer',1,3,'2017-04-04 23:32:21','2017-04-06 21:33:26');
 INSERT INTO `tbl__coaches` VALUES (2,'Mr.','Pema','d','Dorji','2017-04-14',8,17572345,12343345,'pema@gmail.com','sdfg5678','2017-04-21','2017-04-14','thimphu','Paid',1,3,'2017-04-04 23:32:59','2017-04-06 12:04:24');
 INSERT INTO `tbl__coaches` VALUES (3,'Mrs.','Sonam','dorji','Wangmo','2017-04-15',8,1234355,124456,'dorji@gmail.com','123453gjhk','2017-04-15','2017-04-21','fghgjg','Volunteer',0,3,'2017-04-06 12:05:34','2017-04-06 12:05:34');
+INSERT INTO `tbl__coaches` VALUES (4,'Mr.','karma','s','Dorji','2017-04-21',8,1234355,123356657,'karma@gmail.com','123dfdfg','2017-04-14','2017-04-08','thimphu','Paid',0,3,'2017-04-06 21:33:03','2017-04-06 21:33:03');
 /*!40000 ALTER TABLE `tbl__coaches` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1480,8 +1482,8 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','$2y$10$mk3JcPIXVK4hKILLytDVFepTOl2zqoU5H2mwx.infhaHw.msrWHpO',1,'NgZEe35spCodggfOwDxOFXVe9wrKj2Un8ynb0tylZsT2NLphLhmmzV0q3AHY','2017-03-24 23:02:03','2017-04-04 23:29:56');
-INSERT INTO `users` VALUES (2,'kelzang','boc@gov.bt','$2y$10$AJCU3eg1CqZ6BYu1JFc7t.3RQfVEmyTmZGH1FTJJMUxPQs7k3RyCm',2,'7ek62MOs0VMmXBiGwBhGNhQfTpzOqWYa6Rs7NiSRpWg1XgMGQu4G17nEXHIt','2017-03-26 21:36:29','2017-03-31 02:38:17');
-INSERT INTO `users` VALUES (3,'sangay','sangay@gmail.com','$2y$10$rz0uTnhSRek806H0HZQe8u9PMkILlThwZCd7evyednneiMQryjHEW',4,'1z4HPrvKPrBr54uXgGXLg59L214ZPqwDyje0TNKRyktLQkqxqD7GcjXCpuX3','2017-03-27 22:43:38','2017-04-06 12:06:05');
+INSERT INTO `users` VALUES (2,'kelzang','boc@gov.bt','$2y$10$AJCU3eg1CqZ6BYu1JFc7t.3RQfVEmyTmZGH1FTJJMUxPQs7k3RyCm',2,'7Mt5Zw0JkJJDjtcOXZtgPRI3dfzOqxbB1R9U0CpsOq2130Ugj94wOzVKL864','2017-03-26 21:36:29','2017-04-06 21:30:31');
+INSERT INTO `users` VALUES (3,'sangay','sangay@gmail.com','$2y$10$rz0uTnhSRek806H0HZQe8u9PMkILlThwZCd7evyednneiMQryjHEW',4,'BGWd77MpvQjIktkHKratnu0Tc9XgqffpAzP3GvL6k9trFputBgo6aYymrvz2','2017-03-27 22:43:38','2017-04-06 21:50:58');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1494,4 +1496,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-07  9:10:17
+-- Dump completed on 2017-04-07 10:16:20

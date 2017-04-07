@@ -139,10 +139,7 @@
        window.location="{{url(route('sport_coach_master.index'))}}";   
      });
   });
-
-  
 </script>
-
 @endsection
 @section('footer')
 <div class="container">
