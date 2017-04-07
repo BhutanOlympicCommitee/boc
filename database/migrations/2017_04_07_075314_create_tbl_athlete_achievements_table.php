@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTblTeamMembersTable extends Migration
+class CreateTblAthleteAchievementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateTblTeamMembersTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_team_members', function (Blueprint $table) {
-            $table->increments('team_id');
-            $table->integer('gamesdetail_id');
+        Schema::create('tbl_athlete_achievements', function (Blueprint $table) {
+            $table->increments('athlete_achievement_id');
             $table->integer('athlete_id');
+            $table->integer('medal_id');
+            $table->date('date');
+            $table->string('achievement',1000);
+            $table->string('remark',1000);
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();
@@ -30,6 +33,6 @@ class CreateTblTeamMembersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_team_members');
+        Schema::dropIfExists('tbl_athlete_achievements');
     }
 }

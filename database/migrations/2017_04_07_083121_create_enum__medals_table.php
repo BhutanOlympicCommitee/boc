@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTblTeamMembersTable extends Migration
+class CreateEnumMedalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateTblTeamMembersTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_team_members', function (Blueprint $table) {
-            $table->increments('team_id');
-            $table->integer('gamesdetail_id');
-            $table->integer('athlete_id');
+        Schema::create('enum__medals', function (Blueprint $table) {
+            $table->increments('medal_id');
+            $table->string('Type',200);
             $table->integer('created_by');
-            $table->integer('updated_by');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateTblTeamMembersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_team_members');
+        Schema::dropIfExists('enum__medals');
     }
 }

@@ -143,7 +143,7 @@
                       <input type="text" name="cid" class="form-control" placeholder="Enter CID here" required>
                     </div>
                 </div>
-                <div class='form-group'>
+                <div class='form-group clearfix'>
                   <label for='associatedSport' class='col-xs-2'>Associated Sport</label>
                     <div class='col-xs-10 input-group'>
                       <select class='form-control' name='associatedSport' required>

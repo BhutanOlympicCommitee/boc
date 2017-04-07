@@ -237,3 +237,5 @@ Route::get('team/view_sport', 'TeamMemberController@showAssociatedSport')->name(
 
 //Routes for athlete achievement and displinary action 
 Route::get('athlete_achievement','AchievementAndDisplinaryAction@displayAthleteInfo')->name('display_matching_athlete');
+Route::post('athlete_achievement/store',['as'=>'display_athlete_achievement.store','uses'=>'AchievementAndDisplinaryAction@store']);
+Route::post('athlete_achievement/Actionstore',['as'=>'display_athlete_achievement.Actionstore','uses'=>'AchievementAndDisplinaryAction@Actionstore']);
