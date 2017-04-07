@@ -349,7 +349,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Coach Seperation Information <div class="pull-right">Coach_id:</div></h4>      </div>
+        <h4 class="modal-title" id="myModalLabel">Coach Seperation Information</h4>      </div>
       <div class="modal-body">
           <form action="{{route('coach_master.storeSeperation')}}" method="post">
           {{csrf_field()}}  

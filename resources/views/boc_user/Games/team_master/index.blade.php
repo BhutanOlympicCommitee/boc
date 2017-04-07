@@ -19,8 +19,7 @@
                 	<div class="panel panel-default">
                         <div class="panel-heading">
 	                        <div class="text-muted bootstrap-admin-box-title clearfix">Add Athlete Team Member
-	                         <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal">Add</a> 
-	                        </div>
+	                           </div>
 	                    </div>
                     	<div class="bootstrap-admin-panel-content">
                          <ul class='nav nav-pills nav-justified'>
@@ -109,6 +108,8 @@
         					 		</table>
                       <input type="hidden" name="hidden_view" id="hidden_view" value="{{route('view_team')}}">
                      </div>
+                     <div class='clearfix'> <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal">Add Team Member</a> 
+                       </div>
                     </div>
                 </div>
             </div>
@@ -320,7 +321,16 @@
         }
       });
   }
-</script>
+
+
+$(function()
+  {
+    $('#coach').click(function(){
+       window.location="{{url(route('sport_coach_master.index'))}}";   
+     });
+  });
+
+
 </script>
 
 @endsection
