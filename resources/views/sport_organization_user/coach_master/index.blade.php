@@ -79,6 +79,7 @@
         								<tbody>
         								<?php $id=1 ?>
         								@foreach($coach as $coachs)
+                        @if($coachs->status==0)
         								<tr>
         									<td>{{$id++}}</td>
         									<td>{{$coachs->coach_id}}</td>
@@ -86,16 +87,11 @@
                           <td>{{$coachs->coach_appointmentDate}}</td>
                           <td>{{$coachs->coach_passport}}</td>
         									<td>
-        										<form>
-
-        							              <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='fun_edit({{$coachs->coach_id}})'>Edit</a>
-                                    <a class="btn btn-danger glyphicon glyphicon-remove" data-toggle='modal' data-target='#seperationModal' onclick='fun_seperation({{$coachs->coach_id}})'>Seperate</a>
-        							              
-                                   
-        					
-        							            </form>
+							              <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='fun_edit({{$coachs->coach_id}})'>Edit</a>
+                            <a class="btn btn-danger glyphicon glyphicon-remove" data-toggle='modal' data-target='#seperationModal' onclick='coach_seperation({{$coachs->coach_id}})'>Seperate</a>
         									</td>
         								</tr>
+                        @endif
         								@endforeach
         								</tbody>
         					 		</table>
@@ -374,7 +370,7 @@
         <button type="submit" class="btn btn-info">Save</button>
         <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
       </div>
-      <input type="hidden" name="edit_id" id='edit_id'>
+      <input type="hidden" name="hidden_coach_id" id='hidden_coach_id'>
       </form>
       </div>
     </div>
@@ -388,7 +384,6 @@
   function fun_edit(id)
   {
     var view_url = $("#hidden_show").val();
-     // alert(view_url);
     $.ajax({
       url: view_url,
       type:"GET", 
@@ -415,6 +410,10 @@
        
       }
     });
+  }
+  function coach_seperation(id)
+  {
+    $('#hidden_coach_id').val(id);
   }
 </script>
 @endsection

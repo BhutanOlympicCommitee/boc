@@ -202,6 +202,10 @@ Route::get('training/view_athlete_training', 'TrainingInformationController@show
 Route::get('training/view_training_schedule', 'TrainingInformationController@getTrainingSchedule')->name('view_training_schedule');
 Route::post('training/save_attendance',['as'=>'save_attendance','uses'=>'TrainingInformationController@saveAthleteAttendance']);
 Route::get('training/{id}/show_athlete_training', 'TrainingInformationController@viewAthleteTrainingSchedule')->name('showAthleteSchedule');
+Route::get('training/{id}/view_training_participants', 'TrainingInformationController@viewTrainingParticipants')->name('showTrainingParticipants');
+Route::get('training/{id}/athlete_attendance', 'TrainingInformationController@takeAthleteAttendance')->name('athlete_attendance');
+
+
 //Routes for coach
 Route::get('coach',['as'=>'coach_master.index','uses'=>'CoachController@index']);
 Route::post('coach/store',['as'=>'coach_master.store','uses'=>'CoachController@store']);

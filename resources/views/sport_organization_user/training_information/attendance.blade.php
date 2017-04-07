@@ -105,7 +105,7 @@
                     <td>{{$training->end_time}}</td>
                     <td>{{$training->venue}}</td>
                     <td>
-                      <a class='btn btn-default' data-toggle='modal' data-target='#attendanceModal' onclick='getTrainingID({{$training->training_id}})'>Attendance</a>
+                      <a href='{{route('athlete_attendance',$training->training_id)}}' class='btn btn-default'>Attendance</a>
                     </td>
                   </tr>
                 @endforeach
@@ -118,55 +118,6 @@
     </div>
   </div>
 </div>
-<!-- attendanceModal begins -->
-<div class="modal fade" id="attendanceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content"> 
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Take attendance</h4>
-      </div>
-      <div class="modal-body">
-      <form action='{{route('save_attendance')}}' method='post'>
-        {{csrf_field()}}
-      <input type="hidden" name="hidden_training_id" id='hidden_training_id'>
-       <table class="table table-bordered table-striped table-responsive" id="table1">
-             <thead>
-                <tr>
-                    <th>Sl_no:</th>
-                    <th>Athlete ID</th>
-                    <th>Athlete Name</th>
-                    <th>CID</th>
-                    <th>Date of Birth</th>
-                    <th>Action</th>
-                </tr>   
-            </thead>
-            <tbody>
-             <?php $id=1;
-              $athlete_info=App\Athlete_bioinformation::all();
-              foreach($athlete_info as $athlete):
-              ?>
-              <tr>
-                <td>{{$id++}}</td>
-                <td>{{$athlete->athlete_id}}</td>
-                <td>{{$athlete->athlete_fname.' '.$athlete->athlete_lname}}</td>
-                <td>{{$athlete->athlete_cid}}</td>
-                <td>{{$athlete->athlete_dob}}</td>
-                <td><input type="checkbox" name="select[]" value='{{$athlete->athlete_id}}'>Select</td>
-              </tr>
-            <?php endforeach?>
-            </tbody>
-          </table>
-      <div class="modal-footer">
-        <button type='submit' class="btn btn-info col-xs-offset-8">save</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-      </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- attendanceModal ends -->
 <script type="text/javascript">
   $(function()
   {
@@ -179,10 +130,6 @@
       window.location="{{url(route('training.index'))}}";
     });
   });
-  function getTrainingID(id)
-  {
-    $('#hidden_training_id').val(id);
-  }
 </script>
 @endsection
 @section('footer')

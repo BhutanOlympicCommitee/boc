@@ -69,7 +69,8 @@ class TrainingInformationController extends Controller
     {
         $athlete_id=$data;
         $training_id=Session::get('key');
-        foreach ($athlete_id as $athlete){
+        foreach ($athlete_id as $athlete)
+        {
             $AthleteTrainingSchedule=new AthleteTrainingSchedule;
             $AthleteTrainingSchedule->training_id = $training_id;
             $AthleteTrainingSchedule->athlete_id = $athlete;
@@ -147,12 +148,24 @@ class TrainingInformationController extends Controller
             $record_attendance->training_id = $training_id;
             $record_attendance->save();
         }
-        return redirect()->route('training.attendance');
+       return redirect()->route('training.attendance');
     }
 
     public function viewAthleteTrainingSchedule($id)
     {
       $athletes=Athlete_bioinformation::where('athlete_id',$id)->get();
       return view('sport_organization_user.training_information.view_training_schedule',compact('athletes'));
+    }
+
+    public function viewTrainingParticipants($id)
+    {
+        $training_schedule=TrainingSchedule::where('training_id',$id)->get();
+        return view('sport_organization_user.training_information.view_participants',compact('training_schedule'));
+    }
+
+    public function takeAthleteAttendance($id)
+    {
+        $training_schedule=TrainingSchedule::where('training_id',$id)->get();
+        return view('sport_organization_user.training_information.athlete_attendance',compact('training_schedule'));
     }
 }

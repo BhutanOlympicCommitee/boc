@@ -25,8 +25,8 @@ class SportCoachController extends Controller
    
     public function store(Request $request)
     {
-       
         $sportcoach = new Tbl_sport_coach;
+        $sportcoach->gamesdetail_id=Session::get('key6');
         $sportcoach->federation=$request->federation;
         $sportcoach->sport=$request->sport;
         $sportcoach->coach=$request->coach;

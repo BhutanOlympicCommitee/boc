@@ -21,4 +21,9 @@ class Athlete_bioinformation extends Model
     {
       return $this->belongsToMany('App\TrainingSchedule','athlete_training_schedules','athlete_id','training_id');
     }
+
+    public function getAthleteAddress()
+    {
+        return $this->belongsTo('App\Athlete_address','athlete_id','athlete_id');
+    }
 }
