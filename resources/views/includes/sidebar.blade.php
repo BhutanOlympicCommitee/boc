@@ -67,6 +67,9 @@
                     <ul class="nav nav-list tree bullets">
                         <li><a href="{{route('athlete_info.create')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Athlete Info</span></a></li>
                     </ul>
+                    <ul class="nav nav-list tree bullets">
+                        <li><a href="{{route('display_matching_athlete')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Athlete achievement</span></a></li>
+                    </ul>
                 </li>
                 <li id="training"><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Training Information</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
                     <ul class="nav nav-list tree bullets">

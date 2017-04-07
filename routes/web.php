@@ -234,3 +234,6 @@ Route::post('team/update', 'TeamMemberController@update')->name('update_team');
 Route::get('team/view_athlete', 'TeamMemberController@view')->name('show_athlete_info1');
 Route::get('team/view_address', 'TeamMemberController@show')->name('show_athlete_address1');
 Route::get('team/view_sport', 'TeamMemberController@showAssociatedSport')->name('show_associated_sport1');
+
+//Routes for athlete achievement and displinary action 
+Route::get('athlete_achievement','AchievementAndDisplinaryAction@displayAthleteInfo')->name('display_matching_athlete');
