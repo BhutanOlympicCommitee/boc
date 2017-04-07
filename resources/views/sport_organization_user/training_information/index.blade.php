@@ -123,8 +123,8 @@
 <input type="hidden" name="view_details" id='view_details' value='{{route('show_athlete_info')}}'>
 <input type="hidden" name="view_address" id='view_address' value='{{route('show_athlete_address')}}'>
 <input type="hidden" name="view_associated_sport" id='view_associated_sport' value='{{route('show_associated_sport')}}'>
-<input type="hidden" name="view_athlete_training" id='view_athlete_training' value='{{route('view_athlete_training')}}'>
-<input type="hidden" name="view_training_schedule" id='view_training_schedule' value='{{route('view_training_schedule')}}'>
+{{-- <input type="hidden" name="view_athlete_training" id='view_athlete_training' value='{{route('view_athlete_training')}}'>
+<input type="hidden" name="view_training_schedule" id='view_training_schedule' value='{{route('view_training_schedule')}}'> --}}
 
 <!-- view details modal begins-->
 <div class="modal fade" id="viewDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -247,37 +247,6 @@
           $("#email").val(result.Caddress_email);
         }
       });
-  }
-  function displayTrainingSchedule(id)
-  {
-    var athlete_id=id;
-    var table = $("#table tbody");
-    var i=0;
-    table.empty();
-    var url=$('#view_athlete_training').val();
-    $.ajax({
-      url:url,
-      type:'GET',
-      data:{"id":athlete_id},
-      success:function(result)
-      {
-        $.each(result,function(key,val)
-        {
-          //console.log(val.training_id);
-          var training_id=val.training_id;
-          var url1=$('#view_training_schedule').val();
-          $.ajax({
-            url:url1,
-            type:'GET',
-            data:{"id":training_id},
-            success:function(result)
-            {
-              table.append("<tr><td>"+i+"</td><td>"+result.day_id+"</td><td>"+result.date+"</td><td>"+result.session_type+"</td><td>"+result.session_name+"</td><td>"+result.start_time+"</td><td>"+result.end_time+"</td><td>"+result.coach_id+"</td></tr>");
-            }
-          });
-        });
-      }
-    });
   }
   </script>
 @endsection

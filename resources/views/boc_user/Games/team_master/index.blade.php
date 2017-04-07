@@ -107,7 +107,10 @@
         								@endforeach
         								</tbody>
         					 		</table>
-                      <input type="hidden" name="hidden_view" id="hidden_view" value="{{route('view_team')}}">
+                      {{-- <input type="hidden" name="hidden_view" id="hidden_view" value="{{route('view_team')}}"> --}}
+                      <input type="hidden" name="view_details1" id='view_details1' value='{{route('show_athlete_info1')}}'>
+                     <input type="hidden" name="view_address1" id='view_address1' value='{{route('show_athlete_address1')}}'>
+                      <input type="hidden" name="view_associated_sport1" id='view_associated_sport1' value='{{route('show_associated_sport1')}}'>
                      </div>
                     </div>
                 </div>
@@ -254,7 +257,7 @@
         <label>CID:</label>
         <input type="text" name="cid" id='cid' style='border-style:none'><br>
         <label>Associated Sport:</label>
-        <input type="text" name="associated_sport" id='associated_sport' style='border-style:none'>
+        <input type="text" name="associated_sport2" id='associated_sport2' style='border-style:none'>
       </div>
       <div class='col-md-4' id='photo'>
       </div>
@@ -272,15 +275,15 @@
  function view_details(id)
   {
     var view_url=$('#view_details1').val();
-    var view_address=$('#view_address').val();
-    var view_sport=$('#view_associated_sport').val();
+    var view_address=$('#view_address1').val();
+    var view_sport=$('#view_associated_sport1').val();
     var image_path='{{URL::asset('/images/')}}';
     $.ajax({
         url: view_url,
         type:"GET", 
         data: {"id":id}, 
         success: function(result){
-          console.log(result);
+          //console.log(result);
           $("#title").val(result.athlete_title);
           $("#fname").val(result.athlete_fname);
           $("#lname").val(result.athlete_lname);
@@ -301,7 +304,7 @@
             data: {"id":sport_id}, 
             success: function(result){
               //console.log(result);
-              $("#associated_sport").val(result.sport_name);
+              $("#associated_sport2").val(result.sport_name);
             }
           });
          
