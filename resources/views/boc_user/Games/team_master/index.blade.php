@@ -11,113 +11,113 @@
 @endsection
 @section('content')
 <div class="container">
-    <div class="row">
-        <!-- content -->
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                	<div class="panel panel-default">
-                        <div class="panel-heading">
-	                        <div class="text-muted bootstrap-admin-box-title clearfix">Add Athlete Team Member
-	                           </div>
-	                    </div>
-                    	<div class="bootstrap-admin-panel-content">
-                         <ul class='nav nav-pills nav-justified'>
-                         <li id='game1'><a href="#games_master" data-toggle="tab">Games Information</a></li>
-                         <li id='coach'><a href="#" data-toggle="tab">Sport And Coach Information</a></li>
-                         <li class='active' id='team'><a href="#" data-toggle="tab">Athlete Team Member</a></li>
-                         </ul>
-                      	@if(Session::has('success'))
-                          <div class="alert alert-success">
-                            {{ Session::get('success') }}
-                          </div>	
-						 	          @endif
-                      </br>
-                      <div class='row'>
-            <div class='col-xs-6 clearfix'>
-              <div class='form-group clearfix'>
-            <label for='federation' class='col-xs-3'>Federation:</label>
-              <div class='col-xs-9 input-group'>
-                <select class='form-control' name='federation' id='federation1'>
-                  <?php 
-                    $sport=App\Sport_Organization::all();
-                    foreach($sport as $sports):
-                  ?>
-                  <option value="{{$sports->sport_org_id}}">{{$sports->sport_org_name}}</option>
-                  <?php 
-                    endforeach
-                  ?>
-                </select>
+  <div class="row">
+    <!-- content -->
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+	           <div class="text-muted bootstrap-admin-box-title clearfix">Add Athlete Team Member
+	           </div>
+	          </div>
+            <div class="bootstrap-admin-panel-content">
+              <ul class='nav nav-pills nav-justified'>
+                <li id='game1'><a href="#games_master" data-toggle="tab">Games Information</a></li>
+                <li id='coach'><a href="#" data-toggle="tab">Sport And Coach Information</a></li>
+                <li class='active' id='team'><a href="#" data-toggle="tab">Athlete Team Member</a></li>
+              </ul>
+              @if(Session::has('success'))
+                <div class="alert alert-success">
+                  {{ Session::get('success') }}
+                </div>	
+						 	@endif
+              </br>
+              <div class='row'>
+               <div class='col-xs-6 clearfix'>
+                <div class='form-group clearfix'>
+                 <label for='federation' class='col-xs-3'>Federation:</label>
+                  <div class='col-xs-9 input-group'>
+                   <select class='form-control' name='federation' id='federation1'>
+                      <?php 
+                        $sport=App\Sport_Organization::all();
+                        foreach($sport as $sports):
+                      ?>
+                      <option value="{{$sports->sport_org_id}}">{{$sports->sport_org_name}}</option>
+                      <?php 
+                        endforeach
+                      ?>
+                    </select>
+                  </div>
               </div>
-          </div>
-            </div>
-           
-            <div class='col-xs-6 clearfix'>
+              </div>
+              <div class='col-xs-6 clearfix'>
                <div class='form-group clearfix'>
-            <label for='sport' class='col-xs-2'>Sport:</label>
-              <div class='col-xs-10 input-group'>
-                <select class='form-control' name='sport' id='sport'>
-                  <?php 
-                    $asport=App\Associated_Sport::all();
-                    foreach($asport as $asports):
-                  ?>
-                  <option value="{{$asports->sport_id}}">{{$asports->sport_name}}</option>
-                  <?php 
-                    endforeach
-                  ?>
-                </select>
-              </div>
-          </div>
-              
-            </div>
-          </div> 
-        				 			<table class="table table-bordered table-striped table-responsive" id="table1">
-        				 				<thead>
-        									<tr>
-        										<th>Sl. No:</th>
-        										<th>Federation</th>
-        										<th>Sport</th>
-                            <th>Athlete ID</th>
-        										<th>Athlete Name</th>
-        										<th style='width:20%'>Action</th>
-        									</tr>	
-        								</thead>
-        								<tbody>
-        								<?php $id=1 ?>
-        								@foreach($team as $teams)
-                        @if($teams->status==0)
-        								<tr>
-        									<td>{{$id++}}</td>
-                          <td>{{$teams->displayFederation->sport_org_name}}</td>
-                          <td>{{$teams->displaySport->sport_name}}</td>
-                          <td>{{$teams->displayAthlete->athlete_id}}</td>
-                          <td>{{$teams->displayAthlete->athlete_name}}</td>
-        									<td>
-        										<form id='remove' class="form-group" action="{{route('team_master.destroy',$teams->team_id)}}" method='post'>
-        							              <input type="hidden" name="_method" value="delete">
-        							              <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        							              <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='fun_edit({{$teams->team_id}})'>Edit</a>
-        							              <button type="submit" class="btn btn-warning glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Remove
-        							              </button>
-        							            </form>
-        									</td>
-        								</tr>
-                        @endif
-        								@endforeach
-        								</tbody>
-        					 		</table>
-                      {{-- <input type="hidden" name="hidden_view" id="hidden_view" value="{{route('view_team')}}"> --}}
-                      <input type="hidden" name="view_details1" id='view_details1' value='{{route('show_athlete_info1')}}'>
-                     <input type="hidden" name="view_address1" id='view_address1' value='{{route('show_athlete_address1')}}'>
-                      <input type="hidden" name="view_associated_sport1" id='view_associated_sport1' value='{{route('show_associated_sport1')}}'>
-                     </div>
-                     <div class='clearfix'> <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal">Add Team Member</a> 
-                       </div>
-                    </div>
+                <label for='sport' class='col-xs-2'>Sport:</label>
+                  <div class='col-xs-10 input-group'>
+                    <select class='form-control' name='sport' id='sport'>
+                      <?php 
+                        $asport=App\Associated_Sport::all();
+                        foreach($asport as $asports):
+                      ?>
+                      <option value="{{$asports->sport_id}}">{{$asports->sport_name}}</option>
+                      <?php 
+                        endforeach
+                      ?>
+                    </select>
+                  </div>
                 </div>
+              </div>
             </div>
+             <table class="table table-bordered table-striped table-responsive" id="table1">
+              <thead>
+                <tr>
+                  <th>Sl. No:</th>
+                  <th>Federation</th>
+                  <th>Sport</th>
+                  <th>Athlete ID</th>
+                  <th>Athlete Name</th>
+                  <th style='width:20%'>Action</th>
+                </tr> 
+              </thead>
+              <tbody>
+              <?php $id=1 ?>
+              @foreach($team as $teams)
+              @foreach($teams->games as $team_member)
+              <tr>
+                <td>{{$id++}}</td>
+                <?php $coach=App\Tbl_sport_coach::where('gamesdetail_id',$team_member->gamesdetail_id)->get();
+                foreach ($coach as $coachs):?>
+                <td>{{$coachs->displayFederation->sport_org_name}}</td>
+              <?php endforeach ?>
+                {{-- <td>{{$team_member->gamesdetail_id}}</td> --}}
+                <td>{{$teams->displayAsport->sport_name}}</td>
+                <td>{{$teams->athlete_id}}</td>
+                <td>{{$teams->athlete_fname.' '.$teams->athlete_mname.' '.$teams->athlete_lname}}</td>
+                <td>
+                  <form id='remove' class="form-group" action="{{route('team_master.destroy',$teams->team_id)}}" method='post'>
+                          <input type="hidden" name="_method" value="delete">
+                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          <button type="submit" class="btn btn-warning glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Remove
+                          </button>
+                        </form>
+                </td>
+              </tr>
+              @endforeach
+              @endforeach
+              </tbody>
+            </table> 
+            <input type="hidden" name="view_details1" id='view_details1' value='{{route('show_athlete_info1')}}'>
+           <input type="hidden" name="view_address1" id='view_address1' value='{{route('show_athlete_address1')}}'>
+            <input type="hidden" name="view_associated_sport1" id='view_associated_sport1' value='{{route('show_associated_sport1')}}'>
+           <div class='clearfix'> 
+              <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal">Add Team Member</a> 
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <!-- Add dzongkhag modal begins-->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -193,10 +193,8 @@
                 <td>{{$athlete->athlete_fname.' '.$athlete->athlete_mname.' '.$athlete->athlete_lname}}</td>
                 <td>{{$athlete->athlete_dob}}</td>
                 <td>
-                  <form class="form-group" action="" method='post'>
                   <a href="{{--route('training.show')--}}" data-toggle='modal' data-target='#viewDetails1' class="btn btn-info" onclick='view_details({{$athlete->athlete_id}})'>Details</a>
                   <input type="checkbox" name="select[]" value='{{$athlete->athlete_id}}'>Select
-                  </form>
                 </td>
               </tr>
             <?php endforeach?>
@@ -333,7 +331,7 @@ $(function()
      });
   });
 
-
+$('#table1').dataTable();
 </script>
 
 @endsection

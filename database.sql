@@ -1132,7 +1132,7 @@ CREATE TABLE `tbl_game_details` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`gamesdetail_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1141,8 +1141,8 @@ CREATE TABLE `tbl_game_details` (
 
 LOCK TABLES `tbl_game_details` WRITE;
 /*!40000 ALTER TABLE `tbl_game_details` DISABLE KEYS */;
-INSERT INTO `tbl_game_details` VALUES (5,2016,2,'football match',8,'changlingmithang','2017-04-15','2017-04-22','football friendly match',2,2,'2017-04-06 12:18:33','2017-04-06 12:18:33');
-INSERT INTO `tbl_game_details` VALUES (6,2017,2,'basketball',8,'changbangdu','2017-04-15','2017-04-29','basket match',2,2,'2017-04-06 12:21:24','2017-04-06 12:21:24');
+INSERT INTO `tbl_game_details` VALUES (10,2014,2,'football match',8,'changbangdu','2017-04-14','2017-04-21','football friendly match',2,2,'2017-04-07 01:14:59','2017-04-07 01:14:59');
+INSERT INTO `tbl_game_details` VALUES (11,2013,2,'basketball',8,'changlingmithang','2017-04-15','2017-04-22','under 12 match',2,2,'2017-04-07 01:16:24','2017-04-07 01:16:24');
 /*!40000 ALTER TABLE `tbl_game_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1166,7 +1166,7 @@ CREATE TABLE `tbl_sport_coaches` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`sc_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1175,8 +1175,8 @@ CREATE TABLE `tbl_sport_coaches` (
 
 LOCK TABLES `tbl_sport_coaches` WRITE;
 /*!40000 ALTER TABLE `tbl_sport_coaches` DISABLE KEYS */;
-INSERT INTO `tbl_sport_coaches` VALUES (1,5,1,7,2,'friendly football match',2,2,0,'2017-04-06 12:20:23','2017-04-06 12:20:23');
-INSERT INTO `tbl_sport_coaches` VALUES (2,6,2,8,3,'basket friendly match',2,2,0,'2017-04-06 12:21:49','2017-04-06 12:21:49');
+INSERT INTO `tbl_sport_coaches` VALUES (6,10,1,7,1,'freindly match ',2,2,0,'2017-04-07 01:15:16','2017-04-07 01:15:16');
+INSERT INTO `tbl_sport_coaches` VALUES (7,11,2,8,3,'under 12 match',2,2,0,'2017-04-07 01:16:39','2017-04-07 01:16:39');
 /*!40000 ALTER TABLE `tbl_sport_coaches` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1371,17 +1371,14 @@ DROP TABLE IF EXISTS `tbl_team_members`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_team_members` (
   `team_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `federation` int(11) NOT NULL,
-  `sport` int(11) NOT NULL,
   `athlete_id` int(11) NOT NULL,
-  `athlete_name` int(11) NOT NULL,
+  `gamesdetail_id` int(11) NOT NULL,
   `created_by` int(11) NOT NULL,
   `updated_by` int(11) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`team_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1390,6 +1387,9 @@ CREATE TABLE `tbl_team_members` (
 
 LOCK TABLES `tbl_team_members` WRITE;
 /*!40000 ALTER TABLE `tbl_team_members` DISABLE KEYS */;
+INSERT INTO `tbl_team_members` VALUES (3,9,10,2,2,'2017-04-07 01:15:32','2017-04-07 01:15:32');
+INSERT INTO `tbl_team_members` VALUES (4,10,10,2,2,'2017-04-07 01:15:32','2017-04-07 01:15:32');
+INSERT INTO `tbl_team_members` VALUES (5,10,11,2,2,'2017-04-07 01:16:47','2017-04-07 01:16:47');
 /*!40000 ALTER TABLE `tbl_team_members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1482,8 +1482,8 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','$2y$10$mk3JcPIXVK4hKILLytDVFepTOl2zqoU5H2mwx.infhaHw.msrWHpO',1,'NgZEe35spCodggfOwDxOFXVe9wrKj2Un8ynb0tylZsT2NLphLhmmzV0q3AHY','2017-03-24 23:02:03','2017-04-04 23:29:56');
-INSERT INTO `users` VALUES (2,'kelzang','boc@gov.bt','$2y$10$AJCU3eg1CqZ6BYu1JFc7t.3RQfVEmyTmZGH1FTJJMUxPQs7k3RyCm',2,'R0Va5hIYjxJNqhRd2WsZym88yFebQtOVgDK5n8ksbXkNL0rKgVPFyb8txWBU','2017-03-26 21:36:29','2017-04-06 22:23:10');
-INSERT INTO `users` VALUES (3,'sangay','sangay@gmail.com','$2y$10$rz0uTnhSRek806H0HZQe8u9PMkILlThwZCd7evyednneiMQryjHEW',4,'BGWd77MpvQjIktkHKratnu0Tc9XgqffpAzP3GvL6k9trFputBgo6aYymrvz2','2017-03-27 22:43:38','2017-04-06 21:50:58');
+INSERT INTO `users` VALUES (2,'kelzang','boc@gov.bt','$2y$10$AJCU3eg1CqZ6BYu1JFc7t.3RQfVEmyTmZGH1FTJJMUxPQs7k3RyCm',2,'coTwQqfuXkrDF2KiUhh9nYtTaUMv4kLKoynSRbEz0oFZxRwcj6XigIoqy6Wm','2017-03-26 21:36:29','2017-04-06 23:07:57');
+INSERT INTO `users` VALUES (3,'sangay','sangay@gmail.com','$2y$10$rz0uTnhSRek806H0HZQe8u9PMkILlThwZCd7evyednneiMQryjHEW',4,'Gbs1hP6sH2McFHHN5QKiEpSjrFs5QfezZvWPdd8WbL82KcnkW0PZFPLQHAjN','2017-03-27 22:43:38','2017-04-06 22:46:37');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1496,4 +1496,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-07 10:44:55
+-- Dump completed on 2017-04-07 13:19:57

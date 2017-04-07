@@ -9,12 +9,13 @@ use App\Tbl_team_member;
 use App\Athlete_bioinformation;
 use App\Associated_Sport;
 use App\Athlete_address;
+use App\Tbl_sport_coach;
 
 class TeamMemberController extends Controller
 {
     public function index()
     {
-        $team=Tbl_team_member::all();
+        $team=Athlete_bioinformation::all();
        return view('boc_user.Games.team_master.index',compact('team'));
     }
 
@@ -27,21 +28,18 @@ class TeamMemberController extends Controller
    
     public function store(Request $request)
     {
-       $data = $request->get('select');
-       foreach ($data as $dat) {
-       	
-        $team = new Tbl_team_member;
-        $team->federation=$request->federation;
-        $team->sport=$request->sport;
-        $team->athlete_name=$request->athlete_name;
-        $team->athlete_id->$dat;
-        $team->created_by=Auth::user()->id;
-        $team->updated_by=Auth::user()->id;
-        $team->save();
+      $data = $request->get('select');
+      foreach ($data as $dat) {	
+       $team = new Tbl_team_member;
+       $team->athlete_id=$dat; 
+       $team->gamesdetail_id=Session::get('key6');
+       $team->created_by=Auth::user()->id;
+       $team->updated_by=Auth::user()->id;
+       $team->save();
+      }
         Session::flash('success', 'created successfully');
         return redirect()->route('team_master.index');
-    }
-}
+   }
 
     /**
      * Display the specified resource.
