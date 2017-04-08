@@ -32,18 +32,18 @@
               <form action="{{route('skra_activities.update',$skras_edit->skra_activity_id)}}" method="post">
               <input name="_method" type="hidden" value="PATCH">
               {{csrf_field()}}
-                <div class='form-group'>
-                  <label for='type' class='col-xs-3'>Type</label>
+              <div class='form-group'>
+                  <label for='five_year' class='col-xs-3'>Five Year Plan</label>
                     <div class='col-xs-9 input-group'>
-                      <select class='form-control' name='type' id='type'>
-                        <option value="" disabled selected>Select sport organization</option>
-                          <?php 
-                            $sports=App\Sport_Organization::all();
-                            foreach($sports as $sport):
+                      <select class='form-control' name='five_year' id='five_year'>
+                      <option value="" disabled selected>Select five year plan</option>
+                        <?php 
+                            $fiveYearPlan=App\EnumFiveYearPlan::all();
+                            foreach($fiveYearPlan as $five_year):
                           ?>
-                          <option value="{{$sport->sport_org_id}}" <?php if($sport->sport_org_id==$skras_edit->sport_org_id){?>
+                          <option value="{{$five_year->five_yr_plan_id}}" <?php if($five_year->five_yr_plan_id==$skras_edit->five_yr_plan_id){?>
                           selected
-                          <?php } ?> >{{$sport->sport_org_name}}</option> 
+                          <?php } ?>>{{$five_year->name}}</option>
                           <?php 
                             endforeach
                           ?>
@@ -51,6 +51,7 @@
 
                     </div>
                 </div>
+                
                 <div class='form-group'>
                   <label for='skra' class='col-xs-3'>AKRA</label>
                     <div class='col-xs-9 input-group'>
@@ -69,7 +70,26 @@
                     </div>
                 </div>
                 <div class='form-group'>
-                    <label for='skra_activity_name' class='col-xs-3'>AKRA Activity/NSF Output</label>
+                  <label for='type' class='col-xs-3'>Sports Organization</label>
+                    <div class='col-xs-9 input-group'>
+                      <select class='form-control' name='type' id='type1'>
+                        <option value="" disabled selected>Select sport organization</option>
+                          <?php 
+                            $sports=App\Sport_Organization::all();
+                            foreach($sports as $sport):
+                          ?>
+                          <option value="{{$sport->sport_org_id}}" <?php if($sport->sport_org_id==$skras_edit->sport_org_id){?>
+                          selected
+                          <?php } ?> >{{$sport->sport_org_name}}</option> 
+                          <?php 
+                            endforeach
+                          ?>
+                      </select>
+
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label for='skra_activity_name' class='col-xs-3'>BOC Program</label>
                       <div class='col-xs-9 input-group'>
                           <input type="text" name="skra_activity_name" class="form-control" placeholder="Enter AKRA activity name here" id='skra_ativity' value='{{$skras_edit->SKRA_activity}}'>
                       </div>
@@ -97,27 +117,46 @@
 </div>
 
 <script type="text/javascript">
-  $('#type').change(function()
+  // $('#type').change(function()
+  // {
+  //   var sport_id=$(this).val();
+  //   var view_url=$("#hidden_view").val();
+  //     $.ajax({
+  //       url: view_url,
+  //       type:"GET", 
+  //       data: {"id":sport_id}, 
+  //       success: function(result){
+  //         $('#skra1').empty();
+  //         $.each(result,function(key,val)
+  //         {
+  //           $('#skra1').append('<option value="'+val.skra_id+'">'+val.SKRA_name+'</option>');
+  //           console.log(val.SKRA_name);
+  //         });
+  //       }
+  //     });
+  // });
+  $('#five_year').change(function()
   {
-    var sport_id=$(this).val();
-    var view_url=$("#hidden_view").val();
+    var five_year_id=$(this).val();
+    var view_url = $("#hidden_view").val();
       $.ajax({
         url: view_url,
         type:"GET", 
-        data: {"id":sport_id}, 
+        data: {"id":five_year_id}, 
         success: function(result){
           $('#skra1').empty();
           $.each(result,function(key,val)
           {
-            $('#skra1').append('<option value="'+val.skra_id+'">'+val.SKRA_name+'</option>');
-            console.log(val.SKRA_name);
+             $('#skra1').append('<option value="'+val.skra_id+'">'+val.SKRA_name+'</option>');
           });
         }
       });
   });
-
-  $("select[name!=type] option:not(:selected)").attr('disabled', true);
-  
+  $("select[name!=five_year] option:not(:selected)").attr('disabled', true);
+  $('#type1').click(function()
+  {
+    $("select[name!=skra1] option:not(:selected)").attr('disabled', false);
+  });
 </script>
 @endsection
 @section('footer')

@@ -25,14 +25,14 @@
                  <form action="{{action('SKRAController@index')}}" method='get' id='view'>
                     {{csrf_field()}}
                     <div class='form-group'>
-                      <label for='type' class='col-xs-2'>Sport Organization:</label>
+                      <label for='type' class='col-xs-2'>Five Year Plan:</label>
                         <div class='col-xs-9 input-group'>
                           <select class='form-control' name='type'>
                             <?php 
-                              $sports=App\Sport_Organization::all();
-                              foreach($sports as $sport):
+                              $fiveYearPlan=App\EnumFiveYearPlan::all();
+                              foreach($fiveYearPlan as $five_year):
                             ?>
-                            <option value="{{$sport->sport_org_id}}">{{$sport->sport_org_name}}</option>
+                            <option value="{{$five_year->five_yr_plan_id}}">{{$five_year->name}}</option>
                             <?php 
                               endforeach
                             ?>
@@ -62,7 +62,7 @@
                     <tbody>
                         <?php $id=1?>
                         @foreach($skra as $skras)
-                        @if($_GET['type']==$skras->sport_org_id)
+                        @if($_GET['type']==$skras->five_yr_plan_id)
                         <tr>
                             <td>{{$id++}}</td>
                             <td>{{$skras->SKRA_name}}</td>
@@ -107,17 +107,17 @@
         <form action="{{route('skra.store')}}" method="post">
           {{csrf_field()}}
           <div class='form-group'>
-            <label for='type' class='col-xs-3'>Type</label>
+            <label for='type' class='col-xs-3'>Five year plan</label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='type'>
-                      <?php 
-                        $sports=App\Sport_Organization::all();
-                        foreach($sports as $sport):
-                      ?>
-                      <option value="{{$sport->sport_org_id}}">{{$sport->sport_org_name}}</option>
-                      <?php 
-                        endforeach
-                      ?>
+                  <?php 
+                    $fiveYearPlan=App\EnumFiveYearPlan::all();
+                    foreach($fiveYearPlan as $five_year):
+                  ?>
+                  <option value="{{$five_year->five_yr_plan_id}}">{{$five_year->name}}</option>
+                  <?php 
+                    endforeach
+                  ?>
                 </select>
               </div>
           </div>
@@ -156,14 +156,14 @@
          <form action="{{route('update_skra')}}" method="post">
            {{csrf_field()}}
            <div class='form-group'>
-            <label for='type' class='col-xs-3'>Sport Organization</label>
+            <label for='type' class='col-xs-3'>Five year plan</label>
                 <div class='col-xs-9 input-group'>
                   <select class='form-control' name='type' id='type'>
                     <?php 
-                      $sports=App\Sport_Organization::all();
-                      foreach($sports as $sport):
+                      $fiveYearPlan=App\EnumFiveYearPlan::all();
+                      foreach($fiveYearPlan as $five_year):
                     ?>
-                    <option value="{{$sport->sport_org_id}}">{{$sport->sport_org_name}}
+                    <option value="{{$five_year->five_yr_plan_id}}">{{$five_year->name}}
                       </option>
                       <?php 
                     endforeach
@@ -210,7 +210,7 @@
         success: function(result){
           //console.log(result);
           $("#edit_id").val(result.skra_id);
-          $("#type").val(result.sport_org_id);
+          $("#type").val(result.five_yr_plan_id);
           $("#skra_name").val(result.SKRA_name);
           $("#skra_description").val(result.SKRA_description);
         }

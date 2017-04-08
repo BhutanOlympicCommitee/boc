@@ -15,6 +15,7 @@ class CreateTblSKRAActivitiesTable extends Migration
     {
         Schema::create('tbl__s_k_r_a_activities', function (Blueprint $table) {
             $table->increments('skra_activity_id');
+            $table->integer('five_yr_plan_id');
             $table->integer('sport_org_id');
             $table->integer('skra_id');
             $table->string('SKRA_activity',250);

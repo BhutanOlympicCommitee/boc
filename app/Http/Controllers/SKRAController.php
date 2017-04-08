@@ -44,7 +44,7 @@ class SKRAController extends Controller
         'skra_name' => 'required',
         ]);
         $skra = new Tbl_SKRA;
-        $skra->sport_org_id=$request->type;
+        $skra->five_yr_plan_id=$request->type;
         $skra->SKRA_name=$request->skra_name;
         $skra->SKRA_description=$request->skra_description;
         $skra->created_by=Auth::user()->id;
@@ -78,7 +78,7 @@ class SKRAController extends Controller
     {
         $id = $request ->edit_id;
         $skra = Tbl_SKRA::findOrFail($id);
-        $skra->sport_org_id=$request->get('type');
+        $skra->five_yr_plan_id=$request->get('type');
         $skra->SKRA_name=$request->skra_name;
         $skra->SKRA_description=$request->skra_description;
         $skra->save();

@@ -34,7 +34,32 @@
                     {{csrf_field()}}
                 </div>
                 <div class='form-group'>
-                  <label for='type' class='col-xs-3'>Type</label>
+                  <label for='five_year' class='col-xs-3'>Five Year Plan</label>
+                    <div class='col-xs-9 input-group'>
+                      <select class='form-control' name='five_year' id='five_year'>
+                      <option value="" disabled selected>Select five year plan</option>
+                        <?php 
+                            $fiveYearPlan=App\EnumFiveYearPlan::all();
+                            foreach($fiveYearPlan as $five_year):
+                          ?>
+                          <option value="{{$five_year->five_yr_plan_id}}">{{$five_year->name}}</option>
+                          <?php 
+                            endforeach
+                          ?>
+                      </select>
+
+                    </div>
+                </div>
+                <div class='form-group'>
+                  <label for='skra' class='col-xs-3'>AKRA</label>
+                    <div class='col-xs-9 input-group'>
+                       <select class='form-control' name='skra' id='skra1'>
+                         <option value=""></option>
+                      </select>
+                    </div>
+                </div>
+                <div class='form-group'>
+                  <label for='type' class='col-xs-3'>Sport Organization</label>
                     <div class='col-xs-9 input-group'>
                       <select class='form-control' name='type' id='type'>
                         <option value="" disabled selected>Select sport organization</option>
@@ -52,15 +77,7 @@
                     </div>
                 </div>
                 <div class='form-group'>
-                  <label for='skra' class='col-xs-3'>AKRA</label>
-                    <div class='col-xs-9 input-group'>
-                       <select class='form-control' name='skra' id='skra1'>
-                         <option value=""></option>
-                      </select>
-                    </div>
-                </div>
-                <div class='form-group'>
-                    <label for='skra_activity_name' class='col-xs-3'>AKRA Activity/NSF Output</label>
+                    <label for='skra_activity_name' class='col-xs-3'>BOC Program</label>
                       <div class='col-xs-9 input-group'>
                           <input type="text" name="skra_activity_name" class="form-control" placeholder="Enter AKRA activity name here" id='skra_ativity'>
                       </div>
@@ -87,14 +104,31 @@
   </div>
 </div>
 <script type="text/javascript">
-  $('#type').change(function()
+  // $('#type').change(function()
+  // {
+  //   var sport_id=$(this).val();
+  //   var view_url = $("#hidden_view").val();
+  //     $.ajax({
+  //       url: view_url,
+  //       type:"GET", 
+  //       data: {"id":sport_id}, 
+  //       success: function(result){
+  //         $('#skra1').empty();
+  //         $.each(result,function(key,val)
+  //         {
+  //            $('#skra1').append('<option value="'+val.skra_id+'">'+val.SKRA_name+'</option>');
+  //         });
+  //       }
+  //     });
+  // });
+  $('#five_year').change(function()
   {
-    var sport_id=$(this).val();
+    var five_year_id=$(this).val();
     var view_url = $("#hidden_view").val();
       $.ajax({
         url: view_url,
         type:"GET", 
-        data: {"id":sport_id}, 
+        data: {"id":five_year_id}, 
         success: function(result){
           $('#skra1').empty();
           $.each(result,function(key,val)

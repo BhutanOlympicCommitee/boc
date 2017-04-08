@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTblSKRAsTable extends Migration
+class CreateEnumFiveYearPlansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateTblSKRAsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl__s_k_r_as', function (Blueprint $table) {
-            $table->increments('skra_id');
-            $table->integer('five_yr_plan_id');
-            $table->string('SKRA_name',250);
-            $table->string('SKRA_description',1500);
+        Schema::create('enum_five_year_plans', function (Blueprint $table) {
+            $table->increments('five_yr_plan_id');
+            $table->string('name');
             $table->timestamps();
-            $table->integer('created_by');
         });
     }
 
@@ -30,6 +27,6 @@ class CreateTblSKRAsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl__s_k_r_as');
+        Schema::dropIfExists('enum_five_year_plans');
     }
 }

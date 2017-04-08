@@ -25,18 +25,18 @@
               <form action="{{action('SKRA_activities_Controller@index')}}" method='get' id='view'>
                 {{csrf_field()}}
                  <div class='form-group'>
-                  <label for='type' class='col-xs-2'>Sport Organization:</label>
+                  <label for='type' class='col-xs-2'>Five Year Plan:</label>
                     <div class='col-xs-10 input-group'>
-                      <select class='form-control' name='type' id='type'>
-                        <?php 
-                          $sports=App\Sport_Organization::all();
-                          foreach($sports as $sport):
-                        ?>
-                        <option value="{{$sport->sport_org_id}}">{{$sport->sport_org_name}}</option>
-                        <?php 
-                          endforeach
-                        ?>
-                      </select>
+                      <select class='form-control' name='type'>
+                          <?php 
+                            $fiveYearPlan=App\EnumFiveYearPlan::all();
+                            foreach($fiveYearPlan as $five_year):
+                          ?>
+                          <option value="{{$five_year->five_yr_plan_id}}">{{$five_year->name}}</option>
+                          <?php 
+                            endforeach
+                          ?>
+                          </select>
                      <span class='input-group-btn'>
                         <button class='btn btn-default' type='submit' name='submit' value='view'>Search</button>
                      </span>
@@ -50,21 +50,22 @@
                     $('#view').hide();
                   });
                 </script>
-                <?php $sport->sport_org_id=$_GET['type'];?>
+               
                 <table class="table table-bordered table-striped table-responsive" id="table1">
                     <thead>
                         <tr>
                             <th>Sl. No:</th>
                             <th>AKRA</th>
-                            <th>AKRA Activities/NSF Outputs</th>
-                            <th>AKRA Activities/NSF Output Description</th>
+                            <th>BOC Programs</th>
+                            <th>BOC Program Description</th>
                             <th>Action</th>
                         </tr>   
                     </thead>
                     <tbody>
                         <?php $id=1?>
                         @foreach($skra_activities as $skra_activity)
-                        @if($sport->sport_org_id==$skra_activity->sport_org_id)
+                        @if($_GET['type']==$skra_activity->five_yr_plan_id)
+                        {{-- @if($sport->sport_org_id==$skra_activity->sport_org_id) --}}
                         <tr>
                             <td>{{$id++}}</td>
                             <td>{{$skra_activity->skra->SKRA_name}}</td>

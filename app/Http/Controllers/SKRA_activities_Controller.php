@@ -46,6 +46,7 @@ class SKRA_activities_Controller extends Controller
         'skra_activity_name' => 'required',
         ]);
         $skra_activity = new Tbl_SKRA_activities;
+        $skra_activity->five_yr_plan_id=$request->five_year;
         $skra_activity->sport_org_id=$request->type;
         $skra_activity->skra_id=$request->skra;
         $skra_activity->SKRA_activity=$request->skra_activity_name;
@@ -67,7 +68,7 @@ class SKRA_activities_Controller extends Controller
     {
         if($request->ajax()){
             $id = $request->id;
-            $info = Tbl_SKRA::where('sport_org_id', $id)->get();
+            $info = Tbl_SKRA::where('five_yr_plan_id', $id)->get();
             //var_dump($info);
             return response()->json($info);
         }
@@ -95,6 +96,7 @@ class SKRA_activities_Controller extends Controller
     public function update(Request $request, $id)
     {
         $skra_activity = Tbl_SKRA_activities::findOrFail($id);
+        $skra_activity->five_yr_plan_id=$request->five_year;
         $skra_activity->sport_org_id=$request->type;
         $skra_activity->skra_id=$request->skra;
         $skra_activity->SKRA_activity=$request->skra_activity_name;
