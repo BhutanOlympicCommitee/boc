@@ -106,10 +106,10 @@
         <div class='form-group clearfix'>
             <label for='unit' class='col-xs-3'>Units:</label>
               <div class='input-group col-xs-9'>
-                <input type="text" name="unint"  class="form-control" placeholder="Enter Unit here" required>
+                <input type="text" name="unit"  class="form-control" placeholder="Enter Unit here" required>
               </div>
           </div>
-          
+
           <div class='form-group clearfix'>
             <label for='baseline' class='col-xs-3'>Baseline:</label>
               <div class='input-group col-xs-9'>

@@ -35,7 +35,7 @@ class KPIController extends Controller
     {
    
         $kpi = new Tbl_proposed_KPI;
-        $kpi->activity_id=$request->activity_id;
+        
         $kpi->kpi_name=$request->kpi_name;
         $kpi->RGoB=$request->RGoB;
         $kpi->external=$request->external;
