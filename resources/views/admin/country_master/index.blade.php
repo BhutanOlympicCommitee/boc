@@ -147,6 +147,7 @@
         
       </div>
     </div>
+  </div>
 <!-- Ends edit country modal-->>
 
 <script type="text/javascript">

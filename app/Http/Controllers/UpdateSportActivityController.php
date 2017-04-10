@@ -14,6 +14,11 @@ class UpdateSportActivityController extends Controller
     	$sport_org_plan=Tbl_UpdateSportActivity::all();
     	return view('sport_organization_user.sport_activity_plan.index',compact('sport_org_plan'));
     }
+    public function addActivity()
+    {
+    	$addActivity=Tbl_UpdateSportActivity::all();
+    	return view('sport_organization_user.sport_activity_plan.addActivity',compact('addActivity'));
+    }
     public function store(Request $request)
     {
         $sport_activity = new  Tbl_UpdateSportActivity;
@@ -49,3 +54,4 @@ class UpdateSportActivityController extends Controller
         return redirect()->route('sport_activity_plan.edit');
     }
 }
+

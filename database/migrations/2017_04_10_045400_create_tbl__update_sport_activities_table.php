@@ -35,3 +35,39 @@ class CreateTblUpdateSportActivitiesTable extends Migration
         Schema::dropIfExists('tbl__update_sport_activities');
     }
 }
+<table class="table table-bordered table-striped table-responsive" id="table1">
+                                        <thead>
+                                            <tr>
+                                                <th>Sl. No:</th>
+                                                <th>AKRA</th>
+                                                <th>BoC Program</th>
+                                                <th>Activity</th>
+                                                <th>Venue</th>
+                                                <th>RGoB Budget</th>
+                                                <th>External Budget</th>
+                                                <th style='width:20%'>Action</th>
+                                            </tr>   
+                                        </thead>
+                                        <tbody>
+                                        <?php $id=1 ?>
+                                        
+                                        <tr>
+                                            <td>{{$id++}}</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <form class="form-group">
+                                                  <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick=''>Edit</a>
+                                                  <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick=''>KPI</a>
+                                                  
+                                                  </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                       
+                                        </tbody>
+                                    </table>

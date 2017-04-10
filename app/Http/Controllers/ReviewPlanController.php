@@ -14,12 +14,7 @@ use Session;
 
 class ReviewPlanController extends Controller
 {
-    public function index()
-    {
-       $review_plan= Tbl_sport_org_activities::all();
-       return view('boc_user.annual_activities_plan.review_plan.index',compact('review_plan'));
-    }
-
+   
     public function review()
     {
         //$review_plan=Tbl_sport_org_activities::find($id);
@@ -32,7 +27,7 @@ class ReviewPlanController extends Controller
     }
     public function getAchievement_update(){
         $approved_activity=Tbl_sport_org_activities_approved::all();
-        $proposed_activity=Tbl_sport_org_activities::all();
+        // $proposed_activity=Tbl_sport_org_activities::all();
         return view('sport_organization_user.update_achievement.update_achievement',['approved_activity'=>$approved_activity]);
     }
     
