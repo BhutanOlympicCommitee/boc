@@ -83,6 +83,7 @@
       <div class="modal-body">
        <form action="{{route('update_proposed_activities')}}" method="post">
           {{csrf_field()}}
+          <input type="hidden" name="hidden_edit_id" id='hidden_edit_id'>
           <div class='form-group clearfix'>
             <label for='activity' class='col-xs-3'>Activity:</label>
               <div class='col-xs-9 input-group'>
@@ -147,8 +148,6 @@
                 <input type="text" name="collaborating"  class="form-control" id='collaborating'>
               </div>
           </div>
-          <input type="hidden" name="edit-id" id='edit_id'>
-      
        <div class="modal-footer">
           <button type="submit" class="btn btn-info glyphicon glyphicon-ok">Update</button>
           <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
@@ -170,6 +169,7 @@
         data: {"id":id}, 
         success: function(result){
           //console.log(result);
+          $('#hidden_edit_id').val(result.activity_id);
           $('#activity').val(result.activity_name);
           $('#venue').val(result.activity_venue);
           $('#quarter').val(result.quarter_timeline);

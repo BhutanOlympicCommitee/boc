@@ -149,46 +149,4 @@ class Sport_Organization_Controller extends Controller
         $sport_org_activity->save();
         return redirect()->route('sport_activity_plan.addActivity');
     }
-
-    public function updateActivities(Request $request){
-        $id = Input::get('activity_id');
-        $year_id = Input::get('year');
-        $skra_id = Input::get('skra');
-
-        $skra_activity_id = Input::get('skra_activity');
-        $activity_name = Input::get('activity');
-        $activity_baseline = Input::get('baseline');
-        $activity_target = Input::get('target');
-        $activity_venue = Input::get('venue');
-        $activity_timeline = Input::get('timeline');
-        $proposed_capital_budget = Input::get('proposed_capital_budget');
-        $proposed_recurring_budget = Input::get('proposed_recurring_budget');
-        $collaborating_agency = Input::get('collaborating_agency');
-        $remarks = Input::get('remarks');
-        $created_by = session('user_id');
-
-        $sport_org_activity = new Tbl_sport_org_activities;
-        $sport_org_activity::where('activity_id',$id)
-            ->update([
-                'year_id' => $year_id,
-                'skra_id'=> $skra_id,
-                'skra_activity_id' =>$skra_activity_id,
-                'activity_name' =>$activity_name,
-                'activity_baseline' =>$activity_baseline,
-                'activity_target' =>$activity_target,
-                'activity_venue' =>$activity_venue,
-                'activity_timeline' =>$activity_timeline,
-                'proposed_capital_budget' =>$proposed_capital_budget,
-                'proposed_recurring_budget' =>$proposed_recurring_budget,
-                'collaborating_agency' =>$collaborating_agency,
-                'remarks' =>$remarks,
-                'created_by'=>$created_by
-                ]);
-        return redirect()->route('sport_org_activity');
-    }
-    public function deleteActivities($id){
-        $sport_activity = new Tbl_sport_org_activities;
-        $sport_activity::where('activity_id', $id)->delete();
-        return redirect()->route('sport_org_activity');
-    }
 }
