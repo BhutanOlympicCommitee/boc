@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Sport_Organization;
-use App\Tbl_sport_org_activities;
+use App\Tbl_proposed_sport_org_activity;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\ContactPersonController;
 use Session;
@@ -135,26 +135,16 @@ class Sport_Organization_Controller extends Controller
     }
 
     public function addActivities(Request $request){
-        $sport_org_activity = new Tbl_sport_org_activities;
-        $sport_org_activity->year_id = Input::get('year');
-        $sport_org_activity->skra_id = Input::get('skra');
-
-        //default sport org id inserted have to modify
-        $sport_org_activity->sport_org_id = 1;
-
-        //default value of submit status
-        $sport_org_activity->submit_status = 1;
-
-        $sport_org_activity->skra_activity_id = Input::get('skra_activity');
-        $sport_org_activity->activity_name = Input::get('activity');
-        $sport_org_activity->activity_baseline = Input::get('baseline');
-        $sport_org_activity->activity_target = Input::get('target');
-        $sport_org_activity->activity_venue = Input::get('venue');
-        $sport_org_activity->activity_timeline = Input::get('timeline');
-        $sport_org_activity->proposed_capital_budget = Input::get('proposed_capital_budget');
-        $sport_org_activity->proposed_recurring_budget = Input::get('proposed_recurring_budget');
-        $sport_org_activity->collaborating_agency = Input::get('collaborating_agency');
-        $sport_org_activity->remarks = Input::get('remarks');
+        $sport_org_activity = new Tbl_proposed_sport_org_activity;
+        $sport_org_activity->weightage_id=Session::get('key');
+        $sport_org_activity->activity_name=$request->activity;
+        $sport_org_activity->activity_venue=$request->venue;
+        $sport_org_activity->quarter_timeline=$request->quarter;
+        $sport_org_activity->actual_timeline=$request->actual;
+        $sport_org_activity->rgob_budget=$request->rgob_budget;
+        $sport_org_activity->external_budget=$request->external_budget;
+        $sport_org_activity->external_source=$request->external_source;
+        $sport_org_activity->collaborating_agency=$request->collaborating;
         $sport_org_activity->created_by = session('user_id');
         $sport_org_activity->save();
         return redirect()->route('sport_org_activity');
