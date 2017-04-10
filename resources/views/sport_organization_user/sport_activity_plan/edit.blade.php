@@ -110,7 +110,7 @@
         <h4 class="modal-title" id="myModalLabel">Add Activities</h4>
       </div>
       <div class="modal-body">
-       <form action="{{route('dzongkhag_master.store')}}" method="post">
+       <form action="{{route('add_sport_org_activity')}}" method="post">
           {{csrf_field()}}
           <div class='form-group clearfix'>
             <label for='activity' class='col-xs-3'>Activity:</label>
@@ -127,43 +127,53 @@
         <div class='form-group clearfix'>
             <label>Time Line:</label>
           <div class='form-group clearfix'>
-            <label for='' class='col-xs-3'>Quater:</label>
+            <label for='quarter' class='col-xs-3'>Quater:</label>
             <div class='col-xs-9 input-group'>
-              <input type="text" name="" class="form-control" placeholder="Enter Venue here" required>
+              <select class='form-control' name='quarter' id='five_year'>
+                <option value="" disabled selected>Select five year plan</option>
+                  <?php 
+                      $enum_quarter=App\Enum_quarter::all();
+                      foreach($enum_quarter as $quarter):
+                    ?>
+                    <option value="{{$quarter->quarter_id}}">{{$quarter->quarter_name}}</option>
+                    <?php 
+                      endforeach
+                    ?>
+                </select>
             </div>
           </div>
           <div class='form-group clearfix'>
-            <label for='' class='col-xs-3'>Actual:</label>
+            <label for='actual' class='col-xs-3'>Actual:</label>
               <div class='input-group col-xs-9'>
-                <input type="text" name=""  class="form-control" placeholder="" required>
+                <input type="text" name="actual"  class="form-control" placeholder="enter actual timeline" required>
               </div>
           </div>
         </div>
          <div class='form-group clearfix'>
-            <label>Time Line:</label>
+            <label>Source of Funding:</label>
           <div class='form-group clearfix'>
-            <label for='' class='col-xs-3'>Budget RGOB:</label>
+            <label for='rgob_budget' class='col-xs-3'>Budget RGOB:</label>
             <div class='col-xs-9 input-group'>
-              <input type="text" name="" class="form-control" placeholder="Enter Venue here" required>
+              <input type="text" name="rgob_budget" class="form-control" placeholder="Enter RGoB budget here" required>
             </div>
           </div>
           <div class='form-group clearfix'>
-            <label for='' class='col-xs-3'>External Budget:</label>
+            <label for='external_budget' class='col-xs-3'>External Budget:</label>
               <div class='input-group col-xs-9'>
-                <input type="text" name=""  class="form-control" placeholder="">
+                <input type="text" name="external_budget"  class="form-control" placeholder="Enter actual budget">
               </div>
           </div>
           <div class='form-group clearfix'>
-            <label for='quarter' class='col-xs-3'>External Source:</label>
+            <label for='external_source' class='col-xs-3'>External Source:</label>
               <div class='input-group col-xs-9'>
-                <input type="text" name="quarter"  class="form-control" placeholder="" >
+                <input type="text" name="external_source"  class="form-control" placeholder="enter external source" >
               </div>
           </div>
         </div>
         <div class='form-group clearfix'>
-            <label for='quarter' class='col-xs-3'>Collaborating Agency:</label>
+            <label for='collaborating' class='col-xs-3'>Collaborating Agency:</label>
               <div class='input-group col-xs-9'>
-                <input type="text" name="quarter"  class="form-control" placeholder="">
+                <input type="text" name="collaborating"  class="form-control" placeholder="enter collaborating agency">
               </div>
           </div>
 

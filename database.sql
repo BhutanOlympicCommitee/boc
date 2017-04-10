@@ -496,6 +496,35 @@ INSERT INTO `enum_qualification_levels` VALUES (2,'Degree',NULL,NULL);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `enum_quarters`
+--
+
+DROP TABLE IF EXISTS `enum_quarters`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `enum_quarters` (
+  `quarter_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `quarter_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`quarter_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `enum_quarters`
+--
+
+LOCK TABLES `enum_quarters` WRITE;
+/*!40000 ALTER TABLE `enum_quarters` DISABLE KEYS */;
+INSERT INTO `enum_quarters` VALUES (1,'Jul-Sep',NULL,NULL);
+INSERT INTO `enum_quarters` VALUES (2,'Oct-Dec',NULL,NULL);
+INSERT INTO `enum_quarters` VALUES (3,'Jan-Mar',NULL,NULL);
+INSERT INTO `enum_quarters` VALUES (4,'Apr-June',NULL,NULL);
+/*!40000 ALTER TABLE `enum_quarters` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `enum_session_types`
 --
 
@@ -793,7 +822,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=133 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -846,6 +875,7 @@ INSERT INTO `migrations` VALUES (128,'2017_04_07_083121_create_enum__medals_tabl
 INSERT INTO `migrations` VALUES (129,'2017_04_07_103950_create_enum_five_year_plans_table',12);
 INSERT INTO `migrations` VALUES (130,'2017_04_10_045400_create_tbl__update_sport_activities_table',13);
 INSERT INTO `migrations` VALUES (131,'2017_04_10_082924_create_tbl_proposed_sport_org_activities_table',14);
+INSERT INTO `migrations` VALUES (132,'2017_04_10_090547_create_enum_quarters_table',15);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1170,7 +1200,7 @@ CREATE TABLE `tbl__update_sport_activities` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1180,6 +1210,7 @@ CREATE TABLE `tbl__update_sport_activities` (
 LOCK TABLES `tbl__update_sport_activities` WRITE;
 /*!40000 ALTER TABLE `tbl__update_sport_activities` DISABLE KEYS */;
 INSERT INTO `tbl__update_sport_activities` VALUES (1,1,4,3,70,3,3,'2017-04-10 01:03:37','2017-04-10 01:03:37');
+INSERT INTO `tbl__update_sport_activities` VALUES (2,1,5,4,90,3,3,'2017-04-10 03:16:36','2017-04-10 03:16:36');
 /*!40000 ALTER TABLE `tbl__update_sport_activities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1321,19 +1352,20 @@ DROP TABLE IF EXISTS `tbl_proposed_sport_org_activities`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_proposed_sport_org_activities` (
   `activity_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `weightage_id` int(11) NOT NULL,
   `activity_name` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `activity_venue` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `quarter` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `actual` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `quarter_timeline` int(11) NOT NULL,
+  `actual_timeline` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `rgob_budget` decimal(8,2) NOT NULL,
   `external_budget` decimal(8,2) NOT NULL,
-  `external_source` decimal(8,2) NOT NULL,
+  `external_source` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `collaborating_agency` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `created_by` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`activity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1342,6 +1374,7 @@ CREATE TABLE `tbl_proposed_sport_org_activities` (
 
 LOCK TABLES `tbl_proposed_sport_org_activities` WRITE;
 /*!40000 ALTER TABLE `tbl_proposed_sport_org_activities` DISABLE KEYS */;
+INSERT INTO `tbl_proposed_sport_org_activities` VALUES (2,2,'under 12 basketball compitition(girls)','changlingmithang',2,'Nov 23-Dec 2,2017',42000.00,20000.00,'DYS','Ministry of education',3,'2017-04-10 03:18:19','2017-04-10 03:18:19');
 /*!40000 ALTER TABLE `tbl_proposed_sport_org_activities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1650,4 +1683,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-10 14:34:09
+-- Dump completed on 2017-04-10 15:19:06
