@@ -18,12 +18,29 @@
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <div class="text-muted bootstrap-admin-box-title">Review Plan
+              <div class="text-muted bootstrap-admin-box-title">Review Activities Plan
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
               <form action="{{action('ReviewPlanController@index')}}" method='get' id='view'>
                 {{csrf_field()}}
+                <div class='form-group'>
+                  <label for='five_year' class='col-xs-3'>Five Year Plan</label>
+                    <div class='col-xs-9 input-group'>
+                      <select class='form-control' name='five_year' id='five_year'>
+                      <option value="" disabled selected>Select five year plan</option>
+                        <?php 
+                            $fiveYearPlan=App\EnumFiveYearPlan::all();
+                            foreach($fiveYearPlan as $five_year):
+                          ?>
+                          <option value="{{$five_year->five_yr_plan_id}}">{{$five_year->name}}</option>
+                          <?php 
+                            endforeach
+                          ?>
+                      </select>
+
+                    </div>
+                </div>
                 <div class='form-group'>
                   <label for='sport_org' class='col-xs-3
                   '>Sport Organization:</label>
@@ -41,23 +58,7 @@
                       </select>
                   </div>
               </div>
-                <div class='form-group'>
-                 <label for='year' class='col-xs-3
-                 '>Year:</label>
-                  <div class='col-xs-9 input-group'>
-                    <select class='form-control' name='year' id='year'>
-                       <option value="0">
-                      Select the Year
-                    </option>
-                    <?php 
-                    for($i = 1950 ; $i <= date('Y'); $i++)
-                    {
-                      echo "<option value=$i >$i</option>";
-                    }
-                    ?>
-                    </select>
-                  </div>
-                </div>
+                
                 <div class='form-group'>
                   <label for='skra' class='col-xs-3'>AKRA:</label>
                     <div class='col-xs-9 input-group'>
@@ -76,10 +77,10 @@
                 </div>
                 <div class='form-group'>
                   <label for='skra_activity' class='col-xs-3
-                  '>AKRA Activity:</label>
+                  '>Programs:</label>
                     <div class='col-xs-9 input-group'>
                       <select class='form-control' name='skra_activity' id='skra_activity'>
-                        <option value="" disabled selected>Select AKRA activity</option>
+                        <option value="" disabled selected>Select Program</option>
                         <?php 
                           $skra_activities=App\Tbl_SKRA_activities::all();
                           foreach($skra_activities as $skra_activity):
@@ -105,50 +106,42 @@
                     $('#view').hide();
                   });
                 </script>
-                <?php 
-                    $sport_id=$_GET['sport_org'];
-                    $akra_id=$_GET['skra'];
-                    $year=$_GET['year'];  
-                    $akra_activity=$_GET['skra_activity'];
-                ?>
+               
                 <table class="table table-bordered table-striped table-responsive" id="table1">
                     <thead>
                         <tr>
                             <th>Sl. No:</th>
                             <th>Activities</th>
-                            <th>Baseline</th>
-                            <th>Target</th>
                             <th>Venue</th>
-                            <th>Timeline</th>
-                            <th>Recurring Budget(MM)</th>
-                            <th>Capital Budget(MM)</th>
-                            <th>Collaborating Budget</th>
-                            <th>Remarks</th>
+                            <th>Timeline Quarter</th>
+                            <th>Timeline Actual</th>
+                            <th>RGoB Budget</th>
+                            <th>External Funding</th>
+                            <th>Collaborating Agencies</th>
                             <th>Action</th>
                         </tr>   
                     </thead>
                     <tbody>
                     <?php $id=1;
                     ?>
-                    @foreach($review_plan as $review)
-                    @if($sport_id==$review->sport_org_id && $year==$review->year_id && $akra_id==$review->skra_id && $akra_activity==$review->skra_activity_id)
+                    {{-- @foreach($review_plan as $review) --}}
+                    {{-- @if($sport_id==$review->sport_org_id && $year==$review->year_id && $akra_id==$review->skra_id && $akra_activity==$review->skra_activity_id) --}}
                       <tr>
                          <td>{{$id++}}</td>
-                         <td>{{$review->activity_name}}</td>
-                          <td>{{$review->activity_baseline}}</td>
-                          <td>{{$review->activity_target}}</td>
-                          <td>{{$review->activity_venue}}</td>
-                          <td>{{$review->activity_timeline}}</td>
-                          <td>{{$review->proposed_recurring_budget}}</td>
-                          <td>{{$review->proposed_capital_budget}}</td>
-                          <td>{{$review->collaborating_agency}}</td>
-                          <td>{{$review->remarks}}</td>
+                         <td>{{'gffh'}}</td>
+                          <td>{{'ggf'}}</td>
+                          <td>{{'uiiu'}}</td>
+                          <td>{{'ilkjkl'}}</td>
+                          <td>{{'jkl'}}</td>
+                          <td>{{'jkl'}}</td>
+                          <td>{{'kjkl'}}</td>
                           <td>
-                            <a href="{{route('review_plan.review',$review->activity_id)}}" class="btn btn-primary">Review</a>
+                            <a href="{{route('review_plan.review')}}" class="btn btn-primary">Review</a>
+                            <a data-toggle='modal' data-target='#reviewKPI' class="btn btn-primary">KPI</a>
                           </td>
                       </tr>
-                    @endif
-                    @endforeach
+                    {{-- @endif --}}
+                    {{-- @endforeach --}}
                     </tbody>
                 </table>
                 </div>  
@@ -159,7 +152,63 @@
       </div>
     </div>
   </div>
+  <!-- reviewKPI modal begins-->
+  <div class="modal fade" id="reviewKPI" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Review KPI</h4>
+      </div>
+      <div class="modal-body">
+      <div class='row clearfix'>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;Sport Organization:</span><br><br>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;Program:</span><br><br>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;Activity:</span>
+      </div><br>
+      <div class='clearfix'>
+        <table class="table table-bordered table-striped table-responsive" id="table1">
+            <thead>
+                <tr>
+                    <th>Sl. No:</th>
+                    <th>Activity</th>
+                    <th>KPI</th>
+                    <th>Baseline</th>
+                    <th>Good (Target)</th>
+                    <th>Average</th>
+                    <th>Poor</th>
+                    <th>Action</th>
+                </tr>   
+            </thead>
+            <tbody>
+            <?php $id=1;
+            ?>
+            {{-- @foreach($review_plan as $review) --}}
+            {{-- @if($sport_id==$review->sport_org_id && $year==$review->year_id && $akra_id==$review->skra_id && $akra_activity==$review->skra_activity_id) --}}
+              <tr>
+                 <td>{{$id++}}</td>
+                 <td>{{'gffh'}}</td>
+                  <td>{{'ggf'}}</td>
+                  <td>{{'uiiu'}}</td>
+                  <td>{{'ilkjkl'}}</td>
+                  <td>{{'jkl'}}</td>
+                  <td>{{'jkl'}}</td>
+                  <td>
+                    <a href="{{route('review_plan.kpi')}}" class="btn btn-primary">Review</a>
+                  </td>
+              </tr>
+            {{-- @endif --}}
+            {{-- @endforeach --}}
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <!-- reviewKPI modal ends-->
 <script type="text/javascript">
+$('#table1').dataTable();
 </script>
 @endsection
 @section('footer')

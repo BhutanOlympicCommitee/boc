@@ -123,7 +123,6 @@
 <div class="container">
     <div class="row">
         @include('includes.footer')
-   
     </div>
 </div>
 @endsection
