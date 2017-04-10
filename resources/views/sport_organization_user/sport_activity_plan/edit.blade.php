@@ -130,7 +130,7 @@
             <label for='quarter' class='col-xs-3'>Quater:</label>
             <div class='col-xs-9 input-group'>
               <select class='form-control' name='quarter' id='five_year'>
-                <option value="" disabled selected>Select five year plan</option>
+                <option value="" disabled selected>Select quarter</option>
                   <?php 
                       $enum_quarter=App\Enum_quarter::all();
                       foreach($enum_quarter as $quarter):
