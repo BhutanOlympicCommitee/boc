@@ -87,8 +87,8 @@
                 </div>
             </div>
          <div class="modal-footer">
-          <button type="submit" class="btn btn-default glyphicon glyphicon-ok">Add Activities</button>
-
+             <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal">Add Activities</a> 
+                          
         </div>
           </form>
          
@@ -101,6 +101,83 @@
 </div>
 </div>
 </div>
+<!-- Add activity modal begins-->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Activities</h4>
+      </div>
+      <div class="modal-body">
+       <form action="{{route('dzongkhag_master.store')}}" method="post">
+          {{csrf_field()}}
+          <div class='form-group clearfix'>
+            <label for='activity' class='col-xs-3'>Activity:</label>
+              <div class='col-xs-9 input-group'>
+                <input type="text" name="activity" class="form-control" placeholder="Enter Activity name here" required>
+              </div>
+          </div>
+          <div class='form-group clearfix'>
+            <label for='venue' class='col-xs-3'>Venue:</label>
+            <div class='col-xs-9 input-group'>
+              <input type="text" name="venue" class="form-control" placeholder="Enter Venue here" required>
+            </div>
+          </div>
+        <div class='form-group clearfix'>
+            <label>Time Line:</label>
+          <div class='form-group clearfix'>
+            <label for='' class='col-xs-3'>Quater:</label>
+            <div class='col-xs-9 input-group'>
+              <input type="text" name="" class="form-control" placeholder="Enter Venue here" required>
+            </div>
+          </div>
+          <div class='form-group clearfix'>
+            <label for='' class='col-xs-3'>Actual:</label>
+              <div class='input-group col-xs-9'>
+                <input type="text" name=""  class="form-control" placeholder="" required>
+              </div>
+          </div>
+        </div>
+         <div class='form-group clearfix'>
+            <label>Time Line:</label>
+          <div class='form-group clearfix'>
+            <label for='' class='col-xs-3'>Budget RGOB:</label>
+            <div class='col-xs-9 input-group'>
+              <input type="text" name="" class="form-control" placeholder="Enter Venue here" required>
+            </div>
+          </div>
+          <div class='form-group clearfix'>
+            <label for='' class='col-xs-3'>External Budget:</label>
+              <div class='input-group col-xs-9'>
+                <input type="text" name=""  class="form-control" placeholder="">
+              </div>
+          </div>
+          <div class='form-group clearfix'>
+            <label for='quarter' class='col-xs-3'>External Source:</label>
+              <div class='input-group col-xs-9'>
+                <input type="text" name="quarter"  class="form-control" placeholder="" >
+              </div>
+          </div>
+        </div>
+        <div class='form-group clearfix'>
+            <label for='quarter' class='col-xs-3'>Collaborating Agency:</label>
+              <div class='input-group col-xs-9'>
+                <input type="text" name="quarter"  class="form-control" placeholder="">
+              </div>
+          </div>
+
+      
+       <div class="modal-footer">
+          <button type="submit" class="btn btn-default glyphicon glyphicon-ok">Save</button>
+          <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ends addModal-->
 
 @endsection
 @section('footer')
