@@ -793,7 +793,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -844,6 +844,8 @@ INSERT INTO `migrations` VALUES (126,'2017_04_07_045033_create_tbl_athlete_disci
 INSERT INTO `migrations` VALUES (127,'2017_04_07_075314_create_tbl_athlete_achievements_table',11);
 INSERT INTO `migrations` VALUES (128,'2017_04_07_083121_create_enum__medals_table',11);
 INSERT INTO `migrations` VALUES (129,'2017_04_07_103950_create_enum_five_year_plans_table',12);
+INSERT INTO `migrations` VALUES (130,'2017_04_10_045400_create_tbl__update_sport_activities_table',13);
+INSERT INTO `migrations` VALUES (131,'2017_04_10_082924_create_tbl_proposed_sport_org_activities_table',14);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1151,6 +1153,37 @@ INSERT INTO `tbl__s_k_r_as` VALUES (9,3,'kjh','uhkj','2017-04-09 22:28:50','2017
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbl__update_sport_activities`
+--
+
+DROP TABLE IF EXISTS `tbl__update_sport_activities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl__update_sport_activities` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `five_yr_plan_id` int(11) NOT NULL,
+  `skra_id` int(11) NOT NULL,
+  `skra_activity_id` int(11) NOT NULL,
+  `wieghtage` int(11) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl__update_sport_activities`
+--
+
+LOCK TABLES `tbl__update_sport_activities` WRITE;
+/*!40000 ALTER TABLE `tbl__update_sport_activities` DISABLE KEYS */;
+INSERT INTO `tbl__update_sport_activities` VALUES (1,1,4,3,70,3,3,'2017-04-10 01:03:37','2017-04-10 01:03:37');
+/*!40000 ALTER TABLE `tbl__update_sport_activities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tbl_achievements`
 --
 
@@ -1280,6 +1313,39 @@ INSERT INTO `tbl_game_details` VALUES (12,1967,2,'tenis',8,'changjiji','2017-04-
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbl_proposed_sport_org_activities`
+--
+
+DROP TABLE IF EXISTS `tbl_proposed_sport_org_activities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_proposed_sport_org_activities` (
+  `activity_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `activity_name` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `activity_venue` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `quarter` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `actual` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `rgob_budget` decimal(8,2) NOT NULL,
+  `external_budget` decimal(8,2) NOT NULL,
+  `external_source` decimal(8,2) NOT NULL,
+  `collaborating_agency` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`activity_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_proposed_sport_org_activities`
+--
+
+LOCK TABLES `tbl_proposed_sport_org_activities` WRITE;
+/*!40000 ALTER TABLE `tbl_proposed_sport_org_activities` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_proposed_sport_org_activities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tbl_sport_coaches`
 --
 
@@ -1312,45 +1378,6 @@ INSERT INTO `tbl_sport_coaches` VALUES (6,10,1,7,1,'freindly match ',2,2,0,'2017
 INSERT INTO `tbl_sport_coaches` VALUES (7,11,2,8,3,'under 12 match',2,2,0,'2017-04-07 01:16:39','2017-04-07 01:16:39');
 INSERT INTO `tbl_sport_coaches` VALUES (8,12,2,8,4,'ertryew',2,2,0,'2017-04-07 01:44:32','2017-04-07 01:44:32');
 /*!40000 ALTER TABLE `tbl_sport_coaches` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tbl_sport_org_activities`
---
-
-DROP TABLE IF EXISTS `tbl_sport_org_activities`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tbl_sport_org_activities` (
-  `activity_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `year_id` int(11) NOT NULL,
-  `sport_org_id` int(11) NOT NULL,
-  `skra_id` int(11) NOT NULL,
-  `skra_activity_id` int(11) NOT NULL,
-  `collaborating_agency` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `activity_name` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `activity_baseline` varchar(2000) COLLATE utf8_unicode_ci NOT NULL,
-  `activity_target` varchar(2000) COLLATE utf8_unicode_ci NOT NULL,
-  `activity_venue` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `activity_timeline` varchar(2000) COLLATE utf8_unicode_ci NOT NULL,
-  `proposed_capital_budget` decimal(8,2) NOT NULL,
-  `proposed_recurring_budget` decimal(8,2) NOT NULL,
-  `remarks` varchar(5000) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `submit_status` int(11) NOT NULL,
-  `created_by` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`activity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_sport_org_activities`
---
-
-LOCK TABLES `tbl_sport_org_activities` WRITE;
-/*!40000 ALTER TABLE `tbl_sport_org_activities` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_sport_org_activities` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1623,4 +1650,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-10 12:46:50
+-- Dump completed on 2017-04-10 14:34:09
