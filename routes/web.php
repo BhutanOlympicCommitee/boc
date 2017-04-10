@@ -142,15 +142,6 @@ Route::post('sport_organization_activities',[
 	'uses' => 'Sport_Organization_Controller@addActivities',
 	'as' => 'add_sport_org_activity'
 	]);
-Route::post('sport_organization_activities/edit',[
-	'uses' => 'Sport_Organization_Controller@updateActivities',
-	'as' => 'update_sport_activities'
-	]);
-
-Route::get('sport_organization_activities/{id}',[
-	'uses' => 'Sport_Organization_Controller@deleteActivities',
-	'as' => 'delete_sport_org_activity'
-	]);
 
 //Routes for the Review Activities
 //Route::resource('review_plan','ReviewPlanController');
@@ -255,3 +246,6 @@ Route::get('kpi',['as'=>'KPI_master.index','uses'=>'KPIController@index']);
 Route::post('kpi/store',['as'=>'KPI_master.store','uses'=>'KPIController@store']);
 Route::get('kpi/view', 'KPIController@view')->name('view_kpi');
 Route::post('kpi/update', 'KPIController@update')->name('update_kpi');
+
+Route::post('sport_activity/update_proposed_activity', 'UpdateSportActivityController@updateProposedActivities')->name('update_proposed_activities');
+

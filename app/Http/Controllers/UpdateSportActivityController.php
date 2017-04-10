@@ -63,5 +63,20 @@ class UpdateSportActivityController extends Controller
             return response()->json($info);
         }
     }
+    public function updateProposedActivities(Request $request)
+    {
+        $sport_org_activity=Tbl_proposed_sport_org_activity::findOrFail($request->hidden_edit_id);
+        $sport_org_activity->activity_name=$request->activity;
+        $sport_org_activity->activity_venue=$request->venue;
+        $sport_org_activity->quarter_timeline=$request->quarter;
+        $sport_org_activity->actual_timeline=$request->actual;
+        $sport_org_activity->rgob_budget=$request->rgob_budget;
+        $sport_org_activity->external_budget=$request->external_budget;
+        $sport_org_activity->external_source=$request->external_source;
+        $sport_org_activity->collaborating_agency=$request->collaborating;
+        $sport_org_activity->created_by = session('user_id');
+       $sport_org_activity->save();
+        return redirect()->route('sport_activity_plan.addActivity');
+    }
 }
 
