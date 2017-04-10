@@ -248,3 +248,4 @@ Route::post('sport_activity/store',['as'=>'sport_activity_plan.store','uses'=>'U
 Route::get('sport_activity/{id}/edit',['as'=>'sport_activity_plan.edit','uses'=>'UpdateSportActivityController@edit']);
 Route::patch('sport_activity/update/{id}',['as'=>'sport_activity_plan.update','uses'=>'UpdateSportActivityController@update']);
 Route::get('sport_activity',['as'=>'sport_activity_plan.addActivity','uses'=>'UpdateSportActivityController@addActivity']);
+Route::get('sport_activity/edit_activity', 'UpdateSportActivityController@editActivities')->name('editActivities');

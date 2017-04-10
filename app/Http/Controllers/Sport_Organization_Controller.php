@@ -147,7 +147,7 @@ class Sport_Organization_Controller extends Controller
         $sport_org_activity->collaborating_agency=$request->collaborating;
         $sport_org_activity->created_by = session('user_id');
         $sport_org_activity->save();
-        return redirect()->route('sport_org_activity');
+        return redirect()->route('sport_activity_plan.addActivity');
     }
 
     public function updateActivities(Request $request){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tbl_UpdateSportActivity;
+use App\Tbl_proposed_sport_org_activity;
 use Auth;
 use Session;
 
@@ -16,7 +17,7 @@ class UpdateSportActivityController extends Controller
     }
     public function addActivity()
     {
-    	$addActivity=Tbl_UpdateSportActivity::all();
+    	$addActivity=Tbl_proposed_sport_org_activity::all();
     	return view('sport_organization_user.sport_activity_plan.addActivity',compact('addActivity'));
     }
     public function store(Request $request)
@@ -52,6 +53,15 @@ class UpdateSportActivityController extends Controller
         Session::flash('success', 'SKRA has been created successfully');
         
         return redirect()->route('sport_activity_plan.edit');
+    }
+
+    public function editActivities(Request $request)
+    {
+         if($request->ajax()){
+            $id = $request->id;
+            $info = Tbl_proposed_sport_org_activity::find($id);
+            return response()->json($info);
+        }
     }
 }
 
