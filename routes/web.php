@@ -239,3 +239,10 @@ Route::get('team/view_sport', 'TeamMemberController@showAssociatedSport')->name(
 Route::get('athlete_achievement','AchievementAndDisplinaryAction@displayAthleteInfo')->name('display_matching_athlete');
 Route::post('athlete_achievement/store',['as'=>'display_athlete_achievement.store','uses'=>'AchievementAndDisplinaryAction@store']);
 Route::post('athlete_achievement/Actionstore',['as'=>'display_athlete_achievement.Actionstore','uses'=>'AchievementAndDisplinaryAction@Actionstore']);
+
+//update sport org activities
+Route::get('sport_activity',['as'=>'sport_activity_plan.index','uses'=>'UpdateSportActivityController@index']);
+Route::post('sport_activity/store',['as'=>'sport_activity_plan.store','uses'=>'UpdateSportActivityController@store']);
+// Route::post('sport_activity/update',['as'=>'sport_activity_plan.edit','uses'=>'UpdateSportActivityController@update']);
+Route::get('sport_activity/{id}/edit',['as'=>'sport_activity_plan.edit','uses'=>'UpdateSportActivityController@edit']);
+Route::patch('sport_activity/update/{id}',['as'=>'sport_activity_plan.update','uses'=>'UpdateSportActivityController@update']);
