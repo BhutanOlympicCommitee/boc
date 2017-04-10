@@ -20,12 +20,16 @@ class ReviewPlanController extends Controller
        return view('boc_user.annual_activities_plan.review_plan.index',compact('review_plan'));
     }
 
-    public function review($id)
+    public function review()
     {
-        $review_plan=Tbl_sport_org_activities::find($id);
-        return view('boc_user.annual_activities_plan.review_plan.review',compact('review_plan'));
+        //$review_plan=Tbl_sport_org_activities::find($id);
+        return view('boc_user.annual_activities_plan.review_plan.review');
     }
 
+    public function reviewKPI()
+    {
+        return view('boc_user.annual_activities_plan.review_plan.reviewKPI');
+    }
     public function getAchievement_update(){
         $approved_activity=Tbl_sport_org_activities_approved::all();
         $proposed_activity=Tbl_sport_org_activities::all();
@@ -48,6 +52,10 @@ class ReviewPlanController extends Controller
         $approved_activities->save();
         return redirect()->route('review_plan.index');
 
+    }  
+
+    public function updateSportAchievement()
+    {
+        return view('sport_organization_user.update_achievement.sport_achievement_update');
     }
-    
 }
