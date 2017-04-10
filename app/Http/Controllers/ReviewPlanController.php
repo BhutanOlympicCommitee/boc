@@ -14,7 +14,12 @@ use Session;
 
 class ReviewPlanController extends Controller
 {
-   
+    public function index()
+    {
+       // $review_plan= Tbl_sport_org_activities::all();
+       return view('boc_user.annual_activities_plan.review_plan.index');
+    }
+
     public function review()
     {
         //$review_plan=Tbl_sport_org_activities::find($id);
