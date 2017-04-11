@@ -1426,18 +1426,18 @@ CREATE TABLE `tbl_sport_org_activities_approveds` (
   `activity_approval_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `activity_id` int(11) NOT NULL,
   `approved_activity_name` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `approved_activity_baseline` varchar(2000) COLLATE utf8_unicode_ci NOT NULL,
-  `approved_activity_target` varchar(2000) COLLATE utf8_unicode_ci NOT NULL,
   `approved_activity_venue` varchar(2000) COLLATE utf8_unicode_ci NOT NULL,
-  `approved_activity_timeline` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  `approved_capital_budget` decimal(8,2) NOT NULL,
-  `approved_recurring_budget` decimal(8,2) NOT NULL,
-  `remarks` varchar(5000) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `approved_quarter_timeline` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `approved_actual_timeline` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `approved_rgob_budget` decimal(8,2) NOT NULL,
+  `approved_external_budget` decimal(8,2) NOT NULL,
+  `approved_external_source` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `approved_collaborating_agency` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `updated_by` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`activity_approval_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1446,6 +1446,8 @@ CREATE TABLE `tbl_sport_org_activities_approveds` (
 
 LOCK TABLES `tbl_sport_org_activities_approveds` WRITE;
 /*!40000 ALTER TABLE `tbl_sport_org_activities_approveds` DISABLE KEYS */;
+INSERT INTO `tbl_sport_org_activities_approveds` VALUES (1,2,'under 12 basketball compitition(girls)','changlingmithang','3','Nov 23-Dec 2,2017',42000.00,20000.00,'DYS','Ministry of education',2,'2017-04-10 21:51:25','2017-04-10 21:51:25');
+INSERT INTO `tbl_sport_org_activities_approveds` VALUES (2,3,'Under 18 basket compitition','punakha','4','april 23-may 5,2017',45000.00,23000.00,'BOB','YDF',2,'2017-04-10 21:52:27','2017-04-10 21:52:27');
 /*!40000 ALTER TABLE `tbl_sport_org_activities_approveds` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1685,4 +1687,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-10 17:03:37
+-- Dump completed on 2017-04-11 10:04:28
