@@ -25,6 +25,7 @@ class CreateTblProposedSportOrgActivitiesTable extends Migration
             $table->string('external_source', 500);
             $table->string('collaborating_agency',500);
             $table->integer('created_by');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

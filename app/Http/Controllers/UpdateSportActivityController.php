@@ -75,7 +75,7 @@ class UpdateSportActivityController extends Controller
         $sport_org_activity->external_source=$request->external_source;
         $sport_org_activity->collaborating_agency=$request->collaborating;
         $sport_org_activity->created_by = session('user_id');
-       $sport_org_activity->save();
+        $sport_org_activity->save();
         return redirect()->route('sport_activity_plan.addActivity');
     }
 }

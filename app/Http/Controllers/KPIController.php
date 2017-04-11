@@ -16,6 +16,12 @@ class KPIController extends Controller
        return view('common_view.KPI_master.index',compact('kpi'));
     }
 
+     public function searchKPI()
+    {
+        $searchkpi=Tbl_proposed_KPI::all();
+        return view('sport_organization_user.search_activity.searchKPI',compact('searchkpi'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -54,20 +60,18 @@ class KPIController extends Controller
 
    public function view(Request $request)
     {
-        if($request->ajax()){
+        // if($request->ajax()){
+        //     $id = $request->id;
+        //     $info = Tbl_proposed_KPI::find($id);
+        //     return response()->json($info);
+        // }
+      if($request->ajax()){
             $id = $request->id;
             $info = Tbl_proposed_KPI::where('kpi_id',$id)->first();
             return response()->json($info);
-        }
     }
-   
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  }
+
    public function update(Request $request)
     {
         $id=$request->edit_id;

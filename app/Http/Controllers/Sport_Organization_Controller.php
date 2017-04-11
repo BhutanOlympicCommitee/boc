@@ -149,4 +149,11 @@ class Sport_Organization_Controller extends Controller
         $sport_org_activity->save();
         return redirect()->route('sport_activity_plan.addActivity');
     }
+
+    //list and search activities
+     public function search()
+    {
+        $search=Tbl_proposed_sport_org_activity::all();
+        return view('sport_organization_user.search_activity.search',compact('search'));
+    }
 }

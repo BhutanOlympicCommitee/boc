@@ -10,28 +10,77 @@
 </div>
 @endsection
 @section('content')
-<div class='container'>
+<div class="container">
   <div class="row">
-   <!-- content -->
+    <!-- content -->
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <div class="text-muted bootstrap-admin-box-title clearfix">Sport Organization Activities 
-          
-               </div>
-            </div>
+	           <div class="text-muted bootstrap-admin-box-title clearfix">List And Search Activities
+	           </div>
+	          </div>
             <div class="bootstrap-admin-panel-content">
-            @if(Session::has('success'))
+              @if(Session::has('success'))
                 <div class="alert alert-success">
                   {{ Session::get('success') }}
+                </div>	
+						 	@endif
+              <div class='form-group clearfix'>
+            <label for='five_yr_plan_id' class='col-xs-2'>Five Year Plan:</label>
+              <div class='col-xs-10 input-group'>
+               <select class='form-control' name='five_yr_plan_id'>
+                          <?php 
+                            $fiveYearPlan=App\EnumFiveYearPlan::all();
+                            foreach($fiveYearPlan as $five_year):
+                          ?>
+                          <option value="{{$five_year->five_yr_plan_id}}">{{$five_year->name}}</option>
+                          <?php 
+                            endforeach
+                          ?>
+                          </select>
+              </div>
+          </div>
+          <div class='form-group clearfix'>
+            <label for='skra_id' class='col-xs-2'>AKRA:</label>
+              <div class='col-xs-10 input-group'>
+                 <select class='form-control' name='skra_id' id='skra1'>
+                         <?php 
+                            $skras=App\Tbl_SKRA::all();
+                            foreach($skras as $skra):
+                          ?>
+                         <option value="{{$skra->skra_id}}">{{$skra->SKRA_name}}</option>
+                          <?php 
+                            endforeach
+                          ?>
+                      </select>
+              </div>
+          </div>
+              <div class='form-group clearfix'>
+            <label for='skra_activity_id' class='col-xs-2'>BoC Program:</label>
+              <div class='col-xs-10 input-group'>
+                <select class='form-control' name='skra_activity_id'>
+                  <option>Select BoC program</option>
+                  <?php 
+                    $skra=App\Tbl_SKRA_activities::all();
+                    foreach($skra as $skras):
+                  ?>
+                  <option value="{{$skras->skra_activity_id}}">{{$skras->SKRA_activity}}</option>
+                  <?php 
+                    endforeach
+                  ?>
+                </select>
+              </div>
+          </div>    
+          <div class="form-group clearfix">
+                  <div class="col-xs-12 input-group ">
+                    <input type="submit" class="btn btn-default pull-right" value="Search">
+                    </div>
                 </div>
-            @endif
-            <table class="table table-bordered table-striped table-responsive" id="table1">
-              <thead>
-              <?php $i=1;?>
-                  <tr>
+             <table class="table table-bordered table-striped table-responsive" id="table1">
+             <thead>
+                <tr>
                       <th>Sl. No:</th>
                       <th>AKRA</th>
                       <th>BoC Program</th>
@@ -40,37 +89,42 @@
                       <th>RGoB Budget</th>
                       <th>External Budget</th>
                       <th style='width:20%'>Action</th>
-                  </tr>   
-              </thead>
-              <tbody>
-              <?php $id=1 ?>
-              @foreach($addActivity as $activity)
+                </tr>   
+            </thead>
+            <tbody>
+             <?php $id=1;
+              $search=App\Tbl_proposed_sport_org_activity::all();
+              foreach($search as $searchs):
+              ?>
               <tr>
-                  <td>{{$id++}}</td>
-                  <td>{{$activity->updated_activity->getAKRA->SKRA_name}}</td>
-                  <td>{{$activity->updated_activity->getAKRAActivity->SKRA_activity}}</td>
-                  <td>{{$activity->activity_name}}</td>
-                  <td>{{$activity->activity_venue}}</td>
-                  <td>{{$activity->rgob_budget}}</td>
-                  <td>{{$activity->external_budget}}</td>
-                  <td>
-                      <form class="form-group">
-                        <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='editActivities({{$activity->activity_id}})'>Edit</a>
-                        <a class="btn btn-success glyphicon glyphicon-check" href="{{route('KPI_master.index', $activity->activity_id)}}">KPI</a>
-                        
-                        </button>
-                      </form>
-                  </td>
+                <td>{{$id++}}</td>
+                <td>{{$searchs->updated_activity->getAKRA->SKRA_name}}</td>
+                <td>{{$searchs->updated_activity->getAKRAActivity->SKRA_activity}}</td>
+                <td>{{$searchs->activity_name}}</td>
+                <td>{{$searchs->activity_venue}}</td>
+                <td>{{$searchs->rgob_budget}}</td>
+                <td>{{$searchs->external_budget}}</td>
+                <td>
+                   <form id='remove' class="form-group" action="" method='post'>
+                          <input type="hidden" name="_method" value="delete">
+                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          <a class="btn btn-info" data-toggle='modal' data-target='#editModal' onclick='editActivities({{$searchs->activity_id}})'>Edit</a>
+                          <a class="btn btn-success" href="{{route('search_activity.searchKPI')}}">KPI</a>
+                          <button type="submit" class="btn btn-warning" onclick="return confirm('Are you sure to delete this data');" name='name'>DEL
+                          </button>
+                        </form>
+                </td>
               </tr>
-              @endforeach
-              </tbody>
-              </table>
-            </div>
-           </div>
+            <?php endforeach?>
+            </tbody>
+          </table>
+            
           </div>
         </div>
       </div>
+    </div>
   </div>
+</div>
 </div>
 <!-- editModal begins-->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -81,7 +135,7 @@
         <h4 class="modal-title" id="myModalLabel">Edit Activities</h4>
       </div>
       <div class="modal-body">
-       <form action="update_proposed_activities" method="post">
+       <form action="" method="post">
           {{csrf_field()}}
           <input type="hidden" name="hidden_edit_id" id='hidden_edit_id'>
           <div class='form-group clearfix'>
@@ -182,16 +236,11 @@
       });
   }
 </script>
-<script type="text/javascript">
- $(function(){
-    $('#table1').DataTable();
-  });
-</script>
 @endsection
 @section('footer')
 <div class="container">
-  <div class="row">
-    @include('includes.footer')
-  </div>
+    <div class="row">
+        @include('includes.footer')
+    </div>
 </div>
 @endsection

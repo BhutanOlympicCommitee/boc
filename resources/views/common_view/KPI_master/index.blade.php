@@ -28,7 +28,7 @@
                             {{ Session::get('success') }}
                           </div>  
                         @endif
-                      <table class="table table-bordered table-striped table-responsive" id="table1">
+                      <table class="table table-bordered table-striped table-responsive" id="table3">
                         <thead>
                           <tr>
                             <th>Sl. No:</th>
@@ -231,16 +231,18 @@
   </div>
 </div>
 <!-- ends editModal-->
-<script>
+<script type="text/javascript">
  $(function(){
-    $('#table1').DataTable();
+    $('#table3').DataTable();
   });
-
- function kpi_edit(id)
+</script>
+<script type="text/javascript">
+function kpi_edit(id)
     {
       var view_url = $("#hidden_view").val();
       $.ajax({
         url: view_url,
+        alert(url);
         type:"GET", 
         data: {"id":id}, 
         success: function(result){

@@ -249,3 +249,8 @@ Route::post('kpi/update', 'KPIController@update')->name('update_kpi');
 
 Route::post('sport_activity/update_proposed_activity', 'UpdateSportActivityController@updateProposedActivities')->name('update_proposed_activities');
 
+//routes for search activities
+Route::get('searchActivity',['as'=>'search_activity.search','uses'=>'Sport_Organization_Controller@search']);
+
+//routes for search activities
+Route::get('searchKPI',['as'=>'search_activity.searchKPI','uses'=>'KPIController@searchKPI']);
