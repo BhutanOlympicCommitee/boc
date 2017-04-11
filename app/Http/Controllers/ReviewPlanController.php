@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Tbl_proposed_sport_org_activity;
 use App\Tbl_sport_org_activities_approved;
+use App\Tbl_proposed_KPI;
 use Auth;
 use Session;
 /**
@@ -25,10 +26,15 @@ class ReviewPlanController extends Controller
         $review_plan=Tbl_proposed_sport_org_activity::find($id);
         return view('boc_user.annual_activities_plan.review_plan.review',compact('review_plan'));
     }
-
-    public function reviewKPI()
+     public function showKPI($id)
     {
-        return view('boc_user.annual_activities_plan.review_plan.reviewKPI');
+        $review_kpi=Tbl_proposed_KPI::where('activity_id',$id)->get();
+        return view('boc_user.annual_activities_plan.review_plan.showKPI',compact('review_kpi'));
+    }
+    public function reviewKPI($id)
+    {
+        $review_kpi=Tbl_proposed_KPI::find($id);
+        return view('boc_user.annual_activities_plan.review_plan.reviewKPI',compact('review_kpi'));
     }
     public function getAchievement_update(){
         $approved_activity=Tbl_proposed_sport_org_activity::all();

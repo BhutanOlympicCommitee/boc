@@ -822,7 +822,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=133 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -876,6 +876,8 @@ INSERT INTO `migrations` VALUES (129,'2017_04_07_103950_create_enum_five_year_pl
 INSERT INTO `migrations` VALUES (130,'2017_04_10_045400_create_tbl__update_sport_activities_table',13);
 INSERT INTO `migrations` VALUES (131,'2017_04_10_082924_create_tbl_proposed_sport_org_activities_table',14);
 INSERT INTO `migrations` VALUES (132,'2017_04_10_090547_create_enum_quarters_table',15);
+INSERT INTO `migrations` VALUES (133,'2017_04_10_095556_create_tbl_proposed__k_p_is_table',16);
+INSERT INTO `migrations` VALUES (134,'2017_04_11_062831_create_tbl__k_p_i_approveds_table',17);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1116,6 +1118,43 @@ INSERT INTO `tbl__coaches` VALUES (4,'Mr.','karma','s','Dorji','2017-04-21',8,12
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbl__k_p_i_approveds`
+--
+
+DROP TABLE IF EXISTS `tbl__k_p_i_approveds`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl__k_p_i_approveds` (
+  `kpi_approval_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `kpi_id` int(11) NOT NULL,
+  `approved_kpi_name` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `approved_RGoB` decimal(8,2) NOT NULL,
+  `approved_external` decimal(8,2) NOT NULL,
+  `approved_unit` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `approved_baseline` decimal(8,2) NOT NULL,
+  `approved_good` decimal(8,2) NOT NULL,
+  `approved_average` decimal(8,2) NOT NULL,
+  `approved_poor` decimal(8,2) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`kpi_approval_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl__k_p_i_approveds`
+--
+
+LOCK TABLES `tbl__k_p_i_approveds` WRITE;
+/*!40000 ALTER TABLE `tbl__k_p_i_approveds` DISABLE KEYS */;
+INSERT INTO `tbl__k_p_i_approveds` VALUES (1,1,'Number of teams or individuals participated',2.00,3.00,'Nos',35.00,224.00,140.00,130.00,2,2,'2017-04-11 00:48:32','2017-04-11 00:48:32');
+INSERT INTO `tbl__k_p_i_approveds` VALUES (3,2,'Number of girls team',4.00,5.00,'Nos',123.00,567.00,345.00,234.00,2,2,'2017-04-11 00:50:12','2017-04-11 00:50:12');
+/*!40000 ALTER TABLE `tbl__k_p_i_approveds` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tbl__s_k_r_a_activities`
 --
 
@@ -1200,7 +1239,7 @@ CREATE TABLE `tbl__update_sport_activities` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1212,6 +1251,8 @@ LOCK TABLES `tbl__update_sport_activities` WRITE;
 INSERT INTO `tbl__update_sport_activities` VALUES (1,1,4,3,70,3,3,'2017-04-10 01:03:37','2017-04-10 01:03:37');
 INSERT INTO `tbl__update_sport_activities` VALUES (2,1,5,4,90,3,3,'2017-04-10 03:16:36','2017-04-10 03:16:36');
 INSERT INTO `tbl__update_sport_activities` VALUES (3,1,6,4,40,3,3,'2017-04-10 03:30:53','2017-04-10 03:30:53');
+INSERT INTO `tbl__update_sport_activities` VALUES (4,1,5,5,60,3,3,'2017-04-10 22:20:53','2017-04-10 22:20:53');
+INSERT INTO `tbl__update_sport_activities` VALUES (5,4,5,3,57,3,3,'2017-04-10 23:35:54','2017-04-10 23:35:54');
 /*!40000 ALTER TABLE `tbl__update_sport_activities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1345,6 +1386,44 @@ INSERT INTO `tbl_game_details` VALUES (12,1967,2,'tenis',8,'changjiji','2017-04-
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbl_proposed__k_p_is`
+--
+
+DROP TABLE IF EXISTS `tbl_proposed__k_p_is`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_proposed__k_p_is` (
+  `kpi_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `activity_id` int(11) NOT NULL,
+  `kpi_name` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `RGoB` decimal(8,2) NOT NULL,
+  `external` decimal(8,2) NOT NULL,
+  `unit` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `baseline` decimal(8,2) NOT NULL,
+  `good` decimal(8,2) NOT NULL,
+  `average` decimal(8,2) NOT NULL,
+  `poor` decimal(8,2) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`kpi_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_proposed__k_p_is`
+--
+
+LOCK TABLES `tbl_proposed__k_p_is` WRITE;
+/*!40000 ALTER TABLE `tbl_proposed__k_p_is` DISABLE KEYS */;
+INSERT INTO `tbl_proposed__k_p_is` VALUES (1,2,'Number of teams or individuals participated',2.00,3.00,'Nos',35.00,224.00,140.00,130.00,3,3,'2017-04-10 22:23:08','2017-04-10 22:23:08');
+INSERT INTO `tbl_proposed__k_p_is` VALUES (2,2,'Number of girls team',4.00,5.00,'Nos',123.00,567.00,345.00,234.00,3,3,'2017-04-10 23:38:05','2017-04-10 23:38:05');
+INSERT INTO `tbl_proposed__k_p_is` VALUES (3,5,'Number of boys team',3.00,4.00,'Nos',56.00,674.00,456.00,256.00,3,3,'2017-04-10 23:39:02','2017-04-10 23:39:02');
+/*!40000 ALTER TABLE `tbl_proposed__k_p_is` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tbl_proposed_sport_org_activities`
 --
 
@@ -1366,7 +1445,7 @@ CREATE TABLE `tbl_proposed_sport_org_activities` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`activity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1377,6 +1456,8 @@ LOCK TABLES `tbl_proposed_sport_org_activities` WRITE;
 /*!40000 ALTER TABLE `tbl_proposed_sport_org_activities` DISABLE KEYS */;
 INSERT INTO `tbl_proposed_sport_org_activities` VALUES (2,2,'under 12 basketball compitition(girls)','changlingmithang',3,'Nov 23-Dec 2,2017',42000.00,20000.00,'DYS','Ministry of education',3,'2017-04-10 03:18:19','2017-04-10 05:02:11');
 INSERT INTO `tbl_proposed_sport_org_activities` VALUES (3,3,'Under 18 basket compitition','punakha',4,'april 23-may 5,2017',45000.00,23000.00,'BOB','YDF',3,'2017-04-10 03:32:17','2017-04-10 03:32:17');
+INSERT INTO `tbl_proposed_sport_org_activities` VALUES (4,4,'youth table tanis tournament','wangdue',4,'Apri 25-may 26,2017',24500.00,7000.00,'BNB','YDF',3,'2017-04-10 22:21:51','2017-04-10 22:21:51');
+INSERT INTO `tbl_proposed_sport_org_activities` VALUES (5,5,'youth football compitation','Thimphu',3,'Janaury 12-february 12',6778.00,6788.00,'bnb','Ministry of education',3,'2017-04-10 23:36:52','2017-04-10 23:36:52');
 /*!40000 ALTER TABLE `tbl_proposed_sport_org_activities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1673,8 +1754,8 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','$2y$10$mk3JcPIXVK4hKILLytDVFepTOl2zqoU5H2mwx.infhaHw.msrWHpO',1,'fdiHAAZOYOsfwAqNpUmKwY57Q40nl7pO8zVXu4NO241e5MGNioeeudAbE3WN','2017-03-24 23:02:03','2017-04-07 04:14:23');
-INSERT INTO `users` VALUES (2,'kelzang','boc@gov.bt','$2y$10$AJCU3eg1CqZ6BYu1JFc7t.3RQfVEmyTmZGH1FTJJMUxPQs7k3RyCm',2,'yQyT6UCJNOqwRI1KmY40UIOO2PxyFhjMTSqmkjOV507OL7XbEBh5ftdunhGJ','2017-03-26 21:36:29','2017-04-08 00:42:29');
-INSERT INTO `users` VALUES (3,'sangay','sangay@gmail.com','$2y$10$rz0uTnhSRek806H0HZQe8u9PMkILlThwZCd7evyednneiMQryjHEW',4,'QG0yOfbQuJgIygEvD7CtNfxuxGsLNPbOhooyErWXrs3YPkizB7C9bvTUgjnn','2017-03-27 22:43:38','2017-04-07 04:18:52');
+INSERT INTO `users` VALUES (2,'kelzang','boc@gov.bt','$2y$10$AJCU3eg1CqZ6BYu1JFc7t.3RQfVEmyTmZGH1FTJJMUxPQs7k3RyCm',2,'jrNrUOx9a0Dqv24oaGjRP5tCicN18sO9NwYdjYcT6tZ3dUXCPqrSIyzGdgHI','2017-03-26 21:36:29','2017-04-10 23:35:00');
+INSERT INTO `users` VALUES (3,'sangay','sangay@gmail.com','$2y$10$rz0uTnhSRek806H0HZQe8u9PMkILlThwZCd7evyednneiMQryjHEW',4,'XQFgRdwDsami2TeOLOfmkyN7hRlWEEyIBpYtDvwRZLD9jCC6DKGXYIAEhpFm','2017-03-27 22:43:38','2017-04-10 23:39:06');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1687,4 +1768,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-11 10:04:28
+-- Dump completed on 2017-04-11 12:52:18

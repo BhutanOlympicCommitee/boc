@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tbl_proposed_KPI;
+use App\Tbl_KPI_approved;
 use Session;
 use Auth;
 
@@ -58,19 +59,35 @@ class KPIController extends Controller
         return redirect()->route('KPI_master.index',$kpi->kpi_id);
     }
 
+    public function addApprovedKPI($id, Request $request)
+    {
+        $kpi=new Tbl_KPI_approved;
+        $kpi->kpi_id=$id;
+        $kpi->approved_kpi_name=$request->approved_kpi;
+        $kpi->approved_RGoB=$request->approved_rgob;
+        $kpi->approved_external=$request->approved_external;
+        $kpi->approved_unit=$request->approved_units;
+        $kpi->approved_baseline=$request->approved_baseline;
+        $kpi->approved_good=$request->approved_good;
+        $kpi->approved_average=$request->approved_average;
+        $kpi->approved_poor=$request->approved_poor;
+        $kpi->created_by=Auth::user()->id;
+        $kpi->updated_by=Auth::user()->id;
+        $kpi->save();
+        return redirect()->route('KPI_master.index',$id);
+    }
+
    public function view(Request $request)
     {
-        // if($request->ajax()){
-        //     $id = $request->id;
-        //     $info = Tbl_proposed_KPI::find($id);
-        //     return response()->json($info);
-        // }
+       
       if($request->ajax()){
             $id = $request->id;
             $info = Tbl_proposed_KPI::where('kpi_id',$id)->first();
             return response()->json($info);
+
+        }
     }
-  }
+  
 
    public function update(Request $request)
     {

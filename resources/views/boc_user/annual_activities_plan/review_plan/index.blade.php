@@ -137,7 +137,8 @@
                           <td>{{$review->collaborating_agency}}</td>
                           <td>
                             <a href="{{route('review_plan.review',$review->activity_id)}}" class="btn btn-primary">Review</a>
-                            <a data-toggle='modal' data-target='#reviewKPI' class="btn btn-primary">KPI</a>
+                           {{--  <a data-toggle='modal' data-target='#reviewKPI' class="btn btn-primary">KPI</a> --}}
+                           <a href="{{route('review_plan.reviewKPI',$review->activity_id)}}" class="btn btn-primary">KPI</a>
                           </td>
                       </tr>
                     {{-- @endif --}}
@@ -152,61 +153,6 @@
       </div>
     </div>
   </div>
-  <!-- reviewKPI modal begins-->
-  <div class="modal fade" id="reviewKPI" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Review KPI</h4>
-      </div>
-      <div class="modal-body">
-      <div class='row clearfix'>
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;Sport Organization:</span><br><br>
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;Program:</span><br><br>
-        <span>&nbsp;&nbsp;&nbsp;&nbsp;Activity:</span>
-      </div><br>
-      <div class='clearfix'>
-        <table class="table table-bordered table-striped table-responsive" id="table1">
-            <thead>
-                <tr>
-                    <th>Sl. No:</th>
-                    <th>Activity</th>
-                    <th>KPI</th>
-                    <th>Baseline</th>
-                    <th>Good (Target)</th>
-                    <th>Average</th>
-                    <th>Poor</th>
-                    <th>Action</th>
-                </tr>   
-            </thead>
-            <tbody>
-            <?php $id=1;
-            ?>
-            {{-- @foreach($review_plan as $review) --}}
-            {{-- @if($sport_id==$review->sport_org_id && $year==$review->year_id && $akra_id==$review->skra_id && $akra_activity==$review->skra_activity_id) --}}
-              <tr>
-                 <td>{{$id++}}</td>
-                 <td>{{'gffh'}}</td>
-                  <td>{{'ggf'}}</td>
-                  <td>{{'uiiu'}}</td>
-                  <td>{{'ilkjkl'}}</td>
-                  <td>{{'jkl'}}</td>
-                  <td>{{'jkl'}}</td>
-                  <td>
-                    <a href="{{route('review_plan.kpi')}}" class="btn btn-primary">Review</a>
-                  </td>
-              </tr>
-            {{-- @endif --}}
-            {{-- @endforeach --}}
-            </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-  <!-- reviewKPI modal ends-->
 <script type="text/javascript">
 $('#table1').dataTable();
 </script>

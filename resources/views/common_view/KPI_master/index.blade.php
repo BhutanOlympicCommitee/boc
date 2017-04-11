@@ -232,6 +232,7 @@
 </div>
 <!-- ends editModal-->
 <script type="text/javascript">
+<<<<<<< HEAD
  $(function(){
     $('#table3').DataTable();
   });
@@ -258,6 +259,25 @@ function kpi_edit(id)
           $("#poor").val(result.poor);
         }
       });
+=======
+  $(function(){
+    $('#table1').DataTable();
+  });
+</script>
+<script type="text/javascript">
+  function kpi_edit(id)
+  {
+    var view_url = $("#hidden_view").val();
+    var kpi_id=id;
+    $.ajax({
+      url: view_url,
+      type:"GET", 
+      data:{"id":kpi_id}, 
+      success: function(result){
+        console.log(result);
+      }
+    });
+>>>>>>> 6cdafa139888f2cce3565ca157e60a5e18906d79
     }
 </script>
 @endsection

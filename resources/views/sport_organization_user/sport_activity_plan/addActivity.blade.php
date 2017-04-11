@@ -161,7 +161,6 @@
 <script type="text/javascript">
   function editActivities(id)
   {
-    var activity_id=id;
     var url='{{route('editActivities')}}';
     $.ajax({
         url: url,
