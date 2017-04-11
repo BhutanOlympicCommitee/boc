@@ -22,7 +22,7 @@
               </div>
              </div>
             <div class="bootstrap-admin-panel-content">
-            <form action='{{--route('approved_activities',$review_plan->activity_id)--}}' method='post'>
+            <form action='{{route('approved_kpi',$review_kpi->kpi_id)}}' method='post'>
             {{csrf_field()}}
             <div class='row clearfix'>&nbsp;&nbsp;&nbsp;&nbsp;Activity:</div><br>
             <div class='row clearfix'>
@@ -34,10 +34,10 @@
             <div class='row clearfix'>
               <div class='col-xs-2'>KPI</div>
               <div class='col-xs-5'>
-               <input type="text" name="kpi" class='form-control' value='{{--$review_plan->activity_name--}}'>
+               <input type="text" name="kpi" class='form-control' value='{{$review_kpi->kpi_name}}'>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="approved_kpi" class='form-control' value='{{--$review_plan->activity_name--}}'>
+               <input type="text" name="approved_kpi" class='form-control' value='{{$review_kpi->kpi_name}}'>
               </div>
             </div>
              <br>
@@ -52,32 +52,32 @@
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;External</span>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="rgob" class='form-control' value='{{--$review_plan->activity_venue--}}'><br>
-               <input type="text" name="external" class='form-control' value='{{--$review_plan->activity_venue--}}'>
+               <input type="text" name="rgob" class='form-control' value='{{$review_kpi->RGoB}}'><br>
+               <input type="text" name="external" class='form-control' value='{{$review_kpi->external}}'>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="approved_rgob" class='form-control' value='{{--$review_plan->activity_venue--}}'><br>
-               <input type="text" name="approved_external" class='form-control' value='{{--$review_plan->activity_venue--}}'>
+               <input type="text" name="approved_rgob" class='form-control' value='{{$review_kpi->RGoB}}'><br>
+               <input type="text" name="approved_external" class='form-control' value='{{$review_kpi->external}}'>
               </div>
             </div>
              <br>
              <div class='row clearfix'>
               <div class='col-xs-2'>Units</div>
               <div class='col-xs-5'>
-               <input type="text" name="units" class='form-control' value='{{--$review_plan->collaborating_agency--}}'>
+               <input type="text" name="units" class='form-control' value='{{$review_kpi->unit}}'>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="approved_units" class='form-control' value='{{--$review_plan->collaborating_agency--}}' >
+               <input type="text" name="approved_units" class='form-control' value='{{$review_kpi->unit}}' >
               </div>
             </div>
             <br> 
             <div class='row clearfix'>
               <div class='col-xs-2'>Baseline</div>
               <div class='col-xs-5'>
-               <input type="text" name="baseline" class='form-control' value='{{--$review_plan->collaborating_agency--}}'>
+               <input type="text" name="baseline" class='form-control' value='{{$review_kpi->baseline}}'>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="approved_baseline" class='form-control' value='{{--$review_plan->collaborating_agency--}}' >
+               <input type="text" name="approved_baseline" class='form-control' value='{{$review_kpi->baseline}}' >
               </div>
             </div>
             <br>     
@@ -93,14 +93,14 @@
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Poor</span>
               </div>       
               <div class='col-xs-5'>
-               <input type="text" name="good" class='form-control' value='{{--$review_plan->activity_venue--}}'><br>
-               <input type="text" name="average" class='form-control' value='{{--$review_plan->activity_venue--}}'><br>
-               <input type="text" name="poor" class='form-control' value='{{--$review_plan->activity_venue--}}'>
+               <input type="text" name="good" class='form-control' value='{{$review_kpi->good}}'><br>
+               <input type="text" name="average" class='form-control' value='{{$review_kpi->average}}'><br>
+               <input type="text" name="poor" class='form-control' value='{{$review_kpi->poor}}'>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="approved_good" class='form-control' value='{{--$review_plan->activity_venue--}}'><br>
-               <input type="text" name="approved_average" class='form-control' value='{{--$review_plan->activity_venue--}}'><br>
-               <input type="text" name="approved_poor" class='form-control' value='{{--$review_plan->activity_venue--}}'>
+               <input type="text" name="approved_good" class='form-control' value='{{$review_kpi->good}}'><br>
+               <input type="text" name="approved_average" class='form-control' value='{{$review_kpi->average}}'><br>
+               <input type="text" name="approved_poor" class='form-control' value='{{$review_kpi->poor}}'>
               </div>
             </div>
              <br>

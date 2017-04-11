@@ -231,31 +231,24 @@
   </div>
 </div>
 <!-- ends editModal-->
-<script>
- $(function(){
+<script type="text/javascript">
+  $(function(){
     $('#table1').DataTable();
   });
-
- function kpi_edit(id)
-    {
-      var view_url = $("#hidden_view").val();
-      $.ajax({
-        url: view_url,
-        type:"GET", 
-        data: {"id":id}, 
-        success: function(result){
-          // console.log(result);
-          $("#edit_id").val(result.kpi_id);
-          $("#kpi_name").val(result.kpi_name);
-          $("#RGoB").val(result.RGoB);
-          $("#external1").val(result.external1);
-          $("#unit").val(result.unit);
-          $("#baseline").val(result.baseline);
-          $("#good").val(result.good);
-          $("#average").val(result.average);
-          $("#poor").val(result.poor);
-        }
-      });
+</script>
+<script type="text/javascript">
+  function kpi_edit(id)
+  {
+    var view_url = $("#hidden_view").val();
+    var kpi_id=id;
+    $.ajax({
+      url: view_url,
+      type:"GET", 
+      data:{"id":kpi_id}, 
+      success: function(result){
+        console.log(result);
+      }
+    });
     }
 </script>
 @endsection

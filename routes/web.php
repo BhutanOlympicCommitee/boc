@@ -147,8 +147,9 @@ Route::post('sport_organization_activities',[
 //Route::resource('review_plan','ReviewPlanController');
 Route::get('review_plan',['as'=>'review_plan.index','uses'=>'ReviewPlanController@index']);
 Route::get('review_plan/{id}/review',['as'=>'review_plan.review','uses'=>'ReviewPlanController@review']);
+Route::get('review_plan/{id}/showKPI',['as'=>'review_plan.reviewKPI','uses'=>'ReviewPlanController@showKPI']);
 Route::post('review_plan/{id}/approved_activity',['as'=>'approved_activities','uses'=>'ReviewPlanController@approved_activities']);
-Route::get('review_plan/review_kpi',['as'=>'review_plan.kpi','uses'=>'ReviewPlanController@reviewKPI']);
+Route::get('review_plan/{id}/review_kpi',['as'=>'review_plan.kpi','uses'=>'ReviewPlanController@reviewKPI']);
 Route::get('review_plan/update_achievement','ReviewPlanController@updateSportAchievement')->name('activities_update_achievement');
 //Route for Update Achievements 
 Route::get('review_activities_achievemenents_update',[
@@ -246,6 +247,7 @@ Route::get('kpi/{id}',['as'=>'KPI_master.index','uses'=>'KPIController@index']);
 Route::post('kpi/store',['as'=>'KPI_master.store','uses'=>'KPIController@store']);
 Route::get('kpi/view', 'KPIController@view')->name('view_kpi');
 Route::post('kpi/update', 'KPIController@update')->name('update_kpi');
+Route::post('kpi/{id}/approved_kpi',['as'=>'approved_kpi','uses'=>'KPIController@addApprovedKPI']);
 
 Route::post('sport_activity/update_proposed_activity', 'UpdateSportActivityController@updateProposedActivities')->name('update_proposed_activities');
 
