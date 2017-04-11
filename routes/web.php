@@ -240,4 +240,12 @@ Route::get('sport_activity/{id}/edit',['as'=>'sport_activity_plan.edit','uses'=>
 Route::patch('sport_activity/update/{id}',['as'=>'sport_activity_plan.update','uses'=>'UpdateSportActivityController@update']);
 Route::get('sport_activity',['as'=>'sport_activity_plan.addActivity','uses'=>'UpdateSportActivityController@addActivity']);
 Route::get('sport_activity/edit_activity', 'UpdateSportActivityController@editActivities')->name('editActivities');
+
+//routes for KPI
+Route::get('kpi/{id}',['as'=>'KPI_master.index','uses'=>'KPIController@index']);
+Route::post('kpi/store',['as'=>'KPI_master.store','uses'=>'KPIController@store']);
+Route::get('kpi/view', 'KPIController@view')->name('view_kpi');
+Route::post('kpi/update', 'KPIController@update')->name('update_kpi');
+
 Route::post('sport_activity/update_proposed_activity', 'UpdateSportActivityController@updateProposedActivities')->name('update_proposed_activities');
+

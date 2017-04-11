@@ -56,7 +56,7 @@
                   <td>
                       <form class="form-group">
                         <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='editActivities({{$activity->activity_id}})'>Edit</a>
-                        <a class="btn btn-success glyphicon glyphicon-check" data-toggle='modal' data-target='#editModal' onclick=''>KPI</a>
+                        <a class="btn btn-success glyphicon glyphicon-check" href="{{route('KPI_master.index', $activity->activity_id)}}">KPI</a>
                         
                         </button>
                       </form>
@@ -81,7 +81,7 @@
         <h4 class="modal-title" id="myModalLabel">Edit Activities</h4>
       </div>
       <div class="modal-body">
-       <form action="{{route('update_proposed_activities')}}" method="post">
+       <form action="" method="post">
           {{csrf_field()}}
           <input type="hidden" name="hidden_edit_id" id='hidden_edit_id'>
           <div class='form-group clearfix'>
@@ -181,7 +181,7 @@
         }
       });
   }
-</script>>
+</script>
 @endsection
 @section('footer')
 <div class="container">
