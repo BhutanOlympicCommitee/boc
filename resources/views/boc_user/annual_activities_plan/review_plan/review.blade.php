@@ -22,9 +22,9 @@
               </div>
              </div>
             <div class="bootstrap-admin-panel-content">
-            <form action='{{--route('approved_activities',$review_plan->activity_id)--}}' method='post'>
+            <form action='{{route('approved_activities',$review_plan->activity_id)}}' method='post'>
             {{csrf_field()}}
-            <div class='row clearfix'>Program:</div><br>
+            <div class='row clearfix'>Program:{{$review_plan->updated_activity->getAKRAActivity->SKRA_activity}}</div><br>
             <div class='row clearfix'>
               <div class='col-xs-2'><strong>Proposed</strong></div>
               <div class='col-xs-5'></div>
@@ -34,20 +34,20 @@
             <div class='row clearfix'>
               <div class='col-xs-2'>Activity</div>
               <div class='col-xs-5'>
-               <input type="text" name="activity" class='form-control' value='{{--$review_plan->activity_name--}}'>
+               <input type="text" name="activity" class='form-control' value='{{$review_plan->activity_name}}'>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="approved_activity" class='form-control' value='{{--$review_plan->activity_name--}}'>
+               <input type="text" name="approved_activity" class='form-control' value='{{$review_plan->activity_name}}'>
               </div>
             </div>
              <br>
              <div class='row clearfix'>
               <div class='col-xs-2'>Venue</div>
               <div class='col-xs-5'>
-               <input type="text" name="venue" class='form-control' value='{{--$review_plan->activity_venue--}}'>
+               <input type="text" name="venue" class='form-control' value='{{$review_plan->activity_venue}}'>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="approved_venue" class='form-control' value='{{--$review_plan->activity_venue--}}'>
+               <input type="text" name="approved_venue" class='form-control' value='{{$review_plan->activity_venue}}'>
               </div>
             </div>
              <br>
@@ -62,12 +62,12 @@
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actual</span>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="quarter" class='form-control' value='{{--$review_plan->activity_venue--}}'><br>
-               <input type="text" name="actual" class='form-control' value='{{--$review_plan->activity_venue--}}'>
+               <input type="text" name="quarter" class='form-control' value='{{$review_plan->quarter_timeline}}'><br>
+               <input type="text" name="actual" class='form-control' value='{{$review_plan->actual_timeline}}'>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="approved_quarter" class='form-control' value='{{--$review_plan->activity_venue--}}'><br>
-               <input type="text" name="approved_actual" class='form-control' value='{{--$review_plan->activity_venue--}}'>
+               <input type="text" name="approved_quarter" class='form-control' value='{{$review_plan->quarter_timeline}}'><br>
+               <input type="text" name="approved_actual" class='form-control' value='{{$review_plan->actual_timeline}}'>
               </div>
             </div>
              <br>
@@ -83,24 +83,24 @@
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;External Source</span>
               </div>       
               <div class='col-xs-5'>
-               <input type="text" name="rgob" class='form-control' value='{{--$review_plan->activity_venue--}}'><br>
-               <input type="text" name="external" class='form-control' value='{{--$review_plan->activity_venue--}}'><br>
-               <input type="text" name="source" class='form-control' value='{{--$review_plan->activity_venue--}}'>
+               <input type="text" name="rgob" class='form-control' value='{{$review_plan->rgob_budget}}'><br>
+               <input type="text" name="external" class='form-control' value='{{$review_plan->external_budget}}'><br>
+               <input type="text" name="source" class='form-control' value='{{$review_plan->external_source}}'>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="approved_rgob" class='form-control' value='{{--$review_plan->activity_venue--}}'><br>
-               <input type="text" name="approved_external" class='form-control' value='{{--$review_plan->activity_venue--}}'><br>
-               <input type="text" name="approved_source" class='form-control' value='{{--$review_plan->activity_venue--}}'>
+               <input type="text" name="approved_rgob" class='form-control' value='{{$review_plan->rgob_budget}}'><br>
+               <input type="text" name="approved_external" class='form-control' value='{{$review_plan->external_budget}}'><br>
+               <input type="text" name="approved_source" class='form-control' value='{{$review_plan->external_source}}'>
               </div>
             </div>
              <br>
             <div class='row clearfix'>
               <div class='col-xs-2'>Collaborating Agency</div>
               <div class='col-xs-5'>
-               <input type="text" name="collaborating_agency" class='form-control' value='{{--$review_plan->collaborating_agency--}}'>
+               <input type="text" name="collaborating_agency" class='form-control' value='{{$review_plan->collaborating_agency}}'>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="approved_collaborating_agency" class='form-control' value='{{--$review_plan->collaborating_agency--}}' >
+               <input type="text" name="approved_collaborating_agency" class='form-control' value='{{$review_plan->collaborating_agency}}' >
               </div>
             </div>
             <br>   

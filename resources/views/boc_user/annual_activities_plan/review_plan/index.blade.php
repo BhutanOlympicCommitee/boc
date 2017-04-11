@@ -124,24 +124,24 @@
                     <tbody>
                     <?php $id=1;
                     ?>
-                    {{-- @foreach($review_plan as $review) --}}
+                    @foreach($review_plan as $review) 
                     {{-- @if($sport_id==$review->sport_org_id && $year==$review->year_id && $akra_id==$review->skra_id && $akra_activity==$review->skra_activity_id) --}}
                       <tr>
                          <td>{{$id++}}</td>
-                         <td>{{'gffh'}}</td>
-                          <td>{{'ggf'}}</td>
-                          <td>{{'uiiu'}}</td>
-                          <td>{{'ilkjkl'}}</td>
-                          <td>{{'jkl'}}</td>
-                          <td>{{'jkl'}}</td>
-                          <td>{{'kjkl'}}</td>
+                         <td>{{$review->activity_name}}</td>
+                          <td>{{$review->activity_venue}}</td>
+                          <td>{{$review->quarter_timeline}}</td>
+                          <td>{{$review->actual_timeline}}</td>
+                          <td>{{$review->rgob_budget}}</td>
+                          <td>{{$review->external_budget}}</td>
+                          <td>{{$review->collaborating_agency}}</td>
                           <td>
-                            <a href="{{route('review_plan.review')}}" class="btn btn-primary">Review</a>
+                            <a href="{{route('review_plan.review',$review->activity_id)}}" class="btn btn-primary">Review</a>
                             <a data-toggle='modal' data-target='#reviewKPI' class="btn btn-primary">KPI</a>
                           </td>
                       </tr>
                     {{-- @endif --}}
-                    {{-- @endforeach --}}
+                    @endforeach
                     </tbody>
                 </table>
                 </div>  
