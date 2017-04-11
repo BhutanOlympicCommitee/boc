@@ -9,9 +9,10 @@ use Auth;
 
 class KPIController extends Controller
 {
-    public function index()
+    public function index($id)
     {
         $kpi = Tbl_proposed_KPI::all();
+        Session::put('activity_id',$id);
        return view('common_view.KPI_master.index',compact('kpi'));
     }
 
@@ -35,7 +36,7 @@ class KPIController extends Controller
     {
    
         $kpi = new Tbl_proposed_KPI;
-        
+        $kpi->activity_id=Session::get('activity_id');
         $kpi->kpi_name=$request->kpi_name;
         $kpi->RGoB=$request->RGoB;
         $kpi->external=$request->external;
@@ -47,50 +48,41 @@ class KPIController extends Controller
         $kpi->created_by=Auth::user()->id;
         $kpi->updated_by=Auth::user()->id;
         $kpi->save();
-        Session::flash('success', 'Dzongkhag has been created successfully');
-        return redirect()->route('KPI_master.index');
+        Session::flash('success', 'Kpi created successfully');
+        return redirect()->route('KPI_master.index',$kpi->kpi_id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-   //  public function view(Request $request)
-   //  {
-   //      if($request->ajax()){
-   //          $id = $request->id;
-   //          $info = MstDzongkhag::find($id);
-   //          return response()->json($info);
-   //      }
-   //  }
+   public function view(Request $request)
+    {
+        if($request->ajax()){
+            $id = $request->id;
+            $info = Tbl_proposed_KPI::where('kpi_id',$id)->first();
+            return response()->json($info);
+        }
+    }
    
-   //  /**
-   //   * Update the specified resource in storage.
-   //   *
-   //   * @param  \Illuminate\Http\Request  $request
-   //   * @param  int  $id
-   //   * @return \Illuminate\Http\Response
-   //   */
-   // public function update(Request $request)
-   //  {
-   //      $id=$request->edit_id;
-   //      $dzongkhag=MstDzongkhag::find($id);
-   //      $dzongkhag->country_id=$request->type;
-   //      $dzongkhag->dzongkhag_name= $request->dzongkhag_name;
-   //      $dzongkhag->dzongkhag_code= $request->dzongkhag_code;
-   //      $dzongkhag->save();
-   //      Session::flash('success', 'Dzongkhag has been updated successfully');
-   //      return redirect()->route('dzongkhag_master.index');
-   //  }
-
     /**
-     * Remove the specified resource from storage.
+     * Update the specified resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
+   public function update(Request $request)
+    {
+        $id=$request->edit_id;
+        $kpi=Tbl_proposed_KPI::find($id);
+        $kpi->kpi_name=$request->kpi_name;
+        $kpi->RGoB=$request->RGoB;
+        $kpi->external=$request->external;
+        $kpi->unit=$request->unit;
+        $kpi->baseline=$request->baseline;
+        $kpi->good=$request->good;
+        $kpi->average=$request->average;
+        $kpi->poor=$request->poor;
+        $dzongkhag->save();
+        Session::flash('success', 'KPI updated successfully');
+        return redirect()->route('KPI_master.index');
+    }
 }
 
