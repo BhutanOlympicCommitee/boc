@@ -104,7 +104,7 @@
                             <th>Good(Target)</th>
                             <th>Average</th>
                             <th>Poor</th>
-                            <th style='width:20%'>Action</th>
+                            <th style='width:20%'>Action & Status</th>
                           </tr> 
                 </tr>   
             </thead>
@@ -125,10 +125,16 @@
                    <form id='remove' class="form-group" action="" method='post'>
                           <input type="hidden" name="_method" value="delete">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          @if($searchs->status==0)
                           <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='kpi_edit({{$searchs->kpi_id}})'>Edit</a>
                           <button type="submit" class="btn btn-warning glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Remove
                           </button>
+                          <a class=" btn-danger" onclick='' style="text-decoration:none;">&nbsp;&nbsp;Sent for Approval&nbsp;&nbsp;</a>
+                          @endif
                         </form>
+                        @if($searchs->status==1)
+                        <a class=" btn-success" onclick='' style="text-decoration:none;">&nbsp;&nbsp;Approved&nbsp;&nbsp;</a>
+                        @endif
                 </td>
               </tr>
             <?php endforeach?>

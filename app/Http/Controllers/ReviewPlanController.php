@@ -56,6 +56,9 @@ class ReviewPlanController extends Controller
         $approved_activities->approved_collaborating_agency=$request->approved_collaborating_agency;
         $approved_activities->updated_by=Auth::user()->id;
         $approved_activities->save();
+        $proposed_activities=Tbl_proposed_sport_org_activity::find($id);
+        $proposed_activities->status=1;
+        $proposed_activities->save();
         return redirect()->route('review_plan.index');
 
     }  

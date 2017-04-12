@@ -125,7 +125,6 @@
     var roundedValue = utilization.toFixed(2);
     $('#utilization').val(roundedValue);
   });
-
   //Calculate External Budget utilization
   $('#utilization_percent').click(function()
   {

@@ -24,6 +24,7 @@ class CreateTblProposedKPIsTable extends Migration
             $table->decimal('good',8,2);
             $table->decimal('average',8,2);
             $table->decimal('poor',8,2);
+            $table->integer('status')->default(0);
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();
