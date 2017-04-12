@@ -151,6 +151,7 @@ Route::get('review_plan/{id}/showKPI',['as'=>'review_plan.reviewKPI','uses'=>'Re
 Route::post('review_plan/{id}/approved_activity',['as'=>'approved_activities','uses'=>'ReviewPlanController@approved_activities']);
 Route::get('review_plan/{id}/review_kpi',['as'=>'review_plan.kpi','uses'=>'ReviewPlanController@reviewKPI']);
 
+//Route::get('review_plan/update_achievement','ReviewPlanController@updateSportAchievement')->name('activities_update_athlete_achievement');
 Route::get('review_plan/{id}/update_achievement','ReviewPlanController@updateSportAchievement')->name('activities_update_achievement');
 
 //Route for Update Achievements 
