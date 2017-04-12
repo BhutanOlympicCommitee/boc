@@ -74,7 +74,10 @@ class KPIController extends Controller
         $kpi->created_by=Auth::user()->id;
         $kpi->updated_by=Auth::user()->id;
         $kpi->save();
-        return redirect()->route('KPI_master.index',$id);
+        $proposed_kpi=Tbl_proposed_KPI::find($id);
+        $proposed_kpi->status=1;
+        $proposed_kpi->save();
+        return redirect()->route('review_plan.reviewKPI',$id);
     }
 
    public function view(Request $request)

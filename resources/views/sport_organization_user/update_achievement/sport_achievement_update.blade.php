@@ -123,7 +123,7 @@
                 </div>
               </form>
               <!-- if particpants not found show this form -->
-              <form action='#' method='poast'>
+             <!--  <form action='#' method='poast'>
                  <div class='col-xs-12 form-group'>
                 <label class='col-xs-3'>CID/Student ID</label>
                   <div class='col-xs-9'>
@@ -223,7 +223,7 @@
              <button type='submit' class='btn btn-default col-xs-offset-10'>Submit</button>
                   <a href='#' class="btn btn-warning pull-right" name='name'>Cancel
                   </a>
-              </form>
+              </form> -->
             <!-- show if the match is found-->
               <table class="table table-bordered table-striped table-responsive" id="table1">
                  <thead>
@@ -239,21 +239,23 @@
                     </tr>   
                 </thead>
                 <tbody>
-                 <?php $id=1?>
-                 {{-- @foreach($athlete_info as $athlete) --}}
-                  <tr>
-                    <td>{{$id++}}</td>
-                    <td>{{'jfgkdf'}}</td>
-                    <td>{{'jfgjfg'}}</td>
-                    <td>{{'fhgjfdg'}}</td>
-                    <td>{{'fjghfdg'}}</td>
-                    <td>{{'fjgjdfgkkkh'}}</td>
-                    <td>{{'jfkk'}}</td>
-                    <td> 
+              <?php $id=1;
+              $athlete=App\Athlete_bioinformation::all();
+              foreach($athlete as $athletes):
+              ?>
+              <tr>
+                <td>{{$id++}}</td>
+                <td>{{$athletes->athlete_cid}}</td>
+                <td>{{$athletes->athlete_fname.' '.$athletes->athlete_mname.' '.$athletes->athlete_lname}}</td>
+                <td>{{$athletes->getAthleteAddress->getDzongkhag->dzongkhag_name}}</td>
+                <td>{{$athletes->getAthleteAddress->getGewog->gewog_name}}</td>
+                <td>{{$athletes->getAthleteAddress->Paddress_village}}</td>
+                <td>{{$athletes->athlete_fathername}}</td>
+                <td>
                       <button class='btn btn-info' data-toggle='modal' data-target='#updateParticipantsModal'>Update</button>
                   </td>
                   </tr>
-                  {{-- @endforeach --}}
+                @endforeach
               </tbody>
               </table>
               </div>           
@@ -275,25 +277,55 @@
       <div class="modal-body">
        <form action='#{{--route('management_committee.store')--}}' method='post'>
            {{csrf_field()}}
-           <div class='form-group'>
-              <label for='activity' class='col-xs-3'>Activity</label>
+             <div class="form-group clearfix">
+                  <label for="activity"  class='col-xs-3'>Activity</label> 
                   <div class='col-xs-9 input-group'>
-                      <input type="text" name="activity" class="form-control" id='activity'>
+                  <select name="activity" class="form-control">
+                    <option value="0">
+                      Select the Activity
+                    </option>
+                    <?php 
+                    $activity = App\Tbl_sport_org_activities_approved::all();
+                    foreach($activity as $activities):
+                      ?>
+                    <option value="{{$activities->activity_id}}">{{$activities->approved_activity_name}}</option>
+                  <?php endforeach;?>
+                </select> 
                 </div>
-           </div>
-           <div class='form-group clearfix'>
-              <label for='activity_timeline' class='col-xs-3'>Activity Timeline</label>
+            </div>
+              <div class="form-group clearfix">
+                  <label for="timeline"  class='col-xs-3'>Activity Timeline</label> 
                   <div class='col-xs-9 input-group'>
-                      <input type="text" name="activity_timeline" class="form-control" id='activity_timeline'>
+                  <select name="timeline" class="form-control">
+                      <option value="0">
+                      Select the Activity
+                    </option>
+                    <?php 
+                    $activity = App\Tbl_sport_org_activities_approved::all();
+                    foreach($activity as $activities):
+                      ?>
+                    <option value="{{$activities->activity_id}}">{{$activities->approved_actual_timeline}}</option>
+                  <?php endforeach;?>
+                </select> 
                 </div>
-           </div>
-           <div class='form-group clearfix'>
-              <label for='activity_venue' class='col-xs-3'>Activity Venue</label>
+            </div>
+               <div class="form-group clearfix">
+                  <label for="year"  class='col-xs-3'>Activity Venue</label> 
                   <div class='col-xs-9 input-group'>
-                      <input type="text" name="activity_venue" id='activity_venue' class="form-control">
+                  <select name="year" class="form-control">
+                      <option value="0">
+                      Select the Activity
+                    </option>
+                    <?php 
+                    $activity = App\Tbl_sport_org_activities_approved::all();
+                    foreach($activity as $activities):
+                      ?>
+                    <option value="{{$activities->activity_id}}">{{$activities->approved_activity_venue}}</option>
+                  <?php endforeach;?>
+                </select> 
                 </div>
-           </div>
-            <div class="form-group">
+            </div>
+            <div class="form-group clearfix">
                   <label for="year"  class='col-xs-3'>Sport</label> 
                   <div class='col-xs-9 input-group'>
                   <select name="year" class="form-control">
@@ -309,7 +341,7 @@
                 </select> 
                 </div>
             </div>
-             <div class="form-group">
+             <div class="form-group clearfix">
                   <label for="medal"  class='col-xs-3'>Medal/Certificate</label> 
                   <div class='col-xs-9 input-group'>
                   <select name="medal" class="form-control">

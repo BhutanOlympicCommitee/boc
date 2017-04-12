@@ -88,7 +88,7 @@
                       <th>Venue</th>
                       <th>RGoB Budget</th>
                       <th>External Budget</th>
-                      <th style='width:20%'>Action</th>
+                      <th style='width:20%'>Action & Status</th>
                 </tr>   
             </thead>
             <tbody>
@@ -105,13 +105,20 @@
                 <td>{{$searchs->rgob_budget}}</td>
                 <td>{{$searchs->external_budget}}</td>
                 <td>
-                   <form id='remove' class="form-group" action="" method='post'>
+                   <form id='edit' class="form-group" action="" method='post'>
                           <input type="hidden" name="_method" value="delete">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          @if($searchs->status==0)
                           <a class="btn btn-info" data-toggle='modal' data-target='#editModal' onclick='editActivities({{$searchs->activity_id}})'>Edit</a>
-                          <a class="btn btn-success" href="{{route('search_activity.searchKPI')}}">KPI</a>
-                          <button type="submit" class="btn btn-warning" onclick="return confirm('Are you sure to delete this data');" name='name'>DEL
+                          <a class="btn btn-default" href="{{route('search_activity.searchKPI')}}">KPI</a>
+                          <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete this data');" name='name'>DEL
                           </button>
+                           <a class="btn-warning" style="text-decoration:none;">&nbsp;Sent for Approval&nbsp;</a>
+                          @endif
+                          @if($searchs->status==1)
+                           <a class="btn-success" style="text-decoration:none;">&nbsp;&nbsp;Approved&nbsp;&nbsp;</a>
+                          <a class="btn btn-default" href="{{route('search_activity.searchKPI')}}">KPI</a>
+                          @endif
                         </form>
                 </td>
               </tr>
