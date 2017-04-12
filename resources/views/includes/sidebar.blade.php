@@ -50,6 +50,7 @@
                 <li id="achievement"><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Activity and Achievement</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
                     <ul class="nav nav-list tree bullets">
                 <li><a href="{{route('sport_org_activity')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Sport Organization Activities</span></a></li>
+                <li><a href="{{route('search_activity.search')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>List And Search Activities</span></a></li>
                  <li><a href="{{route('achievement_update')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Update Achievements</span></a></li>   
                 </ul>
                 </li>

@@ -28,7 +28,7 @@
                             {{ Session::get('success') }}
                           </div>  
                         @endif
-                      <table class="table table-bordered table-striped table-responsive" id="table1">
+                      <table class="table table-bordered table-striped table-responsive" id="table3">
                         <thead>
                           <tr>
                             <th>Sl. No:</th>
@@ -232,6 +232,34 @@
 </div>
 <!-- ends editModal-->
 <script type="text/javascript">
+<<<<<<< HEAD
+ $(function(){
+    $('#table3').DataTable();
+  });
+</script>
+<script type="text/javascript">
+function kpi_edit(id)
+    {
+      var view_url = $("#hidden_view").val();
+      $.ajax({
+        url: view_url,
+        alert(url);
+        type:"GET", 
+        data: {"id":id}, 
+        success: function(result){
+          // console.log(result);
+          $("#edit_id").val(result.kpi_id);
+          $("#kpi_name").val(result.kpi_name);
+          $("#RGoB").val(result.RGoB);
+          $("#external1").val(result.external1);
+          $("#unit").val(result.unit);
+          $("#baseline").val(result.baseline);
+          $("#good").val(result.good);
+          $("#average").val(result.average);
+          $("#poor").val(result.poor);
+        }
+      });
+=======
   $(function(){
     $('#table1').DataTable();
   });
@@ -249,6 +277,7 @@
         console.log(result);
       }
     });
+>>>>>>> 6cdafa139888f2cce3565ca157e60a5e18906d79
     }
 </script>
 @endsection

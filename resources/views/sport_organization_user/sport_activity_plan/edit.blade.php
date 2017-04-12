@@ -80,9 +80,9 @@
               </div>
           </div>
             <div class='form-group clearfix'>
-                  <label for='wieghtage' class='col-xs-2'>Wieghtage(%):</label>
+                  <label for='wieghtage' class='col-xs-2'>Weightage(%):</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="wieghtage" class="form-control" placeholder="Enter wieghtage here"  id='wieghtage' value='{{$sport_activity_edit->wieghtage}}'>
+                      <input type="text" name="wieghtage" class="form-control" placeholder="Enter weightage here"  id='wieghtage' value='{{$sport_activity_edit->wieghtage}}'>
                     </div>
                 </div>
             </div>

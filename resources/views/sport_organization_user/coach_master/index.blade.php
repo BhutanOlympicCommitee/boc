@@ -18,8 +18,7 @@
                 <div class="col-md-10 col-md-offset-1">
                 	<div class="panel panel-default">
                         <div class="panel-heading">
-	                        <div class="text-muted bootstrap-admin-box-title clearfix">Coach Information
-	                         <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal">Add</a> 
+	                        <div class="text-muted bootstrap-admin-box-title clearfix">Coach Information 
 	                        </div>
 	                    </div>
                     	<div class="bootstrap-admin-panel-content">
@@ -95,6 +94,11 @@
         								@endforeach
         								</tbody>
         					 		</table>
+                      <div class='form-group clearfix'>
+                     <div class=" col-xs-12 input-group" style='margin-top: 20px' >
+                      <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal" onclick="">Add Coach</a> 
+                     </div>
+                    </div>
                       <input type="hidden" name="hidden_show" id="hidden_show" value="{{route('view_coach')}}">
                      </div>
                     </div>
