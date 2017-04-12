@@ -26,7 +26,7 @@
                 <li class='active' id='reports'><a href="#Report" data-toggle="tab">Report tab</a></li>
                 <li id='participants'><a href="#Participant" data-toggle="tab">Participant Information tab</a></li>
               </ul>
-              <form action='' method='post'>
+              <form action='{{route('activities_achieved_report',$approved_activity->activity_id)}}' method='post'>
                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
                <div class='tab-content'>
                 <div class='tab-pane fade in active' id='Report'><br> 
@@ -35,7 +35,7 @@
                     <label class='col-xs-3'>RGoB Budget Utilization</label>
                       <div class='col-xs-8'>
                         <input type="text" name="rgob" class="form-control" id='rgob' placeholder='please enter rgob budget utilization'>
-                        <input type="hidden" name="hidden_rgob" class="form-control" id='hidden_rgob' value='{{$approved_activity->approved_rgob_budget}}'>
+                        <input type="hidden" name="hidden_rgob" class="form-control" id='hidden_rgob' value='{{$approved_activity->approved_rgob_budget}}' required>
                        </div>
                   </div>
                   <div class='col-xs-12 form-group'>
@@ -48,7 +48,7 @@
                     <label class='col-xs-3'>External Budget Utilization</label>
                       <div class='col-xs-8'>
                         <input type="text" name="external_budget" class="form-control" id='external_budget' placeholder="Enter external budget utilization">
-                        <input type="hidden" name="external_budget" class="form-control" id='hidden_external_budget' value='{{$approved_activity->approved_external_budget}}'>
+                        <input type="hidden" name="hidden_external_budget" class="form-control" id='hidden_external_budget' value='{{$approved_activity->approved_external_budget}}'>
                       </div>
                   </div>
                   <div class='col-xs-12 form-group'>
@@ -79,15 +79,18 @@
                     $approved_kpi=App\Tbl_KPI_approved::where('kpi_id',$kpi->kpi_id)->get();
                     foreach($approved_kpi as $approved):
                  ?>
+
                   <tr>
                     <td>{{$id++}}</td>
                     <td>{{$approved->approved_kpi_name}}</td>
                     <td class='td1'>{{$approved->approved_RGoB}}</td>
                     <td class='external'>{{$approved->approved_external}}</td>
-                    <td class='td2'><input type="text" name="target" id="target" style='width:100px'></td>
-                    <td class='td3'><input type="text" name="rgob_score" id="rgob_score" style='width:100px;border:none;' placeholder="double click"></td>
-                    <td class='td4'><input type="text" name="external_score" id="external_score" style='width:100px;border:none;' placeholder="double click"></td>
+                    <td class='td2'><input type="text" name="target[]" id="target" style='width:100px' required></td>
+                    <td class='td3'><input type="text" name="rgob_score[]" id="rgob_score" style='width:100px;border:none;' placeholder="double click"></td>
+                    <td class='td4'><input type="text" name="external_score[]" id="external_score" style='width:100px;border:none;' placeholder="double click"></td>
+                    <input type="hidden" name="hidden_id[]" value='{{$approved->kpi_approval_id}}'>
                   </tr>
+
                 <?php endforeach ?>
               <?php endforeach ?>
               </tbody>
@@ -96,15 +99,15 @@
                 <div class='col-xs-12 form-group'>
                 <label class='col-xs-2'>Remarks</label>
                   <div class='col-xs-7'>
-                    <textarea class="form-control" rows=5>
+                    <textarea class="form-control" name='remarks' rows=5>
                       
                     </textarea>  
                   </div>
               </div>
               </div>
                   <button type='submit' class='btn btn-default col-xs-offset-10'>Submit</button>
-                  <a href='#' class="btn btn-warning pull-right">Cancel
-                  </a>
+                  <button type='reset' class="btn btn-warning pull-right">Cancel
+                  </button>
             </div>
           </div>
         </form>  

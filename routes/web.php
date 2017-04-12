@@ -154,6 +154,7 @@ Route::get('review_plan/{id}/review_kpi',['as'=>'review_plan.kpi','uses'=>'Revie
 //Route::get('review_plan/update_achievement','ReviewPlanController@updateSportAchievement')->name('activities_update_athlete_achievement');
 Route::get('review_plan/{id}/update_achievement','ReviewPlanController@updateSportAchievement')->name('activities_update_achievement');
 
+Route::post('review_plan/{id}/achievement_report','ReviewPlanController@storeActivitiesAchievedReport')->name('activities_achieved_report');
 //Route for Update Achievements 
 Route::get('review_activities_achievemenents_update',[
 		'uses'=>'ReviewPlanController@getAchievement_update',

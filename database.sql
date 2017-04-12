@@ -16,6 +16,42 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `activities_achievement_reports`
+--
+
+DROP TABLE IF EXISTS `activities_achievement_reports`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `activities_achievement_reports` (
+  `report_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `approval_activity_id` int(11) NOT NULL,
+  `kpi_approval_id` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `approved_rgob_budget` decimal(8,2) NOT NULL,
+  `rgob_utilization` decimal(5,2) NOT NULL,
+  `approval_external_budget` decimal(8,2) NOT NULL,
+  `external_utilization` decimal(5,2) NOT NULL,
+  `target_achieved` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `rgob_score` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `external_score` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `remarks` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`report_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `activities_achievement_reports`
+--
+
+LOCK TABLES `activities_achievement_reports` WRITE;
+/*!40000 ALTER TABLE `activities_achievement_reports` DISABLE KEYS */;
+INSERT INTO `activities_achievement_reports` VALUES (1,2,'1,3',20000.00,47.62,10000.00,50.00,'2,1','100.00%good,25.00%poor','66.67%good,20.00%poor','Played well',3,'2017-04-12 03:35:18','2017-04-12 03:35:18');
+/*!40000 ALTER TABLE `activities_achievement_reports` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `associated__sports`
 --
 
@@ -822,7 +858,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -878,6 +914,8 @@ INSERT INTO `migrations` VALUES (131,'2017_04_10_082924_create_tbl_proposed_spor
 INSERT INTO `migrations` VALUES (132,'2017_04_10_090547_create_enum_quarters_table',15);
 INSERT INTO `migrations` VALUES (133,'2017_04_10_095556_create_tbl_proposed__k_p_is_table',16);
 INSERT INTO `migrations` VALUES (134,'2017_04_11_062831_create_tbl__k_p_i_approveds_table',17);
+INSERT INTO `migrations` VALUES (135,'2017_04_12_052701_create_tbl__updateathlete_achievements_table',18);
+INSERT INTO `migrations` VALUES (136,'2017_04_12_084732_create_activities_achievement_reports_table',19);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1254,6 +1292,37 @@ INSERT INTO `tbl__update_sport_activities` VALUES (3,1,6,4,40,3,3,'2017-04-10 03
 INSERT INTO `tbl__update_sport_activities` VALUES (4,1,5,5,60,3,3,'2017-04-10 22:20:53','2017-04-10 22:20:53');
 INSERT INTO `tbl__update_sport_activities` VALUES (5,4,5,3,57,3,3,'2017-04-10 23:35:54','2017-04-10 23:35:54');
 /*!40000 ALTER TABLE `tbl__update_sport_activities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl__updateathlete_achievements`
+--
+
+DROP TABLE IF EXISTS `tbl__updateathlete_achievements`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl__updateathlete_achievements` (
+  `AthleteAchievement_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `athlete_id` int(11) NOT NULL,
+  `activity_id` int(11) NOT NULL,
+  `sport_id` int(11) NOT NULL,
+  `medal_id` int(11) NOT NULL,
+  `remarks` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`AthleteAchievement_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl__updateathlete_achievements`
+--
+
+LOCK TABLES `tbl__updateathlete_achievements` WRITE;
+/*!40000 ALTER TABLE `tbl__updateathlete_achievements` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl__updateathlete_achievements` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1768,4 +1837,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-12 12:04:19
+-- Dump completed on 2017-04-12 15:40:33
