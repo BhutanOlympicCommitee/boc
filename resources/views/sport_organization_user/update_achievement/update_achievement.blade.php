@@ -90,23 +90,23 @@
               $i = 1;
 
               ?>
-              {{-- @foreach($approved_activity as $approved) --}}
+               @foreach($approved_activity as $approved)
               <tr>
                 <td>{{$i++}}</td>
-                <td>dfjkfd</td>
-                <td>dgfdg</td>
-                <td>dfgdg</td>
-                <td>dgfdg</td>
-                <td>vbfgf</td>
-                <td>fhfgh</td>
+                <td>{{$approved->approved_activity_name}}</td>
+                <td>{{$approved->approved_quarter_timeline}}</td>
+                <td>{{$approved->approved_actual_timeline}}</td>
+                <td>{{$approved->approved_activity_venue}}</td>
+                <td>{{$approved->approved_rgob_budget}}</td>
+                <td>{{$approved->approved_external_budget}}</td>
                 <td>
-                  <a href='{{route('activities_update_achievement')}}' type="button" class="edit_user btn btn-info" >
+                  <a href='{{route('activities_update_achievement',$approved->activity_approval_id)}}' type="button" class="edit_user btn btn-info" >
                     <span class="glyphicon glyphicon-erase"></span>
                     Update
                   </a>
                 </td>
               </tr>
-              {{-- @endforeach --}}
+              @endforeach 
             </tbody>
           </table>
         </div>

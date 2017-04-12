@@ -37,7 +37,7 @@ class ReviewPlanController extends Controller
         return view('boc_user.annual_activities_plan.review_plan.reviewKPI',compact('review_kpi'));
     }
     public function getAchievement_update(){
-        $approved_activity=Tbl_proposed_sport_org_activity::all();
+        $approved_activity=Tbl_sport_org_activities_approved::all();
         // $proposed_activity=Tbl_sport_org_activities::all();
         return view('sport_organization_user.update_achievement.update_achievement',['approved_activity'=>$approved_activity]);
     }
@@ -63,8 +63,9 @@ class ReviewPlanController extends Controller
 
     }  
 
-    public function updateSportAchievement()
+    public function updateSportAchievement($id)
     {
-        return view('sport_organization_user.update_achievement.sport_achievement_update');
+        $approved_activity=Tbl_sport_org_activities_approved::where('activity_approval_id',$id)->first();
+        return view('sport_organization_user.update_achievement.sport_achievement_update',compact('approved_activity'));
     }
 }
