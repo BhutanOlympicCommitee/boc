@@ -109,7 +109,7 @@
                   <button type='reset' class="btn btn-warning pull-right">Cancel
                   </button>
             </div>
-          </div>
+          </div> 
         </form>    
       </div>
     </div>

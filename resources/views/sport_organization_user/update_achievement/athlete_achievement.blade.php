@@ -220,7 +220,7 @@
          <div class="form-group clearfix">
           <label for="activity_id"  class='col-xs-3'>Activity</label> 
           <div class='col-xs-9 input-group'>
-            <select name="activity_id" class="form-control">
+            <select name="activity_id" id="activity_id" class="form-control">
               <option value="0">
                 Select the Activity
               </option>
@@ -236,32 +236,20 @@
       <div class="form-group clearfix">
         <label for=""  class='col-xs-3'>Activity Timeline</label> 
         <div class='col-xs-9 input-group'>
-          <select name="" class="form-control">
+          <select name="" id="actual_timeline" class="form-control">
             <option value="0">
               Select the Activity
             </option>
-            <?php 
-            $activity = App\Tbl_sport_org_activities_approved::all();
-            foreach($activity as $activities):
-              ?>
-            <option value="{{$activities->activity_id}}">{{$activities->approved_actual_timeline}}</option>
-          <?php endforeach;?>
         </select> 
       </div>
     </div>
     <div class="form-group clearfix">
       <label for=""  class='col-xs-3'>Activity Venue</label> 
       <div class='col-xs-9 input-group'>
-        <select name="" class="form-control">
+        <select name="" id="activity_venue" class="form-control">
           <option value="0">
             Select the Activity
           </option>
-          <?php 
-          $activity = App\Tbl_sport_org_activities_approved::all();
-          foreach($activity as $activities):
-            ?>
-          <option value="{{$activities->activity_id}}">{{$activities->approved_activity_venue}}</option>
-        <?php endforeach;?>
       </select> 
     </div>
   </div>
@@ -304,6 +292,7 @@
   </div>
 </div>
 <input type="hidden" name="hidden_athlete_id" id='hidden_athlete_id'>
+<input type="hidden" name="hidden_view1" id='hidden_view1' value='{{route('view_update_achievement')}}'> 
 <div class="modal-footer">
   <button type="submit" class="btn btn-default glyphicon glyphicon-ok" name='next' id='next'>Save</button>
   <button  class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
@@ -318,8 +307,7 @@
 $(function()
 {
   $('#reports').click(function(){
-   //window.location="{{--url(route('activities_update_achievement',$id))--}}";  
-   window.location="{{URL::previous()}}";
+   window.location="{{URL::previous()}}";   
  });
 });
 function addAthlete(id)
@@ -330,6 +318,32 @@ $(function()
 {
   $('#table').dataTable();
 });
+
+ $('#activity_id').change(function()
+  {
+    var acti_id=$(this).val();
+    var view_url = $("#hidden_view1").val();
+    $.ajax({
+      url: view_url,
+      type:"GET", 
+      data: {"id":acti_id}, 
+      success: function(result){
+      //console.log(result);
+      $('#actual_timeline').empty();
+       $.each(result,function(key,val)
+      {
+        $('#actual_timeline').append('<option value="'+val.activity_id+'">'+val.approved_actual_timeline+'</option>');
+      });
+
+        $('#activity_venue').empty();
+       $.each(result,function(key,val)
+      {
+        $('#activity_venue').append('<option value="'+val.activity_id+'">'+val.approved_activity_venue+'</option>');
+      });
+      }
+    });
+  });
+
 </script>
 @endsection
 @section('footer')
