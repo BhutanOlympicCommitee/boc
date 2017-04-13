@@ -107,8 +107,7 @@
                   </a>
             </div>
           </div>
-        </form>
-        
+        </form>    
       </div>
     </div>
   </div>
@@ -187,6 +186,12 @@
       }
     });
   }
+  $(function()
+  {
+    $('#participants').click(function(){
+       window.location="{{url(route('update_achievement.athlete_achievement'))}}";   
+     });
+  });
   $('#table1').dataTable(
     {
         "paging":   false,
