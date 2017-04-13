@@ -156,7 +156,7 @@ Route::get('review_plan/{id}/update_achievement','ReviewPlanController@updateSpo
 Route::get('update_achievement',['as'=>'update_achievement.athlete_achievement','uses'=>'ReviewPlanController@athlete_achievement']);
 Route::post('review_plan/storeAthleteAchievement',['as'=>'update_achievement.storeAthleteAchievement','uses'=>'ReviewPlanController@storeAthleteAchievement']);
 Route::post('review_plan/storeAthlete',['as'=>'update_achievement.storeAthlete','uses'=>'ReviewPlanController@storeAthlete']);
-
+Route::get('update_achievement/view', 'ReviewPlanController@view')->name('view_update_achievement');
 
 Route::post('review_plan/{id}/achievement_report','ReviewPlanController@storeActivitiesAchievedReport')->name('activities_achieved_report');
 

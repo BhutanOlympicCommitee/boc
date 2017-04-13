@@ -136,4 +136,13 @@ class ReviewPlanController extends Controller
         $achievement_report->save();
         return redirect()->route('achievement_update');
     }
+
+    public function view(Request $request)
+    {
+        if($request->ajax()){
+            $id = $request->id;
+            $info = Tbl_sport_org_activities_approved::where('activity_id', $id)->get();
+            return response()->json($info);
+        }
+    }
 }
