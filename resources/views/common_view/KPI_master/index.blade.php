@@ -53,10 +53,9 @@
                           <td>{{$kpis->average}}</td>
                           <td>{{$kpis->poor}}</td>
                           <td>
-                            <form class="form-group">
-                                    <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='kpi_edit({{$kpis->kpi_id}})'>Edit</a>
-                                    </button>
-                                  </form>
+                            
+                            <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='kpi_edit({{$kpis->kpi_id}})'>Edit</a>
+                                 
                           </td>
                         </tr>
                         @endforeach
@@ -232,52 +231,35 @@
 </div>
 <!-- ends editModal-->
 <script type="text/javascript">
-<<<<<<< HEAD
  $(function(){
-    $('#table3').DataTable();
+    $('#table3').DataTable(
+      {
+        "paging":   false,
+        "ordering": false,
+        "info":     false,
+        'searching':false
+      });
   });
-</script>
-<script type="text/javascript">
 function kpi_edit(id)
     {
       var view_url = $("#hidden_view").val();
       $.ajax({
         url: view_url,
-        alert(url);
         type:"GET", 
         data: {"id":id}, 
         success: function(result){
-          // console.log(result);
-          $("#edit_id").val(result.kpi_id);
-          $("#kpi_name").val(result.kpi_name);
-          $("#RGoB").val(result.RGoB);
-          $("#external1").val(result.external1);
-          $("#unit").val(result.unit);
-          $("#baseline").val(result.baseline);
-          $("#good").val(result.good);
-          $("#average").val(result.average);
-          $("#poor").val(result.poor);
+          console.log(result);
+          // $("#edit_id").val(result.kpi_id);
+          // $("#kpi_name").val(result.kpi_name);
+          // $("#RGoB").val(result.RGoB);
+          // $("#external1").val(result.external);
+          // $("#unit").val(result.unit);
+          // $("#baseline").val(result.baseline);
+          // $("#good").val(result.good);
+          // $("#average").val(result.average);
+          // $("#poor").val(result.poor);
         }
       });
-=======
-  $(function(){
-    $('#table1').DataTable();
-  });
-</script>
-<script type="text/javascript">
-  function kpi_edit(id)
-  {
-    var view_url = $("#hidden_view").val();
-    var kpi_id=id;
-    $.ajax({
-      url: view_url,
-      type:"GET", 
-      data:{"id":kpi_id}, 
-      success: function(result){
-        console.log(result);
-      }
-    });
->>>>>>> 6cdafa139888f2cce3565ca157e60a5e18906d79
     }
 </script>
 @endsection
@@ -288,6 +270,3 @@ function kpi_edit(id)
     </div>
 </div>
 @endsection
-
-
-

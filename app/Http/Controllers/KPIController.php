@@ -10,7 +10,7 @@ use Auth;
 
 class KPIController extends Controller
 {
-    public function index($id)
+    public function index_kpi($id)
     {
         $kpi = Tbl_proposed_KPI::all();
         Session::put('activity_id',$id);
@@ -22,7 +22,6 @@ class KPIController extends Controller
         $searchkpi=Tbl_proposed_KPI::all();
         return view('sport_organization_user.search_activity.searchKPI',compact('searchkpi'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -80,33 +79,34 @@ class KPIController extends Controller
         return redirect()->route('review_plan.reviewKPI',$id);
     }
 
-   public function view(Request $request)
-    {
-       
-      if($request->ajax()){
-            $id = $request->id;
-            $info = Tbl_proposed_KPI::where('kpi_id',$id)->first();
-            return response()->json($info);
+   public function update_kpi()
+    { 
+      // if($request->ajax()){
+      //       $id = $request->id;
+      //       // $info = Tbl_proposed_KPI::where('kpi_id',$id)->first();
+      //       return response()->json($id);
 
-        }
+        // }
+        echo 'kfdgkfg';
     }
   
 
    public function update(Request $request)
     {
-        $id=$request->edit_id;
-        $kpi=Tbl_proposed_KPI::find($id);
-        $kpi->kpi_name=$request->kpi_name;
-        $kpi->RGoB=$request->RGoB;
-        $kpi->external=$request->external;
-        $kpi->unit=$request->unit;
-        $kpi->baseline=$request->baseline;
-        $kpi->good=$request->good;
-        $kpi->average=$request->average;
-        $kpi->poor=$request->poor;
-        $dzongkhag->save();
-        Session::flash('success', 'KPI updated successfully');
-        return redirect()->route('KPI_master.index');
+        // $id=$request->edit_id;
+        // $kpi=Tbl_proposed_KPI::find($id);
+        // $kpi->kpi_name=$request->kpi_name;
+        // $kpi->RGoB=$request->RGoB;
+        // $kpi->external=$request->external;
+        // $kpi->unit=$request->unit;
+        // $kpi->baseline=$request->baseline;
+        // $kpi->good=$request->good;
+        // $kpi->average=$request->average;
+        // $kpi->poor=$request->poor;
+        // $dzongkhag->save();
+        // Session::flash('success', 'KPI updated successfully');
+        // return redirect()->route('KPI_master.index');
+        echo 'jfdgkfgld';
     }
 }
 

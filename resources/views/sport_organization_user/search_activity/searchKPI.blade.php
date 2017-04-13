@@ -90,10 +90,10 @@
               </div>
           </div>    
           <div class="form-group clearfix">
-                  <div class="col-xs-12 input-group ">
-                    <input type="submit" class="btn btn-default pull-right" value="Search">
-                    </div>
-                </div>
+            <div class="col-xs-12 input-group ">
+              <input type="submit" class="btn btn-default pull-right" value="Search">
+              </div>
+          </div>
              <table class="table table-bordered table-striped table-responsive" id="table1">
              <thead>
                 <tr>
@@ -126,12 +126,12 @@
                           <input type="hidden" name="_method" value="delete">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                           @if($searchs->status==0)
-                          <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='kpi_edit({{$searchs->kpi_id}})'>Edit</a>
+                          <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='kpi_edit1({{$searchs->kpi_id}})'>Edit</a>
                           <button type="submit" class="btn btn-warning glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Remove
                           </button>
                           <a class=" btn-danger" onclick='' style="text-decoration:none;">&nbsp;&nbsp;Sent for Approval&nbsp;&nbsp;</a>
                           @endif
-                        </form>
+                  </form>
                         @if($searchs->status==1)
                         <a class=" btn-success" onclick='' style="text-decoration:none;">&nbsp;&nbsp;Approved&nbsp;&nbsp;</a>
                         @endif
@@ -140,7 +140,6 @@
             <?php endforeach?>
             </tbody>
           </table>
-            
           </div>
         </div>
       </div>
@@ -219,7 +218,6 @@
         <button type="submit" class="btn btn-info">Update</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
       </div>
-       
       </form>
       </div>
     </div>
@@ -228,33 +226,52 @@
 <!-- ends editModal-->
 <script type="text/javascript">
  $(function(){
-    $('#table3').DataTable();
-  });
-</script>
-<script type="text/javascript">
-function kpi_edit(id)
-    {
-      var view_url = $("#hidden_view").val();
-      $.ajax({
-        url: view_url,
-        alert(url);
-        type:"GET", 
-        data: {"id":id}, 
-        success: function(result){
-          // console.log(result);
-          $("#edit_id").val(result.kpi_id);
-          $("#kpi_name").val(result.kpi_name);
-          $("#RGoB").val(result.RGoB);
-          $("#external1").val(result.external1);
-          $("#unit").val(result.unit);
-          $("#baseline").val(result.baseline);
-          $("#good").val(result.good);
-          $("#average").val(result.average);
-          $("#poor").val(result.poor);
-        }
+    $('#table1').DataTable(
+      {
+        "paging":   false,
+        "ordering": false,
+        "info":     false,
+        'searching':false
       });
-    }
+  });
+ // function kpi_edit1(id)
+ // {
+ //  var url='{{--route('view_kpi')--}}';
+ //  $.ajax({
+ //    url:url,
+ //    type:'GET',
+ //    data:{"id":id},
+ //    success:function(result)
+ //    {
+ //      console.log(result);
+ //    }
+ //  });
+ // }
 </script>
+{{-- <script type="text/javascript">
+  function kpi_edit(id)
+  {
+    //var view_url = $("#hidden_view").val();
+    var view_url='{{route('view_kpi')}}';
+    $.ajax({
+      url: view_url,
+      type:"GET", 
+      data: {"id":id}, 
+      success: function(result){
+        console.log(result);
+        // $("#edit_id").val(result.kpi_id);
+        // $("#kpi_name").val(result.kpi_name);
+        // $("#RGoB").val(result.RGoB);
+        // $("#external1").val(result.external);
+        // $("#unit").val(result.unit);
+        // $("#baseline").val(result.baseline);
+        // $("#good").val(result.good);
+        // $("#average").val(result.average);
+        // $("#poor").val(result.poor);
+      }
+    });
+  }
+</script> --}}
 @endsection
 @section('footer')
 <div class="container">

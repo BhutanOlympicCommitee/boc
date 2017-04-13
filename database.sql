@@ -1277,7 +1277,7 @@ CREATE TABLE `tbl__update_sport_activities` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1291,6 +1291,9 @@ INSERT INTO `tbl__update_sport_activities` VALUES (2,1,5,4,90,3,3,'2017-04-10 03
 INSERT INTO `tbl__update_sport_activities` VALUES (3,1,6,4,40,3,3,'2017-04-10 03:30:53','2017-04-10 03:30:53');
 INSERT INTO `tbl__update_sport_activities` VALUES (4,1,5,5,60,3,3,'2017-04-10 22:20:53','2017-04-10 22:20:53');
 INSERT INTO `tbl__update_sport_activities` VALUES (5,4,5,3,57,3,3,'2017-04-10 23:35:54','2017-04-10 23:35:54');
+INSERT INTO `tbl__update_sport_activities` VALUES (6,1,5,3,34,3,3,'2017-04-12 04:29:31','2017-04-12 04:29:31');
+INSERT INTO `tbl__update_sport_activities` VALUES (7,3,6,4,56,3,3,'2017-04-12 20:33:24','2017-04-12 20:33:24');
+INSERT INTO `tbl__update_sport_activities` VALUES (8,3,7,3,89,3,3,'2017-04-12 21:59:24','2017-04-12 21:59:24');
 /*!40000 ALTER TABLE `tbl__update_sport_activities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1514,7 +1517,7 @@ CREATE TABLE `tbl_proposed_sport_org_activities` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`activity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1527,6 +1530,9 @@ INSERT INTO `tbl_proposed_sport_org_activities` VALUES (2,2,'under 12 basketball
 INSERT INTO `tbl_proposed_sport_org_activities` VALUES (3,3,'Under 18 basket compitition','punakha',4,'april 23-may 5,2017',45000.00,23000.00,'BOB','YDF',3,'2017-04-10 03:32:17','2017-04-10 03:32:17');
 INSERT INTO `tbl_proposed_sport_org_activities` VALUES (4,4,'youth table tanis tournament','wangdue',4,'Apri 25-may 26,2017',24500.00,7000.00,'BNB','YDF',3,'2017-04-10 22:21:51','2017-04-10 22:21:51');
 INSERT INTO `tbl_proposed_sport_org_activities` VALUES (5,5,'youth football compitation','Thimphu',3,'Janaury 12-february 12',6778.00,6788.00,'bnb','Ministry of education',3,'2017-04-10 23:36:52','2017-04-10 23:36:52');
+INSERT INTO `tbl_proposed_sport_org_activities` VALUES (6,6,'Under 18 basket compitition','changlingmithang',1,'Nov 23-Dec 2,2017',6778.00,20000.00,'DYS','YDF',3,'2017-04-12 04:29:55','2017-04-12 04:29:55');
+INSERT INTO `tbl_proposed_sport_org_activities` VALUES (7,7,'basket tournament','phuentsholing',2,'Nov 23-Dec 2,2017',6778.00,23000.00,'BOB','Ministry of education',3,'2017-04-12 20:34:06','2017-04-12 20:34:06');
+INSERT INTO `tbl_proposed_sport_org_activities` VALUES (8,8,'football','Thimphu',2,'Nov 23-Dec 2,2017',42000.00,20000.00,'DYS','Ministry of education',3,'2017-04-12 22:00:00','2017-04-12 22:00:00');
 /*!40000 ALTER TABLE `tbl_proposed_sport_org_activities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1837,4 +1843,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-12 15:40:33
+-- Dump completed on 2017-04-13 10:17:34
