@@ -30,7 +30,7 @@
 
               </br>
              
-                <form action='#' method='post'>
+                <form action='' method='post'>
                   <div class='form-group clearfix'>
                     <label class='col-xs-2'>CID/Student ID</label>
                     <div class='col-xs-10 input-group'>
@@ -45,7 +45,7 @@
                   </div>
                 
                 <div class='form-group clearfix'>
-                 <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal"> Search</a>
+                 <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' name='searchAthlete' data-target="#addModal"> Search</a>
                </div>
              </form>
                  </div>
@@ -175,7 +175,7 @@
         <th>Name</th>
         <th>Dzongkhag</th>
         <th>Gewog</th>
-        <th>Villege</th>
+        <th>Village</th>
         <th>Father's Name</th>
         <th>Action</th>
       </tr>   
