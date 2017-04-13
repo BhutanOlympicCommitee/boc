@@ -29,21 +29,21 @@
               <div class='tab-content'>
 
               </br>
-              <div class='row clearfix'>
+             
                 <form action='#' method='post'>
-                  <div class='col-xs-12 form-group'>
-                    <label class='col-xs-3'>CID/Student ID</label>
-                    <div class='col-xs-9'>
+                  <div class='form-group clearfix'>
+                    <label class='col-xs-2'>CID/Student ID</label>
+                    <div class='col-xs-10 input-group'>
                       <input type="text" name="cid" class="form-control">
                     </div>
                   </div>
-                  <div class='col-xs-12 form-group'>
-                    <label class='col-xs-3'>Name</label>
-                    <div class='col-xs-9'>
+                  <div class='form-group clearfix'>
+                    <label class='col-xs-2'>Name</label>
+                    <div class='col-xs-10 input-group'>
                       <input type="text" name="name" class="form-control">
                     </div>  
                   </div>
-                </div>
+                
                 <div class='form-group clearfix'>
                  <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal"> Search</a>
                </div>

@@ -6,6 +6,7 @@ use App\Tbl_sport_org_activities_approved;
 use App\Tbl_proposed_KPI;
 use App\Tbl_Updateathlete_achievement;
 use App\Tbl_update_athleteAchievement;
+use App\Activities_achievement_report;
 use Auth;
 use Session;
 /**
@@ -112,5 +113,27 @@ class ReviewPlanController extends Controller
     {
         $approved_activity=Tbl_sport_org_activities_approved::where('activity_approval_id',$id)->first();
         return view('sport_organization_user.update_achievement.sport_achievement_update',compact('approved_activity'));
+    }
+    public function storeActivitiesAchievedReport(Request $request, $id)
+    {
+        $activity_id=$id;
+        $kpi_id=implode(',',$request->hidden_id);
+        $target_achieved =implode(',',$request->target);
+        $rgob_score=implode(',',$request->rgob_score);
+        $external_score=implode(',',$request->external_score);
+        $achievement_report=new Activities_achievement_report;
+        $achievement_report->approval_activity_id=$activity_id;
+        $achievement_report->kpi_approval_id=$kpi_id;
+        $achievement_report->approved_rgob_budget=$request->rgob;
+        $achievement_report->rgob_utilization=$request->utilization;
+        $achievement_report->approval_external_budget=$request->external_budget;
+        $achievement_report->external_utilization=$request->utilization_percent;
+        $achievement_report->target_achieved=$target_achieved;
+        $achievement_report->rgob_score= $rgob_score;
+        $achievement_report->external_score= $external_score;
+        $achievement_report->remarks= $request->remarks;
+        $achievement_report->created_by=Auth::user()->id;
+        $achievement_report->save();
+        return redirect()->route('achievement_update');
     }
 }
