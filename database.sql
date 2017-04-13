@@ -92,10 +92,12 @@ CREATE TABLE `athelete_training_attendances` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `athlete_id` int(11) NOT NULL,
   `training_id` int(11) NOT NULL,
+  `attendance_status` int(11) NOT NULL,
+  `comments` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,10 +106,8 @@ CREATE TABLE `athelete_training_attendances` (
 
 LOCK TABLES `athelete_training_attendances` WRITE;
 /*!40000 ALTER TABLE `athelete_training_attendances` DISABLE KEYS */;
-INSERT INTO `athelete_training_attendances` VALUES (5,9,15,'2017-04-06 11:35:54','2017-04-06 11:35:54');
-INSERT INTO `athelete_training_attendances` VALUES (6,10,15,'2017-04-06 11:35:54','2017-04-06 11:35:54');
-INSERT INTO `athelete_training_attendances` VALUES (7,10,16,'2017-04-06 11:36:07','2017-04-06 11:36:07');
-INSERT INTO `athelete_training_attendances` VALUES (8,10,17,'2017-04-06 11:36:17','2017-04-06 11:36:17');
+INSERT INTO `athelete_training_attendances` VALUES (9,9,15,1,'present                  \r\n                ','2017-04-13 01:13:29','2017-04-13 01:13:29');
+INSERT INTO `athelete_training_attendances` VALUES (10,10,15,1,'                  \r\n                ','2017-04-13 01:14:22','2017-04-13 01:14:22');
 /*!40000 ALTER TABLE `athelete_training_attendances` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,6 +281,34 @@ INSERT INTO `athlete_training_schedules` VALUES (13,15,10,'2017-04-05 00:57:14',
 INSERT INTO `athlete_training_schedules` VALUES (14,16,10,'2017-04-05 00:59:05','2017-04-05 00:59:05');
 INSERT INTO `athlete_training_schedules` VALUES (15,17,10,'2017-04-05 22:00:17','2017-04-05 22:00:17');
 /*!40000 ALTER TABLE `athlete_training_schedules` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `attendance_statuses`
+--
+
+DROP TABLE IF EXISTS `attendance_statuses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `attendance_statuses` (
+  `attendance_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `attendance_status` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`attendance_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `attendance_statuses`
+--
+
+LOCK TABLES `attendance_statuses` WRITE;
+/*!40000 ALTER TABLE `attendance_statuses` DISABLE KEYS */;
+INSERT INTO `attendance_statuses` VALUES (1,'present',NULL,NULL);
+INSERT INTO `attendance_statuses` VALUES (2,'absent',NULL,NULL);
+INSERT INTO `attendance_statuses` VALUES (3,'leave',NULL,NULL);
+/*!40000 ALTER TABLE `attendance_statuses` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -858,7 +886,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -917,6 +945,7 @@ INSERT INTO `migrations` VALUES (134,'2017_04_11_062831_create_tbl__k_p_i_approv
 INSERT INTO `migrations` VALUES (135,'2017_04_12_052701_create_tbl__updateathlete_achievements_table',18);
 INSERT INTO `migrations` VALUES (136,'2017_04_12_084732_create_activities_achievement_reports_table',19);
 INSERT INTO `migrations` VALUES (137,'2017_04_12_094907_create_tbl_update_athlete_achievements_table',20);
+INSERT INTO `migrations` VALUES (138,'2017_04_13_070347_create_attendance_statuses_table',21);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1882,4 +1911,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-13 12:17:05
+-- Dump completed on 2017-04-13 13:15:27

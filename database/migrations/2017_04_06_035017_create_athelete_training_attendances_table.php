@@ -17,6 +17,8 @@ class CreateAtheleteTrainingAttendancesTable extends Migration
             $table->increments('id');
             $table->integer('athlete_id');
             $table->integer('training_id');
+            $table->integer('attendance_status');
+            $table->string('comments',1000);
             $table->timestamps();
         });
     }

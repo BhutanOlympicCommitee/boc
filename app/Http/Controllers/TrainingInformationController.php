@@ -141,13 +141,13 @@ class TrainingInformationController extends Controller
     public function saveAthleteAttendance(Request $request)
     {
         $training_id=$request->hidden_training_id;
-        $athlete_id=$request->get('select');
-        foreach ($athlete_id as $athlete){
-            $record_attendance=new AtheleteTrainingAttendance();
-            $record_attendance->athlete_id = $athlete;
-            $record_attendance->training_id = $training_id;
-            $record_attendance->save();
-        }
+        $athlete_id=$request->hidden_athlete_id;
+        $record_attendance=new AtheleteTrainingAttendance();
+        $record_attendance->athlete_id = $athlete_id;
+        $record_attendance->training_id = $training_id;
+        $record_attendance->attendance_status = $request->attendance;
+        $record_attendance->comments = $request->comments;
+        $record_attendance->save();
        return redirect()->route('training.attendance');
     }
 
