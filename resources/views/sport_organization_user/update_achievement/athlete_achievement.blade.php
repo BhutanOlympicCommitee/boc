@@ -318,7 +318,8 @@
 $(function()
 {
   $('#reports').click(function(){
-   window.location="{{url(route('activities_update_achievement',$id))}}";   
+   //window.location="{{--url(route('activities_update_achievement',$id))--}}";  
+   window.location="{{URL::previous()}}";
  });
 });
 function addAthlete(id)

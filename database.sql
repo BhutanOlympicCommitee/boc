@@ -858,7 +858,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -916,6 +916,7 @@ INSERT INTO `migrations` VALUES (133,'2017_04_10_095556_create_tbl_proposed__k_p
 INSERT INTO `migrations` VALUES (134,'2017_04_11_062831_create_tbl__k_p_i_approveds_table',17);
 INSERT INTO `migrations` VALUES (135,'2017_04_12_052701_create_tbl__updateathlete_achievements_table',18);
 INSERT INTO `migrations` VALUES (136,'2017_04_12_084732_create_activities_achievement_reports_table',19);
+INSERT INTO `migrations` VALUES (137,'2017_04_12_094907_create_tbl_update_athlete_achievements_table',20);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1489,9 +1490,9 @@ CREATE TABLE `tbl_proposed__k_p_is` (
 
 LOCK TABLES `tbl_proposed__k_p_is` WRITE;
 /*!40000 ALTER TABLE `tbl_proposed__k_p_is` DISABLE KEYS */;
-INSERT INTO `tbl_proposed__k_p_is` VALUES (1,2,'Number of teams or individuals participated',2.00,3.00,'Nos',35.00,224.00,140.00,130.00,3,3,'2017-04-10 22:23:08','2017-04-10 22:23:08');
-INSERT INTO `tbl_proposed__k_p_is` VALUES (2,2,'Number of girls team',4.00,5.00,'Nos',123.00,567.00,345.00,234.00,3,3,'2017-04-10 23:38:05','2017-04-10 23:38:05');
-INSERT INTO `tbl_proposed__k_p_is` VALUES (3,5,'Number of boys team',3.00,4.00,'Nos',56.00,674.00,456.00,256.00,3,3,'2017-04-10 23:39:02','2017-04-10 23:39:02');
+INSERT INTO `tbl_proposed__k_p_is` VALUES (1,2,'Number of teams or individuals participated',3.00,3.00,'Nos',40.00,225.00,145.00,130.00,3,3,'2017-04-10 22:23:08','2017-04-13 00:07:59');
+INSERT INTO `tbl_proposed__k_p_is` VALUES (2,2,'Number of girls team',4.00,5.00,'Nos',120.00,560.00,345.00,234.00,3,3,'2017-04-10 23:38:05','2017-04-13 00:08:39');
+INSERT INTO `tbl_proposed__k_p_is` VALUES (3,5,'Number of boys team',3.00,2.00,'Nos',60.00,674.00,454.00,256.00,3,3,'2017-04-10 23:39:02','2017-04-13 00:09:38');
 /*!40000 ALTER TABLE `tbl_proposed__k_p_is` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1741,6 +1742,44 @@ INSERT INTO `tbl_team_members` VALUES (6,9,12,2,2,'2017-04-07 01:44:55','2017-04
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbl_update_athlete_achievements`
+--
+
+DROP TABLE IF EXISTS `tbl_update_athlete_achievements`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_update_athlete_achievements` (
+  `athlete_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `athlete_cid` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `athlete_name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `athlete_dob` date NOT NULL,
+  `dzongkhag_id` int(11) NOT NULL,
+  `gewog_id` int(11) NOT NULL,
+  `village` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `occupation_id` int(11) NOT NULL,
+  `fathername` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `mobile` int(11) NOT NULL,
+  `email` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `contact_address` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`athlete_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_update_athlete_achievements`
+--
+
+LOCK TABLES `tbl_update_athlete_achievements` WRITE;
+/*!40000 ALTER TABLE `tbl_update_athlete_achievements` DISABLE KEYS */;
+INSERT INTO `tbl_update_athlete_achievements` VALUES (1,'02042013015','Sangay','2017-04-14',6,1,'samling',1,'karma',17678908,'sangay@gmail.com','wangdue',3,3,'2017-04-12 23:42:33','2017-04-12 23:42:33');
+/*!40000 ALTER TABLE `tbl_update_athlete_achievements` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `training_infos`
 --
 
@@ -1843,4 +1882,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-13 10:17:34
+-- Dump completed on 2017-04-13 12:12:29

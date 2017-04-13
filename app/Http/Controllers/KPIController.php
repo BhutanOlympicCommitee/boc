@@ -79,34 +79,38 @@ class KPIController extends Controller
         return redirect()->route('review_plan.reviewKPI',$id);
     }
 
-   public function update_kpi()
+   public function update_kpi(Request $request)
     { 
-      // if($request->ajax()){
-      //       $id = $request->id;
-      //       // $info = Tbl_proposed_KPI::where('kpi_id',$id)->first();
-      //       return response()->json($id);
-
-        // }
-        echo 'kfdgkfg';
+      if($request->ajax()){
+        $id = $request->id;
+        $info = Tbl_proposed_KPI::find($id);
+        return response()->json($info);
+        }
     }
   
 
    public function update(Request $request)
     {
-        // $id=$request->edit_id;
-        // $kpi=Tbl_proposed_KPI::find($id);
-        // $kpi->kpi_name=$request->kpi_name;
-        // $kpi->RGoB=$request->RGoB;
-        // $kpi->external=$request->external;
-        // $kpi->unit=$request->unit;
-        // $kpi->baseline=$request->baseline;
-        // $kpi->good=$request->good;
-        // $kpi->average=$request->average;
-        // $kpi->poor=$request->poor;
-        // $dzongkhag->save();
-        // Session::flash('success', 'KPI updated successfully');
-        // return redirect()->route('KPI_master.index');
-        echo 'jfdgkfgld';
+        $id=$request->edit_id;
+        $kpi=Tbl_proposed_KPI::find($id);
+        $kpi->kpi_name=$request->kpi_name;
+        $kpi->RGoB=$request->RGoB;
+        $kpi->external=$request->external;
+        $kpi->unit=$request->unit;
+        $kpi->baseline=$request->baseline;
+        $kpi->good=$request->good;
+        $kpi->average=$request->average;
+        $kpi->poor=$request->poor;
+        $kpi->save();
+        Session::flash('success', 'KPI updated successfully');
+        if($request->update=='update')
+        {
+            return redirect()->route('search_activity.searchKPI');
+        }
+        else
+        {
+            return redirect()->route('KPI_master.index',$kpi->kpi_id);
+        }
     }
 }
 

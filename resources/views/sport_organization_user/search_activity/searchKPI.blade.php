@@ -215,7 +215,7 @@
         </div>
        <input type="hidden" id="edit_id" name="edit_id">
       <div class="modal-footer">
-        <button type="submit" class="btn btn-info">Update</button>
+        <button type="submit" class="btn btn-info" name='update' value='update'>Update</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
       </div>
       </form>
@@ -234,24 +234,8 @@
         'searching':false
       });
   });
- // function kpi_edit1(id)
- // {
- //  var url='{{--route('view_kpi')--}}';
- //  $.ajax({
- //    url:url,
- //    type:'GET',
- //    data:{"id":id},
- //    success:function(result)
- //    {
- //      console.log(result);
- //    }
- //  });
- // }
-</script>
-{{-- <script type="text/javascript">
-  function kpi_edit(id)
+  function kpi_edit1(id)
   {
-    //var view_url = $("#hidden_view").val();
     var view_url='{{route('view_kpi')}}';
     $.ajax({
       url: view_url,
@@ -259,19 +243,19 @@
       data: {"id":id}, 
       success: function(result){
         console.log(result);
-        // $("#edit_id").val(result.kpi_id);
-        // $("#kpi_name").val(result.kpi_name);
-        // $("#RGoB").val(result.RGoB);
-        // $("#external1").val(result.external);
-        // $("#unit").val(result.unit);
-        // $("#baseline").val(result.baseline);
-        // $("#good").val(result.good);
-        // $("#average").val(result.average);
-        // $("#poor").val(result.poor);
+        $("#edit_id").val(result.kpi_id);
+        $("#kpi_name").val(result.kpi_name);
+        $("#RGoB").val(result.RGoB);
+        $("#external1").val(result.external);
+        $("#unit").val(result.unit);
+        $("#baseline").val(result.baseline);
+        $("#good").val(result.good);
+        $("#average").val(result.average);
+        $("#poor").val(result.poor);
       }
     });
   }
-</script> --}}
+</script>
 @endsection
 @section('footer')
 <div class="container">

@@ -55,6 +55,7 @@
                           <td>
                             
                             <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='kpi_edit({{$kpis->kpi_id}})'>Edit</a>
+                             {{-- <a class="btn btn-info glyphicon glyphicon-edit" href={{route('view_kpi')}}>Edit</a> --}}
                                  
                           </td>
                         </tr>
@@ -248,16 +249,16 @@ function kpi_edit(id)
         type:"GET", 
         data: {"id":id}, 
         success: function(result){
-          console.log(result);
-          // $("#edit_id").val(result.kpi_id);
-          // $("#kpi_name").val(result.kpi_name);
-          // $("#RGoB").val(result.RGoB);
-          // $("#external1").val(result.external);
-          // $("#unit").val(result.unit);
-          // $("#baseline").val(result.baseline);
-          // $("#good").val(result.good);
-          // $("#average").val(result.average);
-          // $("#poor").val(result.poor);
+          //console.log(result);
+          $("#edit_id").val(result.kpi_id);
+          $("#kpi_name").val(result.kpi_name);
+          $("#RGoB").val(result.RGoB);
+          $("#external1").val(result.external);
+          $("#unit").val(result.unit);
+          $("#baseline").val(result.baseline);
+          $("#good").val(result.good);
+          $("#average").val(result.average);
+          $("#poor").val(result.poor);
         }
       });
     }
