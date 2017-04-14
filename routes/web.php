@@ -81,6 +81,7 @@ Route::post('gewog/update', 'GewogController@update')->name('update_gewog');
 
 //routes for sport organization
 Route::get('sport',['as'=>'sport_organization.index','uses'=>'Sport_Organization_Controller@index']);
+Route::post('sport/search',['as'=>'sport_organization.search','uses'=>'Sport_Organization_Controller@searchSportOrganization']);
 Route::get('sport/create',['as'=>'sport_organization.create','uses'=>'Sport_Organization_Controller@create']);
 Route::post('sport/store',['as'=>'sport_organization.store','uses'=>'Sport_Organization_Controller@store']);
 Route::delete('sport/destroy/{id}',['as'=>'sport_organization.destroy','uses'=>'Sport_Organization_Controller@destroy']);
@@ -264,6 +265,8 @@ Route::post('sport_activity/update_proposed_activity', 'UpdateSportActivityContr
 
 //routes for search activities
 Route::get('searchActivity',['as'=>'search_activity.search','uses'=>'Sport_Organization_Controller@search']);
-
 //routes for search activities
 Route::get('searchKPI',['as'=>'search_activity.searchKPI','uses'=>'KPIController@searchKPI']);
+
+//route for search akra activites
+//Route::post('searchAKRA_activity','SKRA_activities_Controller@searchAKRAactivity')->name('searchAKRA');

@@ -23,6 +23,40 @@
                             </div>
                         </div>
                         <div class="bootstrap-admin-panel-content">
+                        <form action='{{route('sport_organization.search')}}' method='post'>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <div class='form-group'>
+                                <label class='col-xs-3'>Organization Type:</label>
+                                <div class='col-xs-7 input-group'>
+                                    <select name='org_type' class='form-control'>
+                                        <option value="" disabled selected>Select organization type</option>
+                                          <?php 
+                                              $org_type=App\Enum_sport_org::all();
+                                              foreach($org_type as $org):
+                                            ?>
+                                            <option value="{{$org->sport_org_type_id}}">{{$org->sport_org_type_name}}</option>
+                                            <?php 
+                                              endforeach
+                                            ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label class='col-xs-3'>Organization Name:</label>
+                                <div class='col-xs-7 input-group'>
+                                    <input type="text" name="org_name" class='form-control'>
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label class='col-xs-3'>Organization Abbreviation:</label>
+                                <div class='col-xs-7 input-group'>
+                                    <input type="text" name="org_abbreviation" class='form-control'>
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <button type='submit' class='btn btn-primary col-xs-offset-9'>Search</button>
+                            </div>
+                        </form>
                             @if(Session::has('success'))
                                 <div class="alert alert-success">
                                    {{ Session::get('success') }}
@@ -73,8 +107,12 @@
 
 <script type="text/javascript">
     $(function(){
-        
-        $('#table1').DataTable();
+        $('#table1').DataTable(
+            {
+                "ordering": false,
+                "info":     false,
+                'searching':false
+            });
     });
 </script>
 @endsection
