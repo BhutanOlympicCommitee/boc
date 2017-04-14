@@ -27,13 +27,13 @@
                   {{ Session::get('success') }}
                 </div>	
 						 	@endif
-              <form action='{{route('search_activity.search')}}' method='get' id='view'>
+              <form action='{{route('searchAKRA')}}' method='post'>
                <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class='form-group clearfix'>
             <label for='five_yr_plan_id' class='col-xs-2'>Five Year Plan:</label>
               <div class='col-xs-10 input-group'>
                <select class='form-control' name='five_yr_plan_id' id='five_yr_plan_id'>
-                <option value='' disabled selected>Select five year plan</option>
+                <option disabled selected>Select five year plan</option>
                           <?php 
                             $fiveYearPlan=App\EnumFiveYearPlan::all();
                             foreach($fiveYearPlan as $five_year):
@@ -49,7 +49,7 @@
             <label for='skra_id' class='col-xs-2'>AKRA:</label>
               <div class='col-xs-10 input-group'>
                   <select class='form-control' name='skra_id' id='skra1'>
-                  <option value='' disabled selected>Select akra</option>
+                  <option disabled selected>Select akra</option>
                      <?php 
                         $skras=App\Tbl_SKRA::all();
                         foreach($skras as $skra):
@@ -79,14 +79,10 @@
           </div>    
           <div class="form-group clearfix">
             <div class="col-xs-12 input-group ">
-              <input type="submit" class="btn btn-default pull-right" value="Search" id='search' name='search'>
+              <input type="submit" class="btn btn-default pull-right" value="Search" name='search'>
               </div>
           </div>
           </form>
-          @if(isset($_GET['search']))
-          <script type="text/javascript">
-            $('#view').hide();
-          </script>
              <table class="table table-bordered table-striped table-responsive" id="table1">
              <thead>
                 <tr>
@@ -102,8 +98,10 @@
             </thead>
             <tbody>
              <?php $id=1;
+              //$search=App\Tbl_proposed_sport_org_activity::all();
+              echo sizeof($search);
+              foreach($search as $searchs):
               ?>
-              @foreach($search as $searchs)
               <tr>
                 <td>{{$id++}}</td>
                 <td>{{$searchs->updated_activity->getAKRA->SKRA_name}}</td>
@@ -130,10 +128,10 @@
                         </form>
                 </td>
               </tr>
-            @endforeach
+            <?php endforeach?>
             </tbody>
           </table>
-          @endif 
+            
           </div>
         </div>
       </div>
@@ -250,10 +248,6 @@
         }
       });
   }
-  $('#table1').dataTable(
-    {
-      'searching':false,
-    });
 </script>
 @endsection
 @section('footer')

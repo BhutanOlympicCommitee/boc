@@ -269,4 +269,4 @@ Route::get('searchActivity',['as'=>'search_activity.search','uses'=>'Sport_Organ
 Route::get('searchKPI',['as'=>'search_activity.searchKPI','uses'=>'KPIController@searchKPI']);
 
 //route for search akra activites
-//Route::post('searchAKRA_activity','SKRA_activities_Controller@searchAKRAactivity')->name('searchAKRA');
+Route::post('searchAKRA_activity','SKRA_activities_Controller@searchAKRAactivity')->name('searchAKRA');

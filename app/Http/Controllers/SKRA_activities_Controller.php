@@ -106,25 +106,26 @@ class SKRA_activities_Controller extends Controller
         $skra_activity->save();
         return redirect()->route('skra_activities.index')->with('alert-success','Data Has been Updated!');   
     }
-    // public function searchAKRAactivity(Request $request)
-    // {
-    //     $five_yr=$request->five_yr_plan_id;
-    //     $akra=$request->skra_id;
-    //     $boc_program=$request->skra_activity_id;
-    //     if(!empty($five_yr))
-    //     {
-    //         $sport_update=Tbl_UpdateSportActivity::where('five_yr_plan_id',$five_yr)->get();
-    //         foreach($sport_update as $sport)
-    //         {
-    //             $weightage_id=$sport->id;
-    //             $search=Tbl_proposed_sport_org_activity::where('weightage_id',$weightage_id)->get();
+    public function searchAKRAactivity(Request $request)
+    {
+        $five_yr=$request->five_yr_plan_id;
+        $akra=$request->skra_id;
+        $boc_program=$request->skra_activity_id;
+        if(!empty($five_yr))
+        {
+            $sport_update=Tbl_UpdateSportActivity::where('five_yr_plan_id',$five_yr)->get();
 
-    //            return view('sport_organization_user.search_activity.search',['search'=>$search]); 
-    //         }
+            foreach($sport_update as $sport)
+            { 
+                $weightage_id=$sport->id;
+                $search=Tbl_proposed_sport_org_activity::where('weightage_id',$weightage_id)->get();
+                //return view('sport_organization_user.search_activity.search',['search'=>$search]); 
+            }
+             
             
-    //     }
-    //     else
-    //     return redirect()->route('search_activity.search');
+        }
+        else
+        return redirect()->route('search_activity.search');
          
-    // }
+    }
 }
