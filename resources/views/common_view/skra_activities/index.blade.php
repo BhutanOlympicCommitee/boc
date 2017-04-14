@@ -65,6 +65,7 @@
                         <?php $id=1?>
                         @foreach($skra_activities as $skra_activity)
                         @if($_GET['type']==$skra_activity->five_yr_plan_id)
+                        @if($skra_activity->status==0)
                         {{-- @if($sport->sport_org_id==$skra_activity->sport_org_id) --}}
                         <tr>
                             <td>{{$id++}}</td>
@@ -75,11 +76,12 @@
                                 <form class="form-group" action="{{route('skra_activities.destroy',$skra_activity->skra_activity_id)}}" method='post'>
                                   <input type="hidden" name="_method" value="delete">
                                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                  <a href="{{route('skra_activities.edit',$skra_activity->skra_activity_id)}}" class="btn btn-info">Edit</a>
-                                  <input type="submit" class="btn btn-warning" onclick="return confirm('Are you sure to delete this data');" name='name' value='Remove'>
+                                  <a href="{{route('skra_activities.edit',$skra_activity->skra_activity_id)}}" class="btn btn-info glyphicon glyphicon-edit">Edit</a>
+                                  <button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name' value='Remove'>Delete</button>
                                 </form>
                             </td>
                         </tr>
+                        @endif
                         @endif
                         @endforeach
                     </tbody>
@@ -87,7 +89,7 @@
                 <input type="hidden" name="hidden_view" id="hidden_view" value="{{route('view_skra_activities')}}">
                 <div class='form-group clearfix'>
                   <div class="input-group pull-right" style='margin-top:10px'>
-                    <a href="{{route('skra_activities.create')}}" class="btn btn-success glyphicon glyphicon-plus">Add</a> 
+                    <a href="{{route('skra_activities.create')}}" class="btn btn-success glyphicon glyphicon-plus">Add BoC Program</a> 
                   </div>
                 </div>  
               @endif
@@ -100,9 +102,16 @@
 </div>
 
 <script type="text/javascript">
-$(function(){
-    $('#table1').DataTable();
-});
+ $(function()
+    {
+        $('#table1').DataTable(
+           {
+           "language": {
+           "search": "Search BoC Programs:"
+     }
+     }
+          );
+    });  
 $('#type').change(function()
   {
 

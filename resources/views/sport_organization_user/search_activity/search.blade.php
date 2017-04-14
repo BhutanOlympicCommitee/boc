@@ -216,8 +216,8 @@
               </div>
           </div>
        <div class="modal-footer">
-          <button type="submit" class="btn btn-info glyphicon glyphicon-ok">Update</button>
-          <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Update</button>
+          <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
         </div>
       </form>
       </div>

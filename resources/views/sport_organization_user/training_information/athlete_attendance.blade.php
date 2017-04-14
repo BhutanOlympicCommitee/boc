@@ -19,7 +19,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <div class="text-muted bootstrap-admin-box-title clearfix">Record attendance for athlete for each training
-              <a href="{{route('training.attendance')}}" class='btn btn-default pull-right'>Back</a>
+              <a href="{{route('training.attendance')}}" class='btn btn-success pull-right'>Back</a>
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
@@ -103,8 +103,8 @@
               </div>
           </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-default glyphicon glyphicon-ok">Save</button>
-        <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
+        <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
       </div>
       </form>
       </div>

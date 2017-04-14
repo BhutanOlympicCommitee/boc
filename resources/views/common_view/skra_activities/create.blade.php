@@ -90,8 +90,8 @@
                 </div>
                 <div class="form-group">
                     <div class="col-xs-10 col-xs-offset-2 input-group">
-                      <input type="submit" class="btn btn-default col-xs-2 col-xs-offset-7" value="Submit">
-                      <a href="{{route('skra_activities.index')}}" class='btn btn-default col-xs-2 col-xs-offset-1'>Cancel</a>
+                      <button type="submit" class="btn btn-primary col-xs-2 col-xs-offset-7 glyphicon glyphicon-ok" value="Save">Save</button>
+                      <a href="{{route('skra_activities.index')}}" class='btn btn-warning col-xs-2 col-xs-offset-1 glyphicon glyphicon-remove'>Cancel</a>
                     </div>
                 </div>
                 </form>

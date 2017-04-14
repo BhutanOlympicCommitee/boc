@@ -125,7 +125,7 @@
                     <?php $id=1;
                     ?>
                     @foreach($review_plan as $review) 
-                    {{-- @if($sport_id==$review->sport_org_id && $year==$review->year_id && $akra_id==$review->skra_id && $akra_activity==$review->skra_activity_id) --}}
+                   
                       <tr>
                          <td>{{$id++}}</td>
                          <td>{{$review->activity_name}}</td>
@@ -136,12 +136,16 @@
                           <td>{{$review->external_budget}}</td>
                           <td>{{$review->collaborating_agency}}</td>
                           <td>
-                            <a href="{{route('review_plan.review',$review->activity_id)}}" class="btn btn-primary">Review</a>
-                           {{--  <a data-toggle='modal' data-target='#reviewKPI' class="btn btn-primary">KPI</a> --}}
-                           <a href="{{route('review_plan.reviewKPI',$review->activity_id)}}" class="btn btn-primary">KPI</a>
+                            @if($review->status==0)
+                            <a href="{{route('review_plan.review',$review->activity_id)}}" class="btn btn-info glyphicon glyphicon-edit">Review</a>
+                           <a href="{{route('review_plan.reviewKPI',$review->activity_id)}}" class="btn btn-success glyphicon glyphicon-ok">KPI</a>
+                           @endif
+                           @if($review->status==1)
+                             <a class="btn-warning" style="text-decoration:none;">&nbsp;&nbsp;Reviewed&nbsp;&nbsp;</a>
+                           <a href="{{route('review_plan.reviewKPI',$review->activity_id)}}" class="btn btn-success glyphicon glyphicon-ok">KPI</a>
+                           @endif
                           </td>
                       </tr>
-                    {{-- @endif --}}
                     @endforeach
                     </tbody>
                 </table>

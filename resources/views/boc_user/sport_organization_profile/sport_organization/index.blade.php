@@ -19,7 +19,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="text-muted bootstrap-admin-box-title clearfix">Sport Organization Profile
-                            <a class='btn btn-success glyphicon glyphicon-plus pull-right' href='{{route('sport_organization.create')}}'>Add</a> 
+                            <a class='btn btn-success glyphicon glyphicon-plus pull-right' href='{{route('sport_organization.create')}}'>Add Sport Org Details</a> 
                             </div>
                         </div>
                         <div class="bootstrap-admin-panel-content">
@@ -84,11 +84,11 @@
                                     <td>{{$sport->sport_org_phone}}</td>
                                     <td>{{$sport->sport_org_email}}</td>
                                     <td>
-                                        <form class="form-group" action="{{route('sport_organization.destroy',$sport->sport_org_id)}}" method='post'>
+                                        <form class="form-group clearfix" action="{{route('sport_organization.destroy',$sport->sport_org_id)}}" method='post'>
                                             <input type="hidden" name="_method" value="delete">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <a href="{{route('sport_organization.edit',$sport->sport_org_id)}}" class="btn btn-info glyphicon glyphicon-edit">Edit</a>
-                                            <button type="submit" class="btn btn-warning glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Remove
+                                            <button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Delete
                                             </button>
                                         </form>
                                     </td>

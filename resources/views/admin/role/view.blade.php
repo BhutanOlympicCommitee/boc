@@ -21,7 +21,7 @@
               <div class="text-muted bootstrap-admin-box-title">Role Management</div>
               <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addRoleModel" style="float:right; padding: 2px;">
                 <span class="glyphicon glyphicon-plus"></span>
-                Add
+                Add User Role
               </button>
             </div>
             <div class="bootstrap-admin-panel-content">
@@ -45,14 +45,14 @@
                  <td><?php echo $role->description;?></td>
                  <td>
                   <button type="button" class="edit_role btn btn-info" data-toggle="modal" data-target="#UpdateRoleModel">
-                    <span class="glyphicon glyphicon-erase"></span>
-                    Update
+                    <span class="glyphicon glyphicon-edit"></span>
+                    Edit
                     <div class="hidden role_id">{{$role->id}}</div>
                     <div class="hidden role_name">{{$role->role_name}}</div>
                     <div class="hidden description">{{$role->description}}</div>
                   </button>
                   &nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="{{route('delete_role',['id'=>$role->id])}}" onclick='return confirm("Are you sure?")' class="btn btn-warning"><span class=" glyphicon glyphicon-remove"></span>Delete</a>
+                  <a href="{{route('delete_role',['id'=>$role->id])}}" onclick='return confirm("Are you sure?")' class="btn btn-danger"><span class=" glyphicon glyphicon-trash"></span>Delete</a>
                 </td>
               </tr>
               <?php 
@@ -93,8 +93,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Add</button>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
+          <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
         </div>
       </form>
     </div>
@@ -124,8 +124,9 @@
           </div>
           <input type="hidden" name="role_id">
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Update</button>
+            <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
+            
           </div>
         </form>
       </div>
@@ -133,7 +134,13 @@
   </div>
   <script type="text/javascript">
     $(document).ready(function(){
-      $('#role_table').DataTable();
+      $('#role_table').DataTable(
+           {
+           "language": {
+           "search": "Search Role:"
+     }
+     }
+      );
       $('.edit_role').click(function(){
         role_name = $(this).find(".role_name").html();
         description = $(this).find(".description").html();

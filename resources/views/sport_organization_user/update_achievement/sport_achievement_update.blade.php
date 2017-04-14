@@ -105,7 +105,7 @@
                   </div>
               </div>
               </div>
-                  <button type='submit' class='btn btn-default col-xs-offset-10'>Submit</button>
+                  <button type='submit' class='btn btn-primary col-xs-offset-10'>Submit</button>
                   <button type='reset' class="btn btn-warning pull-right">Cancel
                   </button>
             </div>

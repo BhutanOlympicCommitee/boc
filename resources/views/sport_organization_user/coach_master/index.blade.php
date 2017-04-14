@@ -87,7 +87,7 @@
                           <td>{{$coachs->coach_passport}}</td>
         									<td>
 							              <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='fun_edit({{$coachs->coach_id}})'>Edit</a>
-                            <a class="btn btn-danger glyphicon glyphicon-remove" data-toggle='modal' data-target='#seperationModal' onclick='coach_seperation({{$coachs->coach_id}})'>Seperate</a>
+                            <a class="btn btn-danger glyphicon glyphicon-trash" data-toggle='modal' data-target='#seperationModal' onclick='coach_seperation({{$coachs->coach_id}})'>Seperate</a>
         									</td>
         								</tr>
                         @endif
@@ -217,8 +217,8 @@
             </div>
           </div>
        <div class="modal-footer">
-          <button type="submit" class="btn btn-default glyphicon glyphicon-ok">Save</button>
-          <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
+          <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
         </div>
       </form>
       </div>
@@ -336,8 +336,8 @@
             </div>
           </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-info">Update</button>
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Update</button>
+        <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
       </div>
       <input type="hidden" name="edit_id" id='edit_id'>
       </form>
@@ -381,10 +381,16 @@
   </div>
 </div>
 <script type="text/javascript">
-  $(function()
-  {
-    $('#table').dataTable();
-  });
+   $(function()
+    {
+        $('#table').DataTable(
+           {
+           "language": {
+           "search": "Filter Coach:"
+     }
+     }
+          );
+    });  
   function fun_edit(id)
   {
     var view_url = $("#hidden_show").val();

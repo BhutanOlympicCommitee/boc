@@ -99,7 +99,7 @@
                           <input type="hidden" name="_method" value="delete">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                           <input type="hidden" name="hidden_game_id" value={{$team_member->gamesdetail_id}}>
-                          <button type="submit" class="btn btn-warning glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Remove
+                          <button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Delete
                           </button>
                         </form>
                 </td>
@@ -204,8 +204,8 @@
          </div>
          <div class="modal-footer">
     
-          <button type="submit" class="btn btn-default glyphicon glyphicon-ok">Add</button>
-          <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Add</button>
+          <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
         </div>
       </form>
       </div>

@@ -19,6 +19,7 @@ class CreateTblSKRAsTable extends Migration
             $table->string('SKRA_name',250);
             $table->string('SKRA_description',1500);
             $table->timestamps();
+            $table->integer('status')->default(0);
             $table->integer('created_by');
         });
     }

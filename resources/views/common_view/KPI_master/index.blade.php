@@ -142,8 +142,8 @@
           </div>
         </div>
        <div class="modal-footer">
-          <button type="submit" class="btn btn-default glyphicon glyphicon-ok">Save</button>
-          <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
+          <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
         </div>
        
       </form>
@@ -221,8 +221,8 @@
         </div>
        <input type="hidden" id="edit_id" name="edit_id">
       <div class="modal-footer">
-        <button type="submit" class="btn btn-info">Update</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Update</button>
+        <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
       </div>
        
       </form>
@@ -232,6 +232,8 @@
 </div>
 <!-- ends editModal-->
 <script type="text/javascript">
+<<<<<<< HEAD
+=======
  $(function(){
     $('#table3').DataTable(
       {
@@ -241,6 +243,7 @@
         'searching':false
       });
   });
+>>>>>>> 3b05bee30be9e9901c1e34a043040ee82e712460
 function kpi_edit(id)
     {
       var view_url = $("#hidden_view").val();
@@ -261,6 +264,34 @@ function kpi_edit(id)
           $("#poor").val(result.poor);
         }
       });
+<<<<<<< HEAD
+
+</script>
+<script type="text/javascript">
+ $(function()
+    {
+        $('#table3').DataTable(
+           {
+           "language": {
+           "search": "Filter KPI:"
+     }
+     }
+          );
+    });  
+  function kpi_edit(id)
+  {
+    var view_url = $("#hidden_view").val();
+    var kpi_id=id;
+    $.ajax({
+      url: view_url,
+      type:"GET", 
+      data:{"id":kpi_id}, 
+      success: function(result){
+        console.log(result);
+      }
+    });
+=======
+>>>>>>> 3b05bee30be9e9901c1e34a043040ee82e712460
     }
 </script>
 @endsection

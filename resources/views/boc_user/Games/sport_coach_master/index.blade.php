@@ -58,7 +58,7 @@
         							              <input type="hidden" name="_method" value="delete">
         							              <input type="hidden" name="_token" value="{{ csrf_token() }}">
         							              <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='fun_edit({{$sports->sc_id}})'>Edit</a>
-        							              <button type="submit" class="btn btn-warning glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Remove
+        							              <button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Delete
         							              </button>
         							            </form>
         									</td>
@@ -146,8 +146,8 @@
                 </div>
       
        <div class="modal-footer">
-          <button type="submit" class="btn btn-default glyphicon glyphicon-ok">Save</button>
-          <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
+          <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
         </div>
       </form>
       </div>
@@ -222,8 +222,8 @@
                 </div>
     <input type="hidden" id="edit_id" name="edit_id">
       <div class="modal-footer">
-        <button type="submit" class="btn btn-info">Update</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Update</button>
+        <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
       </div>
       </form>
       </div>
@@ -231,9 +231,16 @@
   </div>
 </div>
 <script type="text/javascript">
-	$(function(){
-		$('#table1').DataTable(); 
-	});
+	 $(function()
+    {
+        $('#table1').DataTable(
+           {
+           "language": {
+           "search": "Filter sport & coach:"
+     }
+     }
+          );
+    });  
   function fun_edit(id)
     {
       var view_url = $("#hidden_view").val();

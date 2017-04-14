@@ -40,6 +40,7 @@
                   {{ Session::get('success') }}
                 </div>
               @endif
+            </br>
               <table class="table table-bordered table-striped table-responsive" id="table1">
                 <thead>
                   <tr>
@@ -65,7 +66,7 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='fun_edit({{$advisories->ad_member_id}})'>Edit</a>
-                        <button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Remove
+                        <button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Delete
                         </button>
                      </form>
                     </td>
@@ -78,7 +79,7 @@
               <div class='form-group'>
                 <div class="col-xs-11 col-xs-offset-7 input-group" style='margin-top:20px'>
                   <a class='btn btn-success glyphicon glyphicon-plus col-xs-offset-1' data-toggle='modal' data-target="#addModal">Add</a> 
-                  <a href="{{route('sport_organization.index')}}" class='btn btn-default col-xs-offset-2 glyphicon glyphicon-remove'>Cancel</a>
+                  <a href="{{route('sport_organization.index')}}" class='btn btn-warning col-xs-offset-2 glyphicon glyphicon-remove'>Cancel</a>
                 </div>
               </div>
             </div>
@@ -166,8 +167,8 @@
                   </div>
           </div>
        <div class="modal-footer">
-          <button type="submit" class="btn btn-default glyphicon glyphicon-ok">Save</button>
-          <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
+          <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
       </div>
       </form>
       </div>
@@ -223,8 +224,8 @@
           </div>
           <input type="hidden" id="edit_id" name="edit_id">
       <div class="modal-footer">
-        <button type="submit" class="btn btn-info">Update</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Update</button>
+        <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
       </div>
       </form>
       </div>

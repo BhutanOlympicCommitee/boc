@@ -80,7 +80,7 @@
                 </div>
             </div>
          <div class="modal-footer">
-          <button type="submit" class="btn btn-default glyphicon glyphicon-ok">Save</button>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
 
         </div>
           </form>
