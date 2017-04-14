@@ -76,7 +76,7 @@ class KPIController extends Controller
         $proposed_kpi=Tbl_proposed_KPI::find($id);
         $proposed_kpi->status=1;
         $proposed_kpi->save();
-        return redirect()->route('review_plan.reviewKPI',$id);
+        return redirect()->route('review_plan.reviewKPI',Session::get('activity_id'));
     }
 
    public function update_kpi(Request $request)

@@ -1208,7 +1208,7 @@ CREATE TABLE `tbl__k_p_i_approveds` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`kpi_approval_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1217,9 +1217,17 @@ CREATE TABLE `tbl__k_p_i_approveds` (
 
 LOCK TABLES `tbl__k_p_i_approveds` WRITE;
 /*!40000 ALTER TABLE `tbl__k_p_i_approveds` DISABLE KEYS */;
-INSERT INTO `tbl__k_p_i_approveds` VALUES (1,1,'Number of teams or individuals participated',2.00,3.00,'Nos',35.00,224.00,140.00,130.00,2,2,'2017-04-11 00:48:32','2017-04-11 00:48:32');
-INSERT INTO `tbl__k_p_i_approveds` VALUES (3,2,'Number of girls team',4.00,5.00,'Nos',123.00,567.00,345.00,234.00,2,2,'2017-04-11 00:50:12','2017-04-11 00:50:12');
-INSERT INTO `tbl__k_p_i_approveds` VALUES (4,1,'Number of teams or individuals participated',3.00,3.00,'Nos',40.00,225.00,145.00,130.00,2,2,'2017-04-14 03:19:36','2017-04-14 03:19:36');
+INSERT INTO `tbl__k_p_i_approveds` VALUES (9,1,'Number of teams or individuals participated',3.00,3.00,'Nos',40.00,225.00,145.00,130.00,2,2,'2017-04-14 03:44:09','2017-04-14 03:44:09');
+INSERT INTO `tbl__k_p_i_approveds` VALUES (10,2,'Number of girls team',4.00,5.00,'Nos',120.00,560.00,345.00,234.00,2,2,'2017-04-14 03:44:49','2017-04-14 03:44:49');
+INSERT INTO `tbl__k_p_i_approveds` VALUES (11,1,'Number of teams or individuals participated',3.00,3.00,'Nos',40.00,225.00,145.00,130.00,2,2,'2017-04-14 03:47:33','2017-04-14 03:47:33');
+INSERT INTO `tbl__k_p_i_approveds` VALUES (12,1,'Number of teams or individuals participated',3.00,3.00,'Nos',40.00,225.00,145.00,130.00,2,2,'2017-04-14 03:48:12','2017-04-14 03:48:12');
+INSERT INTO `tbl__k_p_i_approveds` VALUES (13,1,'Number of teams or individuals participated',3.00,3.00,'Nos',40.00,225.00,145.00,130.00,2,2,'2017-04-14 03:57:37','2017-04-14 03:57:37');
+INSERT INTO `tbl__k_p_i_approveds` VALUES (14,2,'Number of girls team',4.00,5.00,'Nos',120.00,560.00,345.00,234.00,2,2,'2017-04-14 03:58:50','2017-04-14 03:58:50');
+INSERT INTO `tbl__k_p_i_approveds` VALUES (15,1,'Number of teams or individuals participated',3.00,3.00,'Nos',40.00,225.00,145.00,130.00,2,2,'2017-04-14 03:59:26','2017-04-14 03:59:26');
+INSERT INTO `tbl__k_p_i_approveds` VALUES (16,1,'Number of teams or individuals participated',3.00,3.00,'Nos',40.00,225.00,145.00,130.00,2,2,'2017-04-14 04:00:58','2017-04-14 04:00:58');
+INSERT INTO `tbl__k_p_i_approveds` VALUES (17,2,'Number of girls team',4.00,5.00,'Nos',120.00,560.00,345.00,234.00,2,2,'2017-04-14 04:01:08','2017-04-14 04:01:08');
+INSERT INTO `tbl__k_p_i_approveds` VALUES (18,1,'Number of teams or individuals participated',3.00,3.00,'Nos',40.00,225.00,145.00,130.00,2,2,'2017-04-14 04:01:45','2017-04-14 04:01:45');
+INSERT INTO `tbl__k_p_i_approveds` VALUES (19,2,'Number of girls team',4.00,5.00,'Nos',120.00,560.00,345.00,234.00,2,2,'2017-04-14 04:01:59','2017-04-14 04:01:59');
 /*!40000 ALTER TABLE `tbl__k_p_i_approveds` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1521,8 +1529,8 @@ CREATE TABLE `tbl_proposed__k_p_is` (
 
 LOCK TABLES `tbl_proposed__k_p_is` WRITE;
 /*!40000 ALTER TABLE `tbl_proposed__k_p_is` DISABLE KEYS */;
-INSERT INTO `tbl_proposed__k_p_is` VALUES (1,2,'Number of teams or individuals participated',3.00,3.00,'Nos',40.00,225.00,145.00,130.00,0,3,3,'2017-04-10 22:23:08','2017-04-13 00:07:59');
-INSERT INTO `tbl_proposed__k_p_is` VALUES (2,2,'Number of girls team',4.00,5.00,'Nos',120.00,560.00,345.00,234.00,0,3,3,'2017-04-10 23:38:05','2017-04-13 00:08:39');
+INSERT INTO `tbl_proposed__k_p_is` VALUES (1,2,'Number of teams or individuals participated',3.00,3.00,'Nos',40.00,225.00,145.00,130.00,0,3,3,'2017-04-10 22:23:08','2017-04-14 04:01:45');
+INSERT INTO `tbl_proposed__k_p_is` VALUES (2,2,'Number of girls team',4.00,5.00,'Nos',120.00,560.00,345.00,234.00,1,3,3,'2017-04-10 23:38:05','2017-04-14 04:01:59');
 INSERT INTO `tbl_proposed__k_p_is` VALUES (3,5,'Number of boys team',3.00,2.00,'Nos',60.00,674.00,454.00,256.00,0,3,3,'2017-04-10 23:39:02','2017-04-13 00:09:38');
 /*!40000 ALTER TABLE `tbl_proposed__k_p_is` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1914,4 +1922,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-14 15:24:48
+-- Dump completed on 2017-04-14 16:04:07

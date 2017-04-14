@@ -31,6 +31,7 @@ class ReviewPlanController extends Controller
     }
      public function showKPI($id)
     {
+         Session::put('activity_id',$id);
         $review_kpi=Tbl_proposed_KPI::where('activity_id',$id)->get();
         return view('boc_user.annual_activities_plan.review_plan.showKPI',compact('review_kpi'));
     }
