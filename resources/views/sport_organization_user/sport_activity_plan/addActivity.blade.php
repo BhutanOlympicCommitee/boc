@@ -57,7 +57,6 @@
                       <form class="form-group">
                         <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='editActivities({{$activity->activity_id}})'>Edit</a>
                         <a class="btn btn-success glyphicon glyphicon-check" href="{{route('KPI_master.index', $activity->activity_id)}}">KPI</a>
-                        
                         </button>
                       </form>
                   </td>

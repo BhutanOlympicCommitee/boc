@@ -10,7 +10,7 @@ use Auth;
 
 class KPIController extends Controller
 {
-    public function index($id)
+    public function index_kpi($id)
     {
         $kpi = Tbl_proposed_KPI::all();
         Session::put('activity_id',$id);
@@ -22,7 +22,6 @@ class KPIController extends Controller
         $searchkpi=Tbl_proposed_KPI::all();
         return view('sport_organization_user.search_activity.searchKPI',compact('searchkpi'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -80,14 +79,12 @@ class KPIController extends Controller
         return redirect()->route('review_plan.reviewKPI',$id);
     }
 
-   public function view(Request $request)
-    {
-       
+   public function update_kpi(Request $request)
+    { 
       if($request->ajax()){
-            $id = $request->id;
-            $info = Tbl_proposed_KPI::where('kpi_id',$id)->first();
-            return response()->json($info);
-
+        $id = $request->id;
+        $info = Tbl_proposed_KPI::find($id);
+        return response()->json($info);
         }
     }
   
@@ -104,9 +101,16 @@ class KPIController extends Controller
         $kpi->good=$request->good;
         $kpi->average=$request->average;
         $kpi->poor=$request->poor;
-        $dzongkhag->save();
+        $kpi->save();
         Session::flash('success', 'KPI updated successfully');
-        return redirect()->route('KPI_master.index');
+        if($request->update=='update')
+        {
+            return redirect()->route('search_activity.searchKPI');
+        }
+        else
+        {
+            return redirect()->route('KPI_master.index',$kpi->kpi_id);
+        }
     }
 }
 

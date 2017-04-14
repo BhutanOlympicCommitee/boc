@@ -81,6 +81,7 @@ Route::post('gewog/update', 'GewogController@update')->name('update_gewog');
 
 //routes for sport organization
 Route::get('sport',['as'=>'sport_organization.index','uses'=>'Sport_Organization_Controller@index']);
+Route::post('sport/search',['as'=>'sport_organization.search','uses'=>'Sport_Organization_Controller@searchSportOrganization']);
 Route::get('sport/create',['as'=>'sport_organization.create','uses'=>'Sport_Organization_Controller@create']);
 Route::post('sport/store',['as'=>'sport_organization.store','uses'=>'Sport_Organization_Controller@store']);
 Route::delete('sport/destroy/{id}',['as'=>'sport_organization.destroy','uses'=>'Sport_Organization_Controller@destroy']);
@@ -252,16 +253,20 @@ Route::get('sport_activity',['as'=>'sport_activity_plan.addActivity','uses'=>'Up
 Route::get('sport_activity/edit_activity', 'UpdateSportActivityController@editActivities')->name('editActivities');
 
 //routes for KPI
-Route::get('kpi/{id}',['as'=>'KPI_master.index','uses'=>'KPIController@index']);
+
 Route::post('kpi/store',['as'=>'KPI_master.store','uses'=>'KPIController@store']);
-Route::get('kpi/view', 'KPIController@view')->name('view_kpi');
+Route::get('kpi/edit_kpi','KPIController@update_kpi')->name('view_kpi');
+
 Route::post('kpi/update', 'KPIController@update')->name('update_kpi');
 Route::post('kpi/{id}/approved_kpi',['as'=>'approved_kpi','uses'=>'KPIController@addApprovedKPI']);
+Route::get('kpi/{id}',['as'=>'KPI_master.index','uses'=>'KPIController@index_kpi']);
 
 Route::post('sport_activity/update_proposed_activity', 'UpdateSportActivityController@updateProposedActivities')->name('update_proposed_activities');
 
 //routes for search activities
 Route::get('searchActivity',['as'=>'search_activity.search','uses'=>'Sport_Organization_Controller@search']);
-
 //routes for search activities
 Route::get('searchKPI',['as'=>'search_activity.searchKPI','uses'=>'KPIController@searchKPI']);
+
+//route for search akra activites
+//Route::post('searchAKRA_activity','SKRA_activities_Controller@searchAKRAactivity')->name('searchAKRA');

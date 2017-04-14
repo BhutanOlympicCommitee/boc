@@ -53,10 +53,10 @@
                           <td>{{$kpis->average}}</td>
                           <td>{{$kpis->poor}}</td>
                           <td>
-                            <form class="form-group">
-                                    <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='kpi_edit({{$kpis->kpi_id}})'>Edit</a>
-                                    </button>
-                                  </form>
+                            
+                            <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='kpi_edit({{$kpis->kpi_id}})'>Edit</a>
+                             {{-- <a class="btn btn-info glyphicon glyphicon-edit" href={{route('view_kpi')}}>Edit</a> --}}
+                                 
                           </td>
                         </tr>
                         @endforeach
@@ -232,20 +232,31 @@
 </div>
 <!-- ends editModal-->
 <script type="text/javascript">
+<<<<<<< HEAD
+=======
+ $(function(){
+    $('#table3').DataTable(
+      {
+        "paging":   false,
+        "ordering": false,
+        "info":     false,
+        'searching':false
+      });
+  });
+>>>>>>> 3b05bee30be9e9901c1e34a043040ee82e712460
 function kpi_edit(id)
     {
       var view_url = $("#hidden_view").val();
       $.ajax({
         url: view_url,
-        alert(url);
         type:"GET", 
         data: {"id":id}, 
         success: function(result){
-          // console.log(result);
+          //console.log(result);
           $("#edit_id").val(result.kpi_id);
           $("#kpi_name").val(result.kpi_name);
           $("#RGoB").val(result.RGoB);
-          $("#external1").val(result.external1);
+          $("#external1").val(result.external);
           $("#unit").val(result.unit);
           $("#baseline").val(result.baseline);
           $("#good").val(result.good);
@@ -253,6 +264,7 @@ function kpi_edit(id)
           $("#poor").val(result.poor);
         }
       });
+<<<<<<< HEAD
 
 </script>
 <script type="text/javascript">
@@ -278,6 +290,8 @@ function kpi_edit(id)
         console.log(result);
       }
     });
+=======
+>>>>>>> 3b05bee30be9e9901c1e34a043040ee82e712460
     }
 </script>
 @endsection
@@ -288,6 +302,3 @@ function kpi_edit(id)
     </div>
 </div>
 @endsection
-
-
-
