@@ -19,7 +19,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <div class="text-muted bootstrap-admin-box-title clearfix">Country Information
-            	<a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addCountryModal">Add</a> 
+            	<a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addCountryModal">Add Country</a> 
                </div>
             </div>
 	        <div class="bootstrap-admin-panel-content">
@@ -53,7 +53,7 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='fun_edit({{$countries->country_id}})'>Edit</a>
 
-                    <button type="submit" class="btn btn-warning glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data??');" name='name'>Remove
+                    <button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data??');" name='name'>Delete
                     </button>
                    </form>
                   </td>
@@ -102,8 +102,8 @@
                         </div>
                 </div>        
             <div class="modal-footer">
-                <button type="submit" class="btn btn-default glyphicon glyphicon-ok">Save</button>
-                <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
+                <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
             </div>
             </form>
       </div>
@@ -139,8 +139,8 @@
            
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-info">Update</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Update</button>
+            <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
           </div>
         </form> 
         </div>
@@ -153,8 +153,15 @@
 <script type="text/javascript">
    $(function()
     {
-        $('#table1').DataTable();
+        $('#table1').DataTable(
+           {
+           "language": {
+           "search": "Filter Country:"
+     }
+     }
+          );
     });  
+
 
    function fun_edit(id)
     {

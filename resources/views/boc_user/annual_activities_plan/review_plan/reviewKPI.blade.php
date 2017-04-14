@@ -104,8 +104,11 @@
               </div>
             </div>
              <br>
-              <button type='submit' class='btn btn-info col-xs-offset-10' name='update1' value='form1'>Update</button>
-              <a href="{{route('review_plan.index')}}" class='btn btn-warning pull-right'> Cancel</a>
+             <div class="form-group clearfix">
+              <button type='submit' class='btn btn-primary col-xs-offset-10 glyphicon glyphicon-ok' name='update1' value='form1'>Update</button>
+              <a href="{{route('review_plan.index')}}" class='btn btn-warning pull-right glyphicon glyphicon-remove'>Close</a>
+                      
+            </div>
             </form>
             </div>
             </div>

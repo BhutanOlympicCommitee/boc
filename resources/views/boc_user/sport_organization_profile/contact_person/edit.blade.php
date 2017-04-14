@@ -71,12 +71,12 @@
                       </div>
                       <div class='form-group'>
                         <div class="col-xs-11 col-xs-offset-2 input-group">
-                        <button type='submit' class='btn btn-default col-xs-2' name='update1' value='form1'>Update</button>
-                        {{-- <a href="#Management-info" data-toggle="tab" class='btn btn-default col-xs-2 col-xs-offset-1 next2'>Next</a> --}}
-                        <button type='submit' class='btn btn-default col-xs-2 col-xs-offset-1 next1' name='update1' value='form2'>Next</button>
+                        <button type='submit' class='btn btn-primary col-xs-2' name='update1' value='form1'>Update</button>
+                        {{-- <a href="#Management-info" data-toggle="tab" class='btn btn-info col-xs-2 col-xs-offset-1 next2'>Next</a> --}}
+                        <button type='submit' class='btn btn-info col-xs-2 col-xs-offset-1 next1' name='update1' value='form2'>Next</button>
                         <a href="#Management-info" data-toggle="tab" class='btn btn-default col-xs-2 col-xs-offset-1' id='skip'>Skip</a>
                           
-                        <a href="{{route('sport_organization.index')}}" class='btn btn-default col-xs-2 col-xs-offset-1'> Cancel</a>
+                        <a href="{{route('sport_organization.index')}}" class='btn btn-warning col-xs-2 col-xs-offset-1'> Cancel</a>
                       </div> 
                       </div>
                     </form>

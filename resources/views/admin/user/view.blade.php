@@ -21,7 +21,7 @@
                             <div class="text-muted bootstrap-admin-box-title">User Management</div>
                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addUserModal" style="float:right; padding: 2px;">
                                 <span class="glyphicon glyphicon-plus"></span>
-                                Add
+                                Add User
                             </button>
                         </div>
                         <div class="bootstrap-admin-panel-content">
@@ -52,15 +52,15 @@
                                  </td>
                                  <td>
                                     <button type="button" class="edit_user btn btn-info" data-toggle="modal" data-target="#updateUserModal" onclick='onClickValue({{$user->role_id}})'>
-                                        <span class="glyphicon glyphicon-erase"></span>
-                                        Update
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                        Edit
                                         <div class="hidden user_id">{{$user->id}}</div>
                                         <div class="hidden name">{{$user->name}}</div>
                                         <div class="hidden email">{{$user->email}}</div>
                                         <div class="hidden role_id">{{$user->role_id}}</div>
                                     </button>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="{{route('delete_user',['id'=>$user->id])}}" onclick='return confirm("Are you sure?")' class="btn btn-warning"><span class=" glyphicon glyphicon-remove"></span>Delete</a>
+                                    <a href="{{route('delete_user',['id'=>$user->id])}}" onclick='return confirm("Are you sure?")' class="btn btn-danger"><span class=" glyphicon glyphicon-trash"></span>Delete</a>
                                 </td>
                             </tr>
                             <?php 
@@ -134,8 +134,8 @@
     </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Register</button>
+                        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Register</button>
+                        <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
                     </div>
                 </form>
             </div>
@@ -180,8 +180,8 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Update</button>
+        <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
     </div>
 </form>
 </div>
@@ -189,7 +189,13 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#user_table').DataTable();
+        $('#user_table').DataTable(
+           {
+           "language": {
+           "search": "Search User:"
+          }
+            }
+          );
         $('.edit_user').click(function(){
           name = $(this).find(".name").html();
           user_role = $(this).find(".user_role").html(

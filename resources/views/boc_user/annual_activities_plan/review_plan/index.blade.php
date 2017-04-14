@@ -136,9 +136,8 @@
                           <td>{{$review->external_budget}}</td>
                           <td>{{$review->collaborating_agency}}</td>
                           <td>
-                            <a href="{{route('review_plan.review',$review->activity_id)}}" class="btn btn-primary">Review</a>
-                           {{--  <a data-toggle='modal' data-target='#reviewKPI' class="btn btn-primary">KPI</a> --}}
-                           <a href="{{route('review_plan.reviewKPI',$review->activity_id)}}" class="btn btn-primary">KPI</a>
+                            <a href="{{route('review_plan.review',$review->activity_id)}}" class="btn btn-info glyphicon glyphicon-edit">Review</a>
+                           <a href="{{route('review_plan.reviewKPI',$review->activity_id)}}" class="btn btn-success glyphicon glyphicon-ok">KPI</a>
                           </td>
                       </tr>
                     {{-- @endif --}}

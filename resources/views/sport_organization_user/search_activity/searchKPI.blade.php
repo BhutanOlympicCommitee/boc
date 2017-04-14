@@ -127,9 +127,9 @@
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                           @if($searchs->status==0)
                           <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='kpi_edit({{$searchs->kpi_id}})'>Edit</a>
-                          <button type="submit" class="btn btn-warning glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Remove
+                          <button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Delete
                           </button>
-                          <a class=" btn-danger" onclick='' style="text-decoration:none;">&nbsp;&nbsp;Sent for Approval&nbsp;&nbsp;</a>
+                          <a class=" btn-warning" onclick='' style="text-decoration:none;">&nbsp;&nbsp;Sent for Approval&nbsp;&nbsp;</a>
                           @endif
                         </form>
                         @if($searchs->status==1)
@@ -216,8 +216,8 @@
         </div>
        <input type="hidden" id="edit_id" name="edit_id">
       <div class="modal-footer">
-        <button type="submit" class="btn btn-info">Update</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Update</button>
+        <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
       </div>
        
       </form>

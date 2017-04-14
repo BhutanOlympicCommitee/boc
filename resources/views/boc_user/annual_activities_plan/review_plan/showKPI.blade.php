@@ -58,7 +58,7 @@
                   <td>{{$review->average}}</td>
                   <td>{{$review->poor}}</td>
                   <td>
-                    <a href="{{route('review_plan.kpi',$review->kpi_id)}}" class="btn btn-primary">Review</a>
+                    <a href="{{route('review_plan.kpi',$review->kpi_id)}}" class="btn btn-info glyphicon glyphicon-edit">Review</a>
                   </td>
               </tr>
             {{-- @endif --}}

@@ -142,8 +142,8 @@
           </div>
         </div>
        <div class="modal-footer">
-          <button type="submit" class="btn btn-default glyphicon glyphicon-ok">Save</button>
-          <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
+          <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
         </div>
        
       </form>
@@ -221,8 +221,8 @@
         </div>
        <input type="hidden" id="edit_id" name="edit_id">
       <div class="modal-footer">
-        <button type="submit" class="btn btn-info">Update</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Update</button>
+        <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
       </div>
        
       </form>
@@ -231,12 +231,6 @@
   </div>
 </div>
 <!-- ends editModal-->
-<script type="text/javascript">
-<<<<<<< HEAD
- $(function(){
-    $('#table3').DataTable();
-  });
-</script>
 <script type="text/javascript">
 function kpi_edit(id)
     {
@@ -259,12 +253,19 @@ function kpi_edit(id)
           $("#poor").val(result.poor);
         }
       });
-=======
-  $(function(){
-    $('#table1').DataTable();
-  });
+
 </script>
 <script type="text/javascript">
+ $(function()
+    {
+        $('#table3').DataTable(
+           {
+           "language": {
+           "search": "Filter KPI:"
+     }
+     }
+          );
+    });  
   function kpi_edit(id)
   {
     var view_url = $("#hidden_view").val();
@@ -277,7 +278,6 @@ function kpi_edit(id)
         console.log(result);
       }
     });
->>>>>>> 6cdafa139888f2cce3565ca157e60a5e18906d79
     }
 </script>
 @endsection

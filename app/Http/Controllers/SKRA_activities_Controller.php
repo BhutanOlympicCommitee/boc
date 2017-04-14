@@ -104,4 +104,11 @@ class SKRA_activities_Controller extends Controller
         $skra_activity->save();
         return redirect()->route('skra_activities.index')->with('alert-success','Data Has been Updated!');   
     }
+      public function destroy($id)
+    {
+         $skra_activity = Tbl_SKRA_activities::findOrFail($id);
+         $skra_activity->status=1;
+         $skra_activity->save();
+         return redirect()->route('skra_activities.index')->with('success','Data Has been deleted');       
+    }
 }

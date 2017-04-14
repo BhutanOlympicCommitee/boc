@@ -40,6 +40,7 @@
 							        {{ Session::get('success') }}
 							    </div>
 						    @endif
+              </br>
 						    <table class="table table-bordered table-striped table-responsive" id="table1">
 					  			<thead>
 									<tr>
@@ -64,7 +65,7 @@
 							              			<input type="hidden" name="_method" value="delete">
 							              			<input type="hidden" name="_token" value="{{ csrf_token() }}">
                                   <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='fun_edit({{$manage->mg_member_id}})'>Edit</a>
-							              			<button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Remove
+							              			<button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Delete
 							              			</button>
 							            		</form>
 											</td>
@@ -75,9 +76,8 @@
 			  				</table>
                 <input type="hidden" name="hidden_view" id="hidden_view" value="{{url('management/view')}}">
 			  				<div class='form-group'>
-			  				<div class="row col-xs-10 col-xs-offset-6 input-group" style='margin-top:10px'>
-								{{-- <a href="{{route('management_committee.create')}}" class="btn btn-default glyphicon glyphicon-plus">Add</a> --}}
-                    <a class='btn btn-success glyphicon glyphicon-plus' data-toggle='modal' data-target="#addModal">Add</a> 
+			  				<div class="row col-xs-10 col-xs-offset-6 input-group clearfix" style='margin-top:10px'>
+                    <a class='btn btn-success glyphicon glyphicon-plus' data-toggle='modal' data-target="#addModal">Add </a> 
 						        <a href="#Advisory-info-info" data-toggle="tab" class='btn btn-default col-xs-offset-1 next3'>Next</a>
 						        <a href="#Advisory-info" data-toggle="tab" class='btn btn-default col-xs-offset-1 next3'>Skip</a>
 						        <a href="{{route('sport_organization.index')}}" class='btn btn-warning col-xs-offset-1 glyphicon glyphicon-remove'>Cancel</a>
@@ -173,7 +173,7 @@
               </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-default glyphicon glyphicon-ok" name='next' id='next'>Save</button>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok" name='next' id='next'>Save</button>
           <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
         </div>
         </form>
@@ -232,8 +232,8 @@
         </div>
         <input type="hidden" id="edit_id" name="edit_id">
       <div class="modal-footer">
-        <button type="submit" class="btn btn-info">Update</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Update</button>
+        <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
       </div>
       </form>
       </div>
