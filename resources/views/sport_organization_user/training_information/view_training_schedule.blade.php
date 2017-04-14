@@ -19,7 +19,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <div class="text-muted bootstrap-admin-box-title clearfix">Training Schedule for each athletes
-              <a href="{{route('training.index')}}" class='btn btn-default pull-right'>Back</a>
+              <a href="{{route('training.index')}}" class='btn btn-success pull-right'>Back</a>
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">

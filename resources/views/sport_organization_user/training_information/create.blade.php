@@ -253,8 +253,8 @@
           </table>
          </div>
          <div class="modal-footer">
-           <button type='submit' class="btn btn-success glyphicon glyphicon-plus col-xs-offset-8">Create</button>
-            <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
+           <button type='submit' class="btn btn-primary glyphicon glyphicon-plus col-xs-offset-8">Create</button>
+            <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
         </div>
        </form>
       </div>
@@ -355,8 +355,8 @@
             </div>
           </div> 
       <div class="modal-footer">
-        <button type='submit' class="btn btn-info col-xs-offset-8">Update</button>
-        <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+        <button type='submit' class="btn btn-primary col-xs-offset-8 glyphicon glyphicon-ok">Update</button>
+        <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
       </div>
       <input type="hidden" id="edit_id" name="edit_id">
       </form>

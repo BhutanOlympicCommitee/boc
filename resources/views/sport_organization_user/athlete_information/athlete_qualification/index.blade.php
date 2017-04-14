@@ -55,7 +55,7 @@
                                             <input type="hidden" name="_method" value="delete">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <a href="{{route('athlete_qualification.edit',$athlete->qualification_id)}}" class="btn btn-info glyphicon glyphicon-edit">Edit</a>
-                                            <button type="submit" class="btn btn-warning glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Remove
+                                            <button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Delete
                                             </button>
                                         </form>
                                     </td>
@@ -72,10 +72,16 @@
 </div>
 
 <script type="text/javascript">
-    $(function(){
-        
-        $('#table1').DataTable();
-    });
+      $(function()
+    {
+        $('#table1').DataTable(
+           {
+           "language": {
+           "search": "Filter athlete qualification:"
+     }
+     }
+          );
+    });  
 </script>
 @endsection
 @section('footer')

@@ -105,7 +105,7 @@
                     <td>{{$training->end_time}}</td>
                     <td>{{$training->venue}}</td>
                     <td>
-                      <a href='{{route('athlete_attendance',$training->training_id)}}' class='btn btn-default'>Attendance</a>
+                      <a href='{{route('athlete_attendance',$training->training_id)}}' class='btn btn-info'>Attendance</a>
                     </td>
                   </tr>
                 @endforeach

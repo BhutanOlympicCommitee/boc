@@ -195,7 +195,7 @@
       <div class='clearfix'></div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
       </div>
       </div>
     </div>
@@ -249,8 +249,8 @@
                 </div>
        <input type="hidden" name="hidden_athlete_id" id='hidden_athlete_id'>
        <div class="modal-footer">
-          <button type="submit" class="btn btn-default glyphicon glyphicon-ok">Save</button>
-          <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
+          <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
         </div>
         
       </form>
@@ -298,8 +298,8 @@
                  <input type="hidden" name="hide_athlete_id" id='hide_athlete_id'>
       
        <div class="modal-footer">
-          <button type="submit" class="btn btn-default glyphicon glyphicon-ok">Save</button>
-          <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
+          <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
         </div>
       </form>
       </div>
