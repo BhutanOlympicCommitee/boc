@@ -270,3 +270,4 @@ Route::get('searchKPI',['as'=>'search_activity.searchKPI','uses'=>'KPIController
 
 //route for search akra activites
 Route::post('searchAKRA_activity','SKRA_activities_Controller@searchAKRAactivity')->name('searchAKRA');
+Route::post('searchAKRA','SKRA_activities_Controller@searchAKRAactivity')->name('searchAKRA');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\Tbl_SKRA_activities;
 use App\Tbl_UpdateSportActivity;
 use App\Tbl_proposed_sport_org_activity;
@@ -115,29 +116,43 @@ class SKRA_activities_Controller extends Controller
          return redirect()->route('skra_activities.index')->with('success','Data Has been deleted');       
     }
 
-    // public function searchAKRAactivity(Request $request)
-    // {
-    //     $five_yr=$request->five_yr_plan_id;
-    //     $akra=$request->skra_id;
-    //     $boc_program=$request->skra_activity_id;
-    //     if(!empty($five_yr))
-    //     {
-    //         $sport_update=Tbl_UpdateSportActivity::where('five_yr_plan_id',$five_yr)->get();
-    //         foreach($sport_update as $sport)
-    //         {
-    //             $weightage_id=$sport->id;
-    //             $search=Tbl_proposed_sport_org_activity::where('weightage_id',$weightage_id)->get();
-
-        //     foreach($sport_update as $sport)
-        //     { 
-        //         $weightage_id=$sport->id;
-        //         $search=Tbl_proposed_sport_org_activity::where('weightage_id',$weightage_id)->get();
-        //         //return view('sport_organization_user.search_activity.search',['search'=>$search]); 
-        //     }
-             
+    public function searchAKRAactivity(Request $request)
+    {
+        $five_yr=$request->five_yr_plan_id;
+        $akra=$request->skra_id;
+        $boc_program=$request->skra_activity_id;
+        if(!empty($five_yr))
+        {
+            $sport_update=Tbl_UpdateSportActivity::where('five_yr_plan_id',$five_yr)->get();
+            $search=DB::table('tbl__update_sport_activities')
+                ->join('tbl_proposed_sport_org_activities','tbl__update_sport_activities.id','tbl_proposed_sport_org_activities.weightage_id')
+                ->select('tbl_proposed_sport_org_activities.*')
+                ->where('tbl__update_sport_activities.five_yr_plan_id','=',$five_yr)
+                ->get();
+            return view('sport_organization_user.search_activity.search',compact('search','sport_update'));
+        }
+        else if(!empty($akra))
+        {
+           $sport_update=Tbl_UpdateSportActivity::where('skra_id',$akra)->get(); 
+           $search=DB::table('tbl__update_sport_activities') 
+                 ->join('tbl_proposed_sport_org_activities','tbl__update_sport_activities.id','tbl_proposed_sport_org_activities.weightage_id')
+                 ->select('tbl_proposed_sport_org_activities.*')
+                 ->where('tbl__update_sport_activities.skra_id','=',$akra)
+                 ->get();
+             return view('sport_organization_user.search_activity.search',compact('search','sport_update'));
+        }
+        else if(!empty($boc_program))
+        {
+            $sport_update=Tbl_UpdateSportActivity::where('skra_activity_id',$boc_program)->get(); 
+            $search=DB::table('tbl__update_sport_activities') 
+                 ->join('tbl_proposed_sport_org_activities','tbl__update_sport_activities.id','tbl_proposed_sport_org_activities.weightage_id')
+                 ->select('tbl_proposed_sport_org_activities.*')
+                 ->where('tbl__update_sport_activities.skra_activity_id','=',$boc_program)
+                 ->get();
+             return view('sport_organization_user.search_activity.search',compact('search','sport_update'));
+        }
+        else
+        return redirect()->route('search_activity.search');
             
-        // }
-        // else
-        // return redirect()->route('search_activity.search');
-            
+}
 }

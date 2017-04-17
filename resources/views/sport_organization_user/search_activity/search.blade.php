@@ -79,7 +79,7 @@
           </div>    
           <div class="form-group clearfix">
             <div class="col-xs-12 input-group ">
-              <input type="submit" class="btn btn-default pull-right" value="Search" name='search'>
+              <input type="submit" class="btn btn-default pull-right" value="Search" name='search' id=search>
               </div>
           </div>
           </form>
@@ -96,12 +96,10 @@
                       <th style='width:20%'>Action & Status</th>
                 </tr>   
             </thead>
-            <tbody>
-             <?php $id=1;
-              //$search=App\Tbl_proposed_sport_org_activity::all();
-              echo sizeof($search);
-              foreach($search as $searchs):
-              ?>
+            @if(!isset($_POST['search']))
+            <tbody id='tbody1'>
+             <?php $id=1;?>
+              @foreach($search as $searchs)
               <tr>
                 <td>{{$id++}}</td>
                 <td>{{$searchs->updated_activity->getAKRA->SKRA_name}}</td>
@@ -128,10 +126,48 @@
                         </form>
                 </td>
               </tr>
-            <?php endforeach?>
+            @endforeach
             </tbody>
+            @endif
+            @if(isset($_POST['search']))
+             <tbody id='tbody2'>
+             <?php $id=1;
+             ?>
+              @foreach($search as $searchs)
+              <tr>
+                <td>{{$id++}}</td>
+                @foreach($sport_update as $sport)
+                  @if($sport->id==$searchs->weightage_id) 
+                    <td>{{$sport->getAKRA->SKRA_name}}</td>
+                    <td>{{$sport->getAKRAActivity->SKRA_activity}}</td>
+                  @endif 
+                @endforeach
+                <td>{{$searchs->activity_name}}</td>
+                <td>{{$searchs->activity_venue}}</td>
+                <td>{{$searchs->rgob_budget}}</td>
+                <td>{{$searchs->external_budget}}</td>
+                <td>
+                   <form id='edit' class="form-group" action="" method='post'>
+                          <input type="hidden" name="_method" value="delete">
+                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          @if($searchs->status==0)
+                          <a class="btn btn-info" data-toggle='modal' data-target='#editModal' onclick='editActivities({{$searchs->activity_id}})'>Edit</a>
+                          <a class="btn btn-default" href="{{route('search_activity.searchKPI')}}">KPI</a>
+                          <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete this data');" name='name'>DEL
+                          </button>
+                           <a class="btn-warning" style="text-decoration:none;">&nbsp;Sent for Approval&nbsp;</a>
+                          @endif
+                          @if($searchs->status==1)
+                           <a class="btn-success" style="text-decoration:none;">&nbsp;&nbsp;Approved&nbsp;&nbsp;</a>
+                          <a class="btn btn-default" href="{{route('search_activity.searchKPI')}}">KPI</a>
+                          @endif
+                        </form>
+                </td>
+              </tr>
+            @endforeach
+            </tbody>
+            @endif
           </table>
-            
           </div>
         </div>
       </div>
