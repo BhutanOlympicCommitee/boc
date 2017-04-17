@@ -146,4 +146,24 @@ class ReviewPlanController extends Controller
             return response()->json($info);
         }
     }
+
+    public function searchParticipants(Request $request)
+    {
+        if(!empty($request->cid))
+        {
+            $athlete_achievement= Tbl_update_athleteAchievement::where('athlete_cid',$request->cid)->get();
+             return view('sport_organization_user.update_achievement.athlete_achievement',compact('athlete_achievement'));
+        }
+        else if(!empty($request->name))
+        {
+            $athlete_achievement= Tbl_update_athleteAchievement::where('athlete_name',$request->name)->get();
+             return view('sport_organization_user.update_achievement.athlete_achievement',compact('athlete_achievement')); 
+        }
+       else
+       {
+            $athlete_achievement= Tbl_update_athleteAchievement::all();
+            return view('sport_organization_user.update_achievement.athlete_achievement',compact('athlete_achievement')); 
+       }
+      
+    }
 }

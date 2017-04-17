@@ -27,25 +27,29 @@
                   {{ Session::get('success') }}
                 </div>	
 						 	@endif
+              <form action='{{route('searchKPI')}}' method='post'>
+                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class='form-group clearfix'>
-            <label for='five_yr_plan_id' class='col-xs-2'>Five Year Plan:</label>
+              <label for='five_yr_plan_id' class='col-xs-2'>Five Year Plan:</label>
               <div class='col-xs-10 input-group'>
                <select class='form-control' name='five_yr_plan_id'>
-                          <?php 
-                            $fiveYearPlan=App\EnumFiveYearPlan::all();
-                            foreach($fiveYearPlan as $five_year):
-                          ?>
-                          <option value="{{$five_year->five_yr_plan_id}}">{{$five_year->name}}</option>
-                          <?php 
-                            endforeach
-                          ?>
-                          </select>
+                <option disabled selected>Select five year plan</option>
+                  <?php 
+                    $fiveYearPlan=App\EnumFiveYearPlan::all();
+                    foreach($fiveYearPlan as $five_year):
+                  ?>
+                  <option value="{{$five_year->five_yr_plan_id}}">{{$five_year->name}}</option>
+                  <?php 
+                    endforeach
+                  ?>
+                  </select>
               </div>
           </div>
           <div class='form-group clearfix'>
             <label for='skra_id' class='col-xs-2'>AKRA:</label>
               <div class='col-xs-10 input-group'>
                  <select class='form-control' name='skra_id' id='skra1'>
+                  <option disabled selected>Select AKRA</option>
                          <?php 
                             $skras=App\Tbl_SKRA::all();
                             foreach($skras as $skra):
@@ -61,7 +65,7 @@
             <label for='skra_activity_id' class='col-xs-2'>BoC Program:</label>
               <div class='col-xs-10 input-group'>
                 <select class='form-control' name='skra_activity_id'>
-                  <option>Select BoC program</option>
+                  <option disabled selected>Select BoC program</option>
                   <?php 
                     $skra=App\Tbl_SKRA_activities::all();
                     foreach($skra as $skras):
@@ -74,10 +78,10 @@
               </div>
           </div>    
           <div class='form-group clearfix'>
-            <label for='skra_activity_id' class='col-xs-2'>Activity:</label>
+            <label for='activity' class='col-xs-2'>Activity:</label>
               <div class='col-xs-10 input-group'>
-                <select class='form-control' name='skra_activity_id'>
-                  <option>Select Activity</option>
+                <select class='form-control' name='activity'>
+                  <option disabled selected>Select Activity</option>
                   <?php 
                     $activity=App\Tbl_proposed_sport_org_activity::all();
                     foreach($activity as $activities):
@@ -91,28 +95,29 @@
           </div>    
           <div class="form-group clearfix">
             <div class="col-xs-12 input-group ">
-              <input type="submit" class="btn btn-default pull-right" value="Search">
+              <input type="submit" class="btn btn-default pull-right" value="Search" name='search'>
               </div>
           </div>
+          </form>
              <table class="table table-bordered table-striped table-responsive" id="table1">
              <thead>
                 <tr>
-                      <th>Sl. No:</th>
-                            <th>Activity</th>
-                            <th>KPI</th>
-                            <th>Baseline</th>
-                            <th>Good(Target)</th>
-                            <th>Average</th>
-                            <th>Poor</th>
-                            <th style='width:20%'>Action & Status</th>
-                          </tr> 
-                </tr>   
+                  <th>Sl. No:</th>
+                  <th>Activity</th>
+                  <th>KPI</th>
+                  <th>Baseline</th>
+                  <th>Good(Target)</th>
+                  <th>Average</th>
+                  <th>Poor</th>
+                  <th style='width:20%'>Action & Status</th>
+                </tr>  
             </thead>
+            @if(!isset($_POST['search']))
             <tbody>
              <?php $id=1;
-              $search=App\Tbl_proposed_KPI::all();
-              foreach($search as $searchs):
-              ?>
+              //$search=App\Tbl_proposed_KPI::all();
+             ?>
+             @foreach($searchkpi as $searchs)
               <tr>
                 <td>{{$id++}}</td>
                 <td>{{$searchs->proposedActivity->activity_name}}</td>
@@ -140,8 +145,9 @@
                         @endif
                 </td>
               </tr>
-            <?php endforeach?>
+              @endforeach
             </tbody>
+            @endif
           </table>
           </div>
         </div>

@@ -112,5 +112,17 @@ class KPIController extends Controller
             return redirect()->route('KPI_master.index',$kpi->kpi_id);
         }
     }
+
+    public function listAndSearchKPI(Request $request)
+    {
+        $five_yr=$request->five_yr_plan_id;
+        $akra=$request->skra_id;
+        $boc_program=$request->skra_activity_id;
+        $activity=$request->activity;
+        if(!empty($five_yr))
+        {
+            
+        }
+    }
 }
 

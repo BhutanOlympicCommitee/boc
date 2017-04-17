@@ -160,7 +160,7 @@ Route::post('review_plan/storeAthlete',['as'=>'update_achievement.storeAthlete',
 Route::get('update_achievement/view', 'ReviewPlanController@view')->name('view_update_achievement');
 
 Route::post('review_plan/{id}/achievement_report','ReviewPlanController@storeActivitiesAchievedReport')->name('activities_achieved_report');
-
+Route::post('search_participants','ReviewPlanController@searchParticipants')->name('search_participants');
 //Route for Update Achievements 
 Route::get('review_activities_achievemenents_update',[
 		'uses'=>'ReviewPlanController@getAchievement_update',
@@ -243,6 +243,7 @@ Route::get('athlete_achievement','AchievementAndDisplinaryAction@displayAthleteI
 Route::post('athlete_achievement/store',['as'=>'display_athlete_achievement.store','uses'=>'AchievementAndDisplinaryAction@store']);
 Route::post('athlete_achievement/Actionstore',['as'=>'display_athlete_achievement.Actionstore','uses'=>'AchievementAndDisplinaryAction@Actionstore']);
 
+
 //update sport org activities
 Route::get('sport_activity',['as'=>'sport_activity_plan.index','uses'=>'UpdateSportActivityController@index']);
 Route::post('sport_activity/store',['as'=>'sport_activity_plan.store','uses'=>'UpdateSportActivityController@store']);
@@ -267,6 +268,7 @@ Route::post('sport_activity/update_proposed_activity', 'UpdateSportActivityContr
 Route::get('searchActivity',['as'=>'search_activity.search','uses'=>'Sport_Organization_Controller@search']);
 //routes for search activities
 Route::get('searchKPI',['as'=>'search_activity.searchKPI','uses'=>'KPIController@searchKPI']);
+Route::post('listKPI','KPIController@listAndSearchKPI')->name('searchKPI');
 
 //route for search akra activites
 Route::post('searchAKRA_activity','SKRA_activities_Controller@searchAKRAactivity')->name('searchAKRA');

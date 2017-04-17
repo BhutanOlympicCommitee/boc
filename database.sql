@@ -1800,7 +1800,7 @@ CREATE TABLE `tbl_update_athlete_achievements` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`athlete_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1810,6 +1810,8 @@ CREATE TABLE `tbl_update_athlete_achievements` (
 LOCK TABLES `tbl_update_athlete_achievements` WRITE;
 /*!40000 ALTER TABLE `tbl_update_athlete_achievements` DISABLE KEYS */;
 INSERT INTO `tbl_update_athlete_achievements` VALUES (1,'02042013015','Sangay','2017-04-14',6,1,'samling',1,'karma',17678908,'sangay@gmail.com','wangdue',3,3,'2017-04-12 23:42:33','2017-04-12 23:42:33');
+INSERT INTO `tbl_update_athlete_achievements` VALUES (2,'56678','pema','2017-04-13',1,5,'dfghg',1,'tshering',1233,'pema@gmail.com','ertrytuu',3,3,'2017-04-17 02:48:19','2017-04-17 02:48:19');
+INSERT INTO `tbl_update_athlete_achievements` VALUES (3,'1234567','dorji','2017-04-28',3,2,'ghjjgjh',1,'pema',1234,'dorji@gmail.com','dorji,thimphu',3,3,'2017-04-17 03:52:04','2017-04-17 03:52:04');
 /*!40000 ALTER TABLE `tbl_update_athlete_achievements` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1902,8 +1904,8 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','$2y$10$mk3JcPIXVK4hKILLytDVFepTOl2zqoU5H2mwx.infhaHw.msrWHpO',1,'t41UM3eGmX7ZPEBBr38c6gJiGA0XCZnKCos2XZcQHNYaF5oSNoNENB85pkQx','2017-03-24 23:02:03','2017-04-13 21:13:45');
-INSERT INTO `users` VALUES (2,'kelzang','boc@gov.bt','$2y$10$AJCU3eg1CqZ6BYu1JFc7t.3RQfVEmyTmZGH1FTJJMUxPQs7k3RyCm',2,'4T6NimLRfQe0ceqZDR6fK9G6KIgL0zvnQGI1pQdM6jU5Jh7pdA72QWapXAJG','2017-03-26 21:36:29','2017-04-17 01:57:50');
-INSERT INTO `users` VALUES (3,'sangay','sangay@gmail.com','$2y$10$rz0uTnhSRek806H0HZQe8u9PMkILlThwZCd7evyednneiMQryjHEW',4,'XQCaN4bsBsAtJ1VrXTxN4oEgRyLgxmV1jHFaWJ0rrr0esRh1AwdFByNqyxnr','2017-03-27 22:43:38','2017-04-17 01:54:47');
+INSERT INTO `users` VALUES (2,'kelzang','boc@gov.bt','$2y$10$AJCU3eg1CqZ6BYu1JFc7t.3RQfVEmyTmZGH1FTJJMUxPQs7k3RyCm',2,'vJbZ0be3UnYFWixRLEi0ky7NbHoKl5YNbvlfjxR6meXruiyU63j1yNzmW4rs','2017-03-26 21:36:29','2017-04-17 02:46:23');
+INSERT INTO `users` VALUES (3,'sangay','sangay@gmail.com','$2y$10$rz0uTnhSRek806H0HZQe8u9PMkILlThwZCd7evyednneiMQryjHEW',4,'eGWlO3HOyb8VwBPGZ8VizP9MjHIYnLXAEIcKLaU4XSaaAwjrxbF0GEpBkDw8','2017-03-27 22:43:38','2017-04-17 02:45:41');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1916,4 +1918,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-17 14:00:01
+-- Dump completed on 2017-04-17 16:01:19
