@@ -29,6 +29,8 @@
 						 	          @endif
                         <div class='row'>
                 <div class='col-xs-6 clearfix'>
+                <form action='{{route('search_coach_info')}}' method='post'>
+                  <input type="hidden" name="_token" value='{{csrf_token()}}'>
                   <div class='form-group clearfix'>
                     <label for='coach_appointmentDate' class='col-xs-2'>From Date:</label>
                       <div class='col-xs-10 col-xs-offset-3 input-group'>
@@ -59,11 +61,12 @@
                   </div>
                 </div>
               </div>
-                    <div class="form-group clearfix">
-                  <div class="col-xs-12 input-group ">
-                    <input type="submit" class="btn btn-default pull-right" value="Search">
-                    </div>
-                </div>
+              <div class="form-group clearfix">
+                <div class="col-xs-12 input-group ">
+                  <input type="submit" class="btn btn-default pull-right" value="Search" name='search'>
+                  </div>
+              </div>
+              </form>
         				 			<table class="table table-bordered table-striped table-responsive" id="table">
         				 				<thead>
         									<tr>

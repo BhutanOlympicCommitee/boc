@@ -20,8 +20,8 @@ class CreateTblSKRAActivitiesTable extends Migration
             $table->integer('skra_id');
             $table->string('SKRA_activity',250);
             $table->string('SKRA_description',1500);
-            $table->timestamps();
             $table->integer('created_by');
+            $table->timestamps();
         });
     }
 

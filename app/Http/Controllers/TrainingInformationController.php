@@ -168,4 +168,39 @@ class TrainingInformationController extends Controller
         $training_schedule=TrainingSchedule::where('training_id',$id)->get();
         return view('sport_organization_user.training_information.athlete_attendance',compact('training_schedule'));
     }
+    public function searchSportCoach(Request $request)
+    {
+        if(!empty($request->type))
+        {
+            $athlete_info=Athlete_bioinformation::where('athlete_associatedSport',$request->type)->get();
+            return view('sport_organization_user.training_information.index',compact('athlete_info'));
+        }
+        else if(!empty($request->ath_id))
+        {
+            $athlete_info=Athlete_bioinformation::where('athlete_id',$request->ath_id)->get();
+            return view('sport_organization_user.training_information.index',compact('athlete_info'));
+        }
+        else if(!empty($request->ath_name))
+        {
+            $name=explode(' ',$request->ath_name);
+            $first_name=$name[0];
+            $athlete_info=Athlete_bioinformation::where('athlete_fname',$first_name)->get();
+            return view('sport_organization_user.training_information.index',compact('athlete_info'));
+        }
+        else if(!empty($request->coach))
+        {
+            $athlete_info=Athlete_bioinformation::join('tbl_team_members','athlete_bioinformations.athlete_id','tbl_team_members.athlete_id')
+            ->join('tbl_sport_coaches','tbl_sport_coaches.gamesdetail_id','tbl_team_members.gamesdetail_id')
+            ->select('athlete_bioinformations.*')
+            ->where('tbl_sport_coaches.coach',$request->coach)
+            ->get();
+            return view('sport_organization_user.training_information.index',compact('athlete_info'));
+        }
+        else
+        {
+            $athlete_info=Athlete_bioinformation::all();
+            return view('sport_organization_user.training_information.index',compact('athlete_info'));
+        }
+
+    }
 }

@@ -161,51 +161,6 @@ class Sport_Organization_Controller extends Controller
         $sport_org_type=$request->org_type;
         $sport_org_name=$request->org_name;
         $sport_org_abbreviation=$request->org_abbreviation;
-        // if(!empty($sport_org_type) && !empty($sport_org_name) && !empty($sport_org_abbreviation))
-        // {
-        //     $sport_org=Sport_Organization::where('sport_org_type_id',$sport_org_type)->get();
-        //     foreach($sport_org as $sport)
-        //     {
-        //         $sport->sport_org_name=$sport_org_name;
-        //         $sport_org=Sport_Organization::where('sport_org_name', $sport->sport_org_name)->get();
-        //         foreach($sport_org as $sport)
-        //         {
-        //             $sport->sport_org_abbreviation=$sport_org_abbreviation;
-        //             $sport_org=Sport_Organization::where('sport_org_abbreviation', $sport->sport_org_abbreviation)->get();
-        //             return view('boc_user.sport_organization_profile.sport_organization.index',compact('sport_org'));
-        //         }
-        //     }
-        // }
-        // else if(!empty($sport_org_type) && !empty($sport_org_name) && empty($sport_org_abbreviation))
-        // {
-        //     $sport_org=Sport_Organization::where('sport_org_type_id',$sport_org_type)->get();
-        //     foreach($sport_org as $sport)
-        //     {
-        //         $sport->sport_org_name=$sport_org_name;
-        //         $sport_org=Sport_Organization::where('sport_org_name', $sport->sport_org_name)->get();
-        //         return view('boc_user.sport_organization_profile.sport_organization.index',compact('sport_org'));
-        //     }
-        // }
-        // else if(!empty($sport_org_type) && !empty($sport_org_abbreviation) && empty($sport_org_name))
-        // {
-        //     $sport_org=Sport_Organization::where('sport_org_type_id',$sport_org_type)->get();
-        //     foreach($sport_org as $sport)
-        //     {
-        //         $sport->sport_org_abbreviation=$sport_org_abbreviation;
-        //         $sport_org=Sport_Organization::where('sport_org_abbreviation', $sport->sport_org_abbreviation)->get();
-        //         return view('boc_user.sport_organization_profile.sport_organization.index',compact('sport_org'));
-        //     }
-        // }
-        // else if(empty($sport_org_type) && !empty($sport_org_abbreviation) && !empty($sport_org_name))
-        // {
-        //     $sport_org=Sport_Organization::where('sport_org_name',$sport_org_name)->get();
-        //     foreach($sport_org as $sport)
-        //     {
-        //         $sport->sport_org_abbreviation=$sport_org_abbreviation;
-        //         $sport_org=Sport_Organization::where('sport_org_abbreviation', $sport->sport_org_abbreviation)->get();
-        //         return view('boc_user.sport_organization_profile.sport_organization.index',compact('sport_org'));
-        //     }
-        // }
         if(!empty($sport_org_type))
         {
             $sport_org=Sport_Organization::where('sport_org_type_id',$sport_org_type)->get();

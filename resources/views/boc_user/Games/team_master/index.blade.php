@@ -33,12 +33,15 @@
                 </div>	
 						 	@endif
               </br>
+              <form action='{{route('search_sport_coach')}}' method='POST'>
+                <input type="hidden" name="_token" value='{{csrf_token()}}'>
               <div class='row'>
                <div class='col-xs-6 clearfix'>
                 <div class='form-group clearfix'>
                  <label for='federation' class='col-xs-3'>Federation:</label>
                   <div class='col-xs-9 input-group'>
                    <select class='form-control' name='federation' id='federation1'>
+                    <option disabled selected>Select sport organization</option>
                       <?php 
                         $sport=App\Sport_Organization::all();
                         foreach($sport as $sports):
@@ -56,6 +59,7 @@
                 <label for='sport' class='col-xs-2'>Sport:</label>
                   <div class='col-xs-10 input-group'>
                     <select class='form-control' name='sport' id='sport'>
+                      <option disabled selected>Select associated sport</option>
                       <?php 
                         $asport=App\Associated_Sport::all();
                         foreach($asport as $asports):
@@ -69,6 +73,10 @@
                 </div>
               </div>
             </div>
+            <div class='form-group clearfix'>
+              <button type='submit' class='btn btn-primary pull-right'>Search</button>
+            </div>
+            </form>
              <table class="table table-bordered table-striped table-responsive" id="table1">
               <thead>
                 <tr>
@@ -77,6 +85,7 @@
                   <th>Sport</th>
                   <th>Athlete ID</th>
                   <th>Athlete Name</th>
+                  <th>Athlete function</th>
                   <th style='width:20%'>Action</th>
                 </tr> 
               </thead>
@@ -94,10 +103,13 @@
                 <td>{{$teams->displayAsport->sport_name}}</td>
                 <td>{{$teams->athlete_id}}</td>
                 <td>{{$teams->athlete_fname.' '.$teams->athlete_mname.' '.$teams->athlete_lname}}</td>
+                <td>{{$teams->displayAthleteFunction->athlete_function_name}}</td>
                 <td>
                   <form id='remove' class="form-group" action="{{route('team_master.destroy',$teams->athlete_id,$team_member->gamesdetail_id)}}" method='post'>
                           <input type="hidden" name="_method" value="delete">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          <a class="btn btn-info glyphicon glyphicon-edit" name='name' onclick='editAthleteFunction({{$teams->athlete_id}})'>Edit
+                          </a>
                           <input type="hidden" name="hidden_game_id" value={{$team_member->gamesdetail_id}}>
                           <button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Delete
                           </button>
@@ -120,7 +132,7 @@
     </div>
   </div>
 </div>
-<!-- Add dzongkhag modal begins-->
+<!-- Add team memeber modal begins-->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -129,8 +141,8 @@
         <h4 class="modal-title" id="myModalLabel">Select Athlete for Team</h4>
       </div>
       <div class="modal-body">
-       <form action="{{route('team_master.store')}}" method="post">
-          {{csrf_field()}}
+       {{-- <form action="#route('search_sport_coach')" method="post">
+          {{csrf_field()}} --}}
         
        <div class='row'>
             <div class='col-xs-6 clearfix'>
@@ -138,6 +150,7 @@
             <label for='federation' class='col-xs-3'>Federation:</label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='federation' id='federation1'>
+                  <option disabled selected>Select sport organization</option>
                   <?php 
                     $sport=App\Sport_Organization::all();
                     foreach($sport as $sports):
@@ -156,6 +169,7 @@
             <label for='sport' class='col-xs-2'>Sport:</label>
               <div class='col-xs-10 input-group'>
                 <select class='form-control' name='sport' id='sport'>
+                  <option disabled selected>Select Sport</option>
                   <?php 
                     $asport=App\Associated_Sport::all();
                     foreach($asport as $asports):
@@ -167,9 +181,17 @@
                 </select>
               </div>
           </div>
-              
             </div>
-          </div> 
+          </div>
+         {{--  <br>
+          <div class='form-group'>
+              <button class='btn btn-primary pull-right' name='search_modal' value='search_modal' id='search_modal'>Search</button>
+            </div>
+          </form> 
+          <br>
+          <br> --}}
+          <form action="{{route('team_master.store')}}" method="post">
+          {{csrf_field()}}
           <div style='margin-top:20px'>  
           <table class="table table-bordered table-striped table-responsive" id="table1">
              <thead>
@@ -183,27 +205,24 @@
                 </tr>   
             </thead>
             <tbody>
-             <?php $id=1;
-              $athlete_info=App\Athlete_bioinformation::all();
-              foreach($athlete_info as $athlete):
-              ?>
+             <?php $id=1;?>
+              @foreach($team as $teams)
               <tr>
                 <td>{{$id++}}</td>
-                <td>{{$athlete->displayAsport->sport_name}}</td>
-                <td>{{$athlete->athlete_id}}</td>
-                <td>{{$athlete->athlete_fname.' '.$athlete->athlete_mname.' '.$athlete->athlete_lname}}</td>
-                <td>{{$athlete->athlete_dob}}</td>
+                <td>{{$teams->displayAsport->sport_name}}</td>
+                <td>{{$teams->athlete_id}}</td>
+                <td>{{$teams->athlete_fname.' '.$teams->athlete_mname.' '.$teams->athlete_lname}}</td>
+                <td>{{$teams->athlete_dob}}</td>
                 <td>
-                  <a href="{{--route('training.show')--}}" data-toggle='modal' data-target='#viewDetails1' class="btn btn-info" onclick='view_details({{$athlete->athlete_id}})'>Details</a>
-                  <input type="checkbox" name="select[]" value='{{$athlete->athlete_id}}'>Select
+                  <a href="{{--route('training.show')--}}" data-toggle='modal' data-target='#viewDetails1' class="btn btn-info" onclick='view_details({{$teams->athlete_id}})'>Details</a>
+                  <input type="checkbox" name="select[]" value='{{$teams->athlete_id}}'>Select
                 </td>
               </tr>
-            <?php endforeach?>
+           @endforeach
             </tbody>
           </table>
          </div>
          <div class="modal-footer">
-    
           <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Add</button>
           <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
         </div>
@@ -213,7 +232,6 @@
   </div>
 </div>
 <!-- ends addModal-->
-
 <!-- view details modal begins-->
 <div class="modal fade" id="viewDetails1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
@@ -271,6 +289,43 @@
   </div>
 </div>
 <!-- ends viewDetails modal-->
+<div class="modal fade" id="editFunction" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Athlete Function Only</h4>
+      </div>
+      <div class="modal-body">
+       <form action="{{route('editAthleteFunction')}}" method="post">
+          {{csrf_field()}}
+        <div class='form-group clearfix'>
+          <label for='ath_function' class='col-xs-3'>Athlete Function:</label>
+            <div class='col-xs-9 input-group'>
+              <select class='form-control' name='ath_function' id='sport'>
+                <option disabled selected>Select athlete function</option>
+                  <?php 
+                    $ath_function=App\AthleteFunction::all();
+                    foreach($ath_function as $function):
+                  ?>
+                <option value="{{$function->athlete_function_id}}">{{$function->athlete_function_name}}</option>
+                  <?php 
+                    endforeach
+                  ?>
+              </select>
+              <input type="hidden" name="hidden_id" id='hidden_id'>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-info ">Update</button>
+          <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 <script type="text/javascript">
  function view_details(id)
   {
@@ -323,7 +378,11 @@
         }
       });
   }
-
+function editAthleteFunction(id)
+{
+  $('#hidden_id').val(id);
+  $('#editFunction').modal('show');
+}
 
 $(function()
   {
@@ -333,6 +392,12 @@ $(function()
   });
 
 $('#table1').dataTable();
+</script>
+<script type="text/javascript">
+  $('#search_modal').click(function()
+  {
+    $('#addModal').modal('show');
+  });
 </script>
 
 @endsection

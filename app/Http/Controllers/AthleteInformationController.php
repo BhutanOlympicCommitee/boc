@@ -55,4 +55,12 @@ class AthleteInformationController extends Controller
         Session::put('key',$athlete->athlete_id);
         return redirect()->route('athlete_address.create');
     }
+    public function updateAthleteFunction(Request $request)
+    {
+        $update_function=Athlete_bioinformation::findOrFail( $request->hidden_id);
+        $update_function->athlete_function=$request->ath_function;
+        $update_function->save();
+        Session::flash('success', 'athlete_function updated successfully');
+        return redirect()->route('team_master.index');
+    }
 }

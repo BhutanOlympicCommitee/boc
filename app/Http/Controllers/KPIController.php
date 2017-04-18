@@ -119,10 +119,6 @@ class KPIController extends Controller
         $akra=$request->skra_id;
         $boc_program=$request->skra_activity_id;
         $activity=$request->activity;
-        if(!empty($five_yr))
-        {
-            
-        }
     }
 }
 

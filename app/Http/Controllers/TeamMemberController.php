@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use DB;
+use URL;
 use Session;
 use App\Tbl_team_member;
 use App\Athlete_bioinformation;
@@ -115,6 +117,31 @@ class TeamMemberController extends Controller
         }
         Session::flash('success', 'Deleted successfully');
         return redirect()->route('team_master.index');
+    }
+    public function searchSportCoach(Request $request)
+    {
+        if(!empty($request->sport))
+        {
+            $team=Athlete_bioinformation::join('associated__sports','athlete_bioinformations.athlete_associatedSport','associated__sports.sport_id')
+                ->select('athlete_bioinformations.*')
+                ->where('associated__sports.sport_id','=',$request->sport)
+                ->get();
+            return view('boc_user.Games.team_master.index',compact('team'));
+        }
+        else if(!empty($request->federation))
+        {
+            $team=Athlete_bioinformation::join('tbl_team_members','athlete_bioinformations.athlete_id','tbl_team_members.athlete_id')
+            ->join('tbl_sport_coaches','tbl_sport_coaches.gamesdetail_id','tbl_team_members.gamesdetail_id')
+            ->select('athlete_bioinformations.*')
+            ->where('tbl_sport_coaches.federation',$request->federation)
+            ->get();
+            return view('boc_user.Games.team_master.index',compact('team'));
+        }
+        else
+        {
+            $team=Athlete_bioinformation::all();
+            return view('boc_user.Games.team_master.index',compact('team'));
+        }
     }
 }
 

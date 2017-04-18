@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
+use DB;
 use App\Tbl_Coach;
 
 class CoachController extends Controller
@@ -109,5 +110,37 @@ class CoachController extends Controller
         // $dzongkhag->save();
         // Session::flash('success', 'Dzongkhag has been deleted successfully');
         // return redirect()->route('dzongkhag_master.index');
+    }
+    public function searchCoachInformation(Request $request)
+    {
+        if(!empty($request->coach_appointmentDate))
+        {
+            $coach=Tbl_Coach::where('coach_appointmentDate',$request->coach_appointmentDate)->get();
+           return view('sport_organization_user.coach_master.index',compact('coach'));   
+        }
+        else if(!empty($request->coach_expiryDate))
+        {
+            $coach=Tbl_Coach::where('coach_expiryDate',$request->coach_expiryDate)->get();
+            return view('sport_organization_user.coach_master.index',compact('coach'));
+        }
+        else if(!empty($request->coach_id))
+        {
+            $coach=Tbl_Coach::where('coach_id',$request->coach_id)->get();
+            return view('sport_organization_user.coach_master.index',compact('coach'));
+        }
+        else if(!empty($request->coach_name))
+        {
+           $name=explode(' ',$request->coach_name);
+           $fname=$name[0];
+          $coach=Tbl_Coach::where('coach_fname',$fname)->get();
+           $coach=DB::table('tbl__coaches')
+                ->select('tbl__coaches.*')
+                ->where('tbl__coaches.coach_fname','=',$fname) 
+                ->get();
+            return view('sport_organization_user.coach_master.index',compact('coach'));
+        }
+        else
+            $coach=Tbl_Coach::all();
+            return view('sport_organization_user.coach_master.index',compact('coach')); 
     }
 }

@@ -30,6 +30,7 @@ class CreateAthleteBioinformationsTable extends Migration
             $table->bigint('athlete_cid');
             $table->string('athlete_associatedSport',500);
             $table->string('athlete_photo',250);
+            $table->integer('athlete_function')->default(2);
             $table->integer('created_by');
             $table->timestamps();
         });

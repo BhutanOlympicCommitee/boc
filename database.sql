@@ -47,7 +47,6 @@ CREATE TABLE `activities_achievement_reports` (
 
 LOCK TABLES `activities_achievement_reports` WRITE;
 /*!40000 ALTER TABLE `activities_achievement_reports` DISABLE KEYS */;
-INSERT INTO `activities_achievement_reports` VALUES (1,2,'1,3',20000.00,47.62,10000.00,50.00,'2,1','100.00%good,25.00%poor','66.67%good,20.00%poor','Played well',3,'2017-04-12 03:35:18','2017-04-12 03:35:18');
 /*!40000 ALTER TABLE `activities_achievement_reports` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,6 +171,7 @@ CREATE TABLE `athlete_bioinformations` (
   `athlete_passportNo` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
   `athlete_cid` bigint(50) NOT NULL,
   `athlete_associatedSport` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `athlete_function` int(11) NOT NULL DEFAULT '2',
   `athlete_photo` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `created_by` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -186,9 +186,38 @@ CREATE TABLE `athlete_bioinformations` (
 
 LOCK TABLES `athlete_bioinformations` WRITE;
 /*!40000 ALTER TABLE `athlete_bioinformations` DISABLE KEYS */;
-INSERT INTO `athlete_bioinformations` VALUES (9,'Ms.','pema','-','dema','1','2017-04-22','wangdue','2',153.000,56.000,'tshering','we124454',12332434,'7','IMG_9877.JPG',3,'2017-04-05 00:17:26','2017-04-05 00:17:26');
-INSERT INTO `athlete_bioinformations` VALUES (10,'Mr.','sangay','-','phuentsho','1','2017-04-29','thimphu','1',156.000,45.000,'dorji','gh12332',23456,'8','IMG_9571.JPG',3,'2017-04-05 00:28:21','2017-04-05 00:28:21');
+INSERT INTO `athlete_bioinformations` VALUES (9,'Ms.','pema','-','dema','1','2017-04-22','wangdue','2',153.000,56.000,'tshering','we124454',12332434,'7',2,'IMG_9877.JPG',3,'2017-04-05 00:17:26','2017-04-05 00:17:26');
+INSERT INTO `athlete_bioinformations` VALUES (10,'Mr.','sangay','-','phuentsho','1','2017-04-29','thimphu','1',156.000,45.000,'dorji','gh12332',23456,'8',1,'IMG_9571.JPG',3,'2017-04-05 00:28:21','2017-04-18 01:11:25');
 /*!40000 ALTER TABLE `athlete_bioinformations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `athlete_functions`
+--
+
+DROP TABLE IF EXISTS `athlete_functions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `athlete_functions` (
+  `athlete_function_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `athlete_function_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`athlete_function_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `athlete_functions`
+--
+
+LOCK TABLES `athlete_functions` WRITE;
+/*!40000 ALTER TABLE `athlete_functions` DISABLE KEYS */;
+INSERT INTO `athlete_functions` VALUES (1,'Captain',NULL,NULL);
+INSERT INTO `athlete_functions` VALUES (2,'Athlete',NULL,NULL);
+INSERT INTO `athlete_functions` VALUES (3,'Substitute',NULL,NULL);
+INSERT INTO `athlete_functions` VALUES (4,'Others',NULL,NULL);
+/*!40000 ALTER TABLE `athlete_functions` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -886,7 +915,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=141 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -946,6 +975,8 @@ INSERT INTO `migrations` VALUES (135,'2017_04_12_052701_create_tbl__updateathlet
 INSERT INTO `migrations` VALUES (136,'2017_04_12_084732_create_activities_achievement_reports_table',19);
 INSERT INTO `migrations` VALUES (137,'2017_04_12_094907_create_tbl_update_athlete_achievements_table',20);
 INSERT INTO `migrations` VALUES (138,'2017_04_13_070347_create_attendance_statuses_table',21);
+INSERT INTO `migrations` VALUES (139,'2017_04_18_061702_create_athlete_functions_table',22);
+INSERT INTO `migrations` VALUES (140,'2017_04_18_094440_create_view_s_omethings_table',23);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1039,7 +1070,7 @@ INSERT INTO `mst_dzongkhags` VALUES (12,8,'Samtse','SA',0,'2017-03-24 23:43:38',
 INSERT INTO `mst_dzongkhags` VALUES (13,8,'Sarpang','SP',0,'2017-03-24 23:44:05','2017-03-24 23:44:05',1);
 INSERT INTO `mst_dzongkhags` VALUES (14,8,'Thimphu','TH',0,'2017-03-24 23:44:28','2017-03-24 23:44:28',1);
 INSERT INTO `mst_dzongkhags` VALUES (15,8,'Trashigang','TG',0,'2017-03-24 23:44:46','2017-03-24 23:44:46',1);
-INSERT INTO `mst_dzongkhags` VALUES (16,8,'Trashigang','TG',0,'2017-03-24 23:45:04','2017-03-24 23:45:04',1);
+INSERT INTO `mst_dzongkhags` VALUES (16,8,'Trashiyangtse','TG',0,'2017-03-24 23:45:04','2017-03-24 23:45:04',1);
 INSERT INTO `mst_dzongkhags` VALUES (17,8,'Trongsa','TR',0,'2017-03-24 23:45:21','2017-03-24 23:45:21',1);
 INSERT INTO `mst_dzongkhags` VALUES (18,8,'Tsirang','TS',0,'2017-03-24 23:45:52','2017-03-24 23:45:52',1);
 INSERT INTO `mst_dzongkhags` VALUES (19,8,'Wangdue Phodrang','WP',0,'2017-03-24 23:46:12','2017-03-24 23:46:49',1);
@@ -1771,7 +1802,6 @@ CREATE TABLE `tbl_team_members` (
 LOCK TABLES `tbl_team_members` WRITE;
 /*!40000 ALTER TABLE `tbl_team_members` DISABLE KEYS */;
 INSERT INTO `tbl_team_members` VALUES (5,10,11,2,2,'2017-04-07 01:16:47','2017-04-07 01:16:47');
-INSERT INTO `tbl_team_members` VALUES (6,9,12,2,2,'2017-04-07 01:44:55','2017-04-07 01:44:55');
 /*!40000 ALTER TABLE `tbl_team_members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1813,30 +1843,6 @@ INSERT INTO `tbl_update_athlete_achievements` VALUES (1,'02042013015','Sangay','
 INSERT INTO `tbl_update_athlete_achievements` VALUES (2,'56678','pema','2017-04-13',1,5,'dfghg',1,'tshering',1233,'pema@gmail.com','ertrytuu',3,3,'2017-04-17 02:48:19','2017-04-17 02:48:19');
 INSERT INTO `tbl_update_athlete_achievements` VALUES (3,'1234567','dorji','2017-04-28',3,2,'ghjjgjh',1,'pema',1234,'dorji@gmail.com','dorji,thimphu',3,3,'2017-04-17 03:52:04','2017-04-17 03:52:04');
 /*!40000 ALTER TABLE `tbl_update_athlete_achievements` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `training_infos`
---
-
-DROP TABLE IF EXISTS `training_infos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `training_infos` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `training_infos`
---
-
-LOCK TABLES `training_infos` WRITE;
-/*!40000 ALTER TABLE `training_infos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `training_infos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1904,8 +1910,8 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','$2y$10$mk3JcPIXVK4hKILLytDVFepTOl2zqoU5H2mwx.infhaHw.msrWHpO',1,'t41UM3eGmX7ZPEBBr38c6gJiGA0XCZnKCos2XZcQHNYaF5oSNoNENB85pkQx','2017-03-24 23:02:03','2017-04-13 21:13:45');
-INSERT INTO `users` VALUES (2,'kelzang','boc@gov.bt','$2y$10$AJCU3eg1CqZ6BYu1JFc7t.3RQfVEmyTmZGH1FTJJMUxPQs7k3RyCm',2,'vJbZ0be3UnYFWixRLEi0ky7NbHoKl5YNbvlfjxR6meXruiyU63j1yNzmW4rs','2017-03-26 21:36:29','2017-04-17 02:46:23');
-INSERT INTO `users` VALUES (3,'sangay','sangay@gmail.com','$2y$10$rz0uTnhSRek806H0HZQe8u9PMkILlThwZCd7evyednneiMQryjHEW',4,'eGWlO3HOyb8VwBPGZ8VizP9MjHIYnLXAEIcKLaU4XSaaAwjrxbF0GEpBkDw8','2017-03-27 22:43:38','2017-04-17 02:45:41');
+INSERT INTO `users` VALUES (2,'kelzang','boc@gov.bt','$2y$10$AJCU3eg1CqZ6BYu1JFc7t.3RQfVEmyTmZGH1FTJJMUxPQs7k3RyCm',2,'2a9zTf1yU6kYOaK2jDVtIxUYJDKvi3T92DnD3Hs90UGIfEoR6bqLLZ4k1frv','2017-03-26 21:36:29','2017-04-18 02:04:52');
+INSERT INTO `users` VALUES (3,'sangay','sangay@gmail.com','$2y$10$rz0uTnhSRek806H0HZQe8u9PMkILlThwZCd7evyednneiMQryjHEW',4,'gUgtlS7xglJWXflUsR5vj5SYKlcwEsM2tBjSPR6eb5NP5OipoRvSi58RlSnj','2017-03-27 22:43:38','2017-04-18 04:00:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1918,4 +1924,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-17 16:01:19
+-- Dump completed on 2017-04-18 16:57:37

@@ -16,6 +16,10 @@ class Athlete_bioinformation extends Model
     {
     	return $this->belongsTo('App\Associated_Sport','athlete_associatedSport','sport_id');
     }
+    public function displayAthleteFunction()
+    {
+       return $this->belongsTo('App\AthleteFunction','athlete_function','athlete_function_id');
+    }
 
     public function training()
     {
