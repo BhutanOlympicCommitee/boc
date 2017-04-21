@@ -63,7 +63,7 @@
               </div>
               <div class="form-group clearfix">
                 <div class="col-xs-12 input-group ">
-                  <input type="submit" class="btn btn-default pull-right" value="Search" name='search'>
+                  <input type="submit" class="btn btn-primary pull-right" value="Search" name='search'>
                   </div>
               </div>
               </form>
@@ -331,11 +331,11 @@
                 <input type="text" name="coach_contactAddress" class="form-control" placeholder="Contaxt Address" id="coach_contactAddress" required>
             </div>
           </div>
-             <div class='form-group'>
+             <div class='form-group' id='coach_type'>
             <label for='coach_type' class='col-xs-3'>Type:</label>
               <div class="col-xs-9 input-group">
-               <input name="coach_type" type="radio" value="Paid" id="coach_type" class="pull-left">Paid</br>
-               <input name="coach_type" type="radio" value="Volunteer" id="coach_type1" checked>Volunteer
+               <input name="coach_type" type="radio" value="Paid" class="pull-left">Paid</br>
+               <input name="coach_type" type="radio" value="Volunteer">Volunteer
             </div>
           </div>
       <div class="modal-footer">
@@ -388,9 +388,9 @@
     {
         $('#table').DataTable(
            {
-           "language": {
-           "search": "Filter Coach:"
-     }
+          "ordering": false,
+        "info":     false,
+        'searching':false
      }
           );
     });  
@@ -402,9 +402,10 @@
       type:"GET", 
       data: {"id":id}, 
       success: function(result){
+       // console.log(result.coach_type);
         // console.log(result->coach_fname);
         $("#edit_id").val(result.coach_id);
-        $("#type4").val(result.country_id);
+        $("#type4").val(result.coach_nationality);
         $('#coach_title').val(result.coach_title)
         $("#coach_fname").val(result.coach_fname);
         $("#coach_mname").val(result.coach_mname);
@@ -418,9 +419,13 @@
         $("#coach_appointmentDate").val(result.coach_appointmentDate);
         $("#coach_expiryDate").val(result.coach_expiryDate);
         $("#coach_contactAddress").val(result.coach_email);
-        $("#coach_type").val(result.coach_type);
-        $("#coach_type1").val(result.coach_type);
-       
+        //$("#coach_type").val(result.coach_type);
+        if(result.coach_type=='Paid')
+        {
+          $('#coach_type').find(':radio[name=coach_type][value="Paid"]').prop('checked',true)
+        }
+        else
+          $('#coach_type').find(':radio[name=coach_type][value="Volunteer"]').prop('checked',true)
       }
     });
   }

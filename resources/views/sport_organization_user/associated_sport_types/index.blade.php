@@ -134,7 +134,8 @@
             <div class='form-group clearfix'>
           <label for='type' class='col-xs-3'>Sport Organization</label>
             <div class='col-xs-9 input-group'>
-              <select class='form-control' name='type' id='type'>
+              <select class='form-control' name='type' id='type1'>
+                <option disabled selected></option>
                   <?php 
                       $sports=App\Sport_Organization::all();
                       foreach($sports as $sport):
@@ -187,9 +188,9 @@
       type:"GET", 
       data: {"id":id}, 
       success: function(result){
-        // console.log(result);
+        //console.log(result);
         $("#edit_id").val(result.sport_id);
-        $("type").val(result.sport_org_name);
+        $("#type1").val(result.sport_org_id);
         $("#sport").val(result.sport_name);
         $("#sport_des").val(result.sport_description);
       }

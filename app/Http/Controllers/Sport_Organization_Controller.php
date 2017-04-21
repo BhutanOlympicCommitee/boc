@@ -56,6 +56,12 @@ class Sport_Organization_Controller extends Controller
         $sport->sport_org_name=$request->org_name;
         $sport->sport_org_abbreviation=$request->abbreviation;
         $sport->sport_org_webaddress=$request->org_web_address;
+        if($request->hasFile('org_logo'))
+        {
+            $file=$request->file('org_logo');
+            $file->move(public_path().'/images/',$file->getClientOriginalName());
+            $sport->sport_org_logo=$file->getClientOriginalName();
+        }
         $sport->sport_org_logo=$request->org_logo;
         $sport->sport_org_email=$request->org_email;
         $sport->sport_org_phone=$request->org_phone;

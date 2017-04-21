@@ -185,7 +185,12 @@
 <!-- ends viewDetails modal-->
 <script type="text/javascript">
   $(function(){
-    $('#table1').DataTable();
+    $('#table1').DataTable(
+      {
+        "ordering": false,
+        "info":     false,
+        'searching':false
+      });
   });
 </script>
 <script type="text/javascript">

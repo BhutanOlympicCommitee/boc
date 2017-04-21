@@ -157,11 +157,15 @@ Route::get('update_achievement/view', 'ReviewPlanController@view')->name('view_u
 
 Route::post('review_plan/{id}/achievement_report','ReviewPlanController@storeActivitiesAchievedReport')->name('activities_achieved_report');
 Route::post('search_participants','ReviewPlanController@searchParticipants')->name('search_participants');
+
+//searching functionalities 
+Route::post('review_plan/search','ReviewPlanController@searchActivities')->name('searching_functionality');
 //Route for Update Achievements 
 Route::get('review_activities_achievemenents_update',[
 		'uses'=>'ReviewPlanController@getAchievement_update',
 		'as'=>'achievement_update'
 	]);
+Route::post('search_approved_activities','ReviewPlanController@searchApprovedActivities')->name('searchApprovedActivities');
 
 
 //routes for althlete information
@@ -204,8 +208,8 @@ Route::get('training/{id}/show_athlete_training', 'TrainingInformationController
 Route::get('training/{id}/view_training_participants', 'TrainingInformationController@viewTrainingParticipants')->name('showTrainingParticipants');
 Route::get('training/{id}/athlete_attendance', 'TrainingInformationController@takeAthleteAttendance')->name('athlete_attendance');
 Route::post('training/search','TrainingInformationController@searchSportCoach')->name('search_training_info');
-
-
+Route::post('search_training_schedule','TrainingInformationController@searchTrainingSchedule')->name('search_training_schedule');
+Route::post('search_training_attendance','TrainingInformationController@searchTrainingAttendance')->name('search_training_attendance');
 
 //Routes for coach
 Route::get('coach',['as'=>'coach_master.index','uses'=>'CoachController@index']);

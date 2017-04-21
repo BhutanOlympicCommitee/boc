@@ -22,7 +22,8 @@
             </div>
             <div class="bootstrap-admin-panel-content">
               <!-- Form for the search functionality -->
-              <form action="{{}}" method="post">
+              <form action="{{route('searchApprovedActivities')}}" method="post">
+                  <input type="hidden" name="_token" value={{csrf_token()}}>
                 <div class='form-group'>
                   <label for='five_year' class='col-xs-3'>Five Year Plan</label>
                     <div class='col-xs-9 input-group'>
@@ -41,10 +42,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                  <label for="year"  class='col-xs-3'>AKRA</label> 
+                  <label for="akra"  class='col-xs-3'>AKRA</label> 
                   <div class='col-xs-9 input-group'>
-                  <select name="year" class="form-control">
-                    <option value="0">
+                  <select name="akra" class="form-control">
+                    <option disabled selected>
                       Select the AKRA
                     </option>
                     <?php 
@@ -57,10 +58,10 @@
                 </div>
               </div>
               <div class="form-group ">
-                <label for="year"  class='col-xs-3'>Program</label> 
+                <label for="program"  class='col-xs-3'>Program</label> 
                 <div class='col-xs-9 input-group'>
-                <select name="year" class="form-control">
-                  <option value="0">
+                <select name="program" class="form-control">
+                  <option disabled selected>
                     Select the program
                   </option>
                   <?php 
@@ -72,9 +73,12 @@
               </select> 
               </div>
             </div>
+            <div class='form-group clearfix'>
+              <button class='pull-right btn btn-primary' type='submit'>Search</button>
+            </div>
           </form>
           <!-- Table Displayed using searching parameters -->
-          <table class="table table-bordered table-striped table-responsive">
+          <table class="table table-bordered table-striped table-responsive" id='table1'>
             <thead>
               <th>Sl.No</th>
               <th>Activities</th>
@@ -116,6 +120,9 @@
 </div>
 </div>
 </div>
+<script type="text/javascript">
+  $('#table1').dataTable();
+</script>
 @endsection
 @section('footer')
 <div class="container">

@@ -112,7 +112,7 @@
                   <th style='width:20%'>Action & Status</th>
                 </tr>  
             </thead>
-            @if(!isset($_POST['search']))
+           {{-- @if(!isset($_POST['search'])) --}}
             <tbody>
              <?php $id=1;
               //$search=App\Tbl_proposed_KPI::all();
@@ -147,7 +147,7 @@
               </tr>
               @endforeach
             </tbody>
-            @endif
+            {{-- @endif --}}
           </table>
           </div>
         </div>

@@ -232,18 +232,18 @@
 </div>
 <!-- ends editModal-->
 <script type="text/javascript">
-<<<<<<< HEAD
-=======
  $(function(){
     $('#table3').DataTable(
       {
         "paging":   false,
         "ordering": false,
         "info":     false,
-        'searching':false
+        'searching':false,
+         "language": {
+           "search": "Filter KPI:"
+        }
       });
   });
->>>>>>> 3b05bee30be9e9901c1e34a043040ee82e712460
 function kpi_edit(id)
     {
       var view_url = $("#hidden_view").val();
@@ -264,34 +264,6 @@ function kpi_edit(id)
           $("#poor").val(result.poor);
         }
       });
-<<<<<<< HEAD
-
-</script>
-<script type="text/javascript">
- $(function()
-    {
-        $('#table3').DataTable(
-           {
-           "language": {
-           "search": "Filter KPI:"
-     }
-     }
-          );
-    });  
-  function kpi_edit(id)
-  {
-    var view_url = $("#hidden_view").val();
-    var kpi_id=id;
-    $.ajax({
-      url: view_url,
-      type:"GET", 
-      data:{"id":kpi_id}, 
-      success: function(result){
-        console.log(result);
-      }
-    });
-=======
->>>>>>> 3b05bee30be9e9901c1e34a043040ee82e712460
     }
 </script>
 @endsection

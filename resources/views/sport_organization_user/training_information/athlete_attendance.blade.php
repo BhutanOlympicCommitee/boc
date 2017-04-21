@@ -112,7 +112,12 @@
   </div>
 </div>
 <script type="text/javascript">
-  $('#table1').DataTable();
+  $('#table1').DataTable(
+    {
+      "ordering": false,
+        "info":     false,
+        'searching':false
+    });
   function getAthleteIDTrainingID(athlete_id,training_id)
   {
     $('#hidden_training_id').val(training_id);

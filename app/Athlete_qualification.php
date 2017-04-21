@@ -25,6 +25,6 @@ class Athlete_qualification extends Model
     }
      public function displayLevel()
     {
-        return $this->belongsTo('App\Enum_qualification_level','qualification_level_id','qualification_level_id');
+        return $this->belongsTo('App\Enum_qualification_level','qualification_level','qualification_level_id');
     }
 }

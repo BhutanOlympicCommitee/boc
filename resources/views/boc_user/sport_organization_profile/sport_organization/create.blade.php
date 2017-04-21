@@ -35,7 +35,7 @@
                   @endforeach
                 </div>
               @endif
-                  <form action="{{route('sport_organization.store')}}" method="post">
+                  <form action="{{route('sport_organization.store')}}" method="post" enctype="multipart/form-data">
                     <div class='form-group'>
                       {{csrf_field()}}
                     </div>
@@ -43,6 +43,7 @@
                       <label for='type' class='col-xs-2'>Type</label>
                         <div class='col-xs-10 input-group'>
                           <select class='form-control' name='type'>
+                            <option disabled selected>Select Sport organization</option>
                             <?php 
                               $enum=App\Enum_sport_org::all();
                               foreach($enum as $enums):

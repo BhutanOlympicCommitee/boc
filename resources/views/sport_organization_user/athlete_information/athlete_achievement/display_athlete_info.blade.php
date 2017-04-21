@@ -362,7 +362,12 @@
   }
    $(function()
   {
-    $('#table').dataTable();
+    $('#table').dataTable(
+      {
+        "ordering": false,
+        "info":     false,
+        'searching':false
+      });
   });
 
    function view_athleteAchievement(id)

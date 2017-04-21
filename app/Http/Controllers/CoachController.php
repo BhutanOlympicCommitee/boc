@@ -47,7 +47,7 @@ class CoachController extends Controller
         $coach->coach_mname=$request->coach_mname;
         $coach->coach_lname=$request->coach_lname;
         $coach->coach_dob=$request->coach_dob;
-        $coach->country_id=$request->type;
+        $coach->coach_nationality=$request->type;
         $coach->coach_phone=$request->coach_phone;
         $coach->coach_mobile=$request->coach_mobile;
         $coach->coach_email=$request->coach_email;
@@ -83,7 +83,7 @@ class CoachController extends Controller
         $coach->coach_mname=$request->coach_mname;
         $coach->coach_lname=$request->coach_lname;
         $coach->coach_dob=$request->coach_dob;
-        $coach->country_id=$request->type;
+        $coach->coach_nationality=$request->type;
         $coach->coach_phone=$request->coach_phone;
         $coach->coach_mobile=$request->coach_mobile;
         $coach->coach_email=$request->coach_email;

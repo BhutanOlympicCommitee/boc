@@ -34,15 +34,13 @@
               <div class='col-xs-10 input-group'>
                <select class='form-control' name='five_yr_plan_id' id='five_yr_plan_id'>
                 <option disabled selected>Select five year plan</option>
-                          <?php 
-                            $fiveYearPlan=App\EnumFiveYearPlan::all();
-                            foreach($fiveYearPlan as $five_year):
-                          ?>
-                          <option value="{{$five_year->five_yr_plan_id}}">{{$five_year->name}}</option>
-                          <?php 
-                            endforeach
-                          ?>
-                          </select>
+                  <?php 
+                    $fiveYearPlan=App\EnumFiveYearPlan::all();
+                    foreach($fiveYearPlan as $five_year):
+                  ?>
+                  <option value="{{$five_year->five_yr_plan_id}}">{{$five_year->name}}</option>
+                  <?php endforeach ?>
+                  </select>
               </div>
           </div>
           <div class='form-group clearfix'>
