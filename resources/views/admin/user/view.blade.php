@@ -109,6 +109,21 @@
             </select>
         </div>
     </div>
+     <div class="form-group">
+                <label for="federation_type" class="col-md-4 control-label">Organization Type</label>
+
+                <div class="col-md-6">
+                  <select  name="federation_type" class="col-md-6 form-control" required>
+                    <option value="0">Select the Organization Type</option>
+                    <?php
+                    $org_type = App\BOC_or_Federation_type::all();
+                    foreach($org_type as $org):
+                        ?>
+                    <option value="{{$org->federation_id}}">{{$org->boc_or_federation_type}}</option>
+                <?php endforeach;?>
+            </select>
+        </div>
+    </div>
     <div class="form-group">
         <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 

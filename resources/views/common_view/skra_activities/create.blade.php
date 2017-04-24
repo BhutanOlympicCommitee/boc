@@ -104,23 +104,6 @@
   </div>
 </div>
 <script type="text/javascript">
-  // $('#type').change(function()
-  // {
-  //   var sport_id=$(this).val();
-  //   var view_url = $("#hidden_view").val();
-  //     $.ajax({
-  //       url: view_url,
-  //       type:"GET", 
-  //       data: {"id":sport_id}, 
-  //       success: function(result){
-  //         $('#skra1').empty();
-  //         $.each(result,function(key,val)
-  //         {
-  //            $('#skra1').append('<option value="'+val.skra_id+'">'+val.SKRA_name+'</option>');
-  //         });
-  //       }
-  //     });
-  // });
   $('#five_year').change(function()
   {
     var five_year_id=$(this).val();

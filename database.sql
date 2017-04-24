@@ -351,6 +351,46 @@ INSERT INTO `attendance_statuses` VALUES (3,'Leave',NULL,NULL);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `b_o_c_or__federation_types`
+--
+
+DROP TABLE IF EXISTS `b_o_c_or__federation_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `b_o_c_or__federation_types` (
+  `federation_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `boc_or_federation_type` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`federation_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `b_o_c_or__federation_types`
+--
+
+LOCK TABLES `b_o_c_or__federation_types` WRITE;
+/*!40000 ALTER TABLE `b_o_c_or__federation_types` DISABLE KEYS */;
+INSERT INTO `b_o_c_or__federation_types` VALUES (1,'boc',NULL,NULL);
+INSERT INTO `b_o_c_or__federation_types` VALUES (2,'Bhutan Amateur Athletics',NULL,NULL);
+INSERT INTO `b_o_c_or__federation_types` VALUES (3,'Bhutan Archery',NULL,NULL);
+INSERT INTO `b_o_c_or__federation_types` VALUES (4,'Bhutan Badminton',NULL,NULL);
+INSERT INTO `b_o_c_or__federation_types` VALUES (5,'Bhutan Basketball',NULL,NULL);
+INSERT INTO `b_o_c_or__federation_types` VALUES (6,'Bhutan Body building and weight lifting',NULL,NULL);
+INSERT INTO `b_o_c_or__federation_types` VALUES (7,'Bhutan boxing',NULL,NULL);
+INSERT INTO `b_o_c_or__federation_types` VALUES (8,'Bhutan Cricket Council Board',NULL,NULL);
+INSERT INTO `b_o_c_or__federation_types` VALUES (9,'Bhutan Football',NULL,NULL);
+INSERT INTO `b_o_c_or__federation_types` VALUES (10,'Bhutan Golf',NULL,NULL);
+INSERT INTO `b_o_c_or__federation_types` VALUES (11,'Bhutan Indigenous Games and Sports Association',NULL,NULL);
+INSERT INTO `b_o_c_or__federation_types` VALUES (12,'Bhutan Shooting',NULL,NULL);
+INSERT INTO `b_o_c_or__federation_types` VALUES (13,'Bhutan Table Tennis',NULL,NULL);
+INSERT INTO `b_o_c_or__federation_types` VALUES (14,'Bhutan Taewondo',NULL,NULL);
+INSERT INTO `b_o_c_or__federation_types` VALUES (15,'Bhutan Volleyball',NULL,NULL);
+/*!40000 ALTER TABLE `b_o_c_or__federation_types` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `coach_seperations`
 --
 
@@ -926,7 +966,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=203 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -981,6 +1021,7 @@ INSERT INTO `migrations` VALUES (198,'2017_04_12_084732_create_activities_achiev
 INSERT INTO `migrations` VALUES (199,'2017_04_12_094907_create_tbl_update_athlete_achievements_table',1);
 INSERT INTO `migrations` VALUES (200,'2017_04_13_070347_create_attendance_statuses_table',1);
 INSERT INTO `migrations` VALUES (201,'2017_04_18_061702_create_athlete_functions_table',1);
+INSERT INTO `migrations` VALUES (202,'2017_04_22_041647_create_b_o_c_or__federation_types_table',2);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1859,12 +1900,13 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `role_id` int(11) NOT NULL DEFAULT '5',
+  `organization_type` int(11) NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1873,9 +1915,10 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','$2y$10$mk3JcPIXVK4hKILLytDVFepTOl2zqoU5H2mwx.infhaHw.msrWHpO',1,'nG3L7ZQcAwFa3TSL4Bm2TbbMBdyojyEMsECcaFEn42dEoe5YLsGgsd23GVut','2017-03-24 23:02:03','2017-04-20 20:53:56');
-INSERT INTO `users` VALUES (2,'kelzang','boc@gov.bt','$2y$10$AJCU3eg1CqZ6BYu1JFc7t.3RQfVEmyTmZGH1FTJJMUxPQs7k3RyCm',2,'5d1nYjPTBBKHmwNsKsNIr1DONHE70ZjYMx5IELXAm1yJYOaqX6o6ipzXKaem','2017-03-26 21:36:29','2017-04-20 20:57:56');
-INSERT INTO `users` VALUES (3,'sangay','sangay@gmail.com','$2y$10$rz0uTnhSRek806H0HZQe8u9PMkILlThwZCd7evyednneiMQryjHEW',4,'hECeTvyhl5MJZpbWOYzweZIR2FybXGDYlV0XaadKWd8gWgLm1k2oevLmhxA1','2017-03-27 22:43:38','2017-04-19 23:55:48');
+INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','$2y$10$mk3JcPIXVK4hKILLytDVFepTOl2zqoU5H2mwx.infhaHw.msrWHpO',1,1,'uRSljz7eYXd1TF5cltSbhbG7brO0Lh97dKjL1UhZGHrOmKJ9GNU5qcGdoHJq','2017-03-24 23:02:03','2017-04-21 22:57:09');
+INSERT INTO `users` VALUES (2,'kelzang','boc@gov.bt','$2y$10$AJCU3eg1CqZ6BYu1JFc7t.3RQfVEmyTmZGH1FTJJMUxPQs7k3RyCm',2,1,'ehKWA9sbMFB8EOMrpj9HW4wU4ot4KavXGb9su9bRpPNOhUzW4jvEjDvM6GSI','2017-03-26 21:36:29','2017-04-21 23:15:17');
+INSERT INTO `users` VALUES (3,'sangay','sangay@gmail.com','$2y$10$rz0uTnhSRek806H0HZQe8u9PMkILlThwZCd7evyednneiMQryjHEW',4,9,'AwzS7kt408pTY755VNGZyV76p8nfM6FnhjoO6VDWSa0s4TK5P6ZE9XdeqRW2','2017-03-27 22:43:38','2017-04-21 23:14:21');
+INSERT INTO `users` VALUES (4,'Pema','pema@gmail.com','$2y$10$4FZ27EyBnP3ueXPmdrfrY.YYwXjreMg980NavOyzqeCn7MMCtQA9W',4,13,NULL,'2017-04-21 22:30:20','2017-04-21 22:30:20');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1888,4 +1931,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-21 10:11:29
+-- Dump completed on 2017-04-24  9:38:01

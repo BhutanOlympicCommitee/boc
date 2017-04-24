@@ -22,6 +22,53 @@
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
+            <?php 
+              $user_id=session('user_id');
+              $user=App\User::find($user_id);
+                ?>
+              @if($user->role_id==4)
+                <script type="text/javascript">
+                  $(function()
+                  {
+                    $('#view').hide();
+                  });
+                </script>
+                <table class="table table-bordered table-striped table-responsive" id="table1">
+                    <thead>
+                        <tr>
+                            <th>Sl. No:</th>
+                            <th>AKRA</th>
+                            <th>BOC Programs</th>
+                            <th>BOC Program Description</th>
+                            <th>Action</th>
+                        </tr>   
+                    </thead>
+                    <tbody>
+                        <?php $id=1?>
+                        @foreach($skra_activities as $skra_activity)
+                        @if($skra_activity->sport_org_id==1)
+                        @if($skra_activity->status==0)
+                        {{-- @if($sport->sport_org_id==$skra_activity->sport_org_id) --}}
+                        <tr>
+                            <td>{{$id++}}</td>
+                            <td>{{$skra_activity->skra->SKRA_name}}</td>
+                            <td>{{$skra_activity->SKRA_activity}}</td>
+                            <td>{{$skra_activity->SKRA_description}}</td>
+                            <td>
+                                <form class="form-group" action="{{route('skra_activities.destroy',$skra_activity->skra_activity_id)}}" method='post'>
+                                  <input type="hidden" name="_method" value="delete">
+                                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                  <a href="{{route('skra_activities.edit',$skra_activity->skra_activity_id)}}" class="btn btn-info glyphicon glyphicon-edit">Edit</a>
+                                  <button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name' value='Remove'>Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endif
+                        @endif
+                        @endforeach
+                    </tbody>
+                </table>   
+              @endif 
               <form action="{{action('SKRA_activities_Controller@index')}}" method='get' id='view'>
                 {{csrf_field()}}
                  <div class='form-group'>
@@ -86,13 +133,14 @@
                         @endforeach
                     </tbody>
                 </table>
+                @endif
                 <input type="hidden" name="hidden_view" id="hidden_view" value="{{route('view_skra_activities')}}">
                 <div class='form-group clearfix'>
                   <div class="input-group pull-right" style='margin-top:10px'>
                     <a href="{{route('skra_activities.create')}}" class="btn btn-success glyphicon glyphicon-plus">Add BoC Program</a> 
                   </div>
                 </div>  
-              @endif
+              
             </div>
           </div>
         </div>
