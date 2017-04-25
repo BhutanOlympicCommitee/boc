@@ -29,6 +29,10 @@ class AthleteInformationController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,
+        [
+            'cid'=>'unique:athlete_bioinformations,athlete_cid',
+        ]);
         $athlete= new Athlete_bioinformation;
         $athlete->athlete_title=$request->title;
         $athlete->athlete_fname=$request->fname;

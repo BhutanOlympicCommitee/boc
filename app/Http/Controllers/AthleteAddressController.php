@@ -29,6 +29,10 @@ class AthleteAddressController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+                'phone' => 'unique:athlete_addresses,Caddress_phone',
+                'mobile' => 'unique:athlete_addresses,Caddress_mobile',
+            ]);
         $athlete= new Athlete_address;
         $athlete->athlete_id=Session::get('key');
         $athlete->Paddress_dzongkhag=$request->type1;
