@@ -130,11 +130,19 @@ class TeamMemberController extends Controller
         }
         else if(!empty($request->federation))
         {
+            $federation_id=array();
+            $federation=Tbl_sport_coach::select('tbl_sport_coaches.gamesdetail_id')
+                ->where('tbl_sport_coaches.federation','=',$request->federation)
+                ->pluck('gamesdetail_id');
+            $federation=explode(',',$federation);
+            foreach($federation as $fed_id)
+            {
+                $federation_id[]=trim($fed_id,'[]');
+            }
             $team=Athlete_bioinformation::join('tbl_team_members','athlete_bioinformations.athlete_id','tbl_team_members.athlete_id')
-            ->join('tbl_sport_coaches','tbl_sport_coaches.gamesdetail_id','tbl_team_members.gamesdetail_id')
-            ->select('athlete_bioinformations.*')
-            ->where('tbl_sport_coaches.federation',$request->federation)
-            ->get();
+                ->select('athlete_bioinformations.*')
+               ->whereIn('tbl_team_members.gamesdetail_id',$federation_id)
+               ->get();
             return view('boc_user.Games.team_master.index',compact('team'));
         }
         else

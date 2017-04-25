@@ -110,18 +110,19 @@
         </div>
     </div>
      <div class="form-group">
-                <label for="federation_type" class="col-md-4 control-label">Organization Type</label>
+                <label for="federation_type" class="col-md-4 control-label">Sport Organization</label>
 
                 <div class="col-md-6">
                   <select  name="federation_type" class="col-md-6 form-control" required>
-                    <option value="0">Select the Organization Type</option>
-                    <?php
-                    $org_type = App\BOC_or_Federation_type::all();
-                    foreach($org_type as $org):
+                    <option disabled selected>Select the Sport Organization</option>
+                    <option value='boc'>boc</option>
+                     <?php
+                    $sport_organization= App\Sport_Organization::all();
+                    foreach($sport_organization as $sport):
                         ?>
-                    <option value="{{$org->federation_id}}">{{$org->boc_or_federation_type}}</option>
+                    <option value="{{$sport->sport_org_name}}">{{$sport->sport_org_name}}</option>
                 <?php endforeach;?>
-            </select>
+                  </select>
         </div>
     </div>
     <div class="form-group">

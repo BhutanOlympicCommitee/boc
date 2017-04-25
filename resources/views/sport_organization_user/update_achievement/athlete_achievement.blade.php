@@ -33,7 +33,7 @@
                   <div class='form-group clearfix'>
                     <label class='col-xs-2'>CID/Student ID</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="cid" class="form-control">
+                      <input type="text" name="cid" class="form-control" id='form-cid'>
                     </div>
                   </div>
                   <div class='form-group clearfix'>
@@ -45,7 +45,7 @@
                 
                 <div class='form-group clearfix'>
                  {{-- <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' name='searchAthlete' data-target="#addModal"> Search</a> --}}
-                 <button type='submit' class='btn btn-primary pull-right' name='search'>Search</button>
+                 <button type='submit' class='btn btn-primary pull-right' name='search' id='search'>Search</button>
                </div>
              </form>
              <!-- show if the match is found-->
@@ -111,7 +111,7 @@
          <div class='form-group'>
           <label for='athlete_cid' class='col-xs-3'>CID/Student ID</label>
           <div class='col-xs-9 input-group'>
-            <input type="text" name="athlete_cid" class="form-control">
+            <input type="text" name="athlete_cid" class="form-control" id='cid'>
           </div>  
         </div>
         <div class='form-group'>
@@ -206,7 +206,7 @@
   </div>
 
   <div class="modal-footer">
-    <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
+    <button type="submit" class="btn btn-primary glyphicon glyphicon-ok" id='save'>Save</button>
     <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
   </div>
 </form>
@@ -352,7 +352,34 @@ $(function()
       }
     });
   });
-
+// $('#search').click(function()
+// {
+//   var cid=$('#form-cid').val();
+//   $.session.set('cid1',cid);
+//   if(!$.isNumeric(cid) || cid.length!=11)
+//   {
+//     alert('Please enter 11 digits numeric cid number');
+//     return false;
+//   }
+//   else 
+//   {
+//     return true;
+//   }
+// });
+$('#save').click(function()
+{
+  var cid=$('#cid').val();
+  if(!$.isNumeric(cid) || cid.length!=11)
+    {
+      alert('Please enter 11 digits numeric cid number');
+      return false;
+    }
+    else 
+      return true;
+});
+$('#table').dataTable({
+  'searching':false
+});
 </script>
 @endsection
 @section('footer')

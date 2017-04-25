@@ -63,7 +63,7 @@
                   <label for='dungkhag' class='col-xs-2'>Dungkhag</label>
                     <div class='col-xs-10 input-group'>
                        <select class='form-control' name='dungkhag' id='dungkhag'>
-                         <option value=""></option>
+                         <option value=''></option>
                       </select>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                   <label for='gewog' class='col-xs-2'>Gewog</label>
                     <div class='col-xs-10 input-group'>
                        <select class='form-control' name='gewog' id='gewog'>
-                         <option value=""></option>
+                         <option value="">Select Gewog</option>
                       </select>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
                   <label for='Cdungkhag' class='col-xs-2'>Dungkhag</label>
                     <div class='col-xs-10 input-group'>
                        <select class='form-control' name='Cdungkhag' id='Cdungkhag'>
-                         <option value=""></option>
+                         <option value=''></option>
                       </select>
                     </div>
                 </div>
@@ -116,12 +116,12 @@
                 <div class='form-group'>
                   <label for='phone' class='col-xs-2'>Phone</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number here">
+                      <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number here" id='phone'>
                     </div>
                 </div><div class='form-group'>
                   <label for='mobile' class='col-xs-2'>Mobile</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="mobile" class="form-control" placeholder="Enter Mobile Number here" required>
+                      <input type="text" name="mobile" class="form-control" placeholder="Enter Mobile Number here" required id='mobile'>
                     </div>
                 </div><div class='form-group'>
                   <label for='caddress' class='col-xs-2'>Contact Address</label>
@@ -131,7 +131,7 @@
                     </div>
                 <div class="form-group">
                   <div class="col-xs-10 col-xs-offset-2 input-group">
-                      <button type="submit" class="btn btn-primary col-xs-2 col-xs-offset-7 glyphicon glyphicon-ok" value="Save">Save</button>
+                      <button type="submit" class="btn btn-primary col-xs-2 col-xs-offset-7 glyphicon glyphicon-ok" value="Save" id='save'>Save</button>
                       <a href="{{route('athlete_address.create')}}" class='btn btn-warning col-xs-2 col-xs-offset-1 glyphicon glyphicon-remove'>Cancel</a>
                   </div>
                 </div>
@@ -172,6 +172,7 @@
       success: function(result){
       //console.log(result);
       $('#dungkhag').empty();
+      $("#dungkhag").prepend("<option value=''>Select Dungkhag</option>");
        $.each(result,function(key,val)
       {
         $('#dungkhag').append('<option value="'+val.dungkhag_id+'">'+val.dungkhag_name+'</option>');
@@ -207,6 +208,7 @@
         data: {"id":dzongkhag_id}, 
         success: function(result){
           $('#Cdungkhag').empty();
+          $("#Cdungkhag").prepend("<option value=''>Select Dungkhag</option>");
           $.each(result,function(key,val)
           {
             $('#Cdungkhag').append('<option value="'+val.dungkhag_id+'">'+val.dungkhag_name+'</option>');
@@ -214,6 +216,23 @@
         }
       });
   });
+$('#save').click(function()
+{
+  var pnumber=$('#phone').val();
+  var mnumber=$('#mobile').val();
+  if(!$.isNumeric(pnumber) || pnumber.length!=8)
+  {
+    alert('Please enter 8 digits numeric phone number');
+    return false;
+  }
+  else if(!$.isNumeric(mnumber) || mnumber.length!=8)
+  {
+     alert('Please enter 8 digits numeric mobile number');
+    return false;
+  }
+  else 
+    return true;
+});
 </script>
 @endsection
 @section('footer')

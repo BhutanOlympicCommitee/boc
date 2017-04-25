@@ -151,7 +151,7 @@
            <div class='form-group'>
               <label for='mg_phone' class='col-xs-3'>Phone</label>
                   <div class='col-xs-9 input-group'>
-                      <input type="text" name="mg_phone" class="form-control" placeholder="Enter Secretariate  phone number">
+                      <input type="text" name="mg_phone" class="form-control" placeholder="Enter Secretariate  phone number" id='mg_phone1'>
                 </div>
            </div>
            <div class='form-group'>
@@ -163,7 +163,7 @@
          <div class='form-group'>
             <label for='mg_mobile' class='col-xs-3'>Mobile</label>
                 <div class='col-xs-9 input-group'>
-                    <input type="text" name="mg_mobile" class="form-control" placeholder="Enter Secretariate  mobile number" required>
+                    <input type="text" name="mg_mobile" class="form-control" placeholder="Enter Secretariate  mobile number" required id='mg_mobile1'>
               </div>
         </div>
          <div class='form-group'>
@@ -232,7 +232,7 @@
         </div>
         <input type="hidden" id="edit_id" name="edit_id">
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Update</button>
+        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok" id='update'>Update</button>
         <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
       </div>
       </form>
@@ -273,6 +273,40 @@
         }
       });
     }
+    $('#next').click(function()
+    {
+      var phone_number=$('#mg_phone1').val();
+      var mobile_number=$('#mg_mobile1').val();
+      if(!$.isNumeric(phone_number) || phone_number.length!=8)
+      {
+        alert('Please enter 8 digits numeric phone number');
+        return false;
+      }
+      else if(!$.isNumeric(mobile_number)|| mobile_number.length!=8)
+      {
+        alert('Please enter 8 digits numeric mobile number');
+        return false;
+      }
+      else 
+        return true;
+    });
+    $('#update').click(function()
+    {
+      var phone_number=$('#mg_phone').val();
+      var mobile_number=$('#mg_mobile').val();
+      if(!$.isNumeric(phone_number) || phone_number.length!=8)
+      {
+        alert('Please enter 8 digits numeric phone number');
+        return false;
+      }
+      else if(!$.isNumeric(mobile_number)|| mobile_number.length!=8)
+      {
+        alert('Please enter 8 digits numeric mobile number');
+        return false;
+      }
+      else 
+        return true;
+    });
 </script>
 @endsection
 @section('footer')

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container" style='margin-top:100px'>
+<div class="container">
     <div class="row">
         <div class="col-md-8" style='margin-left:30px'>
             <div class="panel panel-default">

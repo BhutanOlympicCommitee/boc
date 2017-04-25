@@ -28,6 +28,7 @@
                       <label for='type' class='col-xs-2'>Five Year Plan:</label>
                         <div class='col-xs-9 input-group'>
                           <select class='form-control' name='type'>
+                            <option disabled selected>Select five year plan</option>
                             <?php 
                               $fiveYearPlan=App\EnumFiveYearPlan::all();
                               foreach($fiveYearPlan as $five_year):

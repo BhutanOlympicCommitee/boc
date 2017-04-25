@@ -46,9 +46,8 @@
                     <tbody>
                         <?php $id=1?>
                         @foreach($skra_activities as $skra_activity)
-                        @if($skra_activity->sport_org_id==1)
+                        @if($user->sport_organization==$skra_activity->getSportOrganization->sport_org_name)
                         @if($skra_activity->status==0)
-                        {{-- @if($sport->sport_org_id==$skra_activity->sport_org_id) --}}
                         <tr>
                             <td>{{$id++}}</td>
                             <td>{{$skra_activity->skra->SKRA_name}}</td>
@@ -67,7 +66,11 @@
                         @endif
                         @endforeach
                     </tbody>
-                </table>   
+                </table>
+                 <div class='form-group clearfix'>
+                  <div class="input-group pull-right" style='margin-top:10px'>
+                    <a href="{{route('skra_activities.create')}}" class="btn btn-success glyphicon glyphicon-plus">Add BoC Program</a> 
+                  </div>   
               @endif 
               <form action="{{action('SKRA_activities_Controller@index')}}" method='get' id='view'>
                 {{csrf_field()}}
@@ -133,13 +136,14 @@
                         @endforeach
                     </tbody>
                 </table>
-                @endif
-                <input type="hidden" name="hidden_view" id="hidden_view" value="{{route('view_skra_activities')}}">
                 <div class='form-group clearfix'>
                   <div class="input-group pull-right" style='margin-top:10px'>
                     <a href="{{route('skra_activities.create')}}" class="btn btn-success glyphicon glyphicon-plus">Add BoC Program</a> 
                   </div>
                 </div>  
+                @endif
+                <input type="hidden" name="hidden_view" id="hidden_view" value="{{route('view_skra_activities')}}">
+                
               
             </div>
           </div>

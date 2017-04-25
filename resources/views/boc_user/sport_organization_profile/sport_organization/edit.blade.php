@@ -88,13 +88,13 @@
                       <div class='form-group'>
                         <label for='org_phone' class='col-xs-2'>Phone</label>
                         <div class='input-group col-xs-10'>
-                          <input type="text" name="org_phone" class="form-control" placeholder="enter phone number" value="{{$sport->sport_org_phone}}">
+                          <input type="text" name="org_phone" class="form-control" placeholder="enter phone number" value="{{$sport->sport_org_phone}}" id='org_phone'>
                         </div>
                       </div>
                       <div class='form-group'>
                         <label for='org_fax' class='col-xs-2'>Fax</label>
                         <div class='input-group col-xs-10'>
-                          <input type="text" name="org_fax" class="form-control" placeholder="enter fax number" value="{{$sport->sport_org_fax}}">
+                          <input type="text" name="org_fax" class="form-control" placeholder="enter fax number" value="{{$sport->sport_org_fax}}" id='org_fax'>
                         </div>
                       </div>
                       <div class='form-group'>
@@ -105,8 +105,8 @@
                       </div>
                       <div class='form-group'>
                         <div class="col-xs-10 col-xs-offset-2 input-group">
-                        <button type='submit' class='btn btn-primary col-xs-2' name='update1' value='form1'>Update</button>
-                        <button type='submit' class='btn btn-info col-xs-2 col-xs-offset-1 next1' name='update1' value='form2'>Next</button>
+                        <button type='submit' class='btn btn-primary col-xs-2' name='update1' value='form1' id='update'>Update</button>
+                        <button type='submit' class='btn btn-info col-xs-2 col-xs-offset-1 next1' name='update1' value='form2' id='next'>Next</button>
                         <a href="#Contact-info" data-toggle="tab" class='btn btn-default col-xs-2 col-xs-offset-1 contact'>Skip</a>
                         
                         <a href="{{route('sport_organization.index')}}" class='btn btn-warning col-xs-2 col-xs-offset-1'> Cancel</a>
@@ -150,6 +150,40 @@
         $('.nav #org').removeClass('active');
         $('.nav #contact').addClass('active');
       }); 
+    });
+    $('#next').click(function()
+    {
+      var pnumber=$('#org_phone').val();
+      var fax_number=$('#org_fax').val();
+      if(!$.isNumeric(pnumber) || pnumber.length!=8)
+      {
+        alert('Please enter 8 digits numeric phone number');
+        return false;
+      }
+      else if(!$.isNumeric(fax_number)|| fax_number.length!=8)
+      {
+        alert('Please enter 8 digits numeric fax number');
+        return false;
+      }
+      else 
+        return true;
+    });
+    $('#update').click(function()
+    {
+      var pnumber=$('#org_phone').val();
+      var fax_number=$('#org_fax').val();
+      if(!$.isNumeric(pnumber) || pnumber.length!=8)
+      {
+        alert('Please enter 8 digits numeric phone number');
+        return false;
+      }
+      else if(!$.isNumeric(fax_number)|| fax_number.length!=8)
+      {
+        alert('Please enter 8 digits numeric fax number');
+        return false;
+      }
+      else 
+        return true;
     });
   </script>
 @endsection

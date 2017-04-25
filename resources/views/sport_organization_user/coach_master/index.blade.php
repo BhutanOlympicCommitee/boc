@@ -173,13 +173,13 @@
               <div class='form-group clearfix'>
             <label for='coach_phone' class='col-xs-3'>Phone:</label>
               <div class='col-xs-9 input-group'>
-                <input type="text" name="coach_phone" class="form-control" placeholder="enter phone number">
+                <input type="text" name="coach_phone" class="form-control" placeholder="enter phone number" id='coach_phone1'>
               </div>
           </div>
             <div class='form-group clearfix'>
             <label for='coach_mobile' class='col-xs-3'>Mobile:</label>
               <div class='col-xs-9 input-group'>
-                <input type="text" name="coach_mobile" class="form-control" placeholder="enter mobile number" required>
+                <input type="text" name="coach_mobile" class="form-control" placeholder="enter mobile number" required id='coach_mobile1'>
               </div>
           </div>
             <div class='form-group clearfix'>
@@ -220,7 +220,7 @@
             </div>
           </div>
        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok" id='save'>Save</button>
           <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
         </div>
       </form>
@@ -339,7 +339,7 @@
             </div>
           </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Update</button>
+        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok" id='update'>Update</button>
         <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
       </div>
       <input type="hidden" name="edit_id" id='edit_id'>
@@ -348,7 +348,6 @@
     </div>
   </div>
 </div>
-<!-- editModal ends here-->
 <!-- ends addModal-->
 <!-- seperationModal begins-->
 <div class="modal fade" id="seperationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -433,6 +432,42 @@
   {
     $('#hidden_coach_id').val(id);
   }
+//phone and mobile number validation during add 
+  $('#save').click(function()
+  {
+    var coach_phone=$('#coach_phone1').val();
+    var coach_mobile=$('#coach_mobile1').val();
+    if(!$.isNumeric(coach_phone) || coach_phone.length!=8)
+    {
+      alert('Please enter 8 digit phone number');
+      return false;
+    }
+    else if(!$.isNumeric(coach_mobile) || coach_mobile.length!=8)
+    {
+      alert('Please enter 8 digit mobile number');
+      return false;
+    }
+    else
+      return false;
+  });
+//mobile number and phone validation on edit
+$('#update').click(function()
+{
+  var coach_phone=$('#coach_phone').val();
+  var coach_mobile=$('#coach_mobile').val();
+  if(!$.isNumeric(coach_phone) || coach_phone.length!=8)
+  {
+    alert('Please enter 8 digit phone number');
+    return false;
+  }
+  else if(!$.isNumeric(coach_mobile) || coach_mobile.length!=8)
+  {
+    alert('Please enter 8 digits mobile number');
+    return false;
+  }
+  else
+    return true;
+});
 </script>
 @endsection
 @section('footer')

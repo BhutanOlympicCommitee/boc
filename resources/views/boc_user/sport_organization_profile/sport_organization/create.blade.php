@@ -58,44 +58,44 @@
                     <div class='form-group'>
                       <label for='org_name' class='col-xs-2'>Name</label>
                         <div class='col-xs-10 input-group'>
-                          <input type="text" name="org_name" class="form-control" placeholder="Enter organization name here" value="">
+                          <input type="text" name="org_name" class="form-control" placeholder="Enter organization name here">
                         </div>
                     </div>
                     <div class='form-group'>
                       <label for='abbreviation' class='col-xs-2'>Abbreviation</label>
                         <div class='input-group col-xs-10'>
-                          <input type="text" name="abbreviation" class="form-control" placeholder="Enter abbreviation here" value="">
+                          <input type="text" name="abbreviation" class="form-control" placeholder="Enter abbreviation here">
                         </div>
                     </div>
                     <div class='form-group'>
                       <label for='org_web_address' class='col-xs-2'>Web Address</label>
                         <div class='input-group col-xs-10'>
-                          <input type="text" name="org_web_address" class="form-control" placeholder="Enter web adress here" value="">
+                          <input type="text" name="org_web_address" class="form-control" placeholder="Enter web adress here">
                         </div>
                     </div>
                     <div class='form-group'>
                       <label for='org_logo' class="col-xs-2">Logo</label>
                         <div class='input-group col-xs-10'>
-                          <input type="file" name="org_logo" class="form-control"  value="">
+                          <input type="file" name="org_logo" class="form-control">
                         </div>
                         <div class="clearfix"></div>
                     </div>
                     <div class='form-group'>
                       <label for='org_email' class='col-xs-2'>Email</label>
                         <div class='input-group col-xs-10'>
-                          <input type="email" name="org_email" class="form-control" placeholder="enter email" value="">
+                          <input type="email" name="org_email" class="form-control" placeholder="enter email">
                         </div>
                     </div>
                     <div class='form-group'>
                       <label for='org_phone' class='col-xs-2'>Phone</label>
                         <div class='input-group col-xs-10'>
-                          <input type="text" name="org_phone" class="form-control" placeholder="enter phone number" value="">
+                          <input type="text" name="org_phone" class="form-control" placeholder="enter phone number" id='org_phone'>
                         </div>
                     </div>
                     <div class='form-group'>
                       <label for='org_fax' class='col-xs-2'>Fax</label>
                         <div class='input-group col-xs-10'>
-                          <input type="text" name="org_fax" class="form-control" placeholder="enter fax number" value="">
+                          <input type="text" name="org_fax" class="form-control" placeholder="enter fax number" id='org_fax'>
                         </div>
                     </div>
                     <div class='form-group'>
@@ -106,7 +106,7 @@
                     </div>
                     <div class="form-group">
                           <div class="col-xs-10 col-xs-offset-2 input-group">
-                            <input type="submit" class="btn btn-primary col-xs-2 col-xs-offset-7  glyphicon glyphicon-step-forward" value="Next">
+                            <input type="submit" class="btn btn-primary col-xs-2 col-xs-offset-7  glyphicon glyphicon-step-forward" value="Next" id='next'>
                             <a href="{{route('sport_organization.index')}}" class='btn btn-warning col-xs-2 col-xs-offset-1 glyphicon glyphicon-remove'>Cancel</a>
                           </div>
                         </div> 
@@ -119,6 +119,25 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $('#next').click(function()
+  {
+    var pnumber=$('#org_phone').val();
+    var fax_number=$('#org_fax').val();
+    if(!$.isNumeric(pnumber) || pnumber.length!=8)
+    {
+      alert('Please enter 8 digits numeric phone number');
+      return false;
+    }
+    else if(!$.isNumeric(fax_number)|| fax_number.length!=8)
+    {
+      alert('Please enter 8 digits numeric fax number');
+      return false;
+    }
+    else 
+      return true;
+  });
+</script>
 @endsection
 @section('footer')
 <div class="container">

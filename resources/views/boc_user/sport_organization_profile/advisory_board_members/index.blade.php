@@ -145,7 +145,7 @@
           <div class='form-group'>
               <label for='ad_phone' class='col-xs-3'>Phone</label>
                   <div class='col-xs-9 input-group'>
-                      <input type="text" name="ad_phone" class="form-control" placeholder="Enter Executive board members phone number">
+                      <input type="text" name="ad_phone" class="form-control" placeholder="Enter Executive board members phone number" id='ad_phone1'>
                   </div>
           </div>
           <div class='form-group'>
@@ -157,7 +157,7 @@
           <div class='form-group'>
               <label for='ad_mobile' class='col-xs-3'>Mobile</label>
                   <div class='col-xs-9 input-group'>
-                      <input type="text" name="ad_mobile" class="form-control" placeholder="Enter Executive board members mobile number">
+                      <input type="text" name="ad_mobile" class="form-control" placeholder="Enter Executive board members mobile number" id='ad_mobile1'>
                   </div>
           </div>
           <div class='form-group'>
@@ -167,7 +167,7 @@
                   </div>
           </div>
        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok" id='save'>Save</button>
           <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
       </div>
       </form>
@@ -224,7 +224,7 @@
           </div>
           <input type="hidden" id="edit_id" name="edit_id">
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Update</button>
+        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok" id='update'>Update</button>
         <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
       </div>
       </form>
@@ -264,6 +264,40 @@
         }
       });
     }
+    $('#save').click(function()
+    {
+      var phone_number=$('#ad_phone1').val();
+      var mobile_number=$('#ad_mobile1').val();
+      if(!$.isNumeric(phone_number) || phone_number.length!=8)
+      {
+        alert('Please enter 8 digits numeric phone number');
+        return false;
+      }
+      else if(!$.isNumeric(mobile_number)|| mobile_number.length!=8)
+      {
+        alert('Please enter 8 digits numeric mobile number');
+        return false;
+      }
+      else 
+        return true;
+    });
+     $('#update').click(function()
+    {
+      var phone_number=$('#ad_phone').val();
+      var mobile_number=$('#ad_mobile').val();
+      if(!$.isNumeric(phone_number) || phone_number.length!=8)
+      {
+        alert('Please enter 8 digits numeric phone number');
+        return false;
+      }
+      else if(!$.isNumeric(mobile_number)|| mobile_number.length!=8)
+      {
+        alert('Please enter 8 digits numeric mobile number');
+        return false;
+      }
+      else 
+        return true;
+    });
 </script>
 @endsection
 @section('footer')

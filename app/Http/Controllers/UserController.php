@@ -23,7 +23,7 @@ class UserController extends Controller
     	$user->name = Input::get('name');
     	$user->email = Input::get('email');
     	$user->role_id = Input::get('user_role');
-        $user->organization_type=Input::get('federation_type');
+        $user->sport_organization=Input::get('federation_type');
     	$password = Input::get('password');
     	$user->password = Hash::make($password);
     	$user->save();

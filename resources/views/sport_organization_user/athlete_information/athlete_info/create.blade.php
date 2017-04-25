@@ -140,7 +140,7 @@
                 </div><div class='form-group'>
                   <label for='cid' class='col-xs-2'>CID</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="cid" class="form-control" placeholder="Enter CID here" required>
+                      <input type="text" name="cid" class="form-control" placeholder="Enter CID here" required id='cid'>
                     </div>
                 </div>
                 <div class='form-group clearfix'>
@@ -167,7 +167,7 @@
                 </div>
                 <div class="form-group">
                   <div class="col-xs-10 col-xs-offset-2 input-group">
-                      <button type="submit" class="btn btn-primary col-xs-2 col-xs-offset-7 glyphicon glyphicon-ok" value="Save">Save</button>
+                      <button type="submit" class="btn btn-primary col-xs-2 col-xs-offset-7 glyphicon glyphicon-ok" value="Save" id='save'>Save</button>
                       <a href="{{route('athlete_info.create')}}" class='btn btn-warning col-xs-2 col-xs-offset-1 glyphicon glyphicon-remove'>Cancel</a>
                   </div>
                 </div> 
@@ -180,6 +180,17 @@
   </div>
 </div>
 <script type="text/javascript">
+  $('#save').click(function()
+  {
+    var cid=$('#cid').val();
+    if(!$.isNumeric(cid) || cid.length!=11)
+    {
+      alert('Please enter 11 digits numeric cid number');
+      return false;
+    }
+    else 
+      return true;
+  });
   $(function()
   {
     $('#address').click(function(){

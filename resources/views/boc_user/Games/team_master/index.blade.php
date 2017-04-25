@@ -95,11 +95,9 @@
               @foreach($teams->games as $team_member)
               <tr>
                 <td>{{$id++}}</td>
-                <?php $coach=App\Tbl_sport_coach::where('gamesdetail_id',$team_member->gamesdetail_id)->get();
-                  foreach ($coach as $coachs):
-                ?>
-                <td>{{$coachs->displayFederation->sport_org_name}}</td>
-                <?php endforeach ?>
+               
+                <td>{{$teams->displayAsport->Sport->sport_org_name}}</td>
+               
                 <td>{{$teams->displayAsport->sport_name}}</td>
                 <td>{{$teams->athlete_id}}</td>
                 <td>{{$teams->athlete_fname.' '.$teams->athlete_mname.' '.$teams->athlete_lname}}</td>
@@ -391,7 +389,9 @@ $(function()
      });
   });
 
-$('#table1').dataTable();
+$('#table1').dataTable({
+  'searching':false
+});
 </script>
 <script type="text/javascript">
   $('#search_modal').click(function()
