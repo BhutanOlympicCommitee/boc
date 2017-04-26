@@ -39,7 +39,7 @@ class TeamMemberController extends Controller
        $team->updated_by=Auth::user()->id;
        $team->save();
       }
-        Session::flash('success', 'created successfully');
+        Session::flash('success', 'team member created successfully');
         return redirect()->route('team_master.index');
    }
 
@@ -149,6 +149,14 @@ class TeamMemberController extends Controller
         {
             $team=Athlete_bioinformation::all();
             return view('boc_user.Games.team_master.index',compact('team'));
+        }
+    }
+    public function searchAthlete(Request $request)
+    {
+        if($request->ajax()){
+            $id = $request->id;
+            $info = Athlete_bioinformation::where('athlete_associatedSport',$id)->get();
+            return response()->json($info);
         }
     }
 }

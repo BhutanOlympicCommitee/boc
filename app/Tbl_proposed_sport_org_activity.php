@@ -11,4 +11,8 @@ class Tbl_proposed_sport_org_activity extends Model
   {
     return $this->belongsTo('App\Tbl_UpdateSportActivity','weightage_id','id');
   }
+  public function quarterTimeline()
+  {
+    return $this->belongsTo('App\Enum_quarter','quarter_timeline','quarter_id');
+  }
 }

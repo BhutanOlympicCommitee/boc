@@ -282,6 +282,9 @@
         }
       });
   }
+  $('#table1').dataTable({
+    'searching':false
+  });
 </script>
 @endsection
 @section('footer')

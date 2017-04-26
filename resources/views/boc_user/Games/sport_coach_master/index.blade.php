@@ -141,7 +141,7 @@
            <div class='form-group clearfix'>
                   <label for='comments' class='col-xs-3'>Comments</label>
                     <div class='col-xs-9 input-group'>
-                      <textarea type="text" name="comments" class="form-control" placeholder="Enter Comments here" required></textarea>
+                      <textarea type="text" name="comments" class="form-control" placeholder="Enter Comments here" ></textarea>
                     </div>
                 </div>
       

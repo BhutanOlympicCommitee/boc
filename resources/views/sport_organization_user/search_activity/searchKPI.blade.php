@@ -239,9 +239,6 @@
  $(function(){
     $('#table1').DataTable(
       {
-        "paging":   false,
-        "ordering": false,
-        "info":     false,
         'searching':false
       });
   });

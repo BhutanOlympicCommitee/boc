@@ -130,7 +130,7 @@
                          <td>{{$id++}}</td>
                          <td>{{$review->activity_name}}</td>
                           <td>{{$review->activity_venue}}</td>
-                          <td>{{$review->quarter_timeline}}</td>
+                          <td>{{$review->quarterTimeline->quarter_name}}</td>
                           <td>{{$review->actual_timeline}}</td>
                           <td>{{$review->rgob_budget}}</td>
                           <td>{{$review->external_budget}}</td>
@@ -158,7 +158,10 @@
     </div>
   </div>
 <script type="text/javascript">
-$('#table1').dataTable();
+$('#table1').dataTable(
+  {
+    'searching':false
+  });
 </script>
 @endsection
 @section('footer')

@@ -142,52 +142,8 @@
        {{-- <form action="#route('search_sport_coach')" method="post">
           {{csrf_field()}} --}}
         
-       <div class='row'>
-            <div class='col-xs-6 clearfix'>
-              <div class='form-group clearfix'>
-            <label for='federation' class='col-xs-3'>Federation:</label>
-              <div class='col-xs-9 input-group'>
-                <select class='form-control' name='federation' id='federation1'>
-                  <option disabled selected>Select sport organization</option>
-                  <?php 
-                    $sport=App\Sport_Organization::all();
-                    foreach($sport as $sports):
-                  ?>
-                  <option value="{{$sports->sport_org_id}}">{{$sports->sport_org_name}}</option>
-                  <?php 
-                    endforeach
-                  ?>
-                </select>
-              </div>
-          </div>
-            </div>
+       
            
-            <div class='col-xs-6 clearfix'>
-               <div class='form-group clearfix'>
-            <label for='sport' class='col-xs-2'>Sport:</label>
-              <div class='col-xs-10 input-group'>
-                <select class='form-control' name='sport' id='sport'>
-                  <option disabled selected>Select Sport</option>
-                  <?php 
-                    $asport=App\Associated_Sport::all();
-                    foreach($asport as $asports):
-                  ?>
-                  <option value="{{$asports->sport_id}}">{{$asports->sport_name}}</option>
-                  <?php 
-                    endforeach
-                  ?>
-                </select>
-              </div>
-          </div>
-            </div>
-          </div>
-         {{--  <br>
-          <div class='form-group'>
-              <button class='btn btn-primary pull-right' name='search_modal' value='search_modal' id='search_modal'>Search</button>
-            </div>
-          </form> 
-          <br>
-          <br> --}}
           <form action="{{route('team_master.store')}}" method="post">
           {{csrf_field()}}
           <div style='margin-top:20px'>  
@@ -203,7 +159,8 @@
                 </tr>   
             </thead>
             <tbody>
-             <?php $id=1;?>
+             <?php $id=1;
+             $team=App\Athlete_bioinformation::all();?>
               @foreach($team as $teams)
               <tr>
                 <td>{{$id++}}</td>
@@ -230,6 +187,23 @@
   </div>
 </div>
 <!-- ends addModal-->
+{{-- <! Add team memeber modal begins>
+<div class="modal fade" id="addTeamMemberModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Select Athlete for Team</h4>
+      </div>
+      <div class="modal-body">
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-toggle='modal' data-target='#addModal' data-dismiss='modal'>Ok</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<! ends addModal> --}}
 <!-- view details modal begins-->
 <div class="modal fade" id="viewDetails1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
@@ -324,6 +298,7 @@
   </div>
 </div>
 </div>
+
 <script type="text/javascript">
  function view_details(id)
   {
@@ -393,12 +368,23 @@ $('#table1').dataTable({
   'searching':false
 });
 </script>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
   $('#search_modal').click(function()
   {
-    $('#addModal').modal('show');
+    var id=$('#sport1').val();
+    var url='{{route('search_team_athletes')}}';
+     $.ajax({
+        url: url,
+        type:"GET", 
+        data: {"id":id}, 
+        success: function(result){
+          console.log(result);
+            $('#addTeamMemberModal').modal('show');
+    $('#addModal').modal('hide');
+        }
+      });
   });
-</script>
+</script> --}}
 
 @endsection
 @section('footer')

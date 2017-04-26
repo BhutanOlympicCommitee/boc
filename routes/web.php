@@ -242,6 +242,7 @@ Route::get('team/view_address', 'TeamMemberController@show')->name('show_athlete
 Route::get('team/view_sport', 'TeamMemberController@showAssociatedSport')->name('show_associated_sport1');
 Route::post('team/sport_coach_search','TeamMemberController@searchSportCoach')->name('search_sport_coach');
 Route::post('team/athlete_function','AthleteInformationController@updateAthleteFunction')->name('editAthleteFunction');
+Route::get('team/search_athlete','TeamMemberController@searchAthlete')->name('search_team_athletes');
 
 //Routes for athlete achievement and displinary action 
 Route::get('athlete_achievement','AchievementAndDisplinaryAction@displayAthleteInfo')->name('display_matching_athlete');

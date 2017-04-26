@@ -34,7 +34,7 @@ class SportCoachController extends Controller
         $sportcoach->created_by=Auth::user()->id;
         $sportcoach->updated_by=Auth::user()->id;
         $sportcoach->save();
-        Session::flash('success', 'created successfully');
+        Session::flash('success', 'sport coach created successfully');
         return redirect()->route('sport_coach_master.index');
     }
 
