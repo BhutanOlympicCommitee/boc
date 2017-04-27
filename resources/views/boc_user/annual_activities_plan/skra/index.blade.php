@@ -39,7 +39,7 @@
                             ?>
                           </select>
                          <span class='input-group-btn'>
-                            <button class='btn btn-default' type='submit' name='submit' value='view'>Search</button>
+                            <button class='btn btn-primary' type='submit' name='submit' value='view'>Search</button>
                          </span>
                         </div>
                     </div>

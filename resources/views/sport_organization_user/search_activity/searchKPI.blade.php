@@ -95,7 +95,7 @@
           </div>    
           <div class="form-group clearfix">
             <div class="col-xs-12 input-group ">
-              <input type="submit" class="btn btn-default pull-right" value="Search" name='search'>
+              <input type="submit" class="btn btn-primary pull-right" value="Search" name='search'>
               </div>
           </div>
           </form>
