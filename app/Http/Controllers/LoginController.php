@@ -16,9 +16,12 @@ class LoginController extends Controller
     		])){
     		$user = User::where('email',$request->email)->first();
             session(['user_id' => $user->id]);
-    	    if($user->is_admin()){
+    	    if($user->is_admin()==1){
     	    	return redirect()->route('admin_dashboard');
-    	    }else{
+    	    }elseif($user->is_admin()==4){
+                return redirect()->route('federationdash');
+            }
+            else{
     	    	return  redirect()->route('home');
     	    }
     	}

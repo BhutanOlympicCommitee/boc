@@ -4,18 +4,18 @@
         <!-- left, vertical navbar -->
         <div class="col-md-3 bootstrap-admin-col-left">
             <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
-
+                 <?php $user_id=session('user_id');  $user = App\User::find($user_id);
+                   ?>
                 <li class="active">
                    @if(session('user_id')==1) 
                         <a href="{{route('admin_dashboard')}}"><i class="pull-left glyphicon glyphicon-dashboard"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Dashboard</span><i class="glyphicon glyphicon-chevron-right"></i></a>
                     @endif
-                    @if(session('user_id')!=1) 
-                        <a href="{{route('home')}}"><i class="pull-left glyphicon glyphicon-dashboard"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Dashboard</span><i class="glyphicon glyphicon-chevron-right"></i></a>
+                    @if($user->role_id==4) 
+                        <a href="{{route('federationdash')}}"><i class="pull-left glyphicon glyphicon-dashboard"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Dashboard</span><i class="glyphicon glyphicon-chevron-right"></i></a>
                     @endif
                 </li>
                 <li>
-                    <?php $user_id=session('user_id');  $user = App\User::find($user_id);
-                   ?>
+                   
                     <ul class="nav nav-list nav-menu-list-style">
                     <input type='hidden' name='role_id' value='{{$user->role_id}}' id='role_id'>
                      @if($user->role_id==1)

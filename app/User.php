@@ -29,7 +29,9 @@ class User extends Authenticatable
 
     public function is_admin(){
         if($this->role_id == 1){
-            return true;
+            return $this->role_id;
+        }else if($this->role_id == 4){
+            return $this->role_id;
         }else{
             return false;
         }

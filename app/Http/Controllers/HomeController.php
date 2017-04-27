@@ -40,5 +40,12 @@ class HomeController extends Controller
     public function boc(){
         return view('home');
     }
-
+    public function federationDashboard()
+    {
+        $countries = Mst_country::all();
+        $dzongkhag = MstDzongkhag::all();
+        $users = User::all();
+        $gewogs = Gewog::all();
+        return view('federationdash',['countries'=>$countries,'dzongkhags'=>$dzongkhag,'users'=>$users,'gewogs'=>$gewogs]);
+    }
 }
