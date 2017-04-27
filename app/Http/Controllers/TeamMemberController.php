@@ -152,6 +152,14 @@ class TeamMemberController extends Controller
             return view('boc_user.Games.team_master.index',compact('team'));
         }
     }
+    public function searchAthlete(Request $request)
+    {
+        if($request->ajax()){
+            $id = $request->id;
+            Session::put('sport_id',$id);
+            return response()->json(Session::get('sport_id'));
+        }
+    }
 }
 
 

@@ -88,7 +88,7 @@
       </div>
     </div>
   </div>
-  <div id='Org-info'>
+ {{--  <div id='Org-info'>
     <script type="text/javascript">
       $(function()
       {
@@ -107,7 +107,7 @@
         });
       });
     </script>
-  </div>
+  </div> --}}
   <div id='Management-info'>
   <script type="text/javascript">
     $(function()
@@ -297,6 +297,11 @@
       }
       else 
         return true;
+    });
+    $(function()
+    {
+      $('#contact_info').attr('class','disabled');
+      $('#org_info').attr('class','disabled');
     });
 </script>
 @endsection

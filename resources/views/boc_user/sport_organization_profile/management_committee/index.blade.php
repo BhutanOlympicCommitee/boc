@@ -23,8 +23,8 @@
                         </div>
                         <div class="bootstrap-admin-panel-content">
                         	<ul class='nav nav-pills nav-justified'>
-						      <li id='org_info'><a href="#Org-info" data-toggle="tab">Organization Information</a></li>
-						      <li id='contact_info'><a href="#Contact-info" data-toggle="tab">Contact Person Information</a></li>
+						      <li id='org_info'><a href="#" data-toggle="tab">Organization Information</a></li>
+						      <li id='contact_info'><a href="#" data-toggle="tab">Contact Person Information</a></li>
 						      <li class='active'><a href="#Management-info" data-toggle="tab">Secretariate Information</a></li>
 						      <li id='advisory_info'><a href="#Advisory-info" data-toggle="tab">Executive Board Information</a></li>
 				    		</ul>
@@ -102,8 +102,8 @@
 	    });
     </script>
 	</div>
-	<div id='Org-info'>
-	<script type="text/javascript">
+	{{-- <div id='Org-info'> --}}
+	{{-- <script type="text/javascript">
 		$(function()
 		{
 			$('#org_info').click(function()
@@ -111,19 +111,20 @@
 				window.location="{{url(route('sport_organization.edit',Session::get('key1')))}}"
 			});
 		});
-	</script>
-</div>
-<div id='Contact-info'>
-	<script type="text/javascript">
+	</script> --}}
+{{-- </div> --}}
+{{-- <div id='Contact-info'> --}}
+	{{-- <script type="text/javascript">
 		$(function()
 		{
 			$('#contact_info').click(function()
 			{
-				window.location="{{url(route('contact_person.edit',Session::get('key2')))}}"
+				alert('{{URL::previous()}}');
+        //window.location="{{url(route('contact_person.edit',Session::get('key2')))}}"
 			});
 		});
-	</script>
-</div>
+	</script> --}}
+{{-- </div> --}}
 </div>
 <!-- addModal begins -->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -306,6 +307,11 @@
       }
       else 
         return true;
+    });
+    $(function()
+    {
+      $('#contact_info').attr('class','disabled');
+      $('#org_info').attr('class','disabled');
     });
 </script>
 @endsection
