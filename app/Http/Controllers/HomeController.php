@@ -8,9 +8,14 @@ use App\MstDzongkhag;
 use App\Mst_country;
 use App\Sport_Organization;
 use App\Gewog;
+
 use App\Tbl_proposed_sport_org_activity;
 use App\Tbl_Coach;
 use App\TrainingSchedule;
+use App\Sport_Organization;
+use App\Associated_Sport;
+use App\Tbl_SKRA;
+use App\Tbl_SKRA_activities;
 
 class HomeController extends Controller
 {
@@ -31,7 +36,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $sport_organization=Sport_Organization::all();
+        $sport=Associated_Sport::all();
+        $akra=Tbl_SKRA::all();
+        $boc_program=Tbl_SKRA_activities::all();
+        return view('home',compact('sport_organization','sport','akra','boc_program'));
+
     }
     public function admin()
     {
