@@ -8,11 +8,9 @@ use App\MstDzongkhag;
 use App\Mst_country;
 use App\Sport_Organization;
 use App\Gewog;
-
 use App\Tbl_proposed_sport_org_activity;
 use App\Tbl_Coach;
 use App\TrainingSchedule;
-use App\Sport_Organization;
 use App\Associated_Sport;
 use App\Tbl_SKRA;
 use App\Tbl_SKRA_activities;
