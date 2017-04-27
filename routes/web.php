@@ -21,10 +21,7 @@ Route::get('/admin.dashboard', 'HomeController@admin')->name('admin_dashboard');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Route for Custome Login
-Route::post('/login',[
-	'uses'=>'LoginController@login',
-	'as'=>'login_custome'
-	]);
+Route::post('/login',['uses'=>'LoginController@login','as'=>'login_custome']);
 
 //Route for user managements
 //view the user details
@@ -39,13 +36,9 @@ Route::get('delete_user/{id}',['uses'=>'UserController@deleteUser','as'=>'delete
 
 
 //Route for the roles
-Route::get('role',[
-	'uses'=>'RoleController@index',
-	'as'=>'view_role'
-	]);
+Route::get('role',['uses'=>'RoleController@index','as'=>'view_role']);
 //insert the role information
-Route::post('role.add',['uses'=>'RoleController@postRole','as'=>'add_role'
-  ]);
+Route::post('role.add',['uses'=>'RoleController@postRole','as'=>'add_role']);
 //update the role information
 Route::post('role.update',['uses'=>'RoleController@updateRole','as'=>'update_role']);
 //Delete the role information
@@ -53,8 +46,11 @@ Route::get('role.delete/{id}',['uses'=>'RoleController@deleteRole','as'=>'delete
 
 //routes for master country
 Route::get('country',['as'=>'country_master.index','uses'=>'MasterCountryController@index']);
+
 Route::post('country/store',['as'=>'country_master.store','uses'=>'MasterCountryController@store']);
+
 Route::delete('country/destroy/{id}',['as'=>'country_master.destroy','uses'=>'MasterCountryController@destroy']);
+
 Route::get('country/view', 'MasterCountryController@view');
 Route::post('country/update', 'MasterCountryController@update')->name('update_country');
 
@@ -160,12 +156,16 @@ Route::post('review_plan/storeAthlete',['as'=>'update_achievement.storeAthlete',
 Route::get('update_achievement/view', 'ReviewPlanController@view')->name('view_update_achievement');
 
 Route::post('review_plan/{id}/achievement_report','ReviewPlanController@storeActivitiesAchievedReport')->name('activities_achieved_report');
+Route::post('search_participants','ReviewPlanController@searchParticipants')->name('search_participants');
 
+//searching functionalities 
+Route::post('review_plan/search','ReviewPlanController@searchActivities')->name('searching_functionality');
 //Route for Update Achievements 
 Route::get('review_activities_achievemenents_update',[
 		'uses'=>'ReviewPlanController@getAchievement_update',
 		'as'=>'achievement_update'
 	]);
+Route::post('search_approved_activities','ReviewPlanController@searchApprovedActivities')->name('searchApprovedActivities');
 
 
 //routes for althlete information
@@ -207,7 +207,9 @@ Route::post('training/save_attendance',['as'=>'save_attendance','uses'=>'Trainin
 Route::get('training/{id}/show_athlete_training', 'TrainingInformationController@viewAthleteTrainingSchedule')->name('showAthleteSchedule');
 Route::get('training/{id}/view_training_participants', 'TrainingInformationController@viewTrainingParticipants')->name('showTrainingParticipants');
 Route::get('training/{id}/athlete_attendance', 'TrainingInformationController@takeAthleteAttendance')->name('athlete_attendance');
-
+Route::post('training/search','TrainingInformationController@searchSportCoach')->name('search_training_info');
+Route::post('search_training_schedule','TrainingInformationController@searchTrainingSchedule')->name('search_training_schedule');
+Route::post('search_training_attendance','TrainingInformationController@searchTrainingAttendance')->name('search_training_attendance');
 
 //Routes for coach
 Route::get('coach',['as'=>'coach_master.index','uses'=>'CoachController@index']);
@@ -215,6 +217,7 @@ Route::post('coach/store',['as'=>'coach_master.store','uses'=>'CoachController@s
 Route::post('coach/storeSeperation',['as'=>'coach_master.storeSeperation','uses'=>'CoachSeperationController@store']);
 Route::get('coach/view', 'CoachController@view')->name('view_coach');
 Route::post('coach/update', 'CoachController@update')->name('update_coach');
+Route::post('coach/search','CoachController@searchCoachInformation')->name('search_coach_info');
 
 //routes for Games
 Route::get('games',['as'=>'games_master.create','uses'=>'GamesController@create']);
@@ -237,11 +240,15 @@ Route::post('team/update', 'TeamMemberController@update')->name('update_team');
 Route::get('team/view_athlete', 'TeamMemberController@view')->name('show_athlete_info1');
 Route::get('team/view_address', 'TeamMemberController@show')->name('show_athlete_address1');
 Route::get('team/view_sport', 'TeamMemberController@showAssociatedSport')->name('show_associated_sport1');
+Route::post('team/sport_coach_search','TeamMemberController@searchSportCoach')->name('search_sport_coach');
+Route::post('team/athlete_function','AthleteInformationController@updateAthleteFunction')->name('editAthleteFunction');
 
 //Routes for athlete achievement and displinary action 
 Route::get('athlete_achievement','AchievementAndDisplinaryAction@displayAthleteInfo')->name('display_matching_athlete');
 Route::post('athlete_achievement/store',['as'=>'display_athlete_achievement.store','uses'=>'AchievementAndDisplinaryAction@store']);
 Route::post('athlete_achievement/Actionstore',['as'=>'display_athlete_achievement.Actionstore','uses'=>'AchievementAndDisplinaryAction@Actionstore']);
+Route::post('athlete_achievement/search','AchievementAndDisplinaryAction@searchSportCoach')->name('search_games');
+
 
 //update sport org activities
 Route::get('sport_activity',['as'=>'sport_activity_plan.index','uses'=>'UpdateSportActivityController@index']);
@@ -267,6 +274,8 @@ Route::post('sport_activity/update_proposed_activity', 'UpdateSportActivityContr
 Route::get('searchActivity',['as'=>'search_activity.search','uses'=>'Sport_Organization_Controller@search']);
 //routes for search activities
 Route::get('searchKPI',['as'=>'search_activity.searchKPI','uses'=>'KPIController@searchKPI']);
+Route::post('listKPI','KPIController@listAndSearchKPI')->name('searchKPI');
 
 //route for search akra activites
 Route::post('searchAKRA_activity','SKRA_activities_Controller@searchAKRAactivity')->name('searchAKRA');
+Route::post('searchAKRA','SKRA_activities_Controller@searchAKRAactivity')->name('searchAKRA');

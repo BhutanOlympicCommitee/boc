@@ -22,7 +22,7 @@
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
-            <form action="" method="post">
+            <form action="{{route('search_games')}}" method="post">
                 {{csrf_field()}}
                 <div class='row'>
                   <div class='col-xs-6 clearfix'>
@@ -30,7 +30,7 @@
                     <label for='year' class='col-xs-3'>Year</label>
                     <div class='col-xs-9 input-group'>
                   <select name="year" class="form-control" required>
-                    <option>Select Year
+                    <option disabled selected>Select Year
                     </option>
                     <?php 
                     for($i = 1950 ; $i <= date('Y'); $i++){
@@ -44,7 +44,7 @@
             <label for='federation' class='col-xs-3'>Federation:</label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='federation'>
-                  <option>Select Federation</option>
+                  <option disabled selected>Select Federation</option>
                   <?php 
                     $sport=App\Sport_Organization::all();
                     foreach($sport as $sports):
@@ -62,7 +62,7 @@
                   <label for='geames' class='col-xs-3'>Games:</label>
                     <div class='col-xs-9 input-group'>
                       <select class='form-control' name='games' required>
-                    <option>Select games</option>
+                    <option disabled selected>Select games</option>
                   <?php 
                     $game=App\Tbl_game_detail::all();
                     foreach($game as $games):
@@ -78,7 +78,7 @@
                   <label for='associatedSport' class='col-xs-3'>Sport:</label>
                     <div class='col-xs-9 input-group'>
                       <select class='form-control' name='associatedSport' required>
-                    <option>Select Sport</option>
+                    <option disabled selected>Select Sport</option>
                   <?php 
                     $Asport=App\Associated_Sport::all();
                     foreach($Asport as $sport):
@@ -94,7 +94,7 @@
                 </div>
                   <div class="form-group clearfix">
                     <div class="col-xs-12 input-group ">
-                      <input type="submit" class="btn btn-default pull-right" value="Search">
+                      <input type="submit" class="btn btn-primary pull-right" value="Search">
                     </div>
                 </div>
               </form>
@@ -112,7 +112,7 @@
             </thead>
             <tbody>
              <?php $id=1;
-              $athlete_info=App\Athlete_bioinformation::all();
+              //$athlete_info=App\Athlete_bioinformation::all();
               foreach($athlete_info as $athlete):
               ?>
               <tr>
@@ -362,7 +362,12 @@
   }
    $(function()
   {
-    $('#table').dataTable();
+    $('#table').dataTable(
+      {
+        "ordering": false,
+        "info":     false,
+        'searching':false
+      });
   });
 
    function view_athleteAchievement(id)

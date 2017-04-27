@@ -15,7 +15,7 @@ class CreateTblUpdateAthleteAchievementsTable extends Migration
     {
         Schema::create('tbl_update_athlete_achievements', function (Blueprint $table) {
             $table->increments('athlete_id');
-            $table->string('athlete_cid',20);
+            $table->bigInteger('athlete_cid');
             $table->string('athlete_name',250);
             $table->date('athlete_dob');
             $table->integer('dzongkhag_id');

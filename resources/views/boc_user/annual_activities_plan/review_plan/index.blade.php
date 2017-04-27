@@ -22,7 +22,7 @@
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
-              <form action="{{action('ReviewPlanController@index')}}" method='get' id='view'>
+              <form action="{{route('searching_functionality')}}" method='post' id='view'>
                 {{csrf_field()}}
                 <div class='form-group'>
                   <label for='five_year' class='col-xs-3'>Five Year Plan</label>
@@ -63,7 +63,7 @@
                   <label for='skra' class='col-xs-3'>AKRA:</label>
                     <div class='col-xs-9 input-group'>
                       <select class='form-control' name='skra' id='skra'>
-                        <option value="" disabled selected>Select sport organization</option>
+                        <option value="" disabled selected>Select AKRA</option>
                         <?php 
                           $skras=App\Tbl_SKRA::all();
                           foreach($skras as $skra):
@@ -94,18 +94,18 @@
                 </div>
               <div class='form-group'>
                 <span class='input-group-btn'>
-                  <button class='btn btn-default pull-right' type='submit' name='submit' value='view'>Search</button>
+                  <button class='btn btn-primary pull-right' type='submit' name='submit' value='view'>Search</button>
                 </span>
               </div>
 
               </form>
-              @if(isset($_GET['submit']))
+            {{--   @if(isset($_GET['submit']))
                 <script type="text/javascript">
                   $(function()
                   {
                     $('#view').hide();
                   });
-                </script>
+                </script> --}}
                
                 <table class="table table-bordered table-striped table-responsive" id="table1">
                     <thead>
@@ -130,7 +130,7 @@
                          <td>{{$id++}}</td>
                          <td>{{$review->activity_name}}</td>
                           <td>{{$review->activity_venue}}</td>
-                          <td>{{$review->quarter_timeline}}</td>
+                          <td>{{$review->quarterTimeline->quarter_name}}</td>
                           <td>{{$review->actual_timeline}}</td>
                           <td>{{$review->rgob_budget}}</td>
                           <td>{{$review->external_budget}}</td>
@@ -150,7 +150,7 @@
                     </tbody>
                 </table>
                 </div>  
-              @endif
+             {{--  @endif --}}
             </div>
           </div>
         </div>
@@ -158,7 +158,10 @@
     </div>
   </div>
 <script type="text/javascript">
-$('#table1').dataTable();
+$('#table1').dataTable(
+  {
+    'searching':false
+  });
 </script>
 @endsection
 @section('footer')

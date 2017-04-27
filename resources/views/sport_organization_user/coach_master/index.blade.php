@@ -29,6 +29,8 @@
 						 	          @endif
                         <div class='row'>
                 <div class='col-xs-6 clearfix'>
+                <form action='{{route('search_coach_info')}}' method='post'>
+                  <input type="hidden" name="_token" value='{{csrf_token()}}'>
                   <div class='form-group clearfix'>
                     <label for='coach_appointmentDate' class='col-xs-2'>From Date:</label>
                       <div class='col-xs-10 col-xs-offset-3 input-group'>
@@ -59,11 +61,12 @@
                   </div>
                 </div>
               </div>
-                    <div class="form-group clearfix">
-                  <div class="col-xs-12 input-group ">
-                    <input type="submit" class="btn btn-default pull-right" value="Search">
-                    </div>
-                </div>
+              <div class="form-group clearfix">
+                <div class="col-xs-12 input-group ">
+                  <input type="submit" class="btn btn-primary pull-right" value="Search" name='search'>
+                  </div>
+              </div>
+              </form>
         				 			<table class="table table-bordered table-striped table-responsive" id="table">
         				 				<thead>
         									<tr>
@@ -170,13 +173,13 @@
               <div class='form-group clearfix'>
             <label for='coach_phone' class='col-xs-3'>Phone:</label>
               <div class='col-xs-9 input-group'>
-                <input type="text" name="coach_phone" class="form-control" placeholder="enter phone number">
+                <input type="text" name="coach_phone" class="form-control" placeholder="enter phone number" id='coach_phone1'>
               </div>
           </div>
             <div class='form-group clearfix'>
             <label for='coach_mobile' class='col-xs-3'>Mobile:</label>
               <div class='col-xs-9 input-group'>
-                <input type="text" name="coach_mobile" class="form-control" placeholder="enter mobile number" required>
+                <input type="text" name="coach_mobile" class="form-control" placeholder="enter mobile number" required id='coach_mobile1'>
               </div>
           </div>
             <div class='form-group clearfix'>
@@ -217,7 +220,7 @@
             </div>
           </div>
        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok" id='save'>Save</button>
           <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
         </div>
       </form>
@@ -328,15 +331,15 @@
                 <input type="text" name="coach_contactAddress" class="form-control" placeholder="Contaxt Address" id="coach_contactAddress" required>
             </div>
           </div>
-             <div class='form-group'>
+             <div class='form-group' id='coach_type'>
             <label for='coach_type' class='col-xs-3'>Type:</label>
               <div class="col-xs-9 input-group">
-               <input name="coach_type" type="radio" value="Paid" id="coach_type" class="pull-left">Paid</br>
-               <input name="coach_type" type="radio" value="Volunteer" id="coach_type1" checked>Volunteer
+               <input name="coach_type" type="radio" value="Paid" class="pull-left">Paid</br>
+               <input name="coach_type" type="radio" value="Volunteer">Volunteer
             </div>
           </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Update</button>
+        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok" id='update'>Update</button>
         <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Close</button>
       </div>
       <input type="hidden" name="edit_id" id='edit_id'>
@@ -345,7 +348,6 @@
     </div>
   </div>
 </div>
-<!-- editModal ends here-->
 <!-- ends addModal-->
 <!-- seperationModal begins-->
 <div class="modal fade" id="seperationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -385,9 +387,9 @@
     {
         $('#table').DataTable(
            {
-           "language": {
-           "search": "Filter Coach:"
-     }
+          "ordering": false,
+        "info":     false,
+        'searching':false
      }
           );
     });  
@@ -399,9 +401,10 @@
       type:"GET", 
       data: {"id":id}, 
       success: function(result){
+       // console.log(result.coach_type);
         // console.log(result->coach_fname);
         $("#edit_id").val(result.coach_id);
-        $("#type4").val(result.country_id);
+        $("#type4").val(result.coach_nationality);
         $('#coach_title').val(result.coach_title)
         $("#coach_fname").val(result.coach_fname);
         $("#coach_mname").val(result.coach_mname);
@@ -415,9 +418,13 @@
         $("#coach_appointmentDate").val(result.coach_appointmentDate);
         $("#coach_expiryDate").val(result.coach_expiryDate);
         $("#coach_contactAddress").val(result.coach_email);
-        $("#coach_type").val(result.coach_type);
-        $("#coach_type1").val(result.coach_type);
-       
+        //$("#coach_type").val(result.coach_type);
+        if(result.coach_type=='Paid')
+        {
+          $('#coach_type').find(':radio[name=coach_type][value="Paid"]').prop('checked',true)
+        }
+        else
+          $('#coach_type').find(':radio[name=coach_type][value="Volunteer"]').prop('checked',true)
       }
     });
   }
@@ -425,6 +432,42 @@
   {
     $('#hidden_coach_id').val(id);
   }
+//phone and mobile number validation during add 
+  $('#save').click(function()
+  {
+    var coach_phone=$('#coach_phone1').val();
+    var coach_mobile=$('#coach_mobile1').val();
+    if(!$.isNumeric(coach_phone) || coach_phone.length!=8)
+    {
+      alert('Please enter 8 digit phone number');
+      return false;
+    }
+    else if(!$.isNumeric(coach_mobile) || coach_mobile.length!=8)
+    {
+      alert('Please enter 8 digit mobile number');
+      return false;
+    }
+    else
+      return false;
+  });
+//mobile number and phone validation on edit
+$('#update').click(function()
+{
+  var coach_phone=$('#coach_phone').val();
+  var coach_mobile=$('#coach_mobile').val();
+  if(!$.isNumeric(coach_phone) || coach_phone.length!=8)
+  {
+    alert('Please enter 8 digit phone number');
+    return false;
+  }
+  else if(!$.isNumeric(coach_mobile) || coach_mobile.length!=8)
+  {
+    alert('Please enter 8 digits mobile number');
+    return false;
+  }
+  else
+    return true;
+});
 </script>
 @endsection
 @section('footer')

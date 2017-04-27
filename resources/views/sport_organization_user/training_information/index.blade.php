@@ -28,7 +28,7 @@
               <li id='attendance'><a href="#" data-toggle="tab">Training Attendance</a></li>
             </ul>
               <div style='margin-top: 20px'></div>
-              <form action="{{--route('sport_organization.store')--}}" method="post">
+              <form action="{{route('search_training_info')}}" method="post">
                 {{csrf_field()}}
                 <div class='row'>
                 <div class='col-xs-6 clearfix'>
@@ -77,7 +77,7 @@
                 </div> 
                 <div class="form-group clearfix">
                   <div class="col-xs-12 input-group ">
-                    <input type="submit" class="btn btn-default pull-right" value="Search">
+                    <input type="submit" class="btn btn-primary pull-right" value="Search">
                     </div>
                 </div>
               </form>
@@ -185,7 +185,12 @@
 <!-- ends viewDetails modal-->
 <script type="text/javascript">
   $(function(){
-    $('#table1').DataTable();
+    $('#table1').DataTable(
+      {
+        "ordering": false,
+        "info":     false,
+        'searching':false
+      });
   });
 </script>
 <script type="text/javascript">

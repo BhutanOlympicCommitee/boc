@@ -109,6 +109,22 @@
             </select>
         </div>
     </div>
+     <div class="form-group">
+                <label for="federation_type" class="col-md-4 control-label">Sport Organization</label>
+
+                <div class="col-md-6">
+                  <select  name="federation_type" class="col-md-6 form-control" required>
+                    <option disabled selected>Select the Sport Organization</option>
+                    <option value='boc'>boc</option>
+                     <?php
+                    $sport_organization= App\Sport_Organization::all();
+                    foreach($sport_organization as $sport):
+                        ?>
+                    <option value="{{$sport->sport_org_name}}">{{$sport->sport_org_name}}</option>
+                <?php endforeach;?>
+                  </select>
+        </div>
+    </div>
     <div class="form-group">
         <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 

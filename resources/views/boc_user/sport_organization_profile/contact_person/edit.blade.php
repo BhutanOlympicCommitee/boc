@@ -48,13 +48,13 @@
                       <div class='form-group'>
                           <label for='org_phone' class='col-xs-2'>Phone</label>
                           <div class='input-group col-xs-10'>
-                            <input type="text" name="contact_phone" class="form-control" placeholder="enter phone number" value="{{$contact->contact_person_phone}}">
+                            <input type="text" name="contact_phone" class="form-control" placeholder="enter phone number" value="{{$contact->contact_person_phone}}" id='contact_phone'>
                           </div>
                       </div>
                       <div class='form-group'>
                           <label for='org_fax' class='col-xs-2'>Fax</label>
                           <div class='input-group col-xs-10'>
-                            <input type="text" name="contact_fax" class="form-control" placeholder="enter fax number" value="{{$contact->contact_person_fax}}">
+                            <input type="text" name="contact_fax" class="form-control" placeholder="enter fax number" value="{{$contact->contact_person_fax}}" id='contact_fax'>
                           </div>
                       </div>
                       <div class='form-group'>
@@ -66,14 +66,14 @@
                       <div class='form-group'>
                           <label for='org_phone' class='col-xs-2'>Mobile</label>
                           <div class='input-group col-xs-10'>
-                            <input type="text" name="contact_mobile" class="form-control" placeholder="enter phone number" value="{{$contact->contact_person_mobile}}">
+                            <input type="text" name="contact_mobile" class="form-control" placeholder="enter phone number" value="{{$contact->contact_person_mobile}}" id='contact_mobile'>
                           </div>
                       </div>
                       <div class='form-group'>
                         <div class="col-xs-11 col-xs-offset-2 input-group">
-                        <button type='submit' class='btn btn-primary col-xs-2' name='update1' value='form1'>Update</button>
+                        <button type='submit' class='btn btn-primary col-xs-2' name='update1' value='form1' id='update'>Update</button>
                         {{-- <a href="#Management-info" data-toggle="tab" class='btn btn-info col-xs-2 col-xs-offset-1 next2'>Next</a> --}}
-                        <button type='submit' class='btn btn-info col-xs-2 col-xs-offset-1 next1' name='update1' value='form2'>Next</button>
+                        <button type='submit' class='btn btn-info col-xs-2 col-xs-offset-1 next1' name='update1' value='form2' id='next'>Next</button>
                         <a href="#Management-info" data-toggle="tab" class='btn btn-default col-xs-2 col-xs-offset-1' id='skip'>Skip</a>
                           
                         <a href="{{route('sport_organization.index')}}" class='btn btn-warning col-xs-2 col-xs-offset-1'> Cancel</a>
@@ -114,6 +114,52 @@
         window.location="{{url(route('management_committee.index'))}}";
       });
     });
+     $('#next').click(function()
+      {
+        var pnumber=$('#contact_phone').val();
+        var fax_number=$('#contact_fax').val();
+        var mobile_number=$('#contact_mobile').val();
+        if(!$.isNumeric(pnumber) || pnumber.length!=8)
+        {
+          alert('Please enter 8 digits numeric phone number');
+          return false;
+        }
+        else if(!$.isNumeric(fax_number)|| fax_number.length!=8)
+        {
+          alert('Please enter 8 digits numeric fax number');
+          return false;
+        }
+        else if(!$.isNumeric(mobile_number)|| mobile_number.length!=8)
+        {
+          alert('Please enter 8 digits numeric mobile number');
+          return false;
+        }
+        else 
+          return true;
+      });
+     $('#update').click(function()
+      {
+        var pnumber=$('#contact_phone').val();
+        var fax_number=$('#contact_fax').val();
+        var mobile_number=$('#contact_mobile').val();
+        if(!$.isNumeric(pnumber) || pnumber.length!=8)
+        {
+          alert('Please enter 8 digits numeric phone number');
+          return false;
+        }
+        else if(!$.isNumeric(fax_number)|| fax_number.length!=8)
+        {
+          alert('Please enter 8 digits numeric fax number');
+          return false;
+        }
+        else if(!$.isNumeric(mobile_number)|| mobile_number.length!=8)
+        {
+          alert('Please enter 8 digits numeric mobile number');
+          return false;
+        }
+        else 
+          return true;
+      });
   </script>
 @endsection
 @section('footer')

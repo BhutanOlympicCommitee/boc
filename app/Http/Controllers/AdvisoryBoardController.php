@@ -42,9 +42,9 @@ class AdvisoryBoardController extends Controller
         $this->validate($request,[
         'ad_name'=> 'required',
         'ad_designation' => 'required',
-        'ad_phone' => 'required',
+        'ad_phone' => 'required|unique:tbl_sport_org_advisories,mg_member_phone',
         'ad_email' => 'required',
-        'ad_mobile' => 'required',
+        'ad_mobile' => 'required|unique:tbl_sport_org_advisories,mg_member_mobile',
         'ad_appointment' => 'required',
         ]);
 
@@ -86,7 +86,11 @@ class AdvisoryBoardController extends Controller
      */
     public function update(Request $request)
     {
-         $id = $request ->edit_id;
+        $id = $request ->edit_id;
+        $this->validate($request,[
+            'ad_phone' => 'required|unique:tbl_sport_org_advisories,mg_member_phone,'.$id.',ad_member_id',
+            'ad_mobile'=>'required|unique:tbl_sport_org_advisories,mg_member_mobile,'.$id.',ad_member_id',
+            ]);
         $advisory_info = Tbl_sport_org_advisory::findOrFail($id);
         $advisory_info->ad_member_name=$request->ad_name;
         $advisory_info->ad_member_designation=$request->ad_designation;

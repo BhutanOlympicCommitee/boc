@@ -27,14 +27,13 @@
                 <li class="active" id='participants'><a href="#Participant" data-toggle="tab">Participant Information tab</a></li>
               </ul>
               <div class='tab-content'>
-
               </br>
-             
-                <form action='' method='post'>
+                <form action='{{route('search_participants')}}' method='post'>
+                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
                   <div class='form-group clearfix'>
                     <label class='col-xs-2'>CID/Student ID</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="cid" class="form-control">
+                      <input type="text" name="cid" class="form-control" id='form-cid'>
                     </div>
                   </div>
                   <div class='form-group clearfix'>
@@ -45,167 +44,177 @@
                   </div>
                 
                 <div class='form-group clearfix'>
-                 <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' name='searchAthlete' data-target="#addModal"> Search</a>
+                 {{-- <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' name='searchAthlete' data-target="#addModal"> Search</a> --}}
+                 <button type='submit' class='btn btn-primary pull-right' name='search' id='search'>Search</button>
                </div>
              </form>
-                 </div>
-             <!-- if particpants not found show this form -->
-             <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-               <div class="modal-dialog " role="document">
-                 <div class="modal-content">
-                   <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Add Athlete Information</h4>
-                  </div>
-                  <div class="modal-body">
-                   <form action="{{route('update_achievement.storeAthlete')}}" method="post">
-                     {{csrf_field()}}
-                     <div class='form-group'>
-                      <label for='athlete_cid' class='col-xs-3'>CID/Student ID</label>
-                      <div class='col-xs-9 input-group'>
-                        <input type="text" name="athlete_cid" class="form-control">
-                      </div>  
-                    </div>
-                    <div class='form-group'>
-                      <label for='athlete_name' class='col-xs-3'>Name</label>
-                      <div class='col-xs-9 input-group'>
-                        <input type="text" name="athlete_name" class="form-control">
-                      </div>  
-                    </div>
-                    <div class='form-group'>
-                      <label for='athlete_dob' class='col-xs-3'>Date of Birth</label>
-                      <div class='col-xs-9 input-group'>
-                        <input type="date" name="athlete_dob" class="form-control">
-                      </div>  
-                    </div>
-                    <div class='form-group'>
-                      <label for='dzongkhag_id' class='col-xs-3'>Dzongkhag</label> 
-                      <div class='col-xs-9 input-group'>
-                        <select name="dzongkhag_id" class="form-control">
-                          <option value="0">
-                            Select the Dzongkhag
-                          </option>
-                          <?php 
-                          $dzongkhags = App\MstDzongkhag::all();
-                          foreach($dzongkhags as $dzongkhag):
-                            ?>
-                          <option value="{{$dzongkhag->dzongkhag_id}}">{{$dzongkhag->dzongkhag_name}}</option>
-                        <?php endforeach;?>
-                      </select> 
-                    </div>
-                  </div>
-                  <div class='form-group'>
-                    <label for='gewog_id' class='col-xs-3'>Gewog</label> 
-                    <div class='col-xs-9 input-group'>
-                      <select name="gewog_id" class="form-control">
-                        <option value="0">
-                          Select the gewog
-                        </option>
-                        <?php 
-                        $gewogs = App\Gewog::all();
-                        foreach($gewogs as $gewog):
-                          ?>
-                        <option value="{{ $gewog->gewog_id}}">{{ $gewog->gewog_name}}</option>
-                      <?php endforeach;?>
-                    </select> 
-                  </div>
-                </div>
-                <div class='form-group'>
-                  <label for='village' class='col-xs-3'>Villege</label>
-                  <div class='col-xs-9 input-group'>
-                    <input type="text" name="village" class="form-control">
-                  </div>  
-                </div>
-                <div class='form-group'>
-                  <label class='col-xs-3' for='occupation_id'>Occupation</label> 
-                  <div class='col-xs-9 input-group'>
-                    <select name="occupation_id" class="form-control">
-                      <option value="0">
-                        Select the occupation
-                      </option>
-                      <?php 
-                      $occupations = App\Athlete_occupation::all();
-                      foreach($occupations as $occupation):
-                        ?>
-                      <option value="{{$occupation->occupation_id}}">{{$occupation->occupation_name}}</option>
-                    <?php endforeach;?>
-                  </select> 
-                </div>
-              </div>
-              <div class='form-group'>
-                <label for='fathername' class='col-xs-3'>Father's Name</label>
-                <div class='col-xs-9 input-group'>
-                  <input type="text" name="fathername" class="form-control">
-                </div>  
-              </div>
-              <div class='form-group'>
-                <label for='mobile' class='col-xs-3'>Mobile</label>
-                <div class='col-xs-9 input-group'>
-                  <input type="text" name="mobile" class="form-control">
-                </div>  
-              </div>
-              <div class='form-group'>
-                <label for='email' class='col-xs-3'>Email</label>
-                <div class='col-xs-9 input-group'>
-                  <input type="email" name="email" class="form-control">
-                </div>  
-              </div>
-              <div class='form-group clearfix'>
-                <label for='contact_address' class='col-xs-3'>Contact Address</label>
-                <div class='col-xs-9 input-group'>
-                  <textarea name="contact_address" class="form-control" rows=3></textarea> 
-                </div>
-              </div>
-
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
-                <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
-              </div>
-            </form>
+             <!-- show if the match is found-->
+             @if(sizeof($athlete_achievement)!=0)
+                <table class="table table-bordered table-striped table-responsive" id="table">
+               <thead>
+                <tr>
+                  <th>Sl_no:</th>
+                  <th>CID/Student ID</th>
+                  <th>Name</th>
+                  <th>Dzongkhag</th>
+                  <th>Gewog</th>
+                  <th>Village</th>
+                  <th>Father's Name</th>
+                  <th>Action</th>
+                </tr>   
+              </thead>
+              <tbody>
+                <?php $id=1;?>
+                @foreach($athlete_achievement as $athletes)
+                <tr>
+                  <td>{{$id++}}</td>
+                  <td>{{$athletes->athlete_cid}}</td>
+                  <td>{{$athletes->athlete_name}}</td>
+                  <td>{{$athletes->displayDzongkhag->dzongkhag_name}}</td>
+                  <td>{{$athletes->displayGewog->gewog_name}}</td>
+                  <td>{{$athletes->village}}</td>
+                  <td>{{$athletes->fathername}}</td>
+                  <td>
+                    <button class='btn btn-info' data-toggle='modal' data-target='#updateParticipantsModal' onclick='addAthlete({{$athletes->athlete_id}})'>Update</button>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+              </table>
+              @else
+                <script type="text/javascript">
+                  $(function()
+                  {
+                    $('#addModal').modal('show');
+                  });
+                </script>
+              @endif
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- show if the match is found-->
-    <table class="table table-bordered table-striped table-responsive" id="table">
-     <thead>
-      <tr>
-        <th>Sl_no:</th>
-        <th>CID/Student ID</th>
-        <th>Name</th>
-        <th>Dzongkhag</th>
-        <th>Gewog</th>
-        <th>Village</th>
-        <th>Father's Name</th>
-        <th>Action</th>
-      </tr>   
-    </thead>
-    <tbody>
-      <?php $id=1;?>
-      @foreach($athlete_achievement as $athletes)
-      <tr>
-        <td>{{$id++}}</td>
-        <td>{{$athletes->athlete_cid}}</td>
-        <td>{{$athletes->athlete_name}}</td>
-        <td>{{$athletes->displayDzongkhag->dzongkhag_name}}</td>
-        <td>{{$athletes->displayGewog->gewog_name}}</td>
-        <td>{{$athletes->village}}</td>
-        <td>{{$athletes->fathername}}</td>
-        <td>
-          <button class='btn btn-info' data-toggle='modal' data-target='#updateParticipantsModal' onclick='addAthlete({{$athletes->athlete_id}})'>Update</button>
-        </td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
-</div>           
+  </div>
+</div>
+</div>
+<!-- if particpants not found show this form -->
+ <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   <div class="modal-dialog " role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Athlete Information</h4>
+      </div>
+      <div class="modal-body">
+       <form action="{{route('update_achievement.storeAthlete')}}" method="post">
+         {{csrf_field()}}
+         <div class='form-group'>
+          <label for='athlete_cid' class='col-xs-3'>CID/Student ID</label>
+          <div class='col-xs-9 input-group'>
+            <input type="text" name="athlete_cid" class="form-control" id='cid'>
+          </div>  
+        </div>
+        <div class='form-group'>
+          <label for='athlete_name' class='col-xs-3'>Name</label>
+          <div class='col-xs-9 input-group'>
+            <input type="text" name="athlete_name" class="form-control">
+          </div>  
+        </div>
+        <div class='form-group'>
+          <label for='athlete_dob' class='col-xs-3'>Date of Birth</label>
+          <div class='col-xs-9 input-group'>
+            <input type="date" name="athlete_dob" class="form-control">
+          </div>  
+        </div>
+        <div class='form-group'>
+          <label for='dzongkhag_id' class='col-xs-3'>Dzongkhag</label> 
+          <div class='col-xs-9 input-group'>
+            <select name="dzongkhag_id" class="form-control">
+              <option value="0">
+                Select the Dzongkhag
+              </option>
+              <?php 
+              $dzongkhags = App\MstDzongkhag::all();
+              foreach($dzongkhags as $dzongkhag):
+                ?>
+              <option value="{{$dzongkhag->dzongkhag_id}}">{{$dzongkhag->dzongkhag_name}}</option>
+            <?php endforeach;?>
+          </select> 
+        </div>
+      </div>
+      <div class='form-group'>
+        <label for='gewog_id' class='col-xs-3'>Gewog</label> 
+        <div class='col-xs-9 input-group'>
+          <select name="gewog_id" class="form-control">
+            <option value="0">
+              Select the gewog
+            </option>
+            <?php 
+            $gewogs = App\Gewog::all();
+            foreach($gewogs as $gewog):
+              ?>
+            <option value="{{ $gewog->gewog_id}}">{{ $gewog->gewog_name}}</option>
+          <?php endforeach;?>
+        </select> 
+      </div>
+    </div>
+    <div class='form-group'>
+      <label for='village' class='col-xs-3'>Villege</label>
+      <div class='col-xs-9 input-group'>
+        <input type="text" name="village" class="form-control">
+      </div>  
+    </div>
+    <div class='form-group'>
+      <label class='col-xs-3' for='occupation_id'>Occupation</label> 
+      <div class='col-xs-9 input-group'>
+        <select name="occupation_id" class="form-control">
+          <option value="0">
+            Select the occupation
+          </option>
+          <?php 
+          $occupations = App\Athlete_occupation::all();
+          foreach($occupations as $occupation):
+            ?>
+          <option value="{{$occupation->occupation_id}}">{{$occupation->occupation_name}}</option>
+        <?php endforeach;?>
+      </select> 
+    </div>
+  </div>
+  <div class='form-group'>
+    <label for='fathername' class='col-xs-3'>Father's Name</label>
+    <div class='col-xs-9 input-group'>
+      <input type="text" name="fathername" class="form-control">
+    </div>  
+  </div>
+  <div class='form-group'>
+    <label for='mobile' class='col-xs-3'>Mobile</label>
+    <div class='col-xs-9 input-group'>
+      <input type="text" name="mobile" class="form-control">
+    </div>  
+  </div>
+  <div class='form-group'>
+    <label for='email' class='col-xs-3'>Email</label>
+    <div class='col-xs-9 input-group'>
+      <input type="email" name="email" class="form-control">
+    </div>  
+  </div>
+  <div class='form-group clearfix'>
+    <label for='contact_address' class='col-xs-3'>Contact Address</label>
+    <div class='col-xs-9 input-group'>
+      <textarea name="contact_address" class="form-control" rows=3></textarea> 
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary glyphicon glyphicon-ok" id='save'>Save</button>
+    <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
+  </div>
+</form>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+
 <!-- update Modal -->
 <div class="modal fade" id="updateParticipantsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -343,7 +352,34 @@ $(function()
       }
     });
   });
-
+// $('#search').click(function()
+// {
+//   var cid=$('#form-cid').val();
+//   $.session.set('cid1',cid);
+//   if(!$.isNumeric(cid) || cid.length!=11)
+//   {
+//     alert('Please enter 11 digits numeric cid number');
+//     return false;
+//   }
+//   else 
+//   {
+//     return true;
+//   }
+// });
+$('#save').click(function()
+{
+  var cid=$('#cid').val();
+  if(!$.isNumeric(cid) || cid.length!=11)
+    {
+      alert('Please enter 11 digits numeric cid number');
+      return false;
+    }
+    else 
+      return true;
+});
+$('#table').dataTable({
+  'searching':false
+});
 </script>
 @endsection
 @section('footer')

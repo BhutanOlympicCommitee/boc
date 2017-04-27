@@ -29,7 +29,7 @@ class GamesController extends Controller
         $games->updated_by=Auth::user()->id;
         $games->save();
         Session::put('key6',$games->gamesdetail_id);
-        Session::flash('success', 'AthleteInfos has been created successfully');
+        Session::flash('success', 'Games info has been created successfully');
         return redirect()->route('sport_coach_master.index');
     }
 }

@@ -11,6 +11,7 @@ use App\AthleteTrainingSchedule;
 use App\AtheleteTrainingAttendance;
 use Session;
 use Auth;
+use Carbon\Carbon;
 class TrainingInformationController extends Controller
 {
     /**
@@ -148,7 +149,7 @@ class TrainingInformationController extends Controller
         $record_attendance->attendance_status = $request->attendance;
         $record_attendance->comments = $request->comments;
         $record_attendance->save();
-       return redirect()->route('training.attendance');
+       return redirect()->route('athlete_attendance',$training_id);
     }
 
     public function viewAthleteTrainingSchedule($id)
@@ -167,5 +168,95 @@ class TrainingInformationController extends Controller
     {
         $training_schedule=TrainingSchedule::where('training_id',$id)->get();
         return view('sport_organization_user.training_information.athlete_attendance',compact('training_schedule'));
+    }
+    public function searchSportCoach(Request $request)
+    {
+        if(!empty($request->type))
+        {
+            $athlete_info=Athlete_bioinformation::where('athlete_associatedSport',$request->type)->get();
+            return view('sport_organization_user.training_information.index',compact('athlete_info'));
+        }
+        else if(!empty($request->ath_id))
+        {
+            $athlete_info=Athlete_bioinformation::where('athlete_id',$request->ath_id)->get();
+            return view('sport_organization_user.training_information.index',compact('athlete_info'));
+        }
+        else if(!empty($request->ath_name))
+        {
+            $name=explode(' ',$request->ath_name);
+            $first_name=$name[0];
+            $athlete_info=Athlete_bioinformation::where('athlete_fname',$first_name)->get();
+            return view('sport_organization_user.training_information.index',compact('athlete_info'));
+        }
+        else if(!empty($request->coach))
+        {
+            $athlete_info=Athlete_bioinformation::join('tbl_team_members','athlete_bioinformations.athlete_id','tbl_team_members.athlete_id')
+            ->join('tbl_sport_coaches','tbl_sport_coaches.gamesdetail_id','tbl_team_members.gamesdetail_id')
+            ->select('athlete_bioinformations.*')
+            ->where('tbl_sport_coaches.coach',$request->coach)
+            ->get();
+            return view('sport_organization_user.training_information.index',compact('athlete_info'));
+        }
+        else
+        {
+            $athlete_info=Athlete_bioinformation::all();
+            return view('sport_organization_user.training_information.index',compact('athlete_info'));
+        }
+
+    }
+    public function searchTrainingSchedule(Request $request)
+    {
+        if(!empty($request->from))
+        {
+            $carbon_today= Carbon::today();
+            $carbon_today1=$carbon_today->format('Y-m-d');
+            $training_info=TrainingSchedule::select('training_schedules.*')
+            ->whereBetween('date',[$request->from,$carbon_today1])
+            ->get();
+            return view('sport_organization_user.training_information.create',compact('training_info'));
+
+        }
+        else if(!empty($request->to))
+        {
+            $training_info=TrainingSchedule::select('training_schedules.*')
+            ->where('date','<=',$request->to)
+            ->get();
+            return view('sport_organization_user.training_information.create',compact('training_info'));
+        }
+        else if(!empty($request->day))
+        {
+            $training_info=TrainingSchedule::where('day_id',$request->day)->get();
+            return view('sport_organization_user.training_information.create',compact('training_info'));
+        }
+        else if(!empty($request->coach))
+        {
+            $training_info=TrainingSchedule::where('coach_id',$request->coach)->get();
+            return view('sport_organization_user.training_information.create',compact('training_info'));
+        }
+        else
+            return redirect()->route('training.create');
+    }
+    public function searchTrainingAttendance(Request $request)
+    {
+        if(!empty($request->type))
+        {
+            $training_schedule=TrainingSchedule::where('session_type',$request->type)->get();
+            return view('sport_organization_user.training_information.attendance',compact('training_schedule'));
+        }
+        else if(!empty($request->day) && !empty($request->to) && !empty($request->coach))
+        {
+            $training_schedule=TrainingSchedule::where('day_id',$request->day)
+            ->where('date',$request->to)
+            ->where('coach_id',$request->coach)
+            ->get();
+            return view('sport_organization_user.training_information.attendance',compact('training_schedule'));
+        }
+        else if(!empty($request->type))
+        {
+            $training_schedule=TrainingSchedule::where('session_type',$request->type)->get();
+            return view('sport_organization_user.training_information.attendance',compact('training_schedule'));
+        }
+        else
+            return redirect()->route('training.attendance');
     }
 }

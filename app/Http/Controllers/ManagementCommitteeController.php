@@ -44,7 +44,7 @@ class ManagementCommitteeController extends Controller
         'mg_designation' => 'required',
         'mg_phone' => 'required',
         'mg_email' => 'required',
-        'mg_mobile' => 'required',
+        'mg_mobile' => 'required|unique:tbl_sport_org_managements,mg_member_mobile',
         'mg_appointment' => 'required',
         ]);
 
@@ -86,6 +86,9 @@ class ManagementCommitteeController extends Controller
     public function update(Request $request)
     {
         $id = $request ->edit_id;
+        $this->validate($request,[
+            'mg_mobile'=>'required|unique:tbl_sport_org_managements,mg_member_mobile,'.$id.',mg_member_id',
+            ]);
         $management_info = Tbl_sport_org_management::findOrFail($id);
         $management_info->mg_member_name=$request->mg_name;
         $management_info->mg_member_designation=$request->mg_designation;

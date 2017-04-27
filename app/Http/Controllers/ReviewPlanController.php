@@ -7,8 +7,11 @@ use App\Tbl_proposed_KPI;
 use App\Tbl_Updateathlete_achievement;
 use App\Tbl_update_athleteAchievement;
 use App\Activities_achievement_report;
+use App\Tbl_UpdateSportActivity;
+use App\Tbl_SKRA_activities;
 use Auth;
 use Session;
+use DB;
 /**
      * Store a newly created resource in storage.
      *
@@ -145,5 +148,117 @@ class ReviewPlanController extends Controller
             $info = Tbl_sport_org_activities_approved::where('activity_id', $id)->get();
             return response()->json($info);
         }
+    }
+
+    public function searchParticipants(Request $request)
+    {
+        if(!empty($request->cid))
+        {
+            $athlete_achievement= Tbl_update_athleteAchievement::where('athlete_cid',$request->cid)->get();
+             return view('sport_organization_user.update_achievement.athlete_achievement',compact('athlete_achievement'));
+        }
+        else if(!empty($request->name))
+        {
+            $athlete_achievement= Tbl_update_athleteAchievement::where('athlete_name',$request->name)->get();
+             return view('sport_organization_user.update_achievement.athlete_achievement',compact('athlete_achievement')); 
+        }
+       else
+       {
+            $athlete_achievement= Tbl_update_athleteAchievement::all();
+            return view('sport_organization_user.update_achievement.athlete_achievement',compact('athlete_achievement')); 
+       }
+      
+    }
+    //search proposed activities based on the five year plan, sport organization, AKRA and BoC program
+    public function searchActivities(Request $request)
+    {
+        if(!empty($request->five_year))
+        {
+            $review_plan=Tbl_UpdateSportActivity::join('tbl_proposed_sport_org_activities','tbl__update_sport_activities.id','tbl_proposed_sport_org_activities.weightage_id')
+            ->select('tbl_proposed_sport_org_activities.*')
+            ->where('tbl__update_sport_activities.five_yr_plan_id','=',$request->five_year)
+            ->get();
+            return view('boc_user.annual_activities_plan.review_plan.index',compact('review_plan'));
+        }
+        else if(!empty($request->sport_org))
+        {
+            $skra1=array();
+            $skra_activity=Tbl_SKRA_activities::select('tbl__s_k_r_a_activities.skra_activity_id')->where('tbl__s_k_r_a_activities.sport_org_id','=',$request->sport_org)->pluck('skra_activity_id');
+            $skra_activity1=explode(',',$skra_activity);
+            foreach($skra_activity1 as $skra)
+            {
+               $skra1[]=trim($skra,'[]');
+            }
+            
+            $review_plan=Tbl_UpdateSportActivity::join('tbl_proposed_sport_org_activities','tbl__update_sport_activities.id','tbl_proposed_sport_org_activities.weightage_id')
+            ->select('tbl_proposed_sport_org_activities.*')
+            ->whereIn('tbl__update_sport_activities.skra_activity_id',$skra1)
+            ->get();
+            return view('boc_user.annual_activities_plan.review_plan.index',compact('review_plan'));
+        }
+        else if(!empty($request->skra))
+        {
+            $review_plan=Tbl_UpdateSportActivity::join('tbl_proposed_sport_org_activities','tbl__update_sport_activities.id','tbl_proposed_sport_org_activities.weightage_id')
+            ->select('tbl_proposed_sport_org_activities.*')
+            ->where('tbl__update_sport_activities.skra_id','=',$request->skra)
+            ->get();
+            return view('boc_user.annual_activities_plan.review_plan.index',compact('review_plan'));
+        }
+        else if(!empty($request->skra_activity))
+        {
+            $review_plan=Tbl_UpdateSportActivity::join('tbl_proposed_sport_org_activities','tbl__update_sport_activities.id','tbl_proposed_sport_org_activities.weightage_id')
+            ->select('tbl_proposed_sport_org_activities.*')
+            ->where('tbl__update_sport_activities.skra_activity_id','=',$request->skra_activity)
+            ->get();
+            return view('boc_user.annual_activities_plan.review_plan.index',compact('review_plan'));
+        }
+        else
+            return redirect()->route('review_plan.index');
+    }
+    public function searchApprovedActivities(Request $request)
+    {
+        if(!empty($request->five_year))
+        {
+            $five_yr=array();
+            $five_year=Tbl_UpdateSportActivity::select('tbl__update_sport_activities.id')->where('tbl__update_sport_activities.five_yr_plan_id','=',$request->five_year)->pluck('id');
+            $five_year=explode(',',$five_year);
+            foreach($five_year as $five_year_plan_id)
+            {
+               $five_yr[]=trim($five_year_plan_id,'[]');
+            }
+            return $this->sendRequest($five_yr);
+        }
+        else if(!empty($request->akra))
+        {
+            $akra1=array();
+            $akra_id=Tbl_UpdateSportActivity::select('tbl__update_sport_activities.id')->where('tbl__update_sport_activities.skra_id','=',$request->akra)->pluck('id');
+            $akra_id=explode(',',$akra_id);
+            foreach($akra_id as $akra)
+            {
+               $akra1[]=trim($akra,'[]');
+            }
+            return $this->sendRequest($akra1);
+        }
+        else if(!empty($request->program))
+        {
+            $boc_program=array();
+            $program=Tbl_UpdateSportActivity::select('tbl__update_sport_activities.id')->where('tbl__update_sport_activities.skra_activity_id','=',$request->program)->pluck('id');
+            $program=explode(',',$program);
+            foreach($program as $boc_pro)
+            {
+               $boc_program[]=trim($boc_pro,'[]');
+            }
+            return $this->sendRequest($boc_program);
+        }
+        else  
+            return redirect()->route('achievement_update');
+    }
+    public function sendRequest($input_val)
+    {
+        $approved_activity=Tbl_sport_org_activities_approved::join('tbl_proposed_sport_org_activities','tbl_sport_org_activities_approveds.activity_id','tbl_proposed_sport_org_activities.activity_id')
+            ->select('tbl_sport_org_activities_approveds.*')
+            ->whereIn('tbl_proposed_sport_org_activities.weightage_id',$input_val)
+            ->get();
+            return view('sport_organization_user.update_achievement.update_achievement',['approved_activity'=>$approved_activity]);
     }
 }
