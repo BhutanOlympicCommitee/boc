@@ -58,7 +58,7 @@
                <div class='form-group clearfix'>
                 <label for='sport' class='col-xs-2'>Sport:</label>
                   <div class='col-xs-10 input-group'>
-                    <select class='form-control' name='sport' id='sport'>
+                    <select class='form-control' name='sport' id='sport1'>
                       <option disabled selected>Select associated sport</option>
                       <?php 
                         $asport=App\Associated_Sport::all();
@@ -74,7 +74,7 @@
               </div>
             </div>
             <div class='form-group clearfix'>
-              <button type='submit' class='btn btn-primary pull-right'>Search</button>
+              <button type='submit' class='btn btn-primary pull-right' name='submit'>Search</button>
             </div>
             </form>
              <table class="table table-bordered table-striped table-responsive" id="table1">
@@ -121,9 +121,11 @@
             <input type="hidden" name="view_details1" id='view_details1' value='{{route('show_athlete_info1')}}'>
            <input type="hidden" name="view_address1" id='view_address1' value='{{route('show_athlete_address1')}}'>
             <input type="hidden" name="view_associated_sport1" id='view_associated_sport1' value='{{route('show_associated_sport1')}}'>
-           <div class='clearfix'> 
-              <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal">Add Team Member</a> 
-            </div>
+            @if(isset($_POST['submit']))
+               <div class='clearfix' id='add_team_member'> 
+                  <a href='#' class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal">Add Team Member</a> 
+                </div>
+            @endif
           </div>
         </div>
       </div>
@@ -139,15 +141,10 @@
         <h4 class="modal-title" id="myModalLabel">Select Athlete for Team</h4>
       </div>
       <div class="modal-body">
-       {{-- <form action="#route('search_sport_coach')" method="post">
-          {{csrf_field()}} --}}
-        
-       
-           
           <form action="{{route('team_master.store')}}" method="post">
           {{csrf_field()}}
           <div style='margin-top:20px'>  
-          <table class="table table-bordered table-striped table-responsive" id="table1">
+          <table class="table table-bordered table-striped table-responsive" id="table2">
              <thead>
                 <tr>
                     <th>Sl_no:</th>
@@ -162,6 +159,7 @@
              <?php $id=1;
              $team=App\Athlete_bioinformation::all();?>
               @foreach($team as $teams)
+              @if($teams->athlete_associatedSport==Session::get('sport_id'))
               <tr>
                 <td>{{$id++}}</td>
                 <td>{{$teams->displayAsport->sport_name}}</td>
@@ -169,10 +167,11 @@
                 <td>{{$teams->athlete_fname.' '.$teams->athlete_mname.' '.$teams->athlete_lname}}</td>
                 <td>{{$teams->athlete_dob}}</td>
                 <td>
-                  <a href="{{--route('training.show')--}}" data-toggle='modal' data-target='#viewDetails1' class="btn btn-info" onclick='view_details({{$teams->athlete_id}})'>Details</a>
+                  <a data-toggle='modal' data-target='#viewDetails1' class="btn btn-info" onclick='view_details({{$teams->athlete_id}})'>Details</a>
                   <input type="checkbox" name="select[]" value='{{$teams->athlete_id}}'>Select
                 </td>
               </tr>
+              @endif
            @endforeach
             </tbody>
           </table>
@@ -187,23 +186,6 @@
   </div>
 </div>
 <!-- ends addModal-->
-{{-- <! Add team memeber modal begins>
-<div class="modal fade" id="addTeamMemberModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Select Athlete for Team</h4>
-      </div>
-      <div class="modal-body">
-        <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-toggle='modal' data-target='#addModal' data-dismiss='modal'>Ok</button>
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
-<! ends addModal> --}}
 <!-- view details modal begins-->
 <div class="modal fade" id="viewDetails1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
@@ -367,25 +349,14 @@ $(function()
 $('#table1').dataTable({
   'searching':false
 });
-</script>
-{{-- <script type="text/javascript">
-  $('#search_modal').click(function()
+$('#table2').dataTable(
   {
-    var id=$('#sport1').val();
-    var url='{{route('search_team_athletes')}}';
-     $.ajax({
-        url: url,
-        type:"GET", 
-        data: {"id":id}, 
-        success: function(result){
-          console.log(result);
-            $('#addTeamMemberModal').modal('show');
-    $('#addModal').modal('hide');
-        }
-      });
-  });
-</script> --}}
-
+     "language": 
+     {
+     "search": "Filter athlete:"
+    }
+});
+</script>
 @endsection
 @section('footer')
 <div class="container">

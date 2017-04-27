@@ -235,9 +235,10 @@
     {
         $('#table1').DataTable(
            {
-           "language": {
-           "search": "Filter sport & coach:"
-     }
+     //       "language": {
+     //       "search": "Filter sport & coach:"
+     // }
+     'searching':false
      }
           );
     });  

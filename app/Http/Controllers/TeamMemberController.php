@@ -120,6 +120,7 @@ class TeamMemberController extends Controller
     }
     public function searchSportCoach(Request $request)
     {
+        Session::put('sport_id',$request->sport);
         if(!empty($request->sport))
         {
             $team=Athlete_bioinformation::join('associated__sports','athlete_bioinformations.athlete_associatedSport','associated__sports.sport_id')
@@ -149,14 +150,6 @@ class TeamMemberController extends Controller
         {
             $team=Athlete_bioinformation::all();
             return view('boc_user.Games.team_master.index',compact('team'));
-        }
-    }
-    public function searchAthlete(Request $request)
-    {
-        if($request->ajax()){
-            $id = $request->id;
-            $info = Athlete_bioinformation::where('athlete_associatedSport',$id)->get();
-            return response()->json($info);
         }
     }
 }
