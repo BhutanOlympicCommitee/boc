@@ -82,9 +82,9 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-10 col-xs-offset-2 input-group">
-                            <input type="submit" class="btn btn-primary col-xs-2 col-xs-offset-4" value="Next">
+                            <button type="submit" class="btn btn-primary col-xs-2 col-xs-offset-4 glyphicon glyphicon-step-forward" value="Next">Next</button>
                             <a href="{{route('management_committee.index')}}" class='btn btn-default col-xs-2 col-xs-offset-1'>Skip</a>
-                            <a href="{{route('sport_organization.index')}}" class='btn btn-warning col-xs-2 col-xs-offset-1'>Cancel</a>
+                            <a href="{{route('sport_organization.index')}}" class='btn btn-warning col-xs-2 col-xs-offset-1 glyphicon glyphicon-remove'>Cancel</a>
                         </div>
                     </div>
                 </form> 

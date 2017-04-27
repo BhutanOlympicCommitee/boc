@@ -105,7 +105,7 @@
                     </div>
                     <div class="form-group">
                           <div class="col-xs-10 col-xs-offset-2 input-group">
-                            <input type="submit" class="btn btn-primary col-xs-2 col-xs-offset-7  glyphicon glyphicon-step-forward" value="Next">
+                            <button type="submit" class="btn btn-primary col-xs-2 col-xs-offset-7  glyphicon glyphicon-step-forward" value="Next">Next</button>
                             <a href="{{route('sport_organization.index')}}" class='btn btn-warning col-xs-2 col-xs-offset-1 glyphicon glyphicon-remove'>Cancel</a>
                           </div>
                         </div> 
