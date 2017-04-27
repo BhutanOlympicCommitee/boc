@@ -235,10 +235,6 @@
  $(function(){
     $('#table3').DataTable(
       {
-        "paging":   false,
-        "ordering": false,
-        "info":     false,
-        'searching':false,
          "language": {
            "search": "Filter KPI:"
         }
