@@ -56,7 +56,7 @@
                                       <p>AKRAs</p>
                                     </div>
                                     <div class="icon">
-                                      <i class="ion ion-person-add"></i>
+                                      <i class="ion"></i>
                                     </div>
                                     <a href="{{route('skra.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                   </div>

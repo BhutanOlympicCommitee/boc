@@ -220,7 +220,7 @@
             </div>
           </div>
        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok" id='save'>Save</button>
+          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok" id='save1'>Save</button>
           <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
         </div>
       </form>
@@ -433,7 +433,7 @@
     $('#hidden_coach_id').val(id);
   }
 //phone and mobile number validation during add 
-  $('#save').click(function()
+  $('#save1').click(function()
   {
     var coach_phone=$('#coach_phone1').val();
     var coach_mobile=$('#coach_mobile1').val();
@@ -448,7 +448,7 @@
       return false;
     }
     else
-      return false;
+      return true;
   });
 //mobile number and phone validation on edit
 $('#update').click(function()

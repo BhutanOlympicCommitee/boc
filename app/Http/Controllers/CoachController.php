@@ -131,11 +131,30 @@ class CoachController extends Controller
         else if(!empty($request->coach_name))
         {
            $name=explode(' ',$request->coach_name);
-           $fname=$name[0];
-          $coach=Tbl_Coach::where('coach_fname',$fname)->get();
-           $coach=DB::table('tbl__coaches')
-                ->select('tbl__coaches.*')
+           $array_size=sizeof($name);
+           if($array_size==3)
+           {
+                $fname=$name[0];
+                $mname=$name[1];
+                $lname=$name[2];
+           }
+           else if($array_size==2)
+           {
+             $fname=$name[0];
+             $mname=' ';
+             $lname=$name[1];
+           }
+           else if($array_size==1)
+           {
+              $fname=$name[0];
+              $mname=' ';
+              $lname=' ';
+           }
+           
+           $coach=Tbl_Coach::select('tbl__coaches.*')
                 ->where('tbl__coaches.coach_fname','=',$fname) 
+                ->where('tbl__coaches.coach_mname','=',$mname)
+                ->where('tbl__coaches.coach_lname','=',$lname)
                 ->get();
             return view('sport_organization_user.coach_master.index',compact('coach'));
         }
