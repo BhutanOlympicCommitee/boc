@@ -18,7 +18,7 @@
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <div class="text-muted bootstrap-admin-box-title clearfix">Create Sport Organization Profile
+              <div class="text-muted bootstrap-admin-box-title clearfix">Create Sport Organization profile
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
