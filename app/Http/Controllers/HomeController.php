@@ -7,6 +7,7 @@ use App\User;
 use App\MstDzongkhag;
 use App\Mst_country;
 use App\Gewog;
+use App\Sport_Organization;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $sport_organization=Sport_Organization::all();
+        return view('home',compact('sport_organization'));
+        //return view('home');
     }
     public function admin()
     {

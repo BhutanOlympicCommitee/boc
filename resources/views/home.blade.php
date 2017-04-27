@@ -16,61 +16,66 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
-                         <div class="panel panel-default">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
                         <div class="text-muted bootstrap-admin-box-title">Dashboard</div>
                         </div>
                         <div class="bootstrap-admin-panel-content">
                             <div class="row">
-                                <div class="col-lg-3 col-xs-5">
+                                <div class="col-lg-3 col-xs-6">
                                   <!-- small box -->
                                   <div class="small-box bg-aqua">
                                     <div class="inner">
-                                      <h3></h3>
-                                      <p>Bhutan Football Federation</p>
+                                      <h3>{{count($sport_organization)}}</h3>
+                                      <p>Registered Sport Organization</p>
                                     </div>
-                                    <img src="../public/images/Bhutan_F.png" width="200px" height="150">
-                                    <a href="http://bhutanolympiccommittee.org/federations/bhutan-football/" target="_blank" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <div class="icon">
+                                      <i class="ion-ios-barcode"></i>
+                                    </div>
+                                    <a href="{{route('sport_organization.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                   </div>
                                 </div><!-- ./col -->
-                                <div class="col-lg-3 col-xs-5">
+                                {{-- <div class="col-lg-3 col-xs-6">
                                   <!-- small box -->
                                   <div class="small-box bg-green">
                                     <div class="inner">
                                       <h3></h3>
-                                      <p>Bhutan Basket Federation</p>
+                                      <p>Dzongkhag</p>
                                     </div>
-
-                                    <img src="../public/images/Bhutan_B.png" width="200px" height="150">
-                                    <a href="http://bhutanolympiccommittee.org/federations/bhutan-basketball-federation/" target="_blank" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <div class="icon">
+                                      <i class="ion ion-stats-bars"></i>
+                                    </div>
+                                    <a href="{{route('dzongkhag_master.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                   </div>
                                 </div><!-- ./col -->
-                                <div class="col-lg-3 col-xs-5">
-                                  <!-- small box -->
-                                  <div class="small-box bg-red">
-                                    <div class="inner">
-                                      <h3></h3>
-                                      <p>Bhutan Volleyball Federation</p>
-                                    </div>
-                                    <img src="../public/images/Bhutan_V.jpg" style='border-radius:100px;border:2px solid gray;' width="200px" height="150">
-                                    <a href="{{route('country_master.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                                  </div>
-                                </div><!-- ./col -->
-                                <div class="col-lg-3 col-xs-5">
+                                <div class="col-lg-3 col-xs-6">
                                   <!-- small box -->
                                   <div class="small-box bg-yellow">
                                     <div class="inner">
-                                      <h3></h3>
-                                      <p>Bhutan Golf Federation</p>
+                                      <h3>{{count($users)}}</h3>
+                                      <p>Total Users</p>
                                     </div>
-                                    <img src="../public/images/Bhutan_G.png" width="200px" height="150">
-                                    <a href="{{route('country_master.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <div class="icon">
+                                      <i class="ion ion-person-add"></i>
+                                    </div>
+                                    <a href="{{route('view_user')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                   </div>
                                 </div><!-- ./col -->
-                            </div><!-- /.row -->
+                                <div class="col-lg-3 col-xs-6">
+                                  <!-- small box -->
+                                  <div class="small-box bg-red">
+                                    <div class="inner">
+                                      <h3>{{count($gewogs)}}</h3>
+                                      <p>Gewog</p>
+                                    </div>
+                                    <div class="icon">
+                                      <i class="ion ion-pie-graph"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                  </div>
+                                </div><!-- ./col -->
+                              </div><!-- /.row --> --}}
                         </div>
-                    </div>
-                </div>
                     </div>
                 </div>
             </div>
