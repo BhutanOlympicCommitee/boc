@@ -9,9 +9,10 @@
                 <li class="active">
                    @if(session('user_id')==1) 
                         <a href="{{route('admin_dashboard')}}"><i class="pull-left glyphicon glyphicon-dashboard"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Dashboard</span><i class="glyphicon glyphicon-chevron-right"></i></a>
-                    @endif
-                    @if($user->role_id==4) 
+                    @elseif($user->role_id==4) 
                         <a href="{{route('federationdash')}}"><i class="pull-left glyphicon glyphicon-dashboard"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Dashboard</span><i class="glyphicon glyphicon-chevron-right"></i></a>
+                    @else
+                        <a href="{{route('home')}}"><i class="pull-left glyphicon glyphicon-dashboard"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Dashboard</span><i class="glyphicon glyphicon-chevron-right"></i></a>
                     @endif
                 </li>
                 <li>
