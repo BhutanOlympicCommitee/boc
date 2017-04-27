@@ -27,7 +27,7 @@
                                   <div class="small-box bg-aqua">
                                     <div class="inner">
                                       <h3>{{count($sport_organization)}}</h3>
-                                      <p>Registered Sport Organization</p>
+                                      <p>Sport Organizations</p>
                                     </div>
                                     <div class="icon">
                                       <i class="ion-ios-barcode"></i>
@@ -43,7 +43,7 @@
                                       <p>Registerd Sports</p>
                                     </div>
                                     <div class="icon">
-                                      <i class="ion ion-stats-bars"></i>
+                                      <i class="ion-ios7-football-outline"></i>
                                     </div>
                                     <a href="{{route('associated_sport_types.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                   </div>
