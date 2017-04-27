@@ -18,7 +18,7 @@
         <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <div class="text-muted bootstrap-admin-box-title clearfix">Create Sport Organization Profile
+              <div class="text-muted bootstrap-admin-box-title clearfix">Create Sport Organization profile
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
@@ -106,7 +106,9 @@
                     </div>
                     <div class="form-group">
                           <div class="col-xs-10 col-xs-offset-2 input-group">
+
                             <input type="submit" class="btn btn-primary col-xs-2 col-xs-offset-7  glyphicon glyphicon-step-forward" value="Next" id='next'>
+
                             <a href="{{route('sport_organization.index')}}" class='btn btn-warning col-xs-2 col-xs-offset-1 glyphicon glyphicon-remove'>Cancel</a>
                           </div>
                         </div> 

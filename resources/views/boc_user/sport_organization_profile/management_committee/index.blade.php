@@ -75,13 +75,15 @@
 								</tbody>
 			  				</table>
                 <input type="hidden" name="hidden_view" id="hidden_view" value="{{url('management/view')}}">
-			  				<div class='form-group' style='margin-top:10px''>
-			  				{{-- <div class=" col-xs-12 clearfix" style='margin-top:10px'> --}}
-                    <a class='btn btn-success glyphicon glyphicon-plus col-xs-offset-8' data-toggle='modal' data-target="#addModal">Add</a> 
-						        <a href="#Advisory-info-info" data-toggle="tab" class='btn btn-default next3'>Next</a>
-						        <a href="#Advisory-info" data-toggle="tab" class='btn btn-default next3 '>Skip</a>
-						        <a href="{{route('sport_organization.index')}}" class='btn btn-warning  '>Cancel</a>
-						  {{--   </div> --}}
+			  				<div class='form-group'>
+			  				<div class="row col-xs-10 col-xs-offset-6 input-group clearfix" style='margin-top:10px'>
+                    <a class='btn btn-success glyphicon glyphicon-plus' data-toggle='modal' data-target="#addModal">Add </a> 
+						        <a href="#Advisory-info-info" data-toggle="tab" class='btn btn-primary col-xs-offset-1 next3'>Next</a>
+						        <a href="#Advisory-info" data-toggle="tab" class='btn btn-default col-xs-offset-1 next3'>Skip</a>
+						        <a href="{{route('sport_organization.index')}}" class='btn btn-warning col-xs-offset-1 glyphicon glyphicon-remove'>Cancel</a>
+						    </div>
+
+			  			
 						   	</div>
 			           	</div>
                         </div>
