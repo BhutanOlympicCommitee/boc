@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\User;
 use App\MstDzongkhag;
 use App\Mst_country;
+use App\Sport_Organization;
 use App\Gewog;
+use App\Tbl_proposed_sport_org_activity;
+use App\Tbl_Coach;
+use App\TrainingSchedule;
 
 class HomeController extends Controller
 {
@@ -42,10 +46,10 @@ class HomeController extends Controller
     }
     public function federationDashboard()
     {
-        $countries = Mst_country::all();
-        $dzongkhag = MstDzongkhag::all();
-        $users = User::all();
-        $gewogs = Gewog::all();
-        return view('federationdash',['countries'=>$countries,'dzongkhags'=>$dzongkhag,'users'=>$users,'gewogs'=>$gewogs]);
+        $sport = Sport_Organization::all();
+        $proposed_activity = Tbl_proposed_sport_org_activity::all();
+        $coach = Tbl_Coach::all();
+        $Training_schedule = TrainingSchedule::all();
+        return view('federationdash',['sport'=>$sport,'proposed_activity'=>$proposed_activity,'coach'=>$coach,'Training_schedule'=>$Training_schedule]);
     }
 }
