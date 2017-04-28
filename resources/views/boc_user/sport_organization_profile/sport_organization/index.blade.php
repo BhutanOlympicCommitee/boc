@@ -108,10 +108,15 @@
 <script type="text/javascript">
     $(function(){
         $('#table1').DataTable(
-            {
+            {   
+                dom: 'Bfrtip',
+            buttons:[
+            'csv', 'excel', 'pdf', 'print'
+               ],
                 "ordering": false,
                 "info":     false,
                 'searching':false
+
             });
     });
 </script>
