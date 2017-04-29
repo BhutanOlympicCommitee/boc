@@ -25,7 +25,8 @@
             <ul class='nav nav-pills nav-justified'>
               <li id='info'><a href="#address_info" data-toggle="tab">Bio Information</a></li>
               <li class="active" id='address'><a href="#Address_info" data-toggle="tab"> Address Information</a></li>
-              <li id='qualification'><a href="#" data-toggle="tab">Qualification and Training Information</a></li>
+               <li id='medical'><a href="#athlete_medical" data-toggle="tab"> Medical Records</a></li>
+              <li id='qualification'><a href="#" data-toggle="tab">Qualification and Training Info</a></li>
             </ul>
             <div style='margin-top:20px'></div>
              @if($errors->any())
@@ -152,6 +153,12 @@
   {
     $('#info').click(function(){
        window.location="{{url(route('athlete_info.create'))}}";   
+     });
+  });
+   $(function()
+  {
+    $('#medical').click(function(){
+       window.location="{{url(route('athlete_medical.create'))}}";   
      });
   });
   $(function()

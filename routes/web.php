@@ -182,6 +182,10 @@ Route::get('athlete_address/view', 'AthleteAddressController@view')->name('view_
 Route::get('athlete_address/view1', 'AthleteAddressController@view1')->name('view1_athlete_address');
 Route::get('athlete_address/{id}/edit',['as'=>'athlete_address.edit','uses'=>'AthleteAddressController@edit']);
 
+//route for athlete medical
+Route::get('athlete_medical',['as'=>'athlete_medical.create','uses'=>'AthleteMedicalController@create']);
+Route::post('athlete_medical',['as'=>'athlete_medical.store','uses'=>'AthleteMedicalController@store']);
+
 //route for athlete address
 Route::get('athlete',['as'=>'athlete_qualification.index','uses'=>'AthleteQualificationController@index']);
 Route::get('athlete_qualification',['as'=>'athlete_qualification.create','uses'=>'AthleteQualificationController@create']);

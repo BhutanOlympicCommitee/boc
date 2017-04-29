@@ -25,7 +25,8 @@
             <ul class='nav nav-pills nav-justified'>
               <li class='active' id='org'><a href="#" data-toggle="tab">Bio Information</a></li>
               <li id='address'><a href="#athlete_address" data-toggle="tab"> Address Information</a></li>
-              <li id='qualification'><a href="#athlete_qualification" data-toggle="tab">Qualification and Training Information</a></li>
+               <li id='medical'><a href="#athlete_medical" data-toggle="tab"> Medical Records</a></li>
+              <li id='qualification'><a href="#athlete_qualification" data-toggle="tab">Qualification and Training Info</a></li>
             </ul>
             <div style='margin-top:20px'></div>
              @if($errors->any())

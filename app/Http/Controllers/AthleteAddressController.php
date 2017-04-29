@@ -48,7 +48,7 @@ class AthleteAddressController extends Controller
         $athlete->created_by=Auth::user()->id;
         $athlete->save();
         Session::flash('success', 'AthleteInfos has been created successfully');
-        return redirect()->route('athlete_qualification.create');
+        return redirect()->route('athlete_medical.create');
     }
     /**
      * Display the specified resource.
