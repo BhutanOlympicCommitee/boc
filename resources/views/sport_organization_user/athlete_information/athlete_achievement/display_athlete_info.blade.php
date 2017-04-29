@@ -123,9 +123,9 @@
                 <td>{{$athlete->athlete_dob}}</td>
                 <td>
                   <form class="form-group" action="" method='post'>
-                  <a href="{{--route('training.show')--}}" data-toggle='modal' data-target='#viewDetails1' class="btn btn-info" onclick='view_details({{$athlete->athlete_id}})'>Details</a>
-                  <a href="{{--route('training.show')--}}" data-toggle='modal' data-target='#achievement1' class="btn btn-primary" onclick='view_athleteAchievement({{$athlete->athlete_id}})'>Achievement</a>
-                  <a href="{{--route('training.show')--}}" data-toggle='modal' data-target='#disciplinary1' class="btn btn-warning" onclick='view_athleteDisciplinary({{$athlete->athlete_id}})'>Disciplinary Action</a>
+                  <a data-toggle='modal' data-target='#viewDetails1' class="btn btn-info" onclick='view_details({{$athlete->athlete_id}})'>Details</a>
+                  <a data-toggle='modal' data-target='#achievement1' class="btn btn-primary" onclick='view_athleteAchievement({{$athlete->athlete_id}})'>Achievement</a>
+                  <a data-toggle='modal' data-target='#disciplinary1' class="btn btn-warning" onclick='view_athleteDisciplinary({{$athlete->athlete_id}})'>Disciplinary</a>
                   </form>
                 </td>
               </tr>
