@@ -42,6 +42,7 @@
       <!-- Styles -->
       <link href="/css/app.css" rel="stylesheet">
       <link href="{{asset('css/style.css')}}" rel="stylesheet">
+      <link href="{{asset('css/override.css')}}" rel="stylesheet">
 
       <!-- Datables Style -->
       <link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet" media="screen">
