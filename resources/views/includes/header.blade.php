@@ -11,8 +11,7 @@
       </button>
 
       <!-- Branding Image -->
-      <a class="navbar-brand"> <img src="../public/images/boc_1.png" height="70px" width="600px"></img>
-      <!--   {{ config('app.name', 'Laravel') }} -->
+      <a class="navbar-brand"> <img src="{{URL::asset('/images/boc_1.png')}}" alt="profile Pic" height="70px" width="600px"></img>
       </a>
     </div>
     <br>
