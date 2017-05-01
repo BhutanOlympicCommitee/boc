@@ -3,7 +3,7 @@
             <div class="col-lg-12">
                 <footer role="contentinfo">
                     <p style="text-align: center;">
-                        Bhutan Football Federation:&copy; <?php echo date('Y');?>
+                        Bhutan Olympic Committee:&copy; <?php echo date('Y');?>
                         All Right Reserved!
                     </p>
                 </footer>
