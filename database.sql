@@ -1421,6 +1421,38 @@ LOCK TABLES `tbl_athlete_disciplinaries` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbl_athlete_medicals`
+--
+
+DROP TABLE IF EXISTS `tbl_athlete_medicals`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_athlete_medicals` (
+  `medical_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `athlete_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `checked` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `weight` decimal(4,3) NOT NULL,
+  `height` decimal(4,3) NOT NULL,
+  `condition` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `remarks` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`medical_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_athlete_medicals`
+--
+
+LOCK TABLES `tbl_athlete_medicals` WRITE;
+/*!40000 ALTER TABLE `tbl_athlete_medicals` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_athlete_medicals` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tbl_game_details`
 --
 
@@ -1842,9 +1874,9 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','$2y$10$mk3JcPIXVK4hKILLytDVFepTOl2zqoU5H2mwx.infhaHw.msrWHpO',1,'boc','chu5vN5a4D6cwuKt7W1Np1texxbbNEy1a7anxnRfpxaUrCUYXJULPjX7VeQ2','2017-03-24 23:02:03','2017-04-28 22:07:59');
+INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','$2y$10$mk3JcPIXVK4hKILLytDVFepTOl2zqoU5H2mwx.infhaHw.msrWHpO',1,'boc','RG1Ya73ZHcA2vTNq6oeqzj28Ojl93ybySSOnOHmDLkYPx53LmJojy69nZcKK','2017-03-24 23:02:03','2017-04-30 21:41:56');
 INSERT INTO `users` VALUES (6,'boc','boc@gov.bt','$2y$10$ePZnBIx7cirUjaqtHLMgwu5btX9RkiVQ6/LsZmuwB3IsDNOxcwQ7y',2,'boc','CX5qntRCIKz1Xox5y8SuX02MB91GWNDjlHsgJrnnye5ius8UbuQRfGJUHnsN','2017-04-24 03:43:42','2017-04-27 02:35:21');
-INSERT INTO `users` VALUES (7,'football federation','footballfederation@gov.bt','$2y$10$aqR81snqtDnUkztALhMXK.q1EFgQlWmss4zU81943Ze4pdxXy9MKq',4,'Bhutan Football','E1PRWDmEI5abmnWw5mj4mbUfbszL7TaaOkBJBgMJ8U3HGaph9xGunP4gBffD','2017-04-24 03:54:48','2017-04-27 01:10:02');
+INSERT INTO `users` VALUES (7,'football federation','footballfederation@gov.bt','$2y$10$aqR81snqtDnUkztALhMXK.q1EFgQlWmss4zU81943Ze4pdxXy9MKq',4,'Bhutan Football','4SfVgAPFgJrUHEQDoSg6HOUgZ6QyQf6nvL9fxNbxOP6pMdCAmpBGGAvWvssd','2017-04-24 03:54:48','2017-04-30 21:42:24');
 INSERT INTO `users` VALUES (8,'basketball federation','bhutanbasketball@gov.bt','$2y$10$NzosA8xpP3u1.15SxSXKMe8v04Py4qKt3lRl297rDRo4VgQQpRlEW',4,'Bhutan Basketball','i65XIRgVKrMCqPCogU2QLmStPtPZUtMROXWIHZd68JUsiy2OFUrWMQOgLCMI','2017-04-24 04:00:44','2017-04-27 01:10:53');
 INSERT INTO `users` VALUES (9,'table tenis federation','tabletanis@gov.bt','$2y$10$Xf1op7t6ZL/c.8K/TxtVueRos8BElj3ZIDF2Mp4nDAsto6yuNlC8q',4,'Bhutan Table Tanis','oB5rX73LGLoXDTlcynrb155QwOJldHYlmWneDvoWdjy2YAYFRrQTnvIz7vKr','2017-04-24 04:02:07','2017-04-24 23:50:06');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
@@ -1859,4 +1891,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-29 12:34:19
+-- Dump completed on 2017-05-01  9:45:41
