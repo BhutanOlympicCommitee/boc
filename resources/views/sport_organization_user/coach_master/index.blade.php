@@ -125,7 +125,7 @@
                   <label for='coach_title' class='col-xs-3'>Title</label>
                     <div class='col-xs-9 input-group'>
                       <select class='form-control' name='coach_title' required>
-                        <option></option>
+                        <option disabled selected>Select One</option>
                         <option>Ms.</option>
                         <option>Mrs.</option>
                         <option>Mr.</option>
@@ -160,7 +160,7 @@
           <label for='type' class='col-xs-3'>Nationality:</label>
             <div class='col-xs-9 input-group'>
               <select class='form-control' name='type'>
-                <option></option>
+                <option disabled selected>Select One</option>
                   <?php 
                       $country=App\Mst_country::all();
                       foreach($country as $nationality):

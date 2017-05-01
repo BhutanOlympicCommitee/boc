@@ -47,7 +47,7 @@
                   <label for='level' class='col-xs-3'>Level</label>
                     <div class='col-xs-9 input-group'>
                       <select class='form-control' name='type1' required>
-                      <option></option>
+                      <option disabled selected>Select One</option>
                    <?php 
                     $qualification=App\Enum_qualification_level::all();
                     foreach($qualification as $qualifications):
@@ -69,8 +69,7 @@
                   <label for='year' class='col-xs-3'>Year of Completion</label>
                     <div class='col-xs-9 input-group'>
                   <select name="year" class="form-control" required>
-                    <option>
-                    </option>
+                    <option disabled selected>Select Year</option>
                     <?php 
                     for($i = 1950 ; $i <= date('Y'); $i++){
                       echo "<option value='$i'>$i</option>";
@@ -83,7 +82,7 @@
             <label for='type' class='col-xs-3'>Country</label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='type' required>
-                  <option></option>
+                  <option disabled selected>Select Country</option>
                   <?php 
                     $country=App\Mst_country::all();
                     foreach($country as $countries):

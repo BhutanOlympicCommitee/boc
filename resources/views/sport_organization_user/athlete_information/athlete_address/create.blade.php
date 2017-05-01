@@ -216,7 +216,7 @@
         data: {"id":dzongkhag_id}, 
         success: function(result){
           $('#Cdungkhag').empty();
-          $("#Cdungkhag").prepend("<option value=''>Select Dungkhag</option>");
+          $("#Cdungkhag").prepend("<option disabled selected>Select Dungkhag</option>");
           $.each(result,function(key,val)
           {
             $('#Cdungkhag').append('<option value="'+val.dungkhag_id+'">'+val.dungkhag_name+'</option>');

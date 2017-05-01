@@ -30,6 +30,7 @@
             <label for='five_yr_plan_id' class='col-xs-2'>Five Year Plan:</label>
               <div class='col-xs-10 input-group'>
                <select class='form-control' name='five_yr_plan_id'>
+                <option value="0">Select Five Year Plan</option>
                           <?php 
                             $fiveYearPlan=App\EnumFiveYearPlan::all();
                             foreach($fiveYearPlan as $five_year):
@@ -45,6 +46,7 @@
             <label for='skra_id' class='col-xs-2'>AKRA:</label>
               <div class='col-xs-10 input-group'>
                  <select class='form-control' name='skra_id' id='skra1'>
+                  <option value="0">Select AKRA</option>
                          <?php 
                             $skras=App\Tbl_SKRA::all();
                             foreach($skras as $skra):
@@ -60,7 +62,7 @@
             <label for='skra_activity_id' class='col-xs-2'>BoC Program:</label>
               <div class='col-xs-10 input-group'>
                 <select class='form-control' name='skra_activity_id'>
-                  <option>Select BoC program</option>
+                  <option value="0">Select BoC program</option>
                   <?php 
                     $skra=App\Tbl_SKRA_activities::all();
                     foreach($skra as $skras):
