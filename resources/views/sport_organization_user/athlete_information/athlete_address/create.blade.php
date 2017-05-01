@@ -48,7 +48,7 @@
             <label for='type1' class='col-xs-2'>Dzongkhag</label>
               <div class='col-xs-10 input-group'>
                 <select class='form-control' name='type1' id='type1' required>
-                  <option></option>
+                  <option disabled selected>Select Dzongkhag</option>
                   <?php 
                     $dzongkhag=App\MstDzongkhag::all();
                     foreach($dzongkhag as $dzongkhags):
@@ -64,7 +64,7 @@
                   <label for='dungkhag' class='col-xs-2'>Dungkhag</label>
                     <div class='col-xs-10 input-group'>
                        <select class='form-control' name='dungkhag' id='dungkhag'>
-                         <option value=''></option>
+                         <option></option>
                       </select>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                   <label for='gewog' class='col-xs-2'>Gewog</label>
                     <div class='col-xs-10 input-group'>
                        <select class='form-control' name='gewog' id='gewog'>
-                         <option value="">Select Gewog</option>
+                         <option></option>
                       </select>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                   <label for='Cdungkhag' class='col-xs-2'>Dungkhag</label>
                     <div class='col-xs-10 input-group'>
                        <select class='form-control' name='Cdungkhag' id='Cdungkhag'>
-                         <option value=''></option>
+                         <option></option>
                       </select>
                     </div>
                 </div>
@@ -179,7 +179,7 @@
       success: function(result){
       //console.log(result);
       $('#dungkhag').empty();
-      $("#dungkhag").prepend("<option value=''>Select Dungkhag</option>");
+      $("#dungkhag").prepend("<option disabled selected>Select Dungkhag</option>");
        $.each(result,function(key,val)
       {
         $('#dungkhag').append('<option value="'+val.dungkhag_id+'">'+val.dungkhag_name+'</option>');
@@ -198,6 +198,7 @@
       data: {"id":gewg_id}, 
       success: function(result){
       $('#gewog').empty();
+      $("#gewog").prepend("<option disabled selected>Select Gewog</option>");
        $.each(result,function(key,val)
       {
         $('#gewog').append('<option value="'+val.gewog_id+'">'+val.gewog_name+'</option>');

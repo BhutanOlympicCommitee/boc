@@ -83,7 +83,8 @@
           <div class='form-group'>
             <label for='type' class='col-xs-3'>Country:</label>
               <div class='col-xs-9 input-group'>
-                <select class='form-control' name='type'>
+                <select class='form-control' name='type' required>
+                  <option disabled selected>Select Country</option>
                   <?php 
                     $country=App\Mst_country::all();
                     foreach($country as $countries):
@@ -134,6 +135,7 @@
           <label for='type' class='col-xs-3'>Country</label>
             <div class='col-xs-9 input-group'>
               <select class='form-control' name='type' id='type2'>
+                <option disabled selected>Select Country</option>
                   <?php 
                       $dzongkhags=App\Mst_country::all();
                       foreach($dzongkhags as $dzong):

@@ -99,7 +99,7 @@
 
                 <div class="col-md-6">
                   <select  name="user_role" class="col-md-6 form-control" required>
-                    <option value="0">Select the User Role</option>
+                    <option disabled selected>Select the User Role</option>
                     <?php
                     $roles = App\Role::all();
                     foreach($roles as $role):
@@ -177,7 +177,7 @@
                     <label for="user_role" class="col-md-4 control-label">User Role</label>
                     <div class="col-md-6">
                       <select  name="user_role1" class="col-md-6 form-control">
-                        <option value="0">Select the User Role</option>
+                        <option disabled selected>Select the User Role</option>
                         <?php
                         $roles = App\Role::all();
                         foreach($roles as $role):

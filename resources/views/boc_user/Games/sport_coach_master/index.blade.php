@@ -93,7 +93,7 @@
             <label for='federation' class='col-xs-3'>Federation:</label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='federation'>
-                  <option></option>
+                  <option disabled selected>Select Federation</option>
                   <?php 
                     $sport=App\Sport_Organization::all();
                     foreach($sport as $sports):
@@ -110,7 +110,7 @@
             <label for='sport' class='col-xs-3'>Sport:</label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='sport'>
-                  <option></option>
+                  <option disabled selected>Select Sport</option>
                   <?php 
                     $asport=App\Associated_Sport::all();
                     foreach($asport as $asports):
@@ -126,7 +126,7 @@
             <label for='coach' class='col-xs-3'>Coach:</label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='coach'>
-                  <option></option>
+                  <option disabled selected>Select Coach</option>
                   <?php 
                     $coach=App\Tbl_Coach::all();
                     foreach($coach as $coachs):

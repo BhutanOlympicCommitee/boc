@@ -84,7 +84,8 @@
           <div class='form-group clearfix'>
             <label for='type' class='col-xs-3'>Sport Organization:</label>
               <div class='col-xs-9 input-group'>
-                <select class='form-control' name='type'>
+                <select class='form-control' name='type' required>
+                  <option disabled selected>Select One</option>
                   <?php 
                     $sport=App\Sport_Organization::all();
                     foreach($sport as $sports):

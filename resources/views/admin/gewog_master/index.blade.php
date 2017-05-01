@@ -83,8 +83,8 @@
           <div class='form-group'>
             <label for='type' class='col-xs-3'>Dzongkhag:</label>
               <div class='col-xs-9 input-group'>
-                <select class='form-control' name='type'>
-                  <option></option>
+                <select class='form-control' name='type' required>
+                  <option disabled selected>Select Dzongkhag</option>
                   <?php 
                     $dzongkhag=App\MstDzongkhag::all();
                     foreach($dzongkhag as $dzongkhags):
@@ -128,7 +128,7 @@
             <label for='type' class='col-xs-3'>Dzongkhag:</label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='type' id='type'>
-                  <option></option>
+                  <option disabled selected>Select Dzongkhag</option>
                   <?php 
                     $dzongkhag=App\MstDzongkhag::all();
                     foreach($dzongkhag as $dzongkhags):
