@@ -123,18 +123,24 @@
           <div class="modal-body">
             <form action="{{route('update_country')}}" method="post">
               {{ csrf_field() }}
-                <div class="form-group">
-                  <label for="country_name">Country Name:</label>
-                  <input type="text" class="form-control" id="country_name" name="country_name">
+                <div class='form-group clearfix'>
+                    <label for='country_name' class='col-xs-2'>Country Name:</label>
+                        <div class='col-xs-10 input-group'>
+                            <input type="text" name="country_name" id="country_name" class="form-control" placeholder="Enter country name here" required>
+                        </div>
                 </div>
-                 <div class="form-group">
-                  <label for="country_nationality">Nationality:</label>
-                  <input type="text" class="form-control" id="country_nationality" name="country_nationality">
+                 <div class='form-group clearfix'>
+                    <label for='country_nationality' class='col-xs-2'>Nationality:</label>
+                        <div class='col-xs-10 input-group'>
+                            <input type="text" name="country_nationality" id="country_nationality" class="form-control" placeholder="Enter country name here" required>
+                        </div>
                 </div>
-                <div class="form-group">
-                  <label for="country_code">Country Code:</label>
-                  <input type="text" class="form-control" id="country_code" name="country_code">
-                </div>
+                <div class='form-group clearfix'>
+                    <label for='country_code' class='col-xs-2'>Country Code:</label>
+                        <div class='input-group col-xs-10'>
+                            <input type="text" name="country_code" id="country_code" class="form-control" placeholder="Enter country code here" required>
+                        </div>
+                </div>        
                 <input type="hidden" id="edit_id" name="edit_id">
            
           </div>
