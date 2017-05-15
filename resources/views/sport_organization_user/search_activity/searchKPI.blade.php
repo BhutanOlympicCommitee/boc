@@ -132,7 +132,7 @@
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                           @if($searchs->status==0)
 
-                          <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='kpi_edit({{$searchs->kpi_id}})'>Edit</a>
+                          <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='kpi_edit1({{$searchs->kpi_id}})'>Edit</a>
                           <button type="submit" class="btn btn-danger glyphicon glyphicon-trash" onclick="return confirm('Are you sure to delete this data');" name='name'>Delete
 
         

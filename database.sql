@@ -1342,7 +1342,7 @@ CREATE TABLE `tbl__update_sport_activities` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1354,6 +1354,7 @@ LOCK TABLES `tbl__update_sport_activities` WRITE;
 INSERT INTO `tbl__update_sport_activities` VALUES (1,1,1,1,90,7,7,'2017-04-24 21:55:06','2017-04-24 21:55:06');
 INSERT INTO `tbl__update_sport_activities` VALUES (2,2,2,2,80,7,7,'2017-04-24 21:59:35','2017-04-24 21:59:35');
 INSERT INTO `tbl__update_sport_activities` VALUES (3,1,2,3,60,7,7,'2017-04-24 22:05:55','2017-04-24 22:05:55');
+INSERT INTO `tbl__update_sport_activities` VALUES (4,1,1,1,30,7,7,'2017-05-15 02:54:52','2017-05-15 02:54:52');
 /*!40000 ALTER TABLE `tbl__update_sport_activities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1891,4 +1892,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-01 10:09:04
+-- Dump completed on 2017-05-15 14:55:37

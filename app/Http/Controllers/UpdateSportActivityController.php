@@ -12,8 +12,9 @@ class UpdateSportActivityController extends Controller
 {
     public function index()
     {
-    	$sport_org_plan=Tbl_UpdateSportActivity::all();
-    	return view('sport_organization_user.sport_activity_plan.index',compact('sport_org_plan'));
+    	//$sport_org_plan=Tbl_UpdateSportActivity::all();
+    	// return view('sport_organization_user.sport_activity_plan.index',compact('sport_org_plan'));
+        return view('sport_organization_user.sport_activity_plan.index');
     }
     public function addActivity()
     {
@@ -26,6 +27,10 @@ class UpdateSportActivityController extends Controller
         $sport_activity->five_yr_plan_id=$request->five_yr_plan_id;
         $sport_activity->skra_id=$request->skra_id;
         $sport_activity->skra_activity_id=$request->skra_activity_id;
+        if($request->wieghtage>100)
+        {
+            return view('sport_organization_user.sport_activity_plan.index');
+        }
         $sport_activity->wieghtage=$request->wieghtage;
         $sport_activity->created_by=Auth::user()->id;
         $sport_activity->updated_by=Auth::user()->id;
