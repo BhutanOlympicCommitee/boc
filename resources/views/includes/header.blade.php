@@ -27,7 +27,7 @@
       <ul class="nav navbar-nav navbar-right">
         <!-- Authentication Links -->
         @if (Auth::guest())
-        <li><a><strong>[Home]</strong></a></li>
+        <li><a href="http://bhutanolympiccommittee.org/"><strong>[Home]</strong></a></li>
         @else
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
