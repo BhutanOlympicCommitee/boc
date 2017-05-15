@@ -29,6 +29,7 @@ class UpdateSportActivityController extends Controller
         $sport_activity->skra_activity_id=$request->skra_activity_id;
         if($request->wieghtage>100)
         {
+             Session::flash('success', 'Invalid Weightage!');
             return view('sport_organization_user.sport_activity_plan.index');
         }
         $sport_activity->wieghtage=$request->wieghtage;

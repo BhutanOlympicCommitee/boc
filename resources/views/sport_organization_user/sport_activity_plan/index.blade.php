@@ -22,6 +22,11 @@
             </div>
             <div class="bootstrap-admin-panel-content">
               <!-- Form for the search functionality -->
+               @if(Session::has('success'))
+              <div class="alert alert-danger">
+                {{ Session::get('success') }}
+              </div>
+          @endif
               <form action="{{route('sport_activity_plan.store')}}" method="post">
                  <div class='form-group'>
                     {{csrf_field()}}
