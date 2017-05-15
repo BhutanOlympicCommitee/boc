@@ -142,9 +142,12 @@
           </div>
         </div>
         <div class='form-group clearfix'>
-            <label for='collaborating' class='col-xs-3'>Collaborating Agency:</label>
+          <label>Collaborating Agencies</label>
+          <div class='form-group clearfix'>
+            <label for='collaborating' class='col-xs-3'>Agency:</label>
               <div class='input-group col-xs-9'>
                 <input type="text" name="collaborating"  class="form-control" id='collaborating'>
+              </div>
               </div>
           </div>
        <div class="modal-footer">

@@ -29,7 +29,7 @@
                 <div class='form-group clearfix'>
             <label for='five_yr_plan_id' class='col-xs-2'>Five Year Plan:</label>
               <div class='col-xs-10 input-group'>
-                <select class='form-control' name='five_yr_plan_id' id='five_year'>
+                <select class='form-control' name='five_yr_plan_id' id='five_year' disabled>
                       <option value="" disabled selected>Select five year plan</option>
                         <?php 
                             $fiveYearPlan=App\EnumFiveYearPlan::all();
@@ -47,7 +47,7 @@
           <div class='form-group clearfix'>
             <label for='skra_id' class='col-xs-2'>AKRA:</label>
               <div class='col-xs-10 input-group'>
-                <select class='form-control' name='skra_id' id='skra1'>
+                <select class='form-control' name='skra_id' id='skra1' disabled>
                          <?php 
                             $skras=App\Tbl_SKRA::all();
                             foreach($skras as $skra):
@@ -64,7 +64,7 @@
               <div class='form-group clearfix'>
             <label for='skra_activity_id' class='col-xs-2'>BoC Program:</label>
               <div class='col-xs-10 input-group'>
-                <select class='form-control' name='skra_activity_id'>
+                <select class='form-control' name='skra_activity_id' disabled>
                   <option>Select BoC program</option>
                   <?php 
                     $skra=App\Tbl_SKRA_activities::all();
@@ -82,7 +82,7 @@
             <div class='form-group clearfix'>
                   <label for='wieghtage' class='col-xs-2'>Weightage(%):</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="wieghtage" class="form-control" placeholder="Enter weightage here"  id='wieghtage' value='{{$sport_activity_edit->wieghtage}}'>
+                      <input type="text" name="wieghtage" class="form-control" placeholder="Enter weightage here"  id='wieghtage' value='{{$sport_activity_edit->wieghtage}}' disabled>
                     </div>
                 </div>
             </div>
@@ -171,9 +171,13 @@
           </div>
         </div>
         <div class='form-group clearfix'>
-            <label for='collaborating' class='col-xs-3'>Collaborating Agency:</label>
+          <label>Collaborating Agencies</label>
+          <div class='form-group clearfix'>
+            <label for='collaborating' class='col-xs-3'>Agency:</label>
               <div class='input-group col-xs-9'>
                 <input type="text" name="collaborating"  class="form-control" placeholder="enter collaborating agency">
+              </div>
+              </div>
               </div>
           </div>
 

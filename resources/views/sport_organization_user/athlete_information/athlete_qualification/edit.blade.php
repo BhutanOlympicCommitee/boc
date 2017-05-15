@@ -45,8 +45,8 @@
                 <div class='form-group'>
                   <label for='level' class='col-xs-3'>Level</label>
                     <div class='col-xs-9 input-group'>
-                      <select class='form-control' name='type1' required>
-                      <option></option>
+                      <select class='form-control' name='type1'>
+        
                    <?php 
                     $qualification=App\Enum_qualification_level::all();
                     foreach($qualification as $qualifications):
@@ -112,8 +112,8 @@
 
                 <div class="form-group">
                   <div class="col-xs-9 col-xs-offset-8 input-group">
-                       <button type='submit' class='btn btn-default col-xs-2' name='update1' value='form1'>Update</button>
-                      <a href="{{route('athlete_qualification.index')}}" class='btn btn-default col-xs-2 col-xs-offset-1'>Cancel</a>
+                       <button type='submit' class='btn btn-primary col-xs-2 glyphicon glyphicon-ok' name='update1' value='form1'>Update</button>
+                      <a href="{{route('athlete_qualification.index')}}" class='btn btn-warning col-xs-2 col-xs-offset-1 glyphicon glyphicon-remove'>Cancel</a>
                   </div>
                 </div> 
               </form>

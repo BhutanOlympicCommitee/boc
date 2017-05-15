@@ -28,7 +28,7 @@
 	              {{ Session::get('success') }}
 	            </div>
 	        @endif
-            <table class="table table-bordered table-striped table-responsive" id="table1">
+            <table class="table table-bordered table-striped table-responsive" id="table1" width="'100%">
               <thead>
                 <tr>
                    <th>Sl. No:</th>
