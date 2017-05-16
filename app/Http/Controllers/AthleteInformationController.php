@@ -7,6 +7,7 @@ use App\Athlete_bioinformation;
 use Auth;
 use Session;
 use Illuminate\Support\Facades\Input;
+use Image;
 
 class AthleteInformationController extends Controller
 {
@@ -32,6 +33,7 @@ class AthleteInformationController extends Controller
         $this->validate($request,
         [
             'cid'=>'unique:athlete_bioinformations,athlete_cid',
+            'file'=>'max:500000',
         ]);
         $athlete= new Athlete_bioinformation;
         $athlete->athlete_title=$request->title;
@@ -51,6 +53,8 @@ class AthleteInformationController extends Controller
         if($request->hasFile('photo')){
             $file = $request->file('photo');
             $file->move(public_path().'/images/',$file->getClientOriginalName());
+            $img=Image::make(sprintf('images/%s', $file->getClientOriginalName()));
+            $img->resize(300,300)->save();
             $athlete->athlete_photo = $file->getClientOriginalName();
         }
         $athlete->created_by=Auth::user()->id;
