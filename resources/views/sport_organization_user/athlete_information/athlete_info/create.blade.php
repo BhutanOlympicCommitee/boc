@@ -63,7 +63,7 @@
                 <div class='form-group'>
                   <label for='mname' class='col-xs-2'>Middle Name</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="mname" class="form-control" placeholder="Enter Middle Name here" required>
+                      <input type="text" name="mname" class="form-control" placeholder="Enter Middle Name here">
                     </div>
                 </div>
                 <div class='form-group'>
