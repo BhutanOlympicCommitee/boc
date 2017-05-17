@@ -63,6 +63,9 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <div class='clearfix'>
+                                 <a href="{{route('athlete_info.create')}}" class='pull-right btn btn-primary'>Finish</a>
+                            </div>
                         </div>
                     </div>
                 </div>

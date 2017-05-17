@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\ContactPersonController;
 use Session;
 use Auth;
+use Image;
 
 class Sport_Organization_Controller extends Controller
 {
@@ -60,6 +61,8 @@ class Sport_Organization_Controller extends Controller
         {
             $file=$request->file('org_logo');
             $file->move(public_path().'/images/',$file->getClientOriginalName());
+            $img=Image::make(sprintf('images/%s', $file->getClientOriginalName()));
+            $img->resize(300,300)->save();
             $sport->sport_org_logo=$file->getClientOriginalName();
         }
         $sport->sport_org_logo=$request->org_logo;
