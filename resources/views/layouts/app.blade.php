@@ -40,7 +40,7 @@
       <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" /> 
 
       <!-- Styles -->
-      <link href="/css/app.css" rel="stylesheet">
+      <link href="{{asset('css/app.css')}}" rel="stylesheet">
       <link href="{{asset('css/style.css')}}" rel="stylesheet">
       <link href="{{asset('css/override.css')}}" rel="stylesheet">
 
