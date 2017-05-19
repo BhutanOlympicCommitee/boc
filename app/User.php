@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    protected $connection = "sqlsrv"; 
     use Notifiable;
 
     /**
@@ -42,4 +43,5 @@ class User extends Authenticatable
             return false;
         }
     }
+
 }

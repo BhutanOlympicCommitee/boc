@@ -40,7 +40,7 @@
       <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" /> 
 
       <!-- Styles -->
-      <link href="{{asset('css/app.css')}}" rel="stylesheet">
+   
       <link href="{{asset('css/style.css')}}" rel="stylesheet">
       <link href="{{asset('css/override.css')}}" rel="stylesheet">
 
@@ -71,11 +71,11 @@
     <body>
         <div id="app">
             @yield('nav-bar')
-            <div class="col-md-12">
+            <div class="col-sm-12">
                 <div class="col-md-2">
                     @yield('side-bar')
                 </div>
-                <div class="col-md-10">
+                <div class="col-sm-10">
                     @yield('content')
                 </div>
             </div>
