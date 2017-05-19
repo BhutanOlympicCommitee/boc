@@ -1131,7 +1131,7 @@ CREATE TABLE `roles` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1251,7 +1251,7 @@ CREATE TABLE `tbl__k_p_i_approveds` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`kpi_approval_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1263,6 +1263,7 @@ LOCK TABLES `tbl__k_p_i_approveds` WRITE;
 INSERT INTO `tbl__k_p_i_approveds` VALUES (1,1,'Number of teams or individuals participated',2.00,3.00,'Nos',35.00,224.00,140.00,130.00,6,6,'2017-04-24 21:58:42','2017-04-24 21:58:42');
 INSERT INTO `tbl__k_p_i_approveds` VALUES (2,2,'Number of boys team',3.00,5.00,'Nos',123.00,567.00,345.00,234.00,6,6,'2017-04-24 22:10:04','2017-04-24 22:10:04');
 INSERT INTO `tbl__k_p_i_approveds` VALUES (3,3,'Number of girls team',4.00,3.00,'Nos',56.00,567.00,345.00,130.00,6,6,'2017-05-07 23:38:37','2017-05-07 23:38:37');
+INSERT INTO `tbl__k_p_i_approveds` VALUES (4,4,'Number of under 12 youth',2.00,5.00,'Nos',123.00,224.00,140.00,130.00,6,6,'2017-05-18 05:19:50','2017-05-18 05:19:50');
 /*!40000 ALTER TABLE `tbl__k_p_i_approveds` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1551,7 +1552,7 @@ LOCK TABLES `tbl_proposed__k_p_is` WRITE;
 INSERT INTO `tbl_proposed__k_p_is` VALUES (1,1,'Number of teams or individuals participated',2.00,3.00,'Nos',35.00,224.00,140.00,139.00,1,7,7,'2017-04-24 21:57:13','2017-05-07 23:26:23');
 INSERT INTO `tbl_proposed__k_p_is` VALUES (2,2,'Number of boys team',3.00,5.00,'Nos',123.00,567.00,345.00,234.00,1,7,7,'2017-04-24 22:07:22','2017-04-24 22:10:04');
 INSERT INTO `tbl_proposed__k_p_is` VALUES (3,3,'Number of girls team',4.00,3.00,'Nos',56.00,567.00,345.00,130.00,1,7,7,'2017-04-24 22:07:54','2017-05-07 23:38:37');
-INSERT INTO `tbl_proposed__k_p_is` VALUES (4,3,'Number of under 12 youth',2.00,5.00,'Nos',123.00,224.00,140.00,130.00,0,7,7,'2017-04-24 22:08:35','2017-04-24 22:08:35');
+INSERT INTO `tbl_proposed__k_p_is` VALUES (4,3,'Number of under 12 youth',2.00,5.00,'Nos',123.00,224.00,140.00,130.00,1,7,7,'2017-04-24 22:08:35','2017-05-18 05:19:50');
 INSERT INTO `tbl_proposed__k_p_is` VALUES (5,8,'Number of Teams or Individuals',2.00,4.00,'fdg',3.00,24.00,140.00,123.00,0,7,7,'2017-05-17 04:06:08','2017-05-17 04:06:08');
 /*!40000 ALTER TABLE `tbl_proposed__k_p_is` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1590,7 +1591,7 @@ LOCK TABLES `tbl_proposed_sport_org_activities` WRITE;
 /*!40000 ALTER TABLE `tbl_proposed_sport_org_activities` DISABLE KEYS */;
 INSERT INTO `tbl_proposed_sport_org_activities` VALUES (1,1,'U12 Football Festival (boys and girls)','punakha',2,'Nov 23-Dec 2,2017',42000.00,20000.00,'DYS','Ministry of education',7,1,'2017-04-24 21:56:34','2017-04-24 21:58:37');
 INSERT INTO `tbl_proposed_sport_org_activities` VALUES (2,2,'under 12 basketball compitition(girls)','changlingmithang',1,'july 12,sep 14',6778.00,23000.00,'BOB','YDF',7,1,'2017-04-24 22:00:01','2017-04-24 22:09:57');
-INSERT INTO `tbl_proposed_sport_org_activities` VALUES (3,3,'table tennis tournament','changjiji',3,'janaury 12-march 1',45000.00,23000.00,'DYS','YDF',7,0,'2017-04-24 22:06:36','2017-04-24 22:06:36');
+INSERT INTO `tbl_proposed_sport_org_activities` VALUES (3,3,'table tennis tournament','changjiji',3,'janaury 12-march 1',45000.00,23000.00,'DYS','YDF',7,1,'2017-04-24 22:06:36','2017-05-18 05:19:42');
 INSERT INTO `tbl_proposed_sport_org_activities` VALUES (4,4,'159 sridents','Changlingmitng',1,'25th April- 25th Nov ',30002.00,34535.00,'BOB','YDF',7,0,'2017-04-27 00:13:08','2017-04-27 00:13:08');
 INSERT INTO `tbl_proposed_sport_org_activities` VALUES (5,13,'159 sridents','Thimphu',2,'25th April- 25th Nov ',30002.00,20000.00,'BOB','YDF',7,0,'2017-05-14 22:12:32','2017-05-14 22:12:32');
 INSERT INTO `tbl_proposed_sport_org_activities` VALUES (6,16,'trainging 150 students','Changlingmitng',3,'25th April- 25th Nov ',4334.00,34535.00,'BOB','YDF',7,0,'2017-05-17 03:10:59','2017-05-17 03:10:59');
@@ -1656,7 +1657,7 @@ CREATE TABLE `tbl_sport_org_activities_approveds` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`activity_approval_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1668,6 +1669,7 @@ LOCK TABLES `tbl_sport_org_activities_approveds` WRITE;
 INSERT INTO `tbl_sport_org_activities_approveds` VALUES (1,1,'U12 Football Festival (boys and girls)','punakha',2,'Nov 23-Dec 2,2017',42000.00,20000.00,'DYS','Ministry of education',6,'2017-04-24 21:58:37','2017-04-24 21:58:37');
 INSERT INTO `tbl_sport_org_activities_approveds` VALUES (2,2,'under 12 basketball compitition(girls)','changlingmithang',1,'july 12,sep 14',6778.00,23000.00,'BOB','YDF',6,'2017-04-24 22:09:57','2017-04-24 22:09:57');
 INSERT INTO `tbl_sport_org_activities_approveds` VALUES (3,8,'dsas','Thimphu',3,'25th April- 25th June',30002.00,34535.00,'BOB','YDF',6,'2017-05-17 04:07:41','2017-05-17 04:07:41');
+INSERT INTO `tbl_sport_org_activities_approveds` VALUES (4,3,'table tennis tournament','changjiji',3,'janaury 12-march 1',45000.00,23000.00,'DYS','YDF',6,'2017-05-18 05:19:42','2017-05-18 05:19:42');
 /*!40000 ALTER TABLE `tbl_sport_org_activities_approveds` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1911,9 +1913,9 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','$2y$10$mk3JcPIXVK4hKILLytDVFepTOl2zqoU5H2mwx.infhaHw.msrWHpO',1,'boc','q58NOJGtOiuHvpo2fqeG4oQNx4FX4xVJB2z2Pe02fgWS2dmHWHeqK8r3j3y6','2017-03-24 23:02:03','2017-05-17 21:59:30');
-INSERT INTO `users` VALUES (6,'boc','boc@gov.bt','$2y$10$ePZnBIx7cirUjaqtHLMgwu5btX9RkiVQ6/LsZmuwB3IsDNOxcwQ7y',2,'boc','p3umCvoAegicJHsqEuJmPhlANpE8B8RdvHajmGOOWWs3UMW5f7mRnOZLp2vq','2017-04-24 03:43:42','2017-05-17 04:04:49');
-INSERT INTO `users` VALUES (7,'football federation','footballfederation@gov.bt','$2y$10$aqR81snqtDnUkztALhMXK.q1EFgQlWmss4zU81943Ze4pdxXy9MKq',4,'Bhutan Football','zjDZeblGbsfXiTqfpbzH8w6gaGjYZZob4IdoOPwDQvidwIA8GkotQtxhgVUJ','2017-04-24 03:54:48','2017-05-17 04:07:15');
+INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','$2y$10$mk3JcPIXVK4hKILLytDVFepTOl2zqoU5H2mwx.infhaHw.msrWHpO',1,'boc','zmTSxC7gRAIhQMRterbj0nLv0AWAPyaY6CRRQfeuMTlZJwtW9Zlw4UCsyWzp','2017-03-24 23:02:03','2017-05-18 22:11:24');
+INSERT INTO `users` VALUES (6,'boc','boc@gov.bt','$2y$10$ePZnBIx7cirUjaqtHLMgwu5btX9RkiVQ6/LsZmuwB3IsDNOxcwQ7y',2,'boc','Rl6fqF662rTPcj69rjEs3cfIz7yrtM55IWKfvVmCJGLjnCi4gOUoJ6AcA7oc','2017-04-24 03:43:42','2017-05-18 05:19:54');
+INSERT INTO `users` VALUES (7,'football federation','footballfederation@gov.bt','$2y$10$aqR81snqtDnUkztALhMXK.q1EFgQlWmss4zU81943Ze4pdxXy9MKq',4,'Bhutan Football','DjhiaN2jN5WbOKKEwEpndewDRz231h8QbixSuiU06w3cjySlGxphhgiaRrB1','2017-04-24 03:54:48','2017-05-18 05:18:31');
 INSERT INTO `users` VALUES (8,'basketball federation','bhutanbasketball@gov.bt','$2y$10$NzosA8xpP3u1.15SxSXKMe8v04Py4qKt3lRl297rDRo4VgQQpRlEW',4,'Bhutan Basketball','WwSELNvjgtgKSPuf4hYCdY1nGNpZgbeZIGwhIbrP3Q8g93OzmOOx7yWJMiKs','2017-04-24 04:00:44','2017-05-07 23:37:05');
 INSERT INTO `users` VALUES (9,'table tenis federation','tabletanis@gov.bt','$2y$10$Xf1op7t6ZL/c.8K/TxtVueRos8BElj3ZIDF2Mp4nDAsto6yuNlC8q',4,'Bhutan Table Tanis','oB5rX73LGLoXDTlcynrb155QwOJldHYlmWneDvoWdjy2YAYFRrQTnvIz7vKr','2017-04-24 04:02:07','2017-04-24 23:50:06');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
@@ -1928,4 +1930,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-18 10:03:35
+-- Dump completed on 2017-05-19 11:20:25

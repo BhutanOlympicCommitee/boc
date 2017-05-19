@@ -58,15 +58,17 @@
                       </div>
                   </div>
                   <span><strong>Physical Report</strong></span><br><br>
-                  <table class="table table-bordered table-striped table-responsive" id="table1">
+                  <div class='table-responsive'>
+                  <table id="table1" class="table table-bordered table-striped ">
                  <thead>
                     <tr>
                         <th>Sl_no:</th>
                         <th>KPI</th>
-                        <th>Weight(RGoB)</th>
-                        <th>Weight(External)</th>
-                        <th>Target Achieved</th>
+                        <th style="width:5%">Weight(RGoB)</th>
+                        <th>Target Achieved(RGoB)</th>
                         <th>Points Scored(RGoB)</th>
+                        <th>Weight(External)</th>
+                        <th>Target Achieved(External)</th>
                         <th>Points Scored(External)</th>
                     </tr>   
                 </thead>
@@ -84,17 +86,19 @@
                     <td>{{$id++}}</td>
                     <td>{{$approved->approved_kpi_name}}</td>
                     <td class='td1'>{{$approved->approved_RGoB}}</td>
+                    <td class='td2'><input type="text" name="target[]" class="target" style='width:100px' required></td>
+                    <td class='td3'><input type="text" name="rgob_score[]" id="rgob_score" style='width:100px;border:none;'></td>
                     <td class='external'>{{$approved->approved_external}}</td>
-                    <td class='td2'><input type="text" name="target[]" id="target" style='width:100px' required></td>
-                    <td class='td3'><input type="text" name="rgob_score[]" id="rgob_score" style='width:100px;border:none;' placeholder="double click"></td>
-                    <td class='td4'><input type="text" name="external_score[]" id="external_score" style='width:100px;border:none;' placeholder="double click"></td>
+                    <td class='td5'><input type="text" name="target1[]" class="target1" style='width:100px' required></td>
+                    <td class='td4'><input type="text" name="external_score[]" id="external_score" style='width:100px;border:none;'></td>
                     <input type="hidden" name="hidden_id[]" value='{{$approved->kpi_approval_id}}'>
                   </tr>
 
                 <?php endforeach ?>
               <?php endforeach ?>
               </tbody>
-              </table><br>
+              </table>
+              </div><br>
               <div class='row clearfix'>
                 <div class='col-xs-12 form-group'>
                 <label class='col-xs-2'>Remarks</label>
@@ -141,10 +145,11 @@
   $('#table1 tr').click(function(){
     var rgob_weight=$(this).find('td.td1').text();
     var external=$(this).find('td.external').text();
-    var target=$(this).find('input').val();
+    var target=$(this).find('input.target').val();
+    var ex_target=$(this).find('input.target1').val();
     var rgob_score=(target/rgob_weight)*100;
     var roundedValue1 = rgob_score.toFixed(2);
-    var external_score=(target/external)*100;
+    var external_score=(ex_target/external)*100;
     var roundedValue2= external_score.toFixed(2);
     checkAchievement(roundedValue1,roundedValue2);
   });
@@ -152,11 +157,7 @@
   {
     $('.td3').click(function()
     {
-      if(rgob_score==0)
-      {
-        $(this).find('input').val('');
-      }
-      else if(rgob_score==100 || rgob_score>50)
+      if(rgob_score==100 || rgob_score>50)
       {
         $(this).find('input').val(rgob_score+'%'+'good');
       }
@@ -173,7 +174,7 @@
     {
       if(external_score==0)
       {
-        $(this).find('input').val('');
+        $(this).find('input').val('0');
       }
       else if(external_score==100 || external_score>50)
       {
@@ -195,13 +196,6 @@
        window.location="{{url(route('update_achievement.athlete_achievement'))}}";   
      });
   });
-  $('#table1').dataTable(
-    {
-        "paging":   false,
-        "ordering": false,
-        "info":     false,
-        'searching':false
-    } );
 </script>
 @endsection
 @section('footer')
