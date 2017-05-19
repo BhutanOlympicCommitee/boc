@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('auth/login');
 });
-Route::get('/test','UserController@getTest')->name('getEmployee');
+Route::post('/getEmployee','UserController@getEmployee')->name('getEmployee');
 Auth::routes();
 
 Route::get('/admin.dashboard', 'HomeController@admin')->name('admin_dashboard');

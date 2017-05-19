@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'sqlsrv'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -69,11 +69,11 @@ return [
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
-            'host' => env('DB_SQL_HOST', '192.168.1.100'),
-            'port' => env('DB_SQL_PORT', '3306'),
-            'database' => env('DB_SQL_DATABASE', 'boc'),
-            'username' => env('DB_SQL_USERNAME', 'Sa'),
-            'password' => env('DB_SQL_PASSWORD', 'P@ssw0rd'),
+            'host' => env('DB_SQL_HOST', 'localhost'),
+            'port' => env('DB_SQL_PORT', '1433'),
+            'database' => env('DB_SQL_DATABASE', 'boc_db'),
+            'username' => env('DB_SQL_USERNAME', 'root'),
+            'password' => env('DB_SQL_PASSWORD', ''),
             'prefix' => '',
            
         ],
@@ -89,16 +89,6 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
-        ],
-        'sqlsrv' => [
-            'driver' => 'sqlsrv',
-            'host' => env('DB_HOST', 'localhost'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
-            'charset' => 'utf8',
-            'prefix' => '',
         ],
 
     ],

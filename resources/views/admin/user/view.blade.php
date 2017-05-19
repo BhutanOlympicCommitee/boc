@@ -29,8 +29,8 @@
                              <thead>
                                  <tr>
                                      <th>Sl.No</th>
-                                     <th>Name</th>
-                                     <th>Email Address</th>
+                                     <th>Employee ID</th>
+                                     <th>Sport Organization</th>
                                      <th>User Role</th>
                                      <th style='width:25%'>Action</th>
                                  </tr>
@@ -42,8 +42,8 @@
                                  ?>
                              <tr>
                                  <td><?php echo $i;?></td>
-                                 <td><?php echo $user->name;?></td>
-                                 <td><?php echo $user->email;?></td>
+                                 <td><?php echo $user->emp_id;?></td>
+                                 <td><?php echo $user->sport_organization;?></td>
                                  <td>
                                      <?php
                                      $role = App\Role::find($user->role_id);
@@ -55,7 +55,7 @@
                                         <span class="glyphicon glyphicon-edit"></span>
                                         Edit
                                         <div class="hidden user_id">{{$user->id}}</div>
-                                        <div class="hidden name">{{$user->name}}</div>
+                                        <div class="hidden name">{{$user->emp_id}}</div>
                                         <div class="hidden email">{{$user->email}}</div>
                                         <div class="hidden role_id">{{$user->role_id}}</div>
                                     </button>
@@ -82,109 +82,28 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add User</h4>
+        <h4 class="modal-title" id="myModalLabel">Add Employee ID</h4>
     </div>
     <div class="modal-body">
-       <form class="form-horizontal" role="form" method="POST" action="{{ route('insert_user') }}">
+       <form class="form-horizontal" role="form" method="POST" action="{{ route('getEmployee') }}">
             {{ csrf_field() }}
 
             <div class="form-group clearfix">
-                <label for="name" class="col-md-4 control-label">EmpID</label>
+                <label for="name" class="col-md-4 control-label">EmployeeID</label>
 
                 <div class="col-md-6">
-                    <input id="name1" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                    <input id="name1" type="text" class="form-control" name="name" required autofocus>
                 </div>
             </div>
-            <button type="button" class="btn-default" data-toggle="modal" data-target="#addUserModal" style="float:right; padding: 2px;" id="add">Add</button>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-default">Add</button>
+          </div>
           </form>
   </div>
 </div>
 </div>
 </div>
-
-
-<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add User</h4>
-    </div>
-    <div class="modal-body">
-        <form class="form-horizontal" role="form" method="POST" action="{{ route('insert_user') }}">
-            {{ csrf_field() }}
-
-            <div class="form-group">
-                <label for="name" class="col-md-4 control-label">Name</label>
-
-                <div class="col-md-6">
-                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="user_role" class="col-md-4 control-label">User Role</label>
-
-                <div class="col-md-6">
-                  <select  name="user_role" class="col-md-6 form-control" required>
-                    <option disabled selected>Select the User Role</option>
-                    <?php
-                    $roles = App\Role::all();
-                    foreach($roles as $role):
-                        ?>
-                    <option value="{{$role->id}}">{{$role->role_name}}</option>
-                <?php endforeach;?>
-            </select>
-        </div>
-    </div>
-     <div class="form-group">
-                <label for="federation_type" class="col-md-4 control-label">Sport Organization</label>
-
-                <div class="col-md-6">
-                  <select  name="federation_type" class="col-md-6 form-control" required>
-                    <option disabled selected>Select the Sport Organization</option>
-                    <option value='boc'>boc</option>
-                     <?php
-                    $sport_organization= App\Sport_Organization::all();
-                    foreach($sport_organization as $sport):
-                        ?>
-                    <option value="{{$sport->sport_org_name}}">{{$sport->sport_org_name}}</option>
-                <?php endforeach;?>
-                  </select>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-        <div class="col-md-6">
-            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="password" class="col-md-4 control-label">Password</label>
-
-        <div class="col-md-6">
-            <input id="password" type="password" class="form-control" name="password" required>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-        <div class="col-md-6">
-            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-        </div>
-    </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Register</button>
-                        <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -195,9 +114,9 @@
             <form class="form-horizontal" role="form" method="POST" action="{{ route('update_user') }}">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="name" class="col-md-4 control-label">Name</label>
+                    <label for="name" class="col-md-4 control-label">Employee ID</label>
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="name" value="{{$user->name}}" required autofocus>
+                        <input id="name" type="text" class="form-control" name="name" value="{{$user->emp_id}}" required autofocus>
                     </div>
                 </div>
                 <div class="form-group">
@@ -263,13 +182,13 @@
       var id=$("#name1").val();
       
         var view_url='{{route("getEmployee")}}';
-        
+        alert(view_url);
         $.ajax({
         url: view_url,
         type:"GET", 
         data: {"id":id}, 
         success: function(result){
-          // console.log(result);
+          console.log(result);
           $("#name").val(result.name);
          
         }

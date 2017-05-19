@@ -7,32 +7,16 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use DB;
+use Session;
 
 class UserController extends Controller
 {
-
-      public function getTest(Request $request)
+    public function getEmployee(Request $request)
     {
-        $db_ext = \DB::connection('sqlsrv');
-        $user = $db_ext->table('HR.DtlEmployeeDetails')->get();
-        print_r($user);
-         // if($request->ajax()){
-         //    $id = $request->id;
-         //    $db_ext = \DB::connection('mysql_external');
-         //    $user = $db_ext->table('HR.DtlEmployeeDetails')->where('EmpNo',$id)->first();
-         //    return response()->json($user);
-       // try{
-       //  DB::connection()->getPdo();
-       //  if(DB::connection()->getDatabaseName()){
-       //      echo "success:".DB::connection()->getDatabaseName();
-       //  }
-       // }catch(\Exception $e){
-       //  die("could not connect");
-       // }
-
+      $id=$request->name;  
+      Session::put('employeeID',$id);
+      return view('admin.user.add_user');
     }
-
-
 	public function __construct()
     {
         $this->middleware('auth');
@@ -44,10 +28,10 @@ class UserController extends Controller
     }
     public function postUser(Request $request){
     	$user = new User;
-    	$user->name = Input::get('name');
+    	$user->emp_id = Input::get('employ_id');
     	$user->email = Input::get('email');
     	$user->role_id = Input::get('user_role');
-        $user->sport_organization=Input::get('federation_type');
+      $user->sport_organization=Input::get('federation_type');
     	$password = Input::get('password');
     	$user->password = Hash::make($password);
     	$user->save();
