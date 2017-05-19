@@ -19,7 +19,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="text-muted bootstrap-admin-box-title">User Management</div>
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addUserModal" style="float:right; padding: 2px;">
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#UserModal" style="float:right; padding: 2px;">
                                 <span class="glyphicon glyphicon-plus"></span>
                                 Add User
                             </button>
@@ -76,6 +76,33 @@
 </div>
 </div>
 </div>
+
+<div class="modal fade" id="UserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add User</h4>
+    </div>
+    <div class="modal-body">
+       <form class="form-horizontal" role="form" method="POST" action="{{ route('insert_user') }}">
+            {{ csrf_field() }}
+
+            <div class="form-group clearfix">
+                <label for="name" class="col-md-4 control-label">EmpID</label>
+
+                <div class="col-md-6">
+                    <input id="name1" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                </div>
+            </div>
+            <button type="button" class="btn-default" data-toggle="modal" data-target="#addUserModal" style="float:right; padding: 2px;" id="add">Add</button>
+          </form>
+  </div>
+</div>
+</div>
+</div>
+
+
 <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -231,6 +258,24 @@
     {
        $('select[name="user_role1"]').val(id);
     }  
+
+    $("#add").click(function(){
+      var id=$("#name1").val();
+      
+        var view_url='{{route("getEmployee")}}';
+        
+        $.ajax({
+        url: view_url,
+        type:"GET", 
+        data: {"id":id}, 
+        success: function(result){
+          // console.log(result);
+          $("#name").val(result.name);
+         
+        }
+      });
+    
+      });
 </script>
 @endsection
 @section('footer')

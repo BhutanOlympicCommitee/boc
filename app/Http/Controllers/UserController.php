@@ -6,9 +6,33 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use DB;
 
 class UserController extends Controller
 {
+
+      public function getTest(Request $request)
+    {
+        $db_ext = \DB::connection('sqlsrv');
+        $user = $db_ext->table('HR.DtlEmployeeDetails')->get();
+        print_r($user);
+         // if($request->ajax()){
+         //    $id = $request->id;
+         //    $db_ext = \DB::connection('mysql_external');
+         //    $user = $db_ext->table('HR.DtlEmployeeDetails')->where('EmpNo',$id)->first();
+         //    return response()->json($user);
+       // try{
+       //  DB::connection()->getPdo();
+       //  if(DB::connection()->getDatabaseName()){
+       //      echo "success:".DB::connection()->getDatabaseName();
+       //  }
+       // }catch(\Exception $e){
+       //  die("could not connect");
+       // }
+
+    }
+
+
 	public function __construct()
     {
         $this->middleware('auth');

@@ -23,8 +23,8 @@
             </div>
             <div class="bootstrap-admin-panel-content">
               <ul class='nav nav-pills nav-justified'>
-                <li id='reports'><a href="#Report" data-toggle="tab">Report tab</a></li>
-                <li class="active" id='participants'><a href="#Participant" data-toggle="tab">Participant Information tab</a></li>
+                <li id='reports'><a href="#Report" data-toggle="tab">Activity Report</a></li>
+                <li class="active" id='participants'><a href="#Participant" data-toggle="tab">Participant Information</a></li>
               </ul>
               <div class='tab-content'>
               </br>
