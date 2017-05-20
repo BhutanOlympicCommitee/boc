@@ -1,7 +1,7 @@
 <nav class="navbar navbar-fixed-top" style="background-color:#66b9bf;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"><img src="../public/images/boc_1.png"></img></a>
+      <a class="navbar-brand" href="#"><img src="{{URL::asset('/images/boc_1.png')}}"></img></a>
     </div>
     <div class="text">
     <ul class="nav navbar-nav">
