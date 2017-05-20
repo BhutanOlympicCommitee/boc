@@ -3,12 +3,12 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">
          <footer role="contentinfo">
-            <div class="container text-center">
-            <p>
+          <div class="container text-center">
+            <p style="text-align: center;">
                 Bhutan Olympic Committee:&copy; <?php echo date('Y');?>
                 All Right Reserved!
             </p>
-            </div>
+          </div>
         </footer>
       </a>
     </div>
