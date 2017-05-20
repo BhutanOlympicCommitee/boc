@@ -9,7 +9,11 @@ use Auth;
 
 class AssociatedSportController extends Controller
 {
-     public function index()
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function index()
     {
         $asport= Associated_Sport::all();
        return view('sport_organization_user.associated_sport_types.index',compact('asport'));

@@ -11,6 +11,10 @@ use Session;
 
 class AchievementAndDisplinaryAction extends Controller
 {
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function displayAthleteInfo()
     {
         $athlete_info=Athlete_bioinformation::all();

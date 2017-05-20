@@ -10,6 +10,10 @@ use Session;
 
 class UpdateSportActivityController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
     	//$sport_org_plan=Tbl_UpdateSportActivity::all();

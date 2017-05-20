@@ -13,6 +13,10 @@ use Image;
 
 class Sport_Organization_Controller extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *

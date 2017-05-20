@@ -11,6 +11,10 @@ use Auth;
 
 class KPIController extends Controller
 {
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index_kpi($id)
     {
         $kpi = Tbl_proposed_KPI::all();

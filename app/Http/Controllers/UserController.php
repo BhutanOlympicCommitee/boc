@@ -11,15 +11,15 @@ use Session;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function getEmployee(Request $request)
     {
       $id=$request->name;  
       Session::put('employeeID',$id);
       return view('admin.user.add_user');
-    }
-	public function __construct()
-    {
-        $this->middleware('auth');
     }
 
     public function index(){

@@ -9,6 +9,10 @@ use Auth;
 
 class AdvisoryBoardController extends Controller
 {
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *

@@ -10,6 +10,10 @@ use App\Tbl_sport_coach;
 class SportCoachController extends Controller
 {
     
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $sportcoach=Tbl_sport_coach::all();

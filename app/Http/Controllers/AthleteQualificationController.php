@@ -9,6 +9,10 @@ use App\Athlete_qualification;
 
 class AthleteQualificationController extends Controller
 {
+      public function __construct()
+    {
+        $this->middleware('auth');
+    }
      public function index()
     {
         $athlete_qualification=Athlete_qualification::all();
