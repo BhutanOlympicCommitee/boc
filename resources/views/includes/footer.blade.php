@@ -1,4 +1,4 @@
-<nav class="navbar navbar-fixed-bottom" style="background-color:#d3d3d3;">
+<nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">

@@ -1,26 +1,22 @@
 <nav class="navbar navbar-fixed-top" style="background-color:#66b9bf;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"><img src="../public/images/boc.png"></img></a>
+      <a class="navbar-brand" href="#"><img src="../public/images/boc_1.png"></img></a>
     </div>
     <div class="text">
     <ul class="nav navbar-nav">
-    </br>
-    </br>
-      <li><span><h2><strong>Bhutan Olympic Athlete Information System</strong></h2></span></li>
     </ul>
     <div>
     <ul class="nav navbar-nav navbar-right">
        @if (Auth::guest())
      </br>
-     </br>
         <li class="active"><a href="http://bhutanolympiccommittee.org/"><strong>[Home]</strong></a></li>
       @else
+    </br>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
             <b>{{ Auth::user()->emp_id }}</b> <span class="caret"></span>
           </a>
-
           <ul class="dropdown-menu" role="menu">
             <li>
               <a href="{{ url('/logout') }}"
@@ -39,6 +35,7 @@
     </ul>
   </div>
 </nav>
+</br>
 </br>
 </br>
 </br>
