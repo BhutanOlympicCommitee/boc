@@ -50,7 +50,8 @@
              </form>
              <!-- show if the match is found-->
              @if(sizeof($athlete_achievement)!=0)
-                <table class="table table-bordered table-striped table-responsive" id="table">
+             <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="table">
                <thead>
                 <tr>
                   <th>Sl_no:</th>
@@ -81,6 +82,7 @@
                 @endforeach
               </tbody>
               </table>
+            </div>
               @else
                 <script type="text/javascript">
                   $(function()
@@ -378,7 +380,8 @@ $('#save').click(function()
       return true;
 });
 $('#table').dataTable({
-  'searching':false
+  'searching':false,
+  'responsive':true
 });
 </script>
 @endsection

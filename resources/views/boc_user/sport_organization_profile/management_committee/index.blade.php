@@ -41,7 +41,8 @@
 							    </div>
 						    @endif
               </br>
-						    <table class="table table-bordered table-striped table-responsive" id="table1">
+              <div class="table-responsive">
+						    <table class="table table-bordered table-striped" id="table1">
 					  			<thead>
 									<tr>
 										<th>Sl_no:</th>
@@ -74,6 +75,7 @@
 									@endforeach
 								</tbody>
 			  				</table>
+              </div>
                 <input type="hidden" name="hidden_view" id="hidden_view" value="{{url('management/view')}}">
 			  				<div class='form-group'>
 			  				<div class="row col-xs-10 col-xs-offset-6 input-group clearfix" style='margin-top:10px'>
@@ -251,6 +253,7 @@
 			'searching':false,
 			'paging':false,
 			'info':false,
+      'responsive':true
    			// dom: 'Bfrtip',
       //   	buttons: [
       //       'copy', 'csv', 'excel', 'pdf', 'print'

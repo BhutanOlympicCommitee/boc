@@ -99,15 +99,8 @@
               </div>
 
               </form>
-            {{--   @if(isset($_GET['submit']))
-                <script type="text/javascript">
-                  $(function()
-                  {
-                    $('#view').hide();
-                  });
-                </script> --}}
-               
-                <table class="table table-bordered table-striped table-responsive" id="table1">
+               <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="table1">
                     <thead>
                         <tr>
                             <th>Sl. No:</th>
@@ -150,7 +143,7 @@
                     </tbody>
                 </table>
                 </div>  
-             {{--  @endif --}}
+                </div>  
             </div>
           </div>
         </div>
@@ -161,6 +154,7 @@
 $('#table1').dataTable(
   {
     'searching':false
+     "responsive": true
   });
 </script>
 @endsection
