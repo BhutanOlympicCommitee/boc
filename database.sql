@@ -1917,7 +1917,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','$2y$10$mk3JcPIXVK4hKILLytDVFepTOl2zqoU5H2mwx.infhaHw.msrWHpO',1,'boc','JjgbHNB8TLWZoVAHSNtYWiqRchErtBzadOLYmnUWuq7EC1XadFqC3CVozgw9','2017-03-24 23:02:03','2017-05-19 05:15:32');
+INSERT INTO `users` VALUES (1,'admin','admin@gmail.com','$2y$10$mk3JcPIXVK4hKILLytDVFepTOl2zqoU5H2mwx.infhaHw.msrWHpO',1,'boc','BIg0AaLj0iJvG5rRNF5j8VyTAcQhqAiIWs4zRuof3gE1qlCbZxsjoNHMIBdm','2017-03-24 23:02:03','2017-05-19 23:37:58');
 INSERT INTO `users` VALUES (6,'boc','boc@gov.bt','$2y$10$ePZnBIx7cirUjaqtHLMgwu5btX9RkiVQ6/LsZmuwB3IsDNOxcwQ7y',2,'boc','Rl6fqF662rTPcj69rjEs3cfIz7yrtM55IWKfvVmCJGLjnCi4gOUoJ6AcA7oc','2017-04-24 03:43:42','2017-05-18 05:19:54');
 INSERT INTO `users` VALUES (7,'football federation','footballfederation@gov.bt','$2y$10$aqR81snqtDnUkztALhMXK.q1EFgQlWmss4zU81943Ze4pdxXy9MKq',4,'Bhutan Football','FdR9E98k13DE7bJIrnjR4dK88SlerEwNRg9SG214YmqtVcdJaEz0SttY7XkC','2017-04-24 03:54:48','2017-05-19 22:03:38');
 INSERT INTO `users` VALUES (8,'basketball federation','bhutanbasketball@gov.bt','$2y$10$NzosA8xpP3u1.15SxSXKMe8v04Py4qKt3lRl297rDRo4VgQQpRlEW',4,'Bhutan Basketball','WwSELNvjgtgKSPuf4hYCdY1nGNpZgbeZIGwhIbrP3Q8g93OzmOOx7yWJMiKs','2017-04-24 04:00:44','2017-05-07 23:37:05');
@@ -1935,4 +1935,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-20 11:28:38
+-- Dump completed on 2017-05-20 12:13:04
