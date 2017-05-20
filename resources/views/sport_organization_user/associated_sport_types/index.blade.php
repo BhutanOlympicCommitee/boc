@@ -28,7 +28,8 @@
                             {{ Session::get('success') }}
                           </div>	
 						 	          @endif
-        				 			<table class="table table-bordered table-striped table-responsive" id="table1">
+                        <div class="table-responsive">
+        				 			<table class="table table-bordered table-striped" id="table1">
         				 				<thead>
         									<tr>
         										<th>Sl. No:</th>
@@ -175,7 +176,8 @@
         $('#table1').DataTable(
            {
            "language": {
-           "search": "Filter Sports:"
+           "search": "Filter Sports:",
+           "responsive": true
      }
      }
           );

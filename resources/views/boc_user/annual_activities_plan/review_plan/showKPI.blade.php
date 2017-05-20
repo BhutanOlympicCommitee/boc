@@ -31,7 +31,8 @@
         @endforeach
       </div><br>
       <div class='clearfix'>
-        <table class="table table-bordered table-striped table-responsive" id="table1">
+        <div class="table-responsive">
+        <table class="table table-bordered table-striped" id="table1">
             <thead>
                 <tr>
                     <th>Sl. No:</th>
@@ -69,6 +70,7 @@
             </tbody>
         </table>
       </div>
+      </div>
             </div>
           </div>
         </div>
@@ -76,6 +78,13 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+$('#table1').dataTable(
+  {
+    'searching':false
+     "responsive": true
+  });
+</script>
 @endsection
 @section('footer')
 <div class="container">

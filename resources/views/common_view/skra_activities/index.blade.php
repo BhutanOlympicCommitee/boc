@@ -33,7 +33,8 @@
                     $('#view').hide();
                   });
                 </script>
-                <table class="table table-bordered table-striped table-responsive" id="table1">
+                <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="table1">
                     <thead>
                         <tr>
                             <th>Sl. No:</th>
@@ -67,6 +68,7 @@
                         @endforeach
                     </tbody>
                 </table>
+              </div>
                  <div class='form-group clearfix'>
                   <div class="input-group pull-right" style='margin-top:10px'>
                     <a href="{{route('skra_activities.create')}}" class="btn btn-success glyphicon glyphicon-plus">Add BoC Program</a> 
@@ -101,7 +103,7 @@
                     $('#view').hide();
                   });
                 </script>
-               
+               <div class="table-responsive">
                 <table class="table table-bordered table-striped table-responsive" id="table1">
                     <thead>
                         <tr>
@@ -137,6 +139,7 @@
                         @endforeach
                     </tbody>
                 </table>
+              </div>
                 <div class='form-group clearfix'>
                   <div class="input-group pull-right" style='margin-top:10px'>
                     <a href="{{route('skra_activities.create')}}" class="btn btn-success glyphicon glyphicon-plus">Add BoC Program</a> 
@@ -160,7 +163,8 @@
         $('#table1').DataTable(
            {
            "language": {
-           "search": "Search BoC Programs:"
+           "search": "Search BoC Programs:",
+           "responsive":true
      }
      }
           );

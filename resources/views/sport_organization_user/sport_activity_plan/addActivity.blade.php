@@ -28,7 +28,8 @@
                   {{ Session::get('success') }}
                 </div>
             @endif
-            <table class="table table-bordered table-striped table-responsive" id="table1">
+            <div class="table-responsive">
+            <table class="table table-bordered table-striped" id="table1">
               <thead>
               <?php $i=1;?>
                   <tr>
@@ -64,6 +65,7 @@
               @endforeach
               </tbody>
               </table>
+            </div>
             </div>
            </div>
           </div>
@@ -189,7 +191,8 @@ $(function()
         $('#table1').DataTable(
            {
            "language": {
-           "search": "Filter Activity:"
+           "search": "Filter Activity:",
+           "responsive":true
      }
      }
           );

@@ -62,7 +62,8 @@
                                    {{ Session::get('success') }}
                                 </div>
                             @endif
-                            <table class="table table-bordered table-striped table-responsive" id="table1">
+                            <div class="table-responsive">
+                            <table class="table table-bordered table-striped" id="table1">
                                 <thead>
                                     <tr>
                                         <th style="width:2%;">Sl_no:</th>
@@ -98,6 +99,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -115,7 +117,8 @@
                ],
                 "ordering": false,
                 "info":     false,
-                'searching':false
+                'searching':false,
+                'responsive':true
 
             });
     });

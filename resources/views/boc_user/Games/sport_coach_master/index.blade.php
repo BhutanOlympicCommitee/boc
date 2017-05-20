@@ -34,7 +34,8 @@
                           </div>	
 						 	          @endif
                       </br>
-        				 			<table class="table table-bordered table-striped table-responsive" id="table1">
+                      <div class="table-responsive">
+        				 			<table class="table table-bordered table-striped" id="table1">
         				 				<thead>
         									<tr>
         										<th>Sl. No:</th>
@@ -67,6 +68,7 @@
         								@endforeach
         								</tbody>
         					 		</table>
+                    </div>
                       <div class='clearfix'>
                        <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal">Add Sport & Coach</a> 
                       <input type="hidden" name="hidden_view" id="hidden_view" value="{{route('view_sportcoach')}}">
@@ -238,7 +240,8 @@
      //       "language": {
      //       "search": "Filter sport & coach:"
      // }
-     'searching':false
+     'searching':false,
+     'responsive':true
      }
           );
     });  

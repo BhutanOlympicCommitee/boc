@@ -51,7 +51,8 @@
                         $('#view').hide();
                     });
                   </script>
-                  <table class="table table-bordered table-striped table-responsive" id="table1">
+                  <div class="table-responsive">
+                  <table class="table table-bordered table-striped" id="table1">
                     <thead>
                         <tr>
                             <th>Sl. No:</th>
@@ -83,6 +84,7 @@
                         @endforeach
                     </tbody>
                  </table>
+               </div>
                  <input type="hidden" name="hidden_view" id="hidden_view" value="{{route('view_skra')}}">
                  <div class='form-group clearfix'>
                   <div class="input-group pull-right" style='margin-top:10px'>
@@ -203,7 +205,8 @@
         $('#table1').DataTable(
            {
            "language": {
-           "search": "Search AKRA:"
+           "search": "Search AKRA:",
+           "responsive":true
      }
      }
           );

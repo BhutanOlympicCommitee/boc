@@ -81,6 +81,7 @@
               </div>
           </div>
           </form>
+          <div class="table-responsive">
              <table class="table table-bordered table-striped table-responsive" id="table1">
              <thead>
                 <tr>
@@ -166,6 +167,7 @@
             </tbody>
             @endif
           </table>
+          </div>
           </div>
         </div>
       </div>
@@ -286,7 +288,8 @@
       });
   }
   $('#table1').dataTable({
-    'searching':false
+    'searching':false,
+    'responsive':true
   });
 </script>
 @endsection

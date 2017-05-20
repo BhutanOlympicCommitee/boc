@@ -77,7 +77,8 @@
               <button type='submit' class='btn btn-primary pull-right' name='submit'>Search</button>
             </div>
             </form>
-             <table class="table table-bordered table-striped table-responsive" id="table1">
+            <div class="table-responsive">
+             <table class="table table-bordered table-striped" id="table1">
               <thead>
                 <tr>
                   <th>Sl. No:</th>
@@ -118,6 +119,7 @@
               @endforeach
               </tbody>
             </table> 
+          </div>
             <input type="hidden" name="view_details1" id='view_details1' value='{{route('show_athlete_info1')}}'>
            <input type="hidden" name="view_address1" id='view_address1' value='{{route('show_athlete_address1')}}'>
             <input type="hidden" name="view_associated_sport1" id='view_associated_sport1' value='{{route('show_associated_sport1')}}'>
@@ -144,6 +146,7 @@
           <form action="{{route('team_master.store')}}" method="post">
           {{csrf_field()}}
           <div style='margin-top:20px'>  
+            <div class="table-responsive">
           <table class="table table-bordered table-striped table-responsive" id="table2">
              <thead>
                 <tr>
@@ -175,6 +178,7 @@
            @endforeach
             </tbody>
           </table>
+         </div>
          </div>
          <div class="modal-footer">
           <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Add</button>
@@ -347,13 +351,15 @@ $(function()
   });
 
 $('#table1').dataTable({
-  'searching':false
+  'searching':false,
+  'responsive':true
 });
 $('#table2').dataTable(
   {
      "language": 
      {
-     "search": "Filter athlete:"
+     "search": "Filter athlete:",
+     'responsive':true
     }
 });
 </script>

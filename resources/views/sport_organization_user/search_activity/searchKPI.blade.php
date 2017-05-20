@@ -99,7 +99,8 @@
               </div>
           </div>
           </form>
-             <table class="table table-bordered table-striped table-responsive" id="table1">
+          <div class="table-responsive">
+             <table class="table table-bordered table-striped" id="table1">
              <thead>
                 <tr>
                   <th>Sl. No:</th>
@@ -149,6 +150,7 @@
             </tbody>
             {{-- @endif --}}
           </table>
+          </div>
           </div>
         </div>
       </div>
@@ -239,7 +241,8 @@
  $(function(){
     $('#table1').DataTable(
       {
-        'searching':false
+        'searching':false,
+        'responsive':true
       });
   });
   function kpi_edit1(id)

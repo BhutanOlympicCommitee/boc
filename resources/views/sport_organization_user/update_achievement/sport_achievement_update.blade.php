@@ -59,7 +59,8 @@
                   </div>
                   <span><strong>Physical Report</strong></span><br><br>
                   <div class='table-responsive'>
-                  <table id="table1" class="table table-bordered table-striped ">
+                    <div class="table-responsive">
+                  <table id="table" class="table table-bordered table-striped ">
                  <thead>
                     <tr>
                         <th>Sl_no:</th>
@@ -98,6 +99,7 @@
               <?php endforeach ?>
               </tbody>
               </table>
+              </div>
               </div><br>
               <div class='row clearfix'>
                 <div class='col-xs-12 form-group'>
@@ -200,6 +202,11 @@
        window.location="{{url(route('update_achievement.athlete_achievement'))}}";   
      });
   });
+
+  $('#table').dataTable({
+  'searching':false,
+  'responsive':true
+});
 </script>
 @endsection
 @section('footer')

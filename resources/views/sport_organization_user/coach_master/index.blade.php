@@ -67,7 +67,8 @@
                   </div>
               </div>
               </form>
-        				 			<table class="table table-bordered table-striped table-responsive" id="table">
+              <div class="table-responsive">
+        				 			<table class="table table-bordered table-striped" id="table">
         				 				<thead>
         									<tr>
         										<th>Sl. No:</th>
@@ -97,6 +98,7 @@
         								@endforeach
         								</tbody>
         					 		</table>
+                    </div>
                       <div class='form-group clearfix'>
                      <div class=" col-xs-12 input-group" style='margin-top: 20px' >
                       <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal" onclick="">Add Coach</a> 
@@ -389,7 +391,8 @@
            {
           "ordering": false,
         "info":     false,
-        'searching':false
+        'searching':false,
+        'responsive':true
      }
           );
     });  

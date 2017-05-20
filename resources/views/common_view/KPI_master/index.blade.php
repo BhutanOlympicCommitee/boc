@@ -28,7 +28,8 @@
                             {{ Session::get('success') }}
                           </div>  
                         @endif
-                      <table class="table table-bordered table-striped table-responsive" id="table3">
+                        <div class="table-responsive">
+                      <table class="table table-bordered table-striped" id="table3">
                         <thead>
                           <tr>
                             <th>Sl. No:</th>
@@ -62,6 +63,7 @@
                         @endforeach
                         </tbody>
                       </table>
+                    </div>
                       <div class='form-group clearfix'>
                      <div class=" col-xs-12 input-group" style='margin-top: 20px' >
                       <a class='btn btn-success glyphicon glyphicon-plus pull-right' data-toggle='modal' data-target="#addModal" onclick="">Add KPI</a> 
@@ -236,7 +238,8 @@
     $('#table3').DataTable(
       {
          "language": {
-           "search": "Filter KPI:"
+           "search": "Filter KPI:",
+           "responsive":true
         }
       });
   });

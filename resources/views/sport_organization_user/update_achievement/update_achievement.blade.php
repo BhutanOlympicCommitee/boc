@@ -78,7 +78,8 @@
             </div>
           </form>
           <!-- Table Displayed using searching parameters -->
-          <table class="table table-bordered table-striped table-responsive" id='table1'>
+          <div class="table-responsive">
+          <table class="table table-bordered table-striped" id='table1'>
             <thead>
               <th>Sl.No</th>
               <th>Activities</th>
@@ -114,6 +115,7 @@
             </tbody>
           </table>
         </div>
+        </div>
       </div>
     </div>
   </div>
@@ -121,7 +123,10 @@
 </div>
 </div>
 <script type="text/javascript">
-  $('#table1').dataTable();
+  $('#table1').dataTable({
+  'searching':false,
+  'responsive':true
+});
 </script>
 @endsection
 @section('footer')
