@@ -22,6 +22,7 @@ class CreateActivitiesAchievementReportsTable extends Migration
             $table->decimal('approval_external_budget',8,2);
             $table->decimal('external_utilization',5,2);
             $table->string('target_achieved',100);
+            $table->string('external_target',100);
             $table->string('rgob_score',500);
             $table->string('external_score',500);
             $table->string('remarks',1000);

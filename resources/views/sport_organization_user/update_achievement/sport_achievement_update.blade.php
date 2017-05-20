@@ -157,7 +157,11 @@
   {
     $('.td3').click(function()
     {
-      if(rgob_score==100 || rgob_score>50)
+      if(rgob_score==0)
+      {
+        $(this).find('input').val('0');
+      }
+      else if(rgob_score==100 || rgob_score>50)
       {
         $(this).find('input').val(rgob_score+'%'+'good');
       }

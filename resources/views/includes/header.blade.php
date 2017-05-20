@@ -1,4 +1,4 @@
-<nav class="navbar nav-default navbar-fixed-top" >
+<nav class="navbar nav-default navbar-fixed-top" style="background-color:#66b9bf">
   <div class="container">
     <div class="navbar-header">
 

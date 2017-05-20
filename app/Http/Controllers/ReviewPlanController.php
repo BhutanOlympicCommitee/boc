@@ -123,6 +123,7 @@ class ReviewPlanController extends Controller
         $activity_id=$id;
         $kpi_id=implode(',',$request->hidden_id);
         $target_achieved =implode(',',$request->target);
+        $external_target=implode(',',$request->target1);
         $rgob_score=implode(',',$request->rgob_score);
         $external_score=implode(',',$request->external_score);
         $achievement_report=new Activities_achievement_report;
@@ -133,6 +134,7 @@ class ReviewPlanController extends Controller
         $achievement_report->approval_external_budget=$request->external_budget;
         $achievement_report->external_utilization=$request->utilization_percent;
         $achievement_report->target_achieved=$target_achieved;
+        $achievement_report->external_target=$external_target;
         $achievement_report->rgob_score= $rgob_score;
         $achievement_report->external_score= $external_score;
         $achievement_report->remarks= $request->remarks;
