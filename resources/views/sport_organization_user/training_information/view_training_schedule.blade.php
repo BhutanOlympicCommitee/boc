@@ -23,6 +23,7 @@
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
+            <div class="table-responsive">
             <table class="table table-bordered table-striped table-responsive" id="table1">
              <thead>
               <tr>
@@ -56,6 +57,7 @@
         <?php endforeach?>
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   </div>
@@ -65,7 +67,10 @@
 </div>
 <script type="text/javascript">
   $(function(){
-    $('#table1').DataTable();
+    $('#table1').DataTable(
+      {
+        'resposive':true,
+      });
   });
 </script>
 @endsection

@@ -28,7 +28,8 @@
 	              {{ Session::get('success') }}
 	            </div>
 	        @endif
-            <table class="table table-bordered table-striped table-responsive" id="table1" width="'100%">
+          <div class='table-responsive'>
+            <table class="table table-bordered table-striped" id="table1" width="'100%">
               <thead>
                 <tr>
                    <th>Sl. No:</th>
@@ -62,6 +63,7 @@
                 @endforeach
              </tbody>
              </table>
+             </div>
              <input type="hidden" name="hidden_view" id="hidden_view" value="{{url('country/view')}}">
             </div>
            </div>
@@ -163,7 +165,8 @@
            {
            "language": {
            "search": "Filter Country:"
-     }
+          }
+          "responsive":true
      }
           );
     });  

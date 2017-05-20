@@ -25,7 +25,8 @@
               </button>
             </div>
             <div class="bootstrap-admin-panel-content">
-              <table class="table table-bordered table-striped table-responsive table-hover" id="role_table">
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped table-hover" id="role_table">
                <thead>
                  <tr>
                    <th>Sl.No</th>
@@ -61,6 +62,7 @@
               ?>
             </tbody>
           </table>
+          </div>
         </div>
       </div>
     </div>
@@ -136,6 +138,7 @@
     $(document).ready(function(){
       $('#role_table').DataTable(
            {
+           "responsive":true,
            "language": {
            "search": "Search Role:"
      }

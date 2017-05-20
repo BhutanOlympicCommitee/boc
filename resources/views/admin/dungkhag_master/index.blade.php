@@ -28,7 +28,8 @@
                             {{ Session::get('success') }}
                           </div>	
 						 	          @endif
-        				 			<table class="table table-bordered table-striped table-responsive" id="table1">
+                        <div class='table-responsive'>
+        				 			<table class="table table-bordered table-striped" id="table1">
         				 				<thead>
         									<tr>
         										<th>Sl. No:</th>
@@ -61,6 +62,7 @@
         								@endforeach
         								</tbody>
         					 		</table>
+                      </div>
                       <input type="hidden" name="hidden_show" id="hidden_show" value="{{route('view_dungkhag')}}">
                      </div>
                     </div>
@@ -164,7 +166,8 @@
            {
            "language": {
            "search": "Filter Dungkhag:"
-     }
+          }
+          "responsive":true
      }
           );
     });  

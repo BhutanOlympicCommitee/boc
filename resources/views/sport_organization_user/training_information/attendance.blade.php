@@ -87,7 +87,8 @@
                     </div>
                 </div>
               </form>
-              <table class="table table-bordered table-striped table-responsive" id="table1">
+              <div class="table-responsive">
+              <table class="table table-bordered table-striped" id="table1">
                  <thead>
                     <tr>
                         <th>Sl_no:</th>
@@ -116,6 +117,7 @@
                 @endforeach
               </tbody>
               </table>
+              </div>
             </div>
           </div>
         </div>
@@ -124,8 +126,9 @@
   </div>
 </div>
 <script type="text/javascript">
- $('#table1').DataTable(
+ $('#table1').dataTable(
     {
+       "responsive":true,
         "ordering": false,
         "info":     false,
         'searching':false

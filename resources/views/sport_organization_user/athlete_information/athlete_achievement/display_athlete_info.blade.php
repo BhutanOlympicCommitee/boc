@@ -98,8 +98,8 @@
                     </div>
                 </div>
               </form>
-                 <div style='margin-top:20px'>  
-          <table class="table table-bordered table-striped table-responsive" id="table">
+                 <div style='margin-top:20px' class="table-responsive">  
+          <table class="table table-bordered table-striped" id="table">
              <thead>
                 <tr>
                     <th>Sl_no:</th>
@@ -366,7 +366,8 @@
       {
         "ordering": false,
         "info":     false,
-        'searching':false
+        'searching':false,
+        "responsive":true,
       });
   });
 

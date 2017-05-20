@@ -81,7 +81,8 @@
                     </div>
                 </div>
               </form>
-               <table class="table table-bordered table-striped table-responsive" id="table1">
+              <div class="table-responsive">
+               <table class="table table-bordered table-striped" id="table1">
                  <thead>
                     <tr>
                         <th>Sl_no:</th>
@@ -117,6 +118,7 @@
                   @endforeach
               </tbody>
               </table>
+              </div>
                <input type="hidden" name="hidden_edit" id="hidden_edit" value="{{route('get_training_schedule')}}">
 
               <div class='form-group clearfix'>
@@ -368,6 +370,7 @@
 <script type="text/javascript">
   $('#table1').DataTable(
     {
+        "responsive":true,
         "ordering": false,
         "info":     false,
         'searching':false

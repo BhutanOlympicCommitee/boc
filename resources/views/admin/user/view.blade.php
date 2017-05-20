@@ -25,6 +25,7 @@
                             </button>
                         </div>
                         <div class="bootstrap-admin-panel-content">
+                        <div class='table-responsive'>
                             <table class="table table-bordered table-striped table-responsive table-hover" id="user_table">
                              <thead>
                                  <tr>
@@ -69,6 +70,7 @@
                             ?>
                         </tbody>
                  </table>
+                 </div>
              </div>
          </div>
      </div>
@@ -153,6 +155,7 @@
     $(document).ready(function(){
         $('#user_table').DataTable(
            {
+           "reponsive":true,
            "language": {
            "search": "Search User:"
           }

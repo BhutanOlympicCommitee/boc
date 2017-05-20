@@ -23,6 +23,7 @@
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
+            <div class="table-responsive">
        <table class="table table-bordered table-striped table-responsive" id="table1">
              <thead>
                 <tr>
@@ -53,6 +54,7 @@
             @endforeach
             </tbody>
           </table>
+          </div>
           <input type="hidden" name="hidden_training_id" value='{{$training->training_id}}'>
           {{-- <div class='clearfix'>
             <button type='submit' class="btn btn-info pull-right">save</button>
@@ -116,7 +118,8 @@
     {
       "ordering": false,
         "info":     false,
-        'searching':false
+        'searching':false,
+        "responsive":true,
     });
   function getAthleteIDTrainingID(athlete_id,training_id)
   {
