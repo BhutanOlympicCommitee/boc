@@ -15,6 +15,10 @@ use App\Tbl_sport_coach;
 
 class TeamMemberController extends Controller
 {
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $team=Athlete_bioinformation::all();

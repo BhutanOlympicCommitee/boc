@@ -9,7 +9,11 @@ use Session;
 
 class AthleteMedicalController extends Controller
 {
-       public function create()
+     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function create()
     {
         return view('sport_organization_user.athlete_information.athlete_medical.create');
     }

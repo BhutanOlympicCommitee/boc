@@ -9,7 +9,11 @@ use Session;
 
 class DungkhagController extends Controller
 {
-      public function index()
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function index()
     {
         $dungkhag= Dungkhag::all();
        return view('admin.dungkhag_master.index',compact('dungkhag'));

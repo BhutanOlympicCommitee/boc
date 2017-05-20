@@ -13,6 +13,10 @@ use Auth;
 
 class SKRA_activities_Controller extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *

@@ -21,6 +21,10 @@ use DB;
 
 class ReviewPlanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
        $review_plan= Tbl_proposed_sport_org_activity::all();

@@ -9,6 +9,10 @@ use Session;
 
 class GewogController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $gewog= Gewog::all();
