@@ -1,4 +1,7 @@
-.nav-default 
-{
-  background-color:#004C00;
+.navbar-fixed-top {
+min-height: 100px;
+background-color:#66b9bf; 
+}
+.text{
+	text-align: center;
 }
