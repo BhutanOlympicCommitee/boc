@@ -1,7 +1,11 @@
 .navbar-fixed-top {
-min-height: 120px;
+min-height: 105px;
 position: fixed;
 }
 .text{
 	text-align: center;
+}
+.navbar-fixed-bottom {
+min-height: 2px;
+position: fixed;
 }

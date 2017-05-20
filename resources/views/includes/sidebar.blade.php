@@ -6,7 +6,7 @@
         <div class="col-md-12 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <div class="text-muted bootstrap-admin-box-title clearfix">Dashboard
+              <div class="text-muted bootstrap-admin-box-title clearfix">Menu
                </div>
             </div>
             <div class="bootstrap-admin-panel-content">
