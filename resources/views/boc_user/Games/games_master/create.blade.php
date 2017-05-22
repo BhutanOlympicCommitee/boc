@@ -132,6 +132,8 @@
     </div>
   </div>
 </div>
+</br>
+</br>
 <script type="text/javascript">
   $(function()
   {

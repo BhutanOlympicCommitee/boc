@@ -234,6 +234,8 @@
     </div>
   </div>
 </div>
+</br>
+</br>
 <!-- ends edit Modal -->
 <script type="text/javascript">
   $(function(){

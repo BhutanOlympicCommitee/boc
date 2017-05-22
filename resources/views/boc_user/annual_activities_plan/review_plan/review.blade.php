@@ -115,6 +115,8 @@
     </div>
   </div>
 </div>
+</br>
+</br>
 @endsection
 @section('footer')
 <div class="container">
