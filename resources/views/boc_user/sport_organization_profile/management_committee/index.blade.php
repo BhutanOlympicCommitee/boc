@@ -246,6 +246,8 @@
   </div>
 </div>
 <!-- editModal ends -->
+</br>
+</br>
 
 <script type="text/javascript">
 	$(function(){

@@ -192,7 +192,8 @@
   </div>
 </div>
 <!-- ends addModal-->
-
+</br>
+</br>
 @endsection
 @section('footer')
 <div class="container">

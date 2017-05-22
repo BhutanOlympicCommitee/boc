@@ -1,3 +1,5 @@
+</br>
+</br>
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <div class="navbar-header">

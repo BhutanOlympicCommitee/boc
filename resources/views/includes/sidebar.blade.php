@@ -96,6 +96,8 @@
 </div>
 </div>
 </div>
+</br>
+</br>
 <script type="text/javascript">
     $('.tree-toggle').click(function()
     {

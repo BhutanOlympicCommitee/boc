@@ -284,7 +284,8 @@
   </div>
 </div>
 </div>
-
+</br>
+</br>
 <script type="text/javascript">
  function view_details(id)
   {

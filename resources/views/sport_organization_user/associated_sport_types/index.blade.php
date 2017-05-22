@@ -169,6 +169,8 @@
     </div>
   </div>
 </div>
+</br>
+</br>
 <!-- editModal ends here-->
 <script type="text/javascript">
   $(function()

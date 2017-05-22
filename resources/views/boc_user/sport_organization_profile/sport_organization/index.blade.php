@@ -106,7 +106,8 @@
         </div>
     </div>
 </div>
-
+</br>
+</br>
 <script type="text/javascript">
     $(function(){
         $('#table1').DataTable(

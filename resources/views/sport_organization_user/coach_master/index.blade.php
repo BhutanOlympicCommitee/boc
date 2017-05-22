@@ -384,6 +384,8 @@
     </div>
   </div>
 </div>
+</br>
+</br>
 <script type="text/javascript">
    $(function()
     {
@@ -480,6 +482,5 @@ $('#update').click(function()
     </div>
 </div>
 @endsection
-
 
 
