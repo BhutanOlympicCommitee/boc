@@ -125,6 +125,8 @@
     </div>
   </div>
 </div>
+<br>
+<br>
 <script type="text/javascript">
  $('#table1').dataTable(
     {

@@ -122,6 +122,7 @@
 </div>
 </div>
 </div>
+<br>
 <script type="text/javascript">
   $('#table1').dataTable({
   'searching':false,

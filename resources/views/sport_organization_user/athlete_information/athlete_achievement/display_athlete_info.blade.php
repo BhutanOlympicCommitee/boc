@@ -306,7 +306,8 @@
     </div>
   </div>
 </div>
-
+<br>
+<br>
 <!-- end achievement model -->
 <script type="text/javascript">
  function view_details(id)

@@ -158,16 +158,18 @@
     </div>
   </div>
 </div>
+<br>
+<br>
 <!-- editModal ends here-->
 <script type="text/javascript">
    $(function()
     {
         $('#table1').DataTable(
            {
+             "responsive":true,
            "language": {
            "search": "Filter Dungkhag:"
           }
-          "responsive":true
      }
           );
     });  
