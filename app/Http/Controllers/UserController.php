@@ -39,13 +39,13 @@ class UserController extends Controller
     }
     public function updateUser(Request $request){
     	$id = Input::get('user_id');
-    	$name = Input::get('name');
+    	$emp_id = Input::get('emp_id');
     	$email = Input::get('email');
     	$role_id = Input::get('user_role1');
     	$user = new User;
     	$user::where('id',$id)
     		->update([
-    			'name' => $name,
+    			'emp_id' => $emp_id,
     			'email'=> $email,
     			'role_id' =>$role_id
     			]);

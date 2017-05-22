@@ -116,9 +116,9 @@
             <form class="form-horizontal" role="form" method="POST" action="{{ route('update_user') }}">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="name" class="col-md-4 control-label">Employee ID</label>
+                    <label for="emp_id" class="col-md-4 control-label">Employee ID</label>
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="name" value="{{$user->emp_id}}" required autofocus>
+                        <input id="name" type="text" class="form-control" name="emp_id" value="{{$user->emp_id}}" required autofocus>
                     </div>
                 </div>
                 <div class="form-group">
