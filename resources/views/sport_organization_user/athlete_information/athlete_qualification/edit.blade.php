@@ -52,7 +52,7 @@
                     foreach($qualification as $qualifications):
                   ?>
                   <option value="{{$qualifications->qualification_level_id}}" <?php 
-                                if($qualifications->qualification_level_id == $athletes->qualification_level_id){?>
+                                if($qualifications->qualification_level_id == $athletes->qualification_level){?>
                                   selected
                                 <?php }?> >{{$qualifications->qualification_level}}</option>
                                 <?php 
@@ -124,7 +124,8 @@
     </div>
   </div>
 </div>
- 
+ <br>
+ <br>
 @endsection
 @section('footer')
 <div class="container">

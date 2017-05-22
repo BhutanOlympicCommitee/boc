@@ -151,6 +151,8 @@
 </div>
 </div>
 </div>
+<br>
+<br>
 <script type="text/javascript">
     $(document).ready(function(){
         $('#user_table').DataTable(

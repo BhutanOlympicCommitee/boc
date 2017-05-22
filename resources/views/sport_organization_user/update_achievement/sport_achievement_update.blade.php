@@ -111,9 +111,11 @@
                   </div>
               </div>
               </div>
+              <div class='clearfix'>
                   <button type='submit' class='btn btn-primary col-xs-offset-10'>Submit</button>
                   <button type='reset' class="btn btn-warning pull-right">Cancel
                   </button>
+              </div>
             </div>
           </div> 
         </form>    
@@ -124,6 +126,7 @@
 </div>
 </div>
 </div>
+<br>
 <script type="text/javascript">
 //calculate RGoB budget utilization
   $('#utilization').click(function()

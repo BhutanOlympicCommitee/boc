@@ -366,6 +366,8 @@
     </div>
   </div>
 </div>
+<br>
+<br>
 <!-- EditTrainingSchedule ends here -->
 <script type="text/javascript">
   $('#table1').DataTable(

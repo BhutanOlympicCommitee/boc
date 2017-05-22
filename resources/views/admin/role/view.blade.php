@@ -134,6 +134,8 @@
       </div>
     </div>
   </div>
+  <br>
+  <br>
   <script type="text/javascript">
     $(document).ready(function(){
       $('#role_table').DataTable(

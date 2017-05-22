@@ -6,9 +6,9 @@
       <a class="navbar-brand" href="#">
          <footer role="contentinfo">
           <div class="container text-center">
-            <p style="text-align: center;">
+            <p style="text-align: center;"><font size=2 face="arial black">
                 Bhutan Olympic Committee:&copy; <?php echo date('Y');?>
-                All Right Reserved!
+                All Right Reserved!</font>
             </p>
           </div>
         </footer>

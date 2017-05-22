@@ -184,6 +184,8 @@
     </div>
   </div>
 </div>
+<br>
+<br>
 <!-- ends viewDetails modal-->
 <script type="text/javascript">
   $(function(){

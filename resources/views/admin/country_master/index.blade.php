@@ -156,6 +156,8 @@
       </div>
     </div>
   </div>
+  <br>
+  <br>
 <!-- Ends edit country modal-->>
 
 <script type="text/javascript">
@@ -163,10 +165,10 @@
     {
         $('#table1').DataTable(
            {
+            "responsive":true,
            "language": {
            "search": "Filter Country:"
           }
-          "responsive":true
      }
           );
     });  
