@@ -83,15 +83,13 @@
 <script type="text/javascript">
 $('#table1').dataTable(
   {
-    'searching':false
-     "responsive": true
+    'searching':false,
+     "responsive": true,
+     "oLanguage": { "sEmptyTable": "No KPIs to Review" }
   });
 </script>
 @endsection
 @section('footer')
 <div class="container">
-  <div class="row">
-      @include('includes.footer')
-  </div>
 </div>
 @endsection

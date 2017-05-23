@@ -72,6 +72,7 @@
       </div>
   </div>
 </div>
+</br>
 <!-- Add country modal begins-->
 <div class="modal fade" id="addCountryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -156,8 +157,6 @@
       </div>
     </div>
   </div>
-  <br>
-  <br>
 <!-- Ends edit country modal-->>
 
 <script type="text/javascript">
