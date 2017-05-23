@@ -24,6 +24,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Route for Custome Login
 Route::post('/login',['uses'=>'LoginController@login','as'=>'login_custome']);
+Route::get('/forgot-password','ForgotPasswordController@forgotPassword')->name('forgot-password');
+Route::post('/post-forgot-password','ForgotPasswordController@postForgotPassword')->name('post-forgot-password');
 
 //Route for user managements
 //view the user details

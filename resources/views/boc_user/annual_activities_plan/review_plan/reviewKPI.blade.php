@@ -24,7 +24,7 @@
             <div class="bootstrap-admin-panel-content">
             <form action='{{route('approved_kpi',$review_kpi->kpi_id)}}' method='post'>
             {{csrf_field()}}
-            <div class='row clearfix'>&nbsp;&nbsp;&nbsp;&nbsp;Activity:</div><br>
+            <div class='row clearfix'>&nbsp;&nbsp;&nbsp;&nbsp;Activity:{{$review_kpi->proposedActivity->activity_name}}</div><br>
             <div class='row clearfix'>
               <div class='col-xs-2'><strong>Proposed</strong></div>
               <div class='col-xs-5'></div>
