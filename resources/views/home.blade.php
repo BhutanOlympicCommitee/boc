@@ -43,7 +43,7 @@
                                       <p>Registerd Sports</p>
                                     </div>
                                     <div class="icon">
-                                      <i class="ion-ios7-football-outline"></i>
+                                      <i class="ion-ios-barcode"></i>
                                     </div>
                                     <a href="{{route('associated_sport_types.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                   </div>
@@ -57,6 +57,7 @@
                                     </div>
                                     <div class="icon">
                                       <i class="ion"></i>
+                                       <i class="ion-ios-barcode"></i>
                                     </div>
                                     <a href="{{route('skra.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                   </div>

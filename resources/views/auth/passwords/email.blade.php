@@ -1,10 +1,14 @@
 @extends('layouts.app')
-
+@section('nav-bar')
+@include('includes.header')
+@endsection
 <!-- Main Content -->
 @section('content')
+</br>
+</br>
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading">Reset Password</div>
                 <div class="panel-body">
@@ -43,5 +47,12 @@
             </div>
         </div>
     </div>
+</div>
+@endsection
+@section('footer')
+<div class="container">
+  <div class="row">
+     @include('includes.footer')
+  </div>
 </div>
 @endsection

@@ -1,6 +1,10 @@
 @extends('layouts.app')
-
+@section('nav-bar')
+@include('includes.header')
+@endsection
 @section('content')
+</br>
+</br>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -66,5 +70,12 @@
             </div>
         </div>
     </div>
+</div>
+@endsection
+@section('footer')
+<div class="container">
+  <div class="row">
+     @include('includes.footer')
+  </div>
 </div>
 @endsection
