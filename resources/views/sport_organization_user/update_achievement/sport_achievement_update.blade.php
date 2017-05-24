@@ -60,7 +60,7 @@
                   <span><strong>Physical Report</strong></span><br><br>
                   <div class='table-responsive'>
                     <div class="table-responsive">
-                  <table id="table" class="table table-bordered table-striped ">
+                  <table id="table1" class="table table-bordered table-striped ">
                  <thead>
                     <tr>
                         <th>Sl_no:</th>
@@ -206,7 +206,7 @@
      });
   });
 
-  $('#table').dataTable({
+  $('#table1').dataTable({
   'searching':false,
   'responsive':true
 });
