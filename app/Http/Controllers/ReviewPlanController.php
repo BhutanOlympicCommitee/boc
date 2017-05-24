@@ -124,12 +124,22 @@ class ReviewPlanController extends Controller
     }
     public function storeActivitiesAchievedReport(Request $request, $id)
     {
+        $varaible=array();
+        $variable1=array();
         $activity_id=$id;
         $kpi_id=implode(',',$request->hidden_id);
         $target_achieved =implode(',',$request->target);
         $external_target=implode(',',$request->target1);
-        $rgob_score=implode(',',$request->rgob_score);
-        $external_score=implode(',',$request->external_score);
+        foreach($request->rgob_score as $target)
+        {
+            $variable[] = substr($target, 0, strpos($target, "%"));
+        }
+        foreach($request->external_score as $target1)
+        {
+            $variable1[] = substr($target1, 0, strpos($target1, "%"));
+        }
+        $rgob_score=implode(',',$variable);
+        $external_score=implode(',',$variable1);
         $achievement_report=new Activities_achievement_report;
         $achievement_report->approval_activity_id=$activity_id;
         $achievement_report->kpi_approval_id=$kpi_id;

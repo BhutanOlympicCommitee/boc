@@ -39,7 +39,7 @@ CREATE TABLE `activities_achievement_reports` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`report_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,6 +50,7 @@ LOCK TABLES `activities_achievement_reports` WRITE;
 /*!40000 ALTER TABLE `activities_achievement_reports` DISABLE KEYS */;
 INSERT INTO `activities_achievement_reports` VALUES (1,1,'1',20000.00,47.62,20000.00,100.00,'2','0','100.00%good','66.67%good','good',7,'2017-04-24 22:11:15','2017-04-24 22:11:15');
 INSERT INTO `activities_achievement_reports` VALUES (2,3,'3,4',20000.00,44.44,23000.00,100.00,'2,2','1,3','50.00%average,100.00%good','33.33%average,60.00%good','Good team work                 \r\n                    ',7,'2017-05-19 21:17:19','2017-05-19 21:17:19');
+INSERT INTO `activities_achievement_reports` VALUES (4,3,'3,4',20000.00,44.44,23000.00,100.00,'2,1','3,1','50.00,50.00','100.00,20.00','good',12,'2017-05-23 23:02:10','2017-05-23 23:02:10');
 /*!40000 ALTER TABLE `activities_achievement_reports` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1937,4 +1938,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-24  9:28:48
+-- Dump completed on 2017-05-24 11:03:14
