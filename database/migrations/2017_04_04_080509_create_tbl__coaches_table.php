@@ -15,6 +15,7 @@ class CreateTblCoachesTable extends Migration
     {
         Schema::create('tbl__coaches', function (Blueprint $table) {
             $table->increments('coach_id');
+            $table->integer('sport_org_id');
             $table->string('coach_title',20);
             $table->string('coach_fname',100);
             $table->string('coach_mname',100);

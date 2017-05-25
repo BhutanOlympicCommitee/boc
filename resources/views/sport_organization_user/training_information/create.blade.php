@@ -146,17 +146,10 @@
           {{csrf_field()}}
           <div class='row'>
             <div class='col-xs-6 clearfix'>
-              <div class='form-group'>
-                <label for='day' class='col-xs-2'>Day</label>
+               <div class='form-group'>
+                <label for='date' class='col-xs-2'>Date </label>
                   <div class='col-xs-10 input-group'>
-                    <select class='form-control' name='day' required>
-                      <option value="" disabled selected>Select Day</option>
-                      <?php $enum_day=App\EnumDaytable::all();
-                        foreach($enum_day as $day):
-                          ?>
-                        <option value={{$day->day_id}}>{{$day->day_name}}</option>
-                      <?php endforeach ?>
-                    </select>
+                    <input type="date" name="date" class="form-control" placeholder="Enter date here" required id='date'>
                   </div>
               </div>
               <div class='form-group clearfix'>
@@ -185,10 +178,13 @@
               </div>
             </div>
             <div class='col-xs-6 clearfix'>
+             
               <div class='form-group'>
-                <label for='date' class='col-xs-2'>Date </label>
+                <label for='day' class='col-xs-2'>Day</label>
                   <div class='col-xs-10 input-group'>
-                    <input type="date" name="date" class="form-control" placeholder="Enter date here" required>
+                    <select class='form-control' name='day' required id='day'>
+                      <option></option>
+                    </select>
                   </div>
               </div>
               <div class='form-group clearfix'>
@@ -215,7 +211,9 @@
                   <div class='col-xs-10 input-group'>
                     <select class='form-control' name='coach'>
                       <option value="" disabled selected>Select coach</option>
-                      <?php $coach=App\Tbl_Coach::all();
+                      <?php 
+                          $user=App\User::where('id',Session::get('user_id'))->first();
+                          $coach=App\Tbl_Coach::where('sport_org_id',$user->sport_organization)->get();
                             foreach($coach as $coach):
                               ?>
                             <option value={{$coach->coach_id}}>{{$coach->coach_fname.' '.$coach->coach_mname.' '.$coach->coach_lname}}</option>
@@ -239,7 +237,16 @@
             </thead>
             <tbody>
              <?php $id=1;
-              $athlete_info=App\Athlete_bioinformation::all();
+              $associated=array();
+              $user=App\User::where('id',Session::get('user_id'))->first();
+              $associated_sport=App\Associated_Sport::where('sport_org_id',$user->sport_organization)->pluck('sport_id');
+              $associated1=explode(',',$associated_sport);
+              foreach($associated1 as $asso)
+              {
+                $associated[]=trim($asso,'[]');
+              }
+
+              $athlete_info=App\Athlete_bioinformation::whereIn('athlete_associatedSport',$associated)->get();
               foreach($athlete_info as $athlete):
               ?>
               <tr>
@@ -412,8 +419,21 @@
      $('select[name="coach"]').val(coach_id);
 
   }
-  $(function() {
-    $( ".datepicker" ).datepicker();
+
+  $('#day').click(function(){
+    var date=$('#date').val();
+    var url='{{route('get_day')}}';
+    $.ajax({
+        url: url,
+        type:"GET", 
+        data: {"id":date}, 
+        success: function(result){
+          console.log(result);
+          $('#day').empty();
+      
+          $('#day').append('<option value="'+result.day_id+'">'+result.day_name+'</option>');
+        }
+      });
   });
 </script>
 @endsection

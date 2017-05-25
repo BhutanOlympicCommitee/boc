@@ -12,6 +12,7 @@ use App\AtheleteTrainingAttendance;
 use Session;
 use Auth;
 use Carbon\Carbon;
+use App\EnumDayTable;
 class TrainingInformationController extends Controller
 {
      public function __construct()
@@ -262,5 +263,18 @@ class TrainingInformationController extends Controller
         }
         else
             return redirect()->route('training.attendance');
+    }
+
+    public function getDay(Request $request)
+    {
+        if($request->ajax()){
+            $id = $request->id;
+            
+            $timestamp = strtotime( $id );
+
+           $day = date('l', $timestamp);
+           $week_day=EnumDayTable::where('day_name',$day)->first();
+            return response()->json($week_day);
+        }
     }
 }

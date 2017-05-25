@@ -292,3 +292,5 @@ Route::post('listKPI','KPIController@listAndSearchKPI')->name('searchKPI');
 
 //route for search akra activites
 Route::post('searchAKRA_activity','SKRA_activities_Controller@searchAKRAactivity')->name('searchAKRA');
+
+Route::get('getDay','TrainingInformationController@getDay')->name('get_day');
