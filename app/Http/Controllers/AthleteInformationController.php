@@ -25,23 +25,27 @@ class AthleteInformationController extends Controller
      */
      public function index()
     {
-        if(Session::get('user_id')==4)
-        {
-            $associated_sport=array();
+        
+        $associated_sport=array();
         $user=User::where('id',Session::get('user_id'))->first();
-        $associatedSport=Associated_Sport::where('sport_org_id',$user->sport_organization)->pluck('sport_id');
-        $associated=explode(',',$associatedSport);
-        foreach($associated as $assoc)
+        if($user->role_id==4)
         {
-            $associated_sport[]=trim($assoc,'[]');
-        }
-        $athlete=Athlete_bioinformation::whereIn('athlete_associatedSport',$associated_sport)->get();
-        }
-        else
-        {
-            $athlete=Athlete_bioinformation::all(); 
+            $associatedSport=Associated_Sport::where('sport_org_id',$user->sport_organization)->pluck('sport_id');
+            $associated=explode(',',$associatedSport);
+            foreach($associated as $assoc)
+            {
+                $associated_sport[]=trim($assoc,'[]');
+            }
+            $athlete=Athlete_bioinformation::whereIn('athlete_associatedSport',$associated_sport)->get();
             return view('sport_organization_user.athlete_information.athlete_info.index',compact('athlete'));
         }
+        else{
+              $athlete=Athlete_bioinformation::all(); 
+            return view('sport_organization_user.athlete_information.athlete_info.index',compact('athlete'));
+        
+        }
+       
+          
     }
 
     public function create()
