@@ -12,6 +12,7 @@ use App\Tbl_SKRA_activities;
 use Auth;
 use Session;
 use DB;
+use App\User;
 /**
      * Store a newly created resource in storage.
      *
@@ -48,9 +49,31 @@ class ReviewPlanController extends Controller
         return view('boc_user.annual_activities_plan.review_plan.reviewKPI',compact('review_kpi'));
     }
     public function getAchievement_update(){
-        $approved_activity=Tbl_sport_org_activities_approved::all();
-        // $proposed_activity=Tbl_sport_org_activities::all();
+        // $approved_activity=Tbl_sport_org_activities_approved::all();
+        // // $proposed_activity=Tbl_sport_org_activities::all();
+        // return view('sport_organization_user.update_achievement.update_achievement',['approved_activity'=>$approved_activity]);
+        $skra1=array();
+        $activity_id=array();
+        $user=User::where('id',Session::get('user_id'))->first();
+        $boc_program=Tbl_SKRA_activities::where('sport_org_id',$user->sport_organization)->pluck('skra_activity_id');
+        $skra_activity1=explode(',',$boc_program);
+        foreach($skra_activity1 as $skra)
+        {
+            $skra1[]=trim($skra,'[]');
+        }
+        $proposed_activity=Tbl_proposed_sport_org_activity::join('tbl__update_sport_activities','tbl_proposed_sport_org_activities.weightage_id','tbl__update_sport_activities.id')
+            ->select('tbl_proposed_sport_org_activities.*')
+            ->whereIn('tbl__update_sport_activities.skra_activity_id',$skra1)
+            ->pluck('activity_id');
+        $proposed_id=explode(',',$proposed_activity);
+        foreach($proposed_id as $proposed)
+        {
+            $activity_id[]=trim($proposed,'[]');
+        }
+        $approved_activity=Tbl_sport_org_activities_approved::whereIn('activity_id',$activity_id)->get();
         return view('sport_organization_user.update_achievement.update_achievement',['approved_activity'=>$approved_activity]);
+
+        // return view('sport_organization_user.sport_activity_plan.addActivity',compact('approved_activity'));
     }
     
     

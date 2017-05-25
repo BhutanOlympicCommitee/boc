@@ -94,12 +94,12 @@
                 <div class="col-md-6">
                   <select  name="federation_type" class="col-md-6 form-control" required>
                     <option disabled selected>Select the Sport Organization</option>
-                    <option value='boc'>boc</option>
+                    {{-- <option value='boc'>boc</option> --}}
                      <?php
                     $sport_organization= App\Sport_Organization::all();
                     foreach($sport_organization as $sport):
                         ?>
-                    <option value="{{$sport->sport_org_name}}">{{$sport->sport_org_name}}</option>
+                    <option value="{{$sport->sport_org_id}}">{{$sport->sport_org_name}}</option>
                 <?php endforeach;?>
                   </select>
         </div>

@@ -131,6 +131,7 @@ Route::get('skra_activity/create',['as'=>'skra_activities.create','uses'=>'SKRA_
 Route::post('skra_activity/store',['as'=>'skra_activities.store','uses'=>'SKRA_activities_Controller@store']);
 Route::delete('skra_activity/destroy/{id}',['as'=>'skra_activities.destroy','uses'=>'SKRA_activities_Controller@destroy']);
 Route::get('skra_activity/view', 'SKRA_activities_Controller@view')->name('view_skra_activities');
+Route::get('boc_program', 'SKRA_activities_Controller@viewBocProgram')->name('view_boc_program');
 Route::get('skra_activity/{id}/edit',['as'=>'skra_activities.edit','uses'=>'SKRA_activities_Controller@edit']);
 Route::patch('skra_activity/update/{id}',['as'=>'skra_activities.update','uses'=>'SKRA_activities_Controller@update']);
 
@@ -259,7 +260,7 @@ Route::post('athlete_achievement/search','AchievementAndDisplinaryAction@searchS
 
 
 //update sport org activities
-Route::get('sport_activity',['as'=>'sport_activity_plan.index','uses'=>'UpdateSportActivityController@index']);
+Route::get('sport_activity1',['as'=>'sport_activity_plan.index','uses'=>'UpdateSportActivityController@index']);
 Route::post('sport_activity/store',['as'=>'sport_activity_plan.store','uses'=>'UpdateSportActivityController@store']);
 // Route::post('sport_activity/update',['as'=>'sport_activity_plan.edit','uses'=>'UpdateSportActivityController@update']);
 Route::get('sport_activity/{id}/edit',['as'=>'sport_activity_plan.edit','uses'=>'UpdateSportActivityController@edit']);
@@ -278,12 +279,14 @@ Route::get('kpi/{id}',['as'=>'KPI_master.index','uses'=>'KPIController@index_kpi
 
 Route::post('sport_activity/update_proposed_activity', 'UpdateSportActivityController@updateProposedActivities')->name('update_proposed_activities');
 
+Route::get('searchKPI/{id}',['as'=>'search_activity.searchKPI','uses'=>'KPIController@filterKPI']);
+
 //routes for search activities
 Route::get('searchActivity',['as'=>'search_activity.search','uses'=>'Sport_Organization_Controller@search']);
-//routes for search activities
-Route::get('searchKPI',['as'=>'search_activity.searchKPI','uses'=>'KPIController@searchKPI']);
+
 Route::post('listKPI','KPIController@listAndSearchKPI')->name('searchKPI');
+
+
 
 //route for search akra activites
 Route::post('searchAKRA_activity','SKRA_activities_Controller@searchAKRAactivity')->name('searchAKRA');
-Route::post('searchAKRA','SKRA_activities_Controller@searchAKRAactivity')->name('searchAKRA');

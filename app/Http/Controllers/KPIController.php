@@ -17,14 +17,14 @@ class KPIController extends Controller
     }
     public function index_kpi($id)
     {
-        $kpi = Tbl_proposed_KPI::all();
+        $kpi = Tbl_proposed_KPI::where('activity_id',$id)->get();
         Session::put('activity_id',$id);
        return view('common_view.KPI_master.index',compact('kpi'));
     }
 
-     public function searchKPI()
+     public function filterKPI($id)
     {
-        $searchkpi=Tbl_proposed_KPI::all();
+        $searchkpi=Tbl_proposed_KPI::where('activity_id',$id)->get();
         return view('sport_organization_user.search_activity.searchKPI',compact('searchkpi'));
     }
     /**
@@ -60,7 +60,7 @@ class KPIController extends Controller
         $kpi->updated_by=Auth::user()->id;
         $kpi->save();
         Session::flash('success', 'Kpi created successfully');
-        return redirect()->route('KPI_master.index',$kpi->kpi_id);
+        return redirect()->route('KPI_master.index',Session::get('activity_id'));
     }
 
     public function addApprovedKPI($id, Request $request)

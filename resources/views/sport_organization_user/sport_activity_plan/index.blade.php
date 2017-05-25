@@ -34,7 +34,7 @@
                 <div class='form-group clearfix'>
             <label for='five_yr_plan_id' class='col-xs-2'>Five Year Plan:</label>
               <div class='col-xs-10 input-group'>
-               <select class='form-control' name='five_yr_plan_id'>
+               <select class='form-control' name='five_yr_plan_id' id="five_year">
                 <option value="0">Select Five Year Plan</option>
                           <?php 
                             $fiveYearPlan=App\EnumFiveYearPlan::all();
@@ -50,33 +50,17 @@
           <div class='form-group clearfix'>
             <label for='skra_id' class='col-xs-2'>AKRA:</label>
               <div class='col-xs-10 input-group'>
-                 <select class='form-control' name='skra_id' id='skra1'>
-                  <option value="0">Select AKRA</option>
-                         <?php 
-                            $skras=App\Tbl_SKRA::all();
-                            foreach($skras as $skra):
-                          ?>
-                         <option value="{{$skra->skra_id}}">{{$skra->SKRA_name}}</option>
-                          <?php 
-                            endforeach
-                          ?>
+                  <select class='form-control' name='skra_id' id='skra1'>
+                         <option value=""></option>
                       </select>
               </div>
           </div>
-              <div class='form-group clearfix'>
+          <div class='form-group clearfix'>
             <label for='skra_activity_id' class='col-xs-2'>BoC Program:</label>
               <div class='col-xs-10 input-group'>
-                <select class='form-control' name='skra_activity_id'>
-                  <option value="0">Select BoC program</option>
-                  <?php 
-                    $skra=App\Tbl_SKRA_activities::all();
-                    foreach($skra as $skras):
-                  ?>
-                  <option value="{{$skras->skra_activity_id}}">{{$skras->SKRA_activity}}</option>
-                  <?php 
-                    endforeach
-                  ?>
-                </select>
+                <select class='form-control' name='skra_activity_id' id='skra_activity_id'>
+                         <option value=""></option>
+                      </select>
               </div>
           </div>
             <div class='form-group clearfix'>
@@ -103,6 +87,45 @@
 </div>
 </br>
 </br>
+<script type="text/javascript">
+  $('#five_year').change(function()
+  {
+    var five_year_id=$(this).val();
+    var view_url ='{{route('view_skra_activities')}}';
+      $.ajax({
+        url: view_url,
+        type:"GET", 
+        data: {"id":five_year_id}, 
+        success: function(result){
+          $('#skra1').empty();
+           $("#skra1").prepend("<option disabled selected>Select AKRA</option>");
+          $.each(result,function(key,val)
+          {
+             $('#skra1').append('<option value="'+val.skra_id+'">'+val.SKRA_name+'</option>');
+          });
+        }
+      });
+  });
+  $('#skra1').change(function(){
+    var akra=$(this).val();
+    var view_url='{{route('view_boc_program')}}';
+    $.ajax({
+        url: view_url,
+        type:"GET", 
+        data: {"id":akra}, 
+        success: function(result){
+          console.log(result);
+          $('#skra_activity_id').empty();
+          $("#skra_activity_id").prepend("<option disabled selected>Select boc program</option>");
+          $.each(result,function(key,val)
+          {
+             $('#skra_activity_id').append('<option value="'+val.skra_activity_id+'">'+val.SKRA_activity+'</option>');
+          });
+        }
+      });
+
+  });
+</script>
 @endsection
 @section('footer')
 <div class="container">

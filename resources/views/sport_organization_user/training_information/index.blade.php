@@ -87,7 +87,7 @@
                     <tr>
                         <th>Sl_no:</th>
                         <th>Sport</th>
-                        <th>Athlete ID</th>
+                     {{--    <th>Athlete ID</th> --}}
                         <th>Athlete Name</th>
                         <th>CID</th>
                         <th>DOB</th>
@@ -100,7 +100,7 @@
                   <tr>
                     <td>{{$id++}}</td>
                     <td>{{$athlete->displayAsport->sport_name}}</td>
-                    <td>{{$athlete->athlete_id}}</td>
+                   {{--  <td>{{$athlete->athlete_id}}</td> --}}
                     <td>{{$athlete->athlete_fname.' '.$athlete->athlete_lname}}</td>
                     <td>{{$athlete->athlete_cid}}</td>
                     <td>{{$athlete->athlete_dob}}</td>

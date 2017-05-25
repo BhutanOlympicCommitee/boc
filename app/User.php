@@ -43,5 +43,8 @@ class User extends Authenticatable
             return false;
         }
     }
-
+    public function displaySportOrganization()
+    {
+      return $this->belongsTo('App\Sport_Organization','sport_organization','sport_org_id');
+    }
 }
