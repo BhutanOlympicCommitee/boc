@@ -11,4 +11,8 @@ class Tbl_athlete_medical extends Model
     {
     	return $this->hasOne('App\Athlete_bioinformation','athlete_id','athlete_id');
     }
+     public function qualification()
+    {
+      return $this->hasOne('App\Athlete_qualification','athlete_id','athlete_id');
+    }
 }

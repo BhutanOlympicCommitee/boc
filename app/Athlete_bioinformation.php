@@ -34,4 +34,9 @@ class Athlete_bioinformation extends Model
     {
         return $this->belongsTo('App\Athlete_address','athlete_id','athlete_id');
     }
+
+    public function address()
+    {
+      return $this->hasOne('App\Athlete_address','athlete_id','athlete_id');
+    }
 }

@@ -91,8 +91,8 @@ class AthleteInformationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        $athlete->athlete_title=$request->title;
+    { 
+        $athlete = Athlete_bioinformation::findOrFail($id);
         $athlete->athlete_fname=$request->fname;
         $athlete->athlete_mname=$request->mname;
         $athlete->athlete_lname=$request->lname;
@@ -120,7 +120,7 @@ class AthleteInformationController extends Controller
         }
        else
         {
-            return redirect()->route('athlete_address.edit',$athlete_info->address->address_id)->with('alert-success','Data Has been Updated!');  
+              return redirect()->route('athlete_address.edit',$athlete->address->address_id)->with('alert-success','Data Has been Updated!');
         }    
     }
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Athlete_address;
 use App\Dungkhag;
 use App\Gewog;
+use App\Tbl_athlete_medical;
 use Auth;
 use Session;
 
@@ -51,8 +52,51 @@ class AthleteAddressController extends Controller
         $athlete->Caddress_contactAddress=$request->caddress;
         $athlete->created_by=Auth::user()->id;
         $athlete->save();
-        Session::flash('success', 'AthleteInfos has been created successfully');
+        Session::flash('success', 'Athleteaddress has been created successfully');
         return redirect()->route('athlete_medical.create');
+    }
+
+
+     public function edit($id)
+    {
+        $athlete = Athlete_address::findOrFail($id);
+        Session::put('key2',$athlete->address_id);
+
+        // return to the edit views
+        return view('sport_organization_user.athlete_information.athlete_address.edit',compact('athlete'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $athlete = Athlete_address::findOrFail($id);
+        $athlete->Paddress_dzongkhag=$request->type1;
+        $athlete->Paddress_dungkhag=$request->dungkhag;
+        $athlete->Paddress_gewog=$request->gewog;
+        $athlete->Paddress_village=$request->village;
+        $athlete->Caddress_dzongkhag=$request->type;
+        $athlete->Caddress_dungkhag=$request->Cdungkhag;
+        $athlete->Caddress_email=$request->email;
+        $athlete->Caddress_phone=$request->phone;
+        $athlete->Caddress_mobile=$request->mobile;
+        $athlete->Caddress_contactAddress=$request->caddress;
+        $athlete->save();
+
+        if(Tbl_athlete_medical::where('athlete_id',$id)->exists())
+        {
+             return redirect()->route('athlete_medical.edit',$athlete->medical->medical_id)->with('alert-success','Data Has been Updated!');  
+
+        }
+        else
+        {
+            return redirect()->route('athlete_medical.create');
+        } 
     }
     /**
      * Display the specified resource.

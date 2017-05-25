@@ -76,7 +76,7 @@ class AthleteQualificationController extends Controller
     public function update(Request $request, $id)
     {
         $athletes = Athlete_qualification::findOrFail($id);
-        $athletes->qualification_level_id=$request->type1;
+        $athletes->qualification_level=$request->type1;
         $athletes->qualification_description=$request->description;
         $athletes->qualification_year=$request->year;
         $athletes->country_id=$request->type;

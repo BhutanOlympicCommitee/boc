@@ -185,10 +185,13 @@ Route::post('athlete_address/store',['as'=>'athlete_address.store','uses'=>'Athl
 Route::get('athlete_address/view', 'AthleteAddressController@view')->name('view_athlete_address');
 Route::get('athlete_address/view1', 'AthleteAddressController@view1')->name('view1_athlete_address');
 Route::get('athlete_address/{id}/edit',['as'=>'athlete_address.edit','uses'=>'AthleteAddressController@edit']);
+Route::patch('athlete_address/update/{id}',['as'=>'athlete_address.update','uses'=>'AthleteAddressController@update']);
 
 //route for athlete medical
 Route::get('athlete_medical',['as'=>'athlete_medical.create','uses'=>'AthleteMedicalController@create']);
-Route::post('athlete_medical',['as'=>'athlete_medical.store','uses'=>'AthleteMedicalController@store']);
+Route::post('athlete_medical1',['as'=>'athlete_medical.store','uses'=>'AthleteMedicalController@store']);
+Route::get('athlete_medical/{id}/edit',['as'=>'athlete_medical.edit','uses'=>'AthleteMedicalController@edit']);
+Route::patch('athlete_medical/update/{id}',['as'=>'athlete_medical.update','uses'=>'AthleteMedicalController@update']);
 
 //route for athlete address
 Route::get('athlete',['as'=>'athlete_qualification.index','uses'=>'AthleteQualificationController@index']);
