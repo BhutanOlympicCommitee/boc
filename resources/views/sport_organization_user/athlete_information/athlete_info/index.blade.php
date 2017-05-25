@@ -43,10 +43,10 @@
                                     <select name='org_type' class='form-control'>
                                         <option value="" disabled selected>Select</option>
                                           <?php 
-                                              $org_type=App\Enum_sport_org::all();
+                                              $org_type=App\Associated_Sport::all();
                                               foreach($org_type as $org):
                                             ?>
-                                            <option value="{{$org->sport_org_type_id}}">{{$org->sport_org_type_name}}</option>
+                                            <option value="{{$org->sport_id}}">{{$org->sport_name}}</option>
                                             <?php 
                                               endforeach
                                             ?>
@@ -101,7 +101,7 @@
                                         <form class="form-group clearfix">
                                         
                                             <a href="{{route('athlete_info.edit',$athletes->athlete_id)}}" class="btn btn-info glyphicon glyphicon-edit">Edit</a>
-                                              <a data-toggle='modal' data-target='#viewDetails' class="btn btn-info" onclick='view_details({{$athletes->athlete_id}})'>Details</a>
+                                              <a data-toggle='modal' data-target='#viewDetails' class="btn btn-primary" onclick='view_details({{$athletes->athlete_id}})'>Details</a>
                                         </form>
                                     </td>
                                 </tr>

@@ -171,7 +171,7 @@
           user_id = $(this).find(".user_id").html();
           //alert(user_id);
 
-          $('#updateUserModal input[name=name]').val(name);
+          $('#updateUserModal input[name=emp_id]').val(name);
           $('#updateUserModal input[name=user_role]').val(user_role);
 
           $('#updateUserModal input[name=email]').val(email);

@@ -30,10 +30,10 @@
                                 <ul class="nav">
                                     <li><a href="{{route('view_user')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;User</a></li>
                                     <li><a href="{{route('view_role')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;Role</a></li>
-                                    {{-- <li><a href="{{route('country_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Country</span></a></li>
+                                    <li><a href="{{route('country_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Country</span></a></li>
                                     <li><a href="{{route('dzongkhag_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Dzongkhag/State</span></a></li>
                                     <li><a href="{{route('dungkhag_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Dungkhag</span></a></li>
-                                    <li><a href="{{route('gewog_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Gewog</span></a></li> --}}
+                                    <li><a href="{{route('gewog_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Gewog</span></a></li>
                                 </ul>
                             </li>
                             @endif
@@ -82,7 +82,7 @@
                                 </li>
                                 <li id="training"><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Training Information</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
                                     <ul class="nav nav-list tree bullets">
-                                        <li><a href="{{route('training.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Training Info</span></a></li>
+                                        <li><a href="{{route('training.create')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Training Info</span></a></li>
                                     </ul>
                                 </li>
                             @endif

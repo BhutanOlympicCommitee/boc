@@ -13,6 +13,8 @@ use Session;
 use Auth;
 use Carbon\Carbon;
 use App\EnumDayTable;
+use App\User;
+use App\Tbl_Coach;
 class TrainingInformationController extends Controller
 {
      public function __construct()
@@ -26,7 +28,17 @@ class TrainingInformationController extends Controller
      */
     public function index()
     {
-        $athlete_info=Athlete_bioinformation::all();
+        $associated=array();
+              $user=User::where('id',Session::get('user_id'))->first();
+              $associated_sport=Associated_Sport::where('sport_org_id',$user->sport_organization)->pluck('sport_id');
+              $associated1=explode(',',$associated_sport);
+              foreach($associated1 as $asso)
+              {
+                $associated[]=trim($asso,'[]');
+              }
+
+              $athlete_info=Athlete_bioinformation::whereIn('athlete_associatedSport',$associated)->get();
+        //$athlete_info=Athlete_bioinformation::all();
         return view('sport_organization_user.training_information.index',compact('athlete_info'));
     }
     /**
@@ -36,7 +48,15 @@ class TrainingInformationController extends Controller
      */
     public function create()
     {
-        $training_info=TrainingSchedule::all();
+        $coach_id1=array();
+        $user=User::where('id',Session::get('user_id'))->first();
+        $coach=Tbl_Coach::where('sport_org_id',$user->sport_organization)->pluck('coach_id');
+        $coach_id=explode(',',$coach);
+        foreach($coach_id as $coach1)
+        {
+            $coach_id1[]=trim($coach1,'[]');
+        }
+        $training_info=TrainingSchedule::whereIn('coach_id',$coach_id1)->get();
         return view('sport_organization_user.training_information.create',compact('training_info'));
     }
     

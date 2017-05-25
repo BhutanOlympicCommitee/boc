@@ -19,13 +19,14 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <div class="text-muted bootstrap-admin-box-title clearfix">Training Schedule
-              <a href="{{route('training.index')}}" class='btn btn-success pull-right'>Back</a>
+             <!--  <a href="{{route('training.index')}}" class='btn btn-success pull-right'>Back</a> -->
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
               <ul class='nav nav-pills nav-justified'>
-                <li id='trainingInfo'><a href="#" data-toggle="tab">Training Information</a></li>
                 <li id='newSchedule' class='active'><a href="#" data-toggle="tab"> Training Schedule</a></li>
+                <li id='trainingInfo'><a href="#" data-toggle="tab">Training Information</a></li>
+                
                 <li id='attendance'><a href="#" data-toggle="tab">Training Attendance</a></li>
               </ul>
               <div style='margin-top: 20px'></div>
@@ -65,7 +66,9 @@
                       <div class='col-xs-10 input-group'>
                         <select class='form-control' name='coach'>
                           <option value="" disabled selected>Select coach</option>
-                          <?php $coach=App\Tbl_Coach::all();
+                          <?php 
+                          $user=App\User::where('id',Session::get('user_id'))->first();
+                          $coach=App\Tbl_Coach::where('sport_org_id',$user->sport_organization)->get();
                             foreach($coach as $coach):
                               ?>
                             <option value={{$coach->coach_id}}>{{$coach->coach_fname.' '.$coach->coach_mname.' '.$coach->coach_lname}}</option>

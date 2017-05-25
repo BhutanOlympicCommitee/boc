@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('auth/login');
 });
+
 Route::post('/getEmployee','UserController@getEmployee')->name('getEmployee');
 Auth::routes();
 

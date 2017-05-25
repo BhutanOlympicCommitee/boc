@@ -7,7 +7,7 @@
     <ul class="nav navbar-nav navbar-right">
        @if (Auth::guest())
      </br>
-        <li class="active"><a href="http://bhutanolympiccommittee.org/"><strong>[Home]</strong></a></li>
+        
       @else
     </br>
         <li class="dropdown">
