@@ -143,7 +143,9 @@
       </div>
     </div>
   </div>
-</div>
+  <br>
+<br>
+
 
 <!-- view details modal begins-->
 <div class="modal fade" id="viewDetails1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -306,8 +308,7 @@
     </div>
   </div>
 </div>
-<br>
-<br>
+
 <!-- end achievement model -->
 <script type="text/javascript">
  function view_details(id)

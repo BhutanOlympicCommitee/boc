@@ -44,7 +44,6 @@ class ContactPersonController extends Controller
          // validation
       $this->validate($request,[
         'contact_name' => 'required',
-        'contact_phone'=>'required',
         'contact_mobile'=>'required',
         ]);
         $contact = new Tbl_sport_org_contact_person;

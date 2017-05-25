@@ -3,9 +3,6 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#"><img class="img-responsive" src="{{URL::asset('/images/b.png')}}" style="height:88px;width:750px"></img></a>
     </div>
-    <div class="text">
-    <ul class="nav navbar-nav">
-    </ul>
     <div>
     <ul class="nav navbar-nav navbar-right">
        @if (Auth::guest())
@@ -33,6 +30,7 @@
       </li>
       @endif
     </ul>
+  </div>
   </div>
 </nav>
 </br>

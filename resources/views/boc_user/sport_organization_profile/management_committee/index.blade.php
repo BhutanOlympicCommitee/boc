@@ -28,13 +28,7 @@
 						      <li class='active'><a href="#Management-info" data-toggle="tab">Secretariate Information</a></li>
 						      <li id='advisory_info'><a href="#Advisory-info" data-toggle="tab">Executive Board Information</a></li>
 				    		</ul>
-				    		@if($errors->any())
-								<div class="alert alert-danger">
-								    @foreach($errors->all() as $error)
-								        <p>{{ $error }}</p>
-								    @endforeach
-								</div>
-							@endif
+				    	
 							@if(Session::has('success'))
 							   	<div class="alert alert-success">
 							        {{ Session::get('success') }}
@@ -142,13 +136,13 @@
          <form action='{{route('management_committee.store')}}' method='post'>
            {{csrf_field()}}
            <div class='form-group'>
-              <label for='mg_name' class='col-xs-3'>Name</label>
+              <label for='mg_name' class='col-xs-3'>Name:<a class="test">*</a></label>
                   <div class='col-xs-9 input-group'>
                       <input type="text" name="mg_name" class="form-control" placeholder="Enter Secretariate  name" required>
                 </div>
            </div>
            <div class='form-group'>
-              <label for='mg_designation' class='col-xs-3'>Designation</label>
+              <label for='mg_designation' class='col-xs-3'>Designation:<a class="test">*</a></label>
                   <div class='col-xs-9 input-group'>
                       <input type="text" name="mg_designation" class="form-control" placeholder="Enter Secretariate  designation" required>
                 </div>
@@ -166,13 +160,13 @@
               </div>
          </div>
          <div class='form-group'>
-            <label for='mg_mobile' class='col-xs-3'>Mobile</label>
+            <label for='mg_mobile' class='col-xs-3'>Mobile:<a class="test">*</a></label>
                 <div class='col-xs-9 input-group'>
                     <input type="text" name="mg_mobile" class="form-control" placeholder="Enter Secretariate  mobile number" required id='mg_mobile1'>
               </div>
         </div>
          <div class='form-group'>
-            <label for='mg_appointment' class='col-xs-3'>Appointment date</label>
+            <label for='mg_appointment' class='col-xs-3'>Appointment date:<a class="test">*</a></label>
                 <div class='col-xs-9 input-group'>
                     <input type="date" name="mg_appointment" class="form-control" placeholder="enter Secretariate appointment date" required>
               </div>
@@ -285,12 +279,7 @@
     {
       var phone_number=$('#mg_phone1').val();
       var mobile_number=$('#mg_mobile1').val();
-      if(!$.isNumeric(phone_number) || phone_number.length!=8)
-      {
-        alert('Please enter 8 digits numeric phone number');
-        return false;
-      }
-      else if(!$.isNumeric(mobile_number)|| mobile_number.length!=8)
+      if(!$.isNumeric(mobile_number)|| mobile_number.length!=8)
       {
         alert('Please enter 8 digits numeric mobile number');
         return false;
@@ -321,6 +310,12 @@
       $('#org_info').attr('class','disabled');
     });
 </script>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">

@@ -313,7 +313,8 @@
 </div>
 </div>
 </div>
-<br>
+</br>
+</br>
 <!-- end update modal -->
 <script type="text/javascript">
 $(function()

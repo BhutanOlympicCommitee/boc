@@ -83,7 +83,7 @@
           {{csrf_field()}}
            
           <div class='form-group clearfix'>
-            <label for='type' class='col-xs-3'>Sport Organization:</label>
+            <label for='type' class='col-xs-3'>Sport Organization:<a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='type' required>
                   <option disabled selected>Select One</option>
@@ -99,7 +99,7 @@
               </div>
           </div>
           <div class='form-group'>
-            <label for='sport_name' class='col-xs-3'>Sport Name:</label>
+            <label for='sport_name' class='col-xs-3'>Sport Name:<a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
                 <input type="text" name="sport_name" class="form-control" placeholder="Enter sport name here" required>
               </div>
@@ -107,7 +107,7 @@
           <div class='form-group'>
             <label for='sport_description' class='col-xs-3'>Sport Description:</label>
               <div class='input-group col-xs-9'>
-                <input type="text" name="sport_description"  class="form-control" placeholder="Enter description here" required>
+                <input type="text" name="sport_description"  class="form-control" placeholder="Enter description here">
               </div>
           </div>
       
@@ -202,6 +202,12 @@
     });
   }
 </script>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">

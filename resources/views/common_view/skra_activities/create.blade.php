@@ -34,10 +34,10 @@
                     {{csrf_field()}}
                 </div>
                 <div class='form-group'>
-                  <label for='five_year' class='col-xs-3'>Five Year Plan</label>
+                  <label for='five_year' class='col-xs-3'>Five Year Plan:<a class="test">*</a></label>
                     <div class='col-xs-9 input-group'>
                       <select class='form-control' name='five_year' id='five_year'>
-                      <option value="" disabled selected>Select five year plan</option>
+                      <option value="" disabled selected>Select five year plan:<a class="test">*</a></option>
                         <?php 
                             $fiveYearPlan=App\EnumFiveYearPlan::all();
                             foreach($fiveYearPlan as $five_year):
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class='form-group'>
-                  <label for='skra' class='col-xs-3'>AKRA</label>
+                  <label for='skra' class='col-xs-3'>AKRA:<a class="test">*</a></label>
                     <div class='col-xs-9 input-group'>
                        <select class='form-control' name='skra' id='skra1'>
                          <option value=""></option>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class='form-group'>
-                  <label for='type' class='col-xs-3'>Sport Organization</label>
+                  <label for='type' class='col-xs-3'>Sport Organization:<a class="test">*</a></label>
                     <div class='col-xs-9 input-group'>
                       <select class='form-control' name='type' id='type'>
                         <option value="" disabled selected>Select sport organization</option>
@@ -77,9 +77,9 @@
                     </div>
                 </div>
                 <div class='form-group'>
-                    <label for='skra_activity_name' class='col-xs-3'>BOC Program</label>
+                    <label for='skra_activity_name' class='col-xs-3'>BOC Program:<a class="test">*</a></label>
                       <div class='col-xs-9 input-group'>
-                          <input type="text" name="skra_activity_name" class="form-control" placeholder="Enter AKRA activity name here" id='skra_ativity'>
+                          <input type="text" name="skra_activity_name" class="form-control" placeholder="Enter AKRA activity name here" id='skra_ativity' required>
                       </div>
               </div>
               <div class='form-group'>
@@ -124,6 +124,12 @@
       });
   });
 </script>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">

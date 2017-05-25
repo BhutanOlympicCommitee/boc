@@ -174,13 +174,15 @@ Route::post('search_approved_activities','ReviewPlanController@searchApprovedAct
 
 
 //routes for althlete information
-Route::get('athlete_info',['as'=>'athlete_info.create','uses'=>'AthleteInformationController@create']);
-Route::post('athlete_info',['as'=>'athlete_info.store','uses'=>'AthleteInformationController@store']);
+Route::get('athlete_info',['as'=>'athlete_info.index','uses'=>'AthleteInformationController@index']);
+Route::get('athlete_info/create',['as'=>'athlete_info.create','uses'=>'AthleteInformationController@create']);
+Route::post('athlete_info/store',['as'=>'athlete_info.store','uses'=>'AthleteInformationController@store']);
 Route::get('athlete_info/{id}/edit',['as'=>'athlete_info.edit','uses'=>'AthleteInformationController@edit']);
+Route::patch('athlete_info/update/{id}',['as'=>'athlete_info.update','uses'=>'AthleteInformationController@update']);
 
 //route for athlete address
 Route::get('athlete_address','AthleteAddressController@create')->name('athlete_address.create');
-Route::post('athlete_address',['as'=>'athlete_address.store','uses'=>'AthleteAddressController@store']);
+Route::post('athlete_address/store',['as'=>'athlete_address.store','uses'=>'AthleteAddressController@store']);
 Route::get('athlete_address/view', 'AthleteAddressController@view')->name('view_athlete_address');
 Route::get('athlete_address/view1', 'AthleteAddressController@view1')->name('view1_athlete_address');
 Route::get('athlete_address/{id}/edit',['as'=>'athlete_address.edit','uses'=>'AthleteAddressController@edit']);
@@ -192,7 +194,7 @@ Route::post('athlete_medical',['as'=>'athlete_medical.store','uses'=>'AthleteMed
 //route for athlete address
 Route::get('athlete',['as'=>'athlete_qualification.index','uses'=>'AthleteQualificationController@index']);
 Route::get('athlete_qualification',['as'=>'athlete_qualification.create','uses'=>'AthleteQualificationController@create']);
-Route::post('athlete_qualification',['as'=>'athlete_qualification.store','uses'=>'AthleteQualificationController@store']);
+Route::post('athlete_qualification/store',['as'=>'athlete_qualification.store','uses'=>'AthleteQualificationController@store']);
 Route::delete('athlete_qualification/destroy/{id}',['as'=>'athlete_qualification.destroy','uses'=>'AthleteQualificationController@destroy']);
 Route::get('athlete_qualification/view', 'AthleteQualificationController@view')->name('view_athlete_qualification');
 Route::get('athlete_qualification/{id}/edit',['as'=>'athlete_qualification.edit','uses'=>'AthleteQualificationController@edit']);

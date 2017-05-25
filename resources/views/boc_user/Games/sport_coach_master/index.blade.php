@@ -92,7 +92,7 @@
        <form action="{{route('sport_coach_master.store')}}" method="post">
           {{csrf_field()}}
          <div class='form-group clearfix'>
-            <label for='federation' class='col-xs-3'>Federation:</label>
+            <label for='federation' class='col-xs-3'>Federation:<a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='federation'>
                   <option disabled selected>Select Federation</option>
@@ -109,7 +109,7 @@
           </div>
 
            <div class='form-group clearfix'>
-            <label for='sport' class='col-xs-3'>Sport:</label>
+            <label for='sport' class='col-xs-3'>Sport:<a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='sport'>
                   <option disabled selected>Select Sport</option>
@@ -125,7 +125,7 @@
               </div>
           </div>
            <div class='form-group clearfix'>
-            <label for='coach' class='col-xs-3'>Coach:</label>
+            <label for='coach' class='col-xs-3'>Coach:<a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='coach'>
                   <option disabled selected>Select Coach</option>
@@ -141,7 +141,7 @@
               </div>
           </div>
            <div class='form-group clearfix'>
-                  <label for='comments' class='col-xs-3'>Comments</label>
+                  <label for='comments' class='col-xs-3'>Comments:</label>
                     <div class='col-xs-9 input-group'>
                       <textarea type="text" name="comments" class="form-control" placeholder="Enter Comments here" ></textarea>
                     </div>
@@ -281,6 +281,12 @@ $(function()
   });
 
 </script>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">

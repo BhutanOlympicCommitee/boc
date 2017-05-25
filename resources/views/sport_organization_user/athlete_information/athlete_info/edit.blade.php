@@ -41,7 +41,7 @@
                       {{ Session::get('success') }}
                     </div>
                 @endif
-              <form action="{{route('athlete_info.store')}}" method="post" enctype="multipart/form-data">
+              <form action="{{route('athlete_info.update',$athlete->athlete_id)}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                  <div class='form-group'>
                   <label for='title' class='col-xs-2'>Title:</label>
@@ -57,19 +57,19 @@
                 <div class='form-group'>
                   <label for='fname' class='col-xs-2'>First Name:<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="fname" class="form-control" placeholder="Enter First Name here" required>
+                      <input type="text" name="fname" class="form-control" placeholder="Enter First Name here" value="{{$athlete->athlete_fname}}">
                     </div>
                 </div>
                 <div class='form-group'>
                   <label for='mname' class='col-xs-2'>Middle Name:</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="mname" class="form-control" placeholder="Enter Middle Name here">
+                      <input type="text" name="mname" class="form-control" placeholder="Enter Middle Name here" value="{{$athlete->athlete_mname}}">
                     </div>
                 </div>
                 <div class='form-group'>
                   <label for='lname' class='col-xs-2'>Last Name:</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="lname" class="form-control" placeholder="Enter Last Name here">
+                      <input type="text" name="lname" class="form-control" placeholder="Enter Last Name here" value="{{$athlete->athlete_lname}}">
                     </div>
                 </div>
                  <div class='form-group'>

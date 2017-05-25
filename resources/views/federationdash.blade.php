@@ -30,9 +30,9 @@
                                       <p>Registered Sports</p>
                                     </div>
                                     <div class="icon">
-                                      <i class="ion-ios-barcode"></i>
+                                      <i class="ion-ios-football"></i>
                                     </div>
-                                    <a href="{{route('sport_organization.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="{{route('associated_sport_types.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                   </div>
                                 </div><!-- ./col -->
                                 <div class="col-lg-3 col-xs-6">

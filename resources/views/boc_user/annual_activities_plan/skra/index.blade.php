@@ -111,7 +111,7 @@
         <form action="{{route('skra.store')}}" method="post">
           {{csrf_field()}}
           <div class='form-group'>
-            <label for='type' class='col-xs-3'>Five year plan</label>
+            <label for='type' class='col-xs-3'>Five year plan:<a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='type'>
                   <?php 
@@ -126,9 +126,9 @@
               </div>
           </div>
            <div class='form-group'>
-              <label for='skra_name' class='col-xs-3'>AKRA Name</label>
+              <label for='skra_name' class='col-xs-3'>AKRA Name:<a class="test">*</a></label>
                 <div class='col-xs-9 input-group'>
-                    <input type="text" name="skra_name" class="form-control" placeholder="Enter AKRA name here">
+                    <input type="text" name="skra_name" class="form-control" placeholder="Enter AKRA name here" required>
                 </div>
           </div>
           <div class='form-group'>
@@ -230,6 +230,12 @@
       });
     }
 </script>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">
