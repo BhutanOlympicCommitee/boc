@@ -43,10 +43,10 @@
               <form action="{{route('games_master.store')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                  <div class='form-group clearfix'>
-                  <label for='year' class='col-xs-2'>Games Event Year</label>
+                  <label for='year' class='col-xs-2'>Games Event Year:<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
                   <select name="year" class="form-control" required>
-                    <option>
+                    <option disabled selected>Select Year
                     </option>
                     <?php 
                     for($i = 1950 ; $i <= date('Y'); $i++){
@@ -57,10 +57,10 @@
                 </div>
               </div>
             <div class='form-group clearfix'>
-             <label for='type' class='col-xs-2'>Type</label>
+             <label for='type' class='col-xs-2'>Type:<a class="test">*</a></label>
               <div class='col-xs-10 input-group'>
                 <select class='form-control' name='type' required>
-                  <option></option>
+                  <option disabled selected>Select</option>
                   <?php 
                     $EnumGame=App\Enum_GameType::all();
                     foreach($EnumGame as $games):
@@ -73,16 +73,16 @@
               </div>
           </div>
                  <div class='form-group clearfix'>
-                  <label for='name' class='col-xs-2'>Name</label>
+                  <label for='name' class='col-xs-2'>Name:<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="name" class="form-control" placeholder="Enter Games event Name here">
+                      <input type="text" name="name" class="form-control" placeholder="Enter Games event Name here" required>
                     </div>
                 </div>
                <div class='form-group clearfix'>
-             <label for='country' class='col-xs-2'>Country</label>
+             <label for='country' class='col-xs-2'>Country:<a class="test">*</a></label>
               <div class='col-xs-10 input-group'>
                 <select class='form-control' name='country' required>
-                  <option></option>
+                  <option disabled selected>Select Country</option>
                   <?php 
                     $country=App\Mst_country::all();
                     foreach($country as $countries):
@@ -95,25 +95,25 @@
               </div>
           </div>
                 <div class='form-group clearfix'>
-                  <label for='venue' class='col-xs-2'>Venue</label>
+                  <label for='venue' class='col-xs-2'>Venue:<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="venue" class="form-control" placeholder="Enter event venue here">
+                      <input type="text" name="venue" class="form-control" placeholder="Enter event venue here" required>
                     </div>
                 </div>
                 <div class='form-group clearfix'>
-                  <label for='startdate' class='col-xs-2'>Start Date</label>
+                  <label for='startdate' class='col-xs-2'>Start Date:<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
                       <input type="date" name="startdate" class="form-control" placeholder="Enter date of birth here" required>
                     </div>
                 </div>
                 <div class='form-group clearfix'>
-                  <label for='enddate' class='col-xs-2'>End Date</label>
+                  <label for='enddate' class='col-xs-2'>End Date:<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
                       <input type="date" name="enddate" class="form-control" placeholder="Enter place of birth here" required>
                     </div>
                   </div>
                 <div class='form-group clearfix'>
-                  <label for='comments' class='col-xs-2'>Comments</label>
+                  <label for='comments' class='col-xs-2'>Comments:</label>
                     <div class='col-xs-10 input-group'>
                       <textarea type="text" name="comments" class="form-control" placeholder="Enter Comments here" ></textarea>
                     </div>
@@ -142,6 +142,12 @@
      });
   });
 </script>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">

@@ -126,7 +126,8 @@
 </div>
 </div>
 </div>
-<br>
+</br>
+</br>
 <script type="text/javascript">
 //calculate RGoB budget utilization
   $('#utilization').click(function()

@@ -28,19 +28,12 @@
                 <li id='management'><a href="#Management-info" data-toggle="tab">Secretariate Information</a></li>
                 <li id='advisory'><a href="#Advisory-info" data-toggle="tab">Executive Board Information</a></li>
               </ul>
-              @if($errors->any())
-                <div class="alert alert-danger">
-                  @foreach($errors->all() as $error)
-                      <p>{{ $error }}</p>
-                  @endforeach
-                </div>
-              @endif
                   <form action="{{route('sport_organization.store')}}" method="post" enctype="multipart/form-data">
                     <div class='form-group'>
                       {{csrf_field()}}
                     </div>
                     <div class='form-group'>
-                      <label for='type' class='col-xs-2'>Type</label>
+                      <label for='type' class='col-xs-2'>Type:<a class="test">*</a></label>
                         <div class='col-xs-10 input-group'>
                           <select class='form-control' name='type'>
                             <option disabled selected>Select Sport organization</option>
@@ -56,52 +49,52 @@
                         </div>
                     </div>
                     <div class='form-group'>
-                      <label for='org_name' class='col-xs-2'>Name</label>
+                      <label for='org_name' class='col-xs-2'>Name:<a class="test">*</a></label>
                         <div class='col-xs-10 input-group'>
-                          <input type="text" name="org_name" class="form-control" placeholder="Enter organization name here">
+                          <input type="text" name="org_name" class="form-control" placeholder="Enter organization name here" required>
                         </div>
                     </div>
                     <div class='form-group'>
-                      <label for='abbreviation' class='col-xs-2'>Abbreviation</label>
+                      <label for='abbreviation' class='col-xs-2'>Abbreviation:<a class="test">*</a></label>
                         <div class='input-group col-xs-10'>
-                          <input type="text" name="abbreviation" class="form-control" placeholder="Enter abbreviation here">
+                          <input type="text" name="abbreviation" class="form-control" placeholder="Enter abbreviation here" required>
                         </div>
                     </div>
                     <div class='form-group'>
-                      <label for='org_web_address' class='col-xs-2'>Web Address</label>
+                      <label for='org_web_address' class='col-xs-2'>Web Address:</label>
                         <div class='input-group col-xs-10'>
                           <input type="text" name="org_web_address" class="form-control" placeholder="Enter web adress here">
                         </div>
                     </div>
                     <div class='form-group'>
-                      <label for='org_logo' class="col-xs-2">Logo</label>
+                      <label for='org_logo' class="col-xs-2">Logo:<a class="test">*</a></label>
                         <div class='input-group col-xs-10'>
-                          <input type="file" name="org_logo" class="form-control">
+                          <input type="file" name="org_logo" class="form-control" required>
                         </div>
                         <div class="clearfix"></div>
                     </div>
                     <div class='form-group'>
-                      <label for='org_email' class='col-xs-2'>Email</label>
+                      <label for='org_email' class='col-xs-2'>Email:</label>
                         <div class='input-group col-xs-10'>
                           <input type="email" name="org_email" class="form-control" placeholder="enter email">
                         </div>
                     </div>
                     <div class='form-group'>
-                      <label for='org_phone' class='col-xs-2'>Phone</label>
+                      <label for='org_phone' class='col-xs-2'>Phone:<a class="test">*</a></label>
                         <div class='input-group col-xs-10'>
-                          <input type="text" name="org_phone" class="form-control" placeholder="enter phone number" id='org_phone'>
+                          <input type="text" name="org_phone" class="form-control" placeholder="enter phone number" id='org_phone' required>
                         </div>
                     </div>
                     <div class='form-group'>
-                      <label for='org_fax' class='col-xs-2'>Fax</label>
+                      <label for='org_fax' class='col-xs-2'>Fax:<a class="test">*</a></label>
                         <div class='input-group col-xs-10'>
-                          <input type="text" name="org_fax" class="form-control" placeholder="enter fax number" id='org_fax'>
+                          <input type="text" name="org_fax" class="form-control" placeholder="enter fax number" id='org_fax' required>
                         </div>
                     </div>
                     <div class='form-group'>
-                      <label for='org_address' class='col-xs-2'>Office Address</label>
+                      <label for='org_address' class='col-xs-2'>Office Address:<a class="test">*</a></label>
                         <div class='input-group col-xs-10'>
-                          <textarea type='text' name="org_address" class="form-control" rows=5 placeholder="enter office address"></textarea>
+                          <textarea type='text' name="org_address" class="form-control" rows=5 placeholder="enter office address" required></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -141,6 +134,12 @@
       return true;
   });
 </script>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">

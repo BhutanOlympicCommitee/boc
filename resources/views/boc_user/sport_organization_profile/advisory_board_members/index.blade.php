@@ -133,13 +133,13 @@
         <form action='{{route('advisory_board_members.store')}}' method='post'>
           {{csrf_field()}}
           <div class='form-group'>
-              <label for='ad_name' class='col-xs-3'>Name</label>
+              <label for='ad_name' class='col-xs-3'>Name:<a class="test">*</a></label>
                   <div class='col-xs-9 input-group'>
                       <input type="text" name="ad_name" class="form-control" placeholder="Enter Executive board members name">
                   </div>
           </div>
           <div class='form-group'>
-              <label for='ad_designation' class='col-xs-3'>Designation</label>
+              <label for='ad_designation' class='col-xs-3'>Designation:<a class="test">*</a></label>
                   <div class='col-xs-9 input-group'>
                       <input type="text" name="ad_designation" class="form-control" placeholder="Enter Executive board members designation">
                   </div>
@@ -157,13 +157,13 @@
                   </div>
           </div>
           <div class='form-group'>
-              <label for='ad_mobile' class='col-xs-3'>Mobile</label>
+              <label for='ad_mobile' class='col-xs-3'>Mobile:<a class="test">*</a></label>
                   <div class='col-xs-9 input-group'>
                       <input type="text" name="ad_mobile" class="form-control" placeholder="Enter Executive board members mobile number" id='ad_mobile1'>
                   </div>
           </div>
           <div class='form-group'>
-              <label for='ad_appointment' class='col-xs-3'>Appointment date</label>
+              <label for='ad_appointment' class='col-xs-3'>Appointment date:<a class="test">*</a></label>
                   <div class='col-xs-9 input-group'>
                       <input type="date" name="ad_appointment" class="form-control" placeholder="enter Executive board members appointment date">
                   </div>
@@ -189,13 +189,13 @@
         <form action="{{route('update_advisory')}}" method="post" id='form3'>
           {{csrf_field()}}
           <div class='form-group'>
-            <label for='ad_name' class='col-xs-3'>Name</label>
+            <label for='ad_name' class='col-xs-3'>Name:<a class="test">*</a></label>
                 <div class='col-xs-9 input-group'>
                     <input type="text" name="ad_name" class="form-control" placeholder="Enter advisory board members name" id="ad_name">
                 </div>
           </div>
           <div class='form-group'>
-            <label for='ad_designation' class='col-xs-3'>Designation</label>
+            <label for='ad_designation' class='col-xs-3'>Designation:<a class="test">*</a></label>
                 <div class='col-xs-9 input-group'>
                     <input type="text" name="ad_designation" class="form-control" placeholder="Enter advisory board members designation" id="ad_designation">
                 </div>
@@ -273,12 +273,7 @@
     {
       var phone_number=$('#ad_phone1').val();
       var mobile_number=$('#ad_mobile1').val();
-      if(!$.isNumeric(phone_number) || phone_number.length!=8)
-      {
-        alert('Please enter 8 digits numeric phone number');
-        return false;
-      }
-      else if(!$.isNumeric(mobile_number)|| mobile_number.length!=8)
+      if(!$.isNumeric(mobile_number)|| mobile_number.length!=8)
       {
         alert('Please enter 8 digits numeric mobile number');
         return false;
@@ -309,6 +304,12 @@
       $('#org_info').attr('class','disabled');
     });
 </script>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">

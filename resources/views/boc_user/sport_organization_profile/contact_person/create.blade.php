@@ -28,13 +28,7 @@
                   <li id='management_info'><a href="#Management-info" data-toggle="tab">Secretariate Information</a></li>
                   <li><a href="#Advisory-info" data-toggle="tab">Executive Board Information</a></li>
                 </ul>
-                @if($errors->any())
-                    <div class="alert alert-danger">
-                        @foreach($errors->all() as $error)
-                            <p>{{ $error }}</p>
-                        @endforeach
-                    </div>
-                @endif
+  
                 @if(Session::has('success'))
                     <div class="alert alert-success">
                       {{ Session::get('success') }}
@@ -45,15 +39,15 @@
                         {{csrf_field()}}
                     </div>
                     <div class='form-group'>
-                        <label for='contact_name' class='col-xs-2'>Contact Person</label>
+                        <label for='contact_name' class='col-xs-2'>Contact Person:<a class="test">*</a></label>
                             <div class='col-xs-10 input-group'>
-                                <input type="text" name="contact_name" class="form-control" placeholder="Enter contact Person name">
+                                <input type="text" name="contact_name" class="form-control" placeholder="Enter contact Person name" required>
                             </div>
                      </div>
                       <div class='form-group'>
-                        <label for='contact_designation' class='col-xs-2'>Designation</label>
+                        <label for='contact_designation' class='col-xs-2'>Designation:<a class="test">*</a></label>
                             <div class='col-xs-10 input-group'>
-                                <input type="text" name="contact_designation" class="form-control" placeholder="Enter contact Person Designation">
+                                <input type="text" name="contact_designation" class="form-control" placeholder="Enter contact Person Designation" required>
                             </div>
                      </div>
                     <div class='form-group'>
@@ -63,9 +57,9 @@
                             </div>
                     </div>
                     <div class='form-group'>
-                        <label for='contact_fax' class='col-xs-2'>Fax</label>
+                        <label for='contact_fax' class='col-xs-2'>Fax:<a class="test">*</a></label>
                             <div class='col-xs-10 input-group'>
-                                <input type="text" name="contact_fax" class="form-control" placeholder="Enter contact person fax number" id='contact_fax'>
+                                <input type="text" name="contact_fax" class="form-control" placeholder="Enter contact person fax number" id='contact_fax' required>
                             </div>
                      </div>
                     <div class='form-group'>
@@ -75,9 +69,9 @@
                             </div>
                     </div>
                     <div class='form-group'>
-                        <label for='contact_mobile' class='col-xs-2'>Mobile</label>
+                        <label for='contact_mobile' class='col-xs-2'>Mobile:<a class="test">*</a></label>
                             <div class='col-xs-10 input-group'>
-                                <input type="text" name="contact_mobile" class="form-control" placeholder="Enter contact person mobile number" id='contact_mobile'>
+                                <input type="text" name="contact_mobile" class="form-control" placeholder="Enter contact person mobile number" id='contact_mobile' required>
                             </div>
                     </div>
                     <div class="form-group">
@@ -124,6 +118,12 @@
       return true;
   });
 </script>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">

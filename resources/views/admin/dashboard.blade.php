@@ -56,7 +56,7 @@
                                       <p>Total Users</p>
                                     </div>
                                     <div class="icon">
-                                      <i class="ion ion-person-add"></i>
+                                      <i class="ion-ios-people"></i>
                                     </div>
                                     <a href="{{route('view_user')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                   </div>

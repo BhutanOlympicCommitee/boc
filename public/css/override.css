@@ -1,6 +1,8 @@
 .navbar-fixed-top {
 min-height: 105px;
 position: fixed;
+background-color: green;
+}
 }
 .text{
 	text-align: center;

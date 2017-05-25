@@ -74,7 +74,7 @@
                                 </li>
                                 <li id="athlete_info"><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Athlete Information</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
                                     <ul class="nav nav-list tree bullets">
-                                        <li><a href="{{route('athlete_info.create')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Athlete Info</span></a></li>
+                                        <li><a href="{{route('athlete_info.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Athlete Info</span></a></li>
                                     </ul>
                                     <ul class="nav nav-list tree bullets">
                                         <li id='athlete_achievement'><a href="{{route('display_matching_athlete')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Athlete achievement</span></a></li>
@@ -123,8 +123,8 @@
    }
    if (user_id==4)
    {
-    $('#associated_sport').show();
-    $('#skra_activity').show();
+    $('#associated_sport').hide();
+    $('#skra_activity').hide();
     $('#skra').hide();
     $('#sport_organization').hide();
     $('#review_plan').hide();
