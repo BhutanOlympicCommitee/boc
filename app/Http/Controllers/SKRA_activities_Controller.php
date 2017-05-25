@@ -10,6 +10,8 @@ use App\Tbl_proposed_sport_org_activity;
 use App\Tbl_SKRA;
 use Session;
 use Auth;
+use App\User;
+use App\Sport_Organization;
 
 class SKRA_activities_Controller extends Controller
 {
@@ -76,6 +78,19 @@ class SKRA_activities_Controller extends Controller
         if($request->ajax()){
             $id = $request->id;
             $info = Tbl_SKRA::where('five_yr_plan_id', $id)->get();
+            //var_dump($info);
+            return response()->json($info);
+        }
+    }
+    public function viewBocProgram(Request $request)
+    {
+        if($request->ajax()){
+            $id = $request->id;
+            $user=User::where('id',Session::get('user_id'))->first();
+            $info = Tbl_SKRA_activities::where('skra_id',$id)
+             ->where('sport_org_id',$user->sport_organization)
+             ->get();
+
             //var_dump($info);
             return response()->json($info);
         }

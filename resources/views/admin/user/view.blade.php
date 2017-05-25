@@ -44,7 +44,7 @@
                              <tr>
                                  <td><?php echo $i;?></td>
                                  <td><?php echo $user->emp_id;?></td>
-                                 <td><?php echo $user->sport_organization;?></td>
+                                 <td><?php echo $user->displaySportOrganization->sport_org_name;?></td>
                                  <td>
                                      <?php
                                      $role = App\Role::find($user->role_id);

@@ -47,7 +47,7 @@
                     <tbody>
                         <?php $id=1?>
                         @foreach($skra_activities as $skra_activity)
-                        @if($user->sport_organization==$skra_activity->getSportOrganization->sport_org_name)
+                      {{--   @if($user->sport_organization==$skra_activity->sport_org_id) --}}
                         @if($skra_activity->status==0)
                         <tr>
                             <td>{{$id++}}</td>
@@ -64,7 +64,7 @@
                             </td>
                         </tr>
                         @endif
-                        @endif
+                        {{-- @endif --}}
                         @endforeach
                     </tbody>
                 </table>

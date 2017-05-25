@@ -113,14 +113,14 @@
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                           @if($searchs->status==0)
                           <a class="btn btn-info" data-toggle='modal' data-target='#editModal' onclick='editActivities({{$searchs->activity_id}})'>Edit</a>
-                          <a class="btn btn-default" href="{{route('search_activity.searchKPI')}}">KPI</a>
+                          <a class="btn btn-default" href="{{route('search_activity.searchKPI',$searchs->activity_id)}}">KPI</a>
                           <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete this data');" name='name'>DEL
                           </button>
                            <a class="btn-warning" style="text-decoration:none;">&nbsp;Sent for Approval&nbsp;</a>
                           @endif
                           @if($searchs->status==1)
                            <a class="btn-success" style="text-decoration:none;">&nbsp;&nbsp;Approved&nbsp;&nbsp;</a>
-                          <a class="btn btn-default" href="{{route('search_activity.searchKPI')}}">KPI</a>
+                          <a class="btn btn-default" href="{{route('search_activity.searchKPI',$searchs->activity_id)}}">KPI</a>
                           @endif
                         </form>
                 </td>
@@ -151,14 +151,14 @@
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                           @if($searchs->status==0)
                           <a class="btn btn-info" data-toggle='modal' data-target='#editModal' onclick='editActivities({{$searchs->activity_id}})'>Edit</a>
-                          <a class="btn btn-default" href="{{route('search_activity.searchKPI')}}">KPI</a>
+                          <a class="btn btn-default" href="{{route('search_activity.searchKPI',$searchs->activity_id)}}">KPI</a>
                           <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete this data');" name='name'>DEL
                           </button>
                            <a class="btn-warning" style="text-decoration:none;">&nbsp;Sent for Approval&nbsp;</a>
                           @endif
                           @if($searchs->status==1)
                            <a class="btn-success" style="text-decoration:none;">&nbsp;&nbsp;Approved&nbsp;&nbsp;</a>
-                          <a class="btn btn-default" href="{{route('search_activity.searchKPI')}}">KPI</a>
+                          <a class="btn btn-default" href="{{route('search_activity.searchKPI',$searchs->activity_id)}}">KPI</a>
                           @endif
                         </form>
                 </td>

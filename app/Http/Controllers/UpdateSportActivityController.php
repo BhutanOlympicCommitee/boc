@@ -7,6 +7,8 @@ use App\Tbl_UpdateSportActivity;
 use App\Tbl_proposed_sport_org_activity;
 use Auth;
 use Session;
+use App\User;
+use App\Tbl_SKRA_activities;
 
 class UpdateSportActivityController extends Controller
 {
@@ -22,7 +24,18 @@ class UpdateSportActivityController extends Controller
     }
     public function addActivity()
     {
-    	$addActivity=Tbl_proposed_sport_org_activity::all();
+    	$skra1=array();
+        $user=User::where('id',Session::get('user_id'))->first();
+        $boc_program=Tbl_SKRA_activities::where('sport_org_id',$user->sport_organization)->pluck('skra_activity_id');
+        $skra_activity1=explode(',',$boc_program);
+        foreach($skra_activity1 as $skra)
+        {
+            $skra1[]=trim($skra,'[]');
+        }
+        $addActivity=Tbl_proposed_sport_org_activity::join('tbl__update_sport_activities','tbl_proposed_sport_org_activities.weightage_id','tbl__update_sport_activities.id')
+            ->select('tbl_proposed_sport_org_activities.*')
+            ->whereIn('tbl__update_sport_activities.skra_activity_id',$skra1)
+            ->get();
     	return view('sport_organization_user.sport_activity_plan.addActivity',compact('addActivity'));
     }
     public function store(Request $request)

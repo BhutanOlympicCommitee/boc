@@ -30,10 +30,10 @@
                                 <ul class="nav">
                                     <li><a href="{{route('view_user')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;User</a></li>
                                     <li><a href="{{route('view_role')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;Role</a></li>
-                                    <li><a href="{{route('country_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Country</span></a></li>
+                                    {{-- <li><a href="{{route('country_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Country</span></a></li>
                                     <li><a href="{{route('dzongkhag_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Dzongkhag/State</span></a></li>
                                     <li><a href="{{route('dungkhag_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Dungkhag</span></a></li>
-                                    <li><a href="{{route('gewog_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Gewog</span></a></li>
+                                    <li><a href="{{route('gewog_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Gewog</span></a></li> --}}
                                 </ul>
                             </li>
                             @endif

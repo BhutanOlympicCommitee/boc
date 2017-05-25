@@ -7,6 +7,7 @@ use Auth;
 use Session;
 use DB;
 use App\Tbl_Coach;
+use App\User;
 
 class CoachController extends Controller
 {
@@ -21,7 +22,8 @@ class CoachController extends Controller
      */
     public function index()
     {
-        $coach=Tbl_Coach::all();
+        $user=User::where('id',Session::get('user_id'))->first();
+        $coach=Tbl_Coach::where('sport_org_id',$user->sport_organization)->get();
        return view('sport_organization_user.coach_master.index',compact('coach'));
     }
 
@@ -44,9 +46,10 @@ class CoachController extends Controller
     public function store(Request $request)
     {
         // validation
-       
+       $user=User::where('id',Session::get('user_id'))->first();
         $coach = new Tbl_Coach;
         $coach->coach_title=$request->coach_title;
+        $coach->sport_org_id=$user->sport_organization;
         $coach->coach_fname=$request->coach_fname;
         $coach->coach_mname=$request->coach_mname;
         $coach->coach_lname=$request->coach_lname;
@@ -62,7 +65,7 @@ class CoachController extends Controller
         $coach->coach_type=$request->coach_type;
         $coach->created_by=Auth::user()->id;
         $coach->save();
-        Session::flash('success', 'created successfully');
+        Session::flash('success', 'coach created successfully');
         Session::put('key5',$coach->coach_id);
         return redirect()->route('coach_master.index');
     }
