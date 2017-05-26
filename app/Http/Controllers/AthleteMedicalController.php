@@ -28,7 +28,15 @@ class AthleteMedicalController extends Controller
     public function store(Request $request)
     {
         $athlete= new Tbl_athlete_medical;
-        $athlete->athlete_id=Session::get('key');
+        if(!empty(Session::get('athlete_id2')))
+        {
+            $athlete->athlete_id=Session::get('athlete_id2');
+            Session::forget('athlete_id2');
+        }
+        else
+        {
+            $athlete->athlete_id=Session::get('key');
+        }
         $athlete->date=$request->date;
         $athlete->checked=$request->checked;
         $athlete->weight=$request->weight;
@@ -37,8 +45,8 @@ class AthleteMedicalController extends Controller
         $athlete->remarks=$request->remarks;
         $athlete->created_by=Auth::user()->id;
         $athlete->save();
-        Session::flash('success', 'created successfully');
-        return redirect()->route('athlete_qualification.create');
+        Session::flash('success', 'qualification created successfully');
+        return redirect()->route('athlete_qualification.index');
     }
     /**
      * Display the specified resource.

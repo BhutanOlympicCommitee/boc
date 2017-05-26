@@ -39,7 +39,6 @@ class AthleteQualificationController extends Controller
     {
         $athlete= new Athlete_qualification;
         $athlete->athlete_id=Session::get('key');
-        $athlete->address_id=Session::get('key');
         $athlete->qualification_level=$request->type1;
         $athlete->qualification_description=$request->description;
         $athlete->qualification_year=$request->year;
