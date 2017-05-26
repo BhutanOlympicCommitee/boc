@@ -81,14 +81,15 @@ class AthleteMedicalController extends Controller
         $athlete->remarks=$request->remarks;
         $athlete->created_by=Auth::user()->id;
         $athlete->save();
-        if($request->update1=='form1')
+        
+            // return redirect()->route('athlete_qualification.edit',$athlete->qualification->qualification_id)->with('alert-success','Data Has been Updated!'); 
+        if(Athlete_qualification::where('athlete_id',$athlete->athlete_id)->exists())
         {
-           return redirect()->route('athlete_info.index')->with('alert-success','Data Has been Updated!');    
+            Session::put('athlete_id3',$athlete->athlete_id);
+            return redirect()->route('athlete_qualification.edit',$athlete->qualification->qualification_id)->with('alert-success','Data Has been Updated!');   
+
         }
-       else
-        {
-            return redirect()->route('athlete_qualification.edit',$athlete->qualification->qualification_id)->with('alert-success','Data Has been Updated!');  
-        }    
+            return redirect()->route('athlete_qualification.index');     
     }
 }
 
