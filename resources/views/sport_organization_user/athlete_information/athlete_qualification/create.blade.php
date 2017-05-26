@@ -43,8 +43,8 @@
                 @endif
               <form action="{{route('athlete_qualification.store')}}" method="post">
                 {{csrf_field()}}
-                <div class='form-group'>
-                  <label for='level' class='col-xs-3'>Level</label>
+                <div class='form-group clearfix'>
+                  <label for='level' class='col-xs-3'>Level:<a class="test">*</a></label>
                     <div class='col-xs-9 input-group'>
                       <select class='form-control' name='type1' required>
                       <option disabled selected>Select One</option>
@@ -59,14 +59,14 @@
                 </select>
                     </div>
                 </div>
-                <div class='form-group'>
-                  <label for='description' class='col-xs-3'>Course Description</label>
+                <div class='form-group clearfix'>
+                  <label for='description' class='col-xs-3'>Course Description:<a class="test">*</a></label>
                     <div class='col-xs-9 input-group'>
                       <textarea type='text' name="description" class="form-control" rows=4 placeholder="Enter Course Description here" required></textarea>             
                     </div>
                     </div>
-                 <div class='form-group'>
-                  <label for='year' class='col-xs-3'>Year of Completion</label>
+                 <div class='form-group clearfix'>
+                  <label for='year' class='col-xs-3'>Year of Completion:<a class="test">*</a></label>
                     <div class='col-xs-9 input-group'>
                   <select name="year" class="form-control" required>
                     <option disabled selected>Select Year</option>
@@ -78,8 +78,8 @@
                   </select> 
                 </div>
               </div>
-                <div class='form-group'>
-            <label for='type' class='col-xs-3'>Country</label>
+                <div class='form-group clearfix'>
+            <label for='type' class='col-xs-3'>Country:<a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='type' required>
                   <option disabled selected>Select Country</option>
@@ -94,14 +94,14 @@
                 </select>
               </div>
           </div>
-                 <div class='form-group'>
-                  <label for='institute' class='col-xs-3'>Institute</label>
+                 <div class='form-group clearfix'>
+                  <label for='institute' class='col-xs-3'>Institute:<a class="test">*</a></label>
                     <div class='col-xs-9 input-group'>
                       <input type="text" name="institute" class="form-control" placeholder="Enter Institute Name here" required>
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group clearfix">
                   <div class="col-xs-10 col-xs-offset-2 input-group">
                       <button type="submit" class="btn btn-primary col-xs-2 col-xs-offset-7 glyphicon glyphicon-ok" value="Save">Save</button>
                       <a href="{{route('athlete_qualification.index')}}" class='btn btn-warning col-xs-2 col-xs-offset-1 glyphicon glyphicon-remove'>Cancel</a>
@@ -138,6 +138,12 @@
      });
   });
 </script>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">

@@ -35,7 +35,7 @@
                 <div class='row'>
                   <div class='col-xs-6 clearfix'>
                     <div class='form-group'>
-                    <label for='from' class='col-xs-2'>From</label>
+                    <label for='from' class='col-xs-2'>From:</label>
                       <div class='col-xs-10 input-group'>
                         <input type="date" name="from" class="form-control">
                       </div>
@@ -150,25 +150,25 @@
           <div class='row'>
             <div class='col-xs-6 clearfix'>
                <div class='form-group'>
-                <label for='date' class='col-xs-2'>Date </label>
+                <label for='date' class='col-xs-2'>Date:<a class="test">*</a></label>
                   <div class='col-xs-10 input-group'>
                     <input type="date" name="date" class="form-control" placeholder="Enter date here" required id='date'>
                   </div>
               </div>
               <div class='form-group clearfix'>
-                <label for='session_name' class='col-xs-3'>Session Name </label>
+                <label for='session_name' class='col-xs-3'>Session Name:<a class="test">*</a></label>
                   <div class='col-xs-9 input-group'>
-                    <input type="text" name="session_name" class="form-control" placeholder="Enter session name here">
+                    <input type="text" name="session_name" class="form-control" placeholder="Enter session name here" required>
                   </div>
               </div>
               <div class='form-group clearfix'>
-              <label for='start_time' class='col-xs-2'>Start Time </label>
+              <label for='start_time' class='col-xs-2'>Start Time:<a class="test">*</a></label>
                 <div class='col-xs-10 input-group'>
                   <input type="time" name="start_time" class="form-control" placeholder="Enter start time here" required>
                 </div>
             </div>
             <div class='form-group'>
-                <label for='venue' class='col-xs-2'>Venue</label>
+                <label for='venue' class='col-xs-2'>Venue:<a class="test">*</a></label>
                   <div class='col-xs-10 input-group'>
                     <input type="text" name="venue" class="form-control" placeholder="Enter venue here" required>
                   </div>
@@ -183,7 +183,7 @@
             <div class='col-xs-6 clearfix'>
              
               <div class='form-group'>
-                <label for='day' class='col-xs-2'>Day</label>
+                <label for='day' class='col-xs-2'>Day:<a class="test">*</a></label>
                   <div class='col-xs-10 input-group'>
                     <select class='form-control' name='day' required id='day'>
                       <option></option>
@@ -191,7 +191,7 @@
                   </div>
               </div>
               <div class='form-group clearfix'>
-                <label for='session_type' class='col-xs-3'>Session Type</label>
+                <label for='session_type' class='col-xs-3'>Session Type:<a class="test">*</a></label>
                   <div class='col-xs-9 input-group'>
                     <select class='form-control' name='session_type' required>
                       <option value="" disabled selected>Select session type</option>
@@ -204,15 +204,15 @@
                   </div>
               </div>
                <div class='form-group clearfix'>
-                <label for='end_time' class='col-xs-2'>End Time</label>
+                <label for='end_time' class='col-xs-2'>End Time:<a class="test">*</a></label>
                   <div class='col-xs-10 input-group'>
                     <input type="time" name="end_time" class="form-control" placeholder="Enter end time here" required>
                   </div>
               </div>
               <div class='form-group'>
-                <label for='coach' class='col-xs-2'>Coach</label>
+                <label for='coach' class='col-xs-2'>Coach:<a class="test">*</a></label>
                   <div class='col-xs-10 input-group'>
-                    <select class='form-control' name='coach'>
+                    <select class='form-control' name='coach' required>
                       <option value="" disabled selected>Select coach</option>
                       <?php 
                           $user=App\User::where('id',Session::get('user_id'))->first();
@@ -439,6 +439,12 @@
       });
   });
 </script>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">

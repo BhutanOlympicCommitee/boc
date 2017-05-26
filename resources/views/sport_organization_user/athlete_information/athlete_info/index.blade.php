@@ -35,7 +35,7 @@
                   });
                 </script>
                 @else
-                        <form action='{{route('sport_organization.search')}}' method='post' id="view">
+                        <form action='' method='post' id="view">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class='form-group'>
                                 <label class='col-xs-3'>Associated Sport:</label>
@@ -56,13 +56,13 @@
                             <div class='form-group'>
                                 <label class='col-xs-3'>Athlete Name:</label>
                                 <div class='col-xs-7 input-group'>
-                                    <input type="text" name="org_name" class='form-control'>
+                                    <input type="text" name="athlete_fname" class='form-control'>
                                 </div>
                             </div>
                             <div class='form-group'>
                                 <label class='col-xs-3'>CID/std ID:</label>
                                 <div class='col-xs-7 input-group'>
-                                    <input type="text" name="org_abbreviation" class='form-control'>
+                                    <input type="text" name="athlete_cid" class='form-control'>
                                 </div>
                             </div>
                             <div class='form-group'>
@@ -178,8 +178,7 @@
     </div>
   </div>
 </div>
-<br>
-<br>
+
 <!-- ends viewDetails modal-->
 <script type="text/javascript">
   $(function()
