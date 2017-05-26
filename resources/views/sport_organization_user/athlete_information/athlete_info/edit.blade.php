@@ -121,13 +121,13 @@
                     </div>
                 </div>
                  <div class='form-group'>
-                  <label for='height' class='col-xs-2'>Height:<a class="test">*</a></label>
+                  <label for='height' class='col-xs-2'>Height(cm):<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
                       <input type="text" name="height" class="form-control" placeholder="Enter Height here"  value="{{$athlete->athlete_height}}">
                     </div>
                 </div>
                 <div class='form-group'>
-                  <label for='weight' class='col-xs-2'>Weight:<a class="test">*</a></label>
+                  <label for='weight' class='col-xs-2'>Weight(kg):<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
                       <input type="text" name="weight" class="form-control" placeholder="Enter Weight here"  value="{{$athlete->athlete_weight}}">
                     </div>

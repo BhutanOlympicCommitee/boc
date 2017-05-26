@@ -57,14 +57,14 @@
                     </div>
                 </div>
                 <div class='form-group clearfix'>
-                  <label for='weight' class='col-xs-2'>Weight:<a class="test">*</a></label>
+                  <label for='weight' class='col-xs-2'>Weight(kg):<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
                       <input type="text" name="weight" class="form-control" placeholder="Enter weight here" required>
                     </div>
                 </div>
 
                  <div class='form-group clearfix'>
-                  <label for='height' class='col-xs-2'>Height:<a class="test">*</a></label>
+                  <label for='height' class='col-xs-2'>Height(cm):<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
                       <input type="text" name="height" class="form-control" placeholder="Enter height here" required>
                     </div>

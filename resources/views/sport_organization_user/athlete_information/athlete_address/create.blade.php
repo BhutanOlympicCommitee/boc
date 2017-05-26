@@ -117,7 +117,7 @@
                 <div class='form-group'>
                   <label for='phone' class='col-xs-2'>Phone</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number here" id='phone'>
+                      <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number here" id='phone' value="0">
                     </div>
                 </div><div class='form-group'>
                   <label for='mobile' class='col-xs-2'>Mobile:<a class="test">*</a></label>

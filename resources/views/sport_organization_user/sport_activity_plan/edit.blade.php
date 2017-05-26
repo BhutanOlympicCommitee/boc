@@ -145,20 +145,20 @@
           <div class='form-group clearfix'>
             <label for='actual' class='col-xs-3'>Actual:<a class="test">*</a></label>
               <div class='input-group col-xs-9'>
-                <input type="text" name="actual"  class="form-control" placeholder="enter actual timeline" required>
+                <input type="text" name="actual"  class="form-control" placeholder="Month date - month date, year" required>
               </div>
           </div>
         </div>
          <div class='form-group clearfix'>
             <label>Source of Funding:</label>
           <div class='form-group clearfix'>
-            <label for='rgob_budget' class='col-xs-3'>Budget RGOB:<a class="test">*</a></label>
+            <label for='rgob_budget' class='col-xs-3'>RGOB Budget(Nu):<a class="test">*</a></label>
             <div class='col-xs-9 input-group'>
               <input type="text" name="rgob_budget" class="form-control" placeholder="Enter RGoB budget here" required>
             </div>
           </div>
           <div class='form-group clearfix'>
-            <label for='external_budget' class='col-xs-3'>External Budget:<a class="test">*</a></label>
+            <label for='external_budget' class='col-xs-3'>External Budget(Nu):<a class="test">*</a></label>
               <div class='input-group col-xs-9'>
                 <input type="text" name="external_budget"  class="form-control" placeholder="Enter actual budget" required>
               </div>

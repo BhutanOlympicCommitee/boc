@@ -45,7 +45,7 @@ class AthleteMedicalController extends Controller
         $athlete->remarks=$request->remarks;
         $athlete->created_by=Auth::user()->id;
         $athlete->save();
-        Session::flash('success', 'qualification created successfully');
+        Session::flash('success', 'Medical record created successfully');
         return redirect()->route('athlete_qualification.index');
     }
     /**
@@ -81,14 +81,7 @@ class AthleteMedicalController extends Controller
         $athlete->remarks=$request->remarks;
         $athlete->created_by=Auth::user()->id;
         $athlete->save();
-        if($request->update1=='form1')
-        {
-           return redirect()->route('athlete_info.index')->with('alert-success','Data Has been Updated!');    
-        }
-       else
-        {
-            return redirect()->route('athlete_qualification.edit',$athlete->qualification->qualification_id)->with('alert-success','Data Has been Updated!');  
-        }    
+        return redirect()->route('athlete_qualification.index');
     }
 }
 

@@ -232,14 +232,9 @@
   });
 $('#save').click(function()
 {
-  var pnumber=$('#phone').val();
+ 
   var mnumber=$('#mobile').val();
-  if(!$.isNumeric(pnumber) || pnumber.length!=8)
-  {
-    alert('Please enter 8 digits numeric phone number');
-    return false;
-  }
-  else if(!$.isNumeric(mnumber) || mnumber.length!=8)
+ if(!$.isNumeric(mnumber) || mnumber.length!=8)
   {
      alert('Please enter 8 digits numeric mobile number');
     return false;
