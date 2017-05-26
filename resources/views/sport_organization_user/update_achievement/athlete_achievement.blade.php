@@ -161,7 +161,7 @@
       </div>
     </div>
     <div class='form-group clearfix'>
-      <label for='village' class='col-xs-3'>Villege:<a class="test">*</a></label>
+      <label for='village' class='col-xs-3'>Village:<a class="test">*</a></label>
       <div class='col-xs-9 input-group'>
         <input type="text" name="village" class="form-control" required>
       </div>  
