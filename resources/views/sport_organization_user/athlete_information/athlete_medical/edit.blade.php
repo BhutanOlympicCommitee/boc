@@ -41,7 +41,7 @@
                       {{ Session::get('success') }}
                     </div>
                 @endif
-              <form action="{{route('athlete_medical.update',$athlete->medical_id)}}" method="post" enctype="multipart/form-data">
+              <form action="#{{-- {{route('athlete_medical.update',$athlete->medical_id)}} --}}" method="post" enctype="multipart/form-data">
                  <input name="_method" type="hidden" value="PATCH">
                 {{csrf_field()}}
                

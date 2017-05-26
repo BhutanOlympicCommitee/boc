@@ -20,6 +20,9 @@
                         <div class="panel-heading">
                             <div class="text-muted bootstrap-admin-box-title clearfix">Athlete Qualification Information
                             </div>
+                            <div class='clearfix'>
+                            <a href="{{route('athlete_qualification.create')}}" class='btn btn-success pull-right'>Add</a>
+                            </div>
                         </div>
                         <div class="bootstrap-admin-panel-content">
                             @if(Session::has('success'))
