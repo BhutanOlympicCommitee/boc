@@ -94,27 +94,34 @@
                 <input type="text" name="kpi_name" class="form-control" placeholder="Enter KPI name here" required>
               </div>
           </div>
-          <div class='form-group clearfix'>
-            <label>KPI Weight</label>
-          <div class='form-group clearfix'>
-            <label for='RGoB' class='col-xs-3'>RGoB:<a class="test">*</a></label>
-              <div class='input-group col-xs-9'>
-                <input type="text" name="RGoB"  class="form-control" placeholder="Enter RGoB funding here" required>
+           <div class='form-group clearfix'>
+            <label for='kpi_description' class='col-xs-3'>KPI Description:<a class="test">*</a></label>
+              <div class='col-xs-9 input-group'>
+                <input type="text" name="kpi_description" class="form-control" placeholder="Enter KPI description" required>
               </div>
           </div>
           <div class='form-group clearfix'>
-            <label for='external' class='col-xs-3'>External:<a class="test">*</a></label>
+            <label for='kpi_weight' class='col-xs-3'>KPI Weight:<a class="test">*</a></label>
               <div class='input-group col-xs-9'>
-                <input type="text" name="external"  class="form-control" placeholder="Enter External Funding here" required>
+                <input type="text" name="kpi_weight"  class="form-control" placeholder="Enter kpi weight here" required>
               </div>
           </div>
+         <div class="form-group clearfix">
+          <label for="unit"  class='col-xs-3'>Units<a class="test">*</a></label> 
+          <div class='col-xs-9 input-group'>
+            <select name="unit" id="unit" class="form-control">
+              <option value="0">
+                Select the KPI Unit
+              </option>
+              <?php 
+              $units = App\KPIUnit::all();
+              foreach($units as $unit):
+                ?>
+              <option value="{{$unit->unit_id}}">{{$unit->unit_name}}</option>
+            <?php endforeach;?>
+          </select> 
         </div>
-        <div class='form-group clearfix'>
-            <label for='unit' class='col-xs-3'>Units:<a class="test">*</a></label>
-              <div class='input-group col-xs-9'>
-                <input type="text" name="unit"  class="form-control" placeholder="Enter Unit here" required>
-              </div>
-          </div>
+      </div>
 
           <div class='form-group clearfix'>
             <label for='baseline' class='col-xs-3'>Baseline:<a class="test">*</a></label>
