@@ -250,9 +250,25 @@
                     </div>
                 </div>
            <div class='form-group clearfix'>
-                  <label for='achievement' class='col-xs-3'>Other Achievements:</label>
+                  <label for='achievement' class='col-xs-3'>Event Type:</label>
                     <div class='col-xs-9 input-group'>
-                      <textarea type="text" name="achievement" class="form-control" placeholder="Enter other achievements here" required></textarea>
+                      <select class='form-control' name='achievement' required>
+                  <option disabled selected>Select</option>
+                  <?php 
+                    $EnumGame=App\Enum_GameType::all();
+                    foreach($EnumGame as $games):
+                  ?>
+                  <option value="{{$games->gametype_id}}">{{$games->type}}</option>
+                  <?php 
+                    endforeach
+                  ?>
+                </select>
+                    </div>
+                </div>
+                  <div class='form-group clearfix'>
+                  <label for='category' class='col-xs-3'>Sport Category:</label>
+                    <div class='col-xs-9 input-group'>
+                      <input type="text" name="category" class="form-control" placeholder="Enter sport category here" required>
                     </div>
                 </div>
                  <div class='form-group clearfix'>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tbl_athlete_medical;
+use App\Athlete_qualification;
 use Auth;
 use Session;
 
@@ -82,13 +83,17 @@ class AthleteMedicalController extends Controller
         $athlete->created_by=Auth::user()->id;
         $athlete->save();
 
-        if(Athlete_qualification::where('athlete_id',$athlete->athlete_id)->exists())
+        if(Athlete_qualification::where('athlete_id',$id)->exists())
         {
-            Session::put('athlete_id3',$athlete->athlete_id);
+           
             return redirect()->route('athlete_qualification.edit',$athlete->qualification->qualification_id)->with('alert-success','Data Has been Updated!');   
 
         }
-            return redirect()->route('athlete_qualification.index');     
+        else{
+             Session::put('athlete_id3',$id);
+             return redirect()->route('athlete_qualification.index');     
+        }
+           
     }
 }
 
