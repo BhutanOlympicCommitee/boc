@@ -34,6 +34,7 @@
                                 <thead>
                                     <tr>
                                         <th style="width:2%;">Sl_no:</th>
+                                        <th>Athlete ID</th>
                                         <th>Level</th>
                                         <th>Course Description</th>
                                         <th style="width:2%;">Year of Completion</th>
@@ -48,6 +49,7 @@
                                 
                                 <tr>
                                     <td>{{$id++}}</td>
+                                    <td>{{$athlete->athlete_id}}</td>
                                     <td>{{$athlete->displayLevel->qualification_level}}</td>
                                     <td>{{$athlete->qualification_description}}</td>
                                     <td>{{$athlete->qualification_year}}</td>

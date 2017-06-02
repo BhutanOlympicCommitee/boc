@@ -60,7 +60,7 @@ class AthleteAddressController extends Controller
         $athlete->Caddress_contactAddress=$request->caddress;
         $athlete->created_by=Auth::user()->id;
        $athlete->save();
-       Session::flash('success', 'Athleteaddress has been created successfully');
+       Session::flash('success', 'Athlete address has been created successfully');
        if(Tbl_athlete_medical::where('athlete_id',$athlete->athlete_id)->exists())
         {
              return redirect()->route('athlete_medical.edit',$athlete->medical->medical_id)->with('alert-success','Data Has been Updated!');  
@@ -68,6 +68,7 @@ class AthleteAddressController extends Controller
         }
         else
         {
+            Session::put('athlete_id2',$athlete->athlete_id);
             return redirect()->route('athlete_medical.create');
         } 
     }
@@ -91,7 +92,7 @@ class AthleteAddressController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $athlete = Athlete_address::findOrFail($id);
+        $athlete = Athlete_address::where('athlete_id',$id)->first();
         $athlete->Paddress_dzongkhag=$request->type1;
         $athlete->Paddress_dungkhag=$request->dungkhag;
         $athlete->Paddress_gewog=$request->gewog;
@@ -106,15 +107,14 @@ class AthleteAddressController extends Controller
 
         if(Tbl_athlete_medical::where('athlete_id',$id)->exists())
         {
-             return redirect()->route('athlete_medical.edit',$athlete->medical->medical_id)->with('alert-success','Data Has been Updated!');  
-
+             return redirect()->route('athlete_medical.edit',$athlete->medical->medical_id)->with('alert-success','Data Has been Updated!');
+               
         }
         else
         {
             Session::put('athlete_id2',$id);
             return redirect()->route('athlete_medical.create');
         } 
-        //return redirect()->route('athlete_medical.edit',$athlete->medical->medical_id)->with('alert-success','Data Has been Updated!'); 
     }
     /**
      * Display the specified resource.

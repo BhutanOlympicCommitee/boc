@@ -32,7 +32,6 @@ class AthleteMedicalController extends Controller
         if(!empty(Session::get('athlete_id2')))
         {
             $athlete->athlete_id=Session::get('athlete_id2');
-            Session::forget('athlete_id2');
         }
         else
         {
@@ -73,7 +72,7 @@ class AthleteMedicalController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $athlete = Tbl_athlete_medical::findOrFail($id);
+         $athlete = Tbl_athlete_medical::where('athlete_id',$id)->first();
         $athlete->date=$request->date;
         $athlete->checked=$request->checked;
         $athlete->weight=$request->weight;
@@ -83,17 +82,9 @@ class AthleteMedicalController extends Controller
         $athlete->created_by=Auth::user()->id;
         $athlete->save();
 
-        if(Athlete_qualification::where('athlete_id',$id)->exists())
-        {
-           
-            return redirect()->route('athlete_qualification.edit',$athlete->qualification->qualification_id)->with('alert-success','Data Has been Updated!');   
 
-        }
-        else{
-             Session::put('athlete_id3',$id);
-             return redirect()->route('athlete_qualification.index');     
-        }
-           
+        Session::put('athlete_id3',$athlete->athlete_id);
+        return redirect()->route('athlete_qualification.index');     
     }
 }
 
