@@ -19,6 +19,9 @@ class CreateTblAthleteAchievementsTable extends Migration
             $table->integer('medal_id');
             $table->date('date');
             $table->string('achievement',1000);
+            $table->string('event_name',250);
+            $table->string('other',200);
+            $table->string('category',250);
             $table->string('remark',1000);
             $table->integer('created_by');
             $table->integer('updated_by');

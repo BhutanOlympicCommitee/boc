@@ -15,7 +15,7 @@
                         {{ csrf_field() }}
                        
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="emp_id" class="col-md-4 control-label">Employee ID</label>
+                            <label for="emp_id" class="col-md-4 control-label">Employee No</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="text" class="form-control" name="emp_id" value="{{ old('email') }}" required autofocus>
@@ -59,7 +59,7 @@
                                 </button>
 
                                 <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Forgot Password?
+                                    Change or Forgot Password?
                                 </a>
                             </div>
                         </div>

@@ -124,7 +124,7 @@
             </thead>
             <tbody>
              <?php $id=1;
-              //$athlete_info=App\Athlete_bioinformation::all();
+              $athlete_info=App\Athlete_bioinformation::all();
               foreach($athlete_info as $athlete):
               ?>
               <tr>
@@ -185,10 +185,6 @@
         <input type="text" name="birth_place" id='birth_place' style='border-style:none'><br>
         <label>Gender:</label>
         <input type="text" name="gender" id='gender' style='border-style:none'><br>
-        <label>Height:</label>
-        <input type="text" name="height" id='height' style='border-style:none'><br>
-        <label>Weight:</label>
-        <input type="text" name="weight" id='weight' style='border-style:none'><br>
         <label>Father's Name:</label>
         <input type="text" name="father_name" id='father_name' style='border-style:none'><br>
         <label>Phone No.:</label>
@@ -203,6 +199,11 @@
         <input type="text" name="cid" id='cid' style='border-style:none'><br>
         <label>Associated Sport:</label>
         <input type="text" name="associated_sport2" id='associated_sport2' style='border-style:none'>
+        <label>Physical Health Details</label>
+        <label>Height:</label>
+        <input type="text" name="height" id='height' style='border-style:none'><br>
+        <label>Weight:</label>
+        <input type="text" name="weight" id='weight' style='border-style:none'><br>
       </div>
       <div class='col-md-4' id='photo'>
       </div>
@@ -211,149 +212,6 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
       </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- ends viewDetails modal-->
-<!-- start achievement model -->
-<div class="modal fade" id="achievement1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog " role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Athletes Achievements</h4>
-      </div>
-      <div class="modal-body">
-       <form action="{{route('display_athlete_achievement.store')}}" method="post">
-          {{csrf_field()}}
-         <div class='form-group clearfix'>
-            <label for='medals' class='col-xs-3'>Medal:</label>
-              <div class='col-xs-9 input-group'>
-                <select class='form-control' name='medals'>
-                  <option disabled selected>Select</option>
-                  <?php 
-                    $medal=App\Enum_Medal::all();
-                    foreach($medal as $medals):
-                  ?>
-                  <option value="{{$medals->medal_id}}">{{$medals->Type}}</option>
-                  <?php 
-                    endforeach
-                  ?>
-                </select>
-              </div>
-          </div>
-                <div class='form-group clearfix'>
-                  <label for='date' class='col-xs-3'>Date:</label>
-                    <div class='col-xs-9 input-group'>
-                      <input type="date" name="date" class="form-control" placeholder="Enter Comments here" required>
-                    </div>
-                </div>
-           <div class='form-group clearfix'>
-                  <label for='achievement' class='col-xs-3'>Event Type:</label>
-                    <div class='col-xs-9 input-group'>
-                      <select class='form-control' name='achievement' required>
-                  <option disabled selected>Select</option>
-                  <?php 
-                    $EnumGame=App\Enum_GameType::all();
-                    foreach($EnumGame as $games):
-                  ?>
-                  <option value="{{$games->gametype_id}}">{{$games->type}}</option>
-                  <?php 
-                    endforeach
-                  ?>
-                </select>
-                    </div>
-                </div>
-                <div class='form-group clearfix'>
-                  <label for='event_name' class='col-xs-3'>Event Category:</label>
-                    <div class='col-xs-9 input-group'>
-                      <select class='form-control' name='event_name' required>
-                  <option disabled selected>Select</option>
-                  <?php 
-                    $EnumGame=App\Enun_EventType::all();
-                    foreach($EnumGame as $games):
-                  ?>
-                  <option value="{{$games->id}}">{{$games->event_name}}</option>
-                  <?php 
-                    endforeach
-                  ?>
-                </select>
-                    </div>
-                </div>
-                 <div class='form-group clearfix'>
-                  <label for='other' class='col-xs-3'></label>
-                    <div class='col-xs-9 input-group'>
-                      <input type="text" name="other" class="form-control" placeholder="Specify others">
-                    </div>
-                </div>
-                  <div class='form-group clearfix'>
-                  <label for='category' class='col-xs-3'>Sport Category:</label>
-                    <div class='col-xs-9 input-group'>
-                      <input type="text" name="category" class="form-control" placeholder="Enter sport category here" required>
-                    </div>
-                </div>
-                 <div class='form-group clearfix'>
-                  <label for='remark' class='col-xs-3'>Remarks:</label>
-                    <div class='col-xs-9 input-group'>
-                      <textarea type="text" name="remark" class="form-control" placeholder="Enter Remarks here" required></textarea>
-                    </div>
-                </div>
-       <input type="hidden" name="hidden_athlete_id" id='hidden_athlete_id'>
-       <div class="modal-footer">
-          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
-          <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
-        </div>
-        
-      </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- end achievement model -->
-<!-- start achievement model -->
-<div class="modal fade" id="disciplinary1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog " role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Athletes Disciplinary Actions</h4>
-      </div>
-      <div class="modal-body">
-       <form action="{{route('display_athlete_achievement.Actionstore')}}" method="post">
-          {{csrf_field()}}
-                <div class='form-group clearfix'>
-                  <label for='date_of_action' class='col-xs-3'>Date of Action:</label>
-                    <div class='col-xs-9 input-group'>
-                      <input type="date" name="date_of_action" class="form-control" placeholder="Enter Comments here" required>
-                    </div>
-                </div>
-                 <div class='form-group clearfix'>
-                  <label for='action_end_date' class='col-xs-3'>Action End Date:</label>
-                    <div class='col-xs-9 input-group'>
-                      <input type="date" name="action_end_date" class="form-control" placeholder="Enter Comments here" required>
-                    </div>
-                </div>
-           <div class='form-group clearfix'>
-                  <label for='reason' class='col-xs-3'>Reason:</label>
-                    <div class='col-xs-9 input-group'>
-                      <textarea type="text" name="reason" class="form-control" placeholder="Enter other achievements here" required></textarea>
-                    </div>
-                </div>
-                 <div class='form-group clearfix'>
-                  <label for='remarks' class='col-xs-3'>Remarks:</label>
-                    <div class='col-xs-9 input-group'>
-                      <textarea type="text" name="remarks" class="form-control" placeholder="Enter Remarks here" required></textarea>
-                    </div>
-                </div>
-                 <input type="hidden" name="hide_athlete_id" id='hide_athlete_id'>
-      
-       <div class="modal-footer">
-          <button type="submit" class="btn btn-primary glyphicon glyphicon-ok">Save</button>
-          <button type="button" class="btn btn-warning glyphicon glyphicon-remove" data-dismiss="modal">Cancel</button>
-        </div>
-      </form>
       </div>
     </div>
   </div>

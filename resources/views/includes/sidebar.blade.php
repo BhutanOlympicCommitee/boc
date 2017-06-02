@@ -85,6 +85,11 @@
                                         <li><a href="{{route('training.create')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Training Info</span></a></li>
                                     </ul>
                                 </li>
+                                 <li id="training"><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Reports</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
+                                    <ul class="nav nav-list tree bullets">
+                                        <li><a href="{{route('Reports.athleteReport')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Athlete Report</span></a></li>
+                                    </ul>
+                                </li>
                             @endif
                         </ul>
                     </li>

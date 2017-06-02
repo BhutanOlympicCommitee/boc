@@ -298,3 +298,5 @@ Route::post('listKPI','KPIController@listAndSearchKPI')->name('searchKPI');
 Route::post('searchAKRA_activity','SKRA_activities_Controller@searchAKRAactivity')->name('searchAKRA');
 
 Route::get('getDay','TrainingInformationController@getDay')->name('get_day');
+Route::get('Reports',['as'=>'Reports.athleteReport','uses'=>'AchievementAndDisplinaryAction@athleteReport']);
+Route::get('Reports/detail',['as'=>'Reports.details','uses'=>'AchievementAndDisplinaryAction@details']);
