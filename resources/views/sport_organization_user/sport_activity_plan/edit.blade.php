@@ -113,13 +113,13 @@
        <form action="{{route('add_sport_org_activity')}}" method="post">
           {{csrf_field()}}
           <div class='form-group clearfix'>
-            <label for='activity' class='col-xs-3'>Activity:</label>
+            <label for='activity' class='col-xs-3'>Activity:<a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
                 <input type="text" name="activity" class="form-control" placeholder="Enter Activity name here" required>
               </div>
           </div>
           <div class='form-group clearfix'>
-            <label for='venue' class='col-xs-3'>Venue:</label>
+            <label for='venue' class='col-xs-3'>Venue:<a class="test">*</a></label>
             <div class='col-xs-9 input-group'>
               <input type="text" name="venue" class="form-control" placeholder="Enter Venue here" required>
             </div>
@@ -127,9 +127,9 @@
         <div class='form-group clearfix'>
             <label>Time Line:</label>
           <div class='form-group clearfix'>
-            <label for='quarter' class='col-xs-3'>Quater:</label>
+            <label for='quarter' class='col-xs-3'>Quater:<a class="test">*</a></label>
             <div class='col-xs-9 input-group'>
-              <select class='form-control' name='quarter' id='five_year'>
+              <select class='form-control' name='quarter' id='five_year' required>
                 <option value="" disabled selected>Select quarter</option>
                   <?php 
                       $enum_quarter=App\Enum_quarter::all();
@@ -143,24 +143,24 @@
             </div>
           </div>
           <div class='form-group clearfix'>
-            <label for='actual' class='col-xs-3'>Actual:</label>
+            <label for='actual' class='col-xs-3'>Actual:<a class="test">*</a></label>
               <div class='input-group col-xs-9'>
-                <input type="text" name="actual"  class="form-control" placeholder="enter actual timeline" required>
+                <input type="text" name="actual"  class="form-control" placeholder="Month date - month date, year" required>
               </div>
           </div>
         </div>
          <div class='form-group clearfix'>
             <label>Source of Funding:</label>
           <div class='form-group clearfix'>
-            <label for='rgob_budget' class='col-xs-3'>Budget RGOB:</label>
+            <label for='rgob_budget' class='col-xs-3'>RGOB Budget(Nu):<a class="test">*</a></label>
             <div class='col-xs-9 input-group'>
               <input type="text" name="rgob_budget" class="form-control" placeholder="Enter RGoB budget here" required>
             </div>
           </div>
           <div class='form-group clearfix'>
-            <label for='external_budget' class='col-xs-3'>External Budget:</label>
+            <label for='external_budget' class='col-xs-3'>External Budget(Nu):<a class="test">*</a></label>
               <div class='input-group col-xs-9'>
-                <input type="text" name="external_budget"  class="form-control" placeholder="Enter actual budget">
+                <input type="text" name="external_budget"  class="form-control" placeholder="Enter actual budget" required>
               </div>
           </div>
           <div class='form-group clearfix'>
@@ -194,6 +194,12 @@
 <!-- ends addModal-->
 </br>
 </br>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">

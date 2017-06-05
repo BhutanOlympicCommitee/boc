@@ -45,7 +45,7 @@
                 {{csrf_field()}}
                 <div>Permanent Address</div>
                 <div class='form-group'>
-            <label for='type1' class='col-xs-2'>Dzongkhag</label>
+            <label for='type1' class='col-xs-2'>Dzongkhag:<a class="test">*</a></label>
               <div class='col-xs-10 input-group'>
                 <select class='form-control' name='type1' id='type1' required>
                   <option disabled selected>Select Dzongkhag</option>
@@ -61,7 +61,7 @@
               </div>
           </div>
                 <div class='form-group'>
-                  <label for='dungkhag' class='col-xs-2'>Dungkhag</label>
+                  <label for='dungkhag' class='col-xs-2'>Dungkhag:</label>
                     <div class='col-xs-10 input-group'>
                        <select class='form-control' name='dungkhag' id='dungkhag'>
                          <option></option>
@@ -69,22 +69,22 @@
                     </div>
                 </div>
                  <div class='form-group'>
-                  <label for='gewog' class='col-xs-2'>Gewog</label>
+                  <label for='gewog' class='col-xs-2'>Gewog:<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
-                       <select class='form-control' name='gewog' id='gewog'>
+                       <select class='form-control' name='gewog' id='gewog'required>
                          <option></option>
                       </select>
                     </div>
                 </div>
                 <div class='form-group'>
-                  <label for='village' class='col-xs-2'>Village</label>
+                  <label for='village' class='col-xs-2'>Village:<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
                       <input type="text" name="village" class="form-control" placeholder="Enter Village Name here" required>
                     </div>
                 </div>
                 <div>Current Address</div>
                <div class='form-group'>
-            <label for='type' class='col-xs-2'>Dzongkhag</label>
+            <label for='type' class='col-xs-2'>Dzongkhag:<a class="test">*</a></label>
               <div class='col-xs-10 input-group'>
                 <select class='form-control' name='type' id='type'required>
                   <option></option>
@@ -101,7 +101,7 @@
           </div>
                 
                  <div class='form-group'>
-                  <label for='Cdungkhag' class='col-xs-2'>Dungkhag</label>
+                  <label for='Cdungkhag' class='col-xs-2'>Dungkhag:</label>
                     <div class='col-xs-10 input-group'>
                        <select class='form-control' name='Cdungkhag' id='Cdungkhag'>
                          <option></option>
@@ -109,7 +109,7 @@
                     </div>
                 </div>
                  <div class='form-group'>
-                  <label for='email' class='col-xs-2'>Email</label>
+                  <label for='email' class='col-xs-2'>Email:</label>
                     <div class='col-xs-10 input-group'>
                       <input type="text" name="email" class="form-control" placeholder="Enter email address here">
                     </div>
@@ -117,15 +117,15 @@
                 <div class='form-group'>
                   <label for='phone' class='col-xs-2'>Phone</label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number here" id='phone'>
+                      <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number here" id='phone' value="0">
                     </div>
                 </div><div class='form-group'>
-                  <label for='mobile' class='col-xs-2'>Mobile</label>
+                  <label for='mobile' class='col-xs-2'>Mobile:<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
                       <input type="text" name="mobile" class="form-control" placeholder="Enter Mobile Number here" required id='mobile'>
                     </div>
                 </div><div class='form-group'>
-                  <label for='caddress' class='col-xs-2'>Contact Address</label>
+                  <label for='caddress' class='col-xs-2'>Contact Address:</label>
                     <div class='col-xs-10 input-group'>
                       <textarea type='text' name="caddress" class="form-control" rows=4 placeholder="Enter Contact Address here"></textarea>             
                     </div>
@@ -228,14 +228,8 @@
   });
 $('#save').click(function()
 {
-  var pnumber=$('#phone').val();
   var mnumber=$('#mobile').val();
-  if(!$.isNumeric(pnumber) || pnumber.length!=8)
-  {
-    alert('Please enter 8 digits numeric phone number');
-    return false;
-  }
-  else if(!$.isNumeric(mnumber) || mnumber.length!=8)
+  if(!$.isNumeric(mnumber) || mnumber.length!=8)
   {
      alert('Please enter 8 digits numeric mobile number');
     return false;
@@ -244,6 +238,12 @@ $('#save').click(function()
     return true;
 });
 </script>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">

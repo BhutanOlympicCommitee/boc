@@ -83,13 +83,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add KPI</h4>
+        <h4 class="modal-title" id="myModalLabel">Add KPI:</h4>
       </div>
       <div class="modal-body">
        <form action="{{route('KPI_master.store')}}" method="post">
           {{csrf_field()}}
           <div class='form-group clearfix'>
-            <label for='kpi_name' class='col-xs-3'>KPI:</label>
+            <label for='kpi_name' class='col-xs-3'>KPI:<a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
                 <input type="text" name="kpi_name" class="form-control" placeholder="Enter KPI name here" required>
               </div>
@@ -97,27 +97,27 @@
           <div class='form-group clearfix'>
             <label>KPI Weight</label>
           <div class='form-group clearfix'>
-            <label for='RGoB' class='col-xs-3'>RGoB:</label>
+            <label for='RGoB' class='col-xs-3'>RGoB:<a class="test">*</a></label>
               <div class='input-group col-xs-9'>
                 <input type="text" name="RGoB"  class="form-control" placeholder="Enter RGoB funding here" required>
               </div>
           </div>
           <div class='form-group clearfix'>
-            <label for='external' class='col-xs-3'>External:</label>
+            <label for='external' class='col-xs-3'>External:<a class="test">*</a></label>
               <div class='input-group col-xs-9'>
-                <input type="text" name="external"  class="form-control" placeholder="Enter External Funding here">
+                <input type="text" name="external"  class="form-control" placeholder="Enter External Funding here" required>
               </div>
           </div>
         </div>
         <div class='form-group clearfix'>
-            <label for='unit' class='col-xs-3'>Units:</label>
+            <label for='unit' class='col-xs-3'>Units:<a class="test">*</a></label>
               <div class='input-group col-xs-9'>
                 <input type="text" name="unit"  class="form-control" placeholder="Enter Unit here" required>
               </div>
           </div>
 
           <div class='form-group clearfix'>
-            <label for='baseline' class='col-xs-3'>Baseline:</label>
+            <label for='baseline' class='col-xs-3'>Baseline:<a class="test">*</a></label>
               <div class='input-group col-xs-9'>
                 <input type="text" name="baseline"  class="form-control" placeholder="Enter baseline here" required>
               </div>
@@ -125,19 +125,19 @@
            <div class='form-group clearfix'>
             <label>Performance Evaluation</label>
           <div class='form-group clearfix'>
-            <label for='good' class='col-xs-3'>Good(Target):</label>
+            <label for='good' class='col-xs-3'>Good(Target):<a class="test">*</a></label>
               <div class='input-group col-xs-9'>
                 <input type="text" name="good"  class="form-control" placeholder="Enter Target here" required>
               </div>
           </div>
           <div class='form-group clearfix'>
-            <label for='average' class='col-xs-3'>Average:</label>
+            <label for='average' class='col-xs-3'>Average:<a class="test">*</a></label>
               <div class='input-group col-xs-9'>
                 <input type="text" name="average"  class="form-control" placeholder="Enter Target here" required>
               </div>
           </div>
            <div class='form-group clearfix'>
-            <label for='poor' class='col-xs-3'>Poor:</label>
+            <label for='poor' class='col-xs-3'>Poor:<a class="test">*</a></label>
               <div class='input-group col-xs-9'>
                 <input type="text" name="poor"  class="form-control" placeholder="Enter Target here" required>
               </div>
@@ -267,6 +267,12 @@ function kpi_edit(id)
       });
     }
 </script>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">

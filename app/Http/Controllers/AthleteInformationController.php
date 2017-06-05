@@ -8,7 +8,9 @@ use Auth;
 use Session;
 use Illuminate\Support\Facades\Input;
 use Image;
-
+use App\Associated_Sport;
+use App\User;
+use App\Athlete_address;
 class AthleteInformationController extends Controller
 {
    
@@ -23,8 +25,27 @@ class AthleteInformationController extends Controller
      */
      public function index()
     {
-        $athlete=Athlete_bioinformation::all();
-        return view('sport_organization_user.athlete_information.athlete_info.index',compact('athlete'));
+        
+        $associated_sport=array();
+        $user=User::where('id',Session::get('user_id'))->first();
+        if($user->role_id==4)
+        {
+            $associatedSport=Associated_Sport::where('sport_org_id',$user->sport_organization)->pluck('sport_id');
+            $associated=explode(',',$associatedSport);
+            foreach($associated as $assoc)
+            {
+                $associated_sport[]=trim($assoc,'[]');
+            }
+            $athlete=Athlete_bioinformation::whereIn('athlete_associatedSport',$associated_sport)->get();
+            return view('sport_organization_user.athlete_information.athlete_info.index',compact('athlete'));
+        }
+        else{
+              $athlete=Athlete_bioinformation::all(); 
+            return view('sport_organization_user.athlete_information.athlete_info.index',compact('athlete'));
+        
+        }
+       
+          
     }
 
     public function create()
@@ -114,14 +135,17 @@ class AthleteInformationController extends Controller
             $athlete->athlete_photo = $file->getClientOriginalName();
         }
         $athlete->save();
-        if($request->update1=='form1')
+        if(Athlete_address::where('athlete_id',$id)->exists())
         {
-           return redirect()->route('athlete_info.index')->with('alert-success','Data Has been Updated!');    
+             return redirect()->route('athlete_address.edit',$athlete->address->address_id)->with('alert-success','Data Has been Updated!');     
+
         }
-       else
+        else
         {
-              return redirect()->route('athlete_address.edit',$athlete->address->address_id)->with('alert-success','Data Has been Updated!');
-        }    
+            Session::put('athlete_id1',$id);
+            return redirect()->route('athlete_address.create');
+        } 
+        
     }
 
 

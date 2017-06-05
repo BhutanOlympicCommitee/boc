@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 use App\Tbl_athlete_disciplinary;
 use App\Tbl_athlete_achievement;
 use App\Athlete_bioinformation;
+use App\Enum_event_type_table;
 use Auth;
 use Session;
+use App\User;
+use App\Associated_Sport;
 
 class AchievementAndDisplinaryAction extends Controller
 {
@@ -17,9 +20,20 @@ class AchievementAndDisplinaryAction extends Controller
     }
     public function displayAthleteInfo()
     {
-        $athlete_info=Athlete_bioinformation::all();
+        $associated_sport=array();
+        $user=User::where('id',Session::get('user_id'))->first();
+        $associatedSport=Associated_Sport::where('sport_org_id',$user->sport_organization)->pluck('sport_id');
+        $associated=explode(',',$associatedSport);
+        foreach($associated as $assoc)
+        {
+            $associated_sport[]=trim($assoc,'[]');
+        }
+        $athlete_info=Athlete_bioinformation::whereIn('athlete_associatedSport',$associated_sport)->get();
         return view('sport_organization_user.athlete_information.athlete_achievement.display_athlete_info',compact('athlete_info'));
     }
+    //     $athlete_info=Athlete_bioinformation::all();
+    //     return view('sport_organization_user.athlete_information.athlete_achievement.display_athlete_info',compact('athlete_info'));
+    // }
 
     public function store(Request $request)
     {
@@ -28,6 +42,9 @@ class AchievementAndDisplinaryAction extends Controller
         $achievement->medal_id=$request->medals;
         $achievement->date=$request->date;
         $achievement->achievement=$request->achievement;
+        $achievement->event_name=$request->event_name;
+        $achievement->other=$request->other;
+        $achievement->category=$request->category;
         $achievement->remark=$request->remark;
         $achievement->created_by=Auth::user()->id;
         $achievement->updated_by=Auth::user()->id;

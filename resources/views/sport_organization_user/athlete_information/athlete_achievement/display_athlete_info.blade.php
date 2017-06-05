@@ -22,7 +22,19 @@
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
-            <form action="{{route('search_games')}}" method="post">
+               <?php 
+              $user_id=session('user_id');
+              $user=App\User::find($user_id);
+                ?>
+              @if($user->role_id==4)
+                <script type="text/javascript">
+                  $(function()
+                  {
+                    $('#view').hide();
+                  });
+                </script>
+              @endif
+            <form action="{{route('search_games')}}" method="post" id="view">
                 {{csrf_field()}}
                 <div class='row'>
                   <div class='col-xs-6 clearfix'>
@@ -219,7 +231,7 @@
             <label for='medals' class='col-xs-3'>Medal:</label>
               <div class='col-xs-9 input-group'>
                 <select class='form-control' name='medals'>
-                  <option></option>
+                  <option disabled selected>Select</option>
                   <?php 
                     $medal=App\Enum_Medal::all();
                     foreach($medal as $medals):
@@ -238,9 +250,47 @@
                     </div>
                 </div>
            <div class='form-group clearfix'>
-                  <label for='achievement' class='col-xs-3'>Other Achievements:</label>
+                  <label for='achievement' class='col-xs-3'>Event Type:</label>
                     <div class='col-xs-9 input-group'>
-                      <textarea type="text" name="achievement" class="form-control" placeholder="Enter other achievements here" required></textarea>
+                      <select class='form-control' name='achievement' required>
+                  <option disabled selected>Select</option>
+                  <?php 
+                    $EnumGame=App\Enum_GameType::all();
+                    foreach($EnumGame as $games):
+                  ?>
+                  <option value="{{$games->gametype_id}}">{{$games->type}}</option>
+                  <?php 
+                    endforeach
+                  ?>
+                </select>
+                    </div>
+                </div>
+                <div class='form-group clearfix'>
+                  <label for='event_name' class='col-xs-3'>Event Category:</label>
+                    <div class='col-xs-9 input-group'>
+                      <select class='form-control' name='event_name' required>
+                  <option disabled selected>Select</option>
+                  <?php 
+                    $EnumGame=App\Enum_event_type_table::all();
+                    foreach($EnumGame as $games):
+                  ?>
+                  <option value="{{$games->id}}">{{$games->event_name}}</option>
+                  <?php 
+                    endforeach
+                  ?>
+                </select>
+                    </div>
+                </div>
+                 <div class='form-group clearfix'>
+                  <label for='other' class='col-xs-3'></label>
+                    <div class='col-xs-9 input-group'>
+                      <input type="text" name="other" class="form-control" placeholder="Specify others">
+                    </div>
+                </div>
+                  <div class='form-group clearfix'>
+                  <label for='category' class='col-xs-3'>Sport Category:</label>
+                    <div class='col-xs-9 input-group'>
+                      <input type="text" name="category" class="form-control" placeholder="Enter sport category here" required>
                     </div>
                 </div>
                  <div class='form-group clearfix'>

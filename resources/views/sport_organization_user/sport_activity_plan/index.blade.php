@@ -32,9 +32,9 @@
                     {{csrf_field()}}
                 </div>
                 <div class='form-group clearfix'>
-            <label for='five_yr_plan_id' class='col-xs-2'>Five Year Plan:</label>
+            <label for='five_yr_plan_id' class='col-xs-2'>Five Year Plan:<a class="test">*</a></label>
               <div class='col-xs-10 input-group'>
-               <select class='form-control' name='five_yr_plan_id' id="five_year">
+               <select class='form-control' name='five_yr_plan_id' id="five_year" required>
                 <option value="0">Select Five Year Plan</option>
                           <?php 
                             $fiveYearPlan=App\EnumFiveYearPlan::all();
@@ -48,23 +48,23 @@
               </div>
           </div>
           <div class='form-group clearfix'>
-            <label for='skra_id' class='col-xs-2'>AKRA:</label>
+            <label for='skra_id' class='col-xs-2'>AKRA:<a class="test">*</a></label>
               <div class='col-xs-10 input-group'>
-                  <select class='form-control' name='skra_id' id='skra1'>
+                  <select class='form-control' name='skra_id' id='skra1' required>
                          <option value=""></option>
                       </select>
               </div>
           </div>
           <div class='form-group clearfix'>
-            <label for='skra_activity_id' class='col-xs-2'>BoC Program:</label>
+            <label for='skra_activity_id' class='col-xs-2'>BoC Program:<a class="test">*</a></label>
               <div class='col-xs-10 input-group'>
-                <select class='form-control' name='skra_activity_id' id='skra_activity_id'>
+                <select class='form-control' name='skra_activity_id' id='skra_activity_id' required>
                          <option value=""></option>
                       </select>
               </div>
           </div>
             <div class='form-group clearfix'>
-                  <label for='wieghtage' class='col-xs-2'>Weightage(%):</label>
+                  <label for='wieghtage' class='col-xs-2'>Weightage(%):<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
                       <input type="text" name="wieghtage" class="form-control" placeholder="Enter weightage here" required>
                     </div>
@@ -126,6 +126,12 @@
 
   });
 </script>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">

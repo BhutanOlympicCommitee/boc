@@ -118,13 +118,13 @@
                     </div>
                 </div>
                  <div class='form-group'>
-                  <label for='height' class='col-xs-2'>Height:<a class="test">*</a></label>
+                  <label for='height' class='col-xs-2'>Height(cm):<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
                       <input type="text" name="height" class="form-control" placeholder="Enter Height here" required>
                     </div>
                 </div>
                 <div class='form-group'>
-                  <label for='weight' class='col-xs-2'>Weight:<a class="test">*</a></label>
+                  <label for='weight' class='col-xs-2'>Weight(kg):<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
                       <input type="text" name="weight" class="form-control" placeholder="Enter Weight here" required>
                     </div>
@@ -161,9 +161,9 @@
                     </div>
                 </div>
                 <div class='form-group'>
-                  <label for='photo' class='col-xs-2'>Photo:</label>
+                  <label for='photo' class='col-xs-2'>Photo:<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
-                      <input type="file" name="photo" class="form-control">
+                      <input type="file" name="photo" class="form-control" required>
                     </div>
                 </div>
                 <div class="form-group">

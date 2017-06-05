@@ -35,11 +35,19 @@ class AthleteAddressController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-                'phone' => 'unique:athlete_addresses,Caddress_phone',
+                // 'phone' => 'unique:athlete_addresses,Caddress_phone',
                 'mobile' => 'unique:athlete_addresses,Caddress_mobile',
             ]);
         $athlete= new Athlete_address;
-        $athlete->athlete_id=Session::get('key');
+        if(!empty(Session::get('athlete_id1')))
+        {
+            $athlete->athlete_id=Session::get('athlete_id1');
+            Session::forget('athlete_id1');
+        }
+        else
+        {
+           $athlete->athlete_id=Session::get('key'); 
+        }
         $athlete->Paddress_dzongkhag=$request->type1;
         $athlete->Paddress_dungkhag=$request->dungkhag;
         $athlete->Paddress_gewog=$request->gewog;
@@ -51,9 +59,17 @@ class AthleteAddressController extends Controller
         $athlete->Caddress_mobile=$request->mobile;
         $athlete->Caddress_contactAddress=$request->caddress;
         $athlete->created_by=Auth::user()->id;
-        $athlete->save();
-        Session::flash('success', 'Athleteaddress has been created successfully');
-        return redirect()->route('athlete_medical.create');
+       $athlete->save();
+       Session::flash('success', 'Athleteaddress has been created successfully');
+       if(Tbl_athlete_medical::where('athlete_id',$athlete->athlete_id)->exists())
+        {
+             return redirect()->route('athlete_medical.edit',$athlete->medical->medical_id)->with('alert-success','Data Has been Updated!');  
+
+        }
+        else
+        {
+            return redirect()->route('athlete_medical.create');
+        } 
     }
 
 
@@ -95,8 +111,10 @@ class AthleteAddressController extends Controller
         }
         else
         {
+            Session::put('athlete_id2',$id);
             return redirect()->route('athlete_medical.create');
         } 
+        //return redirect()->route('athlete_medical.edit',$athlete->medical->medical_id)->with('alert-success','Data Has been Updated!'); 
     }
     /**
      * Display the specified resource.
