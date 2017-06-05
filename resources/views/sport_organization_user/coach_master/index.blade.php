@@ -38,7 +38,7 @@
                       </div>
                   </div>
                   <div class='form-group clearfix'>
-                    <label for='coach_name' class='col-xs-2'>Coach Name </label>
+                    <label for='coach_name' class='col-xs-2'>Coach Name:</label>
                       <div class='col-xs-10 col-xs-offset-3 input-group'>
                         <input type="text" name="coach_name" class="form-control" placeholder="Enter Coach name here">
                       </div>

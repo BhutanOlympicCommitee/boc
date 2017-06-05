@@ -106,15 +106,43 @@
             <label for='external' class='col-xs-3'>External:<a class="test">*</a></label>
               <div class='input-group col-xs-9'>
                 <input type="text" name="external"  class="form-control" placeholder="Enter External Funding here" required>
+          <!--  <div class='form-group clearfix'>
+            <label for='kpi_description' class='col-xs-3'>KPI Description:<a class="test">*</a></label>
+              <div class='col-xs-9 input-group'>
+                <input type="text" name="kpi_description" class="form-control" placeholder="Enter KPI description" required>
               </div>
           </div>
+          <div class='form-group clearfix'>
+            <label for='kpi_weight' class='col-xs-3'>KPI Weight:<a class="test">*</a></label>
+              <div class='input-group col-xs-9'>
+                <input type="text" name="kpi_weight"  class="form-control" placeholder="Enter kpi weight here" required>
+              </div> -->
+          </div>
+         <div class="form-group clearfix">
+          <label for="unit"  class='col-xs-3'>Units<a class="test">*</a></label> 
+          <div class='col-xs-9 input-group'>
+            <select name="unit" id="unit" class="form-control">
+              <option value="0">
+                Select the KPI Unit
+              </option>
+              <?php 
+              $units = App\KPIUnit::all();
+              foreach($units as $unit):
+                ?>
+              <option value="{{$unit->unit_id}}">{{$unit->unit_name}}</option>
+            <?php endforeach;?>
+          </select> 
         </div>
+<<<<<<< HEAD
         <div class='form-group clearfix'>
             <label for='unit' class='col-xs-3'>Units:<a class="test">*</a></label>
               <div class='input-group col-xs-9'>
                 <input type="text" name="unit"  class="form-control" placeholder="Enter Unit here" required>
               </div>
           </div>
+=======
+      </div>
+>>>>>>> 2c0bf18ac5d934c3dfc9b867aff6340bece32235
 
           <div class='form-group clearfix'>
             <label for='baseline' class='col-xs-3'>Baseline:<a class="test">*</a></label>

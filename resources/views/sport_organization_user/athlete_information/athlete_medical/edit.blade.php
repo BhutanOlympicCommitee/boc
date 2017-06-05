@@ -41,7 +41,7 @@
                       {{ Session::get('success') }}
                     </div>
                 @endif
-              <form action="{{route('athlete_medical.update',$athlete->medical_id)}}" method="post" enctype="multipart/form-data">
+              <form action="{{route('athlete_medical.update',$athlete->athlete_id)}}" method="post" enctype="multipart/form-data">
                  <input name="_method" type="hidden" value="PATCH">
                 {{csrf_field()}}
                
@@ -91,7 +91,7 @@
                 </div>
                 <div class="form-group">
                   <div class="col-xs-10 col-xs-offset-2 input-group">
-                      <button type="submit" class="btn btn-primary col-xs-2 col-xs-offset-7 glyphicon glyphicon-ok" value="Save" id='save'>Save</button>
+                      <button type="submit" class="btn btn-primary col-xs-2 col-xs-offset-7 glyphicon glyphicon-ok"  id='save'>Update</button>
                       <a href="{{route('athlete_info.index')}}" class='btn btn-warning col-xs-2 col-xs-offset-1 glyphicon glyphicon-remove'>Cancel</a>
                   </div>
                 </div> 

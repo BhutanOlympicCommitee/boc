@@ -49,8 +49,8 @@ class KPIController extends Controller
         $kpi = new Tbl_proposed_KPI;
         $kpi->activity_id=Session::get('activity_id');
         $kpi->kpi_name=$request->kpi_name;
-        $kpi->RGoB=$request->RGoB;
-        $kpi->external=$request->external;
+        $kpi->kpi_description=$request->kpi_description;
+        $kpi->kpi_weight=$request->kpi_weight;
         $kpi->unit=$request->unit;
         $kpi->baseline=$request->baseline;
         $kpi->good=$request->good;
@@ -68,8 +68,8 @@ class KPIController extends Controller
         $kpi=new Tbl_KPI_approved;
         $kpi->kpi_id=$id;
         $kpi->approved_kpi_name=$request->approved_kpi;
-        $kpi->approved_RGoB=$request->approved_rgob;
-        $kpi->approved_external=$request->approved_external;
+        $kpi->approved_kpi_description=$request->approved_description;
+        $kpi->approved_kpi_weight=$request->approved_kpi_weight;
         $kpi->approved_unit=$request->approved_units;
         $kpi->approved_baseline=$request->approved_baseline;
         $kpi->approved_good=$request->approved_good;

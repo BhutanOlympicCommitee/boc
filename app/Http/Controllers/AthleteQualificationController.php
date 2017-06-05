@@ -53,7 +53,6 @@ class AthleteQualificationController extends Controller
             $athlete->athlete_id=Session::get('athlete_id3');
             Session::forget('athlete_id3');
         }
-
         else
         {
             $athlete->athlete_id=Session::get('key');
@@ -66,7 +65,7 @@ class AthleteQualificationController extends Controller
         $athlete->created_by=Auth::user()->id;
         $athlete->save();
         Session::flash('success', 'Athlete qualification has been created successfully');
-       return redirect()->route('athlete_qualification.index');
+        return redirect()->route('athlete_qualification.index');
     }
     
     /**

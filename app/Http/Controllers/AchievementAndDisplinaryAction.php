@@ -41,6 +41,9 @@ class AchievementAndDisplinaryAction extends Controller
         $achievement->medal_id=$request->medals;
         $achievement->date=$request->date;
         $achievement->achievement=$request->achievement;
+        $achievement->event_name=$request->event_name;
+        $achievement->other=$request->other;
+        $achievement->category=$request->category;
         $achievement->remark=$request->remark;
         $achievement->created_by=Auth::user()->id;
         $achievement->updated_by=Auth::user()->id;
@@ -106,5 +109,11 @@ class AchievementAndDisplinaryAction extends Controller
             $athlete_info=Athlete_bioinformation::all();
              return view('sport_organization_user.athlete_information.athlete_achievement.display_athlete_info',compact('athlete_info'));
         }
+    }
+     public function athleteReport(){
+        return view('common_view.Reports.athleteReport');
+    }
+    public function details(){
+        return view('common_view.Reports.details');
     }
 }

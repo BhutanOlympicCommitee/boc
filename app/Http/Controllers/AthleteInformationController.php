@@ -135,7 +135,7 @@ class AthleteInformationController extends Controller
             $athlete->athlete_photo = $file->getClientOriginalName();
         }
         $athlete->save();
-        if(Athlete_address::where('athlete_id',$id)->exists())
+        if(Athlete_address::where('athlete_id',$athlete->athlete_id)->exists())
         {
              return redirect()->route('athlete_address.edit',$athlete->address->address_id)->with('alert-success','Data Has been Updated!');     
 

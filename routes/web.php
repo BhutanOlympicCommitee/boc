@@ -299,4 +299,6 @@ Route::post('searchAKRA_activity','SKRA_activities_Controller@searchAKRAactivity
 
 Route::get('getDay','TrainingInformationController@getDay')->name('get_day');
 
+
 Route::get('getOccupation','AthleteInformationController@getOccupation')->name('get_occupation');
+

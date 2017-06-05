@@ -1,0 +1,13 @@
+.navbar-fixed-top {
+min-height: 105px;
+position: fixed;
+background-color: green;
+}
+}
+.text{
+	text-align: center;
+}
+.navbar-fixed-bottom {
+min-height: 2px;
+position: fixed;
+}

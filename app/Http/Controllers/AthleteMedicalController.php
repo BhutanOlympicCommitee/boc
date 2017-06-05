@@ -77,7 +77,7 @@ class AthleteMedicalController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $athlete = Tbl_athlete_medical::findOrFail($id);
+         $athlete = Tbl_athlete_medical::where('athlete_id',$id)->first();
         $athlete->date=$request->date;
         $athlete->checked=$request->checked;
         $athlete->weight=$request->weight;
@@ -86,9 +86,9 @@ class AthleteMedicalController extends Controller
         $athlete->remarks=$request->remarks;
         $athlete->created_by=Auth::user()->id;
         $athlete->save();
+
         Session::put('athlete_id3',$athlete->athlete_id);
         return redirect()->route('athlete_qualification.index');     
-           
     }
 }
 
