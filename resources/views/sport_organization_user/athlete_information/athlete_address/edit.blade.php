@@ -41,7 +41,7 @@
                       {{ Session::get('success') }}
                     </div>
                 @endif
-              <form action="{{route('athlete_address.update',$athlete->athlete_id)}}" method="post">
+              <form action="{{route('athlete_address.update',$athlete->address_id)}}" method="post">
                  <input name="_method" type="hidden" value="PATCH">
                 {{csrf_field()}}
                 <div>Permanent Address</div>
@@ -232,14 +232,9 @@
   });
 $('#save').click(function()
 {
-  var pnumber=$('#phone').val();
+ 
   var mnumber=$('#mobile').val();
-  if(!$.isNumeric(pnumber) || pnumber.length!=8)
-  {
-    alert('Please enter 8 digits numeric phone number');
-    return false;
-  }
-  else if(!$.isNumeric(mnumber) || mnumber.length!=8)
+ if(!$.isNumeric(mnumber) || mnumber.length!=8)
   {
      alert('Please enter 8 digits numeric mobile number');
     return false;

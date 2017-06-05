@@ -44,36 +44,36 @@
               <form action="{{route('athlete_medical.store')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                
-                <div class='form-group'>
-                  <label for='date' class='col-xs-2'>Date of Checkup</label>
+                <div class='form-group clearfix'>
+                  <label for='date' class='col-xs-2'>Date of Checkup:<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
-                      <input type="date" name="date" class="form-control" placeholder="">
+                      <input type="date" name="date" class="form-control" placeholder="" required>
                     </div>
                 </div>
-                <div class='form-group'>
-                  <label for='checked' class='col-xs-2'>Checked By</label>
+                <div class='form-group clearfix'>
+                  <label for='checked' class='col-xs-2'>Checked By:<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="checked" class="form-control" placeholder="Enter Name of Docter here">
+                      <input type="text" name="checked" class="form-control" placeholder="Enter Name of Docter here" required>
                     </div>
                 </div>
-                <div class='form-group'>
-                  <label for='weight' class='col-xs-2'>Weight</label>
+                <div class='form-group clearfix'>
+                  <label for='weight' class='col-xs-2'>Weight(kg):<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
-                      <input type="text" name="weight" class="form-control" placeholder="Enter weight here">
-                    </div>
-                </div>
-
-                 <div class='form-group'>
-                  <label for='height' class='col-xs-2'>Height</label>
-                    <div class='col-xs-10 input-group'>
-                      <input type="text" name="height" class="form-control" placeholder="Enter height here">
+                      <input type="text" name="weight" class="form-control" placeholder="Enter weight here" required>
                     </div>
                 </div>
 
-                  <div class='form-group'>
-                  <label for='condition' class='col-xs-2'>Condition</label>
+                 <div class='form-group clearfix'>
+                  <label for='height' class='col-xs-2'>Height(cm):<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
-                      <select class='form-control' name='condition'>
+                      <input type="text" name="height" class="form-control" placeholder="Enter height here" required>
+                    </div>
+                </div>
+
+                  <div class='form-group clearfix'>
+                  <label for='condition' class='col-xs-2'>Condition:<a class="test">*</a></label>
+                    <div class='col-xs-10 input-group'>
+                      <select class='form-control' name='condition' required>
                         <option></option>
                         <option>Healthy</option>
                         <option>Average</option>
@@ -82,13 +82,13 @@
                     </div>
                 </div>
   
-                <div class='form-group'>
-                  <label for='remarks' class='col-xs-2'>Remarks</label>
+                <div class='form-group clearfix'>
+                  <label for='remarks' class='col-xs-2'>Remarks:</label>
                     <div class='col-xs-10 input-group'>
                       <textarea type="text" name="remarks" class="form-control" placeholder="Enter remark here"></textarea>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group clearfix">
                   <div class="col-xs-10 col-xs-offset-2 input-group">
                       <button type="submit" class="btn btn-primary col-xs-2 col-xs-offset-7 glyphicon glyphicon-ok" value="Save" id='save'>Save</button>
                       <a href="{{route('athlete_medical.create')}}" class='btn btn-warning col-xs-2 col-xs-offset-1 glyphicon glyphicon-remove'>Cancel</a>
@@ -118,6 +118,12 @@
      });
   });
 </script>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">

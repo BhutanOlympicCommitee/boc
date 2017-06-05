@@ -20,6 +20,9 @@
                         <div class="panel-heading">
                             <div class="text-muted bootstrap-admin-box-title clearfix">Athlete Qualification Information
                             </div>
+                            <div class='clearfix'>
+                            <a href="{{route('athlete_qualification.create')}}" class='btn btn-success pull-right'>Add</a>
+                            </div>
                         </div>
                         <div class="bootstrap-admin-panel-content">
                             @if(Session::has('success'))
@@ -31,6 +34,7 @@
                                 <thead>
                                     <tr>
                                         <th style="width:2%;">Sl_no:</th>
+                                        <th>Athlete ID</th>
                                         <th>Level</th>
                                         <th>Course Description</th>
                                         <th style="width:2%;">Year of Completion</th>
@@ -45,6 +49,7 @@
                                 
                                 <tr>
                                     <td>{{$id++}}</td>
+                                    <td>{{$athlete->athlete_id}}</td>
                                     <td>{{$athlete->displayLevel->qualification_level}}</td>
                                     <td>{{$athlete->qualification_description}}</td>
                                     <td>{{$athlete->qualification_year}}</td>

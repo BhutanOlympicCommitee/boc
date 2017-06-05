@@ -22,7 +22,19 @@
               </div>
             </div>
             <div class="bootstrap-admin-panel-content">
-            <form action="{{route('search_games')}}" method="post">
+               <?php 
+              $user_id=session('user_id');
+              $user=App\User::find($user_id);
+                ?>
+              @if($user->role_id==4)
+                <script type="text/javascript">
+                  $(function()
+                  {
+                    $('#view').hide();
+                  });
+                </script>
+              @endif
+            <form action="{{route('search_games')}}" method="post" id="view">
                 {{csrf_field()}}
                 <div class='row'>
                   <div class='col-xs-6 clearfix'>

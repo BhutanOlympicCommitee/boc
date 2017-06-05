@@ -25,6 +25,7 @@
             <ul class='nav nav-pills nav-justified'>
               <li id="bio"><a href="#athlete_info" data-toggle="tab">Bio Information</a></li>
               <li id="address"><a href="#athlete_address" data-toggle="tab"> Address Information</a></li>
+                <li id='medical'><a href="#athlete_medical" data-toggle="tab"> Medical Records</a></li>
               <li class="active" id='qualification'><a href="#" data-toggle="tab">Qualification and Training Info</a></li>
             </ul>
             <div style='margin-top:20px'></div>

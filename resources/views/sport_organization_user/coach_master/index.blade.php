@@ -124,7 +124,7 @@
        <form action="{{route('coach_master.store')}}" method="post">
           {{csrf_field()}}
           <div class='form-group clearfix'>
-                  <label for='coach_title' class='col-xs-3'>Title</label>
+                  <label for='coach_title' class='col-xs-3'>Title:<a class="test">*</a></label>
                     <div class='col-xs-9 input-group'>
                       <select class='form-control' name='coach_title' required>
                         <option disabled selected>Select One</option>
@@ -135,7 +135,7 @@
                     </div>
                 </div>
           <div class='form-group clearfix'>
-            <label for='coach_fname' class='col-xs-3'>First Name:</label>
+            <label for='coach_fname' class='col-xs-3'>First Name:<a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
                 <input type="text" name="coach_fname" class="form-control" placeholder="Enter first name here" required>
               </div>
@@ -153,15 +153,15 @@
               </div>
           </div>
           <div class='form-group clearfix'>
-            <label for='coach_dob' class='col-xs-3'>Date of Birth:</label>
+            <label for='coach_dob' class='col-xs-3'>Date of Birth:<a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
                 <input type="date" name="coach_dob" class="form-control" placeholder="date" required>
               </div>
           </div>
          <div class='form-group clearfix'>
-          <label for='type' class='col-xs-3'>Nationality:</label>
+          <label for='type' class='col-xs-3'>Nationality:<a class="test">*</a></label>
             <div class='col-xs-9 input-group'>
-              <select class='form-control' name='type'>
+              <select class='form-control' name='type' required>
                 <option disabled selected>Select One</option>
                   <?php 
                       $country=App\Mst_country::all();
@@ -179,7 +179,7 @@
               </div>
           </div>
             <div class='form-group clearfix'>
-            <label for='coach_mobile' class='col-xs-3'>Mobile:</label>
+            <label for='coach_mobile' class='col-xs-3'>Mobile:<a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
                 <input type="text" name="coach_mobile" class="form-control" placeholder="enter mobile number" required id='coach_mobile1'>
               </div>
@@ -191,13 +191,13 @@
               </div>
           </div>
             <div class='form-group clearfix'>
-            <label for='coach_passport' class='col-xs-3'>Passport NO:</label>
+            <label for='coach_passport' class='col-xs-3'>Passport NO/CID:<a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
                 <input type="text" name="coach_passport" class="form-control" placeholder="enter passport number" required>
               </div>
           </div>
             <div class='form-group clearfix'>
-            <label for='coach_appointmentDate' class='col-xs-3'>Appointment Date:</label>
+            <label for='coach_appointmentDate' class='col-xs-3'>Appointment Date:<a class="test">*</a><a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
                 <input type="date" name="coach_appointmentDate" class="form-control" placeholder="date" required>
               </div>
@@ -209,13 +209,13 @@
               </div>
           </div>
             <div class='form-group clearfix'>
-            <label for='coach_contactAddress' class='col-xs-3'>Contact Address:</label>
+            <label for='coach_contactAddress' class='col-xs-3'>Contact Address:<a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
                 <input type="text" name="coach_contactAddress" class="form-control" placeholder="Contaxt Address" required>
             </div>
           </div>
              <div class='form-group'>
-            <label for='coach_type' class='col-xs-3'>Type:</label>
+            <label for='coach_type' class='col-xs-3'>Type:<a class="test">*</a></label>
               <div class="col-xs-9 input-group">
                <input name="coach_type" type="radio" value="Paid" class="pull-left">Paid</br>
                <input name="coach_type" type="radio" value="Volunteer">Volunteer
@@ -243,7 +243,7 @@
         <form action="{{route('update_coach')}}" method="post">
           {{csrf_field()}}
             <div class='form-group clearfix'>
-                  <label for='coach_title' class='col-xs-3'>Title</label>
+                  <label for='coach_title' class='col-xs-3'>Title:</label>
                     <div class='col-xs-9 input-group'>
                       <select class='form-control' name='coach_title' id="coach_title" required>
                         <option></option>
@@ -294,7 +294,7 @@
               <div class='form-group clearfix'>
             <label for='coach_phone' class='col-xs-3'>Phone:</label>
               <div class='col-xs-9 input-group'>
-                <input type="text" name="coach_phone" class="form-control" placeholder="enter phone number" id="coach_phone">
+                <input type="text" name="coach_phone" class="form-control" placeholder="enter phone number" id="coach_phone" value="0">
               </div>
           </div>
             <div class='form-group clearfix'>
@@ -310,7 +310,7 @@
               </div>
           </div>
             <div class='form-group clearfix'>
-            <label for='coach_passport' class='col-xs-3'>Passport NO:</label>
+            <label for='coach_passport' class='col-xs-3'>Passport NO/CID:</label>
               <div class='col-xs-9 input-group'>
                 <input type="text" name="coach_passport" class="form-control" placeholder="enter passport number" id="coach_passport" required>
               </div>
@@ -440,14 +440,9 @@
 //phone and mobile number validation during add 
   $('#save1').click(function()
   {
-    var coach_phone=$('#coach_phone1').val();
+    
     var coach_mobile=$('#coach_mobile1').val();
-    if(!$.isNumeric(coach_phone) || coach_phone.length!=8)
-    {
-      alert('Please enter 8 digit phone number');
-      return false;
-    }
-    else if(!$.isNumeric(coach_mobile) || coach_mobile.length!=8)
+    if(!$.isNumeric(coach_mobile) || coach_mobile.length!=8)
     {
       alert('Please enter 8 digit mobile number');
       return false;
@@ -458,14 +453,9 @@
 //mobile number and phone validation on edit
 $('#update').click(function()
 {
-  var coach_phone=$('#coach_phone').val();
+  
   var coach_mobile=$('#coach_mobile').val();
-  if(!$.isNumeric(coach_phone) || coach_phone.length!=8)
-  {
-    alert('Please enter 8 digit phone number');
-    return false;
-  }
-  else if(!$.isNumeric(coach_mobile) || coach_mobile.length!=8)
+ if(!$.isNumeric(coach_mobile) || coach_mobile.length!=8)
   {
     alert('Please enter 8 digits mobile number');
     return false;
@@ -474,6 +464,12 @@ $('#update').click(function()
     return true;
 });
 </script>
+<style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection
 @section('footer')
 <div class="container">

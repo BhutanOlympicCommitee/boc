@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tbl_athlete_medical;
+use App\Athlete_qualification;
 use Auth;
 use Session;
 
@@ -28,7 +29,19 @@ class AthleteMedicalController extends Controller
     public function store(Request $request)
     {
         $athlete= new Tbl_athlete_medical;
-        $athlete->athlete_id=Session::get('key');
+        if(!empty(Session::get('athlete_id2')))
+        {
+            $athlete->athlete_id=Session::get('athlete_id2');
+            Session::forget('athlete_id2');
+        }
+        else if(!empty(Session::get('athlete_id4')))
+        {
+            $athlete->athlete_id=Session::get('athlete_id4');
+        }
+        else
+        {
+            $athlete->athlete_id=Session::get('key');
+        }
         $athlete->date=$request->date;
         $athlete->checked=$request->checked;
         $athlete->weight=$request->weight;
@@ -37,8 +50,8 @@ class AthleteMedicalController extends Controller
         $athlete->remarks=$request->remarks;
         $athlete->created_by=Auth::user()->id;
         $athlete->save();
-        Session::flash('success', 'created successfully');
-        return redirect()->route('athlete_qualification.create');
+        Session::flash('success', 'Medical record created successfully');
+        return redirect()->route('athlete_qualification.index');
     }
     /**
      * Display the specified resource.
@@ -73,14 +86,9 @@ class AthleteMedicalController extends Controller
         $athlete->remarks=$request->remarks;
         $athlete->created_by=Auth::user()->id;
         $athlete->save();
-        if($request->update1=='form1')
-        {
-           return redirect()->route('athlete_info.index')->with('alert-success','Data Has been Updated!');    
-        }
-       else
-        {
-            return redirect()->route('athlete_qualification.edit',$athlete->qualification->qualification_id)->with('alert-success','Data Has been Updated!');  
-        }    
+        Session::put('athlete_id3',$athlete->athlete_id);
+        return redirect()->route('athlete_qualification.index');     
+           
     }
 }
 

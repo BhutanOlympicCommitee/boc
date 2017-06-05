@@ -23,8 +23,9 @@
             </div>
             <div class="bootstrap-admin-panel-content">
             <ul class='nav nav-pills nav-justified'>
+               <li id='newSchedule'><a href="#" data-toggle="tab">Training Schedule</a></li>
               <li class='active'><a href="#" data-toggle="tab">Training Information</a></li>
-              <li id='newSchedule'><a href="#" data-toggle="tab">Training Schedule</a></li>
+             
               <li id='attendance'><a href="#" data-toggle="tab">Training Attendance</a></li>
             </ul>
               <div style='margin-top: 20px'></div>
@@ -52,7 +53,9 @@
                       <div class='col-xs-10 input-group'>
                         <select class='form-control' name='type'>
                           <option value="" disabled selected>Select sport</option>
-                          <?php $associated_sport=App\Associated_Sport::all();
+                          <?php 
+                          $user=App\User::where('id',Session::get('user_id'))->first();
+                          $associated_sport=App\Associated_Sport::where('sport_org_id',$user->sport_organization)->get();
                             foreach($associated_sport as $sport):
                               ?>
                             <option value={{$sport->sport_id}}>{{$sport->sport_name}}</option>
@@ -65,7 +68,9 @@
                       <div class='col-xs-10 input-group'>
                         <select class='form-control' name='coach'>
                           <option value="" disabled selected>Select coach</option>
-                          <?php $coach=App\Tbl_Coach::all();
+                          <?php 
+                          $user=App\User::where('id',Session::get('user_id'))->first();
+                          $coach=App\Tbl_Coach::where('sport_org_id',$user->sport_organization)->get();
                             foreach($coach as $coach):
                               ?>
                             <option value={{$coach->coach_id}}>{{$coach->coach_fname.' '.$coach->coach_mname.' '.$coach->coach_lname}}</option>
@@ -227,7 +232,14 @@
           $("#occupation").val(result.athlete_occupation);
           $("#birth_date").val(result.athlete_dob);
           $("#birth_place").val(result.athlete_pob);
-          $("#gender").val(result.athlete_gender);
+          if(result.athlete_gender==1)
+          {
+             $("#gender").val('male');
+          }
+          else
+          {
+            $("#gender").val('female');
+          }
           $("#height").val(result.athlete_height);
           $("#weight").val(result.athlete_weight);
           $("#father_name").val(result.athlete_fathername);

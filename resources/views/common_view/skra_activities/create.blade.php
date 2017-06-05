@@ -36,7 +36,7 @@
                 <div class='form-group'>
                   <label for='five_year' class='col-xs-3'>Five Year Plan:<a class="test">*</a></label>
                     <div class='col-xs-9 input-group'>
-                      <select class='form-control' name='five_year' id='five_year'>
+                      <select class='form-control' name='five_year' id='five_year' required>
                       <option value="" disabled selected>Select five year plan:<a class="test">*</a></option>
                         <?php 
                             $fiveYearPlan=App\EnumFiveYearPlan::all();
@@ -53,7 +53,7 @@
                 <div class='form-group'>
                   <label for='skra' class='col-xs-3'>AKRA:<a class="test">*</a></label>
                     <div class='col-xs-9 input-group'>
-                       <select class='form-control' name='skra' id='skra1'>
+                       <select class='form-control' name='skra' id='skra1' required>
                          <option value=""></option>
                       </select>
                     </div>
@@ -61,7 +61,7 @@
                 <div class='form-group'>
                   <label for='type' class='col-xs-3'>Sport Organization:<a class="test">*</a></label>
                     <div class='col-xs-9 input-group'>
-                      <select class='form-control' name='type' id='type'>
+                      <select class='form-control' name='type' id='type' required>
                         <option value="" disabled selected>Select sport organization</option>
                           <?php 
                             $sports=App\Sport_Organization::all();
