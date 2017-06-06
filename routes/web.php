@@ -302,3 +302,5 @@ Route::get('getDay','TrainingInformationController@getDay')->name('get_day');
 
 Route::get('getOccupation','AthleteInformationController@getOccupation')->name('get_occupation');
 
+Route::get('get_gender','AthleteInformationController@getGender')->name('get_gender');
+

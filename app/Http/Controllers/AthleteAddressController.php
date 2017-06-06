@@ -60,11 +60,9 @@ class AthleteAddressController extends Controller
         $athlete->Caddress_contactAddress=$request->caddress;
         $athlete->created_by=Auth::user()->id;
        $athlete->save();
-<<<<<<< HEAD
+
        Session::flash('success', 'Athleteaddress has been created successfully');
-=======
-       Session::flash('success', 'Athlete address has been created successfully');
->>>>>>> 2c0bf18ac5d934c3dfc9b867aff6340bece32235
+
        if(Tbl_athlete_medical::where('athlete_id',$athlete->athlete_id)->exists())
         {
              return redirect()->route('athlete_medical.edit',$athlete->medical->medical_id)->with('alert-success','Data Has been Updated!');  
@@ -72,11 +70,7 @@ class AthleteAddressController extends Controller
         }
         else
         {
-<<<<<<< HEAD
             Session::put('athlete_id4',$athlete->athlete_id);
-=======
-            Session::put('athlete_id2',$athlete->athlete_id);
->>>>>>> 2c0bf18ac5d934c3dfc9b867aff6340bece32235
             return redirect()->route('athlete_medical.create');
         } 
     }
@@ -120,11 +114,7 @@ class AthleteAddressController extends Controller
         }
         else
         {
-<<<<<<< HEAD
             Session::put('athlete_id2',$athlete->athlete_id);
-=======
-            Session::put('athlete_id2',$id);
->>>>>>> 2c0bf18ac5d934c3dfc9b867aff6340bece32235
             return redirect()->route('athlete_medical.create');
         } 
         //return redirect()->route('athlete_medical.edit',$athlete->medical->medical_id)->with('alert-success','Data Has been Updated!'); 
