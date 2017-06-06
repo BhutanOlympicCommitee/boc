@@ -95,4 +95,5 @@ class HomeController extends Controller
 
         return view('federationdash',['athlete_info'=>$athlete_info,'proposed_activity'=>$proposed_activity,'coach'=>$coach,'Training_schedule'=>$Training_schedule]);
     }
+    
 }

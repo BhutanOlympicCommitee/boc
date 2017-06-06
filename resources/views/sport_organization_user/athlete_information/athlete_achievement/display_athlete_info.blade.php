@@ -272,6 +272,7 @@
                   <option disabled selected>Select</option>
                   <?php 
                     $EnumGame=App\Enum_event_type_table::all();
+
                     foreach($EnumGame as $games):
                   ?>
                   <option value="{{$games->id}}">{{$games->event_name}}</option>
@@ -367,6 +368,8 @@
     var view_address=$('#view_address1').val();
     var view_sport=$('#view_associated_sport1').val();
     var image_path='{{URL::asset('/images/')}}';
+    var url='{{route("get_occupation")}}';
+    var url1='{{route("get_gender")}}';
     $.ajax({
         url: view_url,
         type:"GET", 
@@ -376,10 +379,31 @@
           $("#title").val(result.athlete_title);
           $("#fname").val(result.athlete_fname);
           $("#lname").val(result.athlete_lname);
-          $("#occupation").val(result.athlete_occupation);
+          var occupation=result.athlete_occupation;
+          $.ajax({
+            url:url,
+            type:"GET",
+            data:{'id':occupation},
+            success:function(result)
+            {
+               $("#occupation").val(result.occupation_name);
+            }
+          });
+         
+
           $("#birth_date").val(result.athlete_dob);
           $("#birth_place").val(result.athlete_pob);
-          $("#gender").val(result.athlete_gender);
+
+          var gender=result.athlete_gender;
+          $.ajax({
+            url:url1,
+            type:'GET',
+            data:{"id":gender},
+            success:function(result)
+            {
+              $("#gender").val(result.gender);
+            }
+          });
           $("#height").val(result.athlete_height);
           $("#weight").val(result.athlete_weight);
           $("#father_name").val(result.athlete_fathername);

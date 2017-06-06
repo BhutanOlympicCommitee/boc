@@ -106,15 +106,33 @@
             <label for='external' class='col-xs-3'>External:<a class="test">*</a></label>
               <div class='input-group col-xs-9'>
                 <input type="text" name="external"  class="form-control" placeholder="Enter External Funding here" required>
-              </div>
+
+          
           </div>
+         <div class="form-group clearfix">
+          <label for="unit"  class='col-xs-3'>Units<a class="test">*</a></label> 
+          <div class='col-xs-9 input-group'>
+            <select name="unit" id="unit" class="form-control">
+              <option value="0">
+                Select the KPI Unit
+              </option>
+              <?php 
+              $units = App\KPIUnit::all();
+              foreach($units as $unit):
+                ?>
+              <option value="{{$unit->unit_id}}">{{$unit->unit_name}}</option>
+            <?php endforeach;?>
+          </select> 
         </div>
+
         <div class='form-group clearfix'>
             <label for='unit' class='col-xs-3'>Units:<a class="test">*</a></label>
               <div class='input-group col-xs-9'>
                 <input type="text" name="unit"  class="form-control" placeholder="Enter Unit here" required>
               </div>
           </div>
+
+      </div>
 
           <div class='form-group clearfix'>
             <label for='baseline' class='col-xs-3'>Baseline:<a class="test">*</a></label>

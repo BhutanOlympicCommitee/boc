@@ -111,4 +111,10 @@ class AchievementAndDisplinaryAction extends Controller
              return view('sport_organization_user.athlete_information.athlete_achievement.display_athlete_info',compact('athlete_info'));
         }
     }
+     public function athleteReport(){
+        return view('common_view.Reports.athleteReport');
+    }
+    public function details(){
+        return view('common_view.Reports.details');
+    }
 }

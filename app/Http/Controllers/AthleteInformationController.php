@@ -11,6 +11,9 @@ use Image;
 use App\Associated_Sport;
 use App\User;
 use App\Athlete_address;
+use App\Athlete_occupation;
+use App\EnumGender;
+
 class AthleteInformationController extends Controller
 {
    
@@ -40,7 +43,20 @@ class AthleteInformationController extends Controller
             return view('sport_organization_user.athlete_information.athlete_info.index',compact('athlete'));
         }
         else{
-              $athlete=Athlete_bioinformation::all(); 
+
+              if(!empty($_GET['sport']))
+              {
+                $athlete=Athlete_bioinformation::where('athlete_associatedSport',$_GET[
+                    'sport'])->get(); 
+              }
+              else if(!empty($_GET['athlete_cid'])){
+                $athlete=Athlete_bioinformation::where('athlete_cid',$_GET['athlete_cid'])->get();
+              }
+              else
+              {
+                 $athlete=Athlete_bioinformation::all(); 
+              }
+
             return view('sport_organization_user.athlete_information.athlete_info.index',compact('athlete'));
         
         }
@@ -135,7 +151,10 @@ class AthleteInformationController extends Controller
             $athlete->athlete_photo = $file->getClientOriginalName();
         }
         $athlete->save();
-        if(Athlete_address::where('athlete_id',$id)->exists())
+
+
+        if(Athlete_address::where('athlete_id',$athlete->athlete_id)->exists())
+
         {
              return redirect()->route('athlete_address.edit',$athlete->address->address_id)->with('alert-success','Data Has been Updated!');     
 
@@ -147,9 +166,6 @@ class AthleteInformationController extends Controller
         } 
         
     }
-
-
-
     public function updateAthleteFunction(Request $request)
     {
         $update_function=Athlete_bioinformation::findOrFail( $request->hidden_id);
@@ -157,5 +173,23 @@ class AthleteInformationController extends Controller
         $update_function->save();
         Session::flash('success', 'athlete_function updated successfully');
         return redirect()->route('team_master.index');
+    }
+
+    public function getOccupation(Request $request)
+    {
+        if($request->ajax()){
+            $id = $request->id;
+            $info = Athlete_occupation::where('occupation_id', $id)->first();
+            return response()->json($info);
+        }
+    }
+
+    public function getGender(Request $request)
+    {
+        if($request->ajax()){
+            $id = $request->id;
+            $info = EnumGender::where('id', $id)->first();
+            return response()->json($info);
+        }
     }
 }

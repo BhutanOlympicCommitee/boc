@@ -41,7 +41,7 @@
                       {{ Session::get('success') }}
                     </div>
                 @endif
-              <form action="{{route('athlete_address.update',$athlete->athlete_id)}}" method="post">
+              <form action="{{route('athlete_address.update',$athlete->address_id)}}" method="post">
                  <input name="_method" type="hidden" value="PATCH">
                 {{csrf_field()}}
                 <div>Permanent Address</div>

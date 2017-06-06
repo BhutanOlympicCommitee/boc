@@ -140,7 +140,7 @@ CREATE TABLE `athlete_addresses` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`address_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,7 +150,7 @@ CREATE TABLE `athlete_addresses` (
 LOCK TABLES `athlete_addresses` WRITE;
 /*!40000 ALTER TABLE `athlete_addresses` DISABLE KEYS */;
 INSERT INTO `athlete_addresses` VALUES (2,4,'10',NULL,'85','barp','14','12','pema@gmail.com',12345671,12345678,'thimphu',7,'2017-04-24 21:46:30','2017-04-24 21:46:30');
-INSERT INTO `athlete_addresses` VALUES (3,5,'14','12','134','chang','19',NULL,'sangay@gmail.com',12345672,17678908,'wangdue',7,'2017-04-24 21:48:11','2017-04-24 21:48:11');
+INSERT INTO `athlete_addresses` VALUES (3,5,'2','','','rinchending','','','',12345670,17678900,'',7,'2017-04-24 21:48:11','2017-05-25 10:16:21');
 INSERT INTO `athlete_addresses` VALUES (4,6,'14','','137','kawang','13','11','sdsdf@dfgh',12345678,17678908,'Sarpang',7,'2017-04-25 00:30:17','2017-04-25 00:30:17');
 INSERT INTO `athlete_addresses` VALUES (5,7,'1','','2','choekhor','3','','wangmo@gmail.com',12345673,17678908,'hgjjk',7,'2017-04-25 02:33:55','2017-04-25 02:33:55');
 INSERT INTO `athlete_addresses` VALUES (7,7,'4','','31','khamaed','2','1','pema@gmail.com',12345678,17678908,'hjjklliu',7,'2017-04-25 02:53:17','2017-04-25 02:53:17');
@@ -158,6 +158,7 @@ INSERT INTO `athlete_addresses` VALUES (8,7,'1','','3','chume','3','','pema@gmai
 INSERT INTO `athlete_addresses` VALUES (9,8,'11','6','96','Sjong','9','4','02042013012.cst@rub.edu.bt',17408525,17408525,'College of Science and technology, Royal University of Bhutan',7,'2017-04-28 23:48:35','2017-04-28 23:48:35');
 INSERT INTO `athlete_addresses` VALUES (10,9,'11','6','96','Radhi','14','12','02042013012.cst@rub.edu.bt',17408522,17408527,'College of Science and technology, Royal University of Bhutan',7,'2017-04-28 23:53:59','2017-04-28 23:53:59');
 INSERT INTO `athlete_addresses` VALUES (11,10,'1',NULL,'2','dasd','3','3','02042013012.cst@rub.edu.bt',17408527,17408520,'College of Science and technology, Royal University of Bhutan',6,'2017-05-16 22:38:21','2017-05-16 22:38:21');
+INSERT INTO `athlete_addresses` VALUES (12,3,'2',NULL,'6','rinchending','6','','',12345670,17678900,'',6,'2017-05-25 10:12:29','2017-05-25 10:12:29');
 /*!40000 ALTER TABLE `athlete_addresses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -277,7 +278,6 @@ DROP TABLE IF EXISTS `athlete_qualifications`;
 CREATE TABLE `athlete_qualifications` (
   `qualification_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `athlete_id` int(11) NOT NULL,
-  `address_id` int(11) NOT NULL,
   `qualification_level` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `qualification_description` varchar(1500) COLLATE utf8_unicode_ci NOT NULL,
   `qualification_year` int(11) NOT NULL,
@@ -296,12 +296,12 @@ CREATE TABLE `athlete_qualifications` (
 
 LOCK TABLES `athlete_qualifications` WRITE;
 /*!40000 ALTER TABLE `athlete_qualifications` DISABLE KEYS */;
-INSERT INTO `athlete_qualifications` VALUES (3,3,3,'2','Bachelor in IT',2014,8,'College of Science and Technology',7,'2017-04-24 21:44:54','2017-04-24 21:44:54');
-INSERT INTO `athlete_qualifications` VALUES (4,4,4,'2','Bachelor in Environment Science',2015,8,'Sherabtse College of education',7,'2017-04-24 21:46:52','2017-04-24 21:46:52');
-INSERT INTO `athlete_qualifications` VALUES (5,5,5,'1','Master in Computer Science',2012,17,'Rama University',7,'2017-04-24 21:48:40','2017-04-24 21:48:40');
-INSERT INTO `athlete_qualifications` VALUES (6,6,6,'2','BE in civil engineering',2015,8,'College of Science and Technology',7,'2017-04-25 00:30:52','2017-04-25 00:30:52');
-INSERT INTO `athlete_qualifications` VALUES (7,9,9,'2','dasd',1966,4,'dasd',7,'2017-04-29 00:04:13','2017-04-29 00:04:13');
-INSERT INTO `athlete_qualifications` VALUES (8,10,10,'1','fefe',1964,17,'scsdcs',6,'2017-05-16 22:39:14','2017-05-16 22:39:14');
+INSERT INTO `athlete_qualifications` VALUES (3,3,'2','Bachelor in IT',2014,8,'College of Science and Technology',7,'2017-04-24 21:44:54','2017-04-24 21:44:54');
+INSERT INTO `athlete_qualifications` VALUES (4,4,'2','Bachelor in Environment Science',2015,8,'Sherabtse College of education',7,'2017-04-24 21:46:52','2017-04-24 21:46:52');
+INSERT INTO `athlete_qualifications` VALUES (5,5,'1','Master in Computer Science',2012,17,'Rama University',7,'2017-04-24 21:48:40','2017-04-24 21:48:40');
+INSERT INTO `athlete_qualifications` VALUES (6,6,'2','BE in civil engineering',2015,8,'College of Science and Technology',7,'2017-04-25 00:30:52','2017-04-25 00:30:52');
+INSERT INTO `athlete_qualifications` VALUES (7,9,'2','dasd',1966,4,'dasd',7,'2017-04-29 00:04:13','2017-04-29 00:04:13');
+INSERT INTO `athlete_qualifications` VALUES (8,10,'1','fefe',1964,17,'scsdcs',6,'2017-05-16 22:39:14','2017-05-16 22:39:14');
 /*!40000 ALTER TABLE `athlete_qualifications` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1480,7 +1480,7 @@ CREATE TABLE `tbl_athlete_medicals` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`medical_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1491,6 +1491,7 @@ LOCK TABLES `tbl_athlete_medicals` WRITE;
 /*!40000 ALTER TABLE `tbl_athlete_medicals` DISABLE KEYS */;
 INSERT INTO `tbl_athlete_medicals` VALUES (1,9,'2017-04-03','Dorji',32.000,123.000,'Healthy','fdafasf',7,'2017-04-29 00:03:57','2017-04-29 00:03:57');
 INSERT INTO `tbl_athlete_medicals` VALUES (2,10,'2017-05-16','Dorji',34.000,125.000,'Average','gdgd',6,'2017-05-16 22:39:02','2017-05-16 22:39:02');
+INSERT INTO `tbl_athlete_medicals` VALUES (3,3,'2017-05-26','Dr.dorji',34.000,156.000,'Healthy','kjlllll',6,'2017-05-25 10:22:26','2017-05-25 10:22:26');
 /*!40000 ALTER TABLE `tbl_athlete_medicals` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1937,9 +1938,9 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES (1,'admin','norvan012@gmail.com','$2y$10$zaAOCVRlrEGwJGmRh3WdreENqmvkcLS3iPPsEBTTgNP1zGQ5apPOO',1,'6','x1YyGWkuIkyA8FoabRQh4QXDU1bHsWc8HNlWy5AQW4B8i9F8KhKq50Ez7LWP','2017-03-24 23:02:03','2017-05-24 08:34:51');
-INSERT INTO `users` VALUES (6,'boc','sanglim2012@gmail.com','$2y$10$y9CWdW1KjGX9Zxf7c4du8O13MCKaA9HSmTmfBADuH5EDfDis9fI6O',2,'6','NfNBrOTt0xiiHAeEaxh6mCIe4F11xPu4oDPfSDJhXWyPIhQPo7O6UD8Xryhk','2017-04-24 03:43:42','2017-05-24 20:35:54');
-INSERT INTO `users` VALUES (7,'football federation','footballfederation@gov.bt','$2y$10$aqR81snqtDnUkztALhMXK.q1EFgQlWmss4zU81943Ze4pdxXy9MKq',4,'1','o0z4xwi0EEmao4XPllgPmpKJMYEKkaP9TalleckmbsxxShNugqmMDokl2hXO','2017-04-24 03:54:48','2017-05-25 00:46:03');
-INSERT INTO `users` VALUES (8,'basketball federation','bhutanbasketball@gov.bt','$2y$10$NzosA8xpP3u1.15SxSXKMe8v04Py4qKt3lRl297rDRo4VgQQpRlEW',4,'2','QkeGjSTx28FLj5upgpUuoNPq4XahsMn69bauLtCA2z6n7m8Ds0wUFZugSNW8','2017-04-24 04:00:44','2017-05-24 22:30:50');
+INSERT INTO `users` VALUES (6,'boc','sanglim2012@gmail.com','$2y$10$y9CWdW1KjGX9Zxf7c4du8O13MCKaA9HSmTmfBADuH5EDfDis9fI6O',2,'6','HBFyJRAJ9WlxsNFAgPKRdXcYFISL6rREpDUPPC45LZ6AGvm3wnVWWWeNuu0m','2017-04-24 03:43:42','2017-05-25 20:57:35');
+INSERT INTO `users` VALUES (7,'football federation','footballfederation@gov.bt','$2y$10$aqR81snqtDnUkztALhMXK.q1EFgQlWmss4zU81943Ze4pdxXy9MKq',4,'1','BfZjJSqSpnttyCOa1U9da32Y7HUiVIvSfJjZgWVLUiPuKduBYYCJ95MQKIPl','2017-04-24 03:54:48','2017-05-25 20:57:58');
+INSERT INTO `users` VALUES (8,'basketball federation','bhutanbasketball@gov.bt','$2y$10$NzosA8xpP3u1.15SxSXKMe8v04Py4qKt3lRl297rDRo4VgQQpRlEW',4,'2','X2P09wh7EmhqQLUVVOwHngpud22sjyJA6Mw8k2dJ3UaKUrCi9H7F7YnJqqZ0','2017-04-24 04:00:44','2017-05-25 09:23:23');
 INSERT INTO `users` VALUES (9,'table tenis federation','tabletanis@gov.bt','$2y$10$Xf1op7t6ZL/c.8K/TxtVueRos8BElj3ZIDF2Mp4nDAsto6yuNlC8q',4,'3','oB5rX73LGLoXDTlcynrb155QwOJldHYlmWneDvoWdjy2YAYFRrQTnvIz7vKr','2017-04-24 04:02:07','2017-04-24 23:50:06');
 INSERT INTO `users` VALUES (10,'BTFEC/20100701/C-0001','choephyel@bhutantrustfund.bt','$2y$10$zNit3z6hf6/OwS9i35A6LO8Kzgbu0.p8SzDpaaDaoRTXwrYNmF7ze',2,'1','ANEsueioX9VtWzZl8yF4DfhTdTcBdOAv4DE77RmtVQ7ml8r964gcPIArui0i','2017-05-19 04:53:51','2017-05-19 11:10:29');
 INSERT INTO `users` VALUES (12,'20110318','admin123@gmail.com','$2y$10$eMSWwS9ySj3Oornu7Nou/OIDezmALsmplp7/NxtZC4gT4SJTzl4Ne',4,'1','2CJmX31JUepgBh2Op0e1iJOfs8gZ28JziT3c3MkCPd4FDoQvofsEKxWj9sSo','2017-05-23 20:39:53','2017-05-23 23:13:01');
@@ -1955,4 +1956,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-25 14:21:00
+-- Dump completed on 2017-05-26  9:58:35

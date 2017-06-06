@@ -36,9 +36,10 @@
                                     <li><a href="{{route('gewog_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Gewog</span></a></li>
                                     <li><a href="{{route('associated_sport_types.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Types of Sport in BOC</span></a></li>
                                 
-                                </li>
+                                
+
                                 </ul>
-                            </li>
+                                </li>
                             @endif
                             @if($user->role_id!=1)
                                 <li id="sport_organization"><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Sport Organization Profile</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
@@ -82,6 +83,7 @@
                                 <li id="training"><a href="#" class="tree-toggle nav-header"><i class="pull-left glyphicon glyphicon-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Training Information</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
                                     <ul class="nav nav-list tree bullets">
                                         <li><a href="{{route('training.create')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Training Info</span></a></li>
+
                                     </ul>
                                 </li>
                             @endif

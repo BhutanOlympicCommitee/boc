@@ -38,7 +38,19 @@ class AthleteQualificationController extends Controller
     public function store(Request $request)
     {
         $athlete= new Athlete_qualification;
-        if(!empty(Session::get('athlete_id3')))
+
+        if(!empty(Session::get('athlete_id2')))
+        {
+            $athlete->athlete_id=Session::get('athlete_id2');
+            Session::forget('athlete_id2');
+        }
+        else if(!empty(Session::get('athlete_id4')))
+        {
+            $athlete->athlete_id=Session::get('athlete_id4');
+            Session::forget('athlete_id4');
+        }
+        else if(!empty(Session::get('athlete_id3')))
+
         {
             $athlete->athlete_id=Session::get('athlete_id3');
             Session::forget('athlete_id3');
@@ -55,7 +67,7 @@ class AthleteQualificationController extends Controller
         $athlete->created_by=Auth::user()->id;
         $athlete->save();
         Session::flash('success', 'Athlete qualification has been created successfully');
-       return redirect()->route('athlete_qualification.index');
+        return redirect()->route('athlete_qualification.index');
     }
     
     /**

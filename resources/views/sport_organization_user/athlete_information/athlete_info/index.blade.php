@@ -35,12 +35,12 @@
                   });
                 </script>
                 @else
-                        <form action='' method='post' id="view">
+                        <form action='{{route("athlete_info.index")}}' method='get' id="view">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class='form-group'>
                                 <label class='col-xs-3'>Associated Sport:</label>
                                 <div class='col-xs-7 input-group'>
-                                    <select name='org_type' class='form-control'>
+                                    <select name='sport' class='form-control'>
                                         <option value="" disabled selected>Select</option>
                                           <?php 
                                               $org_type=App\Associated_Sport::all();
@@ -56,7 +56,8 @@
                             <div class='form-group'>
                                 <label class='col-xs-3'>Athlete Name:</label>
                                 <div class='col-xs-7 input-group'>
-                                    <input type="text" name="athlete_fname" class='form-control'>
+
+                                    <input type="text" name="name" class='form-control'>
                                 </div>
                             </div>
                             <div class='form-group'>
@@ -66,15 +67,17 @@
                                 </div>
                             </div>
                             <div class='form-group'>
-                                <button type='submit' class='btn btn-primary col-xs-offset-9'>Search</button>
+                                <button type='submit' name='search' class='btn btn-primary col-xs-offset-9'>Search</button>
                             </div>
                         </form>
+                       
                             @if(Session::has('success'))
                                 <div class="alert alert-success">
                                    {{ Session::get('success') }}
                                 </div>
                             @endif
                             @endif
+                             @if(isset($_GET['search']))
                             <div class="table-responsive">
                             <table class="table table-bordered table-striped" id="table1">
                                 <thead>
@@ -109,10 +112,12 @@
                                 @endforeach
                                 </tbody>
                             </table>
+
                             <input type="hidden" name="view_details" id='view_details' value='{{route('show_athlete_info')}}'>
                           <input type="hidden" name="view_address" id='view_address' value='{{route('show_athlete_address')}}'>
                           <input type="hidden" name="view_associated_sport" id='view_associated_sport' value='{{route('show_associated_sport')}}'>
                         </div>
+                          @endif
                         </div>
                     </div>
                 </div>
@@ -198,6 +203,8 @@
     var view_address=$('#view_address').val();
     var view_sport=$('#view_associated_sport').val();
     var image_path='{{URL::asset('/images/')}}';
+    var url='{{route("get_occupation")}}';
+    var url1='{{route("get_gender")}}';
     $.ajax({
         url: view_url,
         type:"GET", 
@@ -206,10 +213,29 @@
           $("#title").val(result.athlete_title);
           $("#fname").val(result.athlete_fname);
           $("#lname").val(result.athlete_lname);
-          $("#occupation").val(result.athlete_occupation);
           $("#birth_date").val(result.athlete_dob);
           $("#birth_place").val(result.athlete_pob);
-          $("#gender").val(result.athlete_gender);
+           var occupation=result.athlete_occupation;
+          $.ajax({
+            url:url,
+            type:"GET",
+            data:{'id':occupation},
+            success:function(result)
+            {
+               $("#occupation").val(result.occupation_name);
+            }
+          });
+           var gender=result.athlete_gender;
+          $.ajax({
+            url:url1,
+            type:'GET',
+            data:{"id":gender},
+            success:function(result)
+            {
+              $("#gender").val(result.gender);
+            }
+          });
+         
           $("#height").val(result.athlete_height);
           $("#weight").val(result.athlete_weight);
           $("#father_name").val(result.athlete_fathername);

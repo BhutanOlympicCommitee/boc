@@ -34,6 +34,10 @@ class AthleteMedicalController extends Controller
             $athlete->athlete_id=Session::get('athlete_id2');
             Session::forget('athlete_id2');
         }
+        else if(!empty(Session::get('athlete_id4')))
+        {
+            $athlete->athlete_id=Session::get('athlete_id4');
+        }
         else
         {
             $athlete->athlete_id=Session::get('key');
@@ -73,7 +77,7 @@ class AthleteMedicalController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $athlete = Tbl_athlete_medical::findOrFail($id);
+         $athlete = Tbl_athlete_medical::where('athlete_id',$id)->first();
         $athlete->date=$request->date;
         $athlete->checked=$request->checked;
         $athlete->weight=$request->weight;
