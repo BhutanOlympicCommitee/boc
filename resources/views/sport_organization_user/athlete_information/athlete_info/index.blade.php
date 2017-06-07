@@ -35,7 +35,7 @@
                   });
                 </script>
                 @else
-                        <form action='{{route("athlete_info.index")}}' method='get' id="view">
+                        <form action='{{route("athlete_info.index")}}' method='get'>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class='form-group'>
                                 <label class='col-xs-3'>Associated Sport:</label>

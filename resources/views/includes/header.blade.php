@@ -1,7 +1,7 @@
-<nav class="navbar navbar-fixed-top" style="background-color:#66b9bf;">
+<nav class="navbar navbar-fixed-top" style="background-color:#008000;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"><img class="img-responsive" src="{{URL::asset('/images/b.png')}}" style="height:88px;width:750px"></img></a>
+      <a class="" href="#"><img class="img-responsive" src="{{URL::asset('/images/logo.png')}}" style="height:103px;width:760px;margin-left:273px;"></img></a>
     </div>
     <div>
     <ul class="nav navbar-nav navbar-right">
@@ -11,7 +11,7 @@
       @else
     </br>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color:black;">
             <b>{{ Auth::user()->emp_id }}</b> <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">

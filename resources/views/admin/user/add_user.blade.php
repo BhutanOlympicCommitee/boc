@@ -24,7 +24,7 @@
                  {{ csrf_field() }}
                   <?php 
                     $id=Session::get('employeeID');
-                     $serverName = "raika-pc\sql2012"; 
+                     $serverName = "192.168.1.100"; 
                       $connectionInfo = array( "Database"=>"boc", "UID"=>"sa", "PWD"=>"P@ssw0rd");
                       $conn = sqlsrv_connect( $serverName, $connectionInfo);
 
