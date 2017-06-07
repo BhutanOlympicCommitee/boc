@@ -3,19 +3,17 @@
 @include('includes.header')
 @endsection
 @section('side-bar')
-<div class="container">
   <div class="row">
       @include('includes.sidebar')
   </div>
-</div>
 @endsection
 @section('content')
-<div class="container">
+<div class="container-fluid">
   <div class="row">
         <!-- content -->
     <div class="col-md-12">
       <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-11 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
               <div class="text-muted bootstrap-admin-box-title clearfix">Edit Contact Person Information
@@ -70,9 +68,8 @@
                           </div>
                       </div>
                       <div class='form-group'>
-                        <div class="col-xs-11 col-xs-offset-2 input-group">
+                         <div class="col-xs-10 col-xs-offset-2 input-group">
                         <button type='submit' class='btn btn-primary col-xs-2' name='update1' value='form1' id='update'>Update</button>
-                        {{-- <a href="#Management-info" data-toggle="tab" class='btn btn-info col-xs-2 col-xs-offset-1 next2'>Next</a> --}}
                         <button type='submit' class='btn btn-info col-xs-2 col-xs-offset-1 next1' name='update1' value='form2' id='next'>Next</button>
                         <a href="#Management-info" data-toggle="tab" class='btn btn-default col-xs-2 col-xs-offset-1' id='skip'>Skip</a>
                           
@@ -102,8 +99,9 @@
             </div>
         </div>
     </div>
-</div>
-</br>
+    </div>
+    </div>
+  </br>
 </br>
 <script type="text/javascript">
     $(function()

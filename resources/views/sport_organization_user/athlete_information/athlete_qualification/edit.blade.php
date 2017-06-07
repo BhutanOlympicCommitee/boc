@@ -3,19 +3,17 @@
 @include('includes.header')
 @endsection
 @section('side-bar')
-<div class="container">
   <div class="row">
       @include('includes.sidebar')
   </div>
-</div>
 @endsection
 @section('content')
-<div class="container">
+<div class="container-fluid">
   <div class="row">
         <!-- content -->
     <div class="col-md-12">
       <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-11 col-md-offset-1">
           <div class="panel panel-default">
             <div class="panel-heading">
               <div class="text-muted bootstrap-admin-box-title clearfix">Edit athlete Qualification and Training Information<div class="pull-right">Athlete_id:{{Session::get('key')}}</div>
@@ -112,7 +110,7 @@
                 </div>
 
                 <div class="form-group">
-                  <div class="col-xs-9 col-xs-offset-8 input-group">
+                     <div class="col-xs-12 input-group" style='margin-top:20px'>
                        <button type='submit' class='btn btn-primary col-xs-2 glyphicon glyphicon-ok' name='update1' value='form1'>Update</button>
                       <a href="{{route('athlete_qualification.index')}}" class='btn btn-warning col-xs-2 col-xs-offset-1 glyphicon glyphicon-remove'>Cancel</a>
                   </div>

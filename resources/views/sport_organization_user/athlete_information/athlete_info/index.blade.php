@@ -3,19 +3,17 @@
 @include('includes.header')
 @endsection
 @section('side-bar')
-<div class="container">
     <div class="row">
         @include('includes.sidebar')
     </div>
-</div>
 @endsection
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <!-- content -->
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-11 col-md-offset-1">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="text-muted bootstrap-admin-box-title clearfix">Athlete Information Details
@@ -23,18 +21,7 @@
                             </div>
                         </div>
                         <div class="bootstrap-admin-panel-content">
-                <?php 
-              $user_id=session('user_id');
-              $user=App\User::find($user_id);
-                ?>
-              @if($user->role_id==4)
-                <script type="text/javascript">
-                  $(function()
-                  {
-                    $('#view').hide();
-                  });
-                </script>
-                @else
+               
                         <form action='{{route("athlete_info.index")}}' method='get'>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class='form-group'>
@@ -75,7 +62,6 @@
                                 <div class="alert alert-success">
                                    {{ Session::get('success') }}
                                 </div>
-                            @endif
                             @endif
                              @if(isset($_GET['search']))
                             <div class="table-responsive">
