@@ -6,9 +6,9 @@
 </br>
 </br>
 </br>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-8" style='margin-left:30px'>
+        <div class="col-md-8" style='margin-left:65px'>
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Login</strong></div>
                 <div class="panel-body">

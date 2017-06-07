@@ -3,13 +3,12 @@
 @include('includes.header')
 @endsection
 @section('side-bar')
-<div class="container">
     <div class="row">
         @include('includes.sidebar')
     </div>
-</div>
 @endsection
 @section('content')
+<div class="container-fluid">
     <div class="row">
         <!-- content -->
         <div class="col-md-12">
