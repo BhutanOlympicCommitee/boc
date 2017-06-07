@@ -49,14 +49,30 @@
               <div class='col-xs-10 input-group'>
                 <select class='form-control' name='type1' id='type1' required>
                   <option disabled selected>Select Dzongkhag</option>
-                  <?php 
-                    $dzongkhag=App\MstDzongkhag::all();
-                    foreach($dzongkhag as $dzongkhags):
-                  ?>
-                  <option value="{{$dzongkhags->dzongkhag_id}}">{{$dzongkhags->dzongkhag_name}}</option>
-                  <?php 
-                    endforeach
-                  ?>
+                   <?php 
+                  $serverName = "192.168.1.100"; 
+                  $connectionInfo = array( "Database"=>"boc", "UID"=>"sa", "PWD"=>"P@ssw0rd");
+                  $conn = sqlsrv_connect( $serverName, $connectionInfo);
+                  if( $conn )
+                  {
+                     $sql="SELECT * from MASTER.mstDzonkhag";
+                     $stmt = sqlsrv_query( $conn, $sql );
+                      if( $stmt === false) 
+                      {
+                          die( print_r( sqlsrv_errors(), true) );
+                      }
+                      while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) 
+                      {
+                        echo '<option value='.$row["DzonkhagID"].'>'.$row['Name'].'</option>';
+                      }
+                      sqlsrv_free_stmt( $stmt);
+                      }
+                      else
+                      {
+                       echo "Connection could not be established.<br />";
+                       die( print_r( sqlsrv_errors(), true));          
+                      }
+                ?>
                 </select>
               </div>
           </div>
@@ -87,15 +103,31 @@
             <label for='type' class='col-xs-2'>Dzongkhag:<a class="test">*</a></label>
               <div class='col-xs-10 input-group'>
                 <select class='form-control' name='type' id='type'required>
-                  <option></option>
+                  <option disabled selected></option>
                   <?php 
-                    $dzongkhag=App\MstDzongkhag::all();
-                    foreach($dzongkhag as $dzongkhags):
-                  ?>
-                  <option value="{{$dzongkhags->dzongkhag_id}}">{{$dzongkhags->dzongkhag_name}}</option>
-                  <?php 
-                    endforeach
-                  ?>
+                  $serverName = "192.168.1.100"; 
+                  $connectionInfo = array( "Database"=>"boc", "UID"=>"sa", "PWD"=>"P@ssw0rd");
+                  $conn = sqlsrv_connect( $serverName, $connectionInfo);
+                  if( $conn )
+                  {
+                     $sql="SELECT * from MASTER.mstDzonkhag";
+                     $stmt = sqlsrv_query( $conn, $sql );
+                      if( $stmt === false) 
+                      {
+                          die( print_r( sqlsrv_errors(), true) );
+                      }
+                      while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) 
+                      {
+                        echo '<option value='.$row["DzonkhagID"].'>'.$row['Name'].'</option>';
+                      }
+                      sqlsrv_free_stmt( $stmt);
+                      }
+                      else
+                      {
+                       echo "Connection could not be established.<br />";
+                       die( print_r( sqlsrv_errors(), true));          
+                      }
+                ?>
                 </select>
               </div>
           </div>
