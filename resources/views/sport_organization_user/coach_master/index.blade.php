@@ -162,13 +162,32 @@
           <label for='type' class='col-xs-3'>Nationality:<a class="test">*</a></label>
             <div class='col-xs-9 input-group'>
               <select class='form-control' name='type' required>
-                <option disabled selected>Select One</option>
-                  <?php 
-                      $country=App\Mst_country::all();
-                      foreach($country as $nationality):
-              ?>
-                <option value="{{$nationality->country_id}}">{{$nationality->country_nationality}}</option>
-               <?php endforeach ?>
+                <option disabled selected>Select Nationality</option>
+                
+               <?php 
+                  $serverName = "192.168.1.100"; 
+                  $connectionInfo = array( "Database"=>"boc", "UID"=>"sa", "PWD"=>"P@ssw0rd");
+                  $conn = sqlsrv_connect( $serverName, $connectionInfo);
+                  if( $conn )
+                  {
+                     $sql="SELECT * from MASTER.mstCountry";
+                     $stmt = sqlsrv_query( $conn, $sql );
+                      if( $stmt === false) 
+                      {
+                          die( print_r( sqlsrv_errors(), true) );
+                      }
+                      while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) 
+                      {
+                        echo '<option value='.$row["CountryID"].'>'.$row['CountryName'].'</option>';
+                      }
+                      sqlsrv_free_stmt( $stmt);
+                      }
+                      else
+                      {
+                       echo "Connection could not be established.<br />";
+                       die( print_r( sqlsrv_errors(), true));          
+                      }
+                ?>
               </select>
             </div>
          </div>

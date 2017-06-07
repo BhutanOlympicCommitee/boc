@@ -56,7 +56,6 @@
                           <td>
                             
                             <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='kpi_edit({{$kpis->kpi_id}})'>Edit</a>
-                             {{-- <a class="btn btn-info glyphicon glyphicon-edit" href={{route('view_kpi')}}>Edit</a> --}}
                                  
                           </td>
                         </tr>

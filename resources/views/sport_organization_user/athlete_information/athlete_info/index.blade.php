@@ -27,21 +27,25 @@
               $user_id=session('user_id');
               $user=App\User::find($user_id);
                 ?>
-              @if($user->role_id==4)
-                <script type="text/javascript">
-                  $(function()
-                  {
-                    $('#view').hide();
-                  });
-                </script>
-                @else
+             
                         <form action='{{route("athlete_info.index")}}' method='get'>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class='form-group'>
                                 <label class='col-xs-3'>Associated Sport:</label>
                                 <div class='col-xs-7 input-group'>
                                     <select name='sport' class='form-control'>
-                                        <option value="" disabled selected>Select</option>
+                                      <option value="" disabled selected>Select</option>
+                                    @if($user->role_id==4)
+                                      <?php 
+                                        $org_type=App\Associated_Sport::where('sport_org_id',$user->sport_organization)->get();
+                                        foreach($org_type as $org):
+                                      ?>
+                                      <option value="{{$org->sport_id}}">{{$org->sport_name}}</option>
+                                      <?php 
+                                        endforeach
+                                      ?>
+                                    @else
+                                    
                                           <?php 
                                               $org_type=App\Associated_Sport::all();
                                               foreach($org_type as $org):
@@ -50,6 +54,7 @@
                                             <?php 
                                               endforeach
                                             ?>
+                                    @endif
                                     </select>
                                 </div>
                             </div>
@@ -71,13 +76,7 @@
                             </div>
                         </form>
                        
-                            @if(Session::has('success'))
-                                <div class="alert alert-success">
-                                   {{ Session::get('success') }}
-                                </div>
-                            @endif
-                            @endif
-                             @if(isset($_GET['search']))
+                           @if(isset($_GET['search']))
                             <div class="table-responsive">
                             <table class="table table-bordered table-striped" id="table1">
                                 <thead>
