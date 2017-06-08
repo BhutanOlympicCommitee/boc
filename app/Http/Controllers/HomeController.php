@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
 use App\MstDzongkhag;
 use App\Mst_country;
 use App\Sport_Organization;
@@ -45,11 +46,10 @@ class HomeController extends Controller
     }
     public function admin()
     {
-        $countries = Mst_country::all();
-        $dzongkhag = MstDzongkhag::all();
         $users = User::all();
-        $gewogs = Gewog::all();
-        return view('admin.dashboard',['countries'=>$countries,'dzongkhags'=>$dzongkhag,'users'=>$users,'gewogs'=>$gewogs]);
+        $roles = Role::all();
+        $sport = Associated_Sport::all();
+        return view('admin.dashboard',['users'=>$users,'roles'=>$roles,'sport'=>$sport]);
     }
     public function boc(){
         return view('home');

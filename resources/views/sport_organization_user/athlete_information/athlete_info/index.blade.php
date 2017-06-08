@@ -57,10 +57,10 @@
                                 </div>
                             </div>
                             <div class='form-group'>
-                                <label class='col-xs-3'>Athlete Name:</label>
+                                <label for="athlete_name1" class='col-xs-3'>Athlete Name:</label>
                                 <div class='col-xs-7 input-group'>
 
-                                    <input type="text" name="name" class='form-control'>
+                                    <input type="text" name="athlete_name1" class='form-control'>
                                 </div>
                             </div>
                             <div class='form-group'>

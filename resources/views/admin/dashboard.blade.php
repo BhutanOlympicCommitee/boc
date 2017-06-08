@@ -20,35 +20,9 @@
                         </div>
                         <div class="bootstrap-admin-panel-content">
                             <div class="row">
-                                <div class="col-lg-3 col-xs-6">
+                                <div class="col-lg-4 col-xs-6">
                                   <!-- small box -->
                                   <div class="small-box bg-aqua">
-                                    <div class="inner">
-                                      <h3>{{count($users)}}</h3>
-                                      <p>Users</p>
-                                    </div>
-                                    <div class="icon">
-                                      <i class="ion-ios-people"></i>
-                                    </div>
-                                    <a href="{{route('country_master.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                                  </div>
-                                </div><!-- ./col -->
-                                <div class="col-lg-3 col-xs-6">
-                                  <!-- small box -->
-                                  <div class="small-box bg-green">
-                                    <div class="inner">
-                                      <h3>{{count($dzongkhags)}}</h3>
-                                      <p>Dzongkhag</p>
-                                    </div>
-                                    <div class="icon">
-                                      <i class="ion ion-stats-bars"></i>
-                                    </div>
-                                    <a href="{{route('dzongkhag_master.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                                  </div>
-                                </div><!-- ./col -->
-                                <div class="col-lg-3 col-xs-6">
-                                  <!-- small box -->
-                                  <div class="small-box bg-yellow">
                                     <div class="inner">
                                       <h3>{{count($users)}}</h3>
                                       <p>Total Users</p>
@@ -59,19 +33,33 @@
                                     <a href="{{route('view_user')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                   </div>
                                 </div><!-- ./col -->
-                                <div class="col-lg-3 col-xs-6">
+                                <div class="col-lg-4 col-xs-6">
                                   <!-- small box -->
-                                  <div class="small-box bg-red">
+                                  <div class="small-box bg-green">
                                     <div class="inner">
-                                      <h3>{{count($gewogs)}}</h3>
-                                      <p>Gewog</p>
+                                      <h3>{{count($roles)}}</h3>
+                                      <p>Roles</p>
                                     </div>
                                     <div class="icon">
-                                      <i class="ion ion-pie-graph"></i>
+                                      <i class="ion ion-stats-bars"></i>
                                     </div>
-                                    <a href="{{route('gewog_master.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="{{route('view_role')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                   </div>
                                 </div><!-- ./col -->
+                                <div class="col-lg-4 col-xs-6">
+                                  <!-- small box -->
+                                  <div class="small-box bg-yellow">
+                                    <div class="inner">
+                                      <h3>{{count($sport)}}</h3>
+                                      <p>Types of Sport</p>
+                                    </div>
+                                    <div class="icon">
+                                      <i class="ion-ios-football"></i>
+                                    </div>
+                                    <a href="{{route('associated_sport_types.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                  </div>
+                                </div><!-- ./col -->
+
                               </div><!-- /.row -->
                         </div>
                     </div>

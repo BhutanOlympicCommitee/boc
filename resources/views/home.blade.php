@@ -28,7 +28,7 @@
                                       <p>Sport Organizations</p>
                                     </div>
                                     <div class="icon">
-                                      <i class="ion-ios-barcode"></i>
+                                      <i class="ion-ios-football"></i>
                                     </div>
                                     <a href="{{route('sport_organization.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                   </div>
@@ -41,7 +41,7 @@
                                       <p>Registered Athletes</p>
                                     </div>
                                     <div class="icon">
-                                      <i class="ion-ios-football"></i>
+                                      <i class="ion-ios-people"></i>
                                     </div>
                                     <a href="{{route('athlete_info.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                   </div>
