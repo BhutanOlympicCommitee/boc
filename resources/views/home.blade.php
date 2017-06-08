@@ -37,13 +37,13 @@
                                   <!-- small box -->
                                   <div class="small-box bg-green">
                                     <div class="inner">
-                                      <h3>{{count($sport)}}</h3>
-                                      <p>Registerd Sports</p>
+                                      <h3>{{count($athlete_info)}}</h3>
+                                      <p>Registered Athletes</p>
                                     </div>
                                     <div class="icon">
                                       <i class="ion-ios-football"></i>
                                     </div>
-                                    <a href="{{route('associated_sport_types.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="{{route('athlete_info.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                   </div>
                                 </div><!-- ./col -->
                                 <div class="col-lg-3 col-xs-6">

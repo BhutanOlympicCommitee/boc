@@ -37,10 +37,10 @@ class HomeController extends Controller
     public function index()
     {
         $sport_organization=Sport_Organization::all();
-        $sport=Associated_Sport::all();
+        $athlete_info=Athlete_bioinformation::all();
         $akra=Tbl_SKRA::all();
         $boc_program=Tbl_SKRA_activities::all();
-        return view('home',compact('sport_organization','sport','akra','boc_program'));
+        return view('home',compact('sport_organization','athlete_info','akra','boc_program'));
 
     }
     public function admin()

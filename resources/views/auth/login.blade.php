@@ -12,6 +12,16 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>Login</strong></div>
                 <div class="panel-body">
+                 @if(Session::has('success'))
+                    <div class="alert alert-success">
+                      {{ Session::get('success') }}
+                    </div>
+                 @endif
+                 @if(Session::has('failure'))
+                    <div class="alert alert-danger">
+                      {{ Session::get('failure') }}
+                    </div>
+                 @endif
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('login_custome') }}">
                         {{ csrf_field() }}
                        
@@ -58,9 +68,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Change or Forgot Password?
+                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Password?
                                 </a>
                             </div>
                         </div>

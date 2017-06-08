@@ -142,9 +142,22 @@ class AthleteAddressController extends Controller
     public function view1(Request $request)
     {
         if($request->ajax()){
-            $id = $request->id;
-            $info = Gewog::where('dzongkhag_id', $id)->get();
-            return response()->json($info);
+          $id = $request->id;
+          $array=array();
+          $serverName = "192.168.1.100"; 
+          $connectionInfo = array( "Database"=>"boc", "UID"=>"sa", "PWD"=>"P@ssw0rd");
+          $conn = sqlsrv_connect( $serverName, $connectionInfo);
+          if( $conn )
+          {
+             $sql="SELECT * from MASTER.MstGeowg where DzongkhagID=$id";
+             $stmt = sqlsrv_query( $conn, $sql );
+             while($row=sqlsrv_fetch_array($stmt,SQLSRV_FETCH_ASSOC))
+             {
+                $array[]=$row;
+             };
+             sqlsrv_free_stmt( $stmt);
+          }
+            return response()->json($array);
         }
     }
 }

@@ -16,6 +16,8 @@
           </a>
           <ul class="dropdown-menu" role="menu">
             <li>
+                <a class="btn btn-link" href="{{ url('/change-password') }}"><b>Change Password</b>
+                </a>
               <a href="{{ url('/logout') }}"
               onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">

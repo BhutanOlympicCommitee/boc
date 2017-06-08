@@ -22,6 +22,10 @@ Route::get('/admin.dashboard', 'HomeController@admin')->name('admin_dashboard');
 Route::get('/federationdash.dashboard', 'HomeController@federationDashboard')->name('federationdash');
 Route::get('/home', 'HomeController@index')->name('home');
 
+//change password 
+Route::get('change-password', function() {return view('auth.change-password'); });
+Route::post('change-password', 'UpdatePasswordController@update')->name('change_password');
+
 
 //Route for Custome Login
 Route::post('/login',['uses'=>'LoginController@login','as'=>'login_custome']);

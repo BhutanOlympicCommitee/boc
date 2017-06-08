@@ -31,18 +31,7 @@ class AthleteInformationController extends Controller
         
         $associated_sport=array();
         $user=User::where('id',Session::get('user_id'))->first();
-        if($user->role_id==4)
-        {
-            $associatedSport=Associated_Sport::where('sport_org_id',$user->sport_organization)->pluck('sport_id');
-            $associated=explode(',',$associatedSport);
-            foreach($associated as $assoc)
-            {
-                $associated_sport[]=trim($assoc,'[]');
-            }
-            $athlete=Athlete_bioinformation::whereIn('athlete_associatedSport',$associated_sport)->get();
-            return view('sport_organization_user.athlete_information.athlete_info.index',compact('athlete'));
-        }
-        else{
+        
 
               if(!empty($_GET['sport']))
               {
@@ -52,14 +41,25 @@ class AthleteInformationController extends Controller
               else if(!empty($_GET['athlete_cid'])){
                 $athlete=Athlete_bioinformation::where('athlete_cid',$_GET['athlete_cid'])->get();
               }
-              else
+              else 
               {
-                 $athlete=Athlete_bioinformation::all(); 
+                 if($user->role_id==4)
+                    {
+                        $associatedSport=Associated_Sport::where('sport_org_id',$user->sport_organization)->pluck('sport_id');
+                        $associated=explode(',',$associatedSport);
+                        foreach($associated as $assoc)
+                        {
+                            $associated_sport[]=trim($assoc,'[]');
+                        }
+                        $athlete=Athlete_bioinformation::whereIn('athlete_associatedSport',$associated_sport)->get();
+                        return view('sport_organization_user.athlete_information.athlete_info.index',compact('athlete'));
+                    }
+                    else{
+                        $athlete=Athlete_bioinformation::all(); 
+                    }
               }
 
             return view('sport_organization_user.athlete_information.athlete_info.index',compact('athlete'));
-        
-        }
        
           
     }
