@@ -38,21 +38,21 @@
                           while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) 
                           {
                               echo '<div class="form-group">
-                              <label for="employ_id" class="col-md-4 control-label">EmployeeID</label>
+                              <label for="employ_id" class="col-md-4 control-label">EmployeeID:<a class="test">*</a></label>
 
                                   <div class="col-md-6">
                                       <input id="employ_id" type="text" class="form-control" name="employ_id" value="'.$row["EmpNo"].'" required autofocus>
                                   </div>
                              </div>';
                             echo '<div class="form-group">
-                              <label for="name" class="col-md-4 control-label">Name</label>
+                              <label for="name" class="col-md-4 control-label">Name:<a class="test">*</a></label>
 
                                   <div class="col-md-6">
                                       <input id="name" type="text" class="form-control" name="name" value="'.$row["FirstName"].' '.$row['MiddleName'].' '.$row['LastName'].'" required autofocus>
                                   </div>
                              </div>';
                              echo '<div class="form-group">
-                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                                <label for="email" class="col-md-4 control-label">E-Mail Address:<a class="test">*</a></label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" name="email" value="'.$row['EmailID'].'" required>
@@ -73,7 +73,7 @@
                         {{-- <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus> --}}
                     
                 <div class="form-group clearfix">
-                    <label for="user_role" class="col-md-4 control-label">User Role</label>
+                    <label for="user_role" class="col-md-4 control-label">User Role:<a class="test">*</a></label>
 
                     <div class="col-md-6">
                       <select  name="user_role" class="col-md-6 form-control" required>
@@ -88,7 +88,7 @@
              </div>
              </div>
              <div class="form-group">
-                <label for="federation_type" class="col-md-4 control-label">Sport Organization</label>
+                <label for="federation_type" class="col-md-4 control-label">Sport Organization:<a class="test">*</a></label>
 
                 <div class="col-md-6">
                   <select  name="federation_type" class="col-md-6 form-control" required>
@@ -105,7 +105,7 @@
     </div>
 
           <div class="form-group clearfix">
-              <label for="password" class="col-md-4 control-label">Password</label>
+              <label for="password" class="col-md-4 control-label">Password:<a class="test">*</a></label>
 
               <div class="col-md-6">
                   <input id="password" type="password" class="form-control" name="password" required>
@@ -113,7 +113,7 @@
           </div>
 
           <div class="form-group clearfix">
-              <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+              <label for="password-confirm" class="col-md-4 control-label">Confirm Password:<a class="test">*</a></label>
 
               <div class="col-md-6">
                   <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -134,4 +134,10 @@
     </div>
   </div>
   </div>
+  <style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
 @endsection

@@ -24,11 +24,11 @@
                                   <!-- small box -->
                                   <div class="small-box bg-aqua">
                                     <div class="inner">
-                                      <h3>{{count($countries)}}</h3>
-                                      <p>Country</p>
+                                      <h3>{{count($users)}}</h3>
+                                      <p>Users</p>
                                     </div>
                                     <div class="icon">
-                                      <i class="ion-ios-barcode"></i>
+                                      <i class="ion-ios-people"></i>
                                     </div>
                                     <a href="{{route('country_master.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                                   </div>

@@ -80,13 +80,13 @@
           {{ csrf_field() }}
 
           <div class="form-group">
-            <label for="role_name" class="col-md-4 control-label">Role Name</label>
+            <label for="role_name" class="col-md-4 control-label">Role Name:<a class="test">*</a></label>
             <div class="col-md-6">
               <input id="role_name" type="text" class="form-control" name="role_name" value="{{ old('role_name') }}" required autofocus>
             </div>
           </div>
           <div class="form-group">
-            <label for="description" class="col-md-4 control-label">Description</label>
+            <label for="description" class="col-md-4 control-label">Description:<a class="test">*</a></label>
             <div class="col-md-6">
               <input id="description" type="description" class="form-control" name="description" value="{{ old('description') }}" required>
             </div>
@@ -154,6 +154,12 @@
         });
     });
   </script>
+  <style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
   @endsection
   @section('footer')
   <div class="container">
