@@ -87,7 +87,9 @@
                     <div class='col-xs-10 input-group'>
                        <select class='form-control' name='gewog' id='gewog'required>
                          <option></option>
+
                       </select>
+                     
                     </div>
                 </div>
                 <div class='form-group'>
@@ -229,11 +231,12 @@
       type:"GET", 
       data: {"id":gewg_id}, 
       success: function(result){
+        console.log(result);
       $('#gewog').empty();
       $("#gewog").prepend("<option disabled selected>Select Gewog</option>");
        $.each(result,function(key,val)
       {
-        $('#gewog').append('<option value="'+val.gewog_id+'">'+val.gewog_name+'</option>');
+        $('#gewog').append('<option value="'+val.GeowgID+'">'+val.Description+'</option>');
       });
       }
     });
