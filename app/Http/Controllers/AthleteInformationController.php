@@ -39,35 +39,34 @@ class AthleteInformationController extends Controller
                 'sport'])->get(); 
 
         }
-        else if(!empty($request->athlete_name1))
+        else if(!empty($_GET['athlete_name1']))
         {
-           $name=explode(' ',$request->athlete_name1);
-           $array_size=sizeof($name);
-           if($array_size==3)
-           {
-            $fname=$name[0];
-            $mname=$name[1];
-            $lname=$name[2];
-            }
-            else if($array_size==2)
+            $name=explode(' ',$_GET['athlete_name1']);
+            $array_size=sizeof($name);
+            if($array_size==3)
             {
+             $fname=$name[0];
+             $mname=$name[1];
+             $lname=$name[2];
+             }
+            else if($array_size==2)
+             {
+            $fname=$name[0];
+            $mname=' ';
+            $lname=$name[1];
+             }
+            else if($array_size==1)
+             {
            $fname=$name[0];
            $mname=' ';
-           $lname=$name[1];
-            }
-           else if($array_size==1)
-            {
-          $fname=$name[0];
-          $mname=' ';
-          $lname=' ';
-      }
-      $athlete=Athlete_bioinformation::select('athlete_bioinformations.*')
-      ->where('athlete_bioinformations.athlete_fname','=',$fname) 
-      ->where('athlete_bioinformations.athlete_mname','=',$mname)
-      ->where('athlete_bioinformations.athlete_lname','=',$lname)
-      ->get();
-      echo $fname;
-      return view('sport_organization_user.athlete_information.athlete_info.index',compact('athlete'));
+           $lname=' ';
+       }
+       $athlete=Athlete_bioinformation::select('athlete_bioinformations.*')
+       ->where('athlete_bioinformations.athlete_fname','=',$fname) 
+       ->where('athlete_bioinformations.athlete_mname','=',$mname)
+       ->where('athlete_bioinformations.athlete_lname','=',$lname)
+       ->get();
+       return view('sport_organization_user.athlete_information.athlete_info.index',compact('athlete'));
       }
   else if(!empty($_GET['athlete_cid'])){
     $athlete=Athlete_bioinformation::where('athlete_cid',$_GET['athlete_cid'])->get();
@@ -91,7 +90,7 @@ else
    return view('sport_organization_user.athlete_information.athlete_info.index',compact('athlete'));
 }
 
-// return view('sport_organization_user.athlete_information.athlete_info.index',compact('athlete'));
+return view('sport_organization_user.athlete_information.athlete_info.index',compact('athlete'));
 
 
 }
