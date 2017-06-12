@@ -66,6 +66,14 @@
             'csrfToken' => csrf_token(),
             ]); ?>
         </script>
+        <style type="text/css">
+          img.center{
+                position: absolute;
+                top: 0; bottom:0; left: 0; right:0;
+                margin: auto;
+            }
+        </style>
+        
     </head>
     <body>
         <div>

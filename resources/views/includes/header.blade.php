@@ -1,7 +1,8 @@
 <nav class="navbar navbar-fixed-top" style="background-color:#008000;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="" href="#"><img class="img-responsive" src="{{URL::asset('/images/logo.png')}}" style="height:103px;width:763px;margin-left:275px;"></img></a>
+      <a class="" href="#"><img class="img-responsive center" src="{{URL::asset('/images/logo.png')}}" style="height:103px;width:763px;"></img></a>
+
     </div>
     <div>
     <ul class="nav navbar-nav navbar-right">
