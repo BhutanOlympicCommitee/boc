@@ -286,16 +286,9 @@
           <div class='row'>
             <div class='col-xs-6 clearfix'>
               <div class='form-group'>
-                <label for='day' class='col-xs-2'>Day</label>
+                <label for='date' class='col-xs-2'>Date </label>
                   <div class='col-xs-10 input-group'>
-                    <select class='form-control' name='day' >
-                      <option value="" disabled selected>Select Day</option>
-                      <?php $enum_day=App\EnumDaytable::all();
-                        foreach($enum_day as $day):
-                          ?>
-                        <option value={{$day->day_id}}>{{$day->day_name}}</option>
-                      <?php endforeach ?>
-                    </select>
+                    <input type="date" name="date" class="form-control" placeholder="Enter date here"  id='date_edit'>
                   </div>
               </div>
               <div class='form-group clearfix'>
@@ -325,9 +318,17 @@
             </div>
             <div class='col-xs-6 clearfix'>
               <div class='form-group'>
-                <label for='date' class='col-xs-2'>Date </label>
+                
+                  <label for='day' class='col-xs-2'>Day</label>
                   <div class='col-xs-10 input-group'>
-                    <input type="date" name="date" class="form-control" placeholder="Enter date here"  id='date'>
+                    <select class='form-control' name='day' id='day_edit'>
+                      <option value="" disabled selected>Select Day</option>
+                      <?php $enum_day=App\EnumDaytable::all();
+                        foreach($enum_day as $day):
+                          ?>
+                        <option value={{$day->day_id}}>{{$day->day_name}}</option>
+                      <?php endforeach ?>
+                    </select>
                   </div>
               </div>
               <div class='form-group clearfix'>
@@ -411,7 +412,7 @@
           $("#start_time").val(result.start_time);
           $("#venue").val(result.venue);
           $("#comments").val(result.comments);
-          $("#date").val(result.date);
+          $("#date_edit").val(result.date);
           $("#end_time").val(result.end_time);
         }
       });
@@ -433,6 +434,21 @@
           $('#day').empty();
       
           $('#day').append('<option value="'+result.day_id+'">'+result.day_name+'</option>');
+        }
+      });
+  });
+  $('#day_edit').click(function(){
+    var date=$('#date_edit').val();
+    var url='{{route('get_day')}}';
+    $.ajax({
+        url: url,
+        type:"GET", 
+        data: {"id":date}, 
+        success: function(result){
+          console.log(result);
+          $('#day_edit').empty();
+      
+          $('#day_edit').append('<option value="'+result.day_id+'">'+result.day_name+'</option>');
         }
       });
   });

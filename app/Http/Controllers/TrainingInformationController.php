@@ -209,9 +209,32 @@ class TrainingInformationController extends Controller
         else if(!empty($request->ath_name))
         {
             $name=explode(' ',$request->ath_name);
-            $first_name=$name[0];
-            $athlete_info=Athlete_bioinformation::where('athlete_fname',$first_name)->get();
-            return view('sport_organization_user.training_information.index',compact('athlete_info'));
+            $array_size=sizeof($name);
+            echo $array_size;
+            if($array_size==3)
+            {
+             $fname=$name[0];
+             $mname=$name[1];
+             $lname=$name[2];
+             }
+            else if($array_size==2)
+             {
+            $fname=$name[0];
+            $mname=' ';
+            $lname=$name[1];
+             }
+            else if($array_size==1)
+             {
+               $fname=$name[0];
+               $mname=' ';
+               $lname=' ';
+             }
+       $athlete_info=Athlete_bioinformation::select('athlete_bioinformations.*')
+       ->where('athlete_bioinformations.athlete_fname','=',$fname) 
+       ->where('athlete_bioinformations.athlete_mname','=',$mname)
+       ->where('athlete_bioinformations.athlete_lname','=',$lname)
+       ->get();
+       return view('sport_organization_user.training_information.index',compact('athlete_info'));
         }
         else if(!empty($request->coach))
         {

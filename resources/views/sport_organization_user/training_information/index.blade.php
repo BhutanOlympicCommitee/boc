@@ -104,7 +104,7 @@
                     <td>{{$id++}}</td>
                     <td>{{$athlete->displayAsport->sport_name}}</td>
                    {{--  <td>{{$athlete->athlete_id}}</td> --}}
-                    <td>{{$athlete->athlete_fname.' '.$athlete->athlete_lname}}</td>
+                    <td>{{$athlete->athlete_fname.' '.$athlete->athlete_mname.' '.$athlete->athlete_lname}}</td>
                     <td>{{$athlete->athlete_cid}}</td>
                     <td>{{$athlete->athlete_dob}}</td>
                     <td>
