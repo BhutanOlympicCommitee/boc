@@ -41,21 +41,11 @@
              <br>
              <div class='row clearfix'>
               <div class='col-xs-2'>KPI weight</div>
-              <div class='col-xs-5'></div>
-              <div class='col-xs-5'></div>
-            </div><br>
-            <div class='row clearfix'>
-              <div class='col-xs-2'>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RGoB</span><br><br><br>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;External</span>
+              <div class='col-xs-5'>
+               <input type="text" name="rgob" class='form-control' value='{{$review_kpi->kpi_weight}}'><br>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="rgob" class='form-control' value='{{$review_kpi->RGoB}}'><br>
-               <input type="text" name="external" class='form-control' value='{{$review_kpi->external}}'>
-              </div>
-              <div class='col-xs-5'>
-               <input type="text" name="approved_rgob" class='form-control' value='{{$review_kpi->RGoB}}'><br>
-               <input type="text" name="approved_external" class='form-control' value='{{$review_kpi->external}}'>
+               <input type="text" name="approved_rgob" class='form-control' value='{{$review_kpi->kpi_weight}}'><br>
               </div>
             </div>
              <br>
@@ -91,14 +81,14 @@
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Poor</span>
               </div>       
               <div class='col-xs-5'>
-               <input type="text" name="good" class='form-control' value='{{$review_kpi->good}}'><br>
-               <input type="text" name="average" class='form-control' value='{{$review_kpi->average}}'><br>
-               <input type="text" name="poor" class='form-control' value='{{$review_kpi->poor}}'>
+               <input type="text" name="good" class='form-control' value='{{$review_kpi->goodRgStart."-".$review_kpi->goodRgEnd}}'><br>
+               <input type="text" name="average" class='form-control' value='{{$review_kpi->avgRgStart."-".$review_kpi->avgRgEnd}}'><br>
+               <input type="text" name="poor" class='form-control' value='{{$review_kpi->poorRgStart."-".$review_kpi->poorRgEnd}}'>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="approved_good" class='form-control' value='{{$review_kpi->good}}'><br>
-               <input type="text" name="approved_average" class='form-control' value='{{$review_kpi->average}}'><br>
-               <input type="text" name="approved_poor" class='form-control' value='{{$review_kpi->poor}}'>
+               <input type="text" name="approved_good" class='form-control' value='{{$review_kpi->goodRgStart."-".$review_kpi->goodRgEnd}}'><br>
+               <input type="text" name="approved_average" class='form-control' value='{{$review_kpi->avgRgStart."-".$review_kpi->avgRgEnd}}'><br>
+               <input type="text" name="approved_poor" class='form-control' value='{{$review_kpi->poorRgStart."-".$review_kpi->poorRgEnd}}'>
               </div>
             </div>
              <br>

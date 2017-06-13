@@ -48,9 +48,9 @@
                           <td>{{$kpis->proposedActivity->activity_name}}</td>
                           <td>{{$kpis->kpi_name}}</td>
                           <td>{{$kpis->baseline}}</td>
-                          <td>{{$kpis->good}}</td>
-                          <td>{{$kpis->average}}</td>
-                          <td>{{$kpis->poor}}</td>
+                          <td>{{$kpis->goodRgStart.'-'.$kpis->goodRgEnd}}</td>
+                          <td>{{$kpis->avgRgStart.'-'.$kpis->avgRgEnd}}</td>
+                          <td>{{$kpis->poorRgStart.'-'.$kpis->poorRgEnd}}</td>
                           <td>
                             
                             <a class="btn btn-info glyphicon glyphicon-edit" data-toggle='modal' data-target='#editModal' onclick='kpi_edit({{$kpis->kpi_id}})'>Edit</a>
@@ -92,9 +92,9 @@
               </div>
           </div>
            <div class='form-group clearfix'>
-            <label for='kpi_description' class='col-xs-3'>KPI Description:<a class="test">*</a></label>
+            <label for='kpi_description' class='col-xs-3'>KPI Description:</label>
               <div class='col-xs-9 input-group'>
-                <input type="text" name="kpi_description" class="form-control" placeholder="Enter KPI description" required>
+                <input type="text" name="kpi_description" class="form-control" placeholder="Enter KPI description" >
               </div>
           </div>
           <div class='form-group clearfix'>
@@ -173,30 +173,37 @@
           <div class='form-group clearfix'>
             <label for='kpi_name' class='col-xs-3'>KPI:</label>
               <div class='col-xs-9 input-group'>
-                <input type="text" name="kpi_name" class="form-control" id="kpi_name" placeholder="Enter KPI name here" required>
+                <input type="text" name="kpi_name" class="form-control" id="kpi_name">
+              </div>
+          </div>
+           <div class='form-group clearfix'>
+            <label for='kpi_description' class='col-xs-3'>KPI Description:</label>
+              <div class='col-xs-9 input-group'>
+                <input type="text" name="kpi_description" class="form-control" id="kpi_description">
               </div>
           </div>
           <div class='form-group clearfix'>
-            <label>KPI Weight</label>
-          <div class='form-group clearfix'>
-            <label for='RGoB' class='col-xs-3'>RGoB:</label>
+            <label class="col-xs-3">KPI Weight</label>
               <div class='input-group col-xs-9'>
-                <input type="text" name="RGoB"  class="form-control" id="RGoB" placeholder="Enter RGoB funding here" required>
+                <input type="text" name="kpi_weight"  class="form-control" id="RGoB" required>
               </div>
           </div>
-          <div class='form-group clearfix'>
-            <label for='external' class='col-xs-3'>External:</label>
-              <div class='input-group col-xs-9'>
-                <input type="text" name="external"  class="form-control" id="external1" placeholder="Enter External Funding here">
-              </div>
-          </div>
+        <div class="form-group clearfix">
+          <label for="unit"  class='col-xs-3'>Units</label> 
+          <div class='col-xs-9 input-group'>
+            <select name="unit" id="unit" class="form-control">
+              <option value="0">
+                Select the KPI Unit
+              </option>
+              <?php 
+              $units = App\KPIUnit::all();
+              foreach($units as $unit):
+                ?>
+              <option value="{{$unit->unit_id}}">{{$unit->unit_name}}</option>
+            <?php endforeach;?>
+          </select> 
         </div>
-        <div class='form-group clearfix'>
-            <label for='unit' class='col-xs-3'>Units:</label>
-              <div class='input-group col-xs-9'>
-                <input type="text" name="unit"  class="form-control" id="unit" placeholder="Enter Unit here" required>
-              </div>
-          </div>
+      </div>
 
           <div class='form-group clearfix'>
             <label for='baseline' class='col-xs-3'>Baseline:</label>
@@ -260,13 +267,14 @@ function kpi_edit(id)
           //console.log(result);
           $("#edit_id").val(result.kpi_id);
           $("#kpi_name").val(result.kpi_name);
-          $("#RGoB").val(result.RGoB);
+          $("#kpi_description").val(result.kpi_description);
+          $("#RGoB").val(result.kpi_weight);
           $("#external1").val(result.external);
-          $("#unit").val(result.unit);
           $("#baseline").val(result.baseline);
-          $("#good").val(result.good);
-          $("#average").val(result.average);
-          $("#poor").val(result.poor);
+          $("#good").val(result.goodRgStart+'-'+result.goodRgEnd);
+          $("#average").val(result.avgRgStart+'-'+result.avgRgEnd);
+          $("#poor").val(result.poorRgStart+'-'+result.poorRgEnd);
+          $('select[name="unit"]').val(result.unit);
         }
       });
     }

@@ -46,6 +46,12 @@ class KPIController extends Controller
     public function store(Request $request)
     {
    
+        $goodRgStart= substr($request->good, 0, strpos($request->good, "-"));
+        $goodRgEnd = substr($request->good, strpos($request->good, "-") + 1); 
+        $avgRgStart= substr($request->average, 0, strpos($request->average, "-"));
+        $avgRgEnd = substr($request->average, strpos($request->average, "-") + 1); 
+        $poorRgStart= substr($request->poor, 0, strpos($request->poor, "-"));
+        $poorRgEnd = substr($request->poor, strpos($request->poor, "-") + 1); 
         $kpi = new Tbl_proposed_KPI;
         $kpi->activity_id=Session::get('activity_id');
         $kpi->kpi_name=$request->kpi_name;
@@ -53,9 +59,12 @@ class KPIController extends Controller
         $kpi->kpi_weight=$request->kpi_weight;
         $kpi->unit=$request->unit;
         $kpi->baseline=$request->baseline;
-        $kpi->good=$request->good;
-        $kpi->average=$request->average;
-        $kpi->poor=$request->poor;
+        $kpi->goodRgStart= $goodRgStart;
+        $kpi->goodRgEnd=$goodRgEnd;
+        $kpi->avgRgStart=  $avgRgStart;
+        $kpi->avgRgEnd=$avgRgEnd;
+        $kpi->poorRgStart= $poorRgStart;
+        $kpi->poorRgEnd=$poorRgEnd;
         $kpi->created_by=Auth::user()->id;
         $kpi->updated_by=Auth::user()->id;
         $kpi->save();
@@ -65,6 +74,12 @@ class KPIController extends Controller
 
     public function addApprovedKPI($id, Request $request)
     {
+        $goodRgStart= substr($request->approved_good, 0, strpos($request->approved_good, "-"));
+        $goodRgEnd = substr($request->approved_good, strpos($request->approved_good, "-") + 1); 
+        $avgRgStart= substr($request->approved_average, 0, strpos($request->approved_average, "-"));
+        $avgRgEnd = substr($request->approved_average, strpos($request->approved_average, "-") + 1); 
+        $poorRgStart= substr($request->approved_poor, 0, strpos($request->approved_poor, "-"));
+        $poorRgEnd = substr($request->approved_poor, strpos($request->approved_poor, "-") + 1); 
         $kpi=new Tbl_KPI_approved;
         $kpi->kpi_id=$id;
         $kpi->approved_kpi_name=$request->approved_kpi;
@@ -72,9 +87,12 @@ class KPIController extends Controller
         $kpi->approved_kpi_weight=$request->approved_kpi_weight;
         $kpi->approved_unit=$request->approved_units;
         $kpi->approved_baseline=$request->approved_baseline;
-        $kpi->approved_good=$request->approved_good;
-        $kpi->approved_average=$request->approved_average;
-        $kpi->approved_poor=$request->approved_poor;
+        $kpi->approved_goodRgStart=$goodRgStart;
+        $kpi->approved_goodRgEnd=$goodRgEnd;
+        $kpi->approved_avgRgStart=$avgRgStart;
+        $kpi->approved_avgRgEnd= $avgRgEnd;
+        $kpi->approved_poorRgStart=$poorRgStart;
+        $kpi->approved_poorRgEnd=$poorRgEnd;
         $kpi->created_by=Auth::user()->id;
         $kpi->updated_by=Auth::user()->id;
         $kpi->save();
@@ -98,14 +116,24 @@ class KPIController extends Controller
     {
         $id=$request->edit_id;
         $kpi=Tbl_proposed_KPI::find($id);
+                $goodRgStart= substr($request->good, 0, strpos($request->good, "-"));
+        $goodRgEnd = substr($request->good, strpos($request->good, "-") + 1); 
+        $avgRgStart= substr($request->average, 0, strpos($request->average, "-"));
+        $avgRgEnd = substr($request->average, strpos($request->average, "-") + 1); 
+        $poorRgStart= substr($request->poor, 0, strpos($request->poor, "-"));
+        $poorRgEnd = substr($request->poor, strpos($request->poor, "-") + 1); 
+        $kpi->activity_id=Session::get('activity_id');
         $kpi->kpi_name=$request->kpi_name;
-        $kpi->RGoB=$request->RGoB;
-        $kpi->external=$request->external;
+        $kpi->kpi_description=$request->kpi_description;
+        $kpi->kpi_weight=$request->kpi_weight;
         $kpi->unit=$request->unit;
         $kpi->baseline=$request->baseline;
-        $kpi->good=$request->good;
-        $kpi->average=$request->average;
-        $kpi->poor=$request->poor;
+        $kpi->goodRgStart= $goodRgStart;
+        $kpi->goodRgEnd=$goodRgEnd;
+        $kpi->avgRgStart=  $avgRgStart;
+        $kpi->avgRgEnd=$avgRgEnd;
+        $kpi->poorRgStart= $poorRgStart;
+        $kpi->poorRgEnd=$poorRgEnd;
         $kpi->save();
         Session::flash('success', 'KPI updated successfully');
         if($request->update=='update')
@@ -114,7 +142,7 @@ class KPIController extends Controller
         }
         else
         {
-            return redirect()->route('KPI_master.index',$kpi->kpi_id);
+            return redirect()->route('KPI_master.index',$kpi->activity_id);
         }
     }
 
