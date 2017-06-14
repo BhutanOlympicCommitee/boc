@@ -38,14 +38,24 @@
                <input type="text" name="approved_kpi" class='form-control' value='{{$review_kpi->kpi_name}}'>
               </div>
             </div>
+            <br>
+             <div class='row clearfix'>
+              <div class='col-xs-2'>KPI Description</div>
+              <div class='col-xs-5'>
+               <input type="text" name="kpi_description" class='form-control' value='{{$review_kpi->kpi_description}}'>
+              </div>
+              <div class='col-xs-5'>
+               <input type="text" name="approved_kpi_description" class='form-control' value='{{$review_kpi->kpi_description}}'>
+              </div>
+            </div>
              <br>
              <div class='row clearfix'>
               <div class='col-xs-2'>KPI weight</div>
               <div class='col-xs-5'>
-               <input type="text" name="rgob" class='form-control' value='{{$review_kpi->kpi_weight}}'><br>
+               <input type="text" name="kpi_weight" class='form-control' value='{{$review_kpi->kpi_weight}}'><br>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="approved_rgob" class='form-control' value='{{$review_kpi->kpi_weight}}'><br>
+               <input type="text" name="approved_kpi_weight" class='form-control' value='{{$review_kpi->kpi_weight}}'><br>
               </div>
             </div>
              <br>

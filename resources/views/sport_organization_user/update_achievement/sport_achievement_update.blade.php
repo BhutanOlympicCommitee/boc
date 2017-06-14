@@ -32,7 +32,7 @@
                   <div class='col-xs-12 form-group'>
                     <label class='col-xs-3'>RGoB Budget Utilization</label>
                       <div class='col-xs-8'>
-                        <input type="text" name="rgob" class="form-control" id='rgob' placeholder='please enter rgob budget utilization'>
+                        <input type="text" name="rgob" class="form-control" id='rgob' placeholder='please enter rgob budget utilized'>
                         <input type="hidden" name="hidden_rgob" class="form-control" id='hidden_rgob' value='{{$approved_activity->approved_rgob_budget}}' required>
                        </div>
                   </div>
@@ -45,7 +45,7 @@
                   <div class='col-xs-12 form-group'>
                     <label class='col-xs-3'>External Budget Utilization</label>
                       <div class='col-xs-8'>
-                        <input type="text" name="external_budget" class="form-control" id='external_budget' placeholder="Enter external budget utilization">
+                        <input type="text" name="external_budget" class="form-control" id='external_budget' placeholder="Enter external budget utilized">
                         <input type="hidden" name="hidden_external_budget" class="form-control" id='hidden_external_budget' value='{{$approved_activity->approved_external_budget}}'>
                       </div>
                   </div>
@@ -65,7 +65,7 @@
                         <th>KPI</th>
                         <th>Target Achieved</th>
                         <th>Points Scored</th>
-                        <th style="width:5%">Weightage Achieved</th>
+                        <th style="width:5%">Weightage Obtained</th>
                     </tr>   
                 </thead>
                 <tbody>
@@ -80,10 +80,10 @@
 
                   <tr>
                     <td>{{$id++}}</td>
-                    <td>{{$approved->approved_kpi_name}}</td>
-                     <td class='td2'><input type="text" name="target[]" class="target" style='width:100px' required></td>
-                    <td class='td3'><input type="text" name="rgob_score[]" id="rgob_score" style='width:100px;border:none;'></td>
-                    <td class='td1'></td>
+                    <td class='kpi'>{{$approved->approved_kpi_name}}<input type="hidden" name="hidden_value" class="hidden_value" value="{{$approved->kpi_approval_id}}"></td>
+                    <td class='td2'><input type="text" name="target[]" class="target" style='width:100px' required></td>
+                    <td class='td3'><input type="text" name="rgob_score[]" class="rgob_score" style='width:100px;border:none;'></td>
+                    <td class='td1'><input type="text" name="weight[]" style='width:100px' required class="weight"></td>
                    
                     <input type="hidden" name="hidden_id[]" value='{{$approved->kpi_approval_id}}'>
                   </tr>
@@ -142,9 +142,40 @@
   });
   //get target achieved and calculate rgob and external score
   $('#table1 tr').click(function(){
-    var rgob_weight=$(this).find('td.td1').text();
+    //var kpi_id=$("#hidden_value").val();
+    var kpi_id=$(this).find('input.hidden_value').val();
     var target=$(this).find('input.target').val();
-    
+    var view_url="{{route('getScore')}}";
+    var score;
+    var weight;
+      $.ajax({
+        url: view_url,
+        type:"GET", 
+        data: {"id":kpi_id, "target":target}, 
+        success: function(result){
+          console.log(result);
+          score=result;
+
+          var url="{{route('assign_weight')}}";
+          $.ajax({
+            url:url,
+            type:"GET",
+            data:{"id":kpi_id,"score":result},
+            success:function(result)
+            {
+              console.log(result);
+              weight=result;
+            }
+
+          });
+        }
+      });
+      $('.td3').click(function(){
+        $(this).find('input.rgob_score').val(score); 
+      });
+     $('.td1').click(function(){
+        $(this).find('input.weight').val(weight);
+     });
   });
   $(function()
   {

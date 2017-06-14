@@ -308,3 +308,9 @@ Route::get('getOccupation','AthleteInformationController@getOccupation')->name('
 
 Route::get('get_gender','AthleteInformationController@getGender')->name('get_gender');
 
+Route::get('get_score','UpdateSportActivityController@getScore')->name('getScore');
+
+Route::get('assign_weight','UpdateSportActivityController@getWeight')->name('assign_weight');
+
+
+

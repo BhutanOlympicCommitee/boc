@@ -83,7 +83,7 @@ class KPIController extends Controller
         $kpi=new Tbl_KPI_approved;
         $kpi->kpi_id=$id;
         $kpi->approved_kpi_name=$request->approved_kpi;
-        $kpi->approved_kpi_description=$request->approved_description;
+        $kpi->approved_kpi_description=$request->approved_kpi_description;
         $kpi->approved_kpi_weight=$request->approved_kpi_weight;
         $kpi->approved_unit=$request->approved_units;
         $kpi->approved_baseline=$request->approved_baseline;
