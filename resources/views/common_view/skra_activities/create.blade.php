@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <div class='form-group'>
-                    <label for='skra_activity_name' class='col-xs-3'>BOC Program:<a class="test">*</a></label>
+                    <label for='skra_activity_name' class='col-xs-3'>Program:<a class="test">*</a></label>
                       <div class='col-xs-9 input-group'>
                           <input type="text" name="skra_activity_name" class="form-control" placeholder="Enter AKRA activity name here" id='skra_ativity' required>
                       </div>

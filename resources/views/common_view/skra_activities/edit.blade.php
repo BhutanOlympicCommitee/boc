@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <div class='form-group'>
-                    <label for='skra_activity_name' class='col-xs-3'>BOC Program</label>
+                    <label for='skra_activity_name' class='col-xs-3'>Program</label>
                       <div class='col-xs-9 input-group'>
                           <input type="text" name="skra_activity_name" class="form-control" placeholder="Enter AKRA activity name here" id='skra_ativity' value='{{$skras_edit->SKRA_activity}}'>
                       </div>

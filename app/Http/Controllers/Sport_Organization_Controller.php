@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\ContactPersonController;
 use Session;
 use Auth;
+use App\fiscal_year;
 use Image;
 use App\User;
 use App\Tbl_SKRA_activities;
@@ -154,6 +155,7 @@ class Sport_Organization_Controller extends Controller
         $sport_org_activity->weightage_id=Session::get('key');
         $sport_org_activity->activity_name=$request->activity;
         $sport_org_activity->activity_venue=$request->venue;
+        $sport_org_activity->fiscal_id=$request->fiscal_year;
         $sport_org_activity->quarter_timeline=$request->quarter;
         $sport_org_activity->actual_timeline=$request->actual;
         $sport_org_activity->rgob_budget=$request->rgob_budget;
@@ -208,5 +210,14 @@ class Sport_Organization_Controller extends Controller
         }
         else
             return redirect()->route('sport_organization.index');
+    }
+    public function view(Request $request)
+    {
+        if($request->ajax()){
+            $id = $request->id;
+            $info = fiscal_year::where('five_yr_plan_id', $id)->get();
+            //var_dump($info);
+            return response()->json($info);
+        }
     }
 }

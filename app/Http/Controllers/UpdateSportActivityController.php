@@ -55,6 +55,7 @@ class UpdateSportActivityController extends Controller
         $sport_activity->save();
         Session::flash('success', 'SKRA has been created successfully');
          Session::put('key',$sport_activity->id);
+         Session::put('five_year_id',$sport_activity->five_yr_plan_id);
          // echo $sport_activity->id;
         return redirect()->route('sport_activity_plan.edit',Session::get('key'));
     }
@@ -91,6 +92,7 @@ class UpdateSportActivityController extends Controller
         $sport_org_activity=Tbl_proposed_sport_org_activity::findOrFail($request->hidden_edit_id);
         $sport_org_activity->activity_name=$request->activity;
         $sport_org_activity->activity_venue=$request->venue;
+        $sport_org_activity->fiscal_id=$request->fiscal_year;
         $sport_org_activity->quarter_timeline=$request->quarter;
         $sport_org_activity->actual_timeline=$request->actual;
         $sport_org_activity->rgob_budget=$request->rgob_budget;

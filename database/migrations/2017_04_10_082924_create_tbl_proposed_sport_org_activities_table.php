@@ -18,6 +18,7 @@ class CreateTblProposedSportOrgActivitiesTable extends Migration
             $table->integer('weightage_id');
             $table->string('activity_name',500);
             $table->string('activity_venue',500);
+            $table->integer('fiscal_id');
             $table->integer('quarter_timeline');
             $table->string('actual_timeline',250);
             $table->decimal('rgob_budget',8,2);

@@ -123,6 +123,7 @@
                 </select>
               </div>
           </div>
+          
            <div class='form-group'>
               <label for='skra_name' class='col-xs-3'>AKRA Name:<a class="test">*</a></label>
                 <div class='col-xs-9 input-group'>

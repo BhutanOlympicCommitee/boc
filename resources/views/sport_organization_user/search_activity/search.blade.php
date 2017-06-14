@@ -42,6 +42,22 @@
               </div>
           </div>
           <div class='form-group clearfix'>
+            <label for='fiscal_id' class='col-xs-2'>Fiscal Year:</label>
+              <div class='col-xs-10 input-group'>
+                <select class='form-control' name='fiscal_id' id="fiscal_id">
+                  <option><--Select one--></option>
+                  <?php 
+                    $fiscalYear=App\fiscal_year::all();
+                    foreach($fiscalYear as $fiscal):
+                  ?>
+                  <option value="{{$fiscal->fiscal_id}}">{{$fiscal->fiscal_year}}</option>
+                  <?php 
+                    endforeach
+                  ?>
+                </select>
+              </div>
+          </div>
+          <div class='form-group clearfix'>
             <label for='skra_id' class='col-xs-2'>AKRA:</label>
               <div class='col-xs-10 input-group'>
                   <select class='form-control' name='skra_id' id='skra1'>
@@ -290,6 +306,24 @@
   $('#table1').dataTable({
     'searching':false,
     'responsive':true
+  });
+   $('#five_yr_plan_id').change(function()
+  {
+    var five_year_id=$(this).val();
+    var view_url ='{{route('view_fiscal_search')}}';
+      $.ajax({
+        url: view_url,
+        type:"GET", 
+        data: {"id":five_year_id}, 
+        success: function(result){
+          $('#fiscal_id').empty();
+           $("#fiscal_id").prepend("<option disabled selected><--Select fiscal year--></option>");
+          $.each(result,function(key,val)
+          {
+             $('#fiscal_id').append('<option value="'+val.fiscal_id+'">'+val.fiscal_year+'</option>');
+          });
+        }
+      });
   });
 </script>
 @endsection

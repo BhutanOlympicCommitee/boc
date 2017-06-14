@@ -54,14 +54,14 @@ Route::post('role.update',['uses'=>'RoleController@updateRole','as'=>'update_rol
 Route::get('role.delete/{id}',['uses'=>'RoleController@deleteRole','as'=>'delete_role']);
 
 //routes for master country
-Route::get('country',['as'=>'country_master.index','uses'=>'MasterCountryController@index']);
+Route::get('fiscal',['as'=>'fiscal.index','uses'=>'FiscalController@index']);
 
-Route::post('country/store',['as'=>'country_master.store','uses'=>'MasterCountryController@store']);
+Route::post('fiscal/store',['as'=>'fiscal.store','uses'=>'FiscalController@store']);
 
-Route::delete('country/destroy/{id}',['as'=>'country_master.destroy','uses'=>'MasterCountryController@destroy']);
+Route::delete('fiscal/destroy/{id}',['as'=>'fiscal.destroy','uses'=>'FiscalController@destroy']);
 
-Route::get('country/view', 'MasterCountryController@view');
-Route::post('country/update', 'MasterCountryController@update')->name('update_country');
+Route::get('fiscal/view', 'FiscalController@view');
+Route::post('fiscal/update', 'FiscalController@update')->name('update_fiscal');
 
 //routes for dzongkhag
 Route::get('dzongkhag',['as'=>'dzongkhag_master.index','uses'=>'DzongkhagController@index']);
@@ -149,6 +149,7 @@ Route::post('sport_organization_activities',[
 	'uses' => 'Sport_Organization_Controller@addActivities',
 	'as' => 'add_sport_org_activity'
 	]);
+Route::get('fiscal_search/view', 'Sport_Organization_Controller@view')->name('view_fiscal_search');
 
 //Routes for the Review Activities
 //Route::resource('review_plan','ReviewPlanController');

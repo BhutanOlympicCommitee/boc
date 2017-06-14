@@ -138,6 +138,7 @@ class SKRA_activities_Controller extends Controller
     public function searchAKRAactivity(Request $request)
     {
         $five_yr=$request->five_yr_plan_id;
+        $fiscal_yr=$request->fiscal_id;
         $akra=$request->skra_id;
         $boc_program=$request->skra_activity_id;
         if(!empty($five_yr))
@@ -149,6 +150,16 @@ class SKRA_activities_Controller extends Controller
                 ->where('tbl__update_sport_activities.five_yr_plan_id','=',$five_yr)
                 ->get();
             return view('sport_organization_user.search_activity.search',compact('search','sport_update'));
+        }
+        else if(!empty($fiscal_yr))
+        {
+           $sport_update=Tbl_UpdateSportActivity::where('fiscal_id',$fiscal_yr)->get(); 
+           $search=DB::table('tbl__update_sport_activities') 
+                 ->join('tbl_proposed_sport_org_activities','tbl__update_sport_activities.id','tbl_proposed_sport_org_activities.weightage_id')
+                 ->select('tbl_proposed_sport_org_activities.*')
+                 ->where('tbl__update_sport_activities.skra_id','=',$fiscal_yr)
+                 ->get();
+             return view('sport_organization_user.search_activity.search',compact('search','sport_update'));
         }
         else if(!empty($akra))
         {

@@ -111,8 +111,8 @@
               </div>
               <div class='clearfix'>
                   <button type='submit' class='btn btn-primary col-xs-offset-10'>Submit</button>
-                  <button type='reset' class="btn btn-warning pull-right">Cancel
-                  </button>
+                  <a href="{{route('achievement_update')}}" class='btn btn-warning glyphicon glyphicon-remove'>Cancel</a>
+                  
               </div>
             </div>
           </div> 

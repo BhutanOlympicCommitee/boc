@@ -229,37 +229,23 @@
          <div class="form-group clearfix">
           <label for="activity_id"  class='col-xs-3'>Activity</label> 
           <div class='col-xs-9 input-group'>
-            <select name="activity_id" id="activity_id" class="form-control">
-              <option value="0">
-                Select the Activity
-              </option>
               <?php 
-              $activity = App\Tbl_sport_org_activities_approved::all();
-              foreach($activity as $activities):
+              $activity = App\Tbl_sport_org_activities_approved::where('activity_id',Session::get('activity_id'))->first();
+              
                 ?>
-              <option value="{{$activities->activity_id}}">{{$activities->approved_activity_name}}</option>
-            <?php endforeach;?>
-          </select> 
+                <input type="text" class="form-control" name="activity_id" value="{{$activity->approved_activity_name}}">
         </div>
       </div>
       <div class="form-group clearfix">
         <label for=""  class='col-xs-3'>Activity Timeline</label> 
         <div class='col-xs-9 input-group'>
-          <select name="" id="actual_timeline" class="form-control">
-            <option value="0">
-              Select the Activity
-            </option>
-        </select> 
+          <input type="text" id="actual_timeline" class="form-control" value="{{$activity->approved_actual_timeline}}" disabled>
       </div>
     </div>
     <div class="form-group clearfix">
       <label for=""  class='col-xs-3'>Activity Venue</label> 
       <div class='col-xs-9 input-group'>
-        <select name="" id="activity_venue" class="form-control">
-          <option value="0">
-            Select the Activity
-          </option>
-      </select> 
+         <input type="text" id="activity_venue" class="form-control" value="{{$activity->approved_activity_venue}}" disabled>
     </div>
   </div>
   <div class="form-group clearfix">

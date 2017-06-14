@@ -60,7 +60,7 @@
               </div>
           </div>
               <div class='form-group clearfix'>
-            <label for='skra_activity_id' class='col-xs-2'>BoC Program:</label>
+            <label for='skra_activity_id' class='col-xs-2'>Program:</label>
               <div class='col-xs-10 input-group'>
                 <select class='form-control' name='skra_activity_id' disabled>
                   <option>Select BoC program</option>
@@ -124,6 +124,22 @@
           </div>
         <div class='form-group clearfix'>
             <label>Time Line:</label>
+             <div class='form-group'>
+            <label for='fiscal_year' class='col-xs-3'>Fiscal Year:</label>
+              <div class='col-xs-9 input-group'>
+                <select class='form-control' name='fiscal_year'>
+                  <option><--Select one--></option>
+                  <?php 
+                    $fiscalYear=App\fiscal_year::where('five_yr_plan_id',Session::get('five_year_id'))->get();
+                    foreach($fiscalYear as $fiscal):
+                  ?>
+                  <option value="{{$fiscal->fiscal_id}}">{{$fiscal->fiscal_year}}</option>
+                  <?php 
+                    endforeach
+                  ?>
+                </select>
+              </div>
+          </div>
           <div class='form-group clearfix'>
             <label for='quarter' class='col-xs-3'>Quater:<a class="test">*</a></label>
             <div class='col-xs-9 input-group'>
@@ -156,9 +172,9 @@
             </div>
           </div>
           <div class='form-group clearfix'>
-            <label for='external_budget' class='col-xs-3'>External Budget(Nu):<a class="test">*</a></label>
+            <label for='external_budget' class='col-xs-3'>External Budget(Nu):</label>
               <div class='input-group col-xs-9'>
-                <input type="text" name="external_budget"  class="form-control" placeholder="Enter actual budget" required>
+                <input type="text" name="external_budget"  class="form-control" placeholder="Enter actual budget" value="0">
               </div>
           </div>
           <div class='form-group clearfix'>

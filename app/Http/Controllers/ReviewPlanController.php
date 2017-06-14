@@ -6,6 +6,7 @@ use App\Tbl_sport_org_activities_approved;
 use App\Tbl_proposed_KPI;
 use App\Tbl_Updateathlete_achievement;
 use App\Tbl_update_athleteAchievement;
+use App\Tbl_activity_report_athlete_achievement;
 use App\Activities_achievement_report;
 use App\Tbl_UpdateSportActivity;
 use App\Tbl_SKRA_activities;
@@ -127,7 +128,7 @@ class ReviewPlanController extends Controller
 
     public function storeAthleteAchievement(Request $request)
     {
-        $athlete_achievement=new Tbl_Updateathlete_achievement;
+        $athlete_achievement=new Tbl_activity_report_athlete_achievement;
         // echo $request->hidden_athlete_id;
         $athlete_achievement->athlete_id= $request->hidden_athlete_id;
         $athlete_achievement->activity_id=$request->activity_id;
@@ -135,7 +136,6 @@ class ReviewPlanController extends Controller
         $athlete_achievement->medal_id=$request->medal_id;
         $athlete_achievement->remarks=$request->remarks;
         $athlete_achievement->created_by=Auth::user()->id;
-        $athlete_achievement->updated_by=Auth::user()->id;
         $athlete_achievement->save();
         return redirect()->route('update_achievement.athlete_achievement');
     }
@@ -171,13 +171,14 @@ class ReviewPlanController extends Controller
         $achievement_report->approval_external_budget=$request->external_budget;
         $achievement_report->external_utilization=$request->utilization_percent;
         $achievement_report->target_achieved=$target_achieved;
-        $achievement_report->external_target=$external_target;
+        // $achievement_report->external_target=$external_target;
         $achievement_report->rgob_score= $rgob_score;
         $achievement_report->external_score= $external_score;
         $achievement_report->remarks= $request->remarks;
         $achievement_report->created_by=Auth::user()->id;
         $achievement_report->save();
-        return redirect()->route('achievement_update');
+        Session::put('activity_id',$achievement_report->approval_activity_id);
+        return redirect()->route('update_achievement.athlete_achievement');
     }
 
     public function view(Request $request)

@@ -31,11 +31,8 @@
                                     <li><a href="{{route('view_user')}}"><i class='fa fa-user-plus'></i>&nbsp;&nbsp;&nbsp;User</a></li>
                                     <li><a href="{{route('view_role')}}"><i class='fa fa-suitcase'></i>&nbsp;&nbsp;&nbsp;Role</a></li>
                                     <li><a href="{{route('associated_sport_types.index')}}"><i class="ionicons ion-ios-football"></i>&nbsp;&nbsp;&nbsp;<span>Types of Sport in BOC</span></a></li>                            
-                                   <!--  <li><a href="{{route('country_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Country</span></a></li>
-                                    <li><a href="{{route('dzongkhag_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Dzongkhag/State</span></a></li>
-                                    <li><a href="{{route('dungkhag_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Dungkhag</span></a></li>
-                                    <li><a href="{{route('gewog_master.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Gewog</span></a></li>
-                                     -->
+                                    <li><a href="{{route('fiscal.index')}}"><i class="fa fa-list"></i>&nbsp;&nbsp;&nbsp;<span>Fiscal Year</span></a></li>                            
+                                  
                                 </ul>
                                 </li>
                             @endif
@@ -49,7 +46,7 @@
                                 <li id="skra_activity"><a href="#" class="tree-toggle nav-header"><i class="fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span>Annual Activities Plan</span><span class="menu-collapsible-icon glyphicon glyphicon-chevron-right"></span></a>
                                     <ul class="nav nav-list tree bullets">
                                         <li id="skra"><a href='{{route('skra.index')}}'><i class='pull-left glyphicon glyphicon-circle-arrow-right glyphicon-align-right'></i>&nbsp;&nbsp;&nbsp;<span>AKRAs</span></a></li>
-                                        <li><a href="{{route('skra_activities.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>BOC programs</span></a></li>
+                                        <li><a href="{{route('skra_activities.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Programs</span></a></li>
                                         <li id="review_plan"><a href="{{route('review_plan.index')}}"><i class='pull-left glyphicon glyphicon-circle-arrow-right'></i>&nbsp;&nbsp;&nbsp;<span>Review Activities</span></a></li>
                                     </ul>
                                 </li>

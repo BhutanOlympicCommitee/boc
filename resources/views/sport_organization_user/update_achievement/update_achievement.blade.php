@@ -81,7 +81,6 @@
             <thead>
               <th>Sl.No</th>
               <th>Activities</th>
-              <th>Timeline Quarter</th>
               <th>Timeline Actual Dates</th>
               <th>Venue</th>
               <th>RGoB Budget</th>
@@ -97,7 +96,6 @@
               <tr>
                 <td>{{$i++}}</td>
                 <td>{{$approved->approved_activity_name}}</td>
-                <td>{{$approved->approved_quarter_timeline}}</td>
                 <td>{{$approved->approved_actual_timeline}}</td>
                 <td>{{$approved->approved_activity_venue}}</td>
                 <td>{{$approved->approved_rgob_budget}}</td>

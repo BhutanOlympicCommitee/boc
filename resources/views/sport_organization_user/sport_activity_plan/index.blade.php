@@ -54,7 +54,7 @@
               </div>
           </div>
           <div class='form-group clearfix'>
-            <label for='skra_activity_id' class='col-xs-2'>BoC Program:<a class="test">*</a></label>
+            <label for='skra_activity_id' class='col-xs-2'>Program:<a class="test">*</a></label>
               <div class='col-xs-10 input-group'>
                 <select class='form-control' name='skra_activity_id' id='skra_activity_id' required>
                          <option value=""></option>

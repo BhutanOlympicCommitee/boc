@@ -37,8 +37,8 @@
                         <tr>
                             <th>Sl. No:</th>
                             <th>AKRA</th>
-                            <th>BOC Programs</th>
-                            <th>BOC Program Description</th>
+                            <th>Programs</th>
+                            <th>Program Description</th>
                             <th>Action</th>
                         </tr>   
                     </thead>
@@ -69,7 +69,7 @@
               </div>
                  <div class='form-group clearfix'>
                   <div class="input-group pull-right" style='margin-top:10px'>
-                    <a href="{{route('skra_activities.create')}}" class="btn btn-success glyphicon glyphicon-plus">Add BoC Program</a> 
+                    <a href="{{route('skra_activities.create')}}" class="btn btn-success glyphicon glyphicon-plus">Add Program</a> 
                   </div>   
               @endif 
               <form action="{{action('SKRA_activities_Controller@index')}}" method='get' id='view'>
@@ -107,8 +107,8 @@
                         <tr>
                             <th>Sl. No:</th>
                             <th>AKRA</th>
-                            <th>BOC Programs</th>
-                            <th>BOC Program Description</th>
+                            <th>Programs</th>
+                            <th>Program Description</th>
                             <th>Action</th>
                         </tr>   
                     </thead>
@@ -140,7 +140,7 @@
               </div>
                 <div class='form-group clearfix'>
                   <div class="input-group pull-right" style='margin-top:10px'>
-                    <a href="{{route('skra_activities.create')}}" class="btn btn-success glyphicon glyphicon-plus">Add BoC Program</a> 
+                    <a href="{{route('skra_activities.create')}}" class="btn btn-success glyphicon glyphicon-plus">Add Program</a> 
                   </div>
                 </div>  
                 @endif
@@ -162,7 +162,7 @@
         $('#table1').DataTable(
            {
            "language": {
-           "search": "Search BoC Programs:",
+           "search": "Search Programs:",
            "responsive":true
      }
      }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Tbl_SKRA;
 use Session;
 use Auth;
+use App\fiscal_year;
 
 class SKRAController extends Controller
 {
@@ -68,6 +69,14 @@ class SKRAController extends Controller
         if($request->ajax()){
             $id = $request->id;
             $info = Tbl_SKRA::find($id);
+            return response()->json($info);
+        }
+    }
+    public function view1(Request $request)
+    {
+        if($request->ajax()){
+            $id = $request->id;
+            $info = fiscal_year::where('five_yr_plan_id', $id)->get();
             return response()->json($info);
         }
     }

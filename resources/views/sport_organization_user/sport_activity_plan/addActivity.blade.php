@@ -33,7 +33,7 @@
                   <tr>
                       <th>Sl. No:</th>
                       <th>AKRA</th>
-                      <th>BoC Program</th>
+                      <th>Program</th>
                       <th>Activity</th>
                       <th>Venue</th>
                       <th>RGoB Budget</th>
@@ -97,6 +97,22 @@
           </div>
         <div class='form-group clearfix'>
             <label>Time Line:</label>
+            <div class='form-group'>
+            <label for='fiscal_year' class='col-xs-3'>Fiscal Year:</label>
+              <div class='col-xs-9 input-group'>
+                <select class='form-control' name='fiscal_year' id="fiscal_year">
+                  <option><--Select one--></option>
+                  <?php 
+                    $fiscalYear=App\fiscal_year::where('five_yr_plan_id',Session::get('five_year_id'))->get();
+                    foreach($fiscalYear as $fiscal):
+                  ?>
+                  <option value="{{$fiscal->fiscal_id}}">{{$fiscal->fiscal_year}}</option>
+                  <?php 
+                    endforeach
+                  ?>
+                </select>
+              </div>
+          </div>
           <div class='form-group clearfix'>
             <label for='quarter' class='col-xs-3'>Quarter:</label>
             <div class='col-xs-9 input-group'>
@@ -175,6 +191,7 @@
           $('#hidden_edit_id').val(result.activity_id);
           $('#activity').val(result.activity_name);
           $('#venue').val(result.activity_venue);
+          $('#fiscal_year').val(result.fiscal_id);
           $('#quarter').val(result.quarter_timeline);
           $('#actual').val(result.actual_timeline);
           $('#rgob_budget').val(result.rgob_budget);
