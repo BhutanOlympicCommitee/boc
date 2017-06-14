@@ -21,9 +21,12 @@ class CreateTblKPIApprovedsTable extends Migration
             $table->decimal('approved_external',8,2);
             $table->string('approved_unit',250);
             $table->decimal('approved_baseline',8,2);
-            $table->decimal('approved_good',8,2);
-            $table->decimal('approved_average',8,2);
-            $table->decimal('approved_poor',8,2);
+            $table->integer('approved_goodRgStart');
+            $table->integer('approved_goodRgEnd');
+            $table->integer('approved_avgRgStart');
+            $table->integer('approved_avgRgEnd');
+            $table->integer('approved_poorRgStart');
+            $table->integer('approved_poorRgEnd');
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->timestamps();

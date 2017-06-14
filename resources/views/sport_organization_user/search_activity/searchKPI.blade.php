@@ -122,9 +122,9 @@
                 <td>{{$searchs->proposedActivity->activity_name}}</td>
                 <td>{{$searchs->kpi_name}}</td>
                 <td>{{$searchs->baseline}}</td>
-                <td>{{$searchs->good}}</td>
-                <td>{{$searchs->average}}</td>
-                <td>{{$searchs->poor}}</td>
+                <td>{{$searchs->goodRgStart.'-'.$searchs->goodRgEnd}}</td>
+                <td>{{$searchs->avgRgStart.'-'.$searchs->avgRgEnd}}</td>
+                <td>{{$searchs->poorRgStart.'-'.$searchs->poorRgEnd}}</td>
                 <td>
                    <form id='remove' class="form-group" action="" method='post'>
                           <input type="hidden" name="_method" value="delete">

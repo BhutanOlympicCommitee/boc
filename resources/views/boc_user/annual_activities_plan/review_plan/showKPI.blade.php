@@ -52,9 +52,9 @@
                  <td>{{$review->proposedActivity->activity_name}}</td>
                   <td>{{$review->kpi_name}}</td>
                   <td>{{$review->baseline}}</td>
-                  <td>{{$review->good}}</td>
-                  <td>{{$review->average}}</td>
-                  <td>{{$review->poor}}</td>
+                  <td>{{$review->goodRgStart.'-'.$review->goodRgEnd}}</td>
+                  <td>{{$review->avgRgStart.'-'.$review->avgRgEnd}}</td>
+                  <td>{{$review->poorRgStart.'-'.$review->poorRgEnd}}</td>
                   <td>
                      @if($review->status==0)
                     <a href="{{route('review_plan.kpi',$review->kpi_id)}}" class="btn btn-info glyphicon glyphicon-edit">Review</a>

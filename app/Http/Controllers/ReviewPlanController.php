@@ -147,22 +147,11 @@ class ReviewPlanController extends Controller
     }
     public function storeActivitiesAchievedReport(Request $request, $id)
     {
-        $varaible=array();
-        $variable1=array();
         $activity_id=$id;
         $kpi_id=implode(',',$request->hidden_id);
         $target_achieved =implode(',',$request->target);
-        $external_target=implode(',',$request->target1);
-        foreach($request->rgob_score as $target)
-        {
-            $variable[] = substr($target, 0, strpos($target, "%"));
-        }
-        foreach($request->external_score as $target1)
-        {
-            $variable1[] = substr($target1, 0, strpos($target1, "%"));
-        }
-        $rgob_score=implode(',',$variable);
-        $external_score=implode(',',$variable1);
+        $points_scored=implode(',',$request->rgob_score);
+        $weightage=implode(',',$request->weight);
         $achievement_report=new Activities_achievement_report;
         $achievement_report->approval_activity_id=$activity_id;
         $achievement_report->kpi_approval_id=$kpi_id;
@@ -171,9 +160,8 @@ class ReviewPlanController extends Controller
         $achievement_report->approval_external_budget=$request->external_budget;
         $achievement_report->external_utilization=$request->utilization_percent;
         $achievement_report->target_achieved=$target_achieved;
-        // $achievement_report->external_target=$external_target;
-        $achievement_report->rgob_score= $rgob_score;
-        $achievement_report->external_score= $external_score;
+        $achievement_report->points_scored= $points_scored;
+        $achievement_report->weightage_obtained= $weightage;
         $achievement_report->remarks= $request->remarks;
         $achievement_report->created_by=Auth::user()->id;
         $achievement_report->save();

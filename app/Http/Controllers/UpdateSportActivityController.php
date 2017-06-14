@@ -9,6 +9,7 @@ use Auth;
 use Session;
 use App\User;
 use App\Tbl_SKRA_activities;
+use App\Tbl_KPI_approved;
 
 class UpdateSportActivityController extends Controller
 {
@@ -102,6 +103,51 @@ class UpdateSportActivityController extends Controller
         $sport_org_activity->created_by = session('user_id');
         $sport_org_activity->save();
         return redirect()->route('sport_activity_plan.addActivity');
+    }
+
+    public function getScore(Request $request)
+    {
+         if($request->ajax()){
+            $id = $request->id;
+            $target=$request->target;
+            $score=Tbl_KPI_approved::where('kpi_approval_id',$id)->first();
+            if($target<=$score->approved_goodRgEnd && $target>=$score->approved_goodRgStart)
+            {
+                return response()->json('good');
+            }
+            else if($target<=$score->approved_avgRgEnd && $target>=$score->approved_avgRgStart)
+            {
+                return response()->json('average');
+            }
+            else
+                return response()->json('poor');
+            
+        }
+    }
+
+    public function getWeight(Request $request)
+    {
+        if($request->ajax())
+        {
+            $id=$request->id;
+            $score=$request->score;
+            $weightage=Tbl_KPI_approved::where('kpi_approval_id',$id)->first();
+            if($score=="good")
+            {
+                $weight=($weightage->approved_kpi_weight)*1;
+                return response()->json($weight);
+            }
+            else if($score=="average")
+            {
+                $weight=($weightage->approved_kpi_weight)*0.5;
+                return response()->json($weight);
+            }
+            else
+            {
+                $weight=$weightage->approved_kpi_weight*0.25;
+                return response()->json($weight);
+            }
+        }
     }
 }
 
