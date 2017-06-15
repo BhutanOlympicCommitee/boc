@@ -1,4 +1,4 @@
-<nav class="navbar navbar-fixed-top" style="background-color:#008000;">
+<nav class="navbar navbar-fixed-top" style="background-color:#006400;">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="" href="#"><img class="img-responsive center" src="{{URL::asset('/images/logo.png')}}" style="height:103px;width:763px;"></img></a>
