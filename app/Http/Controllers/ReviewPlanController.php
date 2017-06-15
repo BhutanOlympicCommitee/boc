@@ -183,6 +183,7 @@ class ReviewPlanController extends Controller
         if(!empty($request->cid))
         {
             $athlete_achievement= Tbl_update_athleteAchievement::where('athlete_cid',$request->cid)->get();
+            Session::put('cid',$request->cid);
              return view('sport_organization_user.update_achievement.athlete_achievement',compact('athlete_achievement'));
         }
         else if(!empty($request->name))

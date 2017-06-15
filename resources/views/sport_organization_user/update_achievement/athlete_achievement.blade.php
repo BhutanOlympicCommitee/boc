@@ -111,7 +111,7 @@
          <div class='form-group clearfix'>
           <label for='athlete_cid' class='col-xs-3'>CID/Student ID:<a class="test">*</a></label>
           <div class='col-xs-9 input-group'>
-            <input type="text" name="athlete_cid" class="form-control" id='cid' required>
+            <input type="text" name="athlete_cid" class="form-control" id='cid' required value="{{Session::get('cid')}}">
           </div>  
         </div>
         <div class='form-group clearfix'>
@@ -310,12 +310,16 @@
 </br>
 <!-- end update modal -->
 <script type="text/javascript">
+// $(function()
+// {
+//   $('#reports').click(function(){
+//    window.location="{{URL::previous()}}";   
+//  });
+// });
 $(function()
-{
-  $('#reports').click(function(){
-   window.location="{{URL::previous()}}";   
- });
-});
+    {
+      $('#reports').attr('class','disabled');
+    });
 function addAthlete(id)
 {
   $('#hidden_athlete_id').val(id);
