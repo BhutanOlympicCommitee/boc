@@ -269,7 +269,6 @@ function kpi_edit(id)
           $("#kpi_name").val(result.kpi_name);
           $("#kpi_description").val(result.kpi_description);
           $("#RGoB").val(result.kpi_weight);
-          $("#external1").val(result.external);
           $("#baseline").val(result.baseline);
           $("#good").val(result.goodRgStart+'-'+result.goodRgEnd);
           $("#average").val(result.avgRgStart+'-'+result.avgRgEnd);
