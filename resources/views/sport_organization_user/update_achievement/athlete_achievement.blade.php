@@ -129,33 +129,42 @@
         <div class='form-group clearfix'>
           <label for='dzongkhag_id' class='col-xs-3'>Dzongkhag:<a class="test">*</a></label> 
           <div class='col-xs-9 input-group'>
-            <select name="dzongkhag_id" class="form-control" required>
-              <option value="0">
-                Select the Dzongkhag
-              </option>
-              <?php 
-              $dzongkhags = App\MstDzongkhag::all();
-              foreach($dzongkhags as $dzongkhag):
+            <select class='form-control' name='dzongkhag_id' id='type1' required>
+                  <option disabled selected>Select Dzongkhag</option>
+                   <?php 
+                  $serverName = "192.168.1.100"; 
+                  $connectionInfo = array( "Database"=>"boc", "UID"=>"sa", "PWD"=>"P@ssw0rd");
+                  $conn = sqlsrv_connect( $serverName, $connectionInfo);
+                  if( $conn )
+                  {
+                     $sql="SELECT * from MASTER.mstDzonkhag";
+                     $stmt = sqlsrv_query( $conn, $sql );
+                      if( $stmt === false) 
+                      {
+                          die( print_r( sqlsrv_errors(), true) );
+                      }
+                      while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) 
+                      {
+                        echo '<option value='.$row["DzonkhagID"].'>'.$row['Name'].'</option>';
+                      }
+                      sqlsrv_free_stmt( $stmt);
+                      }
+                      else
+                      {
+                       echo "Connection could not be established.<br />";
+                       die( print_r( sqlsrv_errors(), true));          
+                      }
                 ?>
-              <option value="{{$dzongkhag->dzongkhag_id}}">{{$dzongkhag->dzongkhag_name}}</option>
-            <?php endforeach;?>
-          </select> 
+                </select>
         </div>
       </div>
       <div class='form-group clearfix'>
         <label for='gewog_id' class='col-xs-3'>Gewog:<a class="test">*</a></label> 
         <div class='col-xs-9 input-group'>
-          <select name="gewog_id" class="form-control" required>
-            <option value="0">
-              Select the gewog
-            </option>
-            <?php 
-            $gewogs = App\Gewog::all();
-            foreach($gewogs as $gewog):
-              ?>
-            <option value="{{ $gewog->gewog_id}}">{{ $gewog->gewog_name}}</option>
-          <?php endforeach;?>
-        </select> 
+        <select class='form-control' name='gewog_id' id='gewog'required>
+                         <option></option>
+
+                      </select>
       </div>
     </div>
     <div class='form-group clearfix'>
@@ -369,6 +378,25 @@ $('#table').dataTable({
   'searching':false,
   'responsive':true
 });
+ $('#type1').change(function()
+  {
+    var gewg_id=$(this).val();
+    var view1_url = "{{route("view1_athlete_address")}}";
+    $.ajax({
+      url: view1_url,
+      type:"GET", 
+      data: {"id":gewg_id}, 
+      success: function(result){
+        console.log(result);
+      $('#gewog').empty();
+      $("#gewog").prepend("<option disabled selected>Select Gewog</option>");
+       $.each(result,function(key,val)
+      {
+        $('#gewog').append('<option value="'+val.GeowgID+'">'+val.Description+'</option>');
+      });
+      }
+    });
+  });
 </script>
 <style type="text/css">
 a.test {
