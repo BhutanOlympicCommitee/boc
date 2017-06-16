@@ -27,61 +27,25 @@
 						 	@endif
               <form action='{{route('searchKPI')}}' method='post'>
                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <div class='form-group clearfix'>
-              <label for='five_yr_plan_id' class='col-xs-2'>Five Year Plan:</label>
-              <div class='col-xs-10 input-group'>
-               <select class='form-control' name='five_yr_plan_id'>
-                <option disabled selected>Select five year plan</option>
-                  <?php 
-                    $fiveYearPlan=App\EnumFiveYearPlan::all();
-                    foreach($fiveYearPlan as $five_year):
-                  ?>
-                  <option value="{{$five_year->five_yr_plan_id}}">{{$five_year->name}}</option>
-                  <?php 
-                    endforeach
-                  ?>
-                  </select>
-              </div>
-          </div>
-          <div class='form-group clearfix'>
-            <label for='skra_id' class='col-xs-2'>AKRA:</label>
-              <div class='col-xs-10 input-group'>
-                 <select class='form-control' name='skra_id' id='skra1'>
-                  <option disabled selected>Select AKRA</option>
-                         <?php 
-                            $skras=App\Tbl_SKRA::all();
-                            foreach($skras as $skra):
-                          ?>
-                         <option value="{{$skra->skra_id}}">{{$skra->SKRA_name}}</option>
-                          <?php 
-                            endforeach
-                          ?>
-                      </select>
-              </div>
-          </div>
-              <div class='form-group clearfix'>
-            <label for='skra_activity_id' class='col-xs-2'>BoC Program:</label>
-              <div class='col-xs-10 input-group'>
-                <select class='form-control' name='skra_activity_id'>
-                  <option disabled selected>Select BoC program</option>
-                  <?php 
-                    $skra=App\Tbl_SKRA_activities::all();
-                    foreach($skra as $skras):
-                  ?>
-                  <option value="{{$skras->skra_activity_id}}">{{$skras->SKRA_activity}}</option>
-                  <?php 
-                    endforeach
-                  ?>
-                </select>
-              </div>
-          </div>    
+            
           <div class='form-group clearfix'>
             <label for='activity' class='col-xs-2'>Activity:</label>
               <div class='col-xs-10 input-group'>
                 <select class='form-control' name='activity'>
                   <option disabled selected>Select Activity</option>
                   <?php 
-                    $activity=App\Tbl_proposed_sport_org_activity::all();
+                     $skra1=array();
+                      $user=App\User::where('id',Session::get('user_id'))->first();
+                      $boc_program=App\Tbl_SKRA_activities::where('sport_org_id',$user->sport_organization)->pluck('skra_activity_id');
+                      $skra_activity1=explode(',',$boc_program);
+                      foreach($skra_activity1 as $skra)
+                      {
+                          $skra1[]=trim($skra,'[]');
+                      }
+                       $activity=App\Tbl_proposed_sport_org_activity::join('tbl__update_sport_activities','tbl_proposed_sport_org_activities.weightage_id','tbl__update_sport_activities.id')
+            ->select('tbl_proposed_sport_org_activities.*')
+            ->whereIn('tbl__update_sport_activities.skra_activity_id',$skra1)
+            ->get();
                     foreach($activity as $activities):
                   ?>
                   <option value="{{$activities->activity_id}}">{{$activities->activity_name}}</option>
@@ -89,13 +53,12 @@
                     endforeach
                   ?>
                 </select>
-              </div>
-          </div>    
-          <div class="form-group clearfix">
-            <div class="col-xs-12 input-group ">
-              <input type="submit" class="btn btn-primary pull-right" value="Search" name='search'>
-              </div>
-          </div>
+                
+          <span class='input-group-btn'>
+                        <input class='btn btn-primary' type='submit' name='search' value='Search'>Search
+                     </span>
+           </div>
+          </div> 
           </form>
           <div class="table-responsive">
              <table class="table table-bordered table-striped" id="table1">

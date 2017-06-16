@@ -45,7 +45,7 @@
             <label for='fiscal_id' class='col-xs-2'>Fiscal Year:</label>
               <div class='col-xs-10 input-group'>
                 <select class='form-control' name='fiscal_id' id="fiscal_id">
-                  <option><--Select one--></option>
+                  <option disabled selected><--Select one--></option>
                   <?php 
                     $fiscalYear=App\fiscal_year::all();
                     foreach($fiscalYear as $fiscal):
@@ -74,10 +74,10 @@
               </div>
           </div>
               <div class='form-group clearfix'>
-            <label for='skra_activity_id' class='col-xs-2'>BoC Program:</label>
+            <label for='skra_activity_id' class='col-xs-2'>Program:</label>
               <div class='col-xs-10 input-group'>
                 <select class='form-control' name='skra_activity_id'>
-                  <option value='' disabled selected>Select BoC program</option>
+                  <option value='' disabled selected>Select program</option>
                   <?php 
                     $skra=App\Tbl_SKRA_activities::all();
                     foreach($skra as $skras):
@@ -101,7 +101,7 @@
                 <tr>
                       <th>Sl. No:</th>
                       <th>AKRA</th>
-                      <th>BoC Program</th>
+                      <th>Programs</th>
                       <th>Activity</th>
                       <th>Venue</th>
                       <th>RGoB Budget</th>

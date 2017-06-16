@@ -107,7 +107,7 @@
           <label for="unit"  class='col-xs-3'>Units<a class="test">*</a></label> 
           <div class='col-xs-9 input-group'>
             <select name="unit" id="unit" class="form-control">
-              <option value="0">
+              <option disabled selected>
                 Select the KPI Unit
               </option>
               <?php 

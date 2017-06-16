@@ -12,6 +12,7 @@ use Session;
 use Auth;
 use App\User;
 use App\Sport_Organization;
+use App\fiscal_year;
 
 class SKRA_activities_Controller extends Controller
 {
@@ -143,41 +144,78 @@ class SKRA_activities_Controller extends Controller
         $boc_program=$request->skra_activity_id;
         if(!empty($five_yr))
         {
-            $sport_update=Tbl_UpdateSportActivity::where('five_yr_plan_id',$five_yr)->get();
-            $search=DB::table('tbl__update_sport_activities')
-                ->join('tbl_proposed_sport_org_activities','tbl__update_sport_activities.id','tbl_proposed_sport_org_activities.weightage_id')
+             $skra1=array();
+            $user=User::where('id',Session::get('user_id'))->first();
+            $boc_program=Tbl_SKRA_activities::where('sport_org_id',$user->sport_organization)->where('five_yr_plan_id',$five_yr)->pluck('skra_activity_id');
+            $skra_activity1=explode(',',$boc_program);
+            foreach($skra_activity1 as $skra)
+            {
+                $skra1[]=trim($skra,'[]');
+            }
+            $sport_update=Tbl_UpdateSportActivity::whereIn('skra_activity_id', $skra1)->get();
+            $search=Tbl_proposed_sport_org_activity::join('tbl__update_sport_activities','tbl_proposed_sport_org_activities.weightage_id','tbl__update_sport_activities.id')
                 ->select('tbl_proposed_sport_org_activities.*')
-                ->where('tbl__update_sport_activities.five_yr_plan_id','=',$five_yr)
+                ->whereIn('tbl__update_sport_activities.skra_activity_id',$skra1)
                 ->get();
             return view('sport_organization_user.search_activity.search',compact('search','sport_update'));
         }
         else if(!empty($fiscal_yr))
         {
-           $sport_update=Tbl_UpdateSportActivity::where('fiscal_id',$fiscal_yr)->get(); 
-           $search=DB::table('tbl__update_sport_activities') 
-                 ->join('tbl_proposed_sport_org_activities','tbl__update_sport_activities.id','tbl_proposed_sport_org_activities.weightage_id')
-                 ->select('tbl_proposed_sport_org_activities.*')
-                 ->where('tbl__update_sport_activities.skra_id','=',$fiscal_yr)
-                 ->get();
-             return view('sport_organization_user.search_activity.search',compact('search','sport_update'));
+            $skra1=array();
+             $user=User::where('id',Session::get('user_id'))->first();
+             $akra=DB::table('tbl__s_k_r_a_activities')
+                ->join('fiscal_years','tbl__s_k_r_a_activities.five_yr_plan_id','fiscal_years.five_yr_plan_id')
+                ->select('tbl__s_k_r_a_activities.*')
+                ->where('fiscal_years.fiscal_id','=',$fiscal_yr)
+                ->where('tbl__s_k_r_a_activities.sport_org_id','=',$user->sport_organization)
+                ->pluck('skra_activity_id');
+            $skra_activity1=explode(',',$akra);
+            foreach($skra_activity1 as $skra)
+            {
+                $skra1[]=trim($skra,'[]');
+            }
+             $sport_update=Tbl_UpdateSportActivity::whereIn('skra_activity_id', $skra1)->get();
+            $search=Tbl_proposed_sport_org_activity::join('tbl__update_sport_activities','tbl_proposed_sport_org_activities.weightage_id','tbl__update_sport_activities.id')
+                ->select('tbl_proposed_sport_org_activities.*')
+                ->whereIn('tbl__update_sport_activities.skra_activity_id',$skra1)
+                ->get();
+            return view('sport_organization_user.search_activity.search',compact('search','sport_update'));
+
         }
         else if(!empty($akra))
         {
-           $sport_update=Tbl_UpdateSportActivity::where('skra_id',$akra)->get(); 
-           $search=DB::table('tbl__update_sport_activities') 
-                 ->join('tbl_proposed_sport_org_activities','tbl__update_sport_activities.id','tbl_proposed_sport_org_activities.weightage_id')
-                 ->select('tbl_proposed_sport_org_activities.*')
-                 ->where('tbl__update_sport_activities.skra_id','=',$akra)
-                 ->get();
-             return view('sport_organization_user.search_activity.search',compact('search','sport_update'));
+           $skra1=array();
+           $user=User::where('id',Session::get('user_id'))->first();
+           $akra=DB::table('tbl__s_k_r_a_activities')
+                ->join('tbl__s_k_r_as','tbl__s_k_r_a_activities.skra_id','tbl__s_k_r_as.skra_id')
+                ->select('tbl__s_k_r_a_activities.*')
+                ->where('tbl__s_k_r_a_activities.skra_id','=',$akra)
+                ->where('tbl__s_k_r_a_activities.sport_org_id','=',$user->sport_organization)
+                ->pluck('skra_activity_id');
+             $skra_activity1=explode(',',$akra);
+            foreach($skra_activity1 as $skra)
+            {
+                $skra1[]=trim($skra,'[]');
+            }
+           $sport_update=Tbl_UpdateSportActivity::whereIn('skra_activity_id', $skra1)->get();
+           $search=Tbl_proposed_sport_org_activity::join('tbl__update_sport_activities','tbl_proposed_sport_org_activities.weightage_id','tbl__update_sport_activities.id')
+                ->select('tbl_proposed_sport_org_activities.*')
+                ->whereIn('tbl__update_sport_activities.skra_activity_id',$skra1)
+                ->get();
+            return view('sport_organization_user.search_activity.search',compact('search','sport_update'));
         }
         else if(!empty($boc_program))
         {
-            $sport_update=Tbl_UpdateSportActivity::where('skra_activity_id',$boc_program)->get(); 
+            $user=User::where('id',Session::get('user_id'))->first();
+            $akra_activity=Tbl_SKRA_activities::where('skra_activity_id',$boc_program)
+            ->where('sport_org_id',$user->sport_organization)
+            ->pluck('skra_activity_id');
+            $akra_activity_id=trim($akra_activity,'[]');
+            $sport_update=Tbl_UpdateSportActivity::where('skra_activity_id', $akra_activity_id)->get(); 
             $search=DB::table('tbl__update_sport_activities') 
                  ->join('tbl_proposed_sport_org_activities','tbl__update_sport_activities.id','tbl_proposed_sport_org_activities.weightage_id')
                  ->select('tbl_proposed_sport_org_activities.*')
-                 ->where('tbl__update_sport_activities.skra_activity_id','=',$boc_program)
+                 ->where('tbl__update_sport_activities.skra_activity_id','=', $akra_activity_id)
                  ->get();
              return view('sport_organization_user.search_activity.search',compact('search','sport_update'));
         }

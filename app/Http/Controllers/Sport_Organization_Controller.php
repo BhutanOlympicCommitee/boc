@@ -186,6 +186,7 @@ class Sport_Organization_Controller extends Controller
             ->whereIn('tbl__update_sport_activities.skra_activity_id',$skra1)
             ->get();
         //return view('sport_organization_user.sport_activity_plan.addActivity',compact('addActivity'));
+
          return view('sport_organization_user.search_activity.search',compact('search'));
     }
     public function searchSportOrganization(Request $request)
