@@ -178,6 +178,7 @@ class SKRA_activities_Controller extends Controller
             $search=Tbl_proposed_sport_org_activity::join('tbl__update_sport_activities','tbl_proposed_sport_org_activities.weightage_id','tbl__update_sport_activities.id')
                 ->select('tbl_proposed_sport_org_activities.*')
                 ->whereIn('tbl__update_sport_activities.skra_activity_id',$skra1)
+                ->where('tbl_proposed_sport_org_activities.fiscal_id',$fiscal_yr)
                 ->get();
             return view('sport_organization_user.search_activity.search',compact('search','sport_update'));
 
