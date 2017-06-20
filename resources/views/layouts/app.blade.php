@@ -13,9 +13,7 @@
       .datepicker {
       z-index: 1600 !important; /* has to be larger than 1050 */
     }
-     .timepicker {
-      z-index: 1600 !important; /* has to be larger than 1050 */
-    }
+   
    </style>
     <link rel="shortcut icon" href="{{URL::asset('/images/favicon.ico')}}" type="image/x-icon"/>
     <!-- Latest compiled and minified CSS -->
