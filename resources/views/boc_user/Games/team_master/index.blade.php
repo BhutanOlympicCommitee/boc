@@ -23,6 +23,7 @@
               <ul class='nav nav-pills nav-justified'>
                 <li id='game1'><a href="#games_master" data-toggle="tab">Games Information</a></li>
                 <li id='coach'><a href="#" data-toggle="tab">Sport And Coach Information</a></li>
+                 <li id="official"><a data-toggle="tab">Officials/CDM</a></li>
                 <li class='active' id='team'><a href="#" data-toggle="tab">Athlete Team Member</a></li>
               </ul>
               @if(Session::has('success'))
@@ -365,8 +366,8 @@ function editAthleteFunction(id)
 
 $(function()
   {
-    $('#coach').click(function(){
-       window.location="{{url(route('sport_coach_master.index'))}}";   
+    $('#official').click(function(){
+       window.location="{{url(route('official_master.official'))}}";   
      });
   });
 

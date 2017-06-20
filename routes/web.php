@@ -313,5 +313,11 @@ Route::get('get_score','UpdateSportActivityController@getScore')->name('getScore
 
 Route::get('assign_weight','UpdateSportActivityController@getWeight')->name('assign_weight');
 
+Route::get('official_info','GamesController@addOfficial')->name('official_master.official');
+
+Route::post('/add_official','GamesController@getEmployee')->name('getOfficial');
+
+Route::post('/save_official','GamesController@storeOfficial')->name('save_official');
+
 
 

@@ -23,6 +23,7 @@
             <ul class='nav nav-pills nav-justified'>
               <li class='active' id='game'><a href="#" data-toggle="tab">Games Information</a></li>
               <li id='sportcoach'><a href="#sport_coach_master" data-toggle="tab">Sport And Coach Information</a></li>
+              <li id="official"><a data-toggle="tab">Officials/CDM</a></li>
               <li id='team'><a href="#athlete_qualification" data-toggle="tab">Athlete Team Member</a></li>
             </ul>
             <div style='margin-top:20px'></div>
