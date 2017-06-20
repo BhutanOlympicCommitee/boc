@@ -236,7 +236,7 @@
        <form action="{{route('update_achievement.storeAthleteAchievement')}}" method='post'>
          {{csrf_field()}}
          <div class="form-group clearfix">
-          <label for="activity_id"  class='col-xs-3'>Activity</label> 
+          <label for="activity_id"  class='col-xs-3'>Activity:<a class="test">*</a></label> 
           <div class='col-xs-9 input-group'>
               <?php 
               $activity = App\Tbl_sport_org_activities_approved::where('activity_id',Session::get('activity_id'))->first();
@@ -246,19 +246,19 @@
         </div>
       </div>
       <div class="form-group clearfix">
-        <label for=""  class='col-xs-3'>Activity Timeline</label> 
+        <label for=""  class='col-xs-3'>Activity Timeline:<a class="test">*</a></label> 
         <div class='col-xs-9 input-group'>
           <input type="text" id="actual_timeline" class="form-control" value="{{$activity->approved_actual_timeline}}" disabled>
       </div>
     </div>
     <div class="form-group clearfix">
-      <label for=""  class='col-xs-3'>Activity Venue</label> 
+      <label for=""  class='col-xs-3'>Activity Venue:<a class="test">*</a></label> 
       <div class='col-xs-9 input-group'>
          <input type="text" id="activity_venue" class="form-control" value="{{$activity->approved_activity_venue}}" disabled>
     </div>
   </div>
   <div class="form-group clearfix">
-    <label for="sport_id"  class='col-xs-3'>Sport</label> 
+    <label for="sport_id"  class='col-xs-3'>Sport:<a class="test">*</a></label> 
     <div class='col-xs-9 input-group'>
       <select name="sport_id" class="form-control" required>
         <option value="0">
@@ -274,7 +274,7 @@
   </div>
 </div>
 <div class="form-group clearfix">
-  <label for="medal_id"  class='col-xs-3'>Medal/Certificate</label> 
+  <label for="medal_id"  class='col-xs-3'>Medal/Certificate:<a class="test">*</a></label> 
   <div class='col-xs-9 input-group'>
     <select name="medal_id" class="form-control" required>
       <option value="0">
@@ -290,7 +290,7 @@
 </div>
 </div>
 <div class='form-group clearfix'>
-  <label for='remarks' class='col-xs-3'>Remarks</label>
+  <label for='remarks' class='col-xs-3'>Remarks:</label>
   <div class='col-xs-9 input-group'>
     <textarea name="remarks" class="form-control" rows=3></textarea> 
   </div>

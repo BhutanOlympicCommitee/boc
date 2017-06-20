@@ -131,5 +131,11 @@ $(function(){
         }
     });
         </script>
+        <style type="text/css">
+a.test {
+font-size: 20px;
+color: red;
+}
+</style>
     </body>
     </html>
