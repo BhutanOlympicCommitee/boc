@@ -70,8 +70,8 @@
         				 				<thead>
         									<tr>
         										<th>Sl. No:</th>
-        										<th>Coach ID</th>
         										<th>Coach Name</th>
+        										<th>Mobile No</th>
                             <th>Appointment Date</th>
                             <th>Passport No</th>
         										<th style='width:20%'>Action</th>
@@ -83,8 +83,8 @@
                         @if($coachs->status==0)
         								<tr>
         									<td>{{$id++}}</td>
-        									<td>{{$coachs->coach_id}}</td>
         									<td>{{$coachs->coach_fname.' '.$coachs->coach_mname.' '.$coachs->coach_lname}}</td>
+                          <td>{{$coachs->coach_mobile}}</td>
                           <td>{{$coachs->coach_appointmentDate}}</td>
                           <td>{{$coachs->coach_passport}}</td>
         									<td>
@@ -330,7 +330,7 @@
               <div class='form-group clearfix'>
             <label for='coach_phone' class='col-xs-3'>Phone:</label>
               <div class='col-xs-9 input-group'>
-                <input type="text" name="coach_phone" class="form-control" placeholder="enter phone number" id="coach_phone" value="0">
+                <input type="text" name="coach_phone" class="form-control" placeholder="enter phone number" id="coach_phone" value='0'>
               </div>
           </div>
             <div class='form-group clearfix'>

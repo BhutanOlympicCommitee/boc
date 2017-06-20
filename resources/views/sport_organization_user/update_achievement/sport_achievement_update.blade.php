@@ -22,7 +22,7 @@
             <div class="bootstrap-admin-panel-content">
               <ul class='nav nav-pills nav-justified'>
                 <li class='active' id='reports'><a href="#Report" data-toggle="tab">Activity Report</a></li>
-                <li id='participants'><a href="#Participant" data-toggle="tab">Participant Information</a></li>
+                <li id='participants'><a href="#Participant" data-toggle="tab" disabled>Participant Information</a></li>
               </ul>
               <form action='{{route('activities_achieved_report',$approved_activity->activity_id)}}' method='post'>
                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
