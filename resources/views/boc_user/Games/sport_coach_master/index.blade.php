@@ -37,6 +37,7 @@
         				 				<thead>
         									<tr>
         										<th>Sl. No:</th>
+                            <th>Game Name</th>
         										<th>Federation</th>
         										<th>Sport</th>
         										<th>Coach</th>
@@ -48,7 +49,8 @@
         								@foreach($sportcoach as $sports)
                         @if($sports->status==0)
         								<tr>
-        									<td>{{$id++}}</td>
+                          <td>{{$id++}}</td>
+        									<td>{{$sports->displayGames->name}}</td>
                           <td>{{$sports->displayFederation->sport_org_name}}</td>
                           <td>{{$sports->displaySport->sport_name}}</td>
         									<td>{{$sports->displayCoach->coach_fname.' '.$sports->displayCoach->coach_mname.' '.$sports->displayCoach->coach_lname}}</td>
@@ -233,18 +235,6 @@
 </br>
 </br>
 <script type="text/javascript">
-	 $(function()
-    {
-        $('#table1').DataTable(
-           {
-     //       "language": {
-     //       "search": "Filter sport & coach:"
-     // }
-     'searching':false,
-     'responsive':true
-     }
-          );
-    });  
   function fun_edit(id)
     {
       var view_url = $("#hidden_view").val();
@@ -277,7 +267,17 @@ $(function()
        window.location="{{url(route('team_master.index'))}}";   
      });
   });
-
+ $(function()
+    {
+        $('#table1').DataTable(
+           {
+             "responsive":true,
+           "language": {
+           "search": "Filter with Game Name:"
+          }
+     }
+          );
+    });  s
 </script>
 <style type="text/css">
 a.test {

@@ -19,4 +19,8 @@ class Tbl_sport_coach extends Model
     {
     	return $this->belongsTo('App\Tbl_Coach','coach','coach_id');
     }
+    public function displayGames()
+    {
+        return $this->belongsTo('App\Tbl_game_detail','gamesdetail_id','gamesdetail_id');
+    }
 }
