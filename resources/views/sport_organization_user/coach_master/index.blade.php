@@ -32,7 +32,7 @@
                   <div class='form-group clearfix'>
                     <label for='coach_appointmentDate' class='col-xs-2'>From Date:</label>
                       <div class='col-xs-10 col-xs-offset-3 input-group'>
-                        <input type="date" name="coach_appointmentDate" class="form-control" placeholder="Enter athlate id here">
+                        <input type="date" name="coach_appointmentDate" class="form-control" placeholder="yy-mm-dd">
                       </div>
                   </div>
                   <div class='form-group clearfix'>
@@ -47,7 +47,7 @@
                    <div class='form-group clearfix'>
                     <label for='coach_expiryDate' class='col-xs-2'>To Date:</label>
                       <div class='col-xs-10 input-group'>
-                        <input type="date" name="coach_expiryDate" class="form-control" placeholder="Enter coach name here">
+                        <input type="date" name="coach_expiryDate" class="form-control" placeholder="yy-mm-dd">
                       </div>
                   </div>
                   <div class='form-group clearfix'>
@@ -153,7 +153,7 @@
           <div class='form-group clearfix'>
             <label for='coach_dob' class='col-xs-3'>Date of Birth:<a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
-                <input type="date" name="coach_dob" class="form-control" placeholder="date" required>
+                <input  type="date" name="coach_dob" class="form-control datepicker" placeholder="yy-mm-dd" required>
               </div>
           </div>
          <div class='form-group clearfix'>
@@ -216,13 +216,13 @@
             <div class='form-group clearfix'>
             <label for='coach_appointmentDate' class='col-xs-3'>Appointment Date:<a class="test">*</a><a class="test">*</a></label>
               <div class='col-xs-9 input-group'>
-                <input type="date" name="coach_appointmentDate" class="form-control" placeholder="date" required>
+                <input type="date" name="coach_appointmentDate" class="form-control datepicker" placeholder="yy-mm-dd" required>
               </div>
           </div>
             <div class='form-group clearfix'>
             <label for='coach_expiryDate' class='col-xs-3'>Contact Expiry Date:</label>
               <div class='col-xs-9 input-group'>
-                <input type="date" name="coach_expiryDate" class="form-control" placeholder="date">
+                <input type="date" name="coach_expiryDate" class="form-control datepicker" placeholder="yy-mm-dd">
               </div>
           </div>
             <div class='form-group clearfix'>
@@ -291,7 +291,7 @@
           <div class='form-group clearfix'>
             <label for='coach_dob' class='col-xs-3'>Date of Birth:</label>
               <div class='col-xs-9 input-group'>
-                <input type="date" name="coach_dob" class="form-control" placeholder="date" id="coach_dob" required>
+                <input type="date" name="coach_dob" class="form-control datepicker" placeholder="yy-mm-dd" id="coach_dob" required>
               </div>
           </div>
           <div class='form-group clearfix'>
@@ -354,13 +354,13 @@
             <div class='form-group clearfix'>
             <label for='coach_appointmentDate' class='col-xs-3'>Appointment Date:</label>
               <div class='col-xs-9 input-group'>
-                <input type="date" name="coach_appointmentDate" class="form-control" placeholder="date" id="coach_appointmentDate" required>
+                <input type="date" name="coach_appointmentDate" class="form-control datepicker" placeholder="yy-mm-dd" id="coach_appointmentDate" required>
               </div>
           </div>
             <div class='form-group clearfix'>
             <label for='coach_expiryDate' class='col-xs-3'>Contact Expiry Date:</label>
               <div class='col-xs-9 input-group'>
-                <input type="date" name="coach_expiryDate" class="form-control" placeholder="date" id="coach_expiryDate">
+                <input type="date" name="coach_expiryDate" class="form-control datepicker" placeholder="yy-mm-dd" id="coach_expiryDate">
               </div>
           </div>
             <div class='form-group clearfix'>
@@ -400,7 +400,7 @@
           <div class='form-group clearfix'>
             <label for='seperation_date' class='col-xs-3'>Seperation Date:</label>
               <div class='col-xs-9 input-group'>
-                <input type="date" name="seperation_date" class="form-control" placeholder="" required>
+                <input type="date" name="seperation_date" class="form-control datepicker" placeholder="yy-mm-dd" required>
               </div>
           </div>
            <div class='form-group clearfix'>
@@ -498,6 +498,20 @@ $('#update').click(function()
   }
   else
     return true;
+});
+
+$('#addModal').on('shown.bs.modal', function() {
+  if (!Modernizr.inputtypes.date) {
+        // If not native HTML5 support, fallback to jQuery datePicker
+            $('input[type=date]').datepicker({
+                // Consistent format with the HTML5 picker
+                    dateFormat : 'yy-mm-dd',
+                    container: '#addModal modal-body',
+                },
+                // Localization
+                $.datepicker.regional['it']
+            );
+        }
 });
 </script>
 <style type="text/css">

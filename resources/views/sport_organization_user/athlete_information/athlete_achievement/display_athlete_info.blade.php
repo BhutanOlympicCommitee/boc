@@ -244,7 +244,7 @@
                 <div class='form-group clearfix'>
                   <label for='date' class='col-xs-3'>Date:</label>
                     <div class='col-xs-9 input-group'>
-                      <input type="date" name="date" class="form-control" placeholder="Enter Comments here" required>
+                      <input type="date" name="date" class="form-control datepicker" placeholder="yy-mm-dd" required>
                     </div>
                 </div>
            <div class='form-group clearfix'>
@@ -325,13 +325,13 @@
                 <div class='form-group clearfix'>
                   <label for='date_of_action' class='col-xs-3'>Date of Action:</label>
                     <div class='col-xs-9 input-group'>
-                      <input type="date" name="date_of_action" class="form-control" placeholder="Enter Comments here" required>
+                      <input type="date" name="date_of_action" class="form-control datepicker" placeholder="yy-mm-dd" required>
                     </div>
                 </div>
                  <div class='form-group clearfix'>
                   <label for='action_end_date' class='col-xs-3'>Action End Date:</label>
                     <div class='col-xs-9 input-group'>
-                      <input type="date" name="action_end_date" class="form-control" placeholder="Enter Comments here" required>
+                      <input type="date" name="action_end_date" class="form-control datepicker" placeholder="yy-mm-dd" required>
                     </div>
                 </div>
            <div class='form-group clearfix'>

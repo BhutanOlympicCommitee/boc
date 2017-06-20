@@ -117,13 +117,13 @@
                 <div class='form-group clearfix'>
                   <label for='startdate' class='col-xs-2'>Start Date:<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
-                      <input type="date" name="startdate" class="form-control" placeholder="Enter date of birth here" required>
+                      <input type="date" name="startdate" class="form-control" placeholder="yy-mm-dd" required>
                     </div>
                 </div>
                 <div class='form-group clearfix'>
                   <label for='enddate' class='col-xs-2'>End Date:<a class="test">*</a></label>
                     <div class='col-xs-10 input-group'>
-                      <input type="date" name="enddate" class="form-control" placeholder="Enter place of birth here" required>
+                      <input type="date" name="enddate" class="form-control" placeholder="yy-mm-dd" required>
                     </div>
                   </div>
                 <div class='form-group clearfix'>

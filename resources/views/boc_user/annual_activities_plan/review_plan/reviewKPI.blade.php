@@ -32,7 +32,7 @@
             <div class='row clearfix'>
               <div class='col-xs-2'>KPI</div>
               <div class='col-xs-5'>
-               <input type="text" name="kpi" class='form-control' value='{{$review_kpi->kpi_name}}'>
+               <input type="text" name="kpi" class='form-control' value='{{$review_kpi->kpi_name}}' disabled>
               </div>
               <div class='col-xs-5'>
                <input type="text" name="approved_kpi" class='form-control' value='{{$review_kpi->kpi_name}}'>
@@ -42,7 +42,7 @@
              <div class='row clearfix'>
               <div class='col-xs-2'>KPI Description</div>
               <div class='col-xs-5'>
-               <input type="text" name="kpi_description" class='form-control' value='{{$review_kpi->kpi_description}}'>
+               <input type="text" name="kpi_description" class='form-control' value='{{$review_kpi->kpi_description}}' disabled>
               </div>
               <div class='col-xs-5'>
                <input type="text" name="approved_kpi_description" class='form-control' value='{{$review_kpi->kpi_description}}'>
@@ -52,7 +52,7 @@
              <div class='row clearfix'>
               <div class='col-xs-2'>KPI weight</div>
               <div class='col-xs-5'>
-               <input type="text" name="kpi_weight" class='form-control' value='{{$review_kpi->kpi_weight}}'><br>
+               <input type="text" name="kpi_weight" class='form-control' value='{{$review_kpi->kpi_weight}}' disabled><br>
               </div>
               <div class='col-xs-5'>
                <input type="text" name="approved_kpi_weight" class='form-control' value='{{$review_kpi->kpi_weight}}'><br>
@@ -62,17 +62,39 @@
              <div class='row clearfix'>
               <div class='col-xs-2'>Units</div>
               <div class='col-xs-5'>
-               <input type="text" name="units" class='form-control' value='{{$review_kpi->unit}}'>
+               <!-- <input type="text" name="units" class='form-control' value='{{$review_kpi->unit}}'> -->
+               <select name="units" id="unit" class="form-control" disabled>
+              <option disabled selected>
+                Select the KPI Unit
+              </option>
+              <?php 
+              $units = App\KPIUnit::all();
+              foreach($units as $unit):
+                ?>
+              <option value="{{$unit->unit_id}}" <?php if($unit->unit_id==$review_kpi->unit){?> selected <?php }?>>{{$unit->unit_name}}</option>
+            <?php endforeach;?>
+          </select> 
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="approved_units" class='form-control' value='{{$review_kpi->unit}}' >
+               <!-- <input type="text" name="approved_units" class='form-control' value='{{$review_kpi->unit}}' > -->
+                <select name="approved_units" id="unit" class="form-control">
+              <option disabled selected>
+                Select the KPI Unit
+              </option>
+              <?php 
+              $units = App\KPIUnit::all();
+              foreach($units as $unit):
+                ?>
+              <option value="{{$unit->unit_id}}" <?php if($unit->unit_id==$review_kpi->unit){?> selected <?php }?>>{{$unit->unit_name}}</option>
+            <?php endforeach;?>
+          </select> 
               </div>
             </div>
             <br> 
             <div class='row clearfix'>
               <div class='col-xs-2'>Baseline</div>
               <div class='col-xs-5'>
-               <input type="text" name="baseline" class='form-control' value='{{$review_kpi->baseline}}'>
+               <input type="text" name="baseline" class='form-control' value='{{$review_kpi->baseline}}' disabled>
               </div>
               <div class='col-xs-5'>
                <input type="text" name="approved_baseline" class='form-control' value='{{$review_kpi->baseline}}' >
@@ -91,9 +113,9 @@
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Poor</span>
               </div>       
               <div class='col-xs-5'>
-               <input type="text" name="good" class='form-control' value='{{$review_kpi->goodRgStart."-".$review_kpi->goodRgEnd}}'><br>
-               <input type="text" name="average" class='form-control' value='{{$review_kpi->avgRgStart."-".$review_kpi->avgRgEnd}}'><br>
-               <input type="text" name="poor" class='form-control' value='{{$review_kpi->poorRgStart."-".$review_kpi->poorRgEnd}}'>
+               <input type="text" name="good" class='form-control' value='{{$review_kpi->goodRgStart."-".$review_kpi->goodRgEnd}}' disabled><br>
+               <input type="text" name="average" class='form-control' value='{{$review_kpi->avgRgStart."-".$review_kpi->avgRgEnd}}' disabled><br>
+               <input type="text" name="poor" class='form-control' value='{{$review_kpi->poorRgStart."-".$review_kpi->poorRgEnd}}' disabled>
               </div>
               <div class='col-xs-5'>
                <input type="text" name="approved_good" class='form-control' value='{{$review_kpi->goodRgStart."-".$review_kpi->goodRgEnd}}'><br>
