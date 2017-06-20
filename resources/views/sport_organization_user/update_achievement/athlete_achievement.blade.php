@@ -242,7 +242,7 @@
               $activity = App\Tbl_sport_org_activities_approved::where('activity_id',Session::get('activity_id'))->first();
               
                 ?>
-                <input type="text" class="form-control" name="activity_id" value="{{$activity->approved_activity_name}}">
+                <input type="text" class="form-control" name="activity_id" value="{{$activity->approved_activity_name}}" disabled>
         </div>
       </div>
       <div class="form-group clearfix">
@@ -260,7 +260,7 @@
   <div class="form-group clearfix">
     <label for="sport_id"  class='col-xs-3'>Sport</label> 
     <div class='col-xs-9 input-group'>
-      <select name="sport_id" class="form-control">
+      <select name="sport_id" class="form-control" required>
         <option value="0">
           Select the sport
         </option>
@@ -276,7 +276,7 @@
 <div class="form-group clearfix">
   <label for="medal_id"  class='col-xs-3'>Medal/Certificate</label> 
   <div class='col-xs-9 input-group'>
-    <select name="medal_id" class="form-control">
+    <select name="medal_id" class="form-control" required>
       <option value="0">
         Select metal
       </option>

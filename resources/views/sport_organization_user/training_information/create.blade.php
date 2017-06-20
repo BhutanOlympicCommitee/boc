@@ -150,7 +150,7 @@
                <div class='form-group'>
                 <label for='date' class='col-xs-2'>Date:<a class="test">*</a></label>
                   <div class='col-xs-10 input-group'>
-                    <input type="date" name="date" class="form-control" placeholder="Enter date here" required id='date'>
+                    <input type="date" name="date" class="form-control datepicker" placeholder="yy-mm-dd" required id='date'>
                   </div>
               </div>
               <div class='form-group clearfix'>
@@ -162,7 +162,7 @@
               <div class='form-group clearfix'>
               <label for='start_time' class='col-xs-2'>Start Time:<a class="test">*</a></label>
                 <div class='col-xs-10 input-group'>
-                  <input type="time" name="start_time" class="form-control" placeholder="Enter start time here" required>
+                  <input type="time" name="start_time" class="form-control timepicker" placeholder="H:i:s" required>
                 </div>
             </div>
             <div class='form-group'>
@@ -288,7 +288,7 @@
               <div class='form-group'>
                 <label for='date' class='col-xs-2'>Date </label>
                   <div class='col-xs-10 input-group'>
-                    <input type="date" name="date" class="form-control" placeholder="Enter date here"  id='date_edit'>
+                    <input type="date" name="date" class="form-control datepicker" placeholder="yy-mm-dd"  id='date_edit'>
                   </div>
               </div>
               <div class='form-group clearfix'>
@@ -300,7 +300,7 @@
               <div class='form-group clearfix'>
               <label for='start_time' class='col-xs-2'>Start Time </label>
                 <div class='col-xs-10 input-group'>
-                  <input type="time" name="start_time" class="form-control" placeholder="Enter start time here"  id='start_time'>
+                  <input type="time" name="start_time" class="form-control timepicker" placeholder="H:i:s"  id='start_time'>
                 </div>
             </div>
             <div class='form-group'>
@@ -452,6 +452,7 @@
         }
       });
   });
+  $('input.timepicker').timepicker({ timeFormat: 'h:mm:ss p' });
 </script>
 <style type="text/css">
 a.test {

@@ -9,6 +9,14 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
    {{--  <link rel="shortcut icon" href="../public/images/favicon.ico" type="image/x-icon"/> --}}
+   <style type="text/css" rel="stylesheet">
+      .datepicker {
+      z-index: 1600 !important; /* has to be larger than 1050 */
+    }
+     .timepicker {
+      z-index: 1600 !important; /* has to be larger than 1050 */
+    }
+   </style>
     <link rel="shortcut icon" href="{{URL::asset('/images/favicon.ico')}}" type="image/x-icon"/>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -17,6 +25,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -45,7 +54,10 @@
 
       <!-- Datables Style -->
       <link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet" media="screen">
-      
+
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+       
+
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
@@ -60,12 +72,19 @@
       <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
       <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
       <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
+
       <!-- Scripts -->
       <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
             ]); ?>
         </script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+       <!-- Modernizr is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites-->
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js' type='text/javascript'></script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
         <style type="text/css">
           img.center{
                 position: absolute;
@@ -94,7 +113,23 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
         <!-- Scripts -->
-        <script src="/js/app.js">
+        <script src="/js/app.js"></script>
+        <script type="text/javascript">
+          //if browser doesn't support date then use jquery UI called datepicker
+$(function(){           
+        if (!Modernizr.inputtypes.date) {
+        // If not native HTML5 support, fallback to jQuery datePicker
+            $('input[type=date]').datepicker({
+                // Consistent format with the HTML5 picker
+                    dateFormat : 'yy-mm-dd',
+                    autoclose: true,
+                },
+                // Localization
+                $.datepicker.regional['it']
+            );
+           
+        }
+    });
         </script>
     </body>
     </html>

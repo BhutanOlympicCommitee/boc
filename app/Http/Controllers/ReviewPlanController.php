@@ -131,7 +131,7 @@ class ReviewPlanController extends Controller
         $athlete_achievement=new Tbl_activity_report_athlete_achievement;
         // echo $request->hidden_athlete_id;
         $athlete_achievement->athlete_id= $request->hidden_athlete_id;
-        $athlete_achievement->activity_id=$request->activity_id;
+        $athlete_achievement->activity_id=Session::get('activity_id');
         $athlete_achievement->sport_id=$request->sport_id;
         $athlete_achievement->medal_id=$request->medal_id;
         $athlete_achievement->remarks=$request->remarks;
@@ -158,7 +158,15 @@ class ReviewPlanController extends Controller
         $achievement_report->approved_rgob_budget=$request->rgob;
         $achievement_report->rgob_utilization=$request->utilization;
         $achievement_report->approval_external_budget=$request->external_budget;
-        $achievement_report->external_utilization=$request->utilization_percent;
+        if($request->utilization_percent=='NaN' || $request->utilization_percent=='infinity')
+        {
+            $achievement_report->external_utilization=0;
+        }
+        else
+        {
+             $achievement_report->external_utilization=$request->utilization_percent;
+        }
+       
         $achievement_report->target_achieved=$target_achieved;
         $achievement_report->points_scored= $points_scored;
         $achievement_report->weightage_obtained= $weightage;

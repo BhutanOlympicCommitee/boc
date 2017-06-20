@@ -32,7 +32,7 @@
             <div class='row clearfix'>
               <div class='col-xs-2'>Activity</div>
               <div class='col-xs-5'>
-               <input type="text" name="activity" class='form-control' value='{{$review_plan->activity_name}}'>
+               <input type="text" name="activity" class='form-control' value='{{$review_plan->activity_name}}' disabled>
               </div>
               <div class='col-xs-5'>
                <input type="text" name="approved_activity" class='form-control' value='{{$review_plan->activity_name}}'>
@@ -42,7 +42,7 @@
              <div class='row clearfix'>
               <div class='col-xs-2'>Venue</div>
               <div class='col-xs-5'>
-               <input type="text" name="venue" class='form-control' value='{{$review_plan->activity_venue}}'>
+               <input type="text" name="venue" class='form-control' value='{{$review_plan->activity_venue}}' disabled>
               </div>
               <div class='col-xs-5'>
                <input type="text" name="approved_venue" class='form-control' value='{{$review_plan->activity_venue}}'>
@@ -60,11 +60,35 @@
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actual</span>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="quarter" class='form-control' value='{{$review_plan->quarter_timeline}}'><br>
-               <input type="text" name="actual" class='form-control' value='{{$review_plan->actual_timeline}}'>
+               <!-- <input type="text" name="quarter" class='form-control' value='{{$review_plan->quarter_timeline}}'><br> -->
+               <select class='form-control' name='quarter' id='quarter' disabled>
+                <option  disabled selected>Select quarter</option>
+                  <?php 
+                      $enum_quarter=App\Enum_quarter::all();
+                      foreach($enum_quarter as $quarter):
+                    ?>
+                    <option value="{{$quarter->quarter_id}}" <?php if($quarter->quarter_id == $review_plan->quarter_timeline){?> selected <?php }?>>{{$quarter->quarter_name}}</option>
+                    <?php 
+                      endforeach
+                    ?>
+                </select>
+                <br />
+               <input type="text" name="actual" class='form-control' value='{{$review_plan->actual_timeline}}' disabled>
               </div>
               <div class='col-xs-5'>
-               <input type="text" name="approved_quarter" class='form-control' value='{{$review_plan->quarter_timeline}}'><br>
+               <!-- <input type="text" name="approved_quarter" class='form-control' value='{{$review_plan->quarter_timeline}}'><br> -->
+               <select class='form-control' name='approved_quarter' id='quarter'>
+                <option  disabled selected>Select quarter</option>
+                  <?php 
+                      $enum_quarter=App\Enum_quarter::all();
+                      foreach($enum_quarter as $quarter):
+                    ?>
+                    <option value="{{$quarter->quarter_id}}" <?php if($quarter->quarter_id == $review_plan->quarter_timeline){?> selected <?php }?>>{{$quarter->quarter_name}}</option>
+                    <?php 
+                      endforeach
+                    ?>
+                </select>
+                <br />
                <input type="text" name="approved_actual" class='form-control' value='{{$review_plan->actual_timeline}}'>
               </div>
             </div>
@@ -81,9 +105,9 @@
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;External Source</span>
               </div>       
               <div class='col-xs-5'>
-               <input type="text" name="rgob" class='form-control' value='{{$review_plan->rgob_budget}}'><br>
-               <input type="text" name="external" class='form-control' value='{{$review_plan->external_budget}}'><br>
-               <input type="text" name="source" class='form-control' value='{{$review_plan->external_source}}'>
+               <input type="text" name="rgob" class='form-control' value='{{$review_plan->rgob_budget}}' disabled><br>
+               <input type="text" name="external" class='form-control' value='{{$review_plan->external_budget}}' disabled><br>
+               <input type="text" name="source" class='form-control' value='{{$review_plan->external_source}}' disabled>
               </div>
               <div class='col-xs-5'>
                <input type="text" name="approved_rgob" class='form-control' value='{{$review_plan->rgob_budget}}'><br>
@@ -95,7 +119,7 @@
             <div class='row clearfix'>
               <div class='col-xs-2'>Collaborating Agency</div>
               <div class='col-xs-5'>
-               <input type="text" name="collaborating_agency" class='form-control' value='{{$review_plan->collaborating_agency}}'>
+               <input type="text" name="collaborating_agency" class='form-control' value='{{$review_plan->collaborating_agency}}' disabled>
               </div>
               <div class='col-xs-5'>
                <input type="text" name="approved_collaborating_agency" class='form-control' value='{{$review_plan->collaborating_agency}}' >

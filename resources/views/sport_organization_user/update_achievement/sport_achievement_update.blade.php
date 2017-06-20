@@ -177,12 +177,16 @@
         $(this).find('input.weight').val(weight);
      });
   });
+  // $(function()
+  // {
+  //   $('#participants').click(function(){
+  //      window.location="{{url(route('update_achievement.athlete_achievement'))}}";   
+  //    });
+  // });
   $(function()
-  {
-    $('#participants').click(function(){
-       window.location="{{url(route('update_achievement.athlete_achievement'))}}";   
-     });
-  });
+    {
+      $('#participants').attr('class','disabled');
+    });
 
   $('#table1').dataTable({
   'searching':false,
