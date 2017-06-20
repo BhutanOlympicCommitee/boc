@@ -83,9 +83,9 @@
                   <th>Sl. No:</th>
                   <th>Federation</th>
                   <th>Sport</th>
-                  <th>Athlete ID</th>
                   <th>Athlete Name</th>
                   <th>Athlete function</th>
+                  <th>Game ID</th>
                   <th style='width:20%'>Action</th>
                 </tr> 
               </thead>
@@ -95,13 +95,11 @@
               @foreach($teams->games as $team_member)
               <tr>
                 <td>{{$id++}}</td>
-               
                 <td>{{$teams->displayAsport->Sport->sport_org_name}}</td>
-               
                 <td>{{$teams->displayAsport->sport_name}}</td>
-                <td>{{$teams->athlete_id}}</td>
                 <td>{{$teams->athlete_fname.' '.$teams->athlete_mname.' '.$teams->athlete_lname}}</td>
                 <td>{{$teams->displayAthleteFunction->athlete_function_name}}</td>
+                <td>{{$team_member->gamesdetail_id}}</td>
                 <td>
                   <form id='remove' class="form-group" action="{{route('team_master.destroy',$teams->athlete_id,$team_member->gamesdetail_id)}}" method='post'>
                           <input type="hidden" name="_method" value="delete">
@@ -371,9 +369,13 @@ $(function()
      });
   });
 
-$('#table1').dataTable({
-  'searching':false,
-  'responsive':true
+$('#table1').dataTable(
+  {
+     "language": 
+     {
+     "search": "Filter athlete with game ID:",
+     'responsive':true
+    }
 });
 $('#table2').dataTable(
   {

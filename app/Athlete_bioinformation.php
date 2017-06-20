@@ -25,7 +25,7 @@ class Athlete_bioinformation extends Model
     {
       return $this->belongsToMany('App\TrainingSchedule','athlete_training_schedules','athlete_id','training_id');
     }
-     public function games()
+    public function games()
     {
       return $this->belongsToMany('App\Tbl_game_detail','tbl_team_members','athlete_id','gamesdetail_id');
     }
