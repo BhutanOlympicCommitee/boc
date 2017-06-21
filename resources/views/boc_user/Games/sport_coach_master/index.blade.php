@@ -24,7 +24,7 @@
                          <ul class='nav nav-pills nav-justified'>
                          <li id='game1'><a href="#games_master" data-toggle="tab">Games Information</a></li>
                          <li class='active' id='coach'><a href="#" data-toggle="tab">Sport And Coach Information</a></li>
-                         <li id="official"><a data-toggle="tab">Officials/CDM</a></li>
+                         <li id="official"><a href="#" data-toggle="tab">Officials/CDM</a></li>
                          <li id='team'><a href="#" data-toggle="tab">Athlete Team Member</a></li>
                          </ul>
                       	@if(Session::has('success'))
