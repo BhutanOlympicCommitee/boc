@@ -24,7 +24,7 @@
                          <ul class='nav nav-pills nav-justified'>
                          <li id='game1'><a href="#games_master" data-toggle="tab">Games Information</a></li>
                          <li class='active' id='coach'><a href="#" data-toggle="tab">Sport And Coach Information</a></li>
-                          <li id="official"><a data-toggle="tab">Officials/CDM</a></li>
+                         <li id="official"><a data-toggle="tab">Officials/CDM</a></li>
                          <li id='team'><a href="#" data-toggle="tab">Athlete Team Member</a></li>
                          </ul>
                       	@if(Session::has('success'))
@@ -261,10 +261,11 @@
        window.location="{{url(route('games_master.create'))}}";   
      });
   });
+
 $(function()
   {
-    $('#official').click(function(){
-       window.location="{{url(route('official_master.official'))}}";   
+    $('#team').click(function(){
+       window.location="{{url(route('team_master.index'))}}";   
      });
   });
  $(function()
@@ -277,7 +278,13 @@ $(function()
           }
      }
           );
-    });  s
+    }); 
+ $(function()
+  {
+    $('#official').click(function(){
+       window.location="{{url(route('official_master.official'))}}";   
+     });
+  });
 </script>
 <style type="text/css">
 a.test {
